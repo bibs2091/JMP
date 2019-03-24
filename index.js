@@ -5,6 +5,14 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 
 //connect to the database
+const db = require("./config/database");
+db.authenticate()
+    .then(() => {
+        console.log("Database connected");
+    })
+    .catch(error => {
+        console.log(error.message)
+    });
 
 //import controllers
 const homeController = require("./controllers/home");
