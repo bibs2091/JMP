@@ -4,6 +4,7 @@ const sequelize = new Sequelize('jmp', 'oussama', 'toor', {
     host: 'localhost',
     dialect: 'postgres',
     operatorsAliases: false,
+    logging: false,
     port: 5433,
     pool: {
         max: 5,

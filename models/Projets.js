@@ -1,23 +1,21 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database");
 
-const Users = db.define('Users', {
-    email: {
-        type: Sequelize.STRING,
-        notNull: true,
-        isEmail: true
-    },
-    password: {
+const Projets = db.define('Projets', {
+    nom: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    groudId: {
+    description: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    formationId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 2
+        allowNull: false
     }
 });
 
 db.sync({ forced: true });
 
-module.exports = Users;
+module.exports = Projets;

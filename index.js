@@ -13,6 +13,10 @@ db.authenticate()
     .catch(error => {
         console.log(error.message)
     });
+//synchronize database 
+db.sync({ forced: true }).then(() => {
+    console.log("database synchronized ");
+});
 
 //import controllers
 const homeController = require("./controllers/home");
