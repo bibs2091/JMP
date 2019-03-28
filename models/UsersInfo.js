@@ -3,7 +3,7 @@ const db = require("../config/database");
 
 const UsersInfo = db.define('UsersInfo', {
     userId: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     fisrtName: {
