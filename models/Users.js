@@ -13,7 +13,8 @@ const Users = db.define('Users', {
     },
     groudId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 2
     }
 });
 
