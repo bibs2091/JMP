@@ -10,7 +10,7 @@ const SolutionsProjets = db.define('SolutionsProjets', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    validé: {
+    valide: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
     },
