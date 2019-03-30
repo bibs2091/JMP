@@ -1,0 +1,10 @@
+{
+  "short_name": "jmp",
+  "name": "Junior makers program",
+  "icons": [{
+    "src": "favicon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": "/"
+}
