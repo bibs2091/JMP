@@ -13,6 +13,11 @@
     <!-- importing needed libraries -->
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+    {{--  importing fonts  --}}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
 
     <!-- main CSS style sheet -->
     <link rel="stylesheet" href="/css/main.css">
@@ -22,8 +27,63 @@
     <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->
-
-    @!section('content')
+    <div class="s-layout">
+        <!-- Sidebar -->
+        <div class="s-layout__sidebar">
+          <a class="s-sidebar__trigger" href="#0">
+             <i class="fa fa-bars"></i>
+          </a>
+        
+          <nav class="s-sidebar__nav">
+            <img src="/favicon.png" class="s-sidebar-logo">
+            <ul>
+                <li>
+                    <a class="s-sidebar__nav-link" href="#0">
+                        <i class="fa fa-home"></i><em>Home</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" href="#0">
+                        <i class="fa fa-book"></i><em>Library</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" href="#0">
+                        <i class="fa fa-desktop"></i><em>My courses</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" href="#0">
+                        <i class="fa fa-calendar"></i><em>Events</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" href="#0">
+                        <i class="fa fa-heart"></i><em>My wishlist</em>
+                    </a>
+                </li>
+            </ul>
+            <ul class="bottom-buttons">
+                <li>
+                    <a class="s-sidebar__nav-link" href="#0">
+                        <i class="fa fa-gear"></i><em>Settings</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" href="#0">
+                        <i class="fa fa-power-off"></i><em>Logout</em>
+                    </a>
+                </li>
+            </ul>
+          </nav>
+        </div>
+        
+        <!-- Content -->
+        <main class="s-layout__content">    
+            @!section('content')
+        </main>
+    </div>
+    
     <!-- needed scripts -->
     <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
