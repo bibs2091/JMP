@@ -73,11 +73,6 @@ app.use("/login", login);
 app.use("/register", register);
 app.use("/home", home);
 
-//handling get requests
-app.get("/", homeController);
-
-//handling post requests
-
 //listen to requests
 const port = 3000 || process.env.PORT;
 app.listen(port, () => {
