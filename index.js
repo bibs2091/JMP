@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 
 //require routes
-const user = require("./routes/user");
+const users = require("./routes/users");
 const profile = require("./routes/profile");
 const login = require("./routes/login");
 const register = require("./routes/register");
@@ -60,10 +60,6 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
-
 //set up public files directory
 app.use(express.static("public"));
 //set up views directory
@@ -72,7 +68,7 @@ app.set("views", __dirname + "/views");
 
 //use routes
 app.use("/profile", profile);
-app.use("/user", user);
+app.use("/users", users);
 app.use("/login", login);
 app.use("/register", register);
 app.use("/home", home);
