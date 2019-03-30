@@ -5,10 +5,8 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 
 //require routes
-const users = require("./routes/users");
+const auth = require("./routes/auth");
 const profile = require("./routes/profile");
-const login = require("./routes/login");
-const register = require("./routes/register");
 const home = require("./routes/home");
 
 //environment variables
@@ -34,9 +32,6 @@ db.authenticate()
 db.sync({ forced: true }).then(() => {
 	console.log("database synchronized ");
 });
-
-//import controllers
-const homeController = require("./controllers/home");
 
 //create the express app
 const app = express();
@@ -67,11 +62,9 @@ app.use(expressEdge);
 app.set("views", __dirname + "/views");
 
 //use routes
+app.use("/auth", auth);
 app.use("/profile", profile);
-app.use("/users", users);
-app.use("/login", login);
-app.use("/register", register);
-app.use("/home", home);
+app.use("/", home);
 
 //listen to requests
 const port = 3000 || process.env.PORT;
