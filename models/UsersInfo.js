@@ -1,12 +1,20 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database");
+const User = require("./Users");
 
 const UsersInfo = db.define('UsersInfo', {
     userId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+        // This is a reference to another model
+        model: User,
+
+        // This is the column name of the referenced model
+        key: 'id'
+        }
     },
-    fisrtName: {
+    firstName: {
         type: Sequelize.STRING
     },
     lastName: {
