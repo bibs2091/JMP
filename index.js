@@ -3,6 +3,8 @@ const express = require("express");
 const expressEdge = require("express-edge");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const expressValidator = require("express-validator");
+const flash = require("connect-flash");
 
 //require routes
 const auth = require("./routes/auth");
@@ -50,6 +52,10 @@ app.use(
 		},
 	})
 );
+
+app.use(flash());
+//use express validator
+app.use(expressValidator());
 
 //body parser configuration
 app.use(bodyParser.json());
