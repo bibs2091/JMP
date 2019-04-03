@@ -6,13 +6,7 @@ const UsersInfo = db.define('UsersInfo', {
     userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-        // This is a reference to another model
-        model: User,
-
-        // This is the column name of the referenced model
-        key: 'id'
-        }
+        
     },
     firstName: {
         type: Sequelize.STRING
