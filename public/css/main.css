@@ -161,3 +161,86 @@
     
  }
  
+/* --- Navbar --- */
+#navbar{
+width: 100%;
+height: 60px;
+border-bottom: 0.5px solid black;
+
+}
+#container {
+   margin-top: 15px;
+}
+nav h1{
+   font-family: 'Popins', sans-serif;
+   font-weight: bold;
+   font-size: 22px;
+   display: inline;
+   margin-left: 15px;
+}
+#tocenter{
+   float: right;
+    display: inline-block;
+
+}
+nav #profile-pic-nav {
+   height: 33px;
+   width: 33px;
+   border-radius: 50%;
+   float: right;
+   margin-right: 20px;
+}
+nav #search{
+   display:inline-block;
+   border: 2px solid #EAEBED;
+   border-radius: 20px;
+   padding: 0px 5px;
+   margin-right: 15px;
+}
+nav #search input{
+   width: 200px;
+   border: none;
+}
+
+
+
+
+
+
+
+
+
+/* ----------------------- for the icons ------------------------------ */
+  @font-face {
+   font-family: 'icomoon';
+   src:  url('/fonts/icomoon.eot?hrtpsr');
+   src:  url('/fonts/icomoon.eot?hrtpsr#iefix') format('embedded-opentype'),
+     url('/fonts/icomoon.ttf?hrtpsr') format('truetype'),
+     url('/fonts/icomoon.woff?hrtpsr') format('woff'),
+     url('/fonts/icomoon.svg?hrtpsr#icomoon') format('svg');
+   font-weight: normal;
+   font-style: normal;
+ }
+ 
+ [class^="icon-"], [class*=" icon-"] {
+   /* use !important to prevent issues with browser extensions that change fonts */
+   font-family: 'icomoon' !important;
+ }
+ 
+ .icon-bell:before {
+   content: "\e918";
+   font-size: 24px;
+   margin-right: 15px;
+ }
+ .icon-bell{
+    display: inline-block;
+
+ }
+
+  
+ .icon-Message_notification:before {
+   content: "\e917";
+   font-size: 27px;
+   margin-right: 15px;
+
+ }
