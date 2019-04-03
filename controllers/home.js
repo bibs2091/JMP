@@ -1,3 +1,4 @@
 module.exports = (req, res) => {
-    res.render("index");
+	res.render("index");
+	console.log(req.sessionID);
 };

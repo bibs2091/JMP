@@ -1,14 +1,17 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 
 //require controllers
 const loginController = require("../controllers/auth/login");
 const registerController = require("../controllers/auth/register");
 const logoutController = require("../controllers/auth/logout");
 
-//handling requests 
+//handling requests
 router.get("/login", (req, res) => {
-    res.send("login page");
+	res.render("login");
+	console.log("inside get login");
+	console.log(req.sessionID);
 });
 
 router.post("/login", loginController);
@@ -16,7 +19,7 @@ router.post("/login", loginController);
 router.get("/logout", logoutController);
 
 router.get("/register", (req, res) => {
-    res.send("register page");
+	res.send("register page");
 });
 
 router.post("/register", registerController);

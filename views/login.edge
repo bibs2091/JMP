@@ -1,0 +1,13 @@
+@layout('layouts.main')
+
+@section('content')
+<div class="container">
+    <form action="/auth/login" method="POST">
+        <label >email</label>
+        <input type="text" name="email">
+        <label >password</label>
+        <input type="password" name="password" >
+        <input type="submit">
+    </form>
+</div>
+@endsection

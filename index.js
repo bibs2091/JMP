@@ -3,6 +3,9 @@ const express = require("express");
 const expressEdge = require("express-edge");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const passport = require("passport");
+const uuid = require("uuid");
+const LocalStartegy = require("./config/passport");
 
 //require routes
 const auth = require("./routes/auth");
@@ -39,6 +42,11 @@ const app = express();
 //sessions
 app.use(
 	session({
+		genid: req => {
+			console.log("inside sessions mw");
+			console.log(req.sessionID);
+			return uuid();
+		},
 		name: SESS_NAME,
 		resave: false, // this will prevent from saving to the sess_store eventho the sess isn't modified
 		secret: SESS_SECRET,
@@ -54,6 +62,14 @@ app.use(
 //body parser configuration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+//passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+//serilize user
+passport.serializeUser(function(user, cb) {
+	cb(null, user.id);
+});
 
 //set up public files directory
 app.use(express.static("public"));
