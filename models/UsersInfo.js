@@ -58,7 +58,8 @@ const UsersInfo = db.define('UsersInfo', {
         type: Sequelize.DATE
     }
 });
-
+UsersInfo.belongsTo(User,{foreignKey: 'userId', targetKey: 'id'});
+User.hasOne(UsersInfo, {foreignKey: 'userId', sourceKey: 'id'});
 db.sync({ forced: true });
 
 module.exports = UsersInfo;
