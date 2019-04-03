@@ -6,7 +6,7 @@ const UsersInfo = db.define('UsersInfo', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    fisrtName: {
+    firstName: {
         type: Sequelize.STRING
     },
     lastName: {
