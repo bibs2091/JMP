@@ -6,8 +6,10 @@ const session = require("express-session");
 
 //require routes
 const auth = require("./routes/auth");
-const profile = require("./routes/profile");
 const home = require("./routes/home");
+const coach = require("./routes/coach");
+const user = require("./routes/user");
+const admin = require("./routes/admin");
 
 //environment variables
 const {
@@ -63,7 +65,9 @@ app.set("views", __dirname + "/views");
 
 //use routes
 app.use("/auth", auth);
-app.use("/profile", profile);
+app.use("/coach", coach);
+app.use("/user", user);
+app.use("/admin", admin);
 app.use("/", home);
 
 //listen to requests
