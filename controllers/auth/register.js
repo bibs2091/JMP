@@ -63,7 +63,11 @@ module.exports = async (req, res) => {
 
 		}
 
-		req.checkBody('password','password must be at least 8 characters long').isLength({min:8});
+		req.checkBody('password')
+		.isLength({min:8}).withMessage('password must be at least 8 characters long')
+		.matches('[0-9]').withMessage('password must contain at least one number')
+    	.matches('[a-z]').withMessage('password must contain at least one lowercase character')
+    	.matches('[A-Z]').withMessage('password must contain at least one uppercase character');
 		req.checkBody('password_conf','Passwords does not match').equals(req.body.password);
 		const errors = req.validationErrors();
 		// if there is some  inpute errors add them to validationErrors
