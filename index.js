@@ -3,7 +3,7 @@ const express = require("express");
 const expressEdge = require("express-edge");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const expressValidator = require("express-validator");
+const expressValidator = require('express-validator');
 const flash = require("connect-flash");
 
 //require routes
