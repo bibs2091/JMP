@@ -25,18 +25,18 @@
  /* Sidebar */
  .s-sidebar__trigger {
     z-index: 2;
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     left: 0;
     width: 100%;
     height: 4em;
-    background: #192b3c;
+    background: white;
  }
  
  .s-sidebar__trigger > i {
     display: inline-block;
-    margin: 1.5em 0 0 1.5em;
-    color: #f07ab0;
+    margin: 1.5em 0 0 .5em;
+    color: #141414;
  }
  
  .s-sidebar__nav {
@@ -166,6 +166,8 @@
 width: 100%;
 height: 60px;
 box-shadow: 0 2px 2px -2px gray;
+position: sticky;
+position: -webkit-sticky;
 
 }
 #container {
@@ -180,7 +182,7 @@ nav h1{
 }
 #tocenter{
    float: right;
-    display: inline-block;
+   display: inline-block;
 
 }
 nav #profile-pic-nav {
@@ -214,13 +216,30 @@ input[type="search"]:focus{
    box-shadow: none !important;
 }
 
-.bootstrap-tagsinput .tag [data-role="remove"]:after {
-   content: "";
-   padding: 0px 2px;
+
+@media (max-width: 36em) {
+   #navbar{
+      height: 85px;
+   }
+   nav #profile-pic-nav {
+      top: 15px;
+      right: 0;
+      position: fixed;
+   }
+   nav .icon-bell{
+      top: 17px;
+      right: 60px;
+      position: fixed;
+   }
+   nav .icon-Message_notification{
+      top: 15px;
+      right: 100px;
+      position: fixed;
+   }
+   nav #search{
+      margin-top: 40px; 
+    }
 }
-
-
-
 
 
 
@@ -254,5 +273,4 @@ input[type="search"]:focus{
    content: "\e917";
    font-size: 27px;
    margin-right: 20px;
-
  }
