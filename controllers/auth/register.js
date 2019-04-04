@@ -27,11 +27,11 @@ module.exports = async (req, res) => {
 		
 		// validating the info
 		let validationErrors = [];
-		req.check('email','Email is not valid').notEmpty().isEmail();
-		req.check('userName',"userName is required").notEmpty();
+		req.checkBody('email','Email is not valid').notEmpty().isEmail();
+		req.checkBody('userName',"userName is required").notEmpty();
 
 		// if the email or userName is valide
-		if(req.validationResult().length==1 || !req.validationResult()){
+		if(req.validationErrors().length==1 || !req.validationErrors()){
 			//cheking if email and userName are unique
 			let user = User.findOne({
 				where:{
@@ -63,13 +63,12 @@ module.exports = async (req, res) => {
 
 		}
 
-		req.check('password')
+		req.checkBody('password')
 		.isLength({min:8}).withMessage('password must be at least 8 characters long')
-		.matches('[0-9]').withMessage('password must contain at least one number')
-    	.matches('[a-z]').withMessage('password must contain at least one lowercase letter')
-    	.matches('[A-Z]').withMessage('password must contain at least one uppercase letter');
-		req.check('password_conf','Passwords does not match').equals(req.body.password);
-		const errors = req.validationResult();
+		.isLength({max:30}).withMessage('password must not contain more then 30 characters');
+
+		req.checkBody('password_conf','Passwords does not match').equals(req.body.password);
+		const errors = req.validationErrors();
 		// if there is some  inpute errors add them to validationErrors
 		if(errors){
 			errors.forEach(err =>{
@@ -103,7 +102,8 @@ module.exports = async (req, res) => {
 						user = await (User.create(newUser));
 						newUserInfo.userId =user.id; 
 						await(UserInfo.create(newUserInfo));
-						req.flash('success , You now registred and can login');
+						//flashing a success msg for later use 
+						req.flash('success' ,' You now registred and can login');
 						res.redirect("/auth/login");		
 					}
 				});

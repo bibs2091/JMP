@@ -53,7 +53,9 @@ app.use(
 	})
 );
 
+//used for creating one time use messages
 app.use(flash());
+
 //use express validator
 app.use(expressValidator());
 

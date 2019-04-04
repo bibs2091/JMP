@@ -9,7 +9,10 @@ const logoutController = require("../controllers/auth/logout");
 
 //handling requests 
 router.get("/login", (req, res) => {
-    res.send("login page");
+    //rendering the login page with success msg 
+    res.render('login',{
+    	msg : req.flash('success')
+    });
 });
 
 router.post("/login", loginController);
