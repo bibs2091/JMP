@@ -6,6 +6,16 @@ const session = require("express-session");
 const passport = require("passport");
 const uuid = require("uuid");
 const LocalStartegy = require("./config/passport");
+const redisClient = require("redis").createClient();
+const RedisStore = require("connect-redis")(session);
+
+//redis options object ,,, TODO: refactore to config/
+const options = {
+	host: "localhost",
+	client: redisClient,
+	port: 6379,
+	pass: "brah789",
+};
 
 //require routes
 const auth = require("./routes/auth");
@@ -42,11 +52,12 @@ const app = express();
 //sessions
 app.use(
 	session({
-		genid: req => {
-			console.log("inside sessions mw");
-			console.log(req.sessionID);
-			return uuid();
-		},
+		// genid: req => {
+		// 	console.log("inside sessions mw");
+		// 	console.log(req.sessionID);
+		// 	return uuid();
+		// },
+		store: new RedisStore(options),
 		name: SESS_NAME,
 		resave: false, // this will prevent from saving to the sess_store eventho the sess isn't modified
 		secret: SESS_SECRET,
