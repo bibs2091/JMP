@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>{{pageTitle}}</title>
     <meta name="description" content="Junior makers program website">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -41,7 +41,7 @@
             <img src="/favicon.png" class="s-sidebar-logo">
             <ul>
                 <li>
-                    <a class="s-sidebar__nav-link" href="#0">
+                    <a class="s-sidebar__nav-link" href="./home">
                         <i class="fa fa-home"></i><em>Home</em>
                     </a>
                 </li>
@@ -68,12 +68,12 @@
             </ul>
             <ul class="bottom-buttons">
                 <li>
-                    <a class="s-sidebar__nav-link" href="#0">
+                    <a class="s-sidebar__nav-link" href="./profile">
                         <i class="fa fa-gear"></i><em>Settings</em>
                     </a>
                 </li>
                 <li>
-                    <a class="s-sidebar__nav-link" href="#0">
+                    <a class="s-sidebar__nav-link" href="/logout">
                         <i class="fa fa-power-off"></i><em>Logout</em>
                     </a>
                 </li>
@@ -82,8 +82,22 @@
         </div>
         
         <!-- Content -->
-        <main class="s-layout__content">    
-            @!section('content')
+        <main class="s-layout__content">
+            <nav id="navbar">
+                <div id="container">
+                    <h1>{{pageName}}</h1>
+                    <div id="tocenter">
+                        <div id="search">     
+                                <input type="search" placeholder="What would you like to learn" />
+                                <i class="fas fa-search"></i>
+                        </div>
+                        <span class="icon-Message_notification"></span>
+                        <span class="icon-bell"></span>
+                        <img src="/images/avatar.jpg" id="profile-pic-nav">    
+                    </div>
+                </div>
+            </nav> 
+            @!section('content')  
         </main>
     </div>
     
