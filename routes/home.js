@@ -5,10 +5,7 @@ const router = express.Router();
 const homeController = require("../controllers/home");
 
 
-router.get("/", (req, res) => {
-	console.log(req.session);
-	res.render("index");
-});
+router.get("/", homeController);
 
 router.get("/home", (req, res) => {
 	res.redirect("/");
