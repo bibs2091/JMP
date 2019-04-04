@@ -58,8 +58,10 @@ const UsersInfo = db.define('UsersInfo', {
         type: Sequelize.DATE
     }
 });
-UsersInfo.belongsTo(User,{foreignKey: 'userId', targetKey: 'id'});
+// making associations between the two relations 
 User.hasOne(UsersInfo, {foreignKey: 'userId', sourceKey: 'id'});
+UsersInfo.belongsTo(User,{foreignKey: 'userId',destinationKey : 'id'});
+
 db.sync({ forced: true });
 
 module.exports = UsersInfo;
