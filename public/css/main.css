@@ -25,18 +25,18 @@
  /* Sidebar */
  .s-sidebar__trigger {
     z-index: 2;
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     left: 0;
     width: 100%;
     height: 4em;
-    background: #192b3c;
+    background: white;
  }
  
  .s-sidebar__trigger > i {
     display: inline-block;
-    margin: 1.5em 0 0 1.5em;
-    color: #f07ab0;
+    margin: 1.5em 0 0 .5em;
+    color: #141414;
  }
  
  .s-sidebar__nav {
@@ -120,7 +120,7 @@
  /* Mobile First */
  @media (min-width: 42em) {
     .s-layout__content {
-       margin-left: 4em;
+       margin-left: 3.7em;
     }
     
     /* Sidebar */
@@ -145,7 +145,7 @@
  
  @media (min-width: 68em) {
     .s-layout__content {
-       margin-left: 15em;
+       margin-left: 14em;
     }
     .s-sidebar__trigger {
         display: none
@@ -161,3 +161,116 @@
     
  }
  
+/* --- Navbar --- */
+#navbar{
+width: 100%;
+height: 60px;
+box-shadow: 0 2px 2px -2px gray;
+position: sticky;
+position: -webkit-sticky;
+
+}
+#container {
+   margin-top: 15px;
+}
+nav h1{
+   font-family: 'Popins', sans-serif;
+   font-weight: bold;
+   font-size: 22px;
+   display: inline-block;
+   margin: 5px 0 0 40px;
+}
+#tocenter{
+   float: right;
+   display: inline-block;
+
+}
+nav #profile-pic-nav {
+   height: 33px;
+   width: 33px;
+   border-radius: 50%;
+   float: right;
+   margin-right: 30px;
+}
+nav #search{
+   display:inline-block;
+   border: 2px solid #EAEBED;
+   border-radius: 20px;
+   padding: 0px 5px;
+   margin:5px 20px 0 0 ;
+   vertical-align:top;
+}
+nav #search input{
+   width: 200px;
+   height: 20px;
+   border: none;
+   font-family: Montserrat,sans-serif;
+   font-size: 12px;
+}
+input[type="search"]:focus{
+ 
+   outline: none;
+   border: none !important;
+   -webkit-box-shadow: none !important;
+   -moz-box-shadow: none !important;
+   box-shadow: none !important;
+}
+
+
+@media (max-width: 36em) {
+   #navbar{
+      height: 85px;
+   }
+   nav #profile-pic-nav {
+      top: 15px;
+      right: 0;
+      position: fixed;
+   }
+   nav .icon-bell{
+      top: 17px;
+      right: 60px;
+      position: fixed;
+   }
+   nav .icon-Message_notification{
+      top: 15px;
+      right: 100px;
+      position: fixed;
+   }
+   nav #search{
+      margin-top: 40px; 
+    }
+}
+
+
+
+
+/* ----------------------- for the icons ------------------------------ */
+  @font-face {
+   font-family: 'icomoon';
+   src:  url('/fonts/icomoon.eot?hrtpsr');
+   src:  url('/fonts/icomoon.eot?hrtpsr#iefix') format('embedded-opentype'),
+     url('/fonts/icomoon.ttf?hrtpsr') format('truetype'),
+     url('/fonts/icomoon.woff?hrtpsr') format('woff'),
+     url('/fonts/icomoon.svg?hrtpsr#icomoon') format('svg');
+   font-weight: normal;
+   font-style: normal;
+ }
+ 
+ [class^="icon-"], [class*=" icon-"] {
+   /* use !important to prevent issues with browser extensions that change fonts */
+   font-family: 'icomoon' !important;
+ }
+ 
+ .icon-bell:before {
+   content: "\e918";
+   font-size: 24px;
+   margin-right: 20px;
+ }
+
+
+  
+ .icon-Message_notification:before {
+   content: "\e917";
+   font-size: 27px;
+   margin-right: 20px;
+ }
