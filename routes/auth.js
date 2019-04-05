@@ -8,7 +8,7 @@ const logoutController = require("../controllers/auth/logout");
 
 //handling requests 
 router.get("/login", (req, res) => {
-    res.send("login page");
+    res.render("auth.login");
 });
 
 router.post("/login", loginController);
@@ -16,7 +16,7 @@ router.post("/login", loginController);
 router.get("/logout", logoutController);
 
 router.get("/register", (req, res) => {
-    res.send("register page");
+    res.send("auth.register");
 });
 
 router.post("/register", registerController);
