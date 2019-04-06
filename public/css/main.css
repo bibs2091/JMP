@@ -1,3 +1,9 @@
+body{
+   font-family: Montserrat,sans-serif;
+}
+
+
+
 *, *::before, *::after {
     box-sizing: border-box;
  }
@@ -277,7 +283,7 @@ input[type="search"]:focus{
 
  /* ----- LOGIN ----- */
  #contain{
-   height: 350px;
+   height: 300px;
    width: 100vw;
    position: relative;
  }
@@ -305,4 +311,84 @@ input[type="search"]:focus{
    top:5vh;
    left:5vw;
    position: absolute;
+}
+
+#center_fillingInfosBox{
+   display:flex;
+   justify-content:center;
+   align-items:center;
+}
+
+#center_fillingInfosBox h2{
+   position: absolute;
+   font-family: Ubuntu,sans-serif;
+   z-index: 2;
+   font-weight: 600;
+   font-size: 33px;
+   top:110px;
+   color: #E0E0E0;
+}
+#center_fillingInfosBox h2 span{
+   font-weight: 700;
+}
+.fillingInfosBox{
+   background: #FCFCFC;
+   width: 500px;
+   height: 445px;
+   position: absolute;
+   top: 170px;
+   z-index: 2;
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   border-radius: 10px;
+}
+.fillingInfosBox p{
+   font-family: Poppins;
+   font-size: 20px;
+   text-align: center;
+   margin-top:30px;
+}
+.fillingInfosBox .form-group{
+   margin-top: 38px;
+   margin-left:18px;
+}
+.fillingInfosBox .form-group label{
+   font-family:Montserrat,sans-serif;
+   font-size: 23px;
+   padding-left: 5px;
+   margin-bottom: 7px;
+}
+.fillingInfosBox .form-group input{
+   width: 90%;
+   margin-left:  5px;
+}
+
+.fillingInfosBox .form-check{
+   margin-left:23px;
+   margin-top: 38px;
+
+}
+
+
+
+#rememberMe_checkBox{
+   width:22px;
+   height: 22px;
+}
+
+
+
+.fillingInfosBox .form-check label{
+   margin-top: 9px;
+   margin-left: 12px;
+}
+
+.fillingInfosBox button{
+   margin-left:23px;
+   width: 90%;
+   background: #FFD32A;
+   margin-top: 38px;
+   height: 38px;
+   font-weight: 700;
+   font-size: 19px;
+
 }
