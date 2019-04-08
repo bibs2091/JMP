@@ -353,12 +353,13 @@ input[type="search"]:focus{
 .fillingInfosBox{
    background: #FCFCFC;
    width: 500px;
-   height: 445px;
+   height: 470px;
    position: absolute;
    top: 170px;
    z-index: 2;
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
    border-radius: 10px;
+   margin-bottom: 50px;
 }
 .fillingInfosBox p{
    font-family: Poppins;
@@ -411,7 +412,6 @@ input[type="search"]:focus{
    font-size: 19px;
 
 }
-
 /* course card */
 .course-card{
    width: 250px;
@@ -495,4 +495,28 @@ table tr td{
    font-weight: 500;
    font-size: 20px;
    font-family: Poppins;
+}
+#loginFooter{
+   z-index: 2;
+}
+#loginFooter p{
+   font-size: 16px;
+}
+#loginFooter p a{
+   font-size: 16px;
+   color: #4F4F4F;
+   font-weight: bold;
+}
+
+#loginFooter p a:hover{
+
+   color: #FFD32A;
+   text-decoration: none;
+}
+
+@media (max-width: 580px) {
+   .fillingInfosBox{
+      width: 100%;
+
+   }
 }
