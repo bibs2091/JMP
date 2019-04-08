@@ -34,6 +34,10 @@
             <div id="center_fillingInfosBox">
                 <h2  style="z-index:5;">Register into <span>Jonior makers</span></h2>
                 <form class="fillingInfosBox" id="register-form" method="POST" action="/auth/register">
+                    @each(err in errors)
+                    <div class="alert alert-danger" style="margin-bottom: 0">{{err.msg}}</div>
+                    @endeach
+                    
                         <p>Fill in your information</p>
                        
                                 <div class="row">
