@@ -22,7 +22,8 @@
     <body>
         <div id="contain">
             <div id="background_rounded">
-                <img src="/images/logoBig.png" id="background_rounded_image">
+                <a href="/"><img src="/images/logoBig.png" id="background_rounded_image"></a>
+                
             </div>
             <svg class="college-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 123" version="1.1" preserveAspectRatio="none">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -32,23 +33,23 @@
             </svg>
             <div id="center_fillingInfosBox">
                 <h2  style="z-index:5;">Register into <span>Jonior makers</span></h2>
-                <div class="fillingInfosBox">
+                <form class="fillingInfosBox" id="register-form" method="POST" action="/auth/register">
                         <p>Fill in your information</p>
                        
                                 <div class="row">
                                         <div class="col-md-6 form_register_modify">
                                         
                                             <div class="form-group">
-                                                <label for="pwd">First name :</label>
-                                                <input type="text" class="form-control" id="first_name">
+                                                <label for="firstName">First name:*</label>
+                                                <input type="text" class="form-control" name="firstName" required>
                                             </div>
                                         </div>
                                    
                                         <div class="col-md-6 form_register_modify">
                                        
                                             <div class="form-group">
-                                                <label for="pwd">Last name :</label>
-                                                <input type="text" class="form-control" id="last_name">
+                                                <label for="lastName">Last name:*</label>
+                                                <input type="text" class="form-control" name="lastName" required>
                                             </div>
                                         </div>
                                     </div>
@@ -58,37 +59,39 @@
                             
                                 
                     <div class="form-group">
-                        <label for="pwd">Email adress :</label>
-                        <input type="text" class="form-control" id="email_register">
+                        <label for="userName">Username:*</label>
+                        <input type="text" class="form-control" name="userName" required>
                        
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email adress:*</label>
+                        <input type="email" class="form-control" name="email" required>
+                       
+                    </div>
                 <div class="form-group">
-                    <label for="pwd">Phone Number:</label>
-                    <input type="text" class="form-control" id="nbphone">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" class="form-control" name="phoneNumber" minlength="10" maxlength="10">
                    
                </div>
                         <div class="form-group">
-                                <label for="pwd">Password :</label>
-                                <input type="text" class="form-control" id="password">
+                                <label for="password">Password: *</label>
+                                <input type="password" class="form-control" name="password" required minlength="8">
                         </div>
 
                         <div class="form-group">
-                            <label for="pwd">Confirm Password :</label>
-                            <input type="text" class="form-control" id="pass">
+                            <label for="password_conf">Confirm Password:*</label>
+                            <input type="password" class="form-control" name="password_conf" required minlength="8">
                     </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberMe_checkBo" name="terms_">
+                            <input type="checkbox" class="form-check-input" id="rememberMe_checkBo" name="terms" required>
                             I agree to the <a href="#">terms and conditions</a> 
                         </div>
-                        <a href="#"><button type="button" class="btn">Register</button></a>
+                        <input type="submit" value="register" class="btn" id="submit-form">
                         <div id="loginFooter">
                             <p>Have an account? <a href="/auth/login"> Login</a></p>
                         </div>
-
-                </div>
+                </form>
             </div>
-
         </div>
-        
     </body>
 </html>

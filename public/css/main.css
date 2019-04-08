@@ -402,7 +402,7 @@ input[type="search"]:focus{
    margin-left: 12px;
 }
 
-.fillingInfosBox button{
+.fillingInfosBox #submit-form{
    margin-left:23px;
    width: 90%;
    background: #FFD32A;

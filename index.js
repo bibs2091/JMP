@@ -2,6 +2,8 @@
 const express = require("express");
 const expressEdge = require("express-edge");
 const bodyParser = require("body-parser");
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
 const session = require("express-session");
 
 //require routes
@@ -56,6 +58,11 @@ app.use(
 //body parser configuration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// express validator
+app.use(expressValidator());
+// connect flash
+app.use(flash());
 
 //set up public files directory
 app.use(express.static("public"));
