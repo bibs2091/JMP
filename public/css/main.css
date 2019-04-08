@@ -2,7 +2,9 @@ body{
    font-family: Montserrat,sans-serif;
 }
 
-
+#main-content{
+   padding: 20px;
+}
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -279,6 +281,23 @@ input[type="search"]:focus{
    font-size: 27px;
    margin-right: 20px;
  }
+ .icon-advanced:before{
+    content: "\e900";
+    color: #FFD32A;
+ }
+ .icon-start:before{
+   content: "\e915";
+}
+.icon-resume:before{
+   content: "\e914";
+}
+.icon-time:before{
+   content: "\e916";
+}
+.icon-heart:before{
+   content: "\e905";
+   color: red;
+}
  /* ---------------------------------------- */ 
 
  /* ----- LOGIN ----- */
@@ -391,4 +410,89 @@ input[type="search"]:focus{
    font-weight: 700;
    font-size: 19px;
 
+}
+
+/* course card */
+.course-card{
+   width: 250px;
+   height: 295px;
+   border-radius: 8px;
+   position: relative;
+}
+.course-card .course-img{
+   width: 248px;
+   height: 158px;
+}
+.course-card h5{
+   margin-top: 10px;
+   text-align: center;
+   font-family: Poppins;
+   font-size: 20px;
+   font-weight: 500;
+}
+.course-author-pic{
+   width: 45px;
+   height: 45px;
+   border-radius: 50%;
+   margin-left: 5px;
+}
+.course-author{
+   width: 85px;
+   font-size: 12px;
+   text-align: center;
+}
+table tr td{
+   vertical-align: middle !important;
+   font-family: Poppins;
+}
+.course-card-content{
+   margin-top: 15px;
+}
+.td-space{
+   padding: 3px;
+}
+.td-devider{
+   border: 1px solid #696969
+}
+.time-and-diff{
+   padding-left: 7px;
+   font-size: 14px;
+   text-align: center;
+}
+.course-state{
+   position: absolute;
+   bottom: 0px;
+   width: 100%;
+   height: 30px;
+   font-family: Poppins;
+   text-align: center;
+   font-size: 17px;
+   display: table;
+   cursor: pointer;
+}
+.course-state:hover{
+   opacity: .7;
+   transition: .3s;
+}
+.course-state p{
+   display: table-cell;
+   vertical-align: middle;
+}
+.course-start{
+   color: white;
+   background-color: #4BCFFA;
+}
+.course-completed{
+   color: white;
+   background-color: #1DD1A1;
+}
+.course-resume{
+   color: #000;
+   background-color: #FFD32A;
+}
+/* user home page titles*/
+.user-home-title{
+   font-weight: 500;
+   font-size: 20px;
+   font-family: Poppins;
 }

@@ -16,7 +16,7 @@ router.post("/login", loginController);
 router.get("/logout", logoutController);
 
 router.get("/register", (req, res) => {
-    res.send("auth.register");
+    res.render("auth.register");
 });
 
 router.post("/register", registerController);
