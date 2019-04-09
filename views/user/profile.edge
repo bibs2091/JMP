@@ -11,7 +11,7 @@
 </style>
 <div class="container profile_container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <img src="/images/avatar.jpg" alt="avatar" id="profile-pic">
     </div>
     <div class="col-md-7" id="profile_details">
@@ -21,18 +21,24 @@
          deja ana ayech f l’habitat donc kayen l’experience f securite w swaleh wahdokhrin ,
          aya w salam alikom lala lala khawti  </p>
     </div>
-    <div class="col-md-2">
-        <div class="envelope"><a href="#"><i class="fas fa-envelope "></i><a></a></div>
-        <div class="ellipsis"><a href="#"><i class="fas fa-ellipsis-h"></i></a></div>
-        <div id="social_media">
-          <ul>
-              <li><i class="fab fa-facebook"></i></li>
-              <li><i class="fab fa-twitter-square"></i>
-              <li><i class="fab fa-linkedin"></i></li>
-              <li><i class="fab fa-instagram"></i></li>
-              <li><i class="fab fa-github-square"></i></li>
-          </ul>
+    <div class="col-md-2" style="position: relative;">
+      
+        <!--<div class="envelope"><a href="#"><i class="fas fa-envelope "></i></a></div>-->
+        <div class="dropdown show">
+            <a class="ellipsis" id="more_profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
+            <div class="dropdown-menu" aria-labelledby="more_profile">
+              <a class="dropdown-item" href="#">Message</a>
+              <a class="dropdown-item" href="#">Report</a>
+            </div>
         </div>
+          <ul>
+              <li><a href=""><i class="fab fa-facebook"></i></a></li>
+              <li><a href=""><i class="fab fa-twitter-square"></i></a></li>
+              <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+              <li><a href=""><i class="fab fa-instagram"></i></a></li>
+              <li><a href=""><i class="fab fa-github-square"></i></a></li>
+          </ul>
+        
     </div>
     
   </div>
@@ -145,6 +151,5 @@
     7ajahak
   </div>
 </div>
-
 
 @endsection
