@@ -16,10 +16,8 @@ passport.deserializeUser((id, done) => {
 	});
 });
 
-const options = {};
-
 passport.use(
-	new LocalStrategy(options, (username, password, done) => {
+	new LocalStrategy((username, password, done) => {
 		//search for a user with the email
 
 		console.log("this is the email " + username);
@@ -33,24 +31,24 @@ passport.use(
 					return done(null, false, { message: "Wrong credentials" });
 				}
 
-				// if (user) {
-				// 	brcrypt.compare(password, user.password).then(isMatch => {
-				// 		if (!isMatch) {
-				// 			return done(null, false, {
-				// 				message: "Wrong credentials",
-				// 			});
-				// 		} else {
-				// 			return done(null, user);
-				// 		}
-				// 	});
-				// }
-
-				//test
 				if (user) {
-					if (password === user.password) {
-						return done(null, user);
-					}
+					brcrypt.compare(password, user.password).then(isMatch => {
+						if (!isMatch) {
+							return done(null, false, {
+								message: "Wrong credentials",
+							});
+						} else {
+							return done(null, user);
+						}
+					});
 				}
+
+				// //test
+				// if (user) {
+				// 	if (password === user.password) {
+				// 		return done(null, user);
+				// 	}
+				// }
 			})
 			.catch(err => {
 				console.log(err);
