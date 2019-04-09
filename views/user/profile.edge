@@ -1,7 +1,14 @@
 @layout('layouts.main')
 
 @section('content')
-
+<style scoped>
+  body{
+    overflow-x: hidden !important;
+  }
+  #main-content{
+    padding: 0 !important;
+  }
+</style>
 <div class="container profile_container">
   <div class="row">
     <div class="col-md-3">
@@ -29,10 +36,115 @@
     </div>
     
   </div>
-
 </div>
-
-
+<div class="profile-stats">
+  <div class="profile-stat">   
+  </div>
+  <div class="profile-stat">
+    <p>Ranking<br>8</p>
+  </div>
+  <div class="profile-stat">
+    <p>Courses enrolled in<br>8</p>
+  </div>
+  <div class="profile-stat">
+    <p>7aja hak<br>8</p>
+  </div>
+  <div class="profile-stat"></div>
+</div>
+<div class="container other-profile">
+  <div class="other-profile-menu">
+    <div class="profile-menu-item pmi-active" onclick="showTab(this,'courses')">
+      Courses
+    </div>
+    <div class="profile-menu-item" onclick="showTab(this,'skills')">
+      Skills
+    </div>
+    <div class="profile-menu-item" onclick="showTab(this,'7ajahak')">
+      7ajahak
+    </div>
+  </div>
+</div>
+<div class="container other-profile-info">
+  <div class="profile-tab container" id="profile-courses">
+      <div class="row">
+          <div class="col-md-4">
+            <div class="course-card card">
+              <img src="/img/flutter.jpg" class="course-img">
+              <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
+              <table class="course-card-content">
+                <tr>
+                  <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                  <td class="td-space"></td>
+                  <td class="course-author">
+                    <h6>Oussama Azzaz Rahmani</h6>
+                  </td>
+                  <td class="td-devider"></td>
+                  <td class="time-and-diff">
+                    <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                    <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
+                  </td>
+                </tr>
+              </table>
+              <div class="course-state course-start">
+                <p><i class="icon-start"></i>&nbsp;Start</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="course-card card">
+                <img src="/img/flutter.jpg" class="course-img">
+                <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
+                <table class="course-card-content">
+                  <tr>
+                    <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                    <td class="td-space"></td>
+                    <td class="course-author">
+                      <h6>Oussama Azzaz Rahmani</h6>
+                    </td>
+                    <td class="td-devider"></td>
+                    <td class="time-and-diff">
+                      <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                      <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
+                    </td>
+                  </tr>
+                </table>
+                <div class="course-state course-start">
+                  <p><i class="icon-start"></i>&nbsp;Start</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course-card card">
+                  <img src="/img/flutter.jpg" class="course-img">
+                  <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
+                  <table class="course-card-content">
+                    <tr>
+                      <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                      <td class="td-space"></td>
+                      <td class="course-author">
+                        <h6>Oussama Azzaz Rahmani</h6>
+                      </td>
+                      <td class="td-devider"></td>
+                      <td class="time-and-diff">
+                        <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                        <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="course-state course-start">
+                    <p><i class="icon-start"></i>&nbsp;Start</p>
+                  </div>
+                </div>
+              </div>
+        </div>
+  </div>
+  <div class="profile-tab" id="profile-skills">
+    Skills
+  </div>
+  <div class="profile-tab" id="profile-7ajahak">
+    7ajahak
+  </div>
+</div>
 
 
 @endsection
