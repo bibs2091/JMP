@@ -5,16 +5,16 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require("passport");
 const uuid = require("uuid");
+const flash = require("flash");
+
 const redisClient = require("redis").createClient();
 const RedisStore = require("connect-redis")(session);
-const flash = require("connect-flash");
 
 //redis options object ,,, TODO: refactore to config/
 const options = {
 	host: "localhost",
 	client: redisClient,
 	// port: 6379,
-	pass: "brah789",
 };
 
 //require routes
@@ -48,38 +48,36 @@ db.sync({ forced: true }).then(() => {
 //create the express app
 const app = express();
 
+//set up public files directory
+app.use(express.static("public"));
+//set up views directory
+app.use(expressEdge);
+app.set("views", __dirname + "/views");
 //body parser configuration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-//flash
-app.use(flash);
+
 //sessions
 app.use(
 	session({
-		genid: req => {
-			return uuid();
-		},
 		store: new RedisStore(options),
+
 		resave: false, // this will prevent from saving to the sess_store eventho the sess isn't modified
 		secret: SESS_SECRET,
 		saveUninitialized: false, // dont store the new sessions with no data
 		cookie: {
 			maxAge: SESS_LifeTime,
 			sameSite: true, // protect against csrf
-			secure: IN_PROD,
+			// secure: IN_PROD,
 		},
 	})
 );
+//flash
+app.use(flash());
 
 //passport init
 app.use(passport.initialize());
 app.use(passport.session());
-
-//set up public files directory
-app.use(express.static("public"));
-//set up views directory
-app.use(expressEdge);
-app.set("views", __dirname + "/views");
 
 //use routes
 app.use("/auth", auth);

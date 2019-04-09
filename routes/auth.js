@@ -5,6 +5,7 @@ const passport = require("../config/passport");
 //handling requests
 router.get("/login", (req, res) => {
 	res.render("login");
+	console.log("inside get login");
 });
 
 router.post(
@@ -18,16 +19,12 @@ router.post(
 	}
 );
 
-router.get("/logout", (req, res) => {
-	res.send("this is logout");
-});
+router.get("/logout", (req, res) => {});
 
 router.get("/register", (req, res) => {
 	res.send("register page");
 });
 
-router.post("/register", (req, res) => {
-	res.send("u posted to register");
-});
+router.post("/register", (req, res) => {});
 
 module.exports = router;
