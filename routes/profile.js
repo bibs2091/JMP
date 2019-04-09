@@ -5,10 +5,9 @@ const passport = require("passport");
 //FIXME:
 router.get(
 	"/test",
-	passport.authenticate("local", {
-		failureRedirect: "/auth/login",
-		successRedirect: "/",
-	}),
+	// passport.authenticate("local", {
+	// 	failureRedirect: "/auth/login",
+	// }),
 	(req, res) => {
 		res.json({ msg: "this is test for profiles" });
 	}

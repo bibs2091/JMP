@@ -5,15 +5,15 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require("passport");
 const uuid = require("uuid");
-const LocalStartegy = require("./config/passport");
 const redisClient = require("redis").createClient();
 const RedisStore = require("connect-redis")(session);
+const flash = require("connect-flash");
 
 //redis options object ,,, TODO: refactore to config/
 const options = {
 	host: "localhost",
 	client: redisClient,
-	port: 6379,
+	// port: 6379,
 	pass: "brah789",
 };
 
@@ -26,7 +26,6 @@ const home = require("./routes/home");
 const {
 	SESS_LifeTime = 10800000, // 3 hours
 	NODE_ENV = "developement",
-	SESS_NAME = "sid",
 	SESS_SECRET = "blabla random string", // this must be refactored to a config file with all the keys
 } = process.env;
 
@@ -49,16 +48,18 @@ db.sync({ forced: true }).then(() => {
 //create the express app
 const app = express();
 
+//body parser configuration
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+//flash
+app.use(flash);
 //sessions
 app.use(
 	session({
-		// genid: req => {
-		// 	console.log("inside sessions mw");
-		// 	console.log(req.sessionID);
-		// 	return uuid();
-		// },
+		genid: req => {
+			return uuid();
+		},
 		store: new RedisStore(options),
-		name: SESS_NAME,
 		resave: false, // this will prevent from saving to the sess_store eventho the sess isn't modified
 		secret: SESS_SECRET,
 		saveUninitialized: false, // dont store the new sessions with no data
@@ -70,17 +71,9 @@ app.use(
 	})
 );
 
-//body parser configuration
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 //passport init
 app.use(passport.initialize());
 app.use(passport.session());
-
-//serilize user
-passport.serializeUser(function(user, cb) {
-	cb(null, user.id);
-});
 
 //set up public files directory
 app.use(express.static("public"));

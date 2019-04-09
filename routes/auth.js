@@ -1,15 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
+const passport = require("../config/passport");
 
 //handling requests
 router.get("/login", (req, res) => {
 	res.render("login");
 });
 
-router.post("/login", (req, res) => {
-	res.send("u posted to login");
-});
+router.post(
+	"/login",
+	passport.authenticate("local", {
+		failureRedirect: "/auth/login",
+		failureFlash: true,
+	}),
+	(req, res) => {
+		return res.redirect("/home");
+	}
+);
 
 router.get("/logout", (req, res) => {
 	res.send("this is logout");
