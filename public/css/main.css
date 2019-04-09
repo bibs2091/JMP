@@ -496,15 +496,22 @@ table tr td{
    font-size: 20px;
    font-family: Poppins;
 }
-.form_register_modify{
-   padding-right: 44px;
+#form_register_modify{
+   padding-left: 27px;
 }
-#first_name{
-   width: 90%;
+
+input[name="firstName"]{
+   width: 200px!important;
+
 }
-#last_name{
-   width: 90%;
+input[name="lastName"]{
+   width: 200px!important;
+
 }
+.registerStarRequire{
+   color: #b34b4b;
+}
+
 #loginFooter{
    z-index: 2;
 }
@@ -517,10 +524,14 @@ table tr td{
    font-weight: bold;
 }
 
-#loginFooter p a:hover{
+#loginFooter p a:hover,.form-check a:hover{
 
    color: #FFD32A;
+   font-weight: bold;
    text-decoration: none;
+}
+.form-check a{
+   font-weight: bold;
 }
 
 @media (max-width: 580px) {
