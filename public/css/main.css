@@ -547,20 +547,21 @@ input[name="lastName"]{
    font-family: Poppins,sans-serif;
    font-size: 14px;
    margin-top:15px;
-   margin-left:0;
+   margin-left:25px;
 }
 #profile-pic{
    height: 140px;
    width: 140px;
    border-radius: 50%;
    float: right;
-   z-index: 0;
+   z-index: 2;
+   margin-top: 5px;
 }
 #profile_details{ /*override bootstrap*/
    padding: 0;
 }
 #profile_details h1{
-   margin-top: 10px;
+   margin-top: 17px;
    font-size: 24px;
    font-weight: 600;
 }
@@ -573,21 +574,52 @@ input[name="lastName"]{
    word-spacing: 2px;
    color: #4B4B4B;
 }
-.envelope,.ellipsis{
+.ellipsis {
    width: 30px;
    height: 30px;
    border-radius: 50%;
    display:flex;justify-content:center;align-items:center;
-   background: #F2F1F1;
-   display: inline;
+   background: rgb(233, 233, 233);
+   position: absolute;
+   right:0;
+   box-shadow: 0 3px 6px rgba(122, 122, 122, 0.16), 0 3px 6px rgba(160, 158, 158, 0.23);
+}
+.ellipsis a:hover{
+   text-decoration: none;  
+   color:#FFD32A;
 }
 .envelope i,.ellipsis i{
    font-size: 17px;
 }
 .profile_container ul li{
    display: inline;
+   font-size: 21px;
+   margin:2px;  
 }
-#social_media{
-   height: 75%;
-   display:flex;align-items:flex-end;
+.profile_container ul{
+   right:0;
+   bottom: 0;
+   position: absolute;
+}
+.fa-instagram:hover{
+   color:purple;
+}
+.fa-github-square:hover{
+   color:rgba(0,0,0,0.7);
+}
+@media (max-width: 767px) {
+   #profile-pic{
+   float: none;
+   display: block;
+   margin: 0 auto;
+   }
+   #profile_details h1{
+      text-align:center;
+   }
+   #profile_details h6{
+      text-align:center;
+   }
+   .profile_container ul{
+      position: static;
+   }
 }
