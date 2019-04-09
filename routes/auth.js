@@ -11,15 +11,33 @@ router.get("/login", (req, res) => {
 router.post(
 	"/login",
 	passport.authenticate("local", {
+		successRedirect: "/home",
 		failureRedirect: "/auth/login",
 		failureFlash: true,
-	}),
-	(req, res) => {
-		return res.redirect("/home");
-	}
+	})
 );
 
-router.get("/logout", (req, res) => {});
+const isAuthenticated = (req, res, next) => {
+	if (req.isAuthenticated()) {
+		next();
+	} else {
+		return res.send("unauthorized", 401);
+	}
+};
+
+router.get("/logout", (req, res, next) => {
+	if (req.session) {
+		req.logOut();
+		res.clearCookie("connect.sid", { path: "/" });
+		req.session.destroy(err => {
+			if (err) {
+				next(err);
+			} else {
+				return res.redirect("/");
+			}
+		});
+	}
+});
 
 router.get("/register", (req, res) => {
 	res.send("register page");

@@ -61,14 +61,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
 	session({
 		store: new RedisStore(options),
-
+		unset: "destroy",
 		resave: false, // this will prevent from saving to the sess_store eventho the sess isn't modified
 		secret: SESS_SECRET,
 		saveUninitialized: false, // dont store the new sessions with no data
 		cookie: {
 			maxAge: SESS_LifeTime,
 			sameSite: true, // protect against csrf
-			// secure: IN_PROD,
+			secure: IN_PROD,
 		},
 	})
 );

@@ -4,10 +4,13 @@
 <div class="container">
     <form action="/auth/login" method="POST">
         <label >email</label>
-        <input type="text" name="email">
+        <input type="text" name="username">
         <label >password</label>
         <input type="password" name="password" >
         <input type="submit" value="Submit">
     </form>
+    @if(message)
+      <p> {message}</p>
+    @endif
 </div>
 @endsection

@@ -16,15 +16,17 @@ passport.deserializeUser((id, done) => {
 	});
 });
 
+const options = {};
+
 passport.use(
-	new LocalStrategy((email, password, done) => {
+	new LocalStrategy(options, (username, password, done) => {
 		//search for a user with the email
 
-		console.log("this is the email " + email);
+		console.log("this is the email " + username);
 		console.log("this is the password " + password);
 
 		User.findOne({
-			where: { email },
+			where: { email: username },
 		})
 			.then(user => {
 				if (!user) {
