@@ -540,3 +540,54 @@ input[name="lastName"]{
 
    }
 }
+
+
+/* ------------- Profile  -------------- */
+.profile_container{
+   font-family: Poppins,sans-serif;
+   font-size: 14px;
+   margin-top:15px;
+   margin-left:0;
+}
+#profile-pic{
+   height: 140px;
+   width: 140px;
+   border-radius: 50%;
+   float: right;
+   z-index: 0;
+}
+#profile_details{ /*override bootstrap*/
+   padding: 0;
+}
+#profile_details h1{
+   margin-top: 10px;
+   font-size: 24px;
+   font-weight: 600;
+}
+#profile_details h6{
+   margin-top:7px;
+   color:#868686;
+}
+#profile_details p{
+   margin-top: 10px;
+   word-spacing: 2px;
+   color: #4B4B4B;
+}
+.envelope,.ellipsis{
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   display:flex;justify-content:center;align-items:center;
+   background: #F2F1F1;
+   display: inline;
+}
+.envelope i,.ellipsis i{
+   font-size: 17px;
+}
+.profile_container ul li{
+   display: inline;
+}
+#social_media{
+   height: 75%;
+   display:flex;align-items:flex-end;
+}
