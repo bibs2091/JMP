@@ -5,6 +5,18 @@ const bodyParser = require("body-parser");
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require("express-session");
+const passport = require("passport");
+// const flash = require("flash");
+
+const redisClient = require("redis").createClient();
+const RedisStore = require("connect-redis")(session);
+
+//redis options object ,,, TODO: refactore to config/
+const options = {
+	host: "localhost",
+	client: redisClient,
+	// port: 6379,
+};
 
 //require routes
 const auth = require("./routes/auth");
@@ -17,7 +29,6 @@ const admin = require("./routes/admin");
 const {
 	SESS_LifeTime = 10800000, // 3 hours
 	NODE_ENV = "developement",
-	SESS_NAME = "sid",
 	SESS_SECRET = "blabla random string", // this must be refactored to a config file with all the keys
 } = process.env;
 
@@ -40,10 +51,20 @@ db.sync({ forced: true }).then(() => {
 //create the express app
 const app = express();
 
+//set up public files directory
+app.use(express.static("public"));
+//set up views directory
+app.use(expressEdge);
+app.set("views", __dirname + "/views");
+//body parser configuration
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 //sessions
 app.use(
 	session({
-		name: SESS_NAME,
+		store: new RedisStore(options),
+		unset: "destroy",
 		resave: false, // this will prevent from saving to the sess_store eventho the sess isn't modified
 		secret: SESS_SECRET,
 		saveUninitialized: false, // dont store the new sessions with no data
@@ -54,6 +75,8 @@ app.use(
 		},
 	})
 );
+//flash
+app.use(flash());
 
 //body parser configuration
 app.use(bodyParser.json());
@@ -69,6 +92,10 @@ app.use(express.static("public"));
 //set up views directory
 app.use(expressEdge);
 app.set("views", __dirname + "/views");
+
+//passport init
+app.use(passport.initialize());
+app.use(passport.session());
 
 //use routes
 app.use("/auth", auth);
