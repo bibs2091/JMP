@@ -1,5 +1,6 @@
 body{
    font-family: Montserrat,sans-serif;
+   width: 100%
 }
 
 #main-content{
@@ -171,13 +172,16 @@ body{
 /* --- Navbar --- */
 #navbar{
    width: 100%;
-   height: 40px;
+   height: 60px;
    box-shadow: 0 2px 2px -2px gray;
    position: sticky;
+   top: 0;
    position: -webkit-sticky;
+   background: white;
+   padding-top: 15px;
+   z-index: 999;
 }
 #container {
-   margin-top: 15px;
 }
 nav h1{
    font-family: 'Popins', sans-serif;
@@ -206,6 +210,9 @@ nav #search{
    margin:5px 20px 0 0 ;
    vertical-align:top;
 }
+nav #search_responsive{
+   display:none;
+}
 nav #search input{
    width: 200px;
    height: 20px;
@@ -221,30 +228,34 @@ input[type="search"]:focus{
    -moz-box-shadow: none !important;
    box-shadow: none !important;
 }
+#navbar span{
+   margin-right: 28px;
+}
 
-
-@media (max-width: 36em) {
+@media (max-width: 620px) {
    #navbar{
-      height: 85px;
+      /*height: 85px;*/
+      background: white;
+      width: 100vw;
    }
-   nav #profile-pic-nav {
-      top: 15px;
-      right: 0;
-      position: fixed;
+   nav #search_responsive{
+      display: inline-block;
+      font-size: 18px;
+      margin-right: 22px;
+      float: left;
+      margin-top: 5px;
+      color: #414141;
    }
-   nav .icon-bell{
-      top: 17px;
-      right: 60px;
-      position: fixed;
-   }
-   nav .icon-Message_notification{
-      top: 15px;
-      right: 100px;
-      position: fixed;
+   #navbar span{
+      margin-right: 25px;
    }
    nav #search{
-      margin-top: 40px; 
-    }
+      display: none;
+      
+
+
+   }
+ 
 }
 
 
@@ -270,7 +281,6 @@ input[type="search"]:focus{
  .icon-bell:before {
    content: "\e918";
    font-size: 24px;
-   margin-right: 20px;
  }
 
 
@@ -278,7 +288,6 @@ input[type="search"]:focus{
  .icon-Message_notification:before {
    content: "\e917";
    font-size: 27px;
-   margin-right: 20px;
  }
  .icon-advanced:before{
     content: "\e900";
@@ -664,9 +673,11 @@ input[name="lastName"]{
    float: none;
    display: block;
    margin: 0 auto;
+   
    }
    #profile_details h1{
       text-align:center;
+      width: 100%;
    }
    #profile_details h6{
       text-align:center;
@@ -675,3 +686,30 @@ input[name="lastName"]{
       position: static;
    }
 }
+
+
+
+.heart {
+   width: 100px;
+   height: 100px;
+   background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+   background-position: 0 0;
+   cursor: pointer;
+   transition: background-position 1s steps(28);
+   transition-duration: 0s;
+ }
+ .heart.is-active {
+   transition-duration: 1s;
+   background-position: -2800px 0;
+ }
+ 
+ 
+ 
+ .stage {
+   position: absolute;
+   top: 10px;
+   left: 220px;
+   -webkit-transform: translate(-50%, -50%);
+           transform: translate(-50%, -50%);
+ }
+ 
