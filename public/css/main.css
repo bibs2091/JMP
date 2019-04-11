@@ -687,6 +687,7 @@ input[name="lastName"]{
    width: 277px;
    height: 157px;  
    transition: 0.4s;
+   cursor: pointer;
 }
 .category-container a:hover{
    text-decoration: none;
@@ -722,7 +723,7 @@ input[name="lastName"]{
 .add-category-modal{
    display: none;
    position: fixed;
-   z-index: 9999999999;
+   z-index: 99999999999;
    padding-top: 100px;
    left: 0;
    top: 0;

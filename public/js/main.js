@@ -9,3 +9,10 @@ function showTab(self, id) {
 function triggerInput(id) {
     document.getElementById(id).click();
 }
+//add category modal
+function showAddCategoryModal() {
+    $("#add-category-modal").fadeIn();
+}
+function hideAddCategoryModal() {
+    $("#add-category-modal").fadeOut();
+}

@@ -14,17 +14,15 @@
           </div>
           <div class="col-md-4">
             <div class="category-container" onclick="showAddCategoryModal()">
-                <a href="">
                     <img src="/img/addCategory.png">
-                </a>
             </div>
       </div>
             
       </div>
   </div>
-  <div class="add-category-modal">     
+  <div class="add-category-modal" id="add-category-modal">     
         <form class="info-container" method="POST" action="/admin/addcategory">
-            <span class="close-category-modal">&times;</span>
+            <span class="close-category-modal" onclick="hideAddCategoryModal()">&times;</span>
             <h2>Add category</h2>
             <hr>
             <img src="/img/upload_cover.png" alt="upload a cover" 
@@ -37,7 +35,7 @@
             <br>
             <div class="form-group">
             <label for="title" class="category-form-text">Category's description</label>
-            <textarea name="description" class="form-control" rows="10"></textarea>
+            <textarea name="description" class="form-control" rows="6"></textarea>
             </div>
             <input type="submit" class="btn submit-form">
         </form>
