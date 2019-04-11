@@ -13,7 +13,7 @@
                 </div>
           </div>
           <div class="col-md-4">
-            <div class="category-container">
+            <div class="category-container" onclick="showAddCategoryModal()">
                 <a href="">
                     <img src="/img/addCategory.png">
                 </a>
@@ -27,7 +27,9 @@
             <span class="close-category-modal">&times;</span>
             <h2>Add category</h2>
             <hr>
-            <img src="/img/upload_cover.png" alt="upload a cover">
+            <img src="/img/upload_cover.png" alt="upload a cover" 
+                for="image" id="category-image" onclick="triggerInput('category-image-input')">
+            <input type="file" accept="image/*" style="display:none" name="image" id="category-image-input">
             <div class="form-group">
             <label for="title" class="category-form-text">Category's title</label>
             <input type="text" class="form-control" name="title" placeholder="Enter a title">

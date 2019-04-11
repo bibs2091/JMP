@@ -5,3 +5,7 @@ function showTab(self, id) {
     $(".profile-menu-item").removeClass("pmi-active");
     self.classList.add("pmi-active");
 }
+//trigger input by id
+function triggerInput(id) {
+    document.getElementById(id).click();
+}

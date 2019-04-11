@@ -720,7 +720,7 @@ input[name="lastName"]{
 
 /* adding category modal*/
 .add-category-modal{
-   /* display: none; */
+   display: none;
    position: fixed;
    z-index: 9999999999;
    padding-top: 100px;
@@ -777,5 +777,8 @@ input[name="lastName"]{
 .close-category-modal:hover{
    color: #000;
    text-decoration: none;
+   cursor: pointer;
+}
+#category-image{
    cursor: pointer;
 }
