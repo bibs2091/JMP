@@ -128,7 +128,7 @@ body{
  /* Mobile First */
  @media (min-width: 42em) {
     .s-layout__content {
-       margin-left: 3.7em;
+       margin-left: 60px;
     }
     
     /* Sidebar */
@@ -153,7 +153,7 @@ body{
  
  @media (min-width: 68em) {
     .s-layout__content {
-       margin-left: 14em;
+       margin-left: 225px;
     }
     .s-sidebar__trigger {
         display: none
@@ -169,136 +169,152 @@ body{
     
  }
  
+
+
 /* --- Navbar --- */
 #navbar{
    width: 100%;
    height: 60px;
    box-shadow: 0 2px 2px -2px gray;
    position: sticky;
-   top: 0;
    position: -webkit-sticky;
-   background: white;
    padding-top: 15px;
+   top:0;
    z-index: 999;
-}
-#container {
-}
-nav h1{
-   font-family: 'Popins', sans-serif;
-   font-weight: bold;
-   font-size: 22px;
-   display: inline-block;
-   margin: 5px 0 0 40px;
-}
-#tocenter{
-   float: right;
-   display: inline-block;
-
-}
-nav #profile-pic-nav {
-   height: 33px;
-   width: 33px;
-   border-radius: 50%;
-   float: right;
-   margin-right: 30px;
-}
-nav #search{
-   display:inline-block;
-   border: 2px solid #EAEBED;
-   border-radius: 20px;
-   padding: 0px 5px;
-   margin:5px 20px 0 0 ;
-   vertical-align:top;
-}
-nav #search_responsive{
-   display:none;
-}
-nav #search input{
-   width: 200px;
-   height: 20px;
-   border: none;
-   font-family: Montserrat,sans-serif;
-   font-size: 12px;
-}
-input[type="search"]:focus{
- 
-   outline: none;
-   border: none !important;
-   -webkit-box-shadow: none !important;
-   -moz-box-shadow: none !important;
-   box-shadow: none !important;
-}
-#navbar span{
-   margin-right: 28px;
-}
-
-@media (max-width: 620px) {
-   #navbar{
-      /*height: 85px;*/
-      background: white;
-      width: 100vw;
+   background: white;
+   
    }
-   nav #search_responsive{
+   #container {
+   }
+   nav h1{
+      font-family: 'Popins', sans-serif;
+      font-weight: bold;
+      font-size: 22px;
       display: inline-block;
-      font-size: 18px;
-      margin-right: 22px;
-      float: left;
-      margin-top: 5px;
-      color: #414141;
+      margin: 5px 0 0 40px;
    }
-   #navbar span{
-      margin-right: 25px;
+   #tocenter{
+      float: right;
+      display: inline-block;
+      position: relative;
+   
+   }
+   nav #profile-pic-nav {
+      height: 33px;
+      width: 33px;
+      border-radius: 50%;
+      float: right;
+      margin-right: 30px;
    }
    nav #search{
-      display: none;
-      
-
-
+      display:inline-block;
+      border: 2px solid #EAEBED;
+      border-radius: 20px;
+      padding: 0px 5px;
+      margin:5px 20px 0 0 ;
+      vertical-align:top;
    }
- 
-}
-
-
-
-
-/* ----------------------- for the icons ------------------------------ */
-  @font-face {
-   font-family: 'icomoon';
-   src:  url('/fonts/icomoon.eot?hrtpsr');
-   src:  url('/fonts/icomoon.eot?hrtpsr#iefix') format('embedded-opentype'),
-     url('/fonts/icomoon.ttf?hrtpsr') format('truetype'),
-     url('/fonts/icomoon.woff?hrtpsr') format('woff'),
-     url('/fonts/icomoon.svg?hrtpsr#icomoon') format('svg');
-   font-weight: normal;
-   font-style: normal;
- }
- 
- [class^="icon-"], [class*=" icon-"] {
-   /* use !important to prevent issues with browser extensions that change fonts */
-   font-family: 'icomoon' !important;
- }
- 
- .icon-bell:before {
-   content: "\e918";
-   font-size: 24px;
- }
-
-
-  
- .icon-Message_notification:before {
-   content: "\e917";
-   font-size: 27px;
- }
- .icon-advanced:before{
-    content: "\e900";
-    color: #FFD32A;
- }
- .icon-start:before{
-   content: "\e915";
-}
-.icon-resume:before{
-   content: "\e914";
-}
+   nav #search input{
+      width: 200px;
+      height: 20px;
+      border: none;
+      font-family: Montserrat,sans-serif;
+      font-size: 12px;
+   }
+   #search_responsive{
+      display: none;
+   }
+   input[type="search"]:focus{
+    
+      outline: none;
+      border: none !important;
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      box-shadow: none !important;
+   }
+   
+   
+   @media (max-width: 630px) {
+      #navbar{
+         
+      }
+      nav #profile-pic-nav {
+         top: 15px;
+         right: 0;
+         position: fixed;
+      }
+      nav .icon-bell{
+         top: 17px;
+         right: 60px;
+         position: fixed;
+      }
+      nav .icon-Message_notification{
+         top: 15px;
+         right: 100px;
+         position: fixed;
+      }
+      nav #search{
+         display: none;
+       }
+       #search_responsive{
+       }
+       #main-content{
+         margin-left: -22px;
+       }
+     
+   }
+   
+   
+   
+   
+   /* ----------------------- for the icons ------------------------------ */
+     @font-face {
+      font-family: 'icomoon';
+      src:  url('/fonts/icomoon.eot?hrtpsr');
+      src:  url('/fonts/icomoon.eot?hrtpsr#iefix') format('embedded-opentype'),
+        url('/fonts/icomoon.ttf?hrtpsr') format('truetype'),
+        url('/fonts/icomoon.woff?hrtpsr') format('woff'),
+        url('/fonts/icomoon.svg?hrtpsr#icomoon') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    [class^="icon-"], [class*=" icon-"] {
+      /* use !important to prevent issues with browser extensions that change fonts */
+      font-family: 'icomoon' !important;
+    }
+    
+    .icon-bell:before {
+      content: "\e918";
+      font-size: 24px;
+      margin-right: 20px;
+    }
+   
+   
+     
+    .icon-Message_notification:before {
+      content: "\e917";
+      font-size: 27px;
+      margin-right: 20px;
+    }
+    .icon-advanced:before{
+       content: "\e900";
+       color: #FFD32A;
+    }
+    .icon-start:before{
+      content: "\e915";
+   }
+   .icon-resume:before{
+      content: "\e914";
+   }
+   .icon-time:before{
+      content: "\e916";
+   }
+   .icon-heart:before{
+      content: "\e905";
+      color: red;
+   }
+    /* ---------------------------------------- */ 
 .icon-time:before{
    content: "\e916";
 }
@@ -668,7 +684,11 @@ input[name="lastName"]{
 #profile-skills, #profile-7ajahak{
    display: none;
 }
-@media(max-width: 767px) {
+@media(max-width: 765px) {
+   .profile_container{
+      margin-left:0px;
+   }
+   
    #profile-pic{
    float: none;
    display: block;
@@ -684,6 +704,18 @@ input[name="lastName"]{
    }
    .profile_container ul{
       position: static;
+   }
+   .other-profile{
+      margin-left: 0;
+      padding-left: 18px;
+   }
+
+   #profile_details p{
+   text-align: center;
+   }
+
+   .other-profile-info{
+      margin-left: auto;
    }
 }
 
