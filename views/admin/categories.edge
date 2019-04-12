@@ -20,8 +20,14 @@
             
       </div>
   </div>
-  <div class="add-category-modal" id="add-category-modal">     
+  @if(errors.length > 0 )
+  <div class="add-category-modal" id="add-category-modal" style="display:block">
+    <form class="info-container" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
+        <div class="alert alert-danger">{{errors[0]}}</div>
+  @else
+  <div class="add-category-modal" id="add-category-modal">
         <form class="info-container" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
+  @endif
             <span class="close-category-modal" onclick="hideAddCategoryModal()">&times;</span>
             <h2>Add category</h2>
             <hr>
