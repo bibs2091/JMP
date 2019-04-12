@@ -6,6 +6,7 @@ const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require("express-session");
 const passport = require("passport");
+const fileUpload = require("express-fileupload");
 // const flash = require("flash");
 
 const redisClient = require("redis").createClient();
@@ -50,6 +51,9 @@ db.sync({ forced: true }).then(() => {
 
 //create the express app
 const app = express();
+
+//set up file upload
+app.use(fileUpload());
 
 //set up public files directory
 app.use(express.static("public"));

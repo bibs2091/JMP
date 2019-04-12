@@ -11,7 +11,7 @@ const Categories = db.define("Categories", {
         allowNull: false
     },
     cover: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
     }
 });
 
