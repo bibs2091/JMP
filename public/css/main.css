@@ -682,6 +682,7 @@ input[name="lastName"]{
    width: 270px;
    height: 150px;
    border-radius: 8px;
+   margin-bottom: 20px;
 }
 .category-container:hover{
    width: 277px;

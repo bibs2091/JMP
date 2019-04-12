@@ -3,20 +3,23 @@
 @section('content')
   <div class="container">
       <div class="row">
+          @each(category in categories)
           <div class="col-md-4">
                 <div class="category-container">
                     <a href="">
-                        <img src="/img/flutter.jpg">
+                        <img src="{{category.cover}}">
                         <div class="blur-image"></div>
-                        <div class="image-text-centered">Centered</div>
+                        <div class="image-text-centered">{{category.title}}</div>
                     </a>
                 </div>
           </div>
+          @endeach
+          
           <div class="col-md-4">
             <div class="category-container" onclick="showAddCategoryModal()">
                     <img src="/img/addCategory.png">
             </div>
-      </div>
+        </div>
             
       </div>
   </div>
