@@ -6,6 +6,7 @@ const homeController = require("../controllers/admin/home");
 const categoriesController = require("../controllers/admin/categories");
 const addCategoryController = require("../controllers/admin/addCategory");
 const coursesController = require("../controllers/admin/courses");
+const getCategoryController = require("../controllers/admin/getCategory");
 
 //handling requests 
 router.get("/", (req, res) => {
@@ -14,6 +15,7 @@ router.get("/", (req, res) => {
 router.get("/home", homeController);
 router.get("/categories", categoriesController);
 router.post("/addcategory", addCategoryController);
-router.get("/courses", coursesController)
+router.get("/courses", coursesController);
+router.get("/category/:id", getCategoryController);
 
 module.exports = router;
