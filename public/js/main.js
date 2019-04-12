@@ -30,13 +30,13 @@ $(".get-category").click(function () {
         $("#update-category-modal input[name='title']").val(data.title);
         $("#update-category-modal textarea").val(data.description);
         $("#update-category-modal .delete-button").attr("id", data.id);
+        $("#update-category-modal .info-container").attr("action", "/admin/category/update/" + data.id);
         showModal("update-category-modal");
     });
 });
 
 //Delete category by id
 function deleteCategory(id) {
-    console.log(id);
     $.ajax({
         url: '/admin/category/delete/' + id,
         method: 'DELETE',
