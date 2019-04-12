@@ -863,3 +863,44 @@ input[name="lastName"]{
       padding: 0;
    }
 }
+
+
+/* --------------- course details ------------------ */
+#coverImage{
+   width: 90%;
+   height: 19vw;
+   background: url("/img/cover-nodejs.jpg") no-repeat;
+   background-size:100% 100%;
+   display: block;
+   margin: 0 auto 50px auto;
+}
+.courseDescription h3{
+   font-family: Poppins;
+   font-size: 22px;
+   font-weight: 600;
+
+}
+
+.courseDescription p{
+   padding-top: 15px;
+   font-family: Poppins;
+
+}
+
+#instructorInfos{
+   display:flex;
+   align-items:center;
+   margin-left: -1vw;
+}
+
+#instructorInfos div h4{
+   font-size: 18px;
+   font-weight: 600;
+}
+
+
+#instructorImg{
+   height: 100px;
+   width: 100px;
+   border-radius: 50%;
+}
