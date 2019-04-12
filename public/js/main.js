@@ -16,3 +16,8 @@ function showAddCategoryModal() {
 function hideAddCategoryModal() {
     $("#add-category-modal").fadeOut();
 }
+//loadimaga from input by id
+function loadImage(event, id) {
+    var output = document.getElementById(id);
+    output.src = URL.createObjectURL(event.target.files[0]);
+}

@@ -23,20 +23,23 @@
             
       </div>
   </div>
+
   @if(errors.length > 0 )
-  <div class="add-category-modal" id="add-category-modal" style="display:block">
-    <form class="info-container" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
-        <div class="alert alert-danger">{{errors[0]}}</div>
+    <div class="add-category-modal" id="add-category-modal" style="display:block">
+        <form class="info-container" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
+            <div class="alert alert-danger">{{errors[0]}}</div>
   @else
-  <div class="add-category-modal" id="add-category-modal">
+    <div class="add-category-modal" id="add-category-modal">
         <form class="info-container" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
   @endif
             <span class="close-category-modal" onclick="hideAddCategoryModal()">&times;</span>
             <h2>Add category</h2>
             <hr>
             <img src="/img/upload_cover.png" alt="upload a cover" 
-                for="image" id="category-image" onclick="triggerInput('category-image-input')">
-            <input type="file" accept="image/*" style="display:none" name="image" id="category-image-input" required>
+                for="image" id="category-image" height="150"
+                onclick="triggerInput('category-image-input')">
+            <input type="file" accept="image/*" style="display:none" 
+                name="image" id="category-image-input" onchange="loadImage(event,'category-image')" required>
             <div class="form-group">
             <label for="title" class="category-form-text">Category's title</label>
             <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
