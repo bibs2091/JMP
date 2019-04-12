@@ -130,7 +130,6 @@ body{
     .s-layout__content {
        margin-left: 60px;
     }
-    
     /* Sidebar */
     .s-sidebar__trigger {
        width: 4em;
@@ -853,4 +852,13 @@ input[name="lastName"]{
 }
 #category-image{
    cursor: pointer;
+}
+@media (max-width: 765px){
+   .add-category-modal .info-container{
+      width: 100%;
+      padding: 30px;
+   }
+   .add-category-modal{
+      padding: 0;
+   }
 }
