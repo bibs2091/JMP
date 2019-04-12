@@ -26,11 +26,23 @@ function loadImage(event, id) {
 $(".get-category").click(function () {
     var categoryId = $(this).attr('id');
     $.get("/admin/category/" + categoryId, function (data, status) {
-        console.log(data);
         $("#update-category-image").attr("src", data.cover);
         $("#update-category-modal input[name='title']").val(data.title);
         $("#update-category-modal textarea").val(data.description);
+        $("#update-category-modal .delete-button").attr("id", data.id);
         showModal("update-category-modal");
     });
-
 });
+
+//Delete category by id
+function deleteCategory(id) {
+    console.log(id);
+    $.ajax({
+        url: '/admin/category/delete/' + id,
+        method: 'DELETE',
+        contentType: 'application/json',
+        success: function (result) {
+            location.reload();
+        }
+    });
+}
