@@ -1,0 +1,83 @@
+@layout('layouts.dashboard')
+
+@section('content')
+  <div class="container">
+      <div class="row">
+          @each(category in categories)
+          <div class="col-md-4">
+                <div class="category-container get-category" id="{{category.id}}">
+                        <img src="{{category.cover}}">
+                        <div class="blur-image"></div>
+                        <div class="image-text-centered">{{category.title}}</div>
+                </div>
+          </div>
+          @endeach
+          
+        <div class="col-md-4">
+            <div class="category-container" onclick="showModal('add-category-modal')">
+                    <img src="/img/addCategory.png">
+            </div>
+        </div>
+            
+      </div>
+  </div>
+
+  @if(errors.length > 0 )
+    <div class="add-category-modal" id="add-category-modal" style="display:block">
+        <form class="info-container" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
+            <div class="alert alert-danger">{{errors[0]}}</div>
+  @else
+    <div class="add-category-modal" id="add-category-modal">
+        <form class="info-container" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
+  @endif
+            <span class="close-category-modal" onclick="hideModal('add-category-modal')">&times;</span>
+            <h2>Add category</h2>
+            <hr>
+            <img src="/img/upload_cover.png" alt="upload a cover" 
+                for="image" id="category-image"
+                onclick="triggerInput('category-image-input')">
+            <input type="file" accept="image/*" style="display:none" 
+                name="image" id="category-image-input" onchange="loadImage(event,'category-image')" required>
+            <div class="form-group">
+            <label for="title" class="category-form-text">Category's title</label>
+            <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
+            </div>
+            <br>
+            <div class="form-group">
+            <label for="title" class="category-form-text">Category's description</label>
+            <textarea name="description" class="form-control" rows="6" required></textarea>
+            </div>
+            <input type="submit" class="btn submit-form">
+        </form>
+  </div>
+
+  <div class="add-category-modal" id="update-category-modal">
+    <form class="info-container" method="POST" action="/admin/category/update" enctype="multipart/form-data">
+        <span class="close-category-modal" onclick="hideModal('update-category-modal')">&times;</span>
+        <h2>Update category</h2>
+        <hr>
+        <img src="/img/upload_cover.png" alt="upload a cover" 
+            for="image" id="update-category-image" height="150"
+            onclick="triggerInput('update-category-image-input')">
+        <input type="file" accept="image/*" style="display:none" 
+            name="image" id="update-category-image-input" onchange="loadImage(event,'update-category-image')">
+        <div class="form-group">
+        <label for="title" class="category-form-text">Category's title</label>
+        <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
+        </div>
+        <br>
+        <div class="form-group">
+        <label for="title" class="category-form-text">Category's description</label>
+        <textarea name="description" class="form-control" rows="6" required></textarea>
+        </div>
+        <div style="display:table; width: 100%; margin-top: 25px;">
+                <button class="btn btn-danger delete-button" onclick="deleteCategory(this.id)" id="">Delete</button>
+
+            <input type="submit" class="btn submit-form" value="update">
+        </div>
+    </form>
+    </div>   
+@endsection
+
+
+    

@@ -1,3 +1,6 @@
 module.exports = (req, res) => {
-    res.send("admin home page");
+    res.render("admin.home", {
+        pageTitle: "Dashboard- Home",
+        pageName: "Home"
+    });
 };

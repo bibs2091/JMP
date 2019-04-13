@@ -6,6 +6,7 @@ const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require("express-session");
 const passport = require("passport");
+const fileUpload = require("express-fileupload");
 // const flash = require("flash");
 
 const redisClient = require("redis").createClient();
@@ -24,6 +25,7 @@ const home = require("./routes/home");
 const coach = require("./routes/coach");
 const user = require("./routes/user");
 const admin = require("./routes/admin");
+const events = require("./routes/events");
 
 //environment variables
 const {
@@ -50,6 +52,9 @@ db.sync({ forced: true }).then(() => {
 
 //create the express app
 const app = express();
+
+//set up file upload
+app.use(fileUpload());
 
 //set up public files directory
 app.use(express.static("public"));
@@ -103,6 +108,7 @@ app.use("/coach", coach);
 app.use("/user", user);
 app.use("/admin", admin);
 app.use("/", home);
+app.use("/events", events);
 
 //listen to requests
 const port = 3000 || process.env.PORT;
