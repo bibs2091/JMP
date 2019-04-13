@@ -50,8 +50,7 @@ passport.use(
 										)
 									);
 								} else {
-									//groupId will change depending on the convention
-									if (user.validated && user.groupId == 2) {
+									if (user.groupId != 3) {
 										return done(null, user);
 									}
 									return done(
