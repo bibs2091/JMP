@@ -1,5 +1,24 @@
 @layout('layouts.main')
 
 @section('content')
-  <h1>add event page</h1>
+  
+<html>
+	<body>
+		<form ref='uploadForm' 
+			id='uploadForm' 
+			action='/events/add' 
+			method='post' 
+			encType="multipart/form-data">
+				<input type="text" name="name" placeholder="name"/>
+				<input type="date" name="date" placeholder="date"/>
+				<input type="text" name="place" placeholder="place"/>
+				<input type="text" name="description" placeholder="description"/>
+				<input type="text" name="nbPlace" placeholder="nbPlace"/>
+				<input type="text" name="tags" placeholder="tags"/>
+				<input type="file" name="cover" />
+				<input type="file" name="planning" />
+				<input type='submit' value='Upload!' />
+		</form>		
+	</body>
+</html>
 @endsection
