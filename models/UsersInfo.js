@@ -48,10 +48,6 @@ const UsersInfo = db.define('UsersInfo', {
     classement: {
         type: Sequelize.INTEGER
     },
-    approveState: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
-    },
     lastLogin: {
         type: Sequelize.DATE
     }

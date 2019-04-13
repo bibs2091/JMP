@@ -14,7 +14,7 @@ const Users = db.define('Users', {
     groudId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: 2
+        defaultValue: 3
     }
 });
 
