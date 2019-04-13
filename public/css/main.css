@@ -186,12 +186,12 @@ body{
    }
    #container {
    }
-   nav h1{
+   #navbar h1{
       font-family: 'Popins', sans-serif;
       font-weight: bold;
       font-size: 22px;
       display: inline-block;
-      margin: 5px 0 0 40px;
+      margin: 5px 0 0 2vw;
    }
    #tocenter{
       float: right;
@@ -711,11 +711,20 @@ input[name="lastName"]{
 
    #profile_details p{
    text-align: center;
+   padding: 0px 40px 0 30px;
+   margin-bottom: 7px;
    }
-
+   .ellipsis {
+      margin-right: 35px;
+}
    .other-profile-info{
       margin-left: auto;
+      margin-right: auto; 
    }
+   .course-card{
+      margin: 15px auto;
+   }
+
 }
 
 
@@ -909,6 +918,33 @@ input[name="lastName"]{
    background-size:100% 100%;
    display: block;
    margin: 0 auto 50px auto;
+   position: relative;
+   overflow: hidden;
+   margin-top: 20px;
+}
+#coverImage h1{
+   position: absolute;
+   padding: 55px 0 0 55px;
+   font-family: Poppins;
+   font-size: 30px;
+   font-weight: 500;
+   color: white;
+   width: 600px;
+}
+#coverImage #imgTags{
+   position: absolute;
+   bottom: 10px;
+   margin-left:20px; 
+}
+#coverImage #imgTags span{
+   font-family: Poppins,sans-serif;
+   width: 37px;
+   height: 18px;
+   background-color: #FFD32A;
+   color:black;
+   font-size: 9px;
+   padding: 5px;
+   border-radius: 3px;
 }
 .courseDescription h3{
    font-family: Poppins;
@@ -939,4 +975,25 @@ input[name="lastName"]{
    height: 100px;
    width: 100px;
    border-radius: 50%;
+}
+
+
+@media (max-width: 1088px){
+   #coverImage h1{
+      padding: 3.5vw 0 0 3.5vw;
+      font-size: 2.5vw;
+      width:100%
+   }
+   #coverImage {
+      height: 23vw;
+   }
+}
+@media (max-width: 500px){
+   #coverImage h1{
+      padding: 3vw 0 0 3vw;
+      font-size: 3.5vw
+   }
+   #coverImage {
+      height: 33vw;
+   }
 }
