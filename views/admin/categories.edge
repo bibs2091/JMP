@@ -34,7 +34,7 @@
             <h2>Add category</h2>
             <hr>
             <img src="/img/upload_cover.png" alt="upload a cover" 
-                for="image" id="category-image" height="150"
+                for="image" id="category-image"
                 onclick="triggerInput('category-image-input')">
             <input type="file" accept="image/*" style="display:none" 
                 name="image" id="category-image-input" onchange="loadImage(event,'category-image')" required>
@@ -70,8 +70,11 @@
         <label for="title" class="category-form-text">Category's description</label>
         <textarea name="description" class="form-control" rows="6" required></textarea>
         </div>
-        <input type="submit" class="btn submit-form" value="update">
-        <div class="btn btn-danger delete-button" onclick="deleteCategory(this.id)" id="">Delete</div>
+        <div style="display:table; width: 100%; margin-top: 25px;">
+                <button class="btn btn-danger delete-button" onclick="deleteCategory(this.id)" id="">Delete</button>
+
+            <input type="submit" class="btn submit-form" value="update">
+        </div>
     </form>
     </div>   
 @endsection
