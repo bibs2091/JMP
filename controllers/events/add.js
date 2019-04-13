@@ -3,11 +3,11 @@ module.exports = async(req, res) => {
 	try{
 			// getting event infos
 		const creatorId = req.user.Id;
-	    const {name,date,place,description,cover,nbPlace,planning,validated} = req.body;
+	    const {name,date,place,description,cover,nbPlace,planning,validated,tags} = req.body;
 	    // creating the event proposition
-	    const newevent = await Event.create({name,date,place,description,cover,nbPlace,planning,creatorId,validated});
+	    const newevent = await Event.create({name,date,place,description,cover,nbPlace,planning,creatorId,validated,tags});
 	    if (req.user.groupId === 0){
-	    	res.redirect('/admin/event');
+	    	res.redirect('../admin/event');
 
 	    }else if(req.user.groupId === 1){
 			res.redirect('/coach/event');    	
