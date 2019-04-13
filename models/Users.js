@@ -14,12 +14,7 @@ const Users = db.define("Users", {
 	groudId: {
 		type: Sequelize.INTEGER,
 		allowNull: false,
-		defaultValue: 2,
-	},
-	validated: {
-		type: Sequelize.BOOLEAN,
-		allowNull: false,
-		defaultValue: false,
+		defaultValue: 3,
 	},
 });
 
