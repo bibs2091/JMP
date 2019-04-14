@@ -3,11 +3,11 @@ const router = express.Router();
 
 //require controllers
 const homeController = require("../controllers/user/home");
-const profileController = require("../controllers/user/profile");
+const editProfileController = require("../controllers/user/profile");
 
 
 //handling requests 
 router.get("/home", homeController);
-router.get("/profile", profileController);
+router.get("/editprofile", editProfileController);
 
 module.exports = router;
