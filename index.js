@@ -26,6 +26,7 @@ const coach = require("./routes/coach");
 const user = require("./routes/user");
 const admin = require("./routes/admin");
 const events = require("./routes/events");
+const courses = require("./routes/courses");
 
 //environment variables
 const {
@@ -109,6 +110,7 @@ app.use("/user", user);
 app.use("/admin", admin);
 app.use("/", home);
 app.use("/events", events);
+app.use("/courses", courses);
 
 //listen to requests
 const port = 3000 || process.env.PORT;

@@ -1,3 +1,3 @@
 module.exports = (req, res) => {
-    res.render("courseDetails");
+    res.send("add course");
 }

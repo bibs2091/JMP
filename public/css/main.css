@@ -997,3 +997,30 @@ input[name="lastName"]{
       height: 33vw;
    }
 }
+/* add course page */
+#upload-course-cover{
+   width: 100%;
+   height: 30vh;
+   cursor: pointer;
+}
+.add-course-container{
+   padding: 20px;
+   font-family: Poppins;
+}
+.add-course-container h2{
+   font-size: 22px;
+}
+.customized-label{
+   font-size: 19px;
+   margin-bottom: 8px;
+}
+.add-course-container input[type="submit"]{
+   background: #1DBF70;
+   width: 100%;
+   color: white;
+   font-size: 20px;
+}
+.add-course-container input[type="submit"]:hover{
+   opacity: 0.8;
+   transition: .3s;
+}

@@ -1,0 +1,54 @@
+@layout('layouts.main')
+
+@section('content')
+    <div class="container">
+        <form action="/courses/add" class="add-course-container">
+            <div class="row">
+                <div class="col-md-7">
+                    <img src="/img/upload-course-cover.png" alt="upload a cover image" 
+                        id="upload-course-cover" onclick="triggerInput('course-cover-input')">
+                    <input type="file" accept="image/*" name="course-cover" id="course-cover-input" style="display:none" >
+                    
+                </div>
+                <div class="col-md-5">
+                    <h2>Basic course information</h2>
+                    <hr>
+                    <div class="form-group">
+                        <label for="course-title" class="customized-label">Course title</label>
+                        <input type="text" class="form-control" name="title" id="course-title">
+                    </div>
+                    <div class="form-group">
+                        <label for="course-description" class="customized-label">Course description</label>
+                        <p style="font-size: 11px;margin-bottom:7px;">
+                            In your course description, we recommend providing information about the content of the course and how students will benefit from that content.
+                        </p>
+                        <textarea name="description" id="course-description" rows="4" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="customized-label">Course's category</label>
+                        <select class="form-control">
+                            <option value="web" name="category">web</option>
+                            <option value="design" name="category">design</option>
+                        </select> 
+                    </div>
+                    <div class="form-group">
+                        <label class="customized-label">Course's level</label>
+                        <select class="form-control">
+                            <option value="web" name="level">Beginner</option>
+                            <option value="design" name="level">Intermediat</option>
+                            <option value="design" name="level">Advanced</option>
+                        </select> 
+                    </div>
+                    <div class="form-group">
+                        <label class="customized-label">Tags</label>
+                        <p style="font-size: 11px;margin-bottom:7px;">
+                            In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
+                        </p>
+                        <input type="text" class="form-control" name="tags">
+                    </div>
+                    <input type="submit" class="btn" value="Save Changes">
+                </div>
+            </div>
+        </form>
+    </div>
+@endsection
