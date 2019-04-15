@@ -45,6 +45,8 @@ body{
     display: inline-block;
     margin: 1.5em 0 0 .5em;
     color: #141414;
+    position: fixed;
+    z-index: 1000;
  }
  
  .s-sidebar__nav {
@@ -234,24 +236,22 @@ body{
    }
    
    
-   @media (max-width: 630px) {
+   @media (max-width: 672px) {
       #navbar{
          
       }
+   
       nav #profile-pic-nav {
          top: 15px;
          right: 0;
-         position: fixed;
       }
       nav .icon-bell{
          top: 17px;
          right: 60px;
-         position: fixed;
       }
       nav .icon-Message_notification{
          top: 15px;
          right: 100px;
-         position: fixed;
       }
       nav #search{
          display: none;
@@ -917,7 +917,7 @@ input[name="lastName"]{
    background: url("/img/cover-nodejs.jpg") no-repeat;
    background-size:100% 100%;
    display: block;
-   margin: 0 auto 50px auto;
+   margin: 0 auto 40px auto;
    position: relative;
    overflow: hidden;
    margin-top: 20px;
@@ -952,9 +952,13 @@ input[name="lastName"]{
    font-weight: 600;
 
 }
-
+#instructorsCard{
+   border-left: 1px solid black; 
+   width: 100%;
+   margin: 0;
+}
 .courseDescription p{
-   padding-top: 15px;
+   padding: 25px 2px 0 2px;
    font-family: Poppins;
 
 }
@@ -970,14 +974,23 @@ input[name="lastName"]{
    font-weight: 600;
 }
 
-
+#instructorsTitle{
+   margin-top: 15px;
+   font-size:18px; 
+   margin-bottom: 15px;
+   font-weight: 600;
+}
+#instructorsHR{
+   display: none;
+}
 #instructorImg{
-   height: 100px;
-   width: 100px;
+   height: 94px;
+   width: 94px;
    border-radius: 50%;
+   margin-bottom: 15px;
 }
 
-
+/* the cover image */ 
 @media (max-width: 1088px){
    #coverImage h1{
       padding: 3.5vw 0 0 3.5vw;
@@ -987,6 +1000,7 @@ input[name="lastName"]{
    #coverImage {
       height: 23vw;
    }
+  
 }
 @media (max-width: 500px){
    #coverImage h1{
@@ -994,7 +1008,141 @@ input[name="lastName"]{
       font-size: 3.5vw
    }
    #coverImage {
-      height: 33vw;
+      height: 35vw;
+   }
+}
+            /*----*/
+#courseLessons_details{
+   margin-left: 5%;
+}
+.chapter{
+   width: 95%;
+   height: 60px;
+   background: #D2DAE2;
+   font-family: Poppins,sans-serif;
+   color: #1E272E;
+   font-weight: 500;
+   font-size: 22px;
+   display:table;
+   border-bottom: 1px solid #c3c3c3;  
+}
+
+.chapter:hover{
+   background: rgb(198, 205, 211);
+
+}
+
+.chapter div{
+   display:table-cell;
+   vertical-align:middle;  
+   position: relative;
+}
+.chapter div p{
+   text-align:center;
+}
+.chapter div i{
+   margin-left:15px;   
+   top: 50%;
+   transform: translateY(-50%);
+   position: absolute;
+   color:#474d51
+}
+
+.lesson{
+   width: 95%;
+   height: 45px;
+   background: #F5F5F5;
+   font-family: Poppins,sans-serif;
+   font-size: 17px;
+   display:flex;  
+   align-items:center;
+   padding-left: 20px;
+   border: 1px dashed #D2DAE2;
+}
+.lesson-no-collapse{
+   height: 0;
+   content: "";
+}
+
+#courseCardInfo{
+   width: 100%;
+   background: #f5f5f5;
+   border-radius: 8px;
+   padding: 20px 7px 0 0;
+}
+#startCourse{
+   width: 75%;
+   background: #4BCFFA;
+   font-family: Poppins;
+   border: none;
+   height: 60px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+#wishlistCourseDetails{
+   margin-top: 14px;
+   width: 75%;
+   height: 60px;
+   font-family: Poppins;
+   color: black;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+#courseCardInfo ul{
+   margin-top: 18px;
+   margin-left: 12%;
+}
+
+#courseCardInfo ul li{
+   margin:7px 0;
+   font-family: Poppins;
+   font-size: 18px;  
+}
+#courseCardInfo hr{
+   width:80%;
+}
+#courseCardInfo a{
+   display: inline-block;
+   font-weight: 600;
+   margin-top: 12px;
+   margin-bottom: 30px;
+}
+.collapse-chapter{
+   cursor: pointer;
+}
+@media(max-width: 765px) {
+   #coverImage{
+      margin-bottom: 17px;
+      margin-top: 17px;
+   }
+   #coverImage #imgTags span{
+      font-size: 8px;
+   }
+   .courseDescription h3{
+   }
+   .courseDescription p{
+      padding: 3px;
+   }
+   #courseLessons_details{
+      margin:15px 0;
+   }
+
+   #instructorsHR{
+      display: block;
+      border-top: 1px solid rgba(0, 0, 0, 0.3);
+   }
+   #instructorsCard{
+      width: 100%;
+      background: #ffffff;
+      border: none;
+   }
+   #instructorsTitle{
+      margin-top: 12px;
+      text-align: center;
+      font-size: 21px;
+
    }
 }
 /* add course page */
@@ -1023,4 +1171,55 @@ input[name="lastName"]{
 .add-course-container input[type="submit"]:hover{
    opacity: 0.8;
    transition: .3s;
+   #instructorImg{
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 7px;
+      display: block;
+   }
+   #instructorInfos div{
+      margin-left: auto;
+      margin-right: auto;
+   }
+   #instructorInfos div h4{
+      text-align: center;
+      margin-bottom: 5px;
+   }
+   #instructorInfos div p{
+      text-align: center;
+   }
+}
+
+
+
+
+
+
+/* for xl screens --------keep it in the bottom of the file-------- */ 
+@media (max-width:1140px){
+   #instructorsTitle{
+      margin-top: 12px;
+      text-align: center;
+      font-size: 21px;
+
+   }
+   #instructorImg{
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 7px;
+      display: block;
+   }
+   #instructorInfos{
+      padding: 0;
+      width: 100%;
+   }
+   #instructorInfos div{
+      margin-left: auto;
+      margin-right: auto;
+   }
+   #instructorInfos div h4,#instructorInfos div p{
+      text-align: center;
+      margin-bottom: 7px;
+   }
+
 }

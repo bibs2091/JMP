@@ -1,6 +1,9 @@
 @layout('layouts.main')
 
 @section('content')
+
+
+<div style="margin-left:-25px;">
   <div id="coverImage">
     <h1>Nodejs essential training : the complete path to master nodejs</h1>
     <div id="imgTags">
@@ -18,14 +21,15 @@
            molestias eaque dolorum natus libero inventore mollitia.</p>
       </div>
       <div class="col-md-5">
-        
-        <div class="container">
+        <hr id="instructorsHR">
+        <div class="container" id="instructorsCard">
           <div class="row">
-            <div class="col-md-6">
-                <h3 style="font-size:18px; margin-bottom: 15px; font-weight: 600;">Instructors</h3>
+            <div class="col-xl-4">
+                <h3 id="instructorsTitle">Instructors</h3>
                 <img src="/img/ouss.jpg" alt="Course instructor"  id="instructorImg">
             </div>
-            <div class="col-md-6" id="instructorInfos">
+            <div class="col-xl-8" id="instructorInfos">
+               
               <div>
                 <h4>oussama azzaz</h4>
                 <p>Full-stack web developer</p>
@@ -34,11 +38,79 @@
             
           </div>
         </div>
-        
-        
       </div>
     </div>
   </div>
+</div>
+<div class="contain" style="margin-top:30px;">
+    <div class="row">
+      <div class="col-md-7">
+        <ul id="courseLessons_details"> 
+          <li>
+                <ul class="collapse-chapter">
+                  <li class="chapter">
+                    <div>
+                      <p>modules stuff and stuff</p>
+                      <i class="fas fa-plus expand_chaptre"></i>
+                    </div>
+                  </li>
+                </ul>
+                <ul>
+                    <li class="lesson">Introduction and course planning</li>
+                    <li class="lesson">Project overview</li>
+                    <li class="lesson">Using exercice files</li>
+                </ul>
+          </li>
+          <li>
+                <ul class="collapse-chapter">
+                  <li class="chapter">
+                    <div>
+                      <p>modules stuff and stuff</p>
+                      <i class="fas fa-plus expand_chaptre"></i>
+                    </div>
+                  </li>
+                </ul>
+                <ul>
+                  <li class="lesson">Understanding the core of nodejs</li>
+                  <li class="lesson">The file system module</li>
+                  <li class="lesson">the child process module</li>
+                </ul>
+          </li>
+          <li>
+              <ul class="collapse-chapter">
+                  <li class="chapter">
+                    <div>
+                      <p>Lorem, ipsum.</p>
+                      <i class="fas fa-plus expand_chaptre"></i>
+                    </div>
+                  </li>
+                </ul>
+              <ul>
+
+              </ul>
+          </li>
+
+      </ul>
+      </div>
+      <div class="col-md-5">
+        <div id="courseCardInfo">
+          <button  type="button" class="btn btn-primary" id="startCourse">Starts Course</button>
+          <button  type="button" class="btn btn-outline-secondary" id="wishlistCourseDetails">Wishlist <i class="far fa-heart"></i></button>
+          <ul>
+            <li>This course includes</li>
+            <li><i class="far fa-clock"></i> &nbsp;2 h 45 min of content</li>
+            <li><i class="fas fa-clipboard-list"></i> &nbsp; 15 quizzes</li>
+            <li><i class="fas fa-rocket"></i> &nbsp;5 projects</li>
+            <li><i class="fab fa-readme"></i>&nbsp; 7 reading materials</li>
+            <li><i class="fas fa-mobile-alt"></i> &nbsp;&nbsp; Full access from any device</li>
+          </ul>
+          <hr>
+          <center><a href=""><i class="fas fa-share"></i> &nbsp;&nbsp; Share this course</a></center>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
 
 
 
