@@ -1,11 +1,9 @@
 const Event = require('../../models/Event');
 module.exports = async(req, res) => {
 	try{
-		const {cover,planning}=[0,0];
-		console.log(req.body);
+		let {cover,planning}=[0,0];
 		// the user infos
 		const user = {groupId :1}
-		console.log(req.files);
 			// getting event infos
 		// the creator id 	
 		const creatorId = 1;
@@ -15,16 +13,16 @@ module.exports = async(req, res) => {
 				cover = req.files.cover;
 			}
 			if(req.files.planning){
-				planning = req.files; 
+				planning = req.files.planning; 
 			}
 		}
 	    const {name,date,place,description,nbPlace,validated,tags} = req.body;
 	    // creating the event proposition
-	    const newevent = await Event.create({name,date,place,description,nbPlace,creatorId,validated,tags});
+	    let newevent = await Event.create({name,date,place,description,nbPlace,creatorId,validated,tags});
 	    	// store the images and there link 
 		    if (cover){
 
-		    	newevent = await Event.update(
+		    	await Event.update(
 	        	{	
 
 	        		cover : '/img/events/covers/'+newevent.id+".jpg"
@@ -36,7 +34,7 @@ module.exports = async(req, res) => {
 		    }
 		    if (planning){
 
-		    	newevent = await Event.update(
+		    	await Event.update(
 	        	{	
 
 	        		planning : '/img/events/plannings/'+newevent.id+".jpg"
@@ -54,11 +52,9 @@ module.exports = async(req, res) => {
 	    		validated: true
 	    	},
 	    	{where : {id : newevent.id}});
-	    	res.redirect('../admin/event');
-
-	    }else if(user.groupId === 1){
-			res.redirect('/coach/event');    	
 	    }
+	    res.redirect('/events/'+newevent.id);
+	    
 	}catch(err){
 		console.log(err);
 		res.redirect('/errors');

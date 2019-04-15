@@ -7,6 +7,7 @@ const validatingController = require("../controllers/events/validating");
 const deleteController = require("../controllers/events/delete");
 const modifiePostController = require("../controllers/events/modifie_post");
 const modifieGetController = require("../controllers/events/modifie_get");
+const eventController = require("../controllers/events/eventPage");
 //handling requests 
 router.post("/validating/:id",validatingController);
 router.post("/delete/:id",deleteController);
@@ -16,5 +17,6 @@ router.get("/modifie/:id",modifieGetController);
 router.get("/add", (req, res) => {
     res.render("events.add");
 });
+router.get("/:id",eventController);
 
 module.exports = router;
