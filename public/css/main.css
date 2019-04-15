@@ -411,6 +411,30 @@ body{
    margin-top: 38px;
 
 }
+.fillingInfosBox .form-group img{
+   height: 17px;
+   width: 17px;
+   margin-bottom: -2px;
+   margin-left: 3px;
+
+}
+#profile{
+   height: 125px;
+   width: 125px;
+   border-radius: 50%;
+  
+   z-index: 2;
+   margin-top:-65px;
+   margin-left: 178px;
+
+}
+#change_profile{
+   height: 30px;
+   width: 30 px;
+   margin-bottom: 17px;
+   margin-left: -30px;
+   margin-top:10px;
+}
 
 
 
@@ -428,7 +452,7 @@ body{
 
 .fillingInfosBox #submit-form{
    margin-left:23px;
-   width: 90%;
+   width: 87%;
    background: #FFD32A;
    margin-top: 38px;
    height: 38px;
