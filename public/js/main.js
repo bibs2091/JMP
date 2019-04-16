@@ -133,3 +133,30 @@ function editLecture(obj) {
     childs[3].innerHTML = link;
     hideModal("edit-lecture-modal");
 }
+//course items to json
+function courseJSON() {
+    var chaptersList = document.getElementById("chapters-list");
+    var chapters = chaptersList.children;
+    var chaptersArray = [];
+    var obj = {};
+    for (var i = 0; i < chapters.length; i++) {
+        obj.title = chapters[i].firstElementChild.firstElementChild.innerHTML;
+        var lecturesArray = [];
+        var lectures = chapters[i].getElementsByClassName("lecture");
+        var lecObj = {};
+        var lectureChilds = [];
+        for (var j = 0; j < lectures.length; j++) {
+            lectureChilds = lectures[i].children;
+            lecObj.title = lectureChilds[0].innerHTML;
+            lecObj.type = lectureChilds[1].innerHTML;
+            lecObj.description = lectureChilds[2].innerHTML;
+            lecObj.link = lectureChilds[3].innerHTML;
+            lecturesArray.push(lecObj);
+        }
+        obj.lectures = lecturesArray;
+        chaptersArray.push(obj);
+    }
+    return JSON.stringify(chaptersArray);
+}
+
+console.log(courseJSON());
