@@ -52,7 +52,7 @@ function addChapter(obj) {
     var title = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
     console.log(title);
     var chapterHTML = "<li>";
-    chapterHTML += "<div class='chapter-title'><h6>" + title + "</h6><div class='tools'><i class='fa fa-times delete-chapter'></i>&nbsp;<i class='fa fa-edit'></i></div>";
+    chapterHTML += "<div class='chapter-title'><h6>" + title + "</h6><div class='tools'><i class='fa fa-times' onclick='deleteChapter(this)'></i>&nbsp;<i class='fa fa-edit'></i></div>";
     chapterHTML += "</div><ul class='lectures'></ul><div class='add-lecture' onclick='showAddLectureModal(this)'><img src=''></div></li>";
     document.getElementById("chapters-list").innerHTML += chapterHTML;
     hideModal("add-chapter-modal");
@@ -78,4 +78,8 @@ function addLecture(obj) {
     lectureHTML += "<i class='fa fa-edit'></i></div></li>";
     whereToAddLecture.innerHTML += lectureHTML;
     hideModal("add-lecture-modal");
+}
+// delete chapter
+function deleteChapter(obj) {
+    $(obj).parent().parent().parent().remove();
 }

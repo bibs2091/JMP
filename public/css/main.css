@@ -1061,7 +1061,8 @@ input[name="lastName"]{
 }
 .chapter-title .tools i{
    display: table-cell;
-   vertical-align: middle; 
+   vertical-align: middle;
+   cursor: pointer; 
 }
 .lecture p, .lecture span, .lecture h6{
    display: none;
