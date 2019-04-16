@@ -1,3 +1,4 @@
+var whereToAddLecture = {};
 // profile page show tabs
 function showTab(self, id) {
     $('.profile-tab').hide();
@@ -45,4 +46,36 @@ function deleteCategory(id) {
             location.reload();
         }
     });
+}
+/*add chapter*/
+function addChapter(obj) {
+    var title = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
+    console.log(title);
+    var chapterHTML = "<li>";
+    chapterHTML += "<div class='chapter-title'><h6>" + title + "</h6><div class='tools'><i class='fa fa-times delete-chapter'></i>&nbsp;<i class='fa fa-edit'></i></div>";
+    chapterHTML += "</div><ul class='lectures'></ul><div class='add-lecture' onclick='showAddLectureModal(this)'><img src=''></div></li>";
+    document.getElementById("chapters-list").innerHTML += chapterHTML;
+    hideModal("add-chapter-modal");
+}
+// add lecture modal
+
+function showAddLectureModal(obj) {
+    whereToAddLecture = obj.parentNode.getElementsByClassName("lectures")[0];
+    showModal("add-lecture-modal");
+}
+//add lecture
+function addLecture(obj) {
+    // inputs values
+    var inputs = obj.getElementsByTagName("input");
+    var title = inputs[0].value;
+    var link = inputs[1].value;
+    var description = obj.getElementsByTagName("textarea")[0].value;
+    var type = obj.getElementsByTagName("select")[0].value;
+    var lectureHTML = "<li class='lecture'>";
+    lectureHTML += "<h5>" + title + "</h5><span>" + type + "</span>";
+    lectureHTML += "<p>" + description + "</p><h6>" + link + "</h6>";
+    lectureHTML += "<div class='tools'><i class='fa fa-times'></i>&nbsp;";
+    lectureHTML += "<i class='fa fa-edit'></i></div></li>";
+    whereToAddLecture.innerHTML += lectureHTML;
+    hideModal("add-lecture-modal");
 }

@@ -8,7 +8,36 @@
                     <img src="/img/upload-course-cover.png" alt="upload a cover image" 
                         id="upload-course-cover" onclick="triggerInput('course-cover-input')">
                     <input type="file" accept="image/*" name="course-cover" id="course-cover-input" style="display:none" >
-                    
+                    <ul id="chapters-list">
+                        <li>
+                            <div class="chapter-title">
+                                <h6>1- sdjflksd</h6>
+                                <div class="tools">
+                                    <i class="fa fa-times delete-chapter"></i>&nbsp;
+                                    <i class="fa fa-edit"></i>
+                                </div>
+                            </div>
+                            <ul class="lectures">
+                                <li class="lecture">
+                                    <h5> a- lecture one</h5>
+                                    <span>video</span>
+                                    <p>sdjskldgjslkd</p>
+                                    <h6>link</h6>
+                                    <div class="tools">
+                                        <i class="fa fa-times"></i>&nbsp;
+                                        <i class="fa fa-edit"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="add-lecture" onclick="showAddLectureModal(this)">
+                                <img src="">
+                            </div>
+
+                        </li>
+                    </ul>
+                    <div class="add-chapter" onclick="showModal('add-chapter-modal')">
+                        <img src="">
+                    </div>
                 </div>
                 <div class="col-md-5">
                     <h2>Basic course information</h2>
@@ -50,5 +79,53 @@
                 </div>
             </div>
         </form>
+    </div>
+    <div class="add-category-modal" id="add-chapter-modal">
+        <div class="info-container">
+            <span class="close-category-modal" onclick="hideModal('add-chapter-modal')">&times;</span>
+            <h2>Add chapter</h2>
+            <hr>
+            <div class="form-group">
+            <label for="title" class="category-form-text">chapter's title</label>
+            <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
+            </div>
+            <br>
+
+            <div style="display:table; width: 100%; margin-top: 15px;">
+                <button type="submit" class="btn submit-form" onclick="addChapter(this)">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="add-category-modal" id="add-lecture-modal">
+        <div class="info-container">
+            <span class="close-category-modal" onclick="hideModal('add-lecture-modal')">&times;</span>
+            <h2>Add lecture</h2>
+            <hr>
+            <div class="form-group">
+                <label for="title" class="category-form-text">Lecture's Title</label>
+                <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="title" class="category-form-text">Lecture's type</label>
+                <select class="form-control">
+                    <option value="video">video</option>
+                    <option value="PDF">PDF</option>
+                </select> 
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="title" class="category-form-text">Link</label>
+                <input type="text" class="form-control" name="title" placeholder="Enter a link" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="title" class="category-form-text">Lecture's description</label>
+                <textarea name="description" rows="5" class="form-control"></textarea>
+            </div>
+            <div style="display:table; width: 100%; margin-top: 15px;">
+                <button type="submit" class="btn submit-form" onclick="addLecture(this.parentNode.parentNode)">Add</button>
+            </div>
+        </div>
     </div>
 @endsection
