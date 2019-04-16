@@ -14,7 +14,7 @@
                                 <h6>1- sdjflksd</h6>
                                 <div class="tools">
                                     <i class="fa fa-times" onclick="deleteChapter(this)"></i>&nbsp;
-                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-edit" onclick="showEditChapterModal(this)"></i>
                                 </div>
                             </div>
                             <ul class="lectures">
@@ -25,18 +25,18 @@
                                     <h6>link</h6>
                                     <div class="tools">
                                         <i class="fa fa-times" onclick='deleteLecture(this)'></i>&nbsp;
-                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-edit" onclick="showEditLectureModal(this)"></i>
                                     </div>
                                 </li>
                             </ul>
                             <div class="add-lecture" onclick="showAddLectureModal(this)">
-                                <img src="">
+                                <img src="/img/add_lecture.png">
                             </div>
 
                         </li>
                     </ul>
                     <div class="add-chapter" onclick="showModal('add-chapter-modal')">
-                        <img src="">
+                        <img src="/img/add_chapter.png">
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -125,6 +125,55 @@
             </div>
             <div style="display:table; width: 100%; margin-top: 15px;">
                 <button type="submit" class="btn submit-form" onclick="addLecture(this.parentNode.parentNode)">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="add-category-modal" id="edit-chapter-modal">
+        <div class="info-container">
+            <span class="close-category-modal" onclick="hideModal('edit-chapter-modal')">&times;</span>
+            <h2>Edit chapter</h2>
+            <hr>
+            <div class="form-group">
+            <label for="title" class="category-form-text">chapter's title</label>
+            <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
+            </div>
+            <br>
+
+            <div style="display:table; width: 100%; margin-top: 15px;">
+                <button type="submit" class="btn submit-form" onclick="editChapter(this.parentNode)">Update</button>
+            </div>
+        </div>
+    </div>
+    <div class="add-category-modal" id="edit-lecture-modal">
+        <div class="info-container">
+            <span class="close-category-modal" onclick="hideModal('edit-lecture-modal')">&times;</span>
+            <h2>Edit lecture</h2>
+            <hr>
+            <div class="form-group">
+                <label for="title" class="category-form-text">Lecture's Title</label>
+                <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="title" class="category-form-text">Lecture's type</label>
+                <select class="form-control">
+                    <option value="video">video</option>
+                    <option value="PDF">PDF</option>
+                </select> 
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="title" class="category-form-text">Link</label>
+                <input type="text" class="form-control" name="title" placeholder="Enter a link" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="title" class="category-form-text">Lecture's description</label>
+                <textarea name="description" rows="5" class="form-control"></textarea>
+            </div>
+            <div style="display:table; width: 100%; margin-top: 15px;">
+                <button type="submit" class="btn submit-form" onclick="editLecture(this.parentNode)">Update</button>
             </div>
         </div>
     </div>
