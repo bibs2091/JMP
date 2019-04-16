@@ -50,7 +50,6 @@ function deleteCategory(id) {
 /*add chapter*/
 function addChapter(obj) {
     var title = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
-    console.log(title);
     var chapterHTML = "<li>";
     chapterHTML += "<div class='chapter-title'><h6>" + title + "</h6><div class='tools'><i class='fa fa-times' onclick='deleteChapter(this)'></i>&nbsp;<i class='fa fa-edit'></i></div>";
     chapterHTML += "</div><ul class='lectures'></ul><div class='add-lecture' onclick='showAddLectureModal(this)'><img src=''></div></li>";
@@ -74,7 +73,7 @@ function addLecture(obj) {
     var lectureHTML = "<li class='lecture'>";
     lectureHTML += "<h5>" + title + "</h5><span>" + type + "</span>";
     lectureHTML += "<p>" + description + "</p><h6>" + link + "</h6>";
-    lectureHTML += "<div class='tools'><i class='fa fa-times'></i>&nbsp;";
+    lectureHTML += "<div class='tools'><i class='fa fa-times' onclick='deleteLecture(this)'></i>&nbsp;";
     lectureHTML += "<i class='fa fa-edit'></i></div></li>";
     whereToAddLecture.innerHTML += lectureHTML;
     hideModal("add-lecture-modal");
@@ -82,4 +81,8 @@ function addLecture(obj) {
 // delete chapter
 function deleteChapter(obj) {
     $(obj).parent().parent().parent().remove();
+}
+//delete lecture
+function deleteLecture(obj) {
+    $(obj).parent().parent().remove();
 }
