@@ -146,7 +146,7 @@ function courseJSON() {
         var lecObj = {};
         var lectureChilds = [];
         for (var j = 0; j < lectures.length; j++) {
-            lectureChilds = lectures[i].children;
+            lectureChilds = lectures[j].children;
             lecObj.title = lectureChilds[0].innerHTML;
             lecObj.type = lectureChilds[1].innerHTML;
             lecObj.description = lectureChilds[2].innerHTML;
@@ -158,5 +158,8 @@ function courseJSON() {
     }
     return JSON.stringify(chaptersArray);
 }
-
-console.log(courseJSON());
+// add courses JSON to the add course form
+function addJSONtoForm() {
+    document.getElementById("courseJSON").value = courseJSON();
+    console.log(courseJSON());
+}

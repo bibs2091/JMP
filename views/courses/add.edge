@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <form action="/courses/add" class="add-course-container">
+        <form action="/courses/add" method="POST" class="add-course-container" onsubmit="addJSONtoForm()">
             <div class="row">
                 <div class="col-md-7">
                     <img src="/img/upload-course-cover.png" alt="upload a cover image" 
                         id="upload-course-cover" onclick="triggerInput('course-cover-input')">
-                    <input type="file" accept="image/*" name="course-cover" id="course-cover-input" style="display:none" >
+                    <input type="file" accept="image/*" id="course-cover-input" style="display:none" >
                     <ul id="chapters-list">
                         <li>
                             <div class="chapter-title">
@@ -75,7 +75,8 @@
                         </p>
                         <input type="text" class="form-control" name="tags">
                     </div>
-                    <input type="submit" class="btn" value="Save Changes">
+                    <input type="text" name="courseJSON" id="courseJSON" style="display:none">
+                    <input class="btn" type="submit" value="Save Changes">
                 </div>
             </div>
         </form>

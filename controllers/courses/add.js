@@ -1,3 +1,4 @@
 module.exports = (req, res) => {
-    res.send("add course");
+    console.log(req.body.courseJSON);
+    res.redirect("/courses/add")
 }
