@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <form action="/courses/add" method="POST" class="add-course-container" onsubmit="addJSONtoForm()">
+        <form action="/courses/add" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm()">
             <div class="row">
                 <div class="col-md-7">
                     <img src="/img/upload-course-cover.png" alt="upload a cover image" 
                         id="upload-course-cover" onclick="triggerInput('course-cover-input')">
-                    <input type="file" accept="image/*" id="course-cover-input" style="display:none" >
+                    <input type="file" name="cover" accept="image/*" id="course-cover-input" style="display:none" required>
                     <ul id="chapters-list">
                         <li>
                             <div class="chapter-title">
@@ -44,28 +44,28 @@
                     <hr>
                     <div class="form-group">
                         <label for="course-title" class="customized-label">Course title</label>
-                        <input type="text" class="form-control" name="title" id="course-title">
+                        <input type="text" class="form-control" name="title" id="course-title" required>
                     </div>
                     <div class="form-group">
                         <label for="course-description" class="customized-label">Course description</label>
                         <p style="font-size: 11px;margin-bottom:7px;">
                             In your course description, we recommend providing information about the content of the course and how students will benefit from that content.
                         </p>
-                        <textarea name="description" id="course-description" rows="4" class="form-control"></textarea>
+                        <textarea name="description" id="course-description" rows="4" class="form-control" required></textarea>
                     </div>
                     <div class="form-group">
                         <label class="customized-label">Course's category</label>
-                        <select class="form-control">
-                            <option value="web" name="category">web</option>
-                            <option value="design" name="category">design</option>
+                        <select class="form-control" name="category" required>
+                            <option value=1>cateogy1</option>
+                            <option value=2>category2</option>
                         </select> 
                     </div>
                     <div class="form-group">
                         <label class="customized-label">Course's level</label>
-                        <select class="form-control">
-                            <option value="web" name="level">Beginner</option>
-                            <option value="design" name="level">Intermediat</option>
-                            <option value="design" name="level">Advanced</option>
+                        <select class="form-control" name="level" required>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediat">Intermediat</option>
+                            <option value="advanced">Advanced</option>
                         </select> 
                     </div>
                     <div class="form-group">
