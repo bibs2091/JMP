@@ -3,11 +3,11 @@ const db = require("../config/database");
 
 const Chapters = db.define("Chapters", {
     title: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     formation: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
     }
 });
