@@ -12,7 +12,7 @@ passport.serializeUser((user, done) => {
 //search for the user using the id served by the cookie
 passport.deserializeUser((id, done) => {
 	User.findByPk(id).then(user => {
-		done(null, user);
+		done(null, user.dataValues);
 	});
 });
 
