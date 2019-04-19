@@ -1282,12 +1282,93 @@ input[name="lastName"]{
    #instructorInfos div p{
       text-align: center;
    }
+
+
+
+/* ------------------event card-------------- */
+.event_card{
+   margin:50px;
+   width: 540px;
+   height: 220px;
+   border: 1px solid #EAEBED;
+   display: table;
+   background: #fff;
+   border-radius: 7px;
+   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.event_card:hover{
+   box-shadow: 0 14px 28px rgba(0,0,0,0.17), 0 10px 10px rgba(0,0,0,0.20);
+
+}
+.event_card img{
+   width: 183px;
+   height:  100%;
+   display: inline;
+   display: table-cell;
+}
+.event_card div{
+   display: table-cell;
+   vertical-align: top;
+
+
+}
+.event_card h3{
+   font-family: Poppins;
+   font-weight: 600;
+   font-size: 20px;
+   padding-left:13px;
+   padding-top: 17px; 
+   
+}
+.event_card time{
+   color: #FFD32A;
+   font-family: Poppins;
+   font-weight: 600;
+   font-size: 18px; 
+   display: inline-block;
+   padding-left: 17px;
 }
 
-
-
-
-
+.event_card time span{
+   display: block;
+   color:black;
+   text-align: center;
+}
+.eventCard_place{
+   font-family: Poppins;
+   font-weight: 500;
+   font-size: 13px;
+   vertical-align: top;
+   color: #696969;
+   padding-left:8px;
+}
+.eventCard_placesLeft{
+   font-family: Poppins;
+   font-weight: 500;
+   font-size: 13px;
+   vertical-align: baseline;
+   color: #696969;
+   padding-left:8px;
+}
+.event_card hr{
+   width:340px;
+}
+.event_card h6{
+   padding-left: 17px;
+   font-family: Poppins;
+   font-weight: 600;
+   font-size: 13px;
+   color: #000000;
+}
+.eventCard_details{
+   padding-top: 7px;
+   padding-left: 18px;
+   padding-right: 18px;
+   font-family: Poppins;
+   font-size: 13px;
+   color: #696969;
+}
 
 /* for xl screens --------keep it in the bottom of the file-------- */ 
 @media (max-width:1140px){
