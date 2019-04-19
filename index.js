@@ -2,8 +2,8 @@
 const express = require("express");
 const expressEdge = require("express-edge");
 const bodyParser = require("body-parser");
-const expressValidator = require('express-validator');
-const flash = require('connect-flash');
+const expressValidator = require("express-validator");
+const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const fileUpload = require("express-fileupload");
@@ -46,6 +46,7 @@ db.authenticate()
 	.catch(error => {
 		console.log(error.message);
 	});
+
 //synchronize database
 db.sync({ forced: true }).then(() => {
 	console.log("database synchronized ");
@@ -75,7 +76,7 @@ app.use(
 		secret: SESS_SECRET,
 		saveUninitialized: false, // dont store the new sessions with no data
 		cookie: {
-			maxAge: SESS_LifeTime,
+			// maxAge: SESS_LifeTime,
 			sameSite: true, // protect against csrf
 			secure: IN_PROD,
 		},

@@ -11,7 +11,7 @@ const Users = db.define("Users", {
 		type: Sequelize.STRING,
 		allowNull: false,
 	},
-	groudId: {
+	groupId: {
 		type: Sequelize.INTEGER,
 		allowNull: false,
 		defaultValue: 3,
