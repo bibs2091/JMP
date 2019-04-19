@@ -163,3 +163,14 @@ function addJSONtoForm() {
     let json = courseJSON();
     document.getElementById("courseJSON").value = json;
 }
+//Delete Course by id
+function deleteCourse(id) {
+    $.ajax({
+        url: '/courses/delete/' + id,
+        method: 'DELETE',
+        contentType: 'application/json',
+        success: function (result) {
+            location.replace("/coach/courses");
+        }
+    });
+}
