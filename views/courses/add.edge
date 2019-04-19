@@ -7,7 +7,8 @@
                 <div class="col-md-7">
                     <img src="/img/upload-course-cover.png" alt="upload a cover image" 
                         id="upload-course-cover" onclick="triggerInput('course-cover-input')">
-                    <input type="file" name="cover" accept="image/*" id="course-cover-input" style="display:none" required>
+                    <input type="file" name="cover" accept="image/*" id="course-cover-input" 
+                        style="display:none" onchange="loadImage(event,'upload-course-cover')" required>
                     <ul id="chapters-list">
                         <li>
                             <div class="chapter-title">
