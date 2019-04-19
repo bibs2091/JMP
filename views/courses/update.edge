@@ -1,14 +1,14 @@
 @layout('layouts.main')
-
+ 
 @section('content')
     <div class="container">
-        <form action="/courses/add" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm()">
+        <form action="/courses/update/{{course.id}}" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm()">
             <div class="row">
                 <div class="col-md-7">
                     <img src="{{course.cover}}" alt="upload a cover image" 
                         id="upload-course-cover" onclick="triggerInput('course-cover-input')">
                     <input type="file" name="cover" accept="image/*" id="course-cover-input" 
-                        style="display:none" onchange="loadImage(event,'upload-course-cover')" required>
+                        style="display:none" onchange="loadImage(event,'upload-course-cover')">
                     <ul id="chapters-list">
                         @each(chapter in chaptersList)
                         <li>

@@ -162,6 +162,7 @@ function courseJSON() {
 function addJSONtoForm() {
     let json = courseJSON();
     document.getElementById("courseJSON").value = json;
+    console.log(json);
 }
 //Delete Course by id
 function deleteCourse(id) {
