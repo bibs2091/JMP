@@ -20,10 +20,17 @@ router.get("/login", (req, res) => {
 router.post(
 	"/login",
 	passport.authenticate("local", {
-		successRedirect: "/home",
 		failureRedirect: "/auth/login",
-		failureFlash: true
-	})
+		failureFlash: true,
+	}),
+	(req, res) => {
+		if ((req.body.rememberMe = "on")) {
+			req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 30; // one month
+		} else {
+			req.session.cookie.expires = false; // cookie exprires at the end of the sess
+		}
+		res.redirect("/home");
+	}
 );
 
 router.get("/logout", (req, res, next) => {
