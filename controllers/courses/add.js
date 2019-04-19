@@ -26,8 +26,8 @@ module.exports = async (req, res) => {
         });
         let chapterId = chapter.dataValues.id;
         var lectures = currentChapter.lectures;
-        var currentLecture = {};
         for (let j = 0; j < lectures.length; j++) {
+            var currentLecture = {};
             currentLecture = lectures[j];
             currentLecture.chapter = chapterId;
             let lecture = await Lectures.create(currentLecture);

@@ -15,4 +15,5 @@ router.get("/add", (req, res) => {
 })
 
 router.get("/:id", courseDetailsController);
+
 module.exports = router;

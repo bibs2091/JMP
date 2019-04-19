@@ -138,14 +138,14 @@ function courseJSON() {
     var chaptersList = document.getElementById("chapters-list");
     var chapters = chaptersList.children;
     var chaptersArray = [];
-    var obj = {};
     for (var i = 0; i < chapters.length; i++) {
+        var obj = {};
         obj.title = chapters[i].firstElementChild.firstElementChild.innerHTML;
         var lecturesArray = [];
         var lectures = chapters[i].getElementsByClassName("lecture");
-        var lecObj = {};
         var lectureChilds = [];
         for (var j = 0; j < lectures.length; j++) {
+            var lecObj = {};
             lectureChilds = lectures[j].children;
             lecObj.title = lectureChilds[0].innerHTML;
             lecObj.type = lectureChilds[1].innerHTML;
@@ -160,6 +160,6 @@ function courseJSON() {
 }
 // add courses JSON to the add course form
 function addJSONtoForm() {
-    document.getElementById("courseJSON").value = courseJSON();
-    console.log(courseJSON());
+    let json = courseJSON();
+    document.getElementById("courseJSON").value = json;
 }

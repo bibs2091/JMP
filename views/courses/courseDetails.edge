@@ -4,8 +4,8 @@
 
 
 <div style="margin-left:-25px;">
-  <div id="coverImage">
-    <h1>Nodejs essential training : the complete path to master nodejs</h1>
+  <div id="coverImage" style="background: url({{course.cover}}) no-repeat;">
+    <h1>{{course.title}}</h1>
     <div id="imgTags">
       <span>javascript</span>
       <span>nodejs</span>
@@ -15,10 +15,7 @@
     <div class="row">
       <div class="col-md-7 courseDescription">
         <h3>Description</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-           Doloribus tempore obcaecati ab saepe iure numquam iusto magnam magni nisi,
-           dolores illum sequi, repudiandae facilis officia esse possimus reprehenderit 
-           molestias eaque dolorum natus libero inventore mollitia.</p>
+        <p>{{course.description}}</p>
       </div>
       <div class="col-md-5">
         <hr id="instructorsHR">
@@ -26,12 +23,12 @@
           <div class="row">
             <div class="col-xl-4">
                 <h3 id="instructorsTitle">Instructors</h3>
-                <img src="/img/ouss.jpg" alt="Course instructor"  id="instructorImg">
+                <img src="" alt="Course instructor"  id="instructorImg">
             </div>
             <div class="col-xl-8" id="instructorInfos">
                
               <div>
-                <h4>oussama azzaz</h4>
+                <h4>{{author.firstName}}&nbsp;{{author.lastName}}</h4>
                 <p>Full-stack web developer</p>
               </div>
             </div>
@@ -46,49 +43,25 @@
     <div class="row">
       <div class="col-md-7">
         <ul id="courseLessons_details"> 
-          <li>
-                <ul class="collapse-chapter">
-                  <li class="chapter">
-                    <div>
-                      <p>modules stuff and stuff</p>
-                      <i class="fas fa-plus expand_chaptre"></i>
-                    </div>
-                  </li>
-                </ul>
-                <ul>
-                    <li class="lesson">Introduction and course planning</li>
-                    <li class="lesson">Project overview</li>
-                    <li class="lesson">Using exercice files</li>
-                </ul>
-          </li>
-          <li>
-                <ul class="collapse-chapter">
-                  <li class="chapter">
-                    <div>
-                      <p>modules stuff and stuff</p>
-                      <i class="fas fa-plus expand_chaptre"></i>
-                    </div>
-                  </li>
-                </ul>
-                <ul>
-                  <li class="lesson">Understanding the core of nodejs</li>
-                  <li class="lesson">The file system module</li>
-                  <li class="lesson">the child process module</li>
-                </ul>
-          </li>
+          @each(chapter in chaptersList)
           <li>
               <ul class="collapse-chapter">
-                  <li class="chapter">
-                    <div>
-                      <p>Lorem, ipsum.</p>
-                      <i class="fas fa-plus expand_chaptre"></i>
-                    </div>
-                  </li>
-                </ul>
-              <ul>
-
+                <li class="chapter">
+                  <div>
+                    <p>{{chapter.title}}</p>
+                    <i class="fas fa-plus expand_chaptre"></i>
+                  </div>
+                </li>
               </ul>
-          </li>
+              <ul>
+                @each(lecture in chapter.lectures)
+                  <li class="lesson">{{lecture}}</li>
+                @endeach
+                  
+              </ul>
+        </li> 
+          @endeach
+          
 
       </ul>
       </div>
