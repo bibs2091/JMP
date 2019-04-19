@@ -12,6 +12,9 @@ module.exports = async (req, res) => {
     //save the cover image
     const { cover } = req.files;
     await cover.mv(__dirname + "/../../public/img/courses/" + courseId + ".jpg");
+    await Courses.update({ cover: "/img/courses/" + courseId + ".jpg" }, {
+        where: { id: courseId }
+    });
     //adding chapter
     var currentChapter = {};
     for (let i = 0; i < courseJSON.length; i++) {
