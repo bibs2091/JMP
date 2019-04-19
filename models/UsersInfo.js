@@ -12,11 +12,11 @@ const UsersInfo = db.define("UsersInfo", {
 	lastName: {
 		type: Sequelize.STRING,
 	},
-	userName: {
+	username: {
 		type: Sequelize.STRING,
 		allowNull: false,
 	},
-	numTéléphone: {
+	phone: {
 		type: Sequelize.STRING,
 	},
 	avatar: {
@@ -33,19 +33,19 @@ const UsersInfo = db.define("UsersInfo", {
 	skills: {
 		type: Sequelize.STRING,
 	},
-	lien_fcb: {
+	facebook: {
 		type: Sequelize.STRING,
 	},
-	lien_insta: {
+	instagram: {
 		type: Sequelize.STRING,
 	},
-	lien_twitter: {
+	twitter: {
 		type: Sequelize.STRING,
 	},
-	lien_github: {
+	github: {
 		type: Sequelize.STRING,
 	},
-	classement: {
+	rank: {
 		type: Sequelize.INTEGER,
 	},
 	lastLogin: {
