@@ -45,6 +45,8 @@ body{
     display: inline-block;
     margin: 1.5em 0 0 .5em;
     color: #141414;
+    position: fixed;
+    z-index: 1000;
  }
  
  .s-sidebar__nav {
@@ -186,12 +188,12 @@ body{
    }
    #container {
    }
-   nav h1{
+   #navbar h1{
       font-family: 'Popins', sans-serif;
       font-weight: bold;
       font-size: 22px;
       display: inline-block;
-      margin: 5px 0 0 40px;
+      margin: 5px 0 0 2vw;
    }
    #tocenter{
       float: right;
@@ -234,24 +236,22 @@ body{
    }
    
    
-   @media (max-width: 630px) {
+   @media (max-width: 672px) {
       #navbar{
          
       }
+   
       nav #profile-pic-nav {
          top: 15px;
          right: 0;
-         position: fixed;
       }
       nav .icon-bell{
          top: 17px;
          right: 60px;
-         position: fixed;
       }
       nav .icon-Message_notification{
          top: 15px;
          right: 100px;
-         position: fixed;
       }
       nav #search{
          display: none;
@@ -411,6 +411,30 @@ body{
    margin-top: 38px;
 
 }
+.fillingInfosBox .form-group img{
+   height: 17px;
+   width: 17px;
+   margin-bottom: -2px;
+   margin-left: 3px;
+
+}
+#profile{
+   height: 125px;
+   width: 125px;
+   border-radius: 50%;
+  
+   z-index: 2;
+   margin-top:-65px;
+   margin-left: 178px;
+
+}
+#change_profile{
+   height: 30px;
+   width: 30 px;
+   margin-bottom: 17px;
+   margin-left: -30px;
+   margin-top:10px;
+}
 
 
 
@@ -428,7 +452,7 @@ body{
 
 .fillingInfosBox #submit-form{
    margin-left:23px;
-   width: 90%;
+   width: 87%;
    background: #FFD32A;
    margin-top: 38px;
    height: 38px;
@@ -711,11 +735,20 @@ input[name="lastName"]{
 
    #profile_details p{
    text-align: center;
+   padding: 0px 40px 0 30px;
+   margin-bottom: 7px;
    }
-
+   .ellipsis {
+      margin-right: 35px;
+}
    .other-profile-info{
       margin-left: auto;
+      margin-right: auto; 
    }
+   .course-card{
+      margin: 15px auto;
+   }
+
 }
 
 
@@ -908,7 +941,34 @@ input[name="lastName"]{
    background: url("/img/cover-nodejs.jpg") no-repeat;
    background-size:100% 100%;
    display: block;
-   margin: 0 auto 50px auto;
+   margin: 0 auto 40px auto;
+   position: relative;
+   overflow: hidden;
+   margin-top: 20px;
+}
+#coverImage h1{
+   position: absolute;
+   padding: 55px 0 0 55px;
+   font-family: Poppins;
+   font-size: 30px;
+   font-weight: 500;
+   color: white;
+   width: 600px;
+}
+#coverImage #imgTags{
+   position: absolute;
+   bottom: 10px;
+   margin-left:20px; 
+}
+#coverImage #imgTags span{
+   font-family: Poppins,sans-serif;
+   width: 37px;
+   height: 18px;
+   background-color: #FFD32A;
+   color:black;
+   font-size: 9px;
+   padding: 5px;
+   border-radius: 3px;
 }
 .courseDescription h3{
    font-family: Poppins;
@@ -916,9 +976,13 @@ input[name="lastName"]{
    font-weight: 600;
 
 }
-
+#instructorsCard{
+   border-left: 1px solid black; 
+   width: 100%;
+   margin: 0;
+}
 .courseDescription p{
-   padding-top: 15px;
+   padding: 25px 2px 0 2px;
    font-family: Poppins;
 
 }
@@ -934,9 +998,402 @@ input[name="lastName"]{
    font-weight: 600;
 }
 
-
+#instructorsTitle{
+   margin-top: 15px;
+   font-size:18px; 
+   margin-bottom: 15px;
+   font-weight: 600;
+}
+#instructorsHR{
+   display: none;
+}
 #instructorImg{
-   height: 100px;
-   width: 100px;
+   height: 94px;
+   width: 94px;
    border-radius: 50%;
+   margin-bottom: 15px;
+}
+
+/* the cover image */ 
+@media (max-width: 1088px){
+   #coverImage h1{
+      padding: 3.5vw 0 0 3.5vw;
+      font-size: 2.5vw;
+      width:100%
+   }
+   #coverImage {
+      height: 23vw;
+   }
+  
+}
+@media (max-width: 500px){
+   #coverImage h1{
+      padding: 3vw 0 0 3vw;
+      font-size: 3.5vw
+   }
+   #coverImage {
+      height: 35vw;
+   }
+}
+            /*----*/
+#courseLessons_details{
+   margin-left: 5%;
+}
+.chapter{
+   width: 95%;
+   height: 60px;
+   background: #D2DAE2;
+   font-family: Poppins,sans-serif;
+   color: #1E272E;
+   font-weight: 500;
+   font-size: 22px;
+   display:table;
+   border-bottom: 1px solid #c3c3c3;  
+}
+
+.chapter:hover{
+   background: rgb(198, 205, 211);
+
+}
+
+.chapter div{
+   display:table-cell;
+   vertical-align:middle;  
+   position: relative;
+}
+.chapter div p{
+   text-align:center;
+}
+.chapter div i{
+   margin-left:15px;   
+   top: 50%;
+   transform: translateY(-50%);
+   position: absolute;
+   color:#474d51
+}
+
+.lesson{
+   width: 95%;
+   height: 45px;
+   background: #F5F5F5;
+   font-family: Poppins,sans-serif;
+   font-size: 17px;
+   display:flex;  
+   align-items:center;
+   padding-left: 20px;
+   border: 1px dashed #D2DAE2;
+}
+.lesson-no-collapse{
+   height: 0;
+   content: "";
+}
+
+#courseCardInfo{
+   width: 100%;
+   background: #f5f5f5;
+   border-radius: 8px;
+   padding: 20px 7px 0 0;
+}
+#startCourse{
+   width: 75%;
+   background: #4BCFFA;
+   font-family: Poppins;
+   border: none;
+   height: 60px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+#wishlistCourseDetails{
+   margin-top: 14px;
+   width: 75%;
+   height: 60px;
+   font-family: Poppins;
+   color: black;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+#courseCardInfo ul{
+   margin-top: 18px;
+   margin-left: 12%;
+}
+
+#courseCardInfo ul li{
+   margin:7px 0;
+   font-family: Poppins;
+   font-size: 18px;  
+}
+#courseCardInfo hr{
+   width:80%;
+}
+#courseCardInfo a{
+   display: inline-block;
+   font-weight: 600;
+   margin-top: 12px;
+   margin-bottom: 30px;
+}
+.collapse-chapter{
+   cursor: pointer;
+}
+@media(max-width: 765px) {
+   #coverImage{
+      margin-bottom: 17px;
+      margin-top: 17px;
+   }
+   #coverImage #imgTags span{
+      font-size: 8px;
+   }
+   .courseDescription h3{
+   }
+   .courseDescription p{
+      padding: 3px;
+   }
+   #courseLessons_details{
+      margin:15px 0;
+   }
+
+   #instructorsHR{
+      display: block;
+      border-top: 1px solid rgba(0, 0, 0, 0.3);
+   }
+   #instructorsCard{
+      width: 100%;
+      background: #ffffff;
+      border: none;
+   }
+   #instructorsTitle{
+      margin-top: 12px;
+      text-align: center;
+      font-size: 21px;
+
+   }
+}
+/* add course page */
+#upload-course-cover{
+   width: 100%;
+   height: 30vh;
+   cursor: pointer;
+}
+.add-course-container{
+   padding: 20px;
+   font-family: Poppins;
+}
+.add-course-container h2{
+   font-size: 22px;
+}
+.customized-label{
+   font-size: 19px;
+   margin-bottom: 8px;
+}
+.add-course-container input[type="submit"]{
+   background: #1DBF70;
+   width: 100%;
+   color: white;
+   font-size: 20px;
+}
+.add-course-container input[type="submit"]:hover{
+   opacity: 0.8;
+   transition: .3s;
+}
+#chapters-list{
+   margin-top: 60px;
+}
+#chapters-list li ul li, .chapter-title{
+   height: 62px;
+   text-align: center;
+   width: 100%;
+}
+.chapter-title{
+   background: #D2DAE2;
+   display: table;
+   position: relative;
+}
+.chapter-title h6{
+   display: table-cell;
+   vertical-align: middle;
+}
+#chapters-list, #chapters-list ul{
+   list-style: none;
+}
+.lecture{
+   background: #F5F5F5;  
+   display: table; 
+}
+.lecture h5{
+   display: table-cell; 
+   vertical-align: middle;
+}
+.chapter-title .tools{
+   position: absolute;
+   right: 5px;
+   height: 100%;
+   display: table; 
+}
+.chapter-title .tools i{
+   display: table-cell;
+   vertical-align: middle;
+   cursor: pointer; 
+}
+.lecture p, .lecture span, .lecture h6{
+   display: none;
+}
+.add-lecture, .add-chapter{
+   width: 100%;
+   height: 62px;
+   cursor: pointer;
+}
+.add-chapter{
+   margin-top: 10px;
+}
+.add-lecture img, .add-chapter img{
+   width: 100%;
+   height: 100%;
+}
+.lecture{
+   position: relative;
+}
+.lecture .tools{
+   position: absolute;
+   right: 5px;
+   height: 100%;
+   display: table;
+}
+.lecture .tools i{
+   display: table-cell;
+   vertical-align: middle;
+   margin-right: 5px;
+   cursor: pointer;
+}
+   #instructorImg{
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 7px;
+      display: block;
+   }
+   #instructorInfos div{
+      margin-left: auto;
+      margin-right: auto;
+   }
+   #instructorInfos div h4{
+      text-align: center;
+      margin-bottom: 5px;
+   }
+   #instructorInfos div p{
+      text-align: center;
+   }
+
+
+
+/* ------------------event card-------------- */
+.event_card{
+   margin:50px;
+   width: 540px;
+   height: 220px;
+   border: 1px solid #EAEBED;
+   display: table;
+   background: #fff;
+   border-radius: 7px;
+   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.event_card:hover{
+   box-shadow: 0 14px 28px rgba(0,0,0,0.17), 0 10px 10px rgba(0,0,0,0.20);
+
+}
+.event_card img{
+   width: 183px;
+   height:  100%;
+   display: inline;
+   display: table-cell;
+}
+.event_card div{
+   display: table-cell;
+   vertical-align: top;
+
+
+}
+.event_card h3{
+   font-family: Poppins;
+   font-weight: 600;
+   font-size: 20px;
+   padding-left:13px;
+   padding-top: 17px; 
+   
+}
+.event_card time{
+   color: #FFD32A;
+   font-family: Poppins;
+   font-weight: 600;
+   font-size: 18px; 
+   display: inline-block;
+   padding-left: 17px;
+}
+
+.event_card time span{
+   display: block;
+   color:black;
+   text-align: center;
+}
+.eventCard_place{
+   font-family: Poppins;
+   font-weight: 500;
+   font-size: 13px;
+   vertical-align: top;
+   color: #696969;
+   padding-left:8px;
+}
+.eventCard_placesLeft{
+   font-family: Poppins;
+   font-weight: 500;
+   font-size: 13px;
+   vertical-align: baseline;
+   color: #696969;
+   padding-left:8px;
+}
+.event_card hr{
+   width:340px;
+}
+.event_card h6{
+   padding-left: 17px;
+   font-family: Poppins;
+   font-weight: 600;
+   font-size: 13px;
+   color: #000000;
+}
+.eventCard_details{
+   padding-top: 7px;
+   padding-left: 18px;
+   padding-right: 18px;
+   font-family: Poppins;
+   font-size: 13px;
+   color: #696969;
+}
+
+/* for xl screens --------keep it in the bottom of the file-------- */ 
+@media (max-width:1140px){
+   #instructorsTitle{
+      margin-top: 12px;
+      text-align: center;
+      font-size: 21px;
+
+   }
+   #instructorImg{
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 7px;
+      display: block;
+   }
+   #instructorInfos{
+      padding: 0;
+      width: 100%;
+   }
+   #instructorInfos div{
+      margin-left: auto;
+      margin-right: auto;
+   }
+   #instructorInfos div h4,#instructorInfos div p{
+      text-align: center;
+      margin-bottom: 7px;
+   }
 }

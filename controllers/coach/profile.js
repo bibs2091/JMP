@@ -1,6 +1,6 @@
 module.exports = (req, res) => {
-    res.render("coach.profile", {
-        pageName: "My Profile",
-        pageTitle: "username"
+    res.render("coach.editProfile", {
+        pageName: "Edit Profile",
+        pageTitle: "Edit Profile"
     });
 };
