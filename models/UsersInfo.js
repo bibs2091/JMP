@@ -45,6 +45,9 @@ const UsersInfo = db.define("UsersInfo", {
 	github: {
 		type: Sequelize.STRING,
 	},
+	linkedin: {
+		type: Sequelize.STRING,
+	},
 	rank: {
 		type: Sequelize.INTEGER,
 	},
