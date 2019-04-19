@@ -1186,11 +1186,24 @@ input[name="lastName"]{
    font-size: 19px;
    margin-bottom: 8px;
 }
+.addLesson{
+   padding:0; 
+   width: 100%;
+   height: 47px!important;
+}
+.addLesson:hover{
+   font-size: 21px;
+   height: 52px!important;
+   background: rgb(238, 238, 238);
+   transition: 0.3s;
+}
 .add-course-container input[type="submit"]{
    background: #1DBF70;
    width: 100%;
    color: white;
    font-size: 20px;
+   margin-top: 10px;
+
 }
 .add-course-container input[type="submit"]:hover{
    opacity: 0.8;
@@ -1234,6 +1247,7 @@ input[name="lastName"]{
    display: table-cell;
    vertical-align: middle;
    cursor: pointer; 
+   padding-right:5px;
 }
 .lecture p, .lecture span, .lecture h6{
    display: none;
@@ -1262,7 +1276,7 @@ input[name="lastName"]{
 .lecture .tools i{
    display: table-cell;
    vertical-align: middle;
-   margin-right: 5px;
+   padding-right: 5px;
    cursor: pointer;
 }
    #instructorImg{
@@ -1282,7 +1296,88 @@ input[name="lastName"]{
    #instructorInfos div p{
       text-align: center;
    }
+ /* ---- add tag ---- */
+ #tags{
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   border: 1px solid #ced4da;
+   border-radius: .25rem;
+   width: 100%;
+   background: #fff;
+   margin: auto;
+   padding-top: 3px;
+   padding-bottom: 3px;
 
+ }
+
+ #tag-typer{
+   outline: none;
+   border: none;
+   padding: 6px;
+   padding-left: 15px;
+   margin-right: -25px;
+   width: 100px;
+   background-color: transparent;
+   font-size: 14px;
+   color: #333;
+ }
+ 
+ .tag{
+   display: inline-block;
+   background: #FFD32A;
+   border-radius: 3px;
+   color: #000;
+   padding: 3px 16px;
+   margin:2px 2px 2px 12px;
+   font-family: Poppins;
+   position: relative;
+   cursor: default;
+ }
+ 
+
+ 
+ .tag:after{
+   content: "";
+   width: 6px;
+   height: 6px;
+   -webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+   border-radius: 3px;
+   background: #FFF;
+   position: absolute;
+   left: 4px;
+   top: 8px;
+   box-shadow:inset 1px 1px 0 #CCC;
+ }
+ 
+ .tag .close{
+   position: absolute;
+   left: 2px;
+   top: 0;
+   z-index: 3;
+   visibility: hidden;
+ }
+ 
+ .tag:hover .close{
+   visibility: visible;
+   
+ }
+ 
+ .close:hover {
+   color: rgba(0,0,0,1);
+ }
+   @media(max-width: 765px) {
+      #upload-course-cover{
+         height: 21vh;
+      }
+      .add-course-container {
+         padding: 0;
+      }
+      #chapters-list{
+         margin-top: 30px;
+      }
+   
+   }
 
 
 /* ------------------event card-------------- */
@@ -1370,6 +1465,10 @@ input[name="lastName"]{
    color: #696969;
 }
 
+
+ 
+ 
+ 
 /* for xl screens --------keep it in the bottom of the file-------- */ 
 @media (max-width:1140px){
    #instructorsTitle{
