@@ -4,6 +4,8 @@ const router = express.Router();
 //require controllers
 const addController = require("../controllers/courses/add");
 const courseDetailsController = require("../controllers/courses/courseDetails");
+const updatePageController = require("../controllers/courses/updatePage");
+const updateController = require("../controllers/courses/update");
 
 //handling requests 
 router.post("/add", addController);
@@ -15,5 +17,7 @@ router.get("/add", (req, res) => {
 })
 
 router.get("/:id", courseDetailsController);
+router.get("/update/:id", updatePageController);
+router.post("/update/:id", updateController);
 
 module.exports = router;
