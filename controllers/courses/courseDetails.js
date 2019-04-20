@@ -6,6 +6,9 @@ const UsersInfo = require("../../models/UsersInfo");
 module.exports = async (req, res) => {
     var courseId = req.params.id;
     var course = await Courses.findByPk(courseId);
+    if (!course) {
+        return res.redirect("/404");
+    }
     var author = await UsersInfo.findOne({ where: { userId: course.author } });
     var chaptersList = [];
     var chaps = await Chapters.findAll({ where: { formation: courseId } });
