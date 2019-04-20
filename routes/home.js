@@ -16,4 +16,8 @@ router.get("/home", (req, res) => {
 router.get("/profile/user/:id", userProfileController);
 router.get("/profile/coach/:id", coachProfileController);
 
+router.get("/404", (req, res) => {
+	res.render("404");
+});
+
 module.exports = router;
