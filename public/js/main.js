@@ -1,3 +1,4 @@
+var currentUser;
 var whereToAddLecture = {};
 var chapterToEdit = {};
 var lectureToEdit = {};
@@ -172,6 +173,17 @@ function deleteCourse(id) {
         contentType: 'application/json',
         success: function (result) {
             location.replace("/coach/courses");
+        }
+    });
+}
+//get current user
+function getCurrentUser() {
+    $.ajax({
+        url: '/getuser',
+        method: 'GET',
+        contentType: 'application/json',
+        success: function (result) {
+            currentUser = result.id;
         }
     });
 }
