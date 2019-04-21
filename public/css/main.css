@@ -405,6 +405,10 @@ body{
    width: 90%;
    margin-left:  5px;
 }
+.fillingInfosBox .form-group textarea{
+   width: 90%;
+   margin-left:  5px;
+}
 
 .fillingInfosBox .form-check{
    margin-left:23px;
