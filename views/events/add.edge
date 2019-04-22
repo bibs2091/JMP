@@ -1,5 +1,72 @@
 @layout('layouts.main')
 
 @section('content')
-  <h1>add event page</h1>
+
+
+<div style="margin-left:-25px;">
+  <div img src="/images/avatar.jpg" id="coverImage">
+    <h1>{{course.title}}</h1>
+    
+  </div>
+  <div class="container" style="padding-left:4vw;">
+    <div class="row">
+      <div class="col-md-7 courseDescription">
+        <h3>Description</h3>
+        <p>{{course.description}}</p>
+      </div>
+     
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contain" style="margin-top:30px;">
+    <div class="row">
+      <div class="col-md-7">
+        <ul id="courseLessons_details"> 
+          @each(chapter in chaptersList)
+          <li>
+              <ul class="collapse-chapter">
+                <li class="chapter">
+                  <div>
+                    <p>{{chapter.title}}</p>
+                    <i class="fas fa-plus expand_chaptre"></i>
+                  </div>
+                </li>
+              </ul>
+              <ul>
+                @each(lecture in chapter.lectures)
+                  <li class="lesson">{{lecture}}</li>
+                @endeach
+                  
+              </ul>
+        </li> 
+          @endeach
+          
+
+      </ul>
+      </div>
+      <div class="col-md-5">
+        <div id="courseCardInfo">
+          <button  type="button" class="btn btn-primary" id="startCourse">Starts Course</button>
+          <button  type="button" class="btn btn-outline-secondary" id="wishlistCourseDetails">Wishlist <i class="far fa-heart"></i></button>
+          <ul>
+            <li>This course includes</li>
+            <li><i class="far fa-clock"></i> &nbsp;2 h 45 min of content</li>
+            <li><i class="fas fa-clipboard-list"></i> &nbsp; 15 quizzes</li>
+            <li><i class="fas fa-rocket"></i> &nbsp;5 projects</li>
+            <li><i class="fab fa-readme"></i>&nbsp; 7 reading materials</li>
+            <li><i class="fas fa-mobile-alt"></i> &nbsp;&nbsp; Full access from any device</li>
+          </ul>
+          <hr>
+          <center><a href=""><i class="fas fa-share"></i> &nbsp;&nbsp; Share this course</a></center>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+
 @endsection

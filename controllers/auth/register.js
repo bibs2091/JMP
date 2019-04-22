@@ -98,7 +98,7 @@ module.exports = async (req, res) => {
 						//flashing a success msg for later use 
 						req.flash('success', ' You now registred and can login');
 						//mba3da nriglouha
-						res.redirect("/");
+						res.render("auth.after_register");
 					}
 				});
 			});
