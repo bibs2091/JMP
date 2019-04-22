@@ -18,6 +18,6 @@ const isAuthenticated = (req, res, next) => {
 
 //handling requests
 router.get("/home", homeController);
-router.get("/editprofile", editProfileController);
+router.get("/editprofile", editProfileController); // FIXME: add isAuth middleware
 
 module.exports = router;
