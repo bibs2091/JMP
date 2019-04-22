@@ -1,5 +1,64 @@
 @layout('layouts.main')
 
 @section('content')
-  <h1>add event page</h1>
+<form class="add-event-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <img src="/img/upload-course-cover.png" alt="upload a cover image" 
+                          id="upload-event-cover" onclick="triggerInput('course-cover-input')">
+        <input type="file" name="cover" accept="image/*" id="course-cover-input" 
+                          style="display:none" onchange="loadImage(event,'upload-course-cover')" required>
+      </div>
+      <div class="col-md-5">
+        <h2 style="font-size:22px;">Event information</h2>
+        <hr>
+        <div class="form-group">
+            <label for="event-title" class="customized-label">Event title</label>
+            <input type="text" class="form-control" name="title" id="event-title" required>
+        </div>
+        <div class="form-group">
+            <label for="event-description" class="customized-label">Event description</label>
+            <p style="font-size: 11px;margin-bottom:7px;">
+                In your Event description, we recommend providing information about the content of the Event and how students will benefit from that content.
+            </p>
+            <textarea name="description" id="event-description" rows="4" class="form-control" required></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h3>Details</h3>
+        <div class="form-group">
+          <label for="event-date" class="customized-label"><i class="far fa-calendar"></i>&nbsp; Date</label>
+          <input type="text" class="form-control" name="title" id="event-date" required>
+        </div>
+        <div class="form-group">
+          <label for="event-time" class="customized-label"><i class="fas fa-clock"></i>&nbsp; Time</label>
+          <input type="text" class="form-control" name="title" id="event-time" required>
+        </div>
+        <div class="form-group">
+          <label for="event-location" class="customized-label"><i class="fas fa-map-marker-alt"></i>&nbsp; Location</label>
+          <textarea name="description" id="event-location" rows="4" class="form-control" required></textarea>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <h3>Sponsors<i class="fas fa-plus" id="plus_sponsor"></i></h3>
+        <div class="add_sponsor">
+          <div>
+            <span>Name</span>
+            <input type="text" class="form-control sponsorNameInput"  name="title" id="sponsorName">
+          </div>
+          <div>
+            <span>Logo</span>
+            <button type="button" class="btn btn-secondary uploadPicSponsor">Upload photo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
 @endsection
