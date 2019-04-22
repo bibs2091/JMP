@@ -6,8 +6,11 @@ const addController = require("../controllers/events/add");
 
 //handling requests 
 router.post("/add", addController);
-router.get("/add", (req, res) => {
-    res.render("events.add");
+router.get("/add",(req, res) =>{
+    res.render("events.add")
+})
+router.get("/:id", (req, res) => {
+    res.render("events.event");
 })
 
 module.exports = router;
