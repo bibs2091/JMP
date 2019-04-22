@@ -12,6 +12,7 @@
 <div class="container-fluid profile_container">
   <div class="row">
     <div class="col-md-2">
+      
       <img src="/images/avatar.jpg" alt="avatar" id="profile-pic">
     </div>
     <div class="col-md-7" id="profile_details">
@@ -55,7 +56,14 @@
   <div class="profile-stat">   
   </div>
   <div class="profile-stat">
-    <p>Ranking<br>8</p>
+    <p>Ranking<br>
+      @if(rank)
+        {{rank}}
+      @else 
+        Unranked
+      @endif
+      
+    </p>
   </div>
   <div class="profile-stat">
     <p>Courses enrolled in<br>8</p>
@@ -153,7 +161,11 @@
         </div>
   </div>
   <div class="profile-tab" id="profile-skills">
-    Skills
+    @each(item in skills)
+      <li>item</li>
+    @else
+      Skills
+    @endeach
   </div>
   <div class="profile-tab" id="profile-7ajahak">
     7ajahak
