@@ -1403,6 +1403,16 @@ input[name="lastName"]{
    box-shadow: 0 14px 28px rgba(0,0,0,0.17), 0 10px 10px rgba(0,0,0,0.20);
 
 }
+.Description p {
+   padding: 25px 40px 0 2px;
+   font-family: Poppins;
+}
+.Description h3{
+   font-family: Poppins;
+   font-size: 22px;
+   font-weight: 600;
+
+}
 .event_card img{
    width: 183px;
    height:  100%;
@@ -1472,18 +1482,54 @@ input[name="lastName"]{
    color: #696969;
 }
 
+#event-pic{
+   margin-top: 29px;
+  margin-bottom: 787px;
+  margin-right: 73px;
+  margin-left: 84px;
+}
+#eventCardInfo{
+   width: 100%;
+   height: 170px;
+   background: #ffffff;
+   border-radius: 8px;
+   padding: 26px 17px 0 0;
+   margin-top: -235px;
+   margin-left: 90px;
+}
 
- 
- 
- 
+#register-boutton{
+   width: 50%;
+   background: #4BCFFA;
+   font-family: Poppins;
+   border: none;
+   height: 35px;
+   display: block;
+   margin-left: 8px;
+   margin-right: auto;
+}
+#detailstatle {
+   font-family: Poppins;
+   font-size: 22px;
+   font-weight: 600;
+}
+ #sponsors-pic{
+   style:"list-style-type:none";
+   width:150px ;
+   height:150px;
+   float:right;
+   margin: 0 auto;
+   padding:50px;
+   margin-left:auto;
+   margin-right:auto;
+   
+ }
+
+ #sponsors-pic-ul{
+    margin-left:auto;margin-right:auto;
+ }
 /* for xl screens --------keep it in the bottom of the file-------- */ 
 @media (max-width:1140px){
-   #instructorsTitle{
-      margin-top: 12px;
-      text-align: center;
-      font-size: 21px;
-
-   }
    #instructorImg{
       margin-left: auto;
       margin-right: auto;
