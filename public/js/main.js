@@ -1,3 +1,4 @@
+var currentUser;
 var whereToAddLecture = {};
 var chapterToEdit = {};
 var lectureToEdit = {};
@@ -53,7 +54,7 @@ function deleteCategory(id) {
 function addChapter(obj) {
     var title = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
     var chapterHTML = "<li>";
-    chapterHTML += "<div class='chapter-title'><h6>" + title + "</h6><div class='tools'><i class='fa fa-times' onclick='deleteChapter(this)'></i>&nbsp;<i class='fa fa-edit' onclick='showEditChapterModal(this)'></i></div>";
+    chapterHTML += "<div class='chapter-title'><h6>" + title + "</h6><div class='tools'><i class='far fa-trash-alt' onclick='deleteChapter(this)'></i>&nbsp;<i class='far fa-edit' onclick='showEditChapterModal(this)'></i></div>";
     chapterHTML += "</div><ul class='lectures'></ul><div class='add-lecture' onclick='showAddLectureModal(this)'><img src='/img/add_lecture.png'></div></li>";
     document.getElementById("chapters-list").innerHTML += chapterHTML;
     hideModal("add-chapter-modal");
@@ -75,8 +76,8 @@ function addLecture(obj) {
     var lectureHTML = "<li class='lecture'>";
     lectureHTML += "<h5>" + title + "</h5><span>" + type + "</span>";
     lectureHTML += "<p>" + description + "</p><h6>" + link + "</h6>";
-    lectureHTML += "<div class='tools'><i class='fa fa-times' onclick='deleteLecture(this)'></i>&nbsp;";
-    lectureHTML += "<i class='fa fa-edit' onclick='showEditLectureModal(this)'></i></div></li>";
+    lectureHTML += "<div class='tools'><i class='far fa-trash-alt' onclick='deleteLecture(this)'></i>&nbsp;";
+    lectureHTML += "<i class='far fa-edit' onclick='showEditLectureModal(this)'></i></div></li>";
     whereToAddLecture.innerHTML += lectureHTML;
     hideModal("add-lecture-modal");
 }
@@ -172,6 +173,17 @@ function deleteCourse(id) {
         contentType: 'application/json',
         success: function (result) {
             location.replace("/coach/courses");
+        }
+    });
+}
+//get current user
+function getCurrentUser() {
+    $.ajax({
+        url: '/getuser',
+        method: 'GET',
+        contentType: 'application/json',
+        success: function (result) {
+            currentUser = result.id;
         }
     });
 }

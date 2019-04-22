@@ -113,7 +113,7 @@ app.use("/", home);
 app.use("/events", events);
 app.use("/courses", courses);
 app.get("*", (req, res) => {
-	res.redirect("/404");
+	res.render("404");
 });
 //listen to requests
 const port = 3000 || process.env.PORT;
