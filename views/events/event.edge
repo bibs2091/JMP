@@ -1,0 +1,82 @@
+@layout('layouts.main')
+
+@section('content')
+<div  style="margin-left-25px;">
+  <div>
+    <img src="/images/cover-nodejs" alt="Event picture"  id="coverImage">
+  </div>
+</div>
+<div class="container" style="padding-left:4vw;">
+        <div class="row">
+          <div class="col-md-7 Description">
+            <h3>Description</h3>
+            <p>Arduino Setup, un évènement exceptionnel qui pemettra aux plus novices d'entre vous de devenir connaisseurs en Arduino.
+                    Pendant 2 jours, une équipe entière d'electroniciens, membres d'OpenMinds Club, sera mise à votre disposition, pour vous coacher, vous faire découvrir le monde de l’OpenHardware et vous aider à réaliser vos projets Arduino en équipe.
+                    
+                    Vous voulez y participer ? 
+                    Restez branchés ! Les inscriptions seront ouvertes dès demain soir </p>
+          </div>
+        <div class="row">
+            <div class="col-xl-4">
+            <h3 id="detailstatle">Details</h3>
+            </div>
+        </div>
+          </div>
+        </div>
+      </div>
+<div class="contain" style="margin-top:30px;">
+        <div class="row">
+          <div class="col-md-7">
+            <ul id="courseLessons_details"> 
+              @each(chapter in chaptersList)
+              <li>
+                  <ul class="collapse-chapter">
+                    <li class="chapter">
+                      <div>
+                        <p>{{chapter.title}}</p>
+                        <i class="fas fa-plus expand_chaptre"></i>
+                      </div>
+                    </li>
+                  </ul>
+                  <ul>
+                    @each(lecture in chapter.lectures)
+                      <li class="lesson">{{lecture}}</li>
+                    @endeach
+                      
+                  </ul>
+            </li> 
+              @endeach
+              
+    
+          </ul>
+          </div>
+          <div class="col-md-5">
+            <div id="eventCardInfo">
+              <ul>
+                <li></li>
+                <li> <i class="far fa-calendar-alt"></i> &nbsp; 19 july 2019</li>
+                <br>
+                <li><i class="fas fa-clock"></i> &nbsp; 10:00 AM </li>
+                <br>
+                <li><i class="fas fa-map-marker-alt"></i> &nbsp;City Naas bibliothèque centrale</li>
+                <br>
+              </ul>
+              <button  type="button" class="btn btn-primary" id="register-boutton">Register Now</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+    <div>
+        <nav>
+                 <ul id ="sponsors-pic-ul">
+                    <li ><img src="/images/gsh.jpg" id ="sponsors-pic"></li>
+                    <li><img src="/images/mobilis.png" id ="sponsors-pic"></li>
+                    <li><img src="/images/Sonatrach.png" id ="sponsors-pic"></li>
+                    <li><img src="/images/microsoft.png" id ="sponsors-pic"></li>
+                  </ul>  
+        </nav>          
+
+    </div>
+@endsection
+
