@@ -53,4 +53,10 @@ router.get("/register", (req, res) => {
 
 router.post("/register", registerController);
 
+
+// for development :
+router.get("/postregister",(req,res)=>{
+	res.render("auth.after_register")
+})
+
 module.exports = router;
