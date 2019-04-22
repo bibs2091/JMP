@@ -36,3 +36,15 @@ $(document).ready(function () {
   });
 
 });
+
+
+
+// ----------- add sponsor ------------
+var countSP=0;
+$(document).ready(function(){
+  $("#plus_sponsor").click(function(){
+    countSP=countSP + 1;
+    if (countSP <4){
+    $("#submit-form-sponsor").before("<div class='add_sponsor'><div><span>Name</span><input type='text' class='form-control sponsorNameInput'  name='title' id='sponsorName'></div><div><span>Logo</span><button type='button' class='btn btn-secondary uploadPicSponsor'>Upload photo</button></div></div>");
+  }});
+});

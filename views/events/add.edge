@@ -34,19 +34,19 @@
         <h3>Details</h3>
         <div class="form-group">
           <label for="event-date" class="customized-label"><i class="far fa-calendar"></i>&nbsp; Date</label>
-          <input type="text" class="form-control" name="title" id="event-date" required>
+          <input type="date" class="form-control" name="title" id="event-date" required>
         </div>
         <div class="form-group">
           <label for="event-time" class="customized-label"><i class="fas fa-clock"></i>&nbsp; Time</label>
-          <input type="text" class="form-control" name="title" id="event-time" required>
+          <input type="time" class="form-control" name="title" id="event-time" required>
         </div>
         <div class="form-group">
           <label for="event-location" class="customized-label"><i class="fas fa-map-marker-alt"></i>&nbsp; Location</label>
           <textarea name="description" id="event-location" rows="4" class="form-control" required></textarea>
         </div>
       </div>
-      <div class="col-md-5">
-        <h3>Sponsors<i class="fas fa-plus" id="plus_sponsor"></i></h3>
+      <div class="col-md-5" id="sponsorsToAdd">
+        <h3>Sponsors<i class="fas fa-plus"  title="add sponsor" id="plus_sponsor"></i></h3>
         <div class="add_sponsor">
           <div>
             <span>Name</span>
@@ -57,6 +57,7 @@
             <button type="button" class="btn btn-secondary uploadPicSponsor">Upload photo</button>
           </div>
         </div>
+        <input type="submit" value="Add event" class="btn btn-success" id="submit-form-sponsor">
       </div>
     </div>
   </div>

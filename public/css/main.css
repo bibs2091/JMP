@@ -1496,6 +1496,11 @@ input[name="lastName"]{
    margin: 29px 0;
 }
 
+.add_sponsor{
+   display: none;
+   transition: 0.5s;
+   display: block;
+}
 .add_sponsor span{
    display: inline;
 }
@@ -1519,9 +1524,19 @@ input[name="lastName"]{
    width: 70%;
    margin-left: 20px;
 }
-#plus_sponsor{
+#plus_sponsor {
    float: right;
-   margin-top: 2px;
+}
+#plus_sponsor:hover{
+   transition: 1s;
+   -ms-transform: rotate(180deg); /* IE 9 */
+   -webkit-transform: rotate(180deg); /* Safari 3-8 */
+   transform: rotate(180deg);
+}
+#sponsorsToAdd #submit-form-sponsor{
+   width: 100%;
+   background: #1DBF70;
+   margin-top: 50px;
 }
 
  
