@@ -170,6 +170,9 @@
  
   @if(github)
   <div class="profile-tab" id="profile-7ajahak">
+    @if(repos.length==0)
+      An error has occured, please make sure your Github username is correct
+    @endif
     @if(repos)
       @each(item in repos)
         <div class="card card-body mb-2">
