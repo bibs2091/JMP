@@ -45,6 +45,17 @@ $(document).ready(function(){
   $("#plus_sponsor").click(function(){
     countSP=countSP + 1;
     if (countSP <4){
-    $("#submit-form-sponsor").before("<div class='add_sponsor'><div><span>Name</span><input type='text' class='form-control sponsorNameInput'  name='title' id='sponsorName'></div><div><span>Logo</span><button type='button' class='btn btn-secondary uploadPicSponsor'>Upload photo</button></div></div>");
+    $("#sponsorsToAdd").append("<div class='add_sponsor'><div><span>Name</span><input type='text' class='form-control sponsorNameInput'  name='title' id='sponsorName'></div><div><span>Logo</span><button type='button' class='btn btn-secondary uploadPicSponsor'>Upload photo</button></div></div>");
+    if (countSP ==2){
+      $("#submit-form-sponsor").css("margin-top","22px")
+    }
   }});
+});
+// ------------ delete sponsor ---------------
+$(document).ready(function(){
+$("#delete_sponsor").click(function(){
+  if (countSP > -1){
+  $("#sponsorsToAdd").children().last().remove();
+  countSP= countSP -1;
+}});
 });

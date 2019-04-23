@@ -1710,9 +1710,6 @@ input[name="lastName"] {
 }
 
 .add_sponsor{
-   display: none;
-   transition: 0.5s;
-   display: block;
 }
 .add_sponsor span{
    display: inline;
@@ -1739,19 +1736,45 @@ input[name="lastName"] {
 }
 #plus_sponsor {
    float: right;
+   margin-right: 10px
 }
 #plus_sponsor:hover{
+  font-size: 22px;
    transition: 1s;
    -ms-transform: rotate(180deg); /* IE 9 */
    -webkit-transform: rotate(180deg); /* Safari 3-8 */
    transform: rotate(180deg);
 }
-#sponsorsToAdd #submit-form-sponsor{
-   width: 100%;
+#submit-form-sponsor{
+   width: 40%;
    background: #1DBF70;
-   margin-top: 50px;
+   float: right;
+}
+#delete_sponsor{
+  float: right;
+  margin-right: 15px;
+}
+#delete_sponsor:hover{
+  color: #ef5777;
+  font-size: 22px;
+}
+@media (max-width: 765px) {
+  #upload-event-cover{
+    height: 31vw;
+    margin-bottom: 22px;
+  }
+  #submit-form-sponsor{
+    margin-top: 22px;
+    width: 45%;
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
 }
 
+
+/*******************/
  
 #register-boutton{
    width: 50%;
@@ -1784,6 +1807,7 @@ input[name="lastName"] {
   height: 100px;
   margin-left: auto;
   margin-right: auto;
+  display: block;
 }
 /* for xl screens --------keep it in the bottom of the file-------- */
 @media (max-width: 1140px) {
