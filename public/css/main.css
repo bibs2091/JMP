@@ -125,7 +125,7 @@ a {
   margin-left: auto;
   margin-right: auto;
 }
-.s-sidebar-logo:hover{
+.s-sidebar-logo:hover {
   transition: 3s;
   transform: rotate(1080deg);
 }
@@ -387,18 +387,18 @@ input[type="search"]:focus {
   border-radius: 10px;
   margin-bottom: 50px;
   margin-top: -4px;
-  height: 350px;
+  height: 118%;
 }
 .postregister h1 {
   font-family: "Avenir-Next", Avenir, Helvetica, sans-serif;
-  font-size: 31px;
+  font-size: 30px;
   text-align: center;
   margin-top: 50px;
   color: #000000;
   font-weight: bolder;
+  margin-left: 21px;
 }
 .postregister p {
-  font-family: "Avenir-Next", Helvetica, sans-serif;
   font-family: "Avenir-Next", Avenir, Helvetica, sans-serif;
   font-size: 18px;
   text-align: center;
@@ -1683,112 +1683,110 @@ input[name="lastName"] {
   margin-right: 73px;
   margin-left: 84px;
 }
-#eventCardInfo{
-   width: 100%;
-   height: 170px;
-   background: #ffffff;
-   border-radius: 8px;
-   padding: 26px 17px 0 0;
+#eventCardInfo {
+  width: 100%;
+  height: 170px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 26px 17px 0 0;
 }
 
 /* --------- add event ----------- */
-#upload-event-cover{
-   width: 100%;
-   height: 18vw;
-   margin-top: 17px;
-   cursor: pointer;
+#upload-event-cover {
+  width: 100%;
+  height: 18vw;
+  margin-top: 17px;
+  cursor: pointer;
 }
-.add-event-container{
-   padding: 20px 5px;
-   font-family: Poppins;
+.add-event-container {
+  padding: 20px 5px;
+  font-family: Poppins;
 }
-.add-event-container hr{
-   margin: 11px 0;
+.add-event-container hr {
+  margin: 11px 0;
 }
-.add-event-container i{
-   color: #353535;
+.add-event-container i {
+  color: #353535;
 }
-.add-event-container h3{
-   font-size: 20px;
-   margin: 29px 0;
-}
-
-.add_sponsor{
-}
-.add_sponsor span{
-   display: inline;
+.add-event-container h3 {
+  font-size: 20px;
+  margin: 29px 0;
 }
 
-.add_sponsor div{
-   margin-top: 28px;
+.add_sponsor {
+}
+.add_sponsor span {
+  display: inline;
 }
 
-.uploadPicSponsor{
-   height: 35px;
-   font-family: Poppins;
-   font-size: 13px;
-   display: inline;
-   width: 70%;
-   margin-left: 30px;
-
+.add_sponsor div {
+  margin-top: 28px;
 }
-.sponsorNameInput{
-   height: 33px;
-   display: inline;
-   width: 70%;
-   margin-left: 20px;
+
+.uploadPicSponsor {
+  height: 35px;
+  font-family: Poppins;
+  font-size: 13px;
+  display: inline;
+  width: 70%;
+  margin-left: 30px;
+}
+.sponsorNameInput {
+  height: 33px;
+  display: inline;
+  width: 70%;
+  margin-left: 20px;
 }
 #plus_sponsor {
-   float: right;
-   margin-right: 10px
+  float: right;
+  margin-right: 10px;
 }
-#plus_sponsor:hover{
+#plus_sponsor:hover {
   font-size: 22px;
-   transition: 1s;
-   -ms-transform: rotate(180deg); /* IE 9 */
-   -webkit-transform: rotate(180deg); /* Safari 3-8 */
-   transform: rotate(180deg);
+  transition: 1s;
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Safari 3-8 */
+  transform: rotate(180deg);
 }
-#submit-form-sponsor{
-   width: 40%;
-   background: #1DBF70;
-   float: right;
+#submit-form-sponsor {
+  width: 40%;
+  background: #1dbf70;
+  float: right;
 }
-#delete_sponsor{
+#delete_sponsor {
   float: right;
   margin-right: 15px;
 }
-#delete_sponsor:hover{
+#delete_sponsor:hover {
   color: #ef5777;
   font-size: 22px;
 }
 @media (max-width: 765px) {
-  #upload-event-cover{
+  #upload-event-cover {
     height: 31vw;
     margin-bottom: 22px;
   }
-  #submit-form-sponsor{
+  #submit-form-sponsor {
     margin-top: 22px;
     width: 45%;
     float: none;
     display: block;
     margin-left: auto;
     margin-right: auto;
- }
+  }
 }
 
-
 /*******************/
- 
-#register-boutton{
-   width: 50%;
-   background: #4BCFFA;
-   font-family: Poppins;
-   border: none;
-   height: 35px;
-   display: block;
-   margin-left: 8px;
-   margin-right: auto;
+
+#register-boutton {
+  width: 50%;
+  background: #4bcffa;
+  font-family: Poppins;
+  border: none;
+  height: 35px;
+  display: block;
+  margin-left: 8px;
+  margin-right: auto;
 }
 
 #register-boutton {
@@ -1940,11 +1938,11 @@ input[name="lastName"] {
     #instructorInfos div p {
       text-align: center;
       margin-bottom: 7px;
-   }
-}
-/* ---- for lg screens ---- */
-@media (max-width:992px){
-   .other-profile-info {
+    }
+  }
+  /* ---- for lg screens ---- */
+  @media (max-width: 992px) {
+    .other-profile-info {
     }
   }
 
