@@ -50,7 +50,7 @@ passport.use(
 										)
 									);
 								} else {
-									if (user.groupId < 3) {
+									if (user.groupId < 4) {
 										return done(null, user);
 									}
 									return done(

@@ -12,14 +12,13 @@
 <div class="container-fluid profile_container">
   <div class="row">
     <div class="col-md-2">
+      
       <img src="/images/avatar.jpg" alt="avatar" id="profile-pic">
     </div>
     <div class="col-md-7" id="profile_details">
-      <h1>Merzoug Fatima</h1>
+    <h1>{{firstName + " " + lastName}}</h1>
       <h6>Student</h6>
-      <p>Computer science student at esi sba interrested in Web. ki chgoul rak chayef kifah chwiya lorem ipesum w makanch khay,
-         deja ana ayech f l’habitat donc kayen l’experience f securite w swaleh wahdokhrin ,
-         aya w salam alikom lala lala khawti  </p>
+      <p>{{bio}} </p>
     </div>
     <div class="col-md-2" style="position: relative;">
       
@@ -32,11 +31,21 @@
             </div>
         </div>
           <ul>
-              <li><a href=""><i class="fab fa-facebook"></i></a></li>
-              <li><a href=""><i class="fab fa-twitter-square"></i></a></li>
-              <li><a href=""><i class="fab fa-linkedin"></i></a></li>
-              <li><a href=""><i class="fab fa-instagram"></i></a></li>
-              <li><a href=""><i class="fab fa-github-square"></i></a></li>
+            @if(facebook)
+            <li><a href={{facebook}} target="_blank"><i class="fab fa-facebook"></i></a></li>     
+            @endif
+            @if(twitter)
+            <li><a href={{twitter}} target="_blank"><i class="fab fa-twitter-square"></i></a></li>              
+            @endif
+            @if(linkedin)
+            <li><a href={{linkedin}} target="_blank"><i class="fab fa-linkedin"></i></a></li>              
+            @endif
+            @if(instagram)
+            <li><a href={{instagram}} target="_blank"><i class="fab fa-instagram"></i></a></li>              
+            @endif
+            @if(github)
+            <li><a href={{github}} target="_blank"><i class="fab fa-github-square"></i></a></li>              
+            @endif
           </ul>
         
     </div>
@@ -47,7 +56,14 @@
   <div class="profile-stat">   
   </div>
   <div class="profile-stat">
-    <p>Ranking<br>8</p>
+    <p>Ranking<br>
+      @if(rank)
+        {{rank}}
+      @else 
+        Unranked
+      @endif
+      
+    </p>
   </div>
   <div class="profile-stat">
     <p>Courses enrolled in<br>8</p>
@@ -66,7 +82,7 @@
       Skills
     </div>
     <div class="profile-menu-item" onclick="showTab(this,'7ajahak')">
-      7ajahak
+      Github repos
     </div>
   </div>
 </div>
@@ -145,11 +161,57 @@
         </div>
   </div>
   <div class="profile-tab" id="profile-skills">
-    Skills
+    @each(item in skills)
+      <li>item</li>
+    @else
+      Skills
+    @endeach
   </div>
+ 
+  @if(github)
   <div class="profile-tab" id="profile-7ajahak">
-    7ajahak
+    @if(repos.length==0)
+      An error has occured, please make sure your Github username is correct
+    @endif
+    @if(repos)
+      @each(item in repos)
+        <div class="card card-body mb-2">
+          <div class="row">
+            <div class="col-md-6">
+              <h4>
+                <a href={{item.html_url}} class="text-info" target="_blank">
+                {{item.name}}
+                </a>
+              </h4>
+              <p>{{item.description}}</p>
+            </div>
+            <div class="col-md-6">
+              <span class="badge badge-info mr-1">
+                Stars: {{item.stargazers_count}}
+              </span>
+              <span class="badge badge-secondary mr-1">
+                Watchers: {{item.watchers_count}}
+              </span>
+              <span class="badge badge-success ">
+                Forks: {{item.forks_count}}
+              </span>
+            </div>
+          </div>
+        </div>
+        
+      @endeach
+    @else
+      <div>An error has occured</div>
+    @endif
   </div>
+  @else
+    <form action="/user/editprofile" method="POST">
+      <p>To display your github repositories please enter your github username:</p>
+      <label for="github-username">Github username</label>
+      <input type="text" name="github" class="form-control">
+    </form>
+  @endif
+  
 </div>
 
 @endsection

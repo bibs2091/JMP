@@ -7,6 +7,9 @@ const passport = require("../config/passport");
 const homeController = require("../controllers/user/home");
 const editProfileController = require("../controllers/user/profile");
 
+//load userInfo model
+const userInfo = require("../models/UsersInfo");
+
 //middleware for authentication
 const isAuthenticated = (req, res, next) => {
 	if (req.isAuthenticated()) {
@@ -18,6 +21,51 @@ const isAuthenticated = (req, res, next) => {
 
 //handling requests
 router.get("/home", homeController);
-router.get("/editprofile", editProfileController);
+
+//route		/user/editprofile
+//methode 	GET
+//access	private
+//desc		get current user profile
+
+router.get("/editprofile", isAuthenticated, editProfileController);
+
+//route		/user/editprofile
+//methode 	POST
+//access	private
+//desc		post to current user profile
+
+router.post("/editprofile", isAuthenticated, (req, res) => {
+	console.log(req.body);
+	let {
+		firstName,
+		lastName,
+		phoneNumber,
+		facebook,
+		instagram,
+		twitter,
+		linkedin,
+		github,
+	} = req.body;
+
+	userInfo
+		.update(
+			{
+				firstName,
+				lastName,
+				phoneNumber,
+				facebook,
+				instagram,
+				twitter,
+				linkedin,
+				github,
+			},
+			{ where: { userId: req.user.id } }
+		)
+		.then(updated => {
+			console.log(updated);
+			res.send("profile updated");
+		})
+		.catch(err => console.log(err));
+});
 
 module.exports = router;

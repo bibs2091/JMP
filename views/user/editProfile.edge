@@ -3,7 +3,7 @@
 @section('content')
 <div id="center_fillingInfosBox">
   
-  <form class="fillingInfosBox" id="register-form" method="POST" action="/user/editProfile">
+  <form class="fillingInfosBox" id="register-form" method="POST" action="/user/editprofile">
       @each(err in errors)
       <div class="alert alert-danger" style="margin-bottom: 0">{{err.msg}}</div>
       @endeach
@@ -17,7 +17,7 @@
                           
                               <div class="form-group">
                                   <label for="firstName">First name</label>
-                                  <input type="text" class="form-control" name="firstName"  required  >
+                                  <input type="text" class="form-control" name="firstName"  required  value={{firstName}}>
                               </div>
                           </div>
                      
@@ -25,7 +25,7 @@
                          
                               <div class="form-group">
                                   <label for="lastName">Last name</span></label>
-                                  <input type="text" class="form-control" name="lastName" required >
+                                  <input type="text" class="form-control" name="lastName" required  value={{lastName}}>
                               </div>
                           </div>
                       </div>                
@@ -33,46 +33,37 @@
       
             <div class="form-group">
              <label for="phoneNumber">Phone Number</label>
-             <input type="text" class="form-control" name="phoneNumber" minlength="10" maxlength="10">
+             <input type="text" class="form-control" name="phoneNumber" minlength="10" maxlength="10" value={{phone}}>
      
              </div>
-          <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password"  id="password_register"required minlength="8" >
-          </div>
-
-          <div class="form-group">
-              <label for="password_conf">Confirm Password</label>
-              <input type="password" class="form-control" name="password_conf" required minlength="8" >
-           </div>
            <div class="form-group">
             <label for="bio">Bio</label>
-            <textarea  class="form-control" name="bio" required minlength="8" ></textarea>
+            <textarea  class="form-control" name="bio" minlength="8" ></textarea>
          </div>
 
          <div class="form-group">
             <label for="facebook"><img src="/images/facebook.svg"> Facebook</label>
-            <input type="facebook" class="form-control" name="facebook" required minlength="8" >
+            <input type="text" class="form-control" name="facebook"   value={{facebook}}>
          </div>
          <div class="form-group">
           <label for="instagram"><img src="/images/instagram.svg"> Instagram</label>
-          <input type="instagram" class="form-control" name="instagram" required minlength="8" >
+          <input type="text" class="form-control" name="instagram"   value={{instagram}}>
        </div>
        <div class="form-group">
         <label for="twitter"><img src="/images/twitter.svg"> Twitter</label>
-        <input type="twitter" class="form-control" name="twitter" required minlength="8" >
+        <input type="text" class="form-control" name="twitter"   value={{twitter}}>
+       </div>
+        <div class="form-group">
+            <label for="linkeden"><img src="/images/linkedin.svg"> Linkeden</label>
+            <input type="text" class="form-control" name="linkeden"   value={{linkedin}} >
        </div>
        <div class="form-group">
-        <label for="linkeden"><img src="/images/linkedin.svg"> Linkeden</label>
-        <input type="linkeden" class="form-control" name="linkeden" required minlength="8" >
-       </div>
-       <div class="form-group">
-        <label for="github"><img src="/images/github.svg"> Github</label>
-        <input type="github" class="form-control" name="github" required minlength="8" >
+            <label for="github"><img src="/images/github.svg"> Github</label>
+            <input type="text" class="form-control" name="github"   value={{github}}>
        </div>
    
          
-          <input type="submit" value="Save" class="btn" id="submit-form">
+        <input type="submit" value="Save" class="btn" id="submit-form">
          
   </form>
 </div>
