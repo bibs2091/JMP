@@ -6,13 +6,9 @@ const WishLists = db.define('WishLists', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    formationId: {
+    courseId: {
         type: Sequelize.INTEGER,
         allowNull: false
-    },
-    addedAt: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
     }
 });
 

@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const passport = require("../config/passport");
-
 //require controllers
 const homeController = require("../controllers/user/home");
 const editProfileController = require("../controllers/user/profile");
+const showWishlistController = require("../controllers/user/wishlist");
 
 //load userInfo model
 const userInfo = require("../models/UsersInfo");
@@ -33,6 +32,8 @@ router.get("/editprofile", isAuthenticated, editProfileController);
 //methode 	POST
 //access	private
 //desc		post to current user profile
+
+router.get("/wishlist", showWishlistController);
 
 router.post("/editprofile", isAuthenticated, (req, res) => {
 	console.log(req.body);

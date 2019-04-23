@@ -7,6 +7,7 @@ const courseDetailsController = require("../controllers/courses/courseDetails");
 const updatePageController = require("../controllers/courses/updatePage");
 const updateController = require("../controllers/courses/update");
 const deleteCourseController = require("../controllers/courses/delete");
+const wishlistController = require("../controllers/courses/wishlist");
 
 //handling requests 
 router.post("/add", addController);
@@ -21,5 +22,6 @@ router.get("/:id", courseDetailsController);
 router.get("/update/:id", updatePageController);
 router.post("/update/:id", updateController);
 router.delete("/delete/:id", deleteCourseController);
+router.post("/wishlist/:id", wishlistController);
 
 module.exports = router;
