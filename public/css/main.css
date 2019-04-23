@@ -120,10 +120,14 @@ a {
   transform: translate(-50%, -50%);
 }
 .s-sidebar-logo {
+  margin-top: 10px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10px;
+}
+.s-sidebar-logo:hover{
+  transition: 3s;
+  transform: rotate(1080deg);
 }
 .bottom-buttons {
   position: absolute;
