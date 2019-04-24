@@ -1,11 +1,11 @@
 @layout('layouts.main')
 
 @section('content')
-<form method="POST" action="/events/add" class="add-event-container" enctype="multipart/form-data">
+<form method="POST" action="/events/modifie/{{event.id}}" class="add-event-container" enctype="multipart/form-data">
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <img src="/img/upload-course-cover.png" alt="upload a cover image" 
+        <img src="{{event.cover}}" alt="upload a cover image" 
                           id="upload-event-cover" onclick="triggerInput('course-cover-input')">
         <input type="file" name="cover" accept="image/*" id="course-cover-input" 
                           style="display:none" onchange="loadImage(event,'upload-event-cover')" >
@@ -15,14 +15,14 @@
         <hr>
         <div class="form-group">
             <label for="event-title" class="customized-label">Event title</label>
-            <input type="text" class="form-control" name="name" id="event-title" required>
+            <input type="text" class="form-control" name="name" id="event-title" value= {{event.name}} required>
         </div>
         <div class="form-group">
             <label for="event-description" class="customized-label">Event description</label>
             <p style="font-size: 11px;margin-bottom:7px;">
                 In your Event description, we recommend providing information about the content of the Event and how students will benefit from that content.
             </p>
-            <textarea name="description" id="event-description" rows="4" class="form-control" required></textarea>
+            <textarea name="description" id="event-description" rows="4" class="form-control" required>{{event.description}}</textarea>
         </div>
       </div>
     </div>
@@ -34,15 +34,15 @@
         <h3>Details</h3>
         <div class="form-group">
           <label for="event-date" class="customized-label"><i class="far fa-calendar"></i>&nbsp; Date</label>
-          <input type="date" class="form-control" name="date" id="event-date" required>
+          <input type="date" class="form-control" name="date" id="event-date" value= {{event.date}} required>
         </div>
         <div class="form-group">
           <label for="event-time" class="customized-label"><i class="fas fa-clock"></i>&nbsp; Time</label>
-          <input type="time" class="form-control" name="time" id="event-time" required>
+          <input type="time" class="form-control" name="time" id="event-time" value= {{event.time}} required>
         </div>
         <div class="form-group">
           <label for="event-location" class="customized-label"><i class="fas fa-map-marker-alt"></i>&nbsp; Location</label>
-          <textarea name="place" id="event-location" rows="4" class="form-control" required></textarea>
+          <textarea name="place" id="event-location" rows="4" class="form-control" 	required>{{event.place}} </textarea>
         </div>
       </div>
       <div class="col-md-5" id="sponsorsToAdd">
@@ -61,7 +61,11 @@
         </div>
       </div>
     </div>
-    <input type="submit" value="Add event" class="btn btn-success" id="submit-form-sponsor">
+    <input type="submit" value="Update" class="btn btn-success" id="submit-form-sponsor">
   </div>
 </form>
+<form method="POST" action="/events/delete/{{event.id}}">
+	<input class="btn btn-danger" type="submit" value="Delete event">
+</form>
 @endsection
+

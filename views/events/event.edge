@@ -1,30 +1,27 @@
 @layout('layouts.main')
 
 @section('content')
+
 <div  style="margin-left-25px;">
   <div>
-    <img src="/images/arduino.jpg" alt="Event picture"  id="coverImage">
+    <img src={{event.cover}} alt="Event picture"  id="coverImage">
   </div>
 </div>
 <div class="container" style="padding-left:4vw;">
         <div class="row">
           <div class="col-md-7 Description">
             <h3>Description</h3>
-            <p>Arduino Setup, un évènement exceptionnel qui pemettra aux plus novices d'entre vous de devenir connaisseurs en Arduino.
-                    Pendant 2 jours, une équipe entière d'electroniciens, membres d'OpenMinds Club, sera mise à votre disposition, pour vous coacher, vous faire découvrir le monde de l’OpenHardware et vous aider à réaliser vos projets Arduino en équipe.
-                    
-                    Vous voulez y participer ? 
-                    Restez branchés ! Les inscriptions seront ouvertes dès demain soir </p>
+            <p> {{event.description}} </p>
           </div>
             <div class="col-md-5">
               <h3 id="detailstatle">Details</h3>            
                   <div id="eventCardInfo">
                     <ul>
-                      <li> <i class="far fa-calendar-alt"></i> &nbsp; 19 july 2019</li>
+                      <li> <i class="far fa-calendar-alt"></i> &nbsp; {{event.date.toJSON().slice(0,10).replace(/-/g,'/');}}</li>
                       <br>
-                      <li><i class="fas fa-clock"></i> &nbsp; 10:00 AM </li>
+                      <li><i class="fas fa-clock"></i> &nbsp; {{event.time}} </li>
                       <br>
-                      <li><i class="fas fa-map-marker-alt"></i> &nbsp;City Naas bibliothèque centrale</li>
+                      <li><i class="fas fa-map-marker-alt"></i> &nbsp;{{event.place}}</li>
                       <br>
                     </ul>
                     <button  type="button" class="btn btn-primary" id="register-boutton">Register Now</button>
@@ -32,6 +29,7 @@
             </div>
         </div>
 </div>
+<button class = "btn"><a href="/events/modifie/{{event.id}}">modifie</a></button>
 
     
                 <div class="container">
@@ -47,4 +45,6 @@
 
     
 @endsection
+
+
 
