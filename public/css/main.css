@@ -1691,6 +1691,7 @@ input[name="lastName"] {
   padding: 26px 17px 0 0;
 }
 
+
 /* --------- add event ----------- */
 #upload-event-cover {
   width: 100%;
@@ -1805,12 +1806,22 @@ input[name="lastName"] {
   font-weight: 600;
 }
 .sponsors-pic {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  filter:grayscale(100%)
 }
+.sponsors-pic:hover{
+  filter:none;
+  width:100px;
+  height:100px ;
+}
+
+
+
+
 /* for xl screens --------keep it in the bottom of the file-------- */
 @media (max-width: 1140px) {
   #instructorImg {
