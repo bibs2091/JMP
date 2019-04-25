@@ -1811,7 +1811,8 @@ input[name="lastName"] {
   margin-left: auto;
   margin-right: auto;
   display: block;
-  filter:grayscale(100%)
+  filter:grayscale(100%);
+  transition: 0.3s;
 }
 .sponsors-pic:hover{
   filter:none;
