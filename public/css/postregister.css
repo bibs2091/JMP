@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700");
+
+body {
+  font-family: "Quicksand", sans-serif;
+  background-color: #ffffff;
+}
+#contain {
+  height: 300px;
+  width: 100vw;
+  position: relative;
+}
+#background_rounded {
+  background-color: #4f4f4f;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+#center_fillingInfosBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#center_fillingInfosBox h2 {
+  position: absolute;
+  font-family: Ubuntu, sans-serif;
+  z-index: 2;
+  font-weight: 600;
+  font-size: 33px;
+  top: 110px;
+  color: #e0e0e0;
+}
+#center_fillingInfosBox h2 span {
+  font-weight: 700;
+}
+.college-separator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  max-height: 150px;
+}
+
+#background_rounded_image {
+  display: block;
+  top: 5vh;
+  left: 5vw;
+  position: absolute;
+}
+
+.screen {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 148%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  width: 485px;
+  height: 377px;
+  background-color: #fff;
+  border-radius: 15px;
+  z-index: 2;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+}
+
+.screen #topIcon {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.screen #chek {
+  margin-left: -33px;
+  width: 72px;
+  height: 135px;
+  position: absolute;
+  margin-top: 9px;
+}
+.screen .border-top {
+  position: absolute;
+  top: 0;
+  height: 7px;
+  width: 100%;
+  background-color: #adb5bd85;
+}
+
+.screen h1 {
+  font-weight: 700;
+  font-size: 26px;
+  color: #0a0a0a;
+  letter-spacing: 0;
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.screen p {
+  font-weight: 400;
+  font-size: 16px;
+  color: #616161;
+  letter-spacing: 0.18px;
+  position: absolute;
+  left: 50%;
+  top: 67%;
+  width: 90%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.screen button {
+  background: #ffc107;
+  border: 1px solid #cfe21d;
+  box-shadow: 0 3px 20px 0 rgb(139, 140, 28);
+  border-radius: 100px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  color: #fff;
+  padding-top: 2px;
+  width: 175px;
+  height: 37px;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  bottom: -20%;
+  opacity: 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.screen button:focus {
+  outline: 0;
+
+  cursor: pointer;
+}
+#Bubbles {
+  visibility: hidden;
+}
+
+.un {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
