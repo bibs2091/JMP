@@ -9,8 +9,12 @@ module.exports = async (req, res) => {
 	let {
 		firstName,
 		lastName,
+		avatar,
 		bio,
 		username,
+		score,
+		skills,
+		rank,
 		phone,
 		facebook,
 		instagram,
@@ -24,17 +28,40 @@ module.exports = async (req, res) => {
 	github = github || "";
 	linkedin = linkedin || "";
 
-	res.render("user.editProfile", {
-		pageName: firstName + " " + lastName,
-		pageTitle: username,
+	let repos = [];
+
+	//fetch data from the github api
+	if (github) {
+		const count = 5;
+		const sort = "created: asc";
+		const link = `https://api.github.com/users/${github}/repos?per_page=${count}&sort=${sort}&client_id=${
+			githubApi.clientId
+		}&client_secret=${githubApi.clientSecret}`;
+
+		try {
+			const response = await axios.get(link);
+			repos = response.data;
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	res.render("user.profile", {
+		pageName: username,
+		pageTitle: firstName + " " + lastName,
 		firstName,
 		lastName,
+		avatar,
+		score,
+		rank,
 		bio,
+		skills,
 		phone,
 		facebook,
 		instagram,
 		twitter,
 		github,
 		linkedin,
+		repos,
 	});
 };
