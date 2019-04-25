@@ -19,12 +19,34 @@
         
             <!-- main CSS style sheet -->
             <link rel="stylesheet" href="/css/main.css">
+
+            <style>
+                body{text-align: center;font-size: 25px;padding: 40px}
+                a{
+                    display: block;
+                    color: blue;
+                    text-align: center;
+                    font-size: 20px;
+                    margin-top: 10px;
+                }
+                i{color: black;font-size: 16px;}
+            </style>
     </head>
     <body>
-            <h1>the home page</h1>
 
+            <h2>all routes :</h2>
+            <a target="_blank" href="/auth/login">login</a>
+            <a target="_blank" href="/auth/register">register</a>
+            <a target="_blank" href="/auth/postregister">after register</a>
+            <a target="_blank" href="/profile/user/1">student profile<i>(you need to create a user first)</i></a>
+            <a target="_blank" href="/profile/coach/1">coach profile<i>(you need to create a user first)</i></a>
+            <a target="_blank" href="/admin/categories">admin categories</a>
+            <a target="_blank" href="/user/editprofile">edit profile<i>(you need to login first)</i></a>
+            <a target="_blank" href="/courses/add">add course</a>
+            <a target="_blank" href="/events/add">add event</a>
+            <a target="_blank" href="/user/wishlist">user wishlist</a>
 
-            <div class="event_card">
+            <div class="event_card" style="display: none" >
                 <img src="/events/Arduino.png" alt="Familiarize with Arduino">
                 <div>
                         <h3>Familiarize with Arduino</h3>
