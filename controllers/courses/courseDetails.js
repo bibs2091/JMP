@@ -23,11 +23,13 @@ module.exports = async (req, res) => {
         currentChap.lectures = currentLects;
         chaptersList.push(currentChap);
     };
+    var url = req.protocol + '://' + req.get('host') + req.originalUrl;
     res.render("courses.courseDetails", {
         pageName: "Course Details",
         pageTitle: course.title + " - JMP",
         course,
         author,
-        chaptersList
+        chaptersList,
+        url
     });
 }

@@ -83,11 +83,19 @@
                 <button type="button" class="btn share-btn">Share this course &nbsp; <i class="fas fa-share"></i></button>
                 <div class="social top center networks-5 ">
                  <!-- Facebook Share Button -->
-                    <a class="fbtn share facebook" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a> 
+                    <a class="fbtn share facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{url}}">
+                      <i class="fab fa-facebook-f"></i>
+                    </a> 
                     <!-- Twitter Share Button -->
-                    <a class="fbtn share twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a> 
+                    <a class="fbtn share twitter" target="_blank" 
+                    href="https://twitter.com/intent/tweet?text={{course.title}}&url={{url}}&via=JMP">
+                      <i class="fab fa-twitter"></i>
+                    </a> 
                     <!-- LinkedIn Share Button -->
-                    <a class="fbtn share linkedin" href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="fbtn share linkedin" target="_blank" 
+                      href="https://www.linkedin.com/shareArticle?mini=true&url={{url}}&title={{course.title}}&summary={{kdha_mena_menhik}}&source={{url}}">
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
                  </a>
                 </div>
                 </div>

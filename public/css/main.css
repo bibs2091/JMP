@@ -1168,11 +1168,6 @@ visibility: visible;
 .share-button.sharer .social.networks-5 {
 
 }
-.share-button .btn:hover{
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.3ms;
-}
 .share-button .btn:focus{
   box-shadow: none;
 }
