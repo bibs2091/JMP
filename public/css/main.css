@@ -849,6 +849,12 @@ input[name="lastName"] {
   width: 100%;
   height: 17.6vw;
   margin-bottom: 40px;
+  border-radius: 5px;
+}
+.add-category-modal .info-container img:hover {
+  width: 102%;
+  height: 18vw;
+  transition: 0.3s;
 }
 .add-category-modal .category-form-text {
   margin-bottom: 15px;
