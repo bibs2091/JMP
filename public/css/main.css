@@ -1122,6 +1122,70 @@ input[name="lastName"] {
 .collapse-chapter {
   cursor: pointer;
 }
+.social .fbtn {
+  width: 50px;
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  line-height:18px;
+  float: left;
+}
+.social .fab{padding:15px 0px}
+.facebook {
+  background-color: #3b5998;
+}
+
+
+.twitter {
+  background-color: #55acee;
+}
+
+.stumbleupon {
+  background-color: #eb4924;
+}
+
+
+
+.linkedin {
+  background-color: #0077b5;
+}
+
+.buffer {
+  background-color: #323b43;
+}
+
+.share-button.sharer {
+height: 20px;
+}
+.share-button.sharer .social.active.top {
+transform: scale(1) translateY(-10px);
+}
+.share-button.sharer .social.active {
+opacity: 1;
+transition: all 0.4s ease 0s;
+visibility: visible;
+}
+.share-button.sharer .social.networks-5 {
+
+}
+.share-button .btn:hover{
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.3ms;
+}
+.share-button .btn:focus{
+  box-shadow: none;
+}
+.share-button.sharer .social.top {
+margin-top: -90px;
+transform-origin: 0 0 0;
+}
+.share-button.sharer .social {
+margin-left: 105px;
+opacity: 0;
+transition: all 0.4s ease 0s;
+visibility: hidden;
+}
 @media (max-width: 765px) {
   #coverImage {
     margin-bottom: 17px;
@@ -1220,7 +1284,7 @@ input[name="lastName"] {
   width: 100%;
   background: #f5f5f5;
   border-radius: 8px;
-  padding: 20px 7px 0 0;
+  padding: 20px 7px 30px 0;
 }
 #startCourse {
   width: 75%;
