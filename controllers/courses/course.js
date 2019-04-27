@@ -30,7 +30,8 @@ module.exports = async (req, res) => {
             });
             return res.redirect("/courses/classroom/" + courseId + "/" + lect[0].id);
         }
-    } catch {
+    } catch (err) {
+        console.log(err);
         res.redirect("/error");
     }
 }

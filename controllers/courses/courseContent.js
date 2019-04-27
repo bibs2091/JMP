@@ -11,6 +11,22 @@ module.exports = async (req, res) => {
             courseId
         }
     });
+    if (req.params.lecture == progress.lastLecture + 1) {
+        await Progress.update({ lastLecture: req.params.lecture }, {
+            where: {
+                userId: req.user.id,
+                courseId
+            }
+        });
+    } else if (req.params.lecture > progress.lastLecture) {
+        return res.render("404");
+    }
+    var newProgress = await Progress.findOne({
+        where: {
+            userId: req.user.id,
+            courseId
+        }
+    });
     var course = await Courses.findByPk(courseId);
     var chaptersList = [];
     var chaps = await Chapters.findAll({ where: { formation: courseId } });
@@ -28,11 +44,13 @@ module.exports = async (req, res) => {
         currentChap.lectures = currentLects;
         chaptersList.push(currentChap);
     };
+
     var content = await Lectures.findByPk(req.params.lecture);
     res.render("courses.course", {
         pageTitle: course.title,
         chaptersList,
         content,
-        progress
+        newProgress,
+        courseId
     });
 }
