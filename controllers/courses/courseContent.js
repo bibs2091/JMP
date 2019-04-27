@@ -1,3 +1,5 @@
 module.exports = (req, res) => {
-    res.send(req.params);
+    res.render("courses.course", {
+        pageTitle: "course title"
+    });
 }

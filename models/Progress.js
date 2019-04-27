@@ -13,7 +13,7 @@ const Progress = db.define("Progress", {
     state: {
         type: Sequelize.STRING
     },
-    lastChapter: {
+    lastLecture: {
         type: Sequelize.INTEGER,
     }
 });
