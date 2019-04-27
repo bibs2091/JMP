@@ -1,0 +1,294 @@
+body {
+    font-family: 'Open Sans',sans-serif; 
+    width: 100vw;
+  }
+  
+  #main-content {
+    padding: 20px;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  em {
+    font-style: normal;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .s-layout {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+  }
+  
+  .s-layout__content {
+    flex: 1;
+  }
+  
+  /* Sidebar */
+  .s-sidebar__trigger {
+    z-index: 2;
+    /*position: fixed;*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4em;
+    background: white;
+  }
+  
+  .s-sidebar__trigger > i {
+    display: inline-block;
+    margin: 1.5em 0 0 0.5em;
+    color: #141414;
+    position: fixed;
+    z-index: 1000;
+  }
+  
+  .s-sidebar__nav {
+    position: fixed;
+    top: 0;
+    left: -15em;
+    overflow: hidden;
+    transition: all 0.3s ease-in;
+    width: 15em;
+    height: 100%;
+    background: #151515;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    z-index: 99999999999999999;
+  }
+  
+  .s-sidebar__nav:hover,
+  .s-sidebar__nav:focus,
+  .s-sidebar__trigger:focus + .s-sidebar__nav,
+  .s-sidebar__trigger:hover + .s-sidebar__nav {
+    left: 0;
+  }
+  .s-sidebar__nav ul li {
+    width: 100%;
+  }
+
+  #back-course{
+      height: 55px;
+      width: 100%;
+      display: block;
+      font-size: 21px;
+      display:flex;
+      align-items:center;
+      border-bottom: 1px solid #3C3C3C;
+  }
+  #back-course:hover{
+      color: white;
+      text-decoration: none;
+  }
+  #back-course i{
+    transform: rotate(180deg);
+    margin-left: 15px;
+    color: #FFD32A;
+  }
+  #back-course span{
+    margin-left: 20px;
+    font-weight: 600;
+  }
+
+  .lecture-nav{
+    height: 55px;
+    width: 100%;
+    display:flex;
+    align-items:center;
+    font-size: 16px;
+    border-bottom: 1px solid #3C3C3C;
+  }
+  .lecture-nav span{
+      margin-left:15px;
+      
+  }
+  .lecture-nav i{
+    transform: rotate(270deg);
+    position: absolute;
+    right: 12px;
+    color: #B9B6A7;
+    transition: 0.5s;
+
+  }
+  .rotate90{
+    transform: rotate(90deg)!important;
+    transition: 0.3s;
+    margin-top:5px;
+  }
+  .lesson-navContainer{
+      background: #141313;
+  }
+  .lesson-nav{
+    height: 55px;
+    width: 100%; 
+    display:flex;
+    align-items:center;
+  }
+  .lesson-nav .fa-circle{
+      color: #F2F2F2;
+      margin-left: 15px;
+  }
+  .lesson-nav .fa-check{
+    color: #1C9F5F;
+    margin-left: 15px;
+  }
+  .lesson-nav span{
+    font-size: 16px;
+    margin-left: 10px; 
+  }
+  .lesson-in{
+      font-weight: bold;
+  }
+  /* Mobile First */
+  @media (min-width: 42em) {
+    .s-layout__content {
+      margin-left: 60px;
+    }
+    /* Sidebar */
+    .s-sidebar__trigger {
+      width: 4em;
+    }
+    .s-sidebar__trigger {
+      display: none;
+    }
+    .s-sidebar__nav {
+      width: 4em;
+      left: 0;
+    }
+  
+    .s-sidebar__nav:hover,
+    .s-sidebar__nav:focus,
+    .s-sidebar__trigger:hover + .s-sidebar__nav,
+    .s-sidebar__trigger:focus + .s-sidebar__nav {
+      width: 15em;
+    }
+  }
+  
+  @media (min-width: 68em) {
+    .s-layout__content {
+      margin-left: 225px;
+    }
+    .s-sidebar__trigger {
+      display: none;
+    }
+    /* Sidebar */
+    .s-sidebar__trigger {
+      display: none;
+    }
+  
+    .s-sidebar__nav {
+      width: 15em;
+    }
+  }
+  
+  /* --- Navbar --- */
+  #navbar {
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 2px 2px -2px gray;
+    position: sticky;
+    position: -webkit-sticky;
+    padding-top: 15px;
+    top: 0;
+    z-index: 999;
+    background: #3C3C3C;
+    text-align: center;
+  }
+  
+  #navbar h1 {
+    font-weight: bold;
+    font-size: 22px;
+    display: inline;
+    margin: 0 auto;
+    color: #F9F9F9; 
+  }
+  
+  @media (max-width: 672px) {
+    #navbar {
+    }
+  
+    nav #profile-pic-nav {
+      top: 15px;
+      right: 0;
+    }
+    nav .icon-bell {
+      top: 17px;
+      right: 60px;
+    }
+    nav .icon-Message_notification {
+      top: 15px;
+      right: 100px;
+    }
+    nav #search {
+      display: none;
+    }
+    #search_responsive {
+    }
+    #main-content {
+      margin-left: -22px;
+    }
+  }
+  
+  /* ----------------------- for the icons ------------------------------ */
+  @font-face {
+    font-family: "icomoon";
+    src: url("/fonts/icomoon.eot?hrtpsr");
+    src: url("/fonts/icomoon.eot?hrtpsr#iefix") format("embedded-opentype"),
+      url("/fonts/icomoon.ttf?hrtpsr") format("truetype"),
+      url("/fonts/icomoon.woff?hrtpsr") format("woff"),
+      url("/fonts/icomoon.svg?hrtpsr#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  [class^="icon-"],
+  [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: "icomoon" !important;
+  }
+  
+  .icon-bell:before {
+    content: "\e918";
+    font-size: 24px;
+    margin-right: 20px;
+  }
+  
+  .icon-Message_notification:before {
+    content: "\e917";
+    font-size: 27px;
+    margin-right: 20px;
+  }
+  .icon-advanced:before {
+    content: "\e900";
+    color: #ffd32a;
+  }
+  .icon-start:before {
+    content: "\e915";
+  }
+  .icon-resume:before {
+    content: "\e914";
+  }
+  .icon-time:before {
+    content: "\e916";
+  }
+  .icon-heart:before {
+    content: "\e905";
+    color: red;
+  }
+  /* ---------------------------------------- */
+  .icon-time:before {
+    content: "\e916";
+  }
+  .icon-heart:before {
+    content: "\e905";
+    color: red;
+  }

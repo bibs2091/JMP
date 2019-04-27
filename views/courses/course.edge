@@ -1,12 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>course page</title>
+    <meta charset="utf-8">
+    <title>{{pageTitle}}</title>
+    <meta name="description" content="Junior makers program website">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/favicon.png">
+
+   <!-- importing needed libraries -->
+   <link rel="stylesheet" href="/css/normalize.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    {{--  importing fonts  --}}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Poppins|Ubuntu" rel="stylesheet">
+
+    <!-- main CSS style sheet -->
+    <link rel="stylesheet" href="/css/course.css">
 </head>
+
 <body>
-    <h1>course page</h1>
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <div class="s-layout">
+        <!-- Sidebar -->
+        <div class="s-layout__sidebar">
+          <a class="s-sidebar__trigger" href="#">
+             <i class="fa fa-bars"></i>
+          </a>
+        
+          <nav class="s-sidebar__nav">
+            <a href="/" id="back-course">
+                <i class="fas fa-play"></i><span>Home</span>
+            </a>
+            <ul>
+                <li class="lecture-nav"><span>Introduction To Redis</span><i class="fas fa-play"></i></li>
+                <li>
+                    <ul class="lesson-navContainer">
+                        <li class="lesson-nav"><i class="fas fa-check"></i><span class="lesson-in">Welcome!</span></li>
+                        <li class="lesson-nav"><i class="fas fa-circle"></i><span>Envirement</span></li>
+                        <li class="lesson-nav"><i class="fas fa-circle"></i><span>Data types</span></li>
+                        <li class="lesson-nav"><i class="fas fa-circle"></i><span>Commands</span></li>
+                        <li class="lesson-nav"><i class="fas fa-circle"></i><span>Connections</span></li>
+
+                    </ul>
+                </li>
+            </ul>
+          </nav>
+        </div>
+        
+        <!-- Content -->
+        <main class="s-layout__content">
+            <nav id="navbar">
+                <div id="container">
+                        <h1>Welcome!</h1>
+                </div>
+            </nav> 
+
+
+
+
+            <section id="main-content">
+            </section>
+             
+        </main>
+    </div>
+    
+    <!-- needed scripts -->
+    <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- main scripts file -->
+    <script src="/js/main.js"></script>
+    <script src="/js/myScript.js"></script>
+    
+
+    <!-- Google Analytics
+    UA-XXXXX-Y to be replaced with our site's ID. -->
+    <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    <script src="/js/Heart animation.js"></script>
 </body>
+
 </html>
