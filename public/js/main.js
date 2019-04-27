@@ -55,7 +55,16 @@ function addChapter(obj) {
     var title = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
     var chapterHTML = "<li>";
     chapterHTML += "<div class='chapter-title'><h6>" + title + "</h6><div class='tools'><i class='far fa-trash-alt' onclick='deleteChapter(this)'></i>&nbsp;<i class='far fa-edit' onclick='showEditChapterModal(this)'></i></div>";
-    chapterHTML += "</div><ul class='lectures'></ul><div class='add-lecture' onclick='showAddLectureModal(this)'><img src='/img/add_lecture.png'></div></li>";
+    chapterHTML += `</div><ul class='lectures'></ul>
+    <div class='add-lecture' onclick='showAddLectureModal(this)'>
+    <ul> <li class="lesson addLesson">
+        <p style="display:block; margin:0 auto; color:#868686;">
+            <i class="fas fa-plus"></i> &nbsp; 
+            Add a lesson
+        </p></li>
+    </ul>
+    </div>
+    </li>`;
     document.getElementById("chapters-list").innerHTML += chapterHTML;
     hideModal("add-chapter-modal");
 }
