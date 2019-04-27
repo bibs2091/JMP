@@ -232,17 +232,18 @@ body {
   
 
   /* ---- main content ---- */
-  #course-content{
+  #course-content-video{
       border-bottom:17px solid #3C3C3C;
       border-left:17px solid #3C3C3C;
       border-right:17px solid #3C3C3C;
       width: 100%;
       height: 480px;
   }
-  #course-content iframe{
+  #course-content-video iframe{
       width: 100%;
       height: 100%;
   }
+  
   .btn{
     background: #FFD32A;
     border: 1px solid #FFD32A;

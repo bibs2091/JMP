@@ -12,6 +12,7 @@ $(".collapse-chapter").on("click", function () {
   $(this).next().slideToggle("slow");
 })
 
+
 //------ tags ------
 $(document).ready(function () {
   $("#tag-typer").keypress(function (event) {

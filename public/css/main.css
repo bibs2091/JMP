@@ -528,6 +528,12 @@ table tr td {
   color: #000;
   background-color: #ffd32a;
 }
+#goToCourse{
+  width:100%;
+}
+#goToCourse:hover{
+  text-decoration: none;
+}
 /* user home page titles*/
 .user-home-title {
   font-weight: 500;
