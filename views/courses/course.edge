@@ -39,21 +39,26 @@
                 <i class="fas fa-play"></i><span>Home</span>
             </a>
             <ul>
-                <li class="lecture-nav"><span>Introduction To Redis</span><i class="fas fa-play"></i></li>
+                @each(chapter in chaptersList)
+                <li class="lecture-nav"><span>{{chapter.title}}</span><i class="fas fa-play"></i></li>
                 <li>
                     <ul class="lesson-navContainer">
+                        @each(lect in chapter.lectures)
                         <li class="lesson-nav">
-                            <a href="/">
-                            <i class="fas fa-check"></i><span class="lesson-in">Welcome!</span>
-                        </a>
-                        </li>
-                        <li class="lesson-nav"><i class="fas fa-circle"></i><span>Envirement</span></li>
-                        <li class="lesson-nav"><i class="fas fa-circle"></i><span>Data types</span></li>
-                        <li class="lesson-nav"><i class="fas fa-circle"></i><span>Commands</span></li>
-                        <li class="lesson-nav"><i class="fas fa-circle"></i><span>Connections</span></li>
-
+                                <a href="/courses/classroom/28/{{lect.id}}">
+                                    @if(lect.id <= progress.lastLecture)
+                                    <i class="fas fa-check"></i>
+                                    @else
+                                    <i class="fas fa-circle"></i>
+                                    @endif
+                                    <span class="lesson-in">{{lect.title}}</span>
+                                </a>
+                            </li>
+                        @endeach
                     </ul>
                 </li>
+                @endeach
+                
             </ul>
           </nav>
         </div>
