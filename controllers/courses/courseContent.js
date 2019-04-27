@@ -11,6 +11,10 @@ module.exports = async (req, res) => {
             courseId
         }
     });
+    var content = await Lectures.findByPk(req.params.lecture);
+    if (!content) {
+        return res.render("404");
+    }
     if (req.params.lecture == progress.lastLecture + 1) {
         await Progress.update({ lastLecture: req.params.lecture }, {
             where: {
@@ -45,7 +49,7 @@ module.exports = async (req, res) => {
         chaptersList.push(currentChap);
     };
 
-    var content = await Lectures.findByPk(req.params.lecture);
+
     res.render("courses.course", {
         pageTitle: course.title,
         chaptersList,
