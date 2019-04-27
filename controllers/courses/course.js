@@ -1,9 +1,14 @@
+const Courses = require("../../models/Courses");
 const Chapters = require("../../models/Chapters");
 const Lectures = require("../../models/Lectures");
 const Progress = require("../../models/Progress");
 
 module.exports = async (req, res) => {
     try {
+        var course = await Courses.findByPk(req.params.id);
+        if (!course) {
+            return res.render("404");
+        }
         var courseId = req.params.id;
         var progress = await Progress.findOne({
             where: {
