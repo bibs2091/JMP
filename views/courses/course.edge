@@ -80,7 +80,7 @@
                 @if(content.type == "video")
                 <div id="course-content-video">
                     <iframe
-                    src="https://www.youtube.com/embed/9s9VK_rdr38">
+                    src="{{content.link.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, 'www.youtube.com/embed/$1');}}">
                     </iframe>
                 </div>
                 @else
