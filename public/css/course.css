@@ -156,20 +156,7 @@ body {
   }
   /* Mobile First */
   @media (min-width: 42em) {
-    .s-layout__content {
-      margin-left: 60px;
-    }
-    /* Sidebar */
-    .s-sidebar__trigger {
-      width: 4em;
-    }
-    .s-sidebar__trigger {
-      display: none;
-    }
-    .s-sidebar__nav {
-      width: 4em;
-      left: 0;
-    }
+
   
     .s-sidebar__nav:hover,
     .s-sidebar__nav:focus,
@@ -180,6 +167,10 @@ body {
   }
   
   @media (min-width: 68em) {
+    .s-sidebar__nav {
+      width: 4em;
+      left: 0;
+    }
     .s-layout__content {
       margin-left: 225px;
     }
