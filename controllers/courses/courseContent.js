@@ -5,6 +5,7 @@ const Progress = require("../../models/Progress");
 
 module.exports = async (req, res) => {
     try {
+
         var courseId = req.params.course;
         var progress = await Progress.findOne({
             where: {
@@ -12,6 +13,9 @@ module.exports = async (req, res) => {
                 courseId
             }
         });
+        if (!progress) {
+            return res.render("404");
+        }
         var content = await Lectures.findByPk(req.params.lecture);
         if (!content) {
             return res.render("404");
@@ -36,7 +40,7 @@ module.exports = async (req, res) => {
         var chaptersList = [];
         var chaps = await Chapters.findAll({ where: { formation: courseId } });
         var firstLecture = {};
-        var lasLecture = {};
+        var lastLecture = {};
         for (let i = 0; i < chaps.length; i++) {
             var currentChap = {};
             currentChap.title = chaps[i].title;
@@ -60,13 +64,21 @@ module.exports = async (req, res) => {
         if (req.params.lecture < firstLecture.id || req.params.lecture > lastLecture.id) {
             return res.render("404");
         }
+        if (req.params.lecture == lastLecture.id) {
+            await Progress.update({ state: "finished" }, {
+                where: {
+                    userId: req.user.id,
+                    courseId
+                }
+            });
+        }
         res.render("courses.course", {
             pageTitle: content.title,
             chaptersList,
             content,
             newProgress,
             courseId,
-            lasLecture
+            lastLecture
         });
     }
     catch (err) {
