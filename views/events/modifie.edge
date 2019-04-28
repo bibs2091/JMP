@@ -49,16 +49,18 @@
         <h3>Sponsors
           <i class="fas fa-plus"  title="add sponsor" id="plus_sponsor"></i>
           <i class="far fa-trash-alt" id="delete_sponsor"></i></h3>
+        @each(sponsor in sponsors)
         <div class="add_sponsor">
           <div>
             <span>Name</span>
-            <input type="text" class="form-control sponsorNameInput"  name="title" id="sponsorName">
+            <input type="text" class="form-control sponsorNameInput"  name="title" id="sponsorName" value={{sponsor.name}} required>
           </div>
           <div>
             <span>Logo</span>
-            <button type="button" class="btn btn-secondary uploadPicSponsor">Upload photo</button>
+            <input type="file" name="logo" accept="image/*" id="sponsor-logo-input " value={{sponsor.logo}} required>
           </div>
         </div>
+        @endeach
       </div>
     </div>
     <input type="submit" value="Update" class="btn btn-success" id="submit-form-sponsor">

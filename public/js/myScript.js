@@ -55,7 +55,7 @@ $(document).ready(function(){
           </div>
           <div>
             <span>Logo</span>   
-        <input type="file" name="logo" accept="image/*" id="sponsor-logo-input"> required
+        <input type="file" name="logo" accept="image/*" id="sponsor-logo-input "required> 
           </div>
         </div> `);
     if (countSP ==2){

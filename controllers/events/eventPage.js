@@ -7,7 +7,6 @@ module.exports = async (req, res) => {
 				{
 					eventId : req.params.id
 				}})
-		console.log(sponsors);
 		const event = await Event.findByPk(req.params.id);
 		if (!event) {
 			return res.render("404");
