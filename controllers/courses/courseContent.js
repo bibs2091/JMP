@@ -35,12 +35,20 @@ module.exports = async (req, res) => {
         var course = await Courses.findByPk(courseId);
         var chaptersList = [];
         var chaps = await Chapters.findAll({ where: { formation: courseId } });
+        var firstLecture = {};
+        var lasLecture = {};
         for (let i = 0; i < chaps.length; i++) {
             var currentChap = {};
             currentChap.title = chaps[i].title;
             var lects = await Lectures.findAll({ where: { chapter: chaps[i].id } });
             var currentLects = [];
             for (let j = 0; j < lects.length; j++) {
+                if (i == 0 && j == 0) {
+                    firstLecture = lects[j].dataValues;
+                }
+                if (i == chaps.length - 1 && j == lects.length - 1) {
+                    lastLecture = lects[j].dataValues;
+                }
                 let obj = {};
                 obj.id = lects[j].id;
                 obj.title = lects[j].title;
@@ -49,14 +57,16 @@ module.exports = async (req, res) => {
             currentChap.lectures = currentLects;
             chaptersList.push(currentChap);
         };
-
-
+        if (req.params.lecture < firstLecture.id || req.params.lecture > lastLecture.id) {
+            return res.render("404");
+        }
         res.render("courses.course", {
             pageTitle: content.title,
             chaptersList,
             content,
             newProgress,
-            courseId
+            courseId,
+            lasLecture
         });
     }
     catch (err) {
