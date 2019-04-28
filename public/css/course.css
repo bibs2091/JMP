@@ -2,7 +2,10 @@ body {
     font-family: 'Open Sans',sans-serif; 
     width: 100vw;
   }
-  
+  html, body{
+    max-width: 100%;
+    overflow-x: hidden;
+  }
   #main-content {
   }
   
