@@ -48,7 +48,16 @@ $(document).ready(function(){
   $("#plus_sponsor").click(function(){
     countSP=countSP + 1;
     if (countSP <4){
-    $("#sponsorsToAdd").append("<div class='add_sponsor'><div><span>Name</span><input type='text' class='form-control sponsorNameInput'  name='title' id='sponsorName'></div><div><span>Logo</span><button type='button' class='btn btn-secondary uploadPicSponsor'>Upload photo</button></div></div>");
+    $("#sponsorsToAdd").append(`<div class="add_sponsor">
+          <div>
+            <span>Name</span>
+            <input type="text" class="form-control sponsorNameInput"  name="sponsorsName" id="sponsorName" required>
+          </div>
+          <div>
+            <span>Logo</span>   
+        <input type="file" name="logo" accept="image/*" id="sponsor-logo-input"> required
+          </div>
+        </div> `);
     if (countSP ==2){
       $("#submit-form-sponsor").css("margin-top","22px")
     }

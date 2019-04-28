@@ -8,7 +8,7 @@
         <img src="/img/upload-course-cover.png" alt="upload a cover image" 
                           id="upload-event-cover" onclick="triggerInput('course-cover-input')">
         <input type="file" name="cover" accept="image/*" id="course-cover-input" 
-                          style="display:none" onchange="loadImage(event,'upload-event-cover')" >
+                          style="display:none" onchange="loadImage(event,'upload-event-cover')" required>
       </div>
       <div class="col-md-5">
         <h2 style="font-size:22px;">Event information</h2>
@@ -49,16 +49,6 @@
         <h3>Sponsors
           <i class="fas fa-plus"  title="add sponsor" id="plus_sponsor"></i>
           <i class="far fa-trash-alt" id="delete_sponsor"></i></h3>
-        <div class="add_sponsor">
-          <div>
-            <span>Name</span>
-            <input type="text" class="form-control sponsorNameInput"  name="title" id="sponsorName">
-          </div>
-          <div>
-            <span>Logo</span>
-            <button type="button" class="btn btn-secondary uploadPicSponsor">Upload photo</button>
-          </div>
-        </div>
       </div>
     </div>
     <input type="submit" value="Add event" class="btn btn-success" id="submit-form-sponsor">
