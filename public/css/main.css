@@ -580,6 +580,12 @@ input[name="lastName"] {
   .fillingInfosBox {
     width: 100%;
   }
+  .fillingInfosBox .form-group input {
+    width: 90%!important;
+  }
+  #form_register_modify {
+    padding-left: 15px;
+  }
 }
 
 /* ------------- Profile  -------------- */
