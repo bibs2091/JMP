@@ -34,11 +34,9 @@
     
                 <div class="container">
                   <div class="row">
-                    <div class="col-md-3"><img src="/images/gsh.jpg" class="sponsors-pic"></div>
-                    <div class="col-md-3"><img src="/images/mobilis.png" class="sponsors-pic"></div>
-                    <div class="col-md-3"><img src="/images/Sonatrach.png" class="sponsors-pic"></div>
-                    <div class="col-md-3"><img src="/images/microsoft.png" class="sponsors-pic"></div>
-
+                    @each(sponsor in sponsors)
+                    <div class="col-md-3"><img src="{{sponsor.logo}}" class="sponsors-pic"></div>
+                    @endeach
                   </div>
                 </div>
                 
