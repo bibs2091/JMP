@@ -15,7 +15,7 @@ const Users = db.define("Users", {
 		type: Sequelize.INTEGER,
 		allowNull: false,
 		defaultValue: 3,
-	},
+	}
 });
 
 db.sync({ forced: true });

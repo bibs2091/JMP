@@ -1,4 +1,5 @@
 const Event = require('../../models/Event');
+const Sponsor = require('../../models/Sponsors');
 module.exports = async (req, res) => {
 	try {
 		// the user infos
@@ -9,6 +10,9 @@ module.exports = async (req, res) => {
 			validated = true;
 		}
 		let { cover, planning } = [0, 0];
+		// getting the sponsors names
+		let sponsors ={}
+		sponsors.name = req.body.sponsorsName;
 
 		// getting event infos
 		// the creator id 	
@@ -21,7 +25,13 @@ module.exports = async (req, res) => {
 			if (req.files.planning) {
 				planning = req.files.planning;
 			}
+			//getting the sponsors logos
+			if (sponsors.name) {
+				sponsors.logo = req.files.logo;
+
+			}
 		}
+		console.log(sponsors);
 		const { name, date, time, place, description, nbPlace, tags } = req.body;
 		// creating the event proposition
 		let newevent = await Event.create({ name, time, date, place, description, nbPlace, creatorId, validated, tags });
@@ -39,7 +49,7 @@ module.exports = async (req, res) => {
 			await cover.mv(__dirname + '/../../public/img/events/covers/' + newevent.id + ".jpg");
 		}
 		if (planning) {
-
+		
 			await Event.update(
 				{
 
@@ -52,11 +62,28 @@ module.exports = async (req, res) => {
 		}
 
 
+		//if there is sponsors ,store them 
+		if(sponsors.name){
 
+			let spon =0;
+			for(let i=0;i<sponsors.name.length;i++){
+				spon = await Sponsor.create({
+					eventId : newevent.id,
+					name :sponsors.name[i]
+				});
+				await Sponsor.update(
+					{
+						logo : '/img/events/sponsors/'+ spon.id + ".jpg" 
+					},
+						{ where: { id: spon.id } }
+					)
+				await sponsors.logo[i].mv(__dirname + '/../../public/img/events/sponsors/'+ spon.id + ".jpg");
+				}
+		}
 		res.redirect('/events/' + newevent.id);
 
 	} catch (err) {
-		console.log(err);
+		console.log("error ==> \n"+err);
 		res.redirect('/errors');
 	}
 
