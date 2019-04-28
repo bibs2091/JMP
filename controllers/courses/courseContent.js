@@ -51,7 +51,7 @@ module.exports = async (req, res) => {
 
 
     res.render("courses.course", {
-        pageTitle: course.title,
+        pageTitle: content.title,
         chaptersList,
         content,
         newProgress,
