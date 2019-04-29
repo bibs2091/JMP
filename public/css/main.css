@@ -1748,8 +1748,8 @@ visibility: hidden;
   display:none;
 }
 .sponsors-pic {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -1757,6 +1757,12 @@ visibility: hidden;
   transition: 0.3s;
   margin-bottom: 20px;
 }
+.sponsors-pic:hover{
+  filter:none;
+  width:133px;
+  height:133px ;
+}
+
 }
 /* --------- add event ----------- */
 #upload-event-cover {
@@ -1866,6 +1872,7 @@ visibility: hidden;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  margin-bottom: 20px;
   filter:grayscale(100%);
   transition: 0.3s;
 }
