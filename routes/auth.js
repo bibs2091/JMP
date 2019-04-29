@@ -3,14 +3,8 @@ const router = express.Router();
 const passport = require("../config/passport");
 const registerController = require("../controllers/auth/register");
 
-//middleware for authentication
-const isAuthenticated = (req, res, next) => {
-	if (req.isAuthenticated()) {
-		next();
-	} else {
-		return res.send("unauthorized", 401);
-	}
-};
+//require middleware
+const isAuthenticated = require("../middleware/isAuthenticated");
 
 //handling requests
 router.get("/login", (req, res) => {
@@ -33,7 +27,7 @@ router.post(
 	}
 );
 
-router.get("/logout", (req, res, next) => {
+router.get("/logout", isAuthenticated, (req, res, next) => {
 	if (req.session) {
 		req.logOut();
 		res.clearCookie("connect.sid", { path: "/" });
@@ -55,7 +49,7 @@ router.post("/register", registerController);
 
 
 // for development :
-router.get("/postregister",(req,res)=>{
+router.get("/postregister", (req, res) => {
 	res.render("auth.after_register")
 })
 

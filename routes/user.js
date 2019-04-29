@@ -10,13 +10,7 @@ const showWishlistController = require("../controllers/user/wishlist");
 const userInfo = require("../models/UsersInfo");
 
 //middleware for authentication
-const isAuthenticated = (req, res, next) => {
-	if (req.isAuthenticated()) {
-		next();
-	} else {
-		return res.send("unauthorized", 401);
-	}
-};
+const isAuthenticated = require("../middleware/isAuthenticated");
 
 //handling requests
 router.get("/home", homeController);
@@ -33,7 +27,7 @@ router.get("/editprofile", isAuthenticated, editProfileController);
 //access	private
 //desc		post to current user profile
 
-router.get("/wishlist", showWishlistController);
+router.get("/wishlist", isAuthenticated, showWishlistController);
 
 router.post("/editprofile", isAuthenticated, (req, res) => {
 	console.log(req.body);

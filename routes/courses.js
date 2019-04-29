@@ -12,6 +12,9 @@ const courseController = require("../controllers/courses/course");
 const courseContentController = require("../controllers/courses/courseContent");
 const certificatController = require("../controllers/courses/certificat");
 
+//require middelware
+const isAuthenticated = require("../middleware/isAuthenticated");
+
 //handling requests 
 router.post("/add", addController);
 router.get("/add", (req, res) => {
@@ -22,12 +25,12 @@ router.get("/add", (req, res) => {
 })
 
 router.get("/:id", courseDetailsController);
-router.get("/update/:id", updatePageController);
-router.post("/update/:id", updateController);
-router.delete("/delete/:id", deleteCourseController);
-router.post("/wishlist/:id", wishlistController);
-router.get("/classroom/:id", courseController);
-router.get("/classroom/:course/certificat", certificatController);
-router.get("/classroom/:course/:lecture", courseContentController);
+router.get("/update/:id", isAuthenticated, updatePageController);
+router.post("/update/:id", isAuthenticated, updateController);
+router.delete("/delete/:id", isAuthenticated, deleteCourseController);
+router.post("/wishlist/:id", isAuthenticated, wishlistController);
+router.get("/classroom/:id", isAuthenticated, courseController);
+router.get("/classroom/:course/certificat", isAuthenticated, certificatController);
+router.get("/classroom/:course/:lecture", isAuthenticated, courseContentController);
 
 module.exports = router;
