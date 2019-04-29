@@ -1748,8 +1748,8 @@ visibility: hidden;
   display:none;
 }
 .sponsors-pic {
-  width: 100px;
-  height: 100px;
+  width: 100px!important;
+  height: 100px!important ;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -1758,9 +1758,8 @@ visibility: hidden;
   margin-bottom: 20px;
 }
 .sponsors-pic:hover{
-  filter:none;
-  width:133px;
-  height:133px ;
+  width:133px!important;
+  height:133px!important ;
 }
 
 }
