@@ -10,10 +10,12 @@
 <div class="container" style="padding-left:4vw;">
         <div class="row">
           <div class="col-md-7 Description">
+              <a href="/events/modifie/{{event.id}}"><i class="fas fa-pen edit-event-responsive"></i></a>
             <h3>Description</h3>
             <p> {{event.description}} </p>
           </div>
             <div class="col-md-5">
+                <a href="/events/modifie/{{event.id}}"><i class="fas fa-pen edit-event"></i></a>
               <h3 id="detailstatle">Details</h3>            
                   <div id="eventCardInfo">
                     <ul>
@@ -28,11 +30,9 @@
                   </div>
             </div>
         </div>
-</div>
-<button class = "btn"><a href="/events/modifie/{{event.id}}">modifie</a></button>
-
+</div>   
     
-                <div class="container">
+                <div class="container" id="sponsors-container">
                   <div class="row">
                     <div class="col-md-3"><img src="/images/gsh.jpg" class="sponsors-pic"></div>
                     <div class="col-md-3"><img src="/images/mobilis.png" class="sponsors-pic"></div>

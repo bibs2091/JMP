@@ -2,6 +2,10 @@ body {
   font-family: Montserrat, sans-serif;
   width: 100vw;
 }
+html, body{
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 #main-content {
   padding: 20px;
@@ -377,88 +381,7 @@ input[type="search"]:focus {
   margin-bottom: 50px;
   padding-bottom: 20px;
 }
-.postregister {
-  background: #fcfcfc;
-  width: 600px;
-  position: absolute;
-  top: 276px;
-  z-index: 2;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 10px;
-  margin-bottom: 50px;
-  margin-top: -4px;
-  height: 118%;
-}
-.postregister h1 {
-  font-family: "Avenir-Next", Avenir, Helvetica, sans-serif;
-  font-size: 30px;
-  text-align: center;
-  margin-top: 50px;
-  color: #000000;
-  font-weight: bolder;
-  margin-left: 21px;
-}
-.postregister p {
-  font-family: "Avenir-Next", Avenir, Helvetica, sans-serif;
-  font-size: 18px;
-  text-align: center;
-  margin-top: 30px;
-}
-.postregister img {
-  height: 106px;
-  margin-top: -52px;
-  margin-left: 239px;
-}
-#circle1 {
-  height: 26px;
-  margin-left: -132px;
-  margin-bottom: 15px;
-}
-#circle2 {
-  height: 19px;
-  margin-left: -21px;
-  margin-bottom: -9px;
-}
-#circle3 {
-  height: 14px;
-  margin-left: 0px;
-  margin-bottom: 0px;
-}
-#circle4 {
-  height: 26px;
-  margin-left: 71px;
-  margin-bottom: 66px;
-}
-#circle5 {
-  height: 19px;
-  margin-left: -10px;
-  margin-bottom: 90px;
-}
-#circle6 {
-  height: 14px;
-  margin-left: -4px;
-  margin-bottom: 73px;
-}
-.backbtn {
-  border-radius: 40px;
-  padding: 15px 40px;
-  background-color: #ffd32a;
-  font-family: "Avenir-Next", Helvetica, sans-serif;
-  font-family: "Avenir-Next", Helvetica, sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  margin-left: 215px;
-  margin-top: 70px;
-  margin-right: 202px;
-}
-.backbtn:hover {
-  background: #eaebed;
-  transition: 0.7s;
-}
-a:hover {
-  text-decoration: none;
-  color: #000;
-}
+
 .fillingInfosBox p {
   font-family: Poppins;
   font-size: 20px;
@@ -609,6 +532,12 @@ table tr td {
   color: #000;
   background-color: #ffd32a;
 }
+#goToCourse{
+  width:100%;
+}
+#goToCourse:hover{
+  text-decoration: none;
+}
 /* user home page titles*/
 .user-home-title {
   font-weight: 500;
@@ -654,6 +583,12 @@ input[name="lastName"] {
 @media (max-width: 580px) {
   .fillingInfosBox {
     width: 100%;
+  }
+  .fillingInfosBox .form-group input {
+    width: 90%!important;
+  }
+  #form_register_modify {
+    padding-left: 15px;
   }
 }
 
@@ -930,6 +865,12 @@ input[name="lastName"] {
   width: 100%;
   height: 17.6vw;
   margin-bottom: 40px;
+  border-radius: 5px;
+}
+.add-category-modal .info-container img:hover {
+  width: 102%;
+  height: 18vw;
+  transition: 0.3s;
 }
 .add-category-modal .category-form-text {
   margin-bottom: 15px;
@@ -1203,6 +1144,65 @@ input[name="lastName"] {
 .collapse-chapter {
   cursor: pointer;
 }
+.social .fbtn {
+  width: 50px;
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  line-height:18px;
+  float: left;
+}
+.social .fab{padding:15px 0px}
+.facebook {
+  background-color: #3b5998;
+}
+
+
+.twitter {
+  background-color: #55acee;
+}
+
+.stumbleupon {
+  background-color: #eb4924;
+}
+
+
+
+.linkedin {
+  background-color: #0077b5;
+}
+
+.buffer {
+  background-color: #323b43;
+}
+
+.share-button.sharer {
+height: 20px;
+}
+.share-button.sharer .social.active.top {
+transform: scale(1) translateY(-10px);
+}
+.share-button.sharer .social.active {
+opacity: 1;
+transition: all 0.4s ease 0s;
+visibility: visible;
+}
+.share-button.sharer .social.networks-5 {
+
+}
+.share-button .btn:focus{
+  box-shadow: none;
+}
+.share-button.sharer .social.top {
+margin-top: -90px;
+transform-origin: 0 0 0;
+}
+.share-button.sharer .social {
+margin-left: 113px;
+opacity: 0;
+transition: all 0.4s ease 0s;
+visibility: hidden;
+}
 @media (max-width: 765px) {
   #coverImage {
     margin-bottom: 17px;
@@ -1301,7 +1301,7 @@ input[name="lastName"] {
   width: 100%;
   background: #f5f5f5;
   border-radius: 8px;
-  padding: 20px 7px 0 0;
+  padding: 20px 7px 30px 0;
 }
 #startCourse {
   width: 75%;
@@ -1603,7 +1603,7 @@ input[name="lastName"] {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.17), 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 .Description p {
-  padding: 4px 40px 0 2px;
+  padding: 10px 40px 0 2px;
   font-family: Poppins;
 }
 .Description h3 {
@@ -1684,14 +1684,80 @@ input[name="lastName"] {
   margin-left: 84px;
 }
 #eventCardInfo {
-  width: 88%;
-  height: 163px;
+  width: 100%;
   background: #ffffff;
   border-radius: 8px;
-  padding: 4px 17px 0 0;
+  padding: 10px 17px 0 0;
 }
+#sponsors-container{
+  margin-top:30px;
+}
+.edit-event{
+  margin-right:2.5vw;
+  float: right;
+  height: 30px;
+  width: 30px;
+  background: yellow;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(122, 122, 122, 0.16), 0 3px 6px rgba(160, 158, 158, 0.23);
+}
+.edit-event-responsive{
+  margin-right:2.5vw;
+  float: right;
+  height: 30px;
+  width: 30px;
+  background: yellow;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(122, 122, 122, 0.16), 0 3px 6px rgba(160, 158, 158, 0.23);
+  display:none;
+}
+@media (max-width: 765px) {
+  #detailstatle{
+    margin-top:18px;
+  }
+.edit-event-responsive{
+    margin-right:2.5vw;
+    float: right;
+    height: 30px;
+    width: 30px;
+    background: yellow;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(122, 122, 122, 0.16), 0 3px 6px rgba(160, 158, 158, 0.23);
 
-
+  }
+.edit-event{
+  margin-right:2.5vw;
+  float: right;
+  height: 30px;
+  width: 30px;
+  background: yellow;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(122, 122, 122, 0.16), 0 3px 6px rgba(160, 158, 158, 0.23);
+  display:none;
+}
+.sponsors-pic {
+  width: 80px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  filter:grayscale(100%);
+  transition: 0.3s;
+  margin-bottom: 20px;
+}
+}
 /* --------- add event ----------- */
 #upload-event-cover {
   width: 100%;
@@ -1780,24 +1846,13 @@ input[name="lastName"] {
 /*******************/
 
 #register-boutton {
-  width: 50%;
+  width: 90%;
   background: #4bcffa;
   font-family: Poppins;
   border: none;
   height: 35px;
   display: block;
-  margin-left: 8px;
-  margin-right: auto;
-}
-
-#register-boutton {
-  width: 50%;
-  background: #4bcffa;
-  font-family: Poppins;
-  border: none;
-  height: 35px;
-  display: block;
-  margin-left: 8px;
+  margin-left: 0px;
   margin-right: auto;
 }
 #detailstatle {
@@ -1805,7 +1860,6 @@ input[name="lastName"] {
   font-size: 22px;
   font-weight: 600;
 }
-
 .sponsors-pic {
   width: 80px;
   height: 80px;
@@ -1820,6 +1874,36 @@ input[name="lastName"] {
   width:100px;
   height:100px ;
 }
+
+  /* ------------ settings ------------*/
+ 
+  #settingTabs{
+    background: #FFFFFF;
+    border-radius: 12px;
+    height: 370px;
+    width: 90%;
+  }
+  #settingTabs ul li{
+    display:flex;
+    align-items:center;
+    height: 56px;
+    color: #000;
+    font-weight: 600;
+  }
+  #settingTabs ul > :first-child {
+    font-size: 17px;
+    color: #787878;
+    margin-bottom: 5px;
+    justify-content:center;
+  }
+  #settingTabs ul li img{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .inSettingsTab{
+    background: #FFD32A;
+  }
+
 
 /* for xl screens --------keep it in the bottom of the file-------- */
 @media (max-width: 1140px) {
@@ -1837,8 +1921,7 @@ input[name="lastName"] {
     margin-left: auto;
     margin-right: auto;
   }
-  #instructorInfos div h4,
-  #instructorInfos div p {
+  #instructorInfos div h4,#instructorInfos div p {
     text-align: center;
     margin-bottom: 7px;
   }
@@ -1922,6 +2005,9 @@ input[name="lastName"] {
     font-size: 13px;
     color: #696969;
   }
+
+}
+  
 
   /* for xl screens --------keep it in the bottom of the file-------- */
   @media (max-width: 1140px) {
