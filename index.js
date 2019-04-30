@@ -7,7 +7,8 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const fileUpload = require("express-fileupload");
-// const flash = require("flash");
+const io = require('socket.io');
+
 
 const redisClient = require("redis").createClient();
 const RedisStore = require("connect-redis")(session);
@@ -117,6 +118,16 @@ app.use("/messages", message);
 app.get("*", (req, res) => {
 	res.render("404");
 });
+
+//socket 
+const http = require('http').Server(app)
+let socket = io(http)
+
+socket.on("connection", () => {
+	console.log('user connected');
+
+});
+
 //listen to requests
 const port = 3000 || process.env.PORT;
 app.listen(port, () => {
