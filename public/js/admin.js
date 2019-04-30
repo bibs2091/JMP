@@ -16,3 +16,14 @@ function deleteUser(id) {
         }
     });
 }
+//approve a user by id
+function approveUser(id) {
+    $.ajax({
+        url: '/admin/users/approve/' + id,
+        method: 'PUT',
+        contentType: 'application/json',
+        success: function (result) {
+            unapprovedUsers.ajax.reload();
+        }
+    });
+}

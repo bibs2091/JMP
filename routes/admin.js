@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
+//require models
+const Users = require("../models/Users");
+
 //require controllers
 const homeController = require("../controllers/admin/home");
 const categoriesController = require("../controllers/admin/categories");
@@ -25,5 +28,8 @@ router.delete("/category/delete/:id", deleteCategoryController);
 router.post("/category/update/:id", updateCategoryController);
 router.get("/users", usersController);
 router.delete("/users/delete/:id", deleteUserController);
+router.put("/users/approve/:id", (req, res) => {
+    Users.update({ groupId: 2 }, { where: { id: req.params.id } });
+});
 
 module.exports = router;

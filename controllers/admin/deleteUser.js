@@ -3,6 +3,9 @@ const UsersInfo = require("../../models/UsersInfo");
 
 module.exports = async (req, res) => {
     const user = await UsersInfo.findOne({ where: { id: req.params.id } });
+    if (!user) {
+        return res.redirect("/error");
+    }
     //delete user
     await Users.destroy({
         where: {
