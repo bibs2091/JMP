@@ -19,3 +19,7 @@ const Message = db.define("Message", {
 		defaultValue: false,
 	},
 });
+
+db.sync({ forced: true });
+
+module.exports = Message;
