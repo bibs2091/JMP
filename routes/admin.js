@@ -9,6 +9,7 @@ const coursesController = require("../controllers/admin/courses");
 const getCategoryController = require("../controllers/admin/getCategory");
 const deleteCategoryController = require("../controllers/admin/deleteCategory");
 const updateCategoryController = require("../controllers/admin/updateCategory");
+const usersController = require("../controllers/admin/users");
 
 //handling requests 
 router.get("/", (req, res) => {
@@ -21,4 +22,5 @@ router.get("/courses", coursesController);
 router.get("/category/:id", getCategoryController);
 router.delete("/category/delete/:id", deleteCategoryController);
 router.post("/category/update/:id", updateCategoryController);
+router.get("/users", usersController);
 module.exports = router;
