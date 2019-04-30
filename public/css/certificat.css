@@ -1,10 +1,168 @@
 body{
+    max-width: 100%;
+    background: #f5f5f5;
+}
+h1{
+    display: block;
+    margin-top: -28px;
     text-align: center;
+    font-family: Ubuntu,sans-serif;
+    color: #3c3c3c;
+
+}
+.certificat{
+    width: 78%;
+    height: 48vw;
+    background-color: #FCFCFC;
+    position: relative;
+    border: 8px solid #3C3C3C;
+    border-radius: 2px;
+    background: #3C3C3C;
+
+}
+.certificat img{
+    max-width:100%;
+    max-height:100%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.certificat h2{
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    top: 41%;
+    transform: translateY(-50%);
+    font-family: Montserrat;
+    color: #000;
+    font-weight: 600;
+    padding-left: 20px;
+    font-size: 3vw; 
+}
+.certificat p{
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    top: 56%;
+    transform: translateY(-50%);
+    font-family: Montserrat;
+    color: #000;   
+    padding: 0 8vw;
+    font-size: 1.5vw;
+}
+.certificat span{
+    font-family: Dancing Script,sans-serif;
+    color: #F13B33;
+    font-size: 1.7vw;
 }
 
-.certificat{
-    width: 200px;
-    height: 200px;
-    background-color: red;
+#save-as-png{
     text-align: center;
+    margin-bottom: 50px;
 }
+#saveAsPNG {
+    font-family: Montserrat;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 0;
+    background: #51C1F0;
+    color: white;
+    transition: all 150ms ease;
+    cursor: pointer;
+    box-shadow: 0 30px 30px -20px rgba(0, 0, 0, 0.4);
+    font-size: 17px;
+  }
+  #saveAsPNG:hover, #saveAsPNG:focus {
+    background: #22b0ec;
+    outline: 0;
+    box-shadow: 0 30px 30px -25px black;
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+    text-decoration: none;
+  }
+  #saveAsPNG:active {
+    background: #13a4e1;
+    box-shadow: 0 30px 30px -20px rgba(0, 0, 0, 0.4);
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+  #saveAsPNG:disabled {
+    cursor: auto;
+  }
+  #saveAsPNG:disabled:hover {
+    box-shadow: 0 30px 30px -20px rgba(0, 0, 0, 0.4);
+  }
+  #saveAsPNG.done {
+    background: #7DCE94;
+    -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+            animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+            perspective: 1000px;
+  }
+  #saveAsPNG .spinner {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid transparent;
+    border-left: 2px solid transparent;
+    -webkit-animation: loading 0.5s infinite linear;
+            animation: loading 0.5s infinite linear;
+  }
+  @-webkit-keyframes loading {
+    to {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @keyframes loading {
+    to {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes shake {
+    10%, 90% {
+      -webkit-transform: translate3d(-1px, 0, 0);
+              transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+      -webkit-transform: translate3d(2px, 0, 0);
+              transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+      -webkit-transform: translate3d(-4px, 0, 0);
+              transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+      -webkit-transform: translate3d(4px, 0, 0);
+              transform: translate3d(4px, 0, 0);
+    }
+  }
+  @keyframes shake {
+    10%, 90% {
+      -webkit-transform: translate3d(-1px, 0, 0);
+              transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+      -webkit-transform: translate3d(2px, 0, 0);
+              transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+      -webkit-transform: translate3d(-4px, 0, 0);
+              transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+      -webkit-transform: translate3d(4px, 0, 0);
+              transform: translate3d(4px, 0, 0);
+    }
+  }
+  

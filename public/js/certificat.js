@@ -15,3 +15,20 @@ $('#save-as-png').click(function (e) {
 
     });
 });
+
+
+
+
+/* ------ save as png animation ------- */
+var saveButton = function(button) {
+  
+    button.innerHTML = 'Saving <span class="spinner"></span>';
+    button.disabled = true;
+    
+    // Simulate successful AJAX call
+    setTimeout(function(){
+      button.innerHTML = 'Saved';
+      button.className = 'done';
+    }, 3000);
+    
+  };

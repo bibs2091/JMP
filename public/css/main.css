@@ -1844,6 +1844,12 @@ visibility: hidden;
   .inSettingsTab{
     background: #FFD32A;
   }
+  #fullname-settings{
+    display:table ;
+  }
+  #fullname-settings div{
+   display:table-cell;
+  }
 
 
 /* for xl screens --------keep it in the bottom of the file-------- */
