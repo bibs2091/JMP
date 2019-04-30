@@ -27,6 +27,7 @@ const user = require("./routes/user");
 const admin = require("./routes/admin");
 const events = require("./routes/events");
 const courses = require("./routes/courses");
+const message = require("./routes/messages");
 
 //environment variables
 const {
@@ -112,6 +113,7 @@ app.use("/admin", admin);
 app.use("/", home);
 app.use("/events", events);
 app.use("/courses", courses);
+app.use("/messages", message);
 app.get("*", (req, res) => {
 	res.render("404");
 });
