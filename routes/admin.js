@@ -30,6 +30,7 @@ router.get("/users", usersController);
 router.delete("/users/delete/:id", deleteUserController);
 router.put("/users/approve/:id", (req, res) => {
     Users.update({ groupId: 2 }, { where: { id: req.params.id } });
+    res.send({ success: true });
 });
 
 module.exports = router;
