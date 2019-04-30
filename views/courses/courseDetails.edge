@@ -7,8 +7,9 @@
   <div id="coverImage" style="background: url({{course.cover}}) no-repeat;">
     <h1>{{course.title}}</h1>
     <div id="imgTags">
-      <span>javascript</span>
-      <span>nodejs</span>
+      @each(tag in course.tags)
+        <span>{{tag}}</span>
+      @endeach
     </div>
   </div>
   <div class="container" style="padding-left:4vw;">

@@ -5,8 +5,6 @@ const Lectures = require("../../models/Lectures");
 module.exports = async (req, res) => {
     let courseDATA = req.body;
     let courseJSON = JSON.parse(req.body.courseJSON);
-    let tags = JSON.parse(req.body.tags);
-    courseDATA.tags = tags;
     courseDATA.author = req.user.id;
     delete courseDATA.courseJSON;
     //create the course
