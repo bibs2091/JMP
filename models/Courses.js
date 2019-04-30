@@ -26,7 +26,7 @@ const Courses = db.define("Courses", {
         type: Sequelize.INTEGER
     },
     tags: {
-        type: Sequelize.STRING
+        type: Sequelize.ARRAY(Sequelize.STRING)
     }
 });
 
