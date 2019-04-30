@@ -1,6 +1,6 @@
 //intilize users table 
 $(document).ready(function () {
-    const unapprovedUsers = $('.data-table').DataTable({
-        ajax: "/admin/users/unapproved"
+    const unapprovedUsers = $('#unapproved-users').DataTable({
+        "ajax": "/api/users/unapproved"
     });
 });
