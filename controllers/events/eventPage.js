@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
 			sponsors
 		});
 	} catch (err){
-		console.log(err);
+		console.log("errors ===>\n"+err);
 		res.redirect('/errors');
 	}
 }
