@@ -12,8 +12,21 @@ const Users = require('../models/UsersInfo')
 //access	private
 //desc		get user's inbox
 
-router.get('/', (req, res) => {
-	res.send('this is inbox')
+router.get('/', async (req, res) => {
+	try {
+		let inbox = await Messages.findAll({ where: { to: req.user.id } })
+		inbox = inbox.map(message => {
+			return {
+				from: message.dataValues.from,
+				to: message.dataValues.to,
+				text: message.dataValues.text
+			}
+		})
+		res.status(200).json(inbox)
+	} catch (error) {
+		console.log(error)
+	}
+
 })
 
 //route		/messages/sent
@@ -31,7 +44,7 @@ router.get('/sent', async (req, res) => {
 				text: message.dataValues.text
 			}
 		})
-		res.status(200).send(JSON.stringify(sentMessages))
+		res.status(200).json(sentMessages)
 	} catch (error) {
 		console.log(error);
 	}
@@ -53,7 +66,7 @@ router.get('/user/:username', async (req, res) => {
 						text: message.dataValues.text
 					}
 				})
-				res.status(200).send(JSON.stringify(sentMessages))
+				res.status(200).json(sentMessages)
 			} catch (error) {
 				console.log(error)
 			}
