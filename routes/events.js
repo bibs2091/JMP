@@ -15,15 +15,16 @@ const isAuthenticated = require("../middleware/isAuthenticated");
 const isCoach = require("../middleware/isCoach");
 const isEventOwner = require("../middleware/isEventOwner");
 const isAdmin = require("../middleware/isAdmin");
+const isAdminOrCoach = require("../middleware/isAdminOrCoach");
 
 
 //handling requests 
-router.post("/validating/:id",isAdmin,validatingController);
-router.post("/delete/:id",isEventOwner,deleteController);
-router.post("/add", isAdmin,addController);
-router.post("/modifie/:id",isEventOwner,modifiePostController);
-router.get("/modifie/:id",isEventOwner,modifieGetController);
-router.get("/add",isCoach, (req, res) => {
+router.get("/validating/:id",isAuthenticated,isAdmin,validatingController);
+router.post("/delete/:id",isAuthenticated,isEventOwner,deleteController);
+router.post("/add", isAuthenticated,isAdminOrCoach,addController);
+router.post("/modifie/:id",isAuthenticated,isEventOwner,modifiePostController);
+router.get("/modifie/:id",isAuthenticated,isEventOwner,modifieGetController);
+router.get("/add",isAuthenticated,isAdminOrCoach, (req, res) => {
     res.render("events.add");
 });
 router.get("/:id",isAuthenticated,eventController);
