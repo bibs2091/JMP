@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+
 //requiring the messages model
 const Messages = require('../models/Message')
 //requiring the users model
@@ -24,6 +25,34 @@ router.get('/sent', (req, res) => {
 	res.send('messages u sent')
 })
 
+router.get('/user/:username', async (req, res) => {
+	const username = req.params.username;
+	//search for user
+	try {
+		const user = await Users.findOne({ where: { username } });
+		if (user) {
+			const to = user.dataValues.id;
+			try {
+				let sentMessages = await Messages.findAll({ where: { to } });
+				sentMessages = sentMessages.map(message => {
+					return {
+						from: message.dataValues.from,
+						to: message.dataValues.to,
+						text: message.dataValues.text
+					}
+				})
+				res.status(200).send(JSON.stringify(sentMessages))
+			} catch (error) {
+				console.log(error)
+			}
+		} else {
+			res.render('404')
+		}
+	} catch (error) {
+		console.log(error)
+	}
+})
+
 //route		/messages/new_message
 //methode 	GET
 //access	private
@@ -35,12 +64,12 @@ router.get("/new_message", (req, res) => {
 
 router.post('/new_message', async (req, res) => {
 	// create the message object
-	let message = {
-		from: req.user.id,
-		to: req.body.receiver,
-		text: req.body.message,
-		isRead: false
-	}
+	let message = req.body;
+	message.from = req.user.id;
+	console.log('message in router :');
+	console.log(message);
+
+
 	// search fot the receiver
 	if (message.to) {
 		try {
@@ -49,6 +78,7 @@ router.post('/new_message', async (req, res) => {
 				try {
 					message.to = user.dataValues.id;
 					await Messages.create(message);
+					console.log('ready to render')
 					res.render('messages', { msg: "message has been sent with success" })
 
 				} catch (err) {
