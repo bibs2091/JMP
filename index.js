@@ -7,7 +7,6 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const fileUpload = require("express-fileupload");
-const io = require('socket.io');
 
 
 const redisClient = require("redis").createClient();
@@ -119,17 +118,15 @@ app.get("*", (req, res) => {
 	res.render("404");
 });
 
-//socket 
-const http = require('http').Server(app)
-let socket = io(http)
-
-socket.on("connection", () => {
-	console.log('user connected');
-
-});
-
 //listen to requests
 const port = 3000 || process.env.PORT;
-app.listen(port, () => {
+const server = app.listen(port, () => {
 	console.log("server listening to port " + port);
 });
+
+// socket init
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+	console.log('new user connected')
+})
