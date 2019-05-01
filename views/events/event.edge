@@ -24,8 +24,12 @@
                       <li><i class="fas fa-map-marker-alt"></i> &nbsp;{{event.place}}</li>
                       <br>
                     </ul>
-                    <button  type="button" class="btn btn-primary" id="register-boutton">
-                      <a href="/events/register/{{event.id}}">Register Now</a></button>
+                    @if(registred)
+                    <p>You are registred</p>
+                    @else
+                    <form method="POST" action="/events/register/{{event.id}}">
+                      <input type="submit" value="Register Now" class="btn btn-primary" id="register-boutton">
+                    @endif
                   </div>
             </div>
         </div>

@@ -8,7 +8,6 @@ const deleteController = require("../controllers/events/delete");
 const modifiePostController = require("../controllers/events/modifie_post");
 const modifieGetController = require("../controllers/events/modifie_get");
 const eventController = require("../controllers/events/eventPage");
-const eventGetRegisterController = require("../controllers/events/getRegister");
 const eventPostRegisterController = require("../controllers/events/postRegister");
 // require middlewares
 const isAuthenticated = require("../middleware/isAuthenticated");
@@ -28,6 +27,5 @@ router.get("/add",isAuthenticated,isAdminOrCoach, (req, res) => {
     res.render("events.add");
 });
 router.get("/:id",isAuthenticated,eventController);
-router.get("/register/:id",isAuthenticated,eventGetRegisterController);
 router.post("/register/:id",isAuthenticated,eventPostRegisterController);
 module.exports = router;

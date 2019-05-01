@@ -1,7 +1,20 @@
 const Event = require('../../models/Event');
+const EventInscriptions = require('../../models/EventInscriptions');
 const Sponsor = require('../../models/Sponsors');
 module.exports = async (req, res) => {
 	try{
+		const eventInscriptions = await EventInscriptions.findAll(
+		{
+			where:
+			{
+				userId : req.user.id,
+				eventId : req.params.id
+			}
+		});
+		let registred = false;
+		if (eventInscriptions.length ){
+			registred = true;
+		}
 		const sponsors = await Sponsor.findAll(
 			{where :
 				{
@@ -14,7 +27,8 @@ module.exports = async (req, res) => {
 		event.dataValues.date.getFullYear() + '-' + ('0' + (event.dataValues.date.getMonth() + 1)).slice(-2) + '-' + ('0' + event.dataValues.date.getDate()).slice(-2);
 		res.render('events.event', {
 			event,
-			sponsors
+			sponsors,
+			registred
 		});
 	} catch (err){
 		console.log("errors ===>\n"+err);
