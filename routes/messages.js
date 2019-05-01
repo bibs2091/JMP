@@ -21,8 +21,20 @@ router.get('/', (req, res) => {
 //access	private
 //desc		get user's sent messages
 
-router.get('/sent', (req, res) => {
-	res.send('messages u sent')
+router.get('/sent', async (req, res) => {
+	try {
+		let sentMessages = await Messages.findAll({ where: { from: req.user.id } });
+		sentMessages = sentMessages.map(message => {
+			return {
+				from: message.dataValues.from,
+				to: message.dataValues.to,
+				text: message.dataValues.text
+			}
+		})
+		res.status(200).send(JSON.stringify(sentMessages))
+	} catch (error) {
+		console.log(error);
+	}
 })
 
 router.get('/user/:username', async (req, res) => {
