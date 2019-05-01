@@ -9,7 +9,7 @@ const unapprovedUsersController = require("../controllers/api/unapprovedUsers");
 const isAuthenticated = require("../middleware/isAuthenticated");
 
 //handling requests
-router.get("/users/:type", unapprovedUsersController);
+router.get("/users/unapproved", unapprovedUsersController);
 
 
 module.exports = router;
