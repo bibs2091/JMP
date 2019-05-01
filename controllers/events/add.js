@@ -11,8 +11,9 @@ module.exports = async (req, res) => {
 		}
 		let { cover, planning } = [0, 0];
 		// getting the sponsors names
-		let sponsors ={}
+		let sponsors = [];
 		sponsors.name = req.body.sponsorsName;
+
 
 		// getting event infos
 		// the creator id 	
@@ -28,10 +29,15 @@ module.exports = async (req, res) => {
 			//getting the sponsors logos
 			if (sponsors.name) {
 				sponsors.logo = req.files.logo;
+				// when there is only one sponsor the name and logo are not arrays 
+				// but they must be arrays 
+				if (!Array.isArray(sponsors.name)){
+					sponsors.name = [sponsors.name];
+					sponsors.logo = [sponsors.logo];
+				}
 
 			}
 		}
-		console.log(sponsors);
 		const { name, date, time, place, description, nbPlace, tags } = req.body;
 		// creating the event proposition
 		let newevent = await Event.create({ name, time, date, place, description, nbPlace, creatorId, validated, tags });
@@ -64,7 +70,7 @@ module.exports = async (req, res) => {
 
 		//if there is sponsors ,store them 
 		if(sponsors.name){
-
+			console.log(sponsors.name[1]);
 			let spon =0;
 			for(let i=0;i<sponsors.name.length;i++){
 				spon = await Sponsor.create({
