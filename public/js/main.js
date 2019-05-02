@@ -41,17 +41,15 @@ $(".get-category").click(function () {
 
 //Delete category by id
 function deleteCategory(id) {
-    if (confirm('You really want to delete the category')) {
-    } else {
-        return 0;
-    }
-    $.ajax({
-        url: '/admin/category/delete/' + id,
-        method: 'DELETE',
-        contentType: 'application/json',
-        success: function (result) {
-            location.reload();
-        }
+    mscConfirm("Delete", "Are you sure you want to delete this category?", function () {
+        $.ajax({
+            url: '/admin/category/delete/' + id,
+            method: 'DELETE',
+            contentType: 'application/json',
+            success: function (result) {
+                location.reload();
+            }
+        });
     });
 }
 /*add chapter*/
