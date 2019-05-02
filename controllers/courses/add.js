@@ -46,6 +46,6 @@ module.exports = async (req, res) => {
     await Courses.update({
         pdfs,
         duration
-    }, { where: { id: courseId } })
+    }, { where: { id: courseId } });
     res.redirect("/courses/" + courseId);
 }

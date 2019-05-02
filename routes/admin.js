@@ -14,6 +14,7 @@ const deleteCategoryController = require("../controllers/admin/deleteCategory");
 const updateCategoryController = require("../controllers/admin/updateCategory");
 const usersController = require("../controllers/admin/users");
 const deleteUserController = require("../controllers/admin/deleteUser");
+const settingsController = require("../controllers/admin/settings");
 
 //handling requests 
 router.get("/", (req, res) => {
@@ -32,5 +33,6 @@ router.put("/users/approve/:id", (req, res) => {
     Users.update({ groupId: 2 }, { where: { id: req.params.id } });
     res.send({ success: true });
 });
+router.get("/settings", settingsController);
 
 module.exports = router;
