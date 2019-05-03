@@ -104,16 +104,18 @@
                             </div>
                             <div class='dropdown-wrapper' id='dropdownWrapper' style='width: 256px'>
                             <div class='dropdown-profile-details'>
-                                <img alt='Profile Photo' src='/images/avatar.jpg'>
+                                <img alt='Profile Photo' src='{{currentUser.info.avatar}}'>
                                 <div>
-                                    <h5>Mohamed Naas</h5>
-                                    <h6>@bibs2091</h6>
+                                    <h5>
+                                        {{currentUser.info.firstName}}&nbsp;{{currentUser.info.lastName}}
+                                    </h5>
+                                    <h6><span>@</span>{{currentUser.info.username}}</h6>
                                 </div>
 
                             </div>
                             <div class='dropdown-links'>
-                                <a href='#'>Profile</a>
-                                <a href='#'>Sign out</a>
+                                <a href='/user/editprofile'>Profile</a>
+                                <a href='/auth/logout'>Sign out</a>
                             </div>
                             </div>
                         </div>

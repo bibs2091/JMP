@@ -13,7 +13,7 @@ const userInfo = require("../models/UsersInfo");
 const isAuthenticated = require("../middleware/isAuthenticated");
 
 //handling requests
-router.get("/home", homeController);
+router.get("/home", isAuthenticated, homeController);
 
 //route		/user/editprofile
 //methode 	GET
