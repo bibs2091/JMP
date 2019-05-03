@@ -18,6 +18,9 @@ const Message = db.define("Message", {
 		type: Sequelize.BOOLEAN,
 		defaultValue: false,
 	},
+	date: {
+		type: Sequelize.DATE,
+	}
 });
 
 db.sync({ forced: true });
