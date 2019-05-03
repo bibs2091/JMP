@@ -22,6 +22,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+a:hover{
+  text-decoration: none;
+  color: inherit;
+}
 
 .s-layout {
   display: flex;
@@ -239,11 +243,9 @@ input[type="search"]:focus {
   align-items: center;
   flex: 1 1 auto;
   float: right;
-}
-
-.header-right {
   position: relative;
   justify-content: flex-end;
+  margin-right: 5px;
 }
 
 .logo {
@@ -294,7 +296,7 @@ input[type="search"]:focus {
   border-radius: 4px;
   margin-top: .5rem;
   padding: 1.5rem;
-  padding-top: 10px;
+  padding-top: 20px;
   background-color: #fff;
   box-shadow: 0 0 0 1px rgba(50, 50, 93, 0.08), 0 2px 4px 0 rgba(50, 50, 93, 0.05), 0 4px 8px 0 rgba(136, 152, 170, 0.08);
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -312,7 +314,7 @@ input[type="search"]:focus {
 .dropdown-profile-details {
   display: table;
   border-bottom: 1px solid #eaeaea;
-  padding-bottom: 15px;
+  padding-bottom: 0px;
 
 }
 
@@ -325,8 +327,8 @@ input[type="search"]:focus {
 .dropdown-profile-details div{
   display: table-cell;
   vertical-align: middle;
-
 }
+
 .dropdown-profile-details div h5{
   color:#333333;
   font-weight: bold;
@@ -335,6 +337,14 @@ input[type="search"]:focus {
 .dropdown-profile-details div h6{
   color:#6f6f6f;
 }
+.dropdown-profile-details div a{
+  color:#c9ab38;
+  text-align: center;
+  display:block;
+  font-weight: bolder;
+  margin-top: 13px;
+}
+
 
 .dropdown-links {
   display: flex;
@@ -406,7 +416,7 @@ input[type="search"]:focus {
 }
 
 .icon-Message_notification:before {
-  content: "\e917";
+  content: "\e919";
   font-size: 27px;
   margin-right: 20px;
 }
@@ -498,9 +508,8 @@ input[type="search"]:focus {
 }
 
 #center_fillingInfosBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+
 }
 
 #center_fillingInfosBox h2 {
@@ -510,6 +519,9 @@ input[type="search"]:focus {
   font-weight: 600;
   font-size: 33px;
   top: 110px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
   color: #e0e0e0;
 }
 #center_fillingInfosBox h2 span {
@@ -520,6 +532,10 @@ input[type="search"]:focus {
   width: 500px;
   position: absolute;
   top: 170px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+
   z-index: 2;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 10px;
