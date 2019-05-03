@@ -20,7 +20,7 @@ router.get("/home", homeController);
 //access	private
 //desc		get current user profile
 
-router.get("/editprofile", isAuthenticated, editProfileController);
+router.get("/editprofile", editProfileController);
 
 //route		/user/editprofile
 //methode 	POST
