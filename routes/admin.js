@@ -33,6 +33,10 @@ router.put("/users/approve/:id", (req, res) => {
     Users.update({ groupId: 2 }, { where: { id: req.params.id } });
     res.send({ success: true });
 });
+router.put("/users/makecoach/:id", (req, res) => {
+    Users.update({ groupId: 1 }, { where: { id: req.params.id } });
+    res.send({ success: true });
+});
 router.get("/settings", settingsController);
 
 module.exports = router;
