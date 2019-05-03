@@ -216,7 +216,7 @@ function wishlist(id) {
         method: 'POST',
         contentType: 'application/json',
         success: function (result) {
-            alert("done");
+
         }
     });
 }
