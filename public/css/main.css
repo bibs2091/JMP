@@ -894,6 +894,12 @@ input[name="lastName"] {
   .ellipsis {
     margin-right: 35px;
   }
+  .other-profile {
+    margin-left: auto;
+  }
+  .profile-menu-item {
+    padding-right: 35px;
+  }
   .other-profile-info {
     margin-left: auto;
     margin-right: auto;
