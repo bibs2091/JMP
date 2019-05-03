@@ -69,20 +69,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //sessions
-app.use(
-	session({
-		store: new RedisStore(options),
-		unset: "destroy",
-		resave: false, // this will prevent from saving to the sess_store eventho the sess isn't modified
-		secret: SESS_SECRET,
-		saveUninitialized: false, // dont store the new sessions with no data
-		cookie: {
-			// maxAge: SESS_LifeTime,
-			sameSite: true, // protect against csrf
-			secure: IN_PROD,
-		},
-	})
-);
+const sessionMiddleware = session({
+	store: new RedisStore(options),
+	unset: "destroy",
+	resave: false, // this will prevent from saving to the sess_store eventho the sess isn't modified
+	secret: SESS_SECRET,
+	saveUninitialized: false, // dont store the new sessions with no data
+	cookie: {
+		// maxAge: SESS_LifeTime,
+		sameSite: true, // protect against csrf
+		secure: IN_PROD,
+	},
+})
+app.use(sessionMiddleware);
+
+//
+// io server 
+const ioServer = require('./config/socket')(app, sessionMiddleware);
+
+
 //flash
 app.use(flash());
 
@@ -118,15 +123,14 @@ app.get("*", (req, res) => {
 	res.render("404");
 });
 
+
+
+
+
 //listen to requests
 const port = 3000 || process.env.PORT;
-const server = app.listen(port, () => {
+ioServer.listen(port, () => {
 	console.log("server listening to port " + port);
 });
 
-// socket init
-const io = require('socket.io')(server);
 
-io.on('connection', (socket) => {
-	console.log('new user connected')
-})
