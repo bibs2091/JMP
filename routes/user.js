@@ -11,9 +11,10 @@ const userInfo = require("../models/UsersInfo");
 
 //middleware for authentication
 const isAuthenticated = require("../middleware/isAuthenticated");
+const isStudent = require("../middleware/isStudent");
 
 //handling requests
-router.get("/home", isAuthenticated, homeController);
+router.get("/home", isAuthenticated, isStudent, homeController);
 
 //route		/user/editprofile
 //methode 	GET
