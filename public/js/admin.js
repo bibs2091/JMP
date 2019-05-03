@@ -4,6 +4,9 @@ $(document).ready(function () {
     unapprovedUsers = $('#unapproved-users').DataTable({
         "ajax": "/api/users/unapproved"
     });
+    allUsers = $('#all-users').DataTable({
+        "ajax": "/api/users/all"
+    });
 });
 //delete a user by id
 function deleteUser(id) {
@@ -24,6 +27,8 @@ function approveUser(id) {
         contentType: 'application/json',
         success: function (result) {
             unapprovedUsers.ajax.reload();
+            allUsers.ajax.reload();
         }
     });
 }
+//make a user coach
