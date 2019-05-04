@@ -34,8 +34,13 @@
             If you think something is broken, report a problem.
           </br>
         </p>
-        <span class='btn'><a href="/home">RETURN HOME</a></span>
-        <span class='btn'>REPORT PROBLEM</span>
+        <a href="/home"><span class='btn'>RETURN HOME</span></a>
+		<a data-toggle="modal" href="#normalModal"><span class="btn">Report a problem</span></a>
+
+
+
+		
+		  
       </div>
       <div class="col-md-5">
         <html lang="fr">
@@ -233,8 +238,38 @@
     </div>
   </div>
   <div class='bg-img'></div>
-
+  <div id="normalModal" class="modal fade">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		  <h4 class="modal-title">Report problem</h4>
+		</div>
+		<f orm>
+			<div class="modal-body" style="padding-bottom:7px;padding-left: 25px;">
+					<div class="form-group">
+							<label for="problem-title">Problem title</label>
+							<input type="email" class="form-control" id="problem-title" name="title">
+					</div>
+					<div class="form-group">
+							<label for="problem-description" class="customized-label">Problem description</label>
+							<p style="font-size: 11px; padding-bottom: 0;">
+								we recommend providing information like: When the problem occurred, what were you doing ...
+							</p>
+							<textarea name="description" id="problem-description" rows="4" class="form-control" required></textarea>
+					</div>
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn not_rounded" data-dismiss="modal">Close</button>
+			<input type="submit" value="Save changes" style="background: #1dbf70; font-weight:bold; border:#1dbf70;" class="btn btn-success not_rounded">
+			</div>
+		</form>
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
   <script src="/js/404pageAnimation.js"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js'></script>
 
 </body>
   
