@@ -23,6 +23,8 @@ $(function () {
 
         socket.emit('newMessage', message);
 
+        $("#message").val('').focus()
+
     })
 
 
