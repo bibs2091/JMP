@@ -220,3 +220,7 @@ function wishlist(id) {
         }
     });
 }
+//enable toolips every where
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
