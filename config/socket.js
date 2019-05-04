@@ -1,17 +1,43 @@
+const axios = require('axios');
+const Users = require('../models/UsersInfo')
+const Messages = require('../models/Message')
+
+let connectedUsers = new Map();
 // define events 
 const events = (io) => {
     io.on('connection', (socket) => {
-        console.log('new user connnected');
-        console.log(socket.request.session.passport)
+        const userId = socket.request.session.passport.user;
+
+        //add connected user to the online users array
+        connectedUsers.set(userId, socket.id)
+
+
+        console.log('new user connnected :' + socket.id);
 
         // check if user exists in session
-        if (socket.request.session.passport == null) {
+        if (socket.request.session.passport == 'undefined') {
             return
         }
 
+
         // messages 
-        socket.on('newMessage', (data) => {
-            socket.broadcast.to(data.to).emit('addMessage', { data })
+        socket.on('newMessage', (message) => {
+            message.from = socket.request.session.passport.user;
+
+            //post req
+            sendMessage(message).then(message => {
+                if (message) {
+                    console.log(message)
+
+                    const socketId = connectedUsers.get(message.to);
+                    //broadcast message
+                    io.to(socketId).emit('newMessage', message);
+                    console.log('message has been sent with success')
+                } else {
+                    console.log('user not found');
+                }
+            });
+
         })
     })
 
@@ -36,3 +62,27 @@ const init = (app, session) => {
 }
 
 module.exports = init;
+
+const sendMessage = async (message) => {
+    // search fot the receiver
+    try {
+        const user = await Users.findOne({ where: { username: message.to } });
+        if (user) {
+            try {
+                message.to = user.dataValues.id;
+                await Messages.create(message);
+                return message
+
+            } catch (err) {
+                console.log(err);
+
+            }
+        } else {
+            return null
+
+        }
+    } catch (err) {
+        console.log(err)
+    }
+
+}

@@ -7,7 +7,7 @@
         <div class="alert alert-danger">{{msg}}</div>
     @endif
     <div class="jumbotron">
-        <form action="/messages/new_message" method="POST">
+        
             <h1>Send a message</h1>
             <br>
             <label for="to">To</label>
@@ -15,14 +15,14 @@
             <br>
             <label for="message">Message</label>
             <br>
-            <textarea id="message" name="message" class="form-control" required></textarea>
+            <textarea id="message" name="message" class="form-control"  required></textarea>
             <br>
             <center>
-                <input type="submit" value="Send" class="btn btn-success"></input>
+                <button class="btn btn-success" id="send_msg">Send</button>
             </center>
-        </form>
     </div>
-    <div id="messages">
+    <div id="messages-test">
+        <h1>messages</h1>
     </div>
 </div>
 

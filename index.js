@@ -124,13 +124,8 @@ app.get("*", (req, res) => {
 });
 
 
-
-
-
 //listen to requests
 const port = 3000 || process.env.PORT;
 ioServer.listen(port, () => {
 	console.log("server listening to port " + port);
 });
-
-
