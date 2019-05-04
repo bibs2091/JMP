@@ -5,7 +5,7 @@ const router = express.Router();
 const homeController = require("../controllers/user/home");
 const editProfileController = require("../controllers/user/profile");
 const showWishlistController = require("../controllers/user/wishlist");
-
+const myCoursesController = require("../controllers/user/mycourses");
 //load userInfo model
 const userInfo = require("../models/UsersInfo");
 
@@ -15,6 +15,7 @@ const isStudent = require("../middleware/isStudent");
 
 //handling requests
 router.get("/home", isAuthenticated, isStudent, homeController);
+router.get("/mycourses", isAuthenticated, isStudent, myCoursesController);
 
 //route		/user/editprofile
 //methode 	GET

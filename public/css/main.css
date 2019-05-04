@@ -1743,7 +1743,6 @@ visibility: hidden;
 
 /* ------------------event card-------------- */
 .event_card {
-  margin: 50px;
   width: 540px;
   height: 220px;
   border: 1px solid #eaebed;
