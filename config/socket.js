@@ -12,7 +12,8 @@ const events = (io) => {
         connectedUsers.set(userId, socket.id)
 
 
-        console.log('new user connnected :' + socket.id);
+        console.log('new user connnected : ' + userId);
+        console.log(connectedUsers)
 
         // check if user exists in session
         if (socket.request.session.passport == 'undefined') {
@@ -27,10 +28,11 @@ const events = (io) => {
             //post req
             sendMessage(message).then(message => {
                 if (message) {
-                    console.log(message)
 
                     const socketId = connectedUsers.get(message.to);
+
                     //broadcast message
+
                     io.to(socketId).emit('newMessage', message);
                     console.log('message has been sent with success')
                 } else {
@@ -39,6 +41,20 @@ const events = (io) => {
             });
 
         })
+
+        //disconnect 
+        socket.on('disconnect', () => {
+            const userId = socket.request.session.passport
+            if (socket.request.session.passport == null) {
+                return
+            }
+
+            connectedUsers.delete(userId.user);
+            console.log(`user ${userId.user} has disconnected`)
+            console.log(connectedUsers)
+        })
+
+
     })
 
 }
