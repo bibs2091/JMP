@@ -59,7 +59,6 @@ module.exports = async (req, res) => {
         }
         courses[i].state = state;
     }
-    console.log(courses);
     res.render("user.mycourses", {
         pageName: "My Courses",
         pageTitle: "My Courses - JMP",

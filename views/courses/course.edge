@@ -92,7 +92,7 @@
                 @endif
                 @if(content.id == lastLecture.id)
                 <button type="button" class="btn" style="width: auto"
-                onclick="window.location.href ='/courses/classroom/{{courseId}}/certificat'">Get certificat</button>
+                onclick="window.open('/courses/classroom/{{courseId}}/certificat','_blank')">Get certificat</button>
                 @else
                 <button type="button" class="btn" onclick="window.location.href ='/courses/classroom/{{courseId}}/{{content.id+1}}'">NEXT</button>
                 @endif
