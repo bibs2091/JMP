@@ -313,9 +313,7 @@ input[type="search"]:focus {
 
 .dropdown-profile-details {
   display: table;
-  border-bottom: 1px solid #eaeaea;
   padding-bottom: 0px;
-
 }
 
 .dropdown-profile-details img{
@@ -327,6 +325,7 @@ input[type="search"]:focus {
 .dropdown-profile-details div{
   display: table-cell;
   vertical-align: middle;
+  text-align: center;
 }
 
 .dropdown-profile-details div h5{
@@ -342,14 +341,14 @@ input[type="search"]:focus {
   text-align: center;
   display:block;
   font-weight: bolder;
-  margin-top: 13px;
+  margin-top: 20px;
 }
 
 
 .dropdown-links {
   display: flex;
   flex-direction: column;
-  padding-top: 1.5rem;
+  padding-top: 0.7rem;
 }
 .dropdown-links a {
   color: #525F7F;
@@ -358,7 +357,7 @@ input[type="search"]:focus {
   transition: all 0.1s linear;
 }
 .dropdown-links a:hover {
-  color: #ebeff5;
+  opacity: 0.5;
 }
 .dropdown-links a:last-of-type {
   padding-bottom: 0;
