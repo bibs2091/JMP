@@ -31,9 +31,16 @@ $(function () {
     //listen to messages 
     socket.on('newMessage', (data) => {
         console.log(data);
-
+        playNewMessageAudio()
         messages.append("<h4>" + data.text + "</h4>")
 
     })
 
+
+    //sound 
+    function playNewMessageAudio() {
+        (new Audio('https://notificationsounds.com/soundfiles/8b16ebc056e613024c057be590b542eb/file-sounds-1113-unconvinced.mp3')).play();
+    }
+
 })
+

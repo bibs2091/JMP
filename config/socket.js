@@ -1,4 +1,3 @@
-const axios = require('axios');
 const Users = require('../models/UsersInfo')
 const Messages = require('../models/Message')
 
