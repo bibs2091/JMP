@@ -2,6 +2,7 @@ const Progress = require("../../models/Progress");
 const Courses = require("../../models/Courses");
 const UsersInfo = require("../../models/UsersInfo");
 const WishLists = require("../../models/WishLists");
+const Categories = require("../../models/Categories");
 
 module.exports = async (req, res) => {
     try {
@@ -45,11 +46,13 @@ module.exports = async (req, res) => {
             }
             courses[i].state = state;
         }
+        var categories = await Categories.findAll({ limit: 3 });
         res.render("user.home", {
             pageName: "Home",
-            pageTitle: "username - Home",
+            pageTitle: currentUser.info.username + " - Home",
             currentUser,
-            courses
+            courses,
+            categories
         });
     }
     catch{

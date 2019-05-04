@@ -605,13 +605,13 @@ input[type="search"]:focus {
 /* course card */
 .course-card {
   width: 250px;
-  height: 295px;
+  height: 282px;
   border-radius: 8px;
   position: relative;
 }
 .course-card .course-img {
   width: 248px;
-  height: 158px;
+  height: 140px;
 }
 .course-card h5 {
   margin-top: 10px;
