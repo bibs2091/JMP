@@ -6,7 +6,7 @@ const techReports = db.define("techReports", {
         type: Sequelize.STRING
     },
     description: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
     }
 });
 

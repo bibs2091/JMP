@@ -245,11 +245,11 @@
 		  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		  <h4 class="modal-title">Report problem</h4>
 		</div>
-		<f orm>
+		<form method="POST" action="/report/tech">
 			<div class="modal-body" style="padding-bottom:7px;padding-left: 25px;">
 					<div class="form-group">
 							<label for="problem-title">Problem title</label>
-							<input type="email" class="form-control" id="problem-title" name="title">
+							<input type="text" class="form-control" id="problem-title" name="title" required>
 					</div>
 					<div class="form-group">
 							<label for="problem-description" class="customized-label">Problem description</label>
@@ -261,7 +261,7 @@
 			</div>
 			<div class="modal-footer">
 			<button type="button" class="btn not_rounded" data-dismiss="modal">Close</button>
-			<input type="submit" value="Save changes" style="background: #1dbf70; font-weight:bold; border:#1dbf70;" class="btn btn-success not_rounded">
+			<input type="submit" value="Send" style="background: #1dbf70; font-weight:bold; border:#1dbf70;" class="btn btn-success not_rounded">
 			</div>
 		</form>
 	  </div><!-- /.modal-content -->
