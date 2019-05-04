@@ -23,7 +23,7 @@
                   <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
                   <td class="td-space"></td>
                   <td class="course-author">
-                    <h6>Oussama Azzaz Rahmani</h6>
+                    <h6>{{course.author}}</h6>
                   </td>
                   <td class="td-devider"></td>
                   <td class="time-and-diff">
@@ -32,20 +32,21 @@
                   </td>
                 </tr>
               </table>
-              @if(course.state == "start")
-              <div class="course-state course-start">
-                <p><i class="icon-start"></i>&nbsp;Start</p>
-              </div>
-              @elseif(course.state == "resume")
-              <div class="course-state course-resume">
-                  <p><i class="icon-resume"></i>&nbsp;Resume</p>
-              </div>
-              @else
-              <div class="course-state course-completed">
-                <p><i class="icon-completed"></i>&nbsp;Finished</p>
-              </div>
-              @endif
-              
+              <a href="/courses/classroom/{{course.id}}">
+                @if(course.state == "start")
+                <div class="course-state course-start">
+                  <p><i class="icon-start"></i>&nbsp;Start</p>
+                </div>
+                @elseif(course.state == "resume")
+                <div class="course-state course-resume">
+                    <p><i class="icon-resume"></i>&nbsp;Resume</p>
+                </div>
+                @else
+                <div class="course-state course-completed">
+                  <p><i class="icon-completed"></i>&nbsp;Finished</p>
+                </div>
+                @endif
+              </a>
             </div>
         </div>  
       @endeach 
