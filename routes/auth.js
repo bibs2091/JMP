@@ -5,14 +5,15 @@ const registerController = require("../controllers/auth/register");
 
 //require middleware
 const isAuthenticated = require("../middleware/isAuthenticated");
+const notAuthenticated = require("../middleware/notAuthenticated");
 
 //handling requests
-router.get("/login", (req, res) => {
+router.get("/login", notAuthenticated, (req, res) => {
 	res.render("auth.login", { error: req.flash("loginMessage")[0] });
 });
 
 router.post(
-	"/login",
+	"/login", notAuthenticated,
 	passport.authenticate("local", {
 		failureRedirect: "/auth/login",
 		failureFlash: true,
@@ -41,11 +42,11 @@ router.get("/logout", isAuthenticated, (req, res, next) => {
 	}
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", notAuthenticated, (req, res) => {
 	res.render("auth.register");
 });
 
-router.post("/register", registerController);
+router.post("/register", notAuthenticated, registerController);
 
 
 // for development :

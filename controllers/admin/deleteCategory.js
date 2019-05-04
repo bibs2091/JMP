@@ -7,6 +7,7 @@ module.exports = (req, res) => {
             id: req.params.id
         }
     }).then(() => {
+        console.log("category deleted " + req.params.id);
         fs.unlink(__dirname + '/../../public/categories/' + req.params.id + ".jpg", function (error) {
             if (error) {
                 console.log(error);

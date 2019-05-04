@@ -41,13 +41,15 @@ $(".get-category").click(function () {
 
 //Delete category by id
 function deleteCategory(id) {
-    $.ajax({
-        url: '/admin/category/delete/' + id,
-        method: 'DELETE',
-        contentType: 'application/json',
-        success: function (result) {
-            location.reload();
-        }
+    mscConfirm("Delete", "Are you sure you want to delete this category?", function () {
+        $.ajax({
+            url: '/admin/category/delete/' + id,
+            method: 'DELETE',
+            contentType: 'application/json',
+            success: function (result) {
+                location.reload();
+            }
+        });
     });
 }
 /*add chapter*/
@@ -214,7 +216,11 @@ function wishlist(id) {
         method: 'POST',
         contentType: 'application/json',
         success: function (result) {
-            alert("done");
+
         }
     });
 }
+//enable toolips every where
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
