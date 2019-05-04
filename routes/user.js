@@ -31,7 +31,7 @@ router.get("/editprofile2", (req, res) => {
 //access	private
 //desc		post to current user profile
 
-router.get("/wishlist", isAuthenticated, showWishlistController);
+router.get("/wishlist", isAuthenticated, isStudent, showWishlistController);
 
 router.post("/editprofile", isAuthenticated, (req, res) => {
 	console.log(req.body);

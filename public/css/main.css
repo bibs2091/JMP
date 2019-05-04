@@ -424,6 +424,14 @@ input[type="search"]:focus {
   content: "\e900";
   color: #ffd32a;
 }
+.icon-intermediat:before {
+  content: "\e906";
+  color: #ffd32a;
+}
+.icon-beginner:before {
+  content: "\e901";
+  color: #ffd32a;
+}
 .icon-start:before {
   content: "\e915";
 }

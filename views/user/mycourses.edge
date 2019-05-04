@@ -26,7 +26,15 @@
                 <td class="td-devider"></td>
                 <td class="time-and-diff">
                   <p>{{course.duration}}&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                  <p>{{course.level}}&nbsp;&nbsp;<i class="icon-advanced"></i></p>
+                  <p>{{course.level}}&nbsp;&nbsp;
+                      @if(course.level == "beginner")
+                      <i class="icon-beginner"></i>
+                      @elseif(course.level == "intermediat")
+                      <i class="icon-intermediat"></i>
+                      @else
+                      <i class="icon-advanced"></i>
+                      @endif
+                  </p>
                 </td>
               </tr>
             </table>
