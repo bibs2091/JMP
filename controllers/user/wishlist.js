@@ -4,6 +4,12 @@ const UsersInfo = require("../../models/UsersInfo");
 const Progress = require("../../models/Progress");
 
 module.exports = async (req, res) => {
+    //get the current user
+    var currentUser = req.user;
+    var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
+    delete currentUser.password;
+    currentUser.info = userInfo.dataValues;
+
     const userId = req.user.id;
     var wishlist = await WishLists.findAll({ where: { userId } });
     var courses = [];
@@ -38,6 +44,7 @@ module.exports = async (req, res) => {
     res.render("user.wishlist", {
         pageName: "My Wishlist",
         pageTitle: "My Wishlist - JMP",
-        courses
+        courses,
+        currentUser
     });
 }
