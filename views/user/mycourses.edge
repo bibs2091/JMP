@@ -2,52 +2,52 @@
 
 @section('content')
 <div class="container" style="margin-bottom: 30px">
-    <div class="row">
-      @each(course in courses)      
-        <div class="col-md-3 col-lg-4">
-            <div class="course-card card">
-              <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
-              <h5 style="position:relative;">{{course.title}}&nbsp;
-                <div class="stage" onclick="wishlist({{course.id}})"> 
-                @if(course.wishlist == false)
-                <div class="heart"></div> 
-                @else
-                <div class="heart is-active"></div> 
-                @endif 
-                
-              </div>  </h5>
-              <table class="course-card-content">
-                <tr>
-                  <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
-                  <td class="td-space"></td>
-                  <td class="course-author">
-                    <h6>{{course.author}}</h6>
-                  </td>
-                  <td class="td-devider"></td>
-                  <td class="time-and-diff">
-                    <p>{{course.duration}}&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                    <p>{{course.level}}&nbsp;&nbsp;<i class="icon-advanced"></i></p>
-                  </td>
-                </tr>
-              </table>
-              <a href="/courses/classroom/{{course.id}}">
-                @if(course.state == "start")
-                <div class="course-state course-start">
-                  <p><i class="icon-start"></i>&nbsp;Start</p>
-                </div>
-                @elseif(course.state == "resume")
-                <div class="course-state course-resume">
-                    <p><i class="icon-resume"></i>&nbsp;Resume</p>
-                </div>
-                @else
-                <div class="course-state course-completed">
-                  <p><i class="icon-completed"></i>&nbsp;Finished</p>
-                </div>
-                @endif
-              </a>
-            </div>
-        </div>  
-      @endeach 
-    </div>
+  <div class="row">
+    @each(course in courses)      
+      <div class="col-md-3 col-lg-4">
+          <div class="course-card card">
+            <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
+            <h5 style="position:relative;">{{course.title}}&nbsp;
+              <div class="stage" onclick="wishlist({{course.id}})"> 
+              @if(course.wishlist == false)
+              <div class="heart"></div> 
+              @else
+              <div class="heart is-active"></div> 
+              @endif 
+              
+            </div>  </h5>
+            <table class="course-card-content">
+              <tr>
+                <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                <td class="td-space"></td>
+                <td class="course-author">
+                  <h6>{{course.author}}</h6>
+                </td>
+                <td class="td-devider"></td>
+                <td class="time-and-diff">
+                  <p>{{course.duration}}&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                  <p>{{course.level}}&nbsp;&nbsp;<i class="icon-advanced"></i></p>
+                </td>
+              </tr>
+            </table>
+            <a href="/courses/classroom/{{course.id}}">
+              @if(course.state == "start")
+              <div class="course-state course-start">
+                <p><i class="icon-start"></i>&nbsp;Start</p>
+              </div>
+              @elseif(course.state == "resume")
+              <div class="course-state course-resume">
+                  <p><i class="icon-resume"></i>&nbsp;Resume</p>
+              </div>
+              @else
+              <div class="course-state course-completed">
+                <p><i class="icon-completed"></i>&nbsp;Finished</p>
+              </div>
+              @endif
+            </a>
+          </div>
+      </div>  
+    @endeach 
   </div>
+</div>
 @endsection
