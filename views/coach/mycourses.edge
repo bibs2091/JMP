@@ -3,11 +3,45 @@
 @section('content')
   <div class="container">
       <div class="row">
+          @each(course in courses)
+            <div class="col-md-4" style="margin-bottom: 30px;">
+                <div class="course-card card">
+                    <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
+                    <h5 style="position:relative;">{{course.title}}&nbsp;</h5>
+                    <table class="course-card-content">
+                    <tr>
+                        <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                        <td class="td-space"></td>
+                        <td class="course-author">
+                        <h6>{{course.author}}</h6>
+                        </td>
+                        <td class="td-devider"></td>
+                        <td class="time-and-diff">
+                        <p>{{course.duration}}&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                        <p>{{course.level}}&nbsp;&nbsp;
+                            @if(course.level == "beginner")
+                            <i class="icon-beginner"></i>
+                            @elseif(course.level == "intermediat")
+                            <i class="icon-intermediat"></i>
+                            @else
+                            <i class="icon-advanced"></i>
+                            @endif
+                        </p>
+                        </td>
+                    </tr>
+                    </table>
+                    <a href="/courses/update/{{course.id}}">
+                    <div class="course-state course-settings">
+                        <p><i class="fa fa-pen"></i> &nbsp;Settings</p>
+                    </div>
+                    </a>
+                </div>
+            </div> 
+            @endeach
           <div class="col-md-4">
-              <div id="addCourseCoach">
+              <div id="addCourseCoach" onclick="window.open('/courses/add','_blank')">
                 <i class="fas fa-plus"></i>
                 <h6>Add Course</h6>
-                
               </div>
           </div>
       </div>
