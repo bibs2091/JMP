@@ -6,7 +6,7 @@
   <div class="container" style="margin-bottom: 30px">
     <div class="row">
       @each(course in courses)      
-        <div class="col-md-3 col-lg-4">
+        <div class="col-lg-4 col-md-6">
             <div class="course-card card">
               <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
               <h5 style="position:relative;">{{course.title}}&nbsp;
@@ -65,7 +65,7 @@
   <div class="container" style="margin-bottom: 30px">
     <div class="row">
     @each(category in categories)
-      <div class="col-md-4">
+      <div class="col-lg-4 col-md-6">
         <div class="category-container get-category" id="{{category.id}}">
           <img src="{{category.cover}}" alt="{{category.title}}">
           <div class="blur-image"></div>
@@ -77,24 +77,53 @@
   </div>
   <h2 class="user-home-title">Upcoming events:</h2>
   <hr>
-  <div class="event_card" >
-      <img src="/events/Arduino.png" alt="Familiarize with Arduino">
-      <div>
-              <h3>Familiarize with Arduino</h3>
-              <div style="display: table;    margin-top: 9px;">
-                  <time>Mars <span>5</span></time>
-                  <div style="display: table-cell;">
-                      <p class="eventCard_place">Higher School of computer science Sidi Bel Abbes</p>
-                      <p class="eventCard_placesLeft">53 places left</p>
-                  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+          <div class="event_card" >
+              <img src="/events/Arduino.png" alt="Familiarize with Arduino">
+              <div>
+                      <h3>Familiarize with Arduino</h3>
+                      <div style="display: table;    margin-top: 9px;">
+                          <time>Mars <span>5</span></time>
+                          <div style="display: table-cell;">
+                              <p class="eventCard_place">Higher School of computer science Sidi Bel Abbes</p>
+                              <p class="eventCard_placesLeft">53 places left</p>
+                          </div>
+                      </div>
+                      <hr>
+                      <h6>Details</h6>
+                      <p class="eventCard_details">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                          sed do eiusmod tempor incididunt ut labore et dolore 
+                          magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea
+                          commodo consequat.</p>
               </div>
-              <hr>
-              <h6>Details</h6>
-              <p class="eventCard_details">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore 
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat.</p>
+          </div> 
       </div>
-  </div> 
+      <div class="col-lg-6">
+          <div class="event_card" >
+              <img src="/events/Arduino.png" alt="Familiarize with Arduino">
+              <div>
+                      <h3>Familiarize with Arduino</h3>
+                      <div style="display: table;    margin-top: 9px;">
+                          <time>Mars <span>5</span></time>
+                          <div style="display: table-cell;">
+                              <p class="eventCard_place">Higher School of computer science Sidi Bel Abbes</p>
+                              <p class="eventCard_placesLeft">53 places left</p>
+                          </div>
+                      </div>
+                      <hr>
+                      <h6>Details</h6>
+                      <p class="eventCard_details">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                          sed do eiusmod tempor incididunt ut labore et dolore 
+                          magna aliqua. Ut enim ad minim veniam, quis nostrud
+                          exercitation ullamco laboris nisi ut aliquip ex ea
+                          commodo consequat.</p>
+              </div>
+          </div> 
+      </div>
+    </div>
+  </div>
+
 @endsection

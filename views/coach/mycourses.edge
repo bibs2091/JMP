@@ -4,7 +4,7 @@
   <div class="container">
       <div class="row">
           @each(course in courses)
-            <div class="col-md-4" style="margin-bottom: 30px;">
+            <div class="col-lg-4 col-md-6" style="margin-bottom: 30px;">
                 <div class="course-card card">
                     <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
                     <h5 style="position:relative;">{{course.title}}&nbsp;</h5>
@@ -38,7 +38,7 @@
                 </div>
             </div> 
             @endeach
-          <div class="col-md-4">
+          <div class="col-lg-4 col-md-6">
               <div id="addCourseCoach" onclick="window.open('/courses/add','_blank')">
                 <i class="fas fa-plus"></i>
                 <h6>Add Course</h6>

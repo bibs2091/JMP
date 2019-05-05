@@ -1770,7 +1770,6 @@ visibility: hidden;
 
 /* ------------------event card-------------- */
 .event_card {
-  width: 540px;
   height: 220px;
   border: 1px solid #eaebed;
   display: table;
@@ -1837,9 +1836,6 @@ visibility: hidden;
   vertical-align: baseline;
   color: #696969;
   padding-left: 8px;
-}
-.event_card hr {
-  width: 340px;
 }
 .event_card h6 {
   padding-left: 17px;
