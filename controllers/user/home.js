@@ -3,6 +3,9 @@ const Courses = require("../../models/Courses");
 const UsersInfo = require("../../models/UsersInfo");
 const WishLists = require("../../models/WishLists");
 const Categories = require("../../models/Categories");
+const Events = require("../../models/Event");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 module.exports = async (req, res) => {
     try {
@@ -46,13 +49,26 @@ module.exports = async (req, res) => {
             }
             courses[i].state = state;
         }
+        //getting the events
+        var events = await Events.findAll({
+            where: {
+                date: { [Op.gt]: new Date() }
+            },
+            limit: 2
+        });
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        for (let i = 0; i < events.length; i++) {
+            events[i] = events[i].dataValues;
+            events[i].month = months[events[i].date.getMonth()];
+        }
         var categories = await Categories.findAll({ limit: 3 });
         res.render("user.home", {
             pageName: "Home",
             pageTitle: currentUser.info.username + " - Home",
             currentUser,
             courses,
-            categories
+            categories,
+            events
         });
     }
     catch{

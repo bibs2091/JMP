@@ -79,50 +79,26 @@
   <hr>
   <div class="container">
     <div class="row">
+      @each(event in events)
       <div class="col-lg-6">
-          <div class="event_card" >
-              <img src="/events/Arduino.png" alt="Familiarize with Arduino">
+          <div class="event_card" onclick="window.open('/events/{{event.id}}')">
+              <img src="{{event.cover}}" alt="Familiarize with Arduino">
               <div>
-                      <h3>Familiarize with Arduino</h3>
+                      <h3>{{event.name}}</h3>
                       <div style="display: table;    margin-top: 9px;">
-                          <time>Mars <span>5</span></time>
+                          <time>{{event.month}} <span>{{event.date.getDate()}}</span></time>
                           <div style="display: table-cell;">
-                              <p class="eventCard_place">Higher School of computer science Sidi Bel Abbes</p>
-                              <p class="eventCard_placesLeft">53 places left</p>
+                              <p class="eventCard_place">{{event.place}}</p>
+                              <p class="eventCard_placesLeft">{{event.nbPlace}} places left</p>
                           </div>
                       </div>
                       <hr>
                       <h6>Details</h6>
-                      <p class="eventCard_details">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                          sed do eiusmod tempor incididunt ut labore et dolore 
-                          magna aliqua. Ut enim ad minim veniam, quis nostrud
-                          exercitation ullamco laboris nisi ut aliquip ex ea
-                          commodo consequat.</p>
+                      <p class="eventCard_details">{{event.description}}</p>
               </div>
           </div> 
       </div>
-      <div class="col-lg-6">
-          <div class="event_card" >
-              <img src="/events/Arduino.png" alt="Familiarize with Arduino">
-              <div>
-                      <h3>Familiarize with Arduino</h3>
-                      <div style="display: table;    margin-top: 9px;">
-                          <time>Mars <span>5</span></time>
-                          <div style="display: table-cell;">
-                              <p class="eventCard_place">Higher School of computer science Sidi Bel Abbes</p>
-                              <p class="eventCard_placesLeft">53 places left</p>
-                          </div>
-                      </div>
-                      <hr>
-                      <h6>Details</h6>
-                      <p class="eventCard_details">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                          sed do eiusmod tempor incididunt ut labore et dolore 
-                          magna aliqua. Ut enim ad minim veniam, quis nostrud
-                          exercitation ullamco laboris nisi ut aliquip ex ea
-                          commodo consequat.</p>
-              </div>
-          </div> 
-      </div>
+      @endeach
     </div>
   </div>
 
