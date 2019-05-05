@@ -12,18 +12,20 @@ $(function () {
     send_msg.click(() => {
         //get input values
         var to = $("#name").val();
-        var text = $("#message").val();
+        var text = $("#message").val().trim();
 
         var message = {
             to,
             text
         }
 
-        //send the message to the server
+        if (message.text != '') {
+            //send the message to the server
 
-        socket.emit('newMessage', message);
+            socket.emit('newMessage', message);
 
-        $("#message").val('').focus()
+            $("#message").val('').focus()
+        }
 
     })
 
