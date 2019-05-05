@@ -2031,6 +2031,34 @@ visibility: hidden;
    display:table-cell;
   }
 
+  /* ---------- my courses coach -------------- */
+  #addCourseCoach{
+    width: 250px;
+    height: 280px;
+    background: #F5F5F5;
+    border: 1px dashed #BFBFBF;
+    position: relative;
+  }
+  #addCourseCoach i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    color: #868686;
+    font-size: 60px;
+  }
+  #addCourseCoach h6{
+    position: absolute;
+    bottom: 20px;
+    color: #868686;
+    font-family: Poppins,sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    left: 40%;
+    transform: translate(-33%, 0);
+    display: inline;
+
+  }
 
 /* for xl screens --------keep it in the bottom of the file-------- */
 @media (max-width: 1140px) {
