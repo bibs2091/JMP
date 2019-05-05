@@ -2037,30 +2037,43 @@ visibility: hidden;
   #addCourseCoach{
     width: 250px;
     height: 280px;
-    background: #F5F5F5;
-    border: 1px dashed #BFBFBF;
+    background-image: url("/img/AddCourseBG.png");
+    background-size: 100% 100%;
+
     position: relative;
     cursor: pointer;
   }
   #addCourseCoach i{
     position: absolute;
-    top: 50%;
+    top: 43%;
     left: 50%;
     transform:translate(-50%, -50%);
     color: #868686;
-    font-size: 60px;
-  }
-  #addCourseCoach h6{
+    font-family: Poppins,sans-serif;
+    font-size: 130px;
+    
+
+    }
+  #addCourseCoach div{
     position: absolute;
     bottom: 20px;
     color: #868686;
     font-family: Poppins,sans-serif;
-    font-size: 25px;
+    font-size: 27px;
     font-weight: bold;
-    left: 40%;
-    transform: translate(-33%, 0);
-    display: inline;
-
+    width: 100%;
+    text-align: center;
+  }
+  #addCourseCoach:hover{
+    width: 251px;
+  }
+  #addCourseCoach:hover div{
+    font-size: 29px;
+    font-weight: bolder;
+  }
+  #addCourseCoach:hover i{
+    
+    font-size: 140px;
   }
 
 /* for xl screens --------keep it in the bottom of the file-------- */
