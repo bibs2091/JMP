@@ -8,7 +8,10 @@ module.exports = async (req, res) => {
     delete currentUser.password;
     currentUser.info = userInfo.dataValues;
 
-    res.render("coach.home", {
+    //getting the coach courses
+    var courses = await Courses.findAll({ where: { author: req.user.id } });
+
+    res.render("coach.mycourses", {
         pageName: "My Courses",
         pageTitle: currentUser.info.username + " - My Courses",
         currentUser
