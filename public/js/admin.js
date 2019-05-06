@@ -1,8 +1,12 @@
-//intilize users table 
+//intiliaze users table 
 var unapprovedUsers;
+var allUsers;
 $(document).ready(function () {
     unapprovedUsers = $('#unapproved-users').DataTable({
         "ajax": "/api/users/unapproved"
+    });
+    allUsers = $('#all-users').DataTable({
+        "ajax": "/api/users/all"
     });
 });
 //delete a user by id
@@ -13,6 +17,7 @@ function deleteUser(id) {
         contentType: 'application/json',
         success: function (result) {
             unapprovedUsers.ajax.reload();
+            allUsers.ajax.reload();
         }
     });
 }
@@ -23,7 +28,20 @@ function approveUser(id) {
         method: 'PUT',
         contentType: 'application/json',
         success: function (result) {
+            allUsers.ajax.reload();
             unapprovedUsers.ajax.reload();
+        }
+    });
+}
+//make a user coach
+function makeCoach(id) {
+    $.ajax({
+        url: '/admin/users/makecoach/' + id,
+        method: 'PUT',
+        contentType: 'application/json',
+        success: function (result) {
+            unapprovedUsers.ajax.reload();
+            allUsers.ajax.reload();
         }
     });
 }

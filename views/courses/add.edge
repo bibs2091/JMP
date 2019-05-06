@@ -1,10 +1,10 @@
-@layout('layouts.main')
+@layout('layouts.coach')
 
 @section('content')
     <div class="container">
         <form action="/courses/add" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm()">
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-6">
                     <img src="/img/upload-course-cover.png" alt="upload a cover image" 
                         id="upload-course-cover" onclick="triggerInput('course-cover-input')">
                     <input type="file" name="cover" accept="image/*" id="course-cover-input" 
@@ -50,7 +50,7 @@
                                 </ul>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <h2>Basic course information</h2>
                     <hr>
                     <div class="form-group">
@@ -67,8 +67,9 @@
                     <div class="form-group">
                         <label class="customized-label">Course's category</label>
                         <select class="form-control" name="category" required>
-                            <option value=1>cateogy1</option>
-                            <option value=2>category2</option>
+                            @each(category in categories)
+                            <option value={{category.id}}>{{category.title}}</option>
+                            @endeach
                         </select> 
                     </div>
                     <div class="form-group">

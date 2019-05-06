@@ -1,7 +1,7 @@
-const WishLists = require("../../models/WishLists");
+const Progress = require("../../models/Progress");
 const Courses = require("../../models/Courses");
 const UsersInfo = require("../../models/UsersInfo");
-const Progress = require("../../models/Progress");
+const WishLists = require("../../models/WishLists");
 
 module.exports = async (req, res) => {
     //get the current user
@@ -10,13 +10,20 @@ module.exports = async (req, res) => {
     delete currentUser.password;
     currentUser.info = userInfo.dataValues;
 
-    const userId = req.user.id;
-    var wishlist = await WishLists.findAll({ where: { userId } });
+    //getting the courses ids
+    var pCourses = await Progress.findAll({
+        where: { userId: req.user.id },
+        order: [['state', 'DESC']]
+    });
+
+    //looping throw progresses and get courses
     var courses = [];
-    for (let i = 0; i < wishlist.length; i++) {
-        let course = await Courses.findByPk(wishlist[i].dataValues.courseId);
+    for (let i = 0; i < pCourses.length; i++) {
+        var course = await Courses.findByPk(pCourses[i].dataValues.courseId);
         courses.push(course);
     }
+
+    //making courses ready for displaying
     for (let i = 0; i < courses.length; i++) {
         courses[i] = courses[i].dataValues;
         var duration = "";
@@ -34,6 +41,17 @@ module.exports = async (req, res) => {
                 courseId: courses[i].id
             }
         });
+        var wishlist = await WishLists.findOne({
+            where: {
+                userId: req.user.id,
+                courseId: courses[i].id
+            }
+        });
+        if (wishlist) {
+            courses[i].wishlist = true;
+        } else {
+            courses[i].wishlist = false;
+        }
         if (progress) {
             var state = progress.state;
         } else {
@@ -41,10 +59,10 @@ module.exports = async (req, res) => {
         }
         courses[i].state = state;
     }
-    res.render("user.wishlist", {
-        pageName: "My Wishlist",
-        pageTitle: "My Wishlist - JMP",
-        courses,
-        currentUser
+    res.render("user.mycourses", {
+        pageName: "My Courses",
+        pageTitle: "My Courses - JMP",
+        currentUser,
+        courses
     });
 }

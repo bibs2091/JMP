@@ -9,7 +9,12 @@
             <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
             <h5 style="position:relative;">{{course.title}}&nbsp;
               <div class="stage" onclick="wishlist({{course.id}})"> 
-              <div class="heart is-active"></div>        
+              @if(course.wishlist == false)
+              <div class="heart"></div> 
+              @else
+              <div class="heart is-active"></div> 
+              @endif 
+              
             </div>  </h5>
             <table class="course-card-content">
               <tr>
@@ -22,13 +27,13 @@
                 <td class="time-and-diff">
                   <p>{{course.duration}}&nbsp;&nbsp;<i class="icon-time"></i></p><br>
                   <p>{{course.level}}&nbsp;&nbsp;
-                    @if(course.level == "beginner")
-                    <i class="icon-beginner"></i>
-                    @elseif(course.level == "intermediat")
-                    <i class="icon-intermediat"></i>
-                    @else
-                    <i class="icon-advanced"></i>
-                    @endif
+                      @if(course.level == "beginner")
+                      <i class="icon-beginner"></i>
+                      @elseif(course.level == "intermediat")
+                      <i class="icon-intermediat"></i>
+                      @else
+                      <i class="icon-advanced"></i>
+                      @endif
                   </p>
                 </td>
               </tr>
