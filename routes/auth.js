@@ -6,6 +6,7 @@ const registerController = require("../controllers/auth/register");
 //require middleware
 const isAuthenticated = require("../middleware/isAuthenticated");
 const notAuthenticated = require("../middleware/notAuthenticated");
+const inscription = require("../middleware/inscription");
 
 //handling requests
 router.get("/login", notAuthenticated, (req, res) => {
@@ -42,11 +43,11 @@ router.get("/logout", isAuthenticated, (req, res, next) => {
 	}
 });
 
-router.get("/register", notAuthenticated, (req, res) => {
+router.get("/register", notAuthenticated, inscription, (req, res) => {
 	res.render("auth.register");
 });
 
-router.post("/register", notAuthenticated, registerController);
+router.post("/register", notAuthenticated, inscription, registerController);
 
 
 // for development :
