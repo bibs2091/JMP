@@ -3,6 +3,7 @@ const Sponsor = require('../../models/Sponsors');
 module.exports = async (req, res) => {
 	try {
 		// the user infos
+		console.log(req.body);
 		const user = req.user;
 		let validated = false;
 		// if the user == admin the event will be directly validated 
@@ -38,9 +39,13 @@ module.exports = async (req, res) => {
 
 			}
 		}
-		const { name, date, time, place, description, nbPlace, tags } = req.body;
+
+		const { name, date, time, place, description, nbPlace, tags,location } = req.body;
+		// getting the location longitude and latitude
+		const locationLat = location.split("||")[0];
+		const locationLng = location.split("||")[1]; 
 		// creating the event proposition
-		let newevent = await Event.create({ name, time, date, place, description, nbPlace, creatorId, validated, tags });
+		let newevent = await Event.create({ name, time, date,locationLat,locationLng, description, nbPlace, creatorId, validated, tags });
 		// store the images and there link 
 		if (cover) {
 

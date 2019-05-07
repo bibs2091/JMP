@@ -7,6 +7,10 @@ html, body{
 #main-content {
   padding: 20px;
 }
+#map{
+  height:400px;
+  width:100%;
+}
 
 *,
 *::before,

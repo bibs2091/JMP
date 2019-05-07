@@ -26,9 +26,11 @@ module.exports = async (req, res) => {
 		}
 		event.dataValues.date.getFullYear() + '-' + ('0' + (event.dataValues.date.getMonth() + 1)).slice(-2) + '-' + ('0' + event.dataValues.date.getDate()).slice(-2);
 		res.render('events.event', {
+			pageTitle:"event page",
 			event,
 			sponsors,
-			registred
+			registred,
+			showMap:true
 		});
 	} catch (err){
 		console.log("errors ===>\n"+err);
