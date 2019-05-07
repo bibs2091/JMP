@@ -3,6 +3,7 @@ const EventInscriptions = require('../../models/EventInscriptions');
 const Sponsor = require('../../models/Sponsors');
 module.exports = async (req, res) => {
 	try{
+		console.log(req.body);
 		const eventInscriptions = await EventInscriptions.findAll(
 		{
 			where:
@@ -29,11 +30,10 @@ module.exports = async (req, res) => {
 			pageTitle:"event page",
 			event,
 			sponsors,
-			registred,
-			showMap:true
+			registred
 		});
 	} catch (err){
-		console.log("errors ===>\n"+err);
+		console.log("errors :\n"+err);
 		res.redirect('/errors');
 	}
 }

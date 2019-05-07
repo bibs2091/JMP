@@ -40,9 +40,15 @@
           <label for="event-time" class="customized-label"><i class="fas fa-clock"></i>&nbsp; Time</label>
           <input type="time" class="form-control" name="time" id="event-time" value= {{event.time}} required>
         </div>
+        <div  style="display: none;" class="form-group">
+            <label for="location" class="customized-label"></label>
+            <input type="text" class="form-control" name="location" id="location" 
+            lat={{event.locationLat}} lng={{event.locationLng}}
+            required>
+        </div>
         <div class="form-group">
-          <label for="event-location" class="customized-label"><i class="fas fa-map-marker-alt"></i>&nbsp; Location</label>
-          <textarea name="place" id="event-location" rows="4" class="form-control" 	required>{{event.place}} </textarea>
+          <div id="map"></div>
+          
         </div>
       </div>
       <div class="col-md-5" id="sponsorsToAdd">

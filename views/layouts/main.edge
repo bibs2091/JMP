@@ -127,17 +127,9 @@
     <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     @if(pageTitle == "add event" || pageTitle == "event page"||pageTitle == "update event")
-    @if(pageTitle != "event page")
-    <script src="/js/map.js"></script>
-    @else
-    <script >
-    function initMap(){
-        var options = {zoom:8,center:{lat:42.3601,lng:-71.0589}}
-        var map = new google.maps.Map(document.getElementById('map'), options);
-        var location = document.getElementById("location").nextSibling.data.split("||")
-        new google.maps.Marker({position:{ lat:location[0],lng:location[1]},map:map});}
+    <script src="/js/map.js"></script>   
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5VYQdCzdTBT5k-60TjBNHRRkSwgMM1Pk&callback=initMap">
     </script>
-    @endif
     @endif
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

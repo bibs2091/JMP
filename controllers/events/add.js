@@ -3,7 +3,6 @@ const Sponsor = require('../../models/Sponsors');
 module.exports = async (req, res) => {
 	try {
 		// the user infos
-		console.log(req.body);
 		const user = req.user;
 		let validated = false;
 		// if the user == admin the event will be directly validated 

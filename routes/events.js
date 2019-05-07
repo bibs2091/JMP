@@ -25,7 +25,6 @@ router.post("/modifie/:id", isAuthenticated, isEventOwner, modifiePostController
 router.get("/modifie/:id", isAuthenticated, isEventOwner, modifieGetController);
 router.get("/add", isAuthenticated, (req, res) => {
     res.render("events.add",{
-    	showMap:true,
     	pageTitle:"add event"
     });
 });

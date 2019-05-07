@@ -21,7 +21,9 @@
                       <br>
                       <li><i class="fas fa-clock"></i> &nbsp; {{event.time}} </li>
                       <br>
-                      <li><i id = "location" class="fas fa-map-marker-alt"></i> &nbsp;{{event.locationLat}} ||{{event.locationLng}}
+                      <li><i id = "location" class="fas fa-map-marker-alt"
+                       lat={{event.locationLat}} lng={{event.locationLng}}>  
+                       </i> &nbsp;Location
                       </li>
                       <div id="map"></div>
                       <br>
