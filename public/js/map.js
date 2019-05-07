@@ -11,10 +11,9 @@ function initMap(){
           }
           // New map
           var map = new google.maps.Map(document.getElementById('map'), options);
-          var marker = new google.maps.Marker({
-              position:{lat:position.coords.latitude,lng:position.coords.longitude},
-              map:map
-            });
+          var marker = {
+            setMap : () =>{}
+          } 
 
         }
         else {
@@ -27,6 +26,7 @@ function initMap(){
           }
           // New map
           var map = new google.maps.Map(document.getElementById('map'), options);
+          //getting a marker for the locaation of the event 
           var marker = new google.maps.Marker({
             position:{lat,lng},
             map:map
