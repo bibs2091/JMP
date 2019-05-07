@@ -1973,13 +1973,6 @@ visibility: hidden;
 }
 
   /* ------------ settings ------------*/
- 
-  #settingTabs{
-    background: #FFFFFF;
-    border-radius: 12px;
-    height: 370px;
-    width: 90%;
-  }
   #settingTabs ul li{
     display:flex;
     align-items:center;
@@ -2006,7 +1999,36 @@ visibility: hidden;
   #fullname-settings div{
    display:table-cell;
   }
-
+  #settingsCard{
+      background: #ffffff;
+      width:80%;
+      height: 70%;
+      position: absolute;
+      top: 120px;
+      z-index: 2;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      border-radius: 50px;
+      margin-bottom: 50px;
+      padding-bottom: 20px;
+      display:table ;
+  }
+  #settingsCard div {
+    display: table-cell;
+  }
+  #settingTabs{
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 20%;
+    height: 90%;
+    display:contents;
+  }
+  #basicInfo{
+    width:45%;
+    height:500px ;
+  }
+  #BioSettings{
+    width:473px;
+  }
 
 /* for xl screens --------keep it in the bottom of the file-------- */
 @media (max-width: 1140px) {
@@ -2156,4 +2178,4 @@ visibility: hidden;
       margin: 15px auto;
     }
   }
-}
+
