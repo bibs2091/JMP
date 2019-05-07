@@ -2224,4 +2224,31 @@ visibility: hidden;
       margin: 15px auto;
     }
   }
+/* catalog page */
+#catalog-bar{
+  width: 100%;
+  margin: 0;
+  background: #EAEBED;
+  height: 50px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#catalog-bar ul{
+  display: table;
+  height: 100%;
+}
+#catalog-bar ul li{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  height: 100%;
+  padding-left: 35px;
+  font-family: Poppins;
+  font-size: 16px;
+} 
+#catalog-bar ul li a:hover{
+  border-bottom: 3px solid #FFD32A;
+  opacity: 0.75;
+}
+#catalog-bar ul li a.active{
+  border-bottom: 2px solid #FFD32A;
 }

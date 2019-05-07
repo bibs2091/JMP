@@ -1,5 +1,17 @@
 @layout('layouts.main')
 
 @section('content')
-  <h1>catalog page</h1>
+<style scoped>
+  #main-content{
+    padding: 0 !important;
+  }
+</style>
+
+  <div id="catalog-bar">
+    <ul>
+      <li><a href="#" class="active">category 1</a></li>
+      <li><a href="#">category 2</a></li>
+      <li><a href="#">category 3</a></li>
+    </ul>
+  </div>
 @endsection
