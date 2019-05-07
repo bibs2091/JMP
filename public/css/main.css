@@ -2231,6 +2231,7 @@ visibility: hidden;
   background: #EAEBED;
   height: 50px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  overflow-x: scroll;
 }
 #catalog-bar ul{
   display: table;
@@ -2251,4 +2252,7 @@ visibility: hidden;
 }
 #catalog-bar ul li a.active{
   border-bottom: 2px solid #FFD32A;
+}
+#catalog-content{
+  padding: 35px;
 }
