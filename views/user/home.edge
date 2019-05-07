@@ -66,7 +66,7 @@
     <div class="row">
     @each(category in categories)
       <div class="col-lg-4 col-md-6">
-        <div class="category-container get-category" id="{{category.id}}">
+        <div class="category-container" id="{{category.id}}" onclick="window.open('/user/catalog/?cat={{category.id}}','')">
           <img src="{{category.cover}}" alt="{{category.title}}">
           <div class="blur-image"></div>
           <div class="image-text-centered">{{category.title}}</div>
