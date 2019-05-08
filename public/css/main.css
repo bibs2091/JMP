@@ -2261,7 +2261,7 @@ display:table-cell;
   font-family: Poppins;
   font-size: 16px;
 }
-.list li a:hover{
+.list li:hover a{
   border-bottom: 3px solid #FFD32A;
   opacity: 0.75;
 }
@@ -2273,14 +2273,12 @@ display:table-cell;
 cursor:pointer;
 display:none;
 }
-
 .scroller-right{
   position: absolute;
   right: 0;
   top: 50%;
   transform: translate(0,-50%);
 }
-
 .scroller-left {
   position: absolute;
   left: 0;
@@ -2289,4 +2287,9 @@ display:none;
 }
 #catalog-content{
   padding: 35px;
+}
+@media (max-width: 42em) {
+  .catalog-bar{
+    margin-left: 22px;
+  }
 }
