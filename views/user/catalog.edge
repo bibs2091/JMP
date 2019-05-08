@@ -8,17 +8,35 @@
   }
 </style>
 
-  <div id="catalog-bar">
-    <ul>
-      @each(category in categories)
-      <li><a href="/user/catalog/?cat={{category.id}}" 
-        @if(category.id == catId)
-        class="active"
-        @endif
-        >{{category.title}}</a></li>
-      @endeach
-    </ul>
-  </div>
+  <!-- <nav class="catalog-bar">
+    <div id="catalog-bar-content">
+        @each(category in categories)
+        <div class="catalog-bar-link"><a href="/user/catalog/?cat={{category.id}}" 
+          @if(category.id == catId)
+          class="active"
+          @endif
+          >{{category.title}}</a>
+        </div>
+        @endeach
+      </div>
+    </nav> -->
+    <div class="catalog-bar">
+      <div class="scroller scroller-left"><i class="fas fa-chevron-left"></i></div>
+      <div class="scroller scroller-right"><i class="fas fa-chevron-right"></i></div>
+      <div class="wrapper">
+        <ul class="nav nav-tabs list" id="myTab">
+            @each(category in categories)
+            <li class="catalog-bar-link"><a href="/user/catalog/?cat={{category.id}}" 
+              @if(category.id == catId)
+              class="active"
+              @endif
+              >{{category.title}}</a>
+            </li>
+            @endeach
+      </ul>
+      </div>
+    </div>
+    
   <div id="catalog-content">
       <div class="container">
         <div class="row">
