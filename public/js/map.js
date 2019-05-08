@@ -1,19 +1,20 @@
 function initMap(){
-      navigator.geolocation.getCurrentPosition((position)=>{ 
         var markers= [];
 
         
         if (document.title == "add event"){
             // map options
           var options = {
-            zoom:8,
-            center:{lat:position.coords.latitude,lng:position.coords.longitude}
+            zoom:15,
+            center:{lat:35.20822045997799,lng:-0.6333231925964355}
           }
           // New map
           var map = new google.maps.Map(document.getElementById('map'), options);
-          var marker = {
-            setMap : () =>{}
-          } 
+          var marker = new google.maps.Marker({
+            position:{lat:35.20822045997799,lng:-0.6333231925964355},
+            map:map
+          });
+          document.getElementById("location").value = marker.getPosition().lat()+"||"+marker.getPosition().lng(); 
 
         }
         else {
@@ -41,8 +42,7 @@ function initMap(){
           });
         }
         markers.push(marker);
-   
-      });
+  
       
     }
       // move Marker Function
