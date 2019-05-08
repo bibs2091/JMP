@@ -5,15 +5,19 @@ const router = express.Router();
 const homeController = require("../controllers/user/home");
 const editProfileController = require("../controllers/user/profile");
 const showWishlistController = require("../controllers/user/wishlist");
+const myCoursesController = require("../controllers/user/mycourses");
+const catalogController = require("../controllers/user/catalog");
 
 //load userInfo model
 const userInfo = require("../models/UsersInfo");
 
 //middleware for authentication
 const isAuthenticated = require("../middleware/isAuthenticated");
+const isStudent = require("../middleware/isStudent");
 
 //handling requests
-router.get("/home", homeController);
+router.get("/home", isAuthenticated, isStudent, homeController);
+router.get("/mycourses", isAuthenticated, isStudent, myCoursesController);
 
 //route		/user/editprofile
 //methode 	GET
@@ -29,7 +33,8 @@ router.get("/editprofile2", (req, res) => {
 //access	private
 //desc		post to current user profile
 
-router.get("/wishlist", isAuthenticated, showWishlistController);
+router.get("/wishlist", isAuthenticated, isStudent, showWishlistController);
+router.get("/catalog", isAuthenticated, isStudent, catalogController);
 
 router.post("/editprofile", isAuthenticated, (req, res) => {
 	console.log(req.body);

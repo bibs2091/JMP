@@ -45,6 +45,9 @@
                     <ul class="lesson-navContainer">
                         @each(lect in chapter.lectures)
                         <li class="lesson-nav">
+                                @if(lect.id > newProgress.lastLecture + 1)
+                                <div class="disabledLesson">
+                                @endif
                                 <a href="/courses/classroom/{{courseId}}/{{lect.id}}">
                                     @if(lect.id <= newProgress.lastLecture)
                                     <i class="fas fa-check"></i>
@@ -53,6 +56,9 @@
                                     @endif
                                     <span class="lesson-in">{{lect.title}}</span>
                                 </a>
+                                @if(lect.id > newProgress.lastLecture + 1)
+                                </div>
+                                @endif
                             </li>
                         @endeach
                     </ul>
@@ -92,7 +98,7 @@
                 @endif
                 @if(content.id == lastLecture.id)
                 <button type="button" class="btn" style="width: auto"
-                onclick="window.location.href ='/courses/classroom/{{courseId}}/certificat'">Get certificat</button>
+                onclick="window.open('/courses/classroom/{{courseId}}/certificat','_blank')">Get certificat</button>
                 @else
                 <button type="button" class="btn" onclick="window.location.href ='/courses/classroom/{{courseId}}/{{content.id+1}}'">NEXT</button>
                 @endif

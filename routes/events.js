@@ -19,15 +19,15 @@ const isAdminOrCoach = require("../middleware/isAdminOrCoach");
 
 
 //handling requests 
-router.get("/validating/:id",isAuthenticated,isAdmin,validatingController);
-router.post("/delete/:id",isAuthenticated,isEventOwner,deleteController);
-router.post("/add", isAuthenticated,isAdminOrCoach,addController);
-router.post("/modifie/:id",isAuthenticated,isEventOwner,modifiePostController);
-router.get("/modifie/:id",isAuthenticated,isEventOwner,modifieGetController);
-router.get("/add",isAuthenticated,isAdminOrCoach, (req, res) => {
+router.get("/validating/:id", isAuthenticated, isAdmin, validatingController);
+router.post("/delete/:id", isAuthenticated, isEventOwner, deleteController);
+router.post("/add", isAuthenticated, addController);
+router.post("/modifie/:id", isAuthenticated, isEventOwner, modifiePostController);
+router.get("/modifie/:id", isAuthenticated, isEventOwner, modifieGetController);
+router.get("/add", isAuthenticated, (req, res) => {
     res.render("events.add");
 });
-router.get("/:id",isAuthenticated,eventController);
-router.get("/register/:id",isAuthenticated,eventGetRegisterController);
-router.post("/register/:id",isAuthenticated,eventPostRegisterController);
+router.get("/:id", isAuthenticated, eventController);
+router.get("/register/:id", isAuthenticated, eventGetRegisterController);
+router.post("/register/:id", isAuthenticated, eventPostRegisterController);
 module.exports = router;

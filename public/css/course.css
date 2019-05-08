@@ -131,6 +131,15 @@ body {
     transition: 0.3s;
     margin-top:5px;
   }
+
+  .disabledLesson{
+    color:#a0a0a0;
+    cursor: not-allowed;
+  }
+  .disabledLesson a{
+    cursor: not-allowed;
+    pointer-events: none;
+  }
   .lesson-navContainer{
       background: #141313;
   }

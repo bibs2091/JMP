@@ -216,7 +216,11 @@ function wishlist(id) {
         method: 'POST',
         contentType: 'application/json',
         success: function (result) {
-            alert("done");
+
         }
     });
 }
+//enable toolips every where
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
