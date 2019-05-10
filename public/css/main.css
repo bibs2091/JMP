@@ -1,8 +1,10 @@
 body {
   font-family: Montserrat, sans-serif;
-  width: 100vw;
 }
-
+html, body{
+  max-width: 100%;
+  overflow-x: hidden;
+}
 #main-content {
   padding: 20px;
 }
@@ -126,8 +128,8 @@ a {
   margin-right: auto;
 }
 .s-sidebar-logo:hover {
-  transition: 3s;
-  transform: rotate(1080deg);
+  transition: 1.5s;
+  transform: rotate(360deg);
 }
 .bottom-buttons {
   position: absolute;
@@ -233,10 +235,128 @@ input[type="search"]:focus {
   -moz-box-shadow: none !important;
   box-shadow: none !important;
 }
+.header-right {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  float: right;
+}
+
+.header-right {
+  position: relative;
+  justify-content: flex-end;
+}
+
+.logo {
+  background-color: #e9e9e9;
+  height: 2.4rem;
+  width: 10rem;
+  border-radius: 4px;
+}
+
+.avatar-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.avatar-wrapper .avatar-dropdown-arrow {
+  transition: opacity .1s linear, -webkit-transform .15s linear;
+  transition: opacity .1s linear, transform .15s linear;
+  transition: opacity .1s linear, transform .15s linear, -webkit-transform .15s linear;
+}
+.avatar-wrapper .avatar-dropdown-arrow.active {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.avatar-wrapper:hover .avatar-dropdown-arrow {
+  opacity: 0.2;
+}
+
+.avatar-photo {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 0rem;
+}
+
+.dropdown-wrapper {
+  position: absolute;
+  top: 75%;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  margin-top: .5rem;
+  padding: 1.5rem;
+  padding-top: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(50, 50, 93, 0.08), 0 2px 4px 0 rgba(50, 50, 93, 0.05), 0 4px 8px 0 rgba(136, 152, 170, 0.08);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+  visibility: hidden;
+}
+.dropdown-wrapper.active {
+  top: 100%;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-profile-details {
+  display: table;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 15px;
+
+}
+
+.dropdown-profile-details img{
+  display: table-cell;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+}
+.dropdown-profile-details div{
+  display: table-cell;
+  vertical-align: middle;
+
+}
+.dropdown-profile-details div h5{
+  color:#333333;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+.dropdown-profile-details div h6{
+  color:#6f6f6f;
+}
+
+.dropdown-links {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+}
+.dropdown-links a {
+  color: #525F7F;
+  text-decoration: none;
+  padding-bottom: 1rem;
+  transition: all 0.1s linear;
+}
+.dropdown-links a:hover {
+  color: #ebeff5;
+}
+.dropdown-links a:last-of-type {
+  padding-bottom: 0;
+}
+
 
 @media (max-width: 672px) {
-  #navbar {
-  }
 
   nav #profile-pic-nav {
     top: 15px;
@@ -252,8 +372,6 @@ input[type="search"]:focus {
   }
   nav #search {
     display: none;
-  }
-  #search_responsive {
   }
   #main-content {
     margin-left: -22px;
@@ -314,7 +432,35 @@ input[type="search"]:focus {
   content: "\e905";
   color: red;
 }
+.s-sidebar__nav .icon-heart:before{
+  color: #fff;
+  font-size: 22px;
+
+}
 /* ---------------------------------------- */
+.icon-home:before{
+  content: "\e920";
+  font-size: 22px;
+}
+.icon-catalog:before{
+  content: "\e921";
+  font-size: 22px;
+}
+.icon-courses:before{
+  content: "\e923";
+  font-size: 22px;
+}
+.icon-events:before{
+  content: "\e91a";
+  font-size: 22px;
+}
+.icon-settings:before{
+  content: "\e920";
+}
+.icon-logout:before{
+  content: "\e922";
+}
+
 
 /* ----- LOGIN ----- */
 #contain {
@@ -744,6 +890,12 @@ input[name="lastName"] {
   .ellipsis {
     margin-right: 35px;
   }
+  .other-profile {
+    margin-left: auto;
+  }
+  .profile-menu-item {
+    padding-right: 35px;
+  }
   .other-profile-info {
     margin-left: auto;
     margin-right: auto;
@@ -834,7 +986,7 @@ input[name="lastName"] {
 .add-category-modal {
   display: none;
   position: fixed;
-  z-index: 99999999999;
+  z-index: 999999;
   padding-top: 100px;
   left: 0;
   top: 0;
@@ -1207,8 +1359,6 @@ visibility: hidden;
   #coverImage #imgTags span {
     font-size: 8px;
   }
-  .courseDescription h3 {
-  }
   .courseDescription p {
     padding: 3px;
   }
@@ -1349,8 +1499,7 @@ visibility: hidden;
   #coverImage #imgTags span {
     font-size: 8px;
   }
-  .courseDescription h3 {
-  }
+  
   .courseDescription p {
     padding: 3px;
   }
@@ -1710,8 +1859,6 @@ visibility: hidden;
   margin: 29px 0;
 }
 
-.add_sponsor {
-}
 .add_sponsor span {
   display: inline;
 }
@@ -1817,13 +1964,6 @@ visibility: hidden;
 }
 
   /* ------------ settings ------------*/
- 
-  #settingTabs{
-    background: #FFFFFF;
-    border-radius: 12px;
-    height: 370px;
-    width: 90%;
-  }
   #settingTabs ul li{
     display:flex;
     align-items:center;
@@ -1850,8 +1990,84 @@ visibility: hidden;
   #fullname-settings div{
    display:table-cell;
   }
+  #settingsCard{
+   background: #ffffff;
+   width:70%;
+   height: 70%;
+   position: absolute;
+   top: 120px;
+   z-index: 2;
+   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+   border-radius: 50px;
+   margin-bottom: 50px;
+   padding-bottom: 20px;
+   display:table ;
+   }
+  
+  #settingsCard div {
+    display: table-cell;
+  }
+  #settingTabs{
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 20%;
+    height: 90%;
+    display:contents;
+  }
+  #basicInfo{
+    width:45%;
+    height:500px ;
+    font-family: sans-serif;
+    
+  }
+  #basicInfo h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left:13px ;
+  }
+  
+  .form-control{
+     margin: 14px -22px -9px 14px;
+  }
+  
+  #basicInfo label{
+    margin: 14px -22px 0px 14px;
 
-
+  }
+  #BioSettings {
+    width:427px;
+  }
+  #phoneNumberSettings{
+    width:427px;
+  }
+  .upload-profile-pic{
+    width: 139px;
+    position: absolute;
+    margin: -7px 0px 24px 469px ;
+  }
+  #boutton{
+    float:right;
+    margin:35px 18px 0 0px;
+  }
+  #cancelboutton{
+    background: #EFEFEF;
+    border: 1px solid rgb(22, 216, 96);
+    box-sizing: border-box;
+    border-radius: 5px; 
+    color:#1DBF70;
+    width:85px;
+  }
+  #saveboutton{
+    background: rgb(22, 216, 96);
+    border: 1px solid rgb(22, 216, 96);
+    box-sizing: border-box;
+    border-radius: 5px; 
+    color:white;
+    width:85px;
+    margin: 0px 17px 0px 28px;
+  }
 /* for xl screens --------keep it in the bottom of the file-------- */
 @media (max-width: 1140px) {
   #instructorImg {
@@ -2000,4 +2216,4 @@ visibility: hidden;
       margin: 15px auto;
     }
   }
-}
+

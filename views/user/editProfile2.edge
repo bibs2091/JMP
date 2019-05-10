@@ -1,7 +1,7 @@
 @layout('layouts.main')
 
 @section('content')
-  <h2>edit user profile</h2>
+  
 
 <div id="settingsCard">
   <div id="settingTabs">
@@ -14,7 +14,7 @@
         <li class="settingsTabsElements"><img src="/images/settings/language.png"><span>Language</span></li>
     </ul>
   </div>
-  <div id="basicInfo">
+  <div id="basicInfo" >
     <h1>Basic informations </h1>
     <hr>
     <div id="fullname-settings">
@@ -26,6 +26,7 @@
             <label for="lastNameSettings">Last Name :</label>
             <input type="text" class="form-control" id="lastNameSettings" name="lasttname">
         </div>
+        <img src="/images/user.png" alt="picture profile " class="upload-profile-pic ">
     </div>
    </br>
     <div class="form-group">
@@ -37,6 +38,10 @@
         <label for="phoneNumberSettings">Phone Number :</label>
         <input type="text" class="form-control" id="phoneNumberSettings" name="phone number">
     </div>
+    <div id="boutton" >
+      <button type="submit" class="btn" id="cancelboutton" >Cancel</button>
+      <button type="submit" class="btn" id="saveboutton" >Save</button>
+  </div>
+
 </div>
-</div>
-@endsection-
+@endsection
