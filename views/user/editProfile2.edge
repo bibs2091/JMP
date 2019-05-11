@@ -15,33 +15,40 @@
     </ul>
   </div>
   <div id="basicInfo" >
-    <h1>Basic informations </h1>
-    <hr>
-    <div id="fullname-settings">
-        <div class="form-group">
-            <label for="firstNameSettings">First Name :</label>
-            <input type="text" class="form-control" id="firstNameSettings" name="firstname">
-        </div>
-        <div class="form-group">
-            <label for="lastNameSettings">Last Name :</label>
-            <input type="text" class="form-control" id="lastNameSettings" name="lasttname">
-        </div>
-        <img src="/images/user.png" alt="picture profile " class="upload-profile-pic ">
-    </div>
-   </br>
-    <div class="form-group">
-        <label for="BioSettings">Bio :</label>
-        <textarea name="description" class="form-control" id="BioSettings"  name="Bio"></textarea>
-    </div>
-  </br>
-    <div class="form-group">
-        <label for="phoneNumberSettings">Phone Number :</label>
-        <input type="text" class="form-control" id="phoneNumberSettings" name="phone number">
-    </div>
-    <div id="boutton" >
-      <button type="submit" class="btn" id="cancelboutton" >Cancel</button>
-      <button type="submit" class="btn" id="saveboutton" >Save</button>
-  </div>
+    <div id="basicInfoDIV">
+            <div id="basicInfoDIV-forms">
+                <h1>Basic informations </h1>
+                <hr>
+                <div id="fullname-settings">
+                    <div class="form-group">
+                        <label for="firstNameSettings">First Name :</label>
+                        <input type="text" class="form-control" id="firstNameSettings" name="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastNameSettings">Last Name :</label>
+                        <input type="text" class="form-control" id="lastNameSettings" name="lasttname">
+                    </div>
+                </div>
+            </br>
+                <div class="form-group">
+                    <label for="BioSettings">Bio :</label>
+                    <textarea name="description" class="form-control" id="BioSettings"  name="Bio"></textarea>
+                </div>
+            </br>
+                <div class="form-group">
+                    <label for="phoneNumberSettings">Phone Number :</label>
+                    <input type="text" class="form-control" id="phoneNumberSettings" name="phone number">
+                </div>
+            </div>
+            <div id="basicInfoDIV-image">
+            <img src="/images/user.png" alt="picture profile " class="upload-profile-pic">
+            </div>
+             <div id="boutton" >
+                <button type="submit" class="btn" id="cancelboutton" >Cancel</button>
+                <button type="submit" class="btn" id="saveboutton" >Save</button>
+            </div>
 
+    </div>
+  </div>
 </div>
 @endsection
