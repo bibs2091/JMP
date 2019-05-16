@@ -1,5 +1,59 @@
 @layout('layouts.dashboard')
 
 @section('content')
-  <h1>settings page</h1>
+          <div class="settingsPage">
+         
+        
+                <div class="infoSite">
+                        <div id="infoSiteTabs">
+                            <ul>
+                       
+                       
+                               <li class="settingsTabsElements inSettingsTab"><img src="/images/settings/list.svg" id="symbole"><span>  General Informations </span></li><br>
+                               <li class="settingsTabsElements"><img src="/images/settings/localisation.svg"id="symbole"><span>  Localization</span></li><br>
+                               <li class="settingsTabsElements"><img src="/images/settings/network.svg"id="symbole"><span>  Social Networks</span></li><br>
+                               <li class="settingsTabsElements"><img src="/images/settings/terms.png"id="symbole"><span>  Terms & Conditions</span></li><br>
+                               <li class="settingsTabsElements"><img src="/images/settings/flag.svg"id="symbole"><span>  Others</span></li>
+                            </ul>
+                       </div>
+                     </div>
+             
+                 
+
+
+                    <div class="infoSite-form">
+                   <div class="info-form">
+                                    <img src="/favicon.png"  id="upload-logo">
+                                    <input type="button" value="Change image" id="change-btn">
+                                    
+                                       
+                        <h1>Basic Information</h1>
+                  
+                       
+                        <div class="infosite-group">
+                            <label for="websiteName">WebSite name</label>
+                            <input type="text" class="form-control" name="websiteName" >
+                    
+                            <label for="descriptionWebsite">WebSite Description</label>
+                            <textarea class="form-control" name="descriptionWebsite"></textarea>
+                            
+                            <label for="websiteEmail">WebSite Email</label>
+                            <input type="email" class="form-control" name="websiteEmail" > 
+                        </div>
+                    
+                        <input type="reset" value="Reset" id="reset-btn">
+                        <input type="button" value="SAVE" id="save-btn">
+                        
+                    </div>
+
+                         
+                    </div>
+
+                </div>   
+         </div>
+
+
+
+
+
 @endsection
