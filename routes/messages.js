@@ -22,7 +22,9 @@ router.get('/', async (req, res) => {
 				text: message.dataValues.text
 			}
 		})
-		res.status(200).json(inbox)
+		// res.status(200).json(inbox)
+		//for front end design 
+		res.render('inbox', { inbox })
 	} catch (error) {
 		console.log(error)
 	}
