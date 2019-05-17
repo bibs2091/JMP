@@ -28,6 +28,7 @@ const admin = require("./routes/admin");
 const events = require("./routes/events");
 const courses = require("./routes/courses");
 const api = require("./routes/api");
+const pushSubscription = require('./routes/pushSubscription')
 
 //environment variables
 const {
@@ -114,6 +115,7 @@ app.use("/", home);
 app.use("/events", events);
 app.use("/courses", courses);
 app.use("/api", api);
+app.use('subscribe', pushSubscription);
 app.get("*", (req, res) => {
 	res.render("404");
 });
