@@ -1,58 +1,47 @@
 @layout('layouts.dashboard')
 
 @section('content')
-          <div class="settingsPage">
-         
-        
-                <div class="infoSite">
-                        <div id="infoSiteTabs">
-                            <ul>
-                       
-                       
-                               <li class="settingsTabsElements inSettingsTab"><img src="/images/settings/list.svg" id="symbole"><span>  General Informations </span></li><br>
-                               <li class="settingsTabsElements"><img src="/images/settings/localisation.svg"id="symbole"><span>  Localization</span></li><br>
-                               <li class="settingsTabsElements"><img src="/images/settings/network.svg"id="symbole"><span>  Social Networks</span></li><br>
-                               <li class="settingsTabsElements"><img src="/images/settings/terms.png"id="symbole"><span>  Terms & Conditions</span></li><br>
-                               <li class="settingsTabsElements"><img src="/images/settings/flag.svg"id="symbole"><span>  Others</span></li>
-                            </ul>
-                       </div>
-                     </div>
-             
-                 
-
-
-                    <div class="infoSite-form">
-                   <div class="info-form">
-                                    <img src="/favicon.png"  id="upload-logo">
-                                    <input type="button" value="Change image" id="change-btn">
-                                    
-                                       
-                        <h1>Basic Information</h1>
-                  
-                       
-                        <div class="infosite-group">
-                            <label for="websiteName">WebSite name</label>
+          
+<div id="settingsCard">
+  <div id="settingTabs">
+    <ul>
+        <li>Settings</li>
+        <li class="settingsTabsElements inSettingsTab"><img src="/images/settings/list.svg" class="symbole"><span>  General Informations </span></li>
+        <li class="settingsTabsElements"><img src="/images/settings/localisation.svg"class="symbole"><span>  Localization</span></li>
+        <li class="settingsTabsElements"><img src="/images/settings/network.svg"class="symbole"><span>  Social Networks</span></li>
+        <li class="settingsTabsElements"><img src="/images/settings/terms.png"class="symbole"><span>  Terms & Conditions</span></li>
+        <li class="settingsTabsElements"><img src="/images/settings/flag.svg"class="symbole"><span>  Others</span></li>
+    </ul>
+  </div>
+  <div id="basicInfo" >
+    <div id="basicInfoDIV">
+            <div id="basicInfoDIV-forms">
+                <h1>Basic informations </h1>
+                <hr>
+                <label for="websiteName">WebSite name</label>
                             <input type="text" class="form-control" name="websiteName" >
                     
                             <label for="descriptionWebsite">WebSite Description</label>
-                            <textarea class="form-control" name="descriptionWebsite"></textarea>
+                            <textarea class="form-control" name="descriptionWebsite" rows="3"></textarea>
                             
                             <label for="websiteEmail">WebSite Email</label>
-                            <input type="email" class="form-control" name="websiteEmail" > 
-                        </div>
-                    
-                        <input type="reset" value="Reset" id="reset-btn">
-                        <input type="button" value="SAVE" id="save-btn">
-                        
-                    </div>
+                            <input type="email" class="form-control" name="websiteEmail"  > 
+                
+            
+                
+            </div>
+            <div id="basicInfoDIV-image">
+              <img src="/favicon.png" alt="WebSite photo">
+              <input type="button" value="Change image" id="change-btn">
+            </div>
+             <div id="boutton" >
+                <button type="submit" class="btn" id="cancelboutton" >Cancel</button>
+                <button type="submit" class="btn" id="saveboutton" >Save</button>
+            </div>
 
-                         
-                    </div>
-
-                </div>   
-         </div>
-
-
+    </div>
+  </div>
+</div>
 
 
 

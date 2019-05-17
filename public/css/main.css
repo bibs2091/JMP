@@ -1968,40 +1968,137 @@ input[name="lastName"] {
   height: 100px;
 }
 
-/* ------------ settings ------------*/
-
-#settingTabs {
-  background: #ffffff;
-  border-radius: 12px;
-  height: 370px;
-  width: 90%;
-}
-#settingTabs ul li {
-  display: flex;
-  align-items: center;
-  height: 56px;
-  color: #000;
-  font-weight: 600;
-}
-#settingTabs ul > :first-child {
-  font-size: 17px;
-  color: #787878;
-  margin-bottom: 5px;
-  justify-content: center;
-}
-#settingTabs ul li img {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.inSettingsTab {
-  background: #ffd32a;
-}
-#fullname-settings {
-  display: table;
-}
-#fullname-settings div {
-  display: table-cell;
-}
+  /* ------------ settings ------------*/
+ 
+  #settingsCard{
+    background: #ffffff;
+    width:95%;
+    position: relative;
+    top: 30px;
+    z-index: 2;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 40px;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    display:table;
+    margin: 0 auto;
+    }
+    .symbole {
+      width: 10%;
+      margin-left: 12px;
+      margin-right: 10px;
+    }
+   #settingsCard > div {
+     display: table-cell;
+     vertical-align: top;
+   }
+   #settingTabs ul li{
+     display:flex;
+     align-items:center;
+     height: 56px;
+     color: #413535;
+     font-weight: 600;
+   }
+   #settingTabs ul > :first-child {
+     font-size: 17px;
+     color: #4b4848;
+     margin-bottom: 5px;
+     justify-content:center;
+   }
+   #settingTabs ul li img{
+     margin-left: 10px;
+     margin-right: 10px;
+   }
+   .inSettingsTab{
+     background: #FFD32A;
+   }
+   #fullname-settings{
+     display:table ;
+   }
+   #fullname-settings div{
+    display:table-cell;
+   }
+   #settingTabs{
+     border-radius: 12px;
+     height: 90%;
+     width: 30%
+   }
+   #basicInfo{
+     font-family: Montserrat,sans-serif;
+     width: 70%;
+   }
+   #basicInfoDIV{
+     width: 100%;
+     height: 100%;
+     display: table;
+     position: relative;
+ 
+   }
+   #basicInfoDIV-forms{
+     display: table-cell;
+     vertical-align: top;
+     height: 425px;
+     padding: 15px 10px 0px 7px;
+     width: 70%
+ 
+   }
+   
+   #basicInfo h1 {
+     font-style: normal;
+     font-weight: 600;
+     font-size: 20px;
+     line-height: 24px;
+     margin-left:13px ;
+   }
+    
+   #basicInfo label{
+     font-size: 17px;
+     color: #000;
+   }
+ 
+   #basicInfoDIV-image{
+     display: table-cell;
+     vertical-align: middle;
+     width: 30%;
+     text-align: center;
+ 
+   }
+   #basicInfoDIV-image img{
+     width: 139px;
+     border-radius: 7px;
+   }
+   #change-btn {
+    background: #fff;
+    border: 1px solid #1dbf70;
+    border-radius: 4px;
+    width: 147px;
+    height: 35px;
+    color: #1dbf70;
+    margin-top: 25px;
+    font-weight: 600;
+  }
+   #boutton{
+   position: absolute;
+   bottom: 0;
+   right: 30px;    
+   }
+   #cancelboutton{
+     background: #EFEFEF;
+     border: 1px solid rgb(22, 216, 96);
+     box-sizing: border-box;
+     border-radius: 5px; 
+     color:#1DBF70;
+     width:85px;
+   }
+   #saveboutton{
+     background: rgb(22, 216, 96);
+     border: 1px solid rgb(22, 216, 96);
+     box-sizing: border-box;
+     border-radius: 5px; 
+     color:white;
+     width:85px;
+     margin: 0px 17px 0px 28px;
+   }
 
 /* for xl screens --------keep it in the bottom of the file-------- */
 @media (max-width: 1140px) {
@@ -2208,7 +2305,9 @@ input[name="lastName"] {
   margin-left: 40px;
   height: 98px;
 }
-
+.info-form{
+  display: table;
+}
 #infoSiteTabs {
   background: #f7f8fb;
   border-radius: 12px;
@@ -2216,11 +2315,7 @@ input[name="lastName"] {
   width: 100%;
   margin-top: 41px;
 }
-#symbole {
-  width: 10%;
-  margin-left: 12px;
-  margin-right: 10px;
-}
+
 #save-btn {
   background: #1dbf70;
   border: 1px solid #1dbf70;
@@ -2241,17 +2336,7 @@ input[name="lastName"] {
   font-weight: 600;
   margin-left: 410px;
 }
-#change-btn {
-  background: #fff;
-  border: 1px solid #1dbf70;
-  border-radius: 4px;
-  width: 147px;
-  height: 35px;
-  color: #1dbf70;
-  margin-top: 25px;
-  font-weight: 600;
-  margin-left: 560px;
-}
+
 #upload-logo {
   width: 117px;
   margin-top: 86px;
