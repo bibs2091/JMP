@@ -115,7 +115,7 @@ app.use("/", home);
 app.use("/events", events);
 app.use("/courses", courses);
 app.use("/api", api);
-app.use('subscribe', pushSubscription);
+app.use('/subscribe', pushSubscription);
 app.get("*", (req, res) => {
 	res.render("404");
 });
