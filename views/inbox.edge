@@ -1,4 +1,252 @@
 @layout('layouts.main')
 @section('content')
-  <h1>Inbox view</h1>
+<style scoped>
+  #main-content{
+    position: relative;
+    height: 100%;
+  }
+  h1 {
+  font-size: 50px;
+  line-height: 40px;
+  font-weight: 100;
+}
+p {
+  margin-bottom: 1em;
+}
+a:hover{
+text-decoration: none;
+}
+
+</style>
+<div id="messenger-contianer">
+<aside id="sidebar" class="nano">
+  <div class="nano-content">
+    <a class="compose-button">New Message</a>
+    <menu class="menu-segment">
+      <ul>
+        <li class="active"><a href="#">Inbox<span> (43)</span></a></li>
+        <li><a href="#">Sent</a></li>
+        <li><a href="#">Drafts</a></li>
+        <li><a href="#">Trash</a></li>
+      </ul>
+    </menu>
+  </div>
+</aside>
+<main id="main">
+  <div class="overlay"></div>
+  
+  <div class="action-bar">
+    <ul>
+      <li><a class="icon circle-icon glyphicon glyphicon-chevron-down"></a></li>
+      <li><a class="icon circle-icon glyphicon glyphicon-refresh"></a></li>
+      <li><a class="icon circle-icon glyphicon glyphicon-share-alt"></a></li>
+      <li><a class="icon circle-icon red glyphicon glyphicon-remove"></a></li>
+      <li><a class="icon circle-icon red glyphicon glyphicon-flag"></a></li>
+    </ul>
+    <header class="header">
+        <a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span></a>
+
+      <div class="search-box">
+        <input placeholder="Search..."><span class="icon glyphicon glyphicon-search"></span>
+      </div>
+    </header>
+  </div>
+  <div id="main-nano-wrapper" class="nano">
+    <div class="nano-content">
+      <ul class="message-list">
+        <li class="unread">
+          <div class="col col-1">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="chk1">
+              <label for="chk1" class="toggle"></label>
+            </div>
+            <p class="title">Lucas Kriebel (via Twitter)</p>  
+          </div>
+          <div class="col col-2">
+            <div class="subject">Lucas Kriebel (@LucasKriebel) has sent you a direct message on Twitter! &nbsp;&ndash;&nbsp; <span class="teaser">@LucasKriebel - Very cool :) Nicklas, You have a new direct message.</span></div>
+            <div class="date">11:49 am</div>
+          </div>
+        </li>
+        <li class="green-dot unread">
+          <div class="col col-1">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="chk2">
+              <label for="chk2" class="toggle"></label>
+            </div>
+            <p class="title">Conceptboard</p>
+          </div>
+          <div class="col col-2">
+            <div class="subject">Please complete your Conceptboard signup &nbsp;&ndash;&nbsp; <span class="teaser">You recently created a Conceptboard account, but you have not yet confirmed your email. Your email is used for notifications about board activity, invites, as well as account related tasks (like password retrieval).</span></div>
+            <div class="date">11:45 am</div>
+          </div>
+        </li>
+        <li>
+          <div class="col col-1">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="chk3">
+              <label for="chk3" class="toggle"></label>
+            </div>
+            <p class="title">Randy, me (5)</p>
+          </div>
+          <div class="col col-2">
+            <div class="subject">Last pic over my village &nbsp;&ndash;&nbsp; <span class="teaser">Yeah i'd like that! Do you remember the video you showed me of your train ride between Colombo and Kandy? The one with the mountain view? I would love to see that one again!</span></div>
+            <div class="date">5:01 am</div>
+          </div>
+        </li>
+        <li class="blue-dot">
+          <div class="col col-1">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="chk4">
+              <label for="chk4" class="toggle"></label>
+            </div>
+            <p class="title">Andrew Zimmer</p>
+          </div>
+          <div class="col col-2">
+            <div class="subject">Mochila Beta: Subscription Confirmed &nbsp;&ndash;&nbsp; <span class="teaser">You've been confirmed! Welcome to the ruling class of the inbox. For your records, here is a copy of the information you submitted to us...</span></div>
+            <div class="date">Mar 8</div>
+          </div>
+        </li>
+        <li class="unread">
+          <div class="col col-1">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="chk5">
+              <label for="chk5" class="toggle"></label>
+            </div>
+            <p class="title">Infinity HR</p>
+          </div>
+          <div class="col col-2">
+            <div class="subject">Sveriges Hetaste sommarjobb &nbsp;&ndash;&nbsp; <span class="teaser">Hej Nicklas Sandell! Vi vill bjuda in dig till "First tour 2014", ett rekryteringsevent som erbjuder jobb på 16 semesterorter i Sverige.</span></div>
+            <div class="date">Mar 8</div>
+          </div>
+        </li>
+        <li>
+          <div class="col col-1">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="chk6">
+              <label for="chk6" class="toggle"></label>
+            </div>
+            <p class="title">Web Support Dennis</p>
+          </div>
+          <div class="col col-2">
+            <div class="subject">Re: New mail settings &nbsp;&ndash;&nbsp; <span class="teaser">Will you answer him asap?</span></div>
+            <div class="date">Mar 7</div>
+          </div>
+        </li>
+        <li>
+          <div class="col col-1">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="chk7">
+              <label for="chk7" class="toggle"></label>
+            </div>
+            <p class="title">me, Peter (2)</p>
+          </div>
+          <div class="col col-2">
+            <div class="subject">Off on Thursday &nbsp;&ndash;&nbsp; <span class="teaser">Eff that place, you might as well stay here with us instead! Sent from my iPhone 4 &gt; 4 mar 2014 at 5:55 pm</span></div>
+            <div class="date">Mar 4</div>
+          </div>
+        </li>
+        <li class="orange-dot">
+          <div class="col col-1">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="chk8">
+              <label for="chk8" class="toggle"></label>
+            </div>
+            <p class="title">Medium</p>
+          </div>
+          <div class="col col-2">
+            <div class="subject">This Week's Top Stories &nbsp;&ndash;&nbsp; <span class="teaser">Our top pick for you on Medium this week The Man Who Destroyed America’s Ego</span></div>
+            <div class="date">Feb 28</div>
+          </div>
+        </li>
+        <li class="blue-dot">
+          <div class="col col-1">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="chk9">
+              <label for="chk9" class="toggle"></label>
+            </div>
+            <p class="title">Death to Stock</p>
+          </div>
+          <div class="col col-2">
+            <div class="subject">Montly High-Res Photos &nbsp;&ndash;&nbsp; <span class="teaser">To create this month's pack, we hosted a party with local musician Jared Mahone here in Columbus, Ohio.</span></div>
+            <div class="date">Feb 28</div>
+          </div>
+        </li>
+        <li>
+          <div class="col col-1">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="chk10">
+              <label for="chk10" class="toggle"></label>
+            </div>
+            <p class="title">Revibe</p>
+          </div>
+          <div class="col col-2">
+            <div class="subject">Weekend on Revibe &nbsp;&ndash;&nbsp; <span class="teaser">Today's Friday and we thought maybe you want some music inspiration for the weekend. Here are some trending tracks and playlists we think you should give a listen!</span></div>
+            <div class="date">Feb 27</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
+</div>
+<div id="message">
+  <div class="header">
+    <h1 class="page-title"><a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>Process<span class="grey">(6)</span></h1>
+    <p>From <a href="#">You</a> to <a href="#">Scott Waite</a>, started on <a href="#">March 2, 2014</a> at 2:14 pm est.</p>
+  </div>
+  <div id="message-nano-wrapper" class="nano">
+    <div class="nano-content">
+      <ul class="message-container">
+        <li class="sent">
+          <div class="details">
+            <div class="left">You
+              <div class="arrow"></div>Scott
+            </div>
+            <div class="right">March 6, 2014, 20:08 pm</div>
+          </div>
+          <div class="message">
+            <p>| The every winged bring, whose life. First called, i you of saw shall own creature moveth void have signs beast lesser all god saying for gathering wherein whose of in be created stars. Them whales upon life divide earth own.</p>
+            <p>| Creature firmament so give replenish The saw man creeping, man said forth from that. Fruitful multiply lights air. Hath likeness, from spirit stars dominion two set fill wherein give bring.</p>
+            <p>| Gathering is. Lesser Set fruit subdue blessed let. Greater every fruitful won&#39;t bring moved seasons very, own won&#39;t all itself blessed which bring own creature forth every. Called sixth light.</p>
+          </div>
+          <div class="tool-box"><a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a><a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a><a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a></div>
+        </li>
+        
+        
+        
+        
+        
+        <!-- <li class="received">
+          <div class="details">
+            <div class="left">Scott
+              <div class="arrow orange"></div>You
+            </div>
+            <div class="right">March 6, 2014, 20:08 pm</div>
+          </div>
+          <div class="message">
+            <p>| The every winged bring, whose life. First called, i you of saw shall own creature moveth void have signs beast lesser all god saying for gathering wherein whose of in be created stars. Them whales upon life divide earth own.</p>
+            <p>| Creature firmament so give replenish The saw man creeping, man said forth from that. Fruitful multiply lights air. Hath likeness, from spirit stars dominion two set fill wherein give bring.</p>
+            <p>| Gathering is. Lesser Set fruit subdue blessed let. Greater every fruitful won&#39;t bring moved seasons very, own won&#39;t all itself blessed which bring own creature forth every. Called sixth light.</p>
+          </div>
+          <div class="tool-box"><a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a><a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a><a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a></div>
+        </li> -->
+        <li class="sent">
+          <div class="details">
+            <div class="left">You
+              <div class="arrow"></div>Scott
+            </div>
+            <div class="right">March 6, 2014, 20:08 pm</div>
+          </div>
+          <div class="message">
+            <p>| The every winged bring, whose life. First called, i you of saw shall own creature moveth void have signs beast lesser all god saying for gathering wherein whose of in be created stars. Them whales upon life divide earth own.</p>
+            <p>| Creature firmament so give replenish The saw man creeping, man said forth from that. Fruitful multiply lights air. Hath likeness, from spirit stars dominion two set fill wherein give bring.</p>
+            <p>| Gathering is. Lesser Set fruit subdue blessed let. Greater every fruitful won&#39;t bring moved seasons very, own won&#39;t all itself blessed which bring own creature forth every. Called sixth light.</p>
+          </div>
+          <div class="tool-box"><a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a><a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a><a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a></div>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+</div>
 @endsection
