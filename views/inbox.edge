@@ -37,14 +37,16 @@ text-decoration: none;
   
   <div class="action-bar">
     <ul>
-      <li><a class="icon circle-icon glyphicon glyphicon-chevron-down"></a></li>
-      <li><a class="icon circle-icon glyphicon glyphicon-refresh"></a></li>
-      <li><a class="icon circle-icon glyphicon glyphicon-share-alt"></a></li>
-      <li><a class="icon circle-icon red glyphicon glyphicon-remove"></a></li>
-      <li><a class="icon circle-icon red glyphicon glyphicon-flag"></a></li>
+      <li><a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span></a></li>
+      <li><div class="checkbox-wrapper">
+          <input type="checkbox" id="ck-all">
+          <label for="ck-all" class="toggle"></label>
+        </div>
+      </li>
+      <li><a class="icon glyphicon glyphicon-refresh"></a></li>
+      <li><a class="icon glyphicon glyphicon-share-alt"></a></li>
     </ul>
     <header class="header">
-        <a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span></a>
 
       <div class="search-box">
         <input placeholder="Search..."><span class="icon glyphicon glyphicon-search"></span>
@@ -188,7 +190,7 @@ text-decoration: none;
     </div>
   </div>
 </main>
-</div>
+
 <div id="message">
   <div class="header">
     <h1 class="page-title"><a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>Process<span class="grey">(6)</span></h1>
@@ -249,4 +251,6 @@ text-decoration: none;
     </div>
   </div>
 </div>
+</div>
+
 @endsection
