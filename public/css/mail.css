@@ -8,6 +8,11 @@
     overflow: hidden;
     margin: 0 auto;
   }
+  @media only screen and (max-width: 672px) {
+    #messenger-contianer {
+      margin-left: 12px;
+    }
+  }
   .circle-icon {
     width: 30px;
     height: 30px;
@@ -359,7 +364,33 @@
   }
   #main .action-bar li {
     float: left;
-    margin-right: 10px;
+    margin-top: 7px;
+  }
+  #main .action-bar li:first-child{
+    float: left;
+    margin-top: 0;
+  }
+  #main .action-bar li:nth-child(3) {
+    margin-left: 7px;
+  }
+  #main .action-bar li:nth-child(4) {
+    margin-left: 35px;
+  }
+  #main .action-bar li:nth-child(5) {
+    margin-left: 35px;
+  }
+
+
+
+  #main .action-bar li > label{
+    color: #818181;
+    font-weight: bold;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /
   }
   #main #main-nano-wrapper {
     position: absolute;
@@ -424,7 +455,7 @@
   #main .message-list li:hover,
   #main .message-list li.active,
   #main .message-list li.selected {
-    background: #dfdfdf;
+    background: #dfdfdf!important;
     transition-duration: 0.05s;
   }
   #main .message-list li.active,
@@ -434,6 +465,10 @@
   #main .message-list li.unread {
     font-weight: 600;
     color: #555;
+  }
+  #main .message-list li.readed { /*ik that readed is false but i used it to keep things ez for me */
+    background-color: #1515150d;
+    color: #646464;
   }
   #main .message-list li .col {
     float: left;
@@ -707,7 +742,7 @@
     }
     #main #main-nano-wrapper {
       position: absolute;
-      top: 260px;
+      top: 81px;
       bottom: 0;
       height: auto;
     }
