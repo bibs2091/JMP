@@ -23,7 +23,6 @@ async function send() {
                 applicationServerKey: urlBase64ToUint8Array(publicKey)
             });
 
-            console.log('service woker is registered ')
             //send post request
             await fetch('/subscribe', {
                 method: 'POST',
