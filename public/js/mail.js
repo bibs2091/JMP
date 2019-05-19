@@ -126,12 +126,25 @@ jQuery(document).ready(function($) {
 
 	$('.search-box input').on('focus', function() {
 		if($(window).width() <= 1360) {
-			cols.hideMessage();
+      cols.hideMessage();
+      
 		}
 	});
 
 });
 
+  // Searsh on messages
+  $('.search-box input').on("keyup",function() {
+
+      if ($(this).val()){
+        var input_val=$(this).val().toLowerCase();
+        $(".message-list li").filter(function() {
+          $(this).toggle(($(this).find('.col').find('.subject').text().toLowerCase().indexOf(input_val) > -1) || ($(this).find('.col').find('.title').text().toLowerCase().indexOf(input_val) > -1))
+        });
+
+
+      }
+});
 
 
 

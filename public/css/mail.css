@@ -358,9 +358,14 @@
     opacity: 0.5;
   }
   #main .action-bar {
-    padding: 20px 70px;
+    padding: 20px 30px;
     border-bottom: 1px solid #EFEFEF;
     overflow: hidden;
+  }
+  @media only screen and (max-width: 965px) {
+    #main .action-bar {
+      padding: 20px 70px;
+    }
   }
   #main .action-bar li {
     float: left;
@@ -556,7 +561,7 @@
     z-index: 5;
     transform: translateX(200%);
     transition-duration: 0.5s;
-    padding: 50px 30px;
+    padding: 0 30px;
     background: #EFEFEF;
   }
   .show-message #message {
@@ -700,7 +705,7 @@
       width: 50%;
     }
   }
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 965px) {
     #sidebar {
       transform: translateX(-100%);
     }
