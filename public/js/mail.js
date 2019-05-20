@@ -1086,3 +1086,17 @@ $("#pagin li a").click(function() {
     showPage(parseInt($(this).text())) 
 });
     
+// refresh buttons 
+$('.refresh').click(function(){
+  var el = $(this);
+  el.addClass('refreshing');
+  
+  setTimeout(function(){
+    el.addClass('complete');
+    setTimeout(function(){
+      el.removeClass('refreshing');
+      el.removeClass('complete');
+    }, 500);
+  }, 2000);
+  
+});

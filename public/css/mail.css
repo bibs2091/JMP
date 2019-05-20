@@ -176,7 +176,7 @@
     color:#221E0A;
     display: block;
     margin: 0 -50px 0 -70px;
-    padding: 10px 50px 10px 70px;
+    padding: 10px 50px 10px 27px;
   }
   #sidebar .menu-segment li a:hover {
     background: #E8EAFA;
@@ -386,7 +386,45 @@
     margin-left: 35px;
   }
 
-
+  .refresh {
+    padding: 5px;
+    width: 18px;
+    height: 18px;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIzMiIgaWQ9InJlZnJlc2giIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9IiBNMTYgMiBBMTQgMTQgMCAwIDAgMiAxNiBBMTQgMTQgMCAwIDAgMTYgMzAgQTE0IDE0IDAgMCAwIDI2IDI2IEwgMjMuMjUgMjMgQTEwIDEwIDAgMCAxIDE2IDI2IEExMCAxMCAwIDAgMSA2IDE2IEExMCAxMCAwIDAgMSAxNiA2IEExMCAxMCAwIDAgMSAyMy4yNSA5IEwxOSAxMyBMMzAgMTMgTDMwIDIgTDI2IDYgQTE0IDE0IDAgMCAwIDE2IDIgIi8+PC9zdmc+) no-repeat center center;
+    background-size: 18px;
+    transition: opacity 0.5s linear;
+    margin-top: 3px;
+    opacity: 0.9;
+  }
+  .refresh.refreshing {
+    animation: rotate360 0.9s infinite linear;
+    opacity: 0.4;
+    transition: opacity 0.2s linear;
+  }
+  .refresh.complete {
+    animation: complete 0.4s linear;
+    transition: opacity 0.5s linear;
+  }
+  @keyframes rotate360 {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes complete {
+    100% {
+      opacity: 0;
+      background-size: 10px;
+    }
+  }
+  #delete_msg{
+    height: 15px;
+    width: 15px;
+  }
+  #delete_msg:hover{
+    height: 16px;
+    width: 16px;
+    margin-right: 2px;
+  }
 
   #main .action-bar li > label{
     color: #818181;
@@ -466,7 +504,6 @@
     width: 45px;
     height: 45px;
     margin-left: 25px;
-    margin-bottom: 22px;
   }
   #main .message-list li .col-two p{
     white-space: nowrap;
