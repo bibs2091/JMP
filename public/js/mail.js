@@ -50,6 +50,19 @@ jQuery(document).ready(function($) {
 	// When you click on a message, show it
 
 	$('#main .message-list li').on('click', function(e) {
+    //getting msg data
+    var messageTitle = this.getElementsByClassName("title")[0].innerHTML;
+    var messageContent = this.getElementsByClassName("content")[0].innerHTML;
+    var messageSender = this.getElementsByClassName("sender")[0].innerHTML;
+    var messageReciever = this.getElementsByClassName("reciever")[0].innerHTML;
+    var messageDate = this.getElementsByClassName("message-date")[0].innerHTML;
+    //setting message values
+    $('#message .header h1')[1].innerHTML = messageTitle;
+    document.getElementById("message-sender").innerHTML = messageSender;
+    document.getElementById("message-reciever").innerHTML = messageReciever;
+    document.getElementById("message-content").innerHTML = messageContent;
+    document.getElementById("message-date").innerHTML = messageDate;
+
 		var item = $(this),
 			target = $(e.target);
 
