@@ -133,13 +133,13 @@ jQuery(document).ready(function($) {
 
 });
 
-  // Searsh on messages
+  // Search on messages
   $('.search-box input').on("keyup",function() {
 
       if ($(this).val()){
         var input_val=$(this).val().toLowerCase();
         $(".message-list li").filter(function() {
-          $(this).toggle(($(this).find('.col').find('.subject').text().toLowerCase().indexOf(input_val) > -1) || ($(this).find('.col').find('.title').text().toLowerCase().indexOf(input_val) > -1))
+          $(this).toggle(($(this).find('.col-two').find('.sender').text().toLowerCase().indexOf(input_val) > -1) || ($(this).find('.col-two').find('.title').text().toLowerCase().indexOf(input_val) > -1) || ($(this).find('.col-two').find('.content').text().toLowerCase().indexOf(input_val) > -1))
         });
 
 
@@ -1068,3 +1068,21 @@ jQuery(document).ready(function($) {
 })(jQuery, window, document);
 
 //# sourceMappingURL=jquery.nanoscroller.js.map
+pageSize = 3;
+
+showPage = function(page) {
+    $(".content").hide();
+    $(".content").each(function(n) {
+        if (n >= pageSize * (page - 1) && n < pageSize * page)
+            $(this).show();
+    });        
+}
+    
+showPage(1);
+
+$("#pagin li a").click(function() {
+    $("#pagin li a").removeClass("current");
+    $(this).addClass("current");
+    showPage(parseInt($(this).text())) 
+});
+    
