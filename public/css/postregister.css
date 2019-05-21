@@ -56,7 +56,7 @@ body {
   cursor: pointer;
   position: absolute;
   left: 50%;
-  top: 110%;
+  top: 132%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   overflow: hidden;
@@ -120,7 +120,7 @@ body {
 .screen button {
   background: #ffd32a;
   border: 1px solid #ffd32a;
-  box-shadow: 0 3px 20px 0 rgba(104, 104, 104, 0.36);
+  box-shadow: 0 1px 10px 0 rgba(104, 104, 104, 0.36);
   border-radius: 100px;
   letter-spacing: 1.5px;
   font-weight: 500;
