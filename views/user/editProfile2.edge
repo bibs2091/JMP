@@ -1,8 +1,17 @@
 @layout('layouts.main')
 
 @section('content')
-  
+ <div id="setting_navbar" >
+  <ul > 
+   <li><a href="#">Account</a> </li>
+   <li><a href="#">General</a></li>
+   <li><a href="#">Security</a></li>
+   <li><a href="#">Website</a></li>
+   <li id="setting_others"><a href="#">Others</a></li>
+  </ul> 
+ </div>
 
+<<<<<<< Updated upstream
 <div id="settingsCard">
   <div id="settingTabs">
     <ul>
@@ -48,7 +57,125 @@
                 <button type="submit" class="btn" id="saveboutton" >Save</button>
             </div>
 
+=======
+ <div class="container settingsCard " >
+    <div class="row ">     
+          <div class="col-md-4 GeneralInformation "> 
+            <div>
+                  <img src="/categories/1.jpg" alt="picture profile " id="profil-pic">
+
+                  <i class="fal fa-pen"  id="modifier-pic"></i>
+            </div>
+            <form>
+              <div class="md-form form-group  mt-5 ">
+                <label for="formGroupExampleInputMD">First Name </label>
+                <input type="text" value="Bahia" class="form-control" id="formGroupExampleInputMD" >
+                
+              </div>
+              
+              <div class="md-form form-group mt-5">
+                <label for="formGroupExampleInput2MD">Last Name </label>
+                <input type="text"  value="Guitt"class="form-control" id="formGroupExampleInput2MD" >
+              </div>
+              
+            </form>
+          </div>
+          
+          <div class="col-md-7 GeneralInformation "> 
+            <form>
+              <div class="row" id="Note">
+                  <i class="fas fa-exclamation-triangle col-1 "></i>
+                  <p class="col-10">This information are only for security and statistical perpuses and it will not be showen in your profile </p>
+              </div>
+            </br>
+            </br>
+              <div class="form-row">
+                <div class="form-group col-md-6 ">
+                  <label for="inputPhoneNumber">Phone Number </label>
+                  <input type="text" value="0555555555" class="form-control" id="inputPhoneNumber" >
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputEmail">Email Address</label>
+                  <input type="email" value="b.guitt@esi-sba.dz" class="form-control" id="inputEmail" >
+                </div>
+              </div>
+              <div class="form-row">
+                  <div class="md-form col-md-6 colorful-select dropdown-warning">
+                      <label for="inputState">State</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Choose...</option><option value="adrar">Adrar</option>
+                        <option value="chlef">Chlef</option>
+                        <option value="laghouat	">Laghouat	</option>
+                        <option value="oum El Bouaghi">Oum El Bouaghi</option>
+                        <option value="batna">Batna</option>
+                        <option value="béjaïa">Béjaïa</option>
+                        <option value="biskra">Biskra</option>
+                        <option value="béchar">Béchar</option>
+                        <option value="blida">Blida</option>
+                        <option value="bouira">Bouira</option>
+                        <option value="tamanrasset">Tamanrasset</option>
+                        <option value="tébessa">Tébessa</option>
+                        <option value="tlemcen">Tlemcen</option>
+                        <option value="tiaret">Tiaret</option>                      
+                        <option value="tizi Ouzou">Tizi Ouzou</option>
+                        <option value="alger">Alger</option>
+                        <option value="djelfa">Djelfa</option>
+                        <option value="jijel">Jijel</option>
+                        <option value="sétif">Sétif</option>
+                        <option value="saïda">Saïda</option>
+                        <option value="skikda">Skikda</option>                     
+                        <option value="sidi Bel Abbès">Sidi Bel Abbès</option>
+                        <option value="annaba">Annaba</option>
+                        <option value="guelma">Guelma</option>
+                        <option value="constantine">Constantine</option>
+                        <option value="médéa">Médéa</option>
+                        <option value="mostaganem">Mostaganem</option>
+                        <option value="m'Sila">M'Sila</option>
+                        <option value="mascara">Mascara</option>
+                        <option value="ouargla">Ouargla</option>
+                        <option value="oran">Oran</option>
+                        <option value="el Bayadh">El Bayadh</option>
+                        <option value="illizi">Illizi</option>
+                        <option value="bordj Bou Arreridj">Bordj Bou Arreridj</option>
+                        <option value="boumerdès">Boumerdès</option>
+                        <option value="el Tarf">El Tarf</option>
+                        <option value="tindouf">Tindouf</option>
+                        <option value="tissemsilt">Tissemsilt</option>
+                        <option value="el Oued">El Oued</option>
+                        <option value="khenchela">Khenchela</option>
+                        <option value="souk Ahras">Souk Ahras</option>
+                        <option value="tipaza">Tipaza</option>
+                        <option value="mila"> Mila</option>
+                        <option value="ain Defla">Aïn Defla</option>
+                        <option value="naâma"> Naâma</option>
+                        <option value="aïn Témouchent">Aïn Témouchent</option>
+                        <option value="ghardaïa">Ghardaïa</option>
+                        <option value="relizane">Relizane</option>
+
+                      </select>
+                    </div>
+                    <div class=" mdb-select md-form colorful-select dropdown-warning col-md-6">
+                        <label for="inputSex">Sex</label>
+                        <select id="inputSex" class="form-control">
+                          <option>Male</option>
+                          <option>Female</option>
+                        </select>
+                    </div>
+                  </div>
+                </br>
+                  <div class="form-row">
+                      <div class="form-group col ">
+                        <label for="inputPhoneNumber">Bio</label>
+                        <textarea  value="0555555555" class="form-control" id="inputBio" ></textarea>
+                      </div>
+                    </div>  
+              <div id="boutton" >
+                  <button type="submit" class="btn " id ="cancelboutton" >Cancel</button>
+                  <button type="submit" class="btn" id="saveboutton" >Save</button>
+              </div>
+            </form>
+          </div>  
+>>>>>>> Stashed changes
     </div>
   </div>
-</div>
 @endsection

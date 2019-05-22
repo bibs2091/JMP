@@ -47,11 +47,19 @@ router.get("/logout", (req, res, next) => {
 	}
 });
 
+<<<<<<< Updated upstream
 router.get("/register", (req, res) => {
 	res.render("auth.register");
 });
 
 router.post("/register", registerController);
+=======
+router.get("/register", notAuthenticated, (req, res) => {
+	res.render("auth.register");
+});
+
+router.post("/register", notAuthenticated,  registerController);
+>>>>>>> Stashed changes
 
 
 // for development :

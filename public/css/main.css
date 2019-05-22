@@ -3,7 +3,6 @@ body {
 }
 html, body{
   max-width: 100%;
-  overflow-x: hidden;
 }
 #main-content {
   padding: 20px;
@@ -507,7 +506,7 @@ input[type="search"]:focus {
   font-weight: 600;
   font-size: 33px;
   top: 110px;
-  color: #e0e0e0;
+  color: #e0e0e0; 
 }
 #center_fillingInfosBox h2 span {
   font-weight: 700;
@@ -1908,7 +1907,7 @@ visibility: hidden;
 @media (max-width: 765px) {
   #upload-event-cover {
     height: 31vw;
-    margin-bottom: 22px;
+    margin-bottom: 22px;   
   }
   #submit-form-sponsor {
     margin-top: 22px;
@@ -1964,6 +1963,7 @@ visibility: hidden;
 }
 
   /* ------------ settings ------------*/
+<<<<<<< Updated upstream
  
   #settingsCard{
    background: #ffffff;
@@ -1984,24 +1984,43 @@ visibility: hidden;
     vertical-align: top;
   }
   #settingTabs ul li{
+=======
+  #setting_navbar{
+    list-style-type: none;
+    margin: 29px;
+    overflow: hidden;
+>>>>>>> Stashed changes
     display:flex;
-    align-items:center;
-    height: 56px;
-    color: #000;
-    font-weight: 600;
-  }
-  #settingTabs ul > :first-child {
-    font-size: 17px;
-    color: #787878;
-    margin-bottom: 5px;
     justify-content:center;
-  }
-  #settingTabs ul li img{
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  .inSettingsTab{
+    align-items:center;
+    }
+  #setting_navbar li {
+  display:inline-block;
+  min-width:50px;
+  padding: 0px 70px 0 0;
+}
+  #setting_navbar a {
+    text-decoration:none;
+    line-height: 70px;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 1.3em;
+    color: #444444;
+    text-transform: uppercase;
+}
+  #setting_navbar li a:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0;
+    background:#FFD32A ;
+    transition: width .5s ease, background-color .5s ease;
+}
+#setting_navbar li a:hover:after {
+    width: 90%;
     background: #FFD32A;
+<<<<<<< Updated upstream
   }
   #fullname-settings{
     display:table ;
@@ -2058,6 +2077,35 @@ visibility: hidden;
     width: 139px;
     border-radius: 7px;
   }
+=======
+}
+#setting_navbar li :hover {
+  color:#FFD32A;
+}
+  .GeneralInformation{
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+  color: #828282;
+  margin-right:26px;
+  padding: 40px 40px 40px 40px ;
+  }
+  #Note{
+    border : 1.4px dashed  #828282;
+    padding: 5px 5px 5px 5px ;
+  }  
+  #Note i {
+  float:left ;
+  }
+   #profil-pic{
+    border-radius: 55%;
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+>>>>>>> Stashed changes
   #boutton{
   position: absolute;
   bottom: 0;
@@ -2080,6 +2128,30 @@ visibility: hidden;
     width:85px;
     margin: 0px 17px 0px 28px;
   }
+
+  #modifier-pic{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #FF5E57;
+    border-radius: 60%;
+    left: 58%;
+    top: 36%;
+  }
+  .settingsCard{
+    padding: 20px,20px,20px,20px ;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+  }
+  #formGroupExampleInputMD{
+    text-decoration-line: underline;
+  }
+
+
+
+
 /* for xl screens --------keep it in the bottom of the file-------- */
 @media (max-width: 1140px) {
   #instructorImg {
