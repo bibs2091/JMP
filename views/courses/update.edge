@@ -33,16 +33,24 @@
                                         </li>
                                     @endeach
                                 </ul>
-                                <div class="add-lecture" onclick="showAddLectureModal(this)">
-                                    <img src="/img/add_lecture.png">
+                                <div class='add-lecture' onclick='showAddLectureModal(this)'>
+                                        <ul> <li class="lesson addLesson">
+                                            <p style="display:block; margin:0 auto; color:#868686;">
+                                                <i class="fas fa-plus"></i> &nbsp; 
+                                                Add a lesson
+                                            </p></li>
+                                        </ul>
                                 </div>
-    
                             </li>
                         @endeach
-                        
                     </ul>
                     <div class="add-chapter" onclick="showModal('add-chapter-modal')">
-                        <img src="/img/add_chapter.png">
+                        <ul> <li class="lesson addLesson">
+                            <p style="display:block; margin:0 auto; color:#868686;">
+                                <i class="fas fa-plus"></i> &nbsp; 
+                                Add a chapter
+                            </p></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -92,7 +100,17 @@
                         <p style="font-size: 11px;margin-bottom:7px;">
                             In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
                         </p>
-                        <input type="text" class="form-control" name="tags">
+                        <label style="width:100%" for="tag-typer">
+                            <div id="tags">
+                                    @each(tag in course.tags)
+                                    <span class="tag" style="">
+                                        <span class="close">×</span>
+                                        <p>{{tag}}</p>
+                                    </span>
+                                    @endeach
+                                <input id="tag-typer" type="text" name="tags" placeholder="Add a tag..."/>
+                            </div>
+                        </label>
                     </div>
                     <input type="text" name="courseJSON" id="courseJSON" style="display:none">
                     <input class="btn" type="submit" value="Save Changes">

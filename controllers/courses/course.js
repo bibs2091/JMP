@@ -17,9 +17,6 @@ module.exports = async (req, res) => {
             }
         });
         if (progress) {
-            if (progress.state == "finished") {
-                return res.redirect("/courses/classroom/" + courseId + "/certificat");
-            }
             return res.redirect("/courses/classroom/" + courseId + "/" + progress.lastLecture);
         } else {
             //getting the first chapter on the course

@@ -29,7 +29,9 @@
                         </g>
                     </g>
             </svg>
+            
             <div id="center_fillingInfosBox">
+                
                 <h2  style="z-index:5;">Login to <span>Jonior makers</span></h2>
                 <form class="fillingInfosBox" action="/auth/login" method="POST">
                     @if(error)
@@ -50,12 +52,13 @@
                         </div>
                         <input type="submit" value="login" class="btn" id="submit-form" disabled>
                         <div id="loginFooter">
-                            <p>Don't have an account? <a href="#"> Get Started</a></p>
+                            <p>Don't have an account? <a href="/auth/register"> Get Started</a></p>
                         </div>
 
                     </form>
                 
             </div>
+            
 
         </div>
         <script src="/js/myScript.js"></script>

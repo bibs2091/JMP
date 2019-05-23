@@ -24,6 +24,7 @@ module.exports = async (req, res) => {
         currentChap.lectures = currentLects;
         chaptersList.push(currentChap);
     };
+    course.tags = JSON.parse(course.tags);
     res.render("courses.update", {
         pageName: "Course Details",
         pageTitle: course.title + " - JMP",

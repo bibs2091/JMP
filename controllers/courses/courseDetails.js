@@ -24,6 +24,7 @@ module.exports = async (req, res) => {
         chaptersList.push(currentChap);
     };
     var url = req.protocol + '://' + req.get('host') + req.originalUrl;
+    course.tags = JSON.parse(course.tags)
     res.render("courses.courseDetails", {
         pageName: "Course Details",
         pageTitle: course.title + " - JMP",

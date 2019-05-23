@@ -3,22 +3,18 @@ const router = express.Router();
 const passport = require("../config/passport");
 const registerController = require("../controllers/auth/register");
 
-//middleware for authentication
-const isAuthenticated = (req, res, next) => {
-	if (req.isAuthenticated()) {
-		next();
-	} else {
-		return res.send("unauthorized", 401);
-	}
-};
+//require middleware
+const isAuthenticated = require("../middleware/isAuthenticated");
+const notAuthenticated = require("../middleware/notAuthenticated");
+const inscription = require("../middleware/inscription");
 
 //handling requests
-router.get("/login", (req, res) => {
+router.get("/login", notAuthenticated, (req, res) => {
 	res.render("auth.login", { error: req.flash("loginMessage")[0] });
 });
 
 router.post(
-	"/login",
+	"/login", notAuthenticated,
 	passport.authenticate("local", {
 		failureRedirect: "/auth/login",
 		failureFlash: true,
@@ -33,7 +29,7 @@ router.post(
 	}
 );
 
-router.get("/logout", (req, res, next) => {
+router.get("/logout", isAuthenticated, (req, res, next) => {
 	if (req.session) {
 		req.logOut();
 		res.clearCookie("connect.sid", { path: "/" });
@@ -47,15 +43,15 @@ router.get("/logout", (req, res, next) => {
 	}
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", notAuthenticated, inscription, (req, res) => {
 	res.render("auth.register");
 });
 
-router.post("/register", registerController);
+router.post("/register", notAuthenticated, inscription, registerController);
 
 
 // for development :
-router.get("/postregister",(req,res)=>{
+router.get("/postregister", (req, res) => {
 	res.render("auth.after_register")
 })
 

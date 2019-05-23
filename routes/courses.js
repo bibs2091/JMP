@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+//require models
+const Categories = require("../models/Categories");
+const UsersInfo = require("../models/UsersInfo");
+
 //require controllers
 const addController = require("../controllers/courses/add");
 const courseDetailsController = require("../controllers/courses/courseDetails");
@@ -12,22 +16,32 @@ const courseController = require("../controllers/courses/course");
 const courseContentController = require("../controllers/courses/courseContent");
 const certificatController = require("../controllers/courses/certificat");
 
+//require middelware
+const isAuthenticated = require("../middleware/isAuthenticated");
+
 //handling requests 
 router.post("/add", addController);
-router.get("/add", (req, res) => {
+router.get("/add", async (req, res) => {
+    var categories = await Categories.findAll();
+    var currentUser = req.user;
+    var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
+    delete currentUser.password;
+    currentUser.info = userInfo.dataValues;
     res.render("courses.add", {
         pageName: "Add Course",
-        pageTitle: "Add Course - JMP"
+        pageTitle: "Add Course - JMP",
+        categories,
+        currentUser
     });
 })
 
 router.get("/:id", courseDetailsController);
-router.get("/update/:id", updatePageController);
-router.post("/update/:id", updateController);
-router.delete("/delete/:id", deleteCourseController);
-router.post("/wishlist/:id", wishlistController);
-router.get("/classroom/:id", courseController);
-router.get("/classroom/:course/certificat", certificatController);
-router.get("/classroom/:course/:lecture", courseContentController);
+router.get("/update/:id", isAuthenticated, updatePageController);
+router.post("/update/:id", isAuthenticated, updateController);
+router.delete("/delete/:id", isAuthenticated, deleteCourseController);
+router.post("/wishlist/:id", isAuthenticated, wishlistController);
+router.get("/classroom/:id", isAuthenticated, courseController);
+router.get("/classroom/:course/certificat", isAuthenticated, certificatController);
+router.get("/classroom/:course/:lecture", isAuthenticated, courseContentController);
 
 module.exports = router;

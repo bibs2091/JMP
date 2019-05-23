@@ -57,6 +57,10 @@ p {
   transition: 0.7s;
   border: 1px solid #000;
 }
+.not_rounded{
+  border-radius: 8px;
+  padding: 10px 20px;
+}
 a {
   font-style: none;
   text-decoration: none;
@@ -65,6 +69,9 @@ a {
 a:hover {
   text-decoration: none;
   color: #000;
+}
+.modal-footer .btn+.btn{
+       margin-bottom: 10px; 
 }
 @media only screen and (max-width: 992px) {
   .container {
