@@ -1963,8 +1963,6 @@ visibility: hidden;
 }
 
   /* ------------ settings ------------*/
-<<<<<<< Updated upstream
- 
   #settingsCard{
    background: #ffffff;
    width:95%;
@@ -1984,12 +1982,11 @@ visibility: hidden;
     vertical-align: top;
   }
   #settingTabs ul li{
-=======
+  }
   #setting_navbar{
     list-style-type: none;
-    margin: 29px;
+    margin-top: 10px;
     overflow: hidden;
->>>>>>> Stashed changes
     display:flex;
     justify-content:center;
     align-items:center;
@@ -2020,7 +2017,6 @@ visibility: hidden;
 #setting_navbar li a:hover:after {
     width: 90%;
     background: #FFD32A;
-<<<<<<< Updated upstream
   }
   #fullname-settings{
     display:table ;
@@ -2077,8 +2073,7 @@ visibility: hidden;
     width: 139px;
     border-radius: 7px;
   }
-=======
-}
+
 #setting_navbar li :hover {
   color:#FFD32A;
 }
@@ -2090,6 +2085,131 @@ visibility: hidden;
   margin-right:26px;
   padding: 40px 40px 40px 40px ;
   }
+  #inputBio{
+
+  }
+  /*------------------------*/
+  .wrap {
+    position: absolute;
+    right: 0;
+    top: 40%;
+    width: 350px;
+    left: 0;
+    margin: 0 auto;
+  }
+  
+  /* select starting stylings ------------------------------*/
+  .select {
+    font-family:Montserrat ;
+    position: relative;
+    width: 350px;
+  }
+  
+  .select-text  {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 23px;
+    text-align: center;
+    color: #333333;
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px 10px 10px 0;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, 0.12);
+  }
+    
+  /* Remove focus */
+  .select-text:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(0,0,0, 0);
+  }
+  
+    /* Use custom arrow */
+  .select .select-text {
+    appearance: none;
+    -webkit-appearance:none
+  }
+  
+  .select:after {
+    position: absolute;
+    top: 18px;
+    right: 10px;
+    /* Styling the down arrow */
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+  }
+  
+  
+  /* LABEL ======================================= */
+  .select-label {
+    color: #828282;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 10px;
+    transition: 0.2s ease all;
+  }
+  
+  /* active state */
+  .select-text:focus ~ .select-label, .select-text:valid ~ .select-label {
+    top: -20px;
+    transition: 0.2s ease all;
+    font-size: 1rem;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+
+  }
+  
+  
+  /* BOTTOM BARS ================================= */
+  .select-bar {
+    position: relative;
+    display: block;
+    width: 350px;
+  }
+  
+  .select-bar:before, .select-bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #FFD32A;
+    transition: 0.2s ease all;
+  }
+  
+  /* active state */
+  .select-text:focus ~ .select-bar:before, .select-text:focus ~ .select-bar:after {
+    width: 78%;
+  }
+  
+  /* HIGHLIGHTER ================================== */
+  .select-highlight {
+    position: absolute;
+    height:100%;
+    width: 100%;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  /*-------------------------------*/
   #Note{
     border : 1.4px dashed  #828282;
     padding: 5px 5px 5px 5px ;
@@ -2105,7 +2225,6 @@ visibility: hidden;
     margin-right: auto;
     
   }
->>>>>>> Stashed changes
   #boutton{
   position: absolute;
   bottom: 0;
@@ -2139,14 +2258,14 @@ visibility: hidden;
     top: 36%;
   }
   .settingsCard{
-    padding: 20px,20px,20px,20px ;
+    padding: 10px,10px,10px,10px ;
     display:flex;
     justify-content:center;
     align-items:center;
 
   }
   #formGroupExampleInputMD{
-    text-decoration-line: underline;
+    text-decoration-line: none;
   }
 
 

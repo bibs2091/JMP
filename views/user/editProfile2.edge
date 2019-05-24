@@ -11,58 +11,11 @@
   </ul> 
  </div>
 
-<<<<<<< Updated upstream
-<div id="settingsCard">
-  <div id="settingTabs">
-    <ul>
-        <li>Settings</li>
-        <li class="settingsTabsElements inSettingsTab"><img src="/images/settings/basicInfo.png"><span>Basic information</span></li>
-        <li class="settingsTabsElements"><img src="/images/settings/social media.png"><span>Social media</span></li>
-        <li class="settingsTabsElements"><img src="/images/settings/password.png"><span>Password</span></li>
-        <li class="settingsTabsElements"><img src="/images/settings/notification.png"><span>Notifications</span></li>
-        <li class="settingsTabsElements"><img src="/images/settings/language.png"><span>Language</span></li>
-    </ul>
-  </div>
-  <div id="basicInfo" >
-    <div id="basicInfoDIV">
-            <div id="basicInfoDIV-forms">
-                <h1>Basic informations </h1>
-                <hr>
-                <div id="fullname-settings">
-                    <div class="form-group">
-                        <label for="firstNameSettings">First Name :</label>
-                        <input type="text" class="form-control" id="firstNameSettings" name="firstname">
-                    </div>
-                    <div class="form-group">
-                        <label for="lastNameSettings">Last Name :</label>
-                        <input type="text" class="form-control" id="lastNameSettings" name="lasttname">
-                    </div>
-                </div>
-            </br>
-                <div class="form-group">
-                    <label for="BioSettings">Bio :</label>
-                    <textarea name="description" class="form-control" id="BioSettings"  name="Bio"></textarea>
-                </div>
-            </br>
-                <div class="form-group">
-                    <label for="phoneNumberSettings">Phone Number :</label>
-                    <input type="text" class="form-control" id="phoneNumberSettings" name="phone number">
-                </div>
-            </div>
-            <div id="basicInfoDIV-image">
-            <img src="/images/user.png" alt="picture profile " class="upload-profile-pic">
-            </div>
-             <div id="boutton" >
-                <button type="submit" class="btn" id="cancelboutton" >Cancel</button>
-                <button type="submit" class="btn" id="saveboutton" >Save</button>
-            </div>
-
-=======
  <div class="container settingsCard " >
     <div class="row ">     
           <div class="col-md-4 GeneralInformation "> 
             <div>
-                  <img src="/categories/1.jpg" alt="picture profile " id="profil-pic">
+                  <img src="/img/ouss.jpg" alt="picture profile " id="profil-pic">
 
                   <i class="fal fa-pen"  id="modifier-pic"></i>
             </div>
@@ -74,8 +27,8 @@
               </div>
               
               <div class="md-form form-group mt-5">
-                <label for="formGroupExampleInput2MD">Last Name </label>
-                <input type="text"  value="Guitt"class="form-control" id="formGroupExampleInput2MD" >
+                <label for="formGroupExampleInputtMD">Last Name </label>
+                <input type="text"  value="Guitt"class="form-control" id="formGroupExampleInput2tMD" >
               </div>
               
             </form>
@@ -90,20 +43,19 @@
             </br>
             </br>
               <div class="form-row">
-                <div class="form-group col-md-6 ">
+                <div class="form-group  md-form col-md-6 ">
                   <label for="inputPhoneNumber">Phone Number </label>
                   <input type="text" value="0555555555" class="form-control" id="inputPhoneNumber" >
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group md-form col-md-6">
                   <label for="inputEmail">Email Address</label>
                   <input type="email" value="b.guitt@esi-sba.dz" class="form-control" id="inputEmail" >
                 </div>
               </div>
               <div class="form-row">
-                  <div class="md-form col-md-6 colorful-select dropdown-warning">
-                      <label for="inputState">State</label>
-                      <select id="inputState" class="form-control">
-                        <option selected>Choose...</option><option value="adrar">Adrar</option>
+                    <div class="select col-md-6">
+                      <select class="select-text" required>
+                        <option value="" disabled selected></option><option selected>Choose...</option><option value="adrar">Adrar</option>
                         <option value="chlef">Chlef</option>
                         <option value="laghouat	">Laghouat	</option>
                         <option value="oum El Bouaghi">Oum El Bouaghi</option>
@@ -151,31 +103,39 @@
                         <option value="aïn Témouchent">Aïn Témouchent</option>
                         <option value="ghardaïa">Ghardaïa</option>
                         <option value="relizane">Relizane</option>
+                        
+                      </select>
+                      <span class="select-highlight"></span>
+                      <span class="select-bar"></span>
+                      <label class="select-label">State</label>
+                    </div>
+                    <div class="select col-md-6">
+                      <select class="select-text" required>
+                        <option value="" disabled selected></option>
+                        <option>Male</option>
+                        <option>Female</option>
 
                       </select>
-                    </div>
-                    <div class=" mdb-select md-form colorful-select dropdown-warning col-md-6">
-                        <label for="inputSex">Sex</label>
-                        <select id="inputSex" class="form-control">
-                          <option>Male</option>
-                          <option>Female</option>
-                        </select>
+                      <span class="select-highlight"></span>
+                      <span class="select-bar"></span>
+                      <label class="select-label">Sex</label>
                     </div>
                   </div>
                 </br>
                   <div class="form-row">
-                      <div class="form-group col ">
-                        <label for="inputPhoneNumber">Bio</label>
-                        <textarea  value="0555555555" class="form-control" id="inputBio" ></textarea>
+                      <div class="form-group  md-form col ">
+                        <label for="inputBio">Bio</label>
+                        <textarea  value="naaaaaaaaaaaaaaaaaaaaaaas" class="form-control" id="inputBio" ></textarea>
                       </div>
                     </div>  
-              <div id="boutton" >
+             <!--<div id="boutton" >
                   <button type="submit" class="btn " id ="cancelboutton" >Cancel</button>
                   <button type="submit" class="btn" id="saveboutton" >Save</button>
-              </div>
+              </div> -->
             </form>
           </div>  
->>>>>>> Stashed changes
+        </div>
+
     </div>
   </div>
 @endsection
