@@ -1975,8 +1975,8 @@ visibility: hidden;
    padding-bottom: 20px;
    display:table;
    margin: 0 auto;
+   
    }
-  
   #settingsCard > div {
     display: table-cell;
     vertical-align: top;
@@ -2026,7 +2026,7 @@ visibility: hidden;
   border-radius: 7px;
   color: #828282;
   margin-right:26px;
-  padding: 40px 40px 40px 40px ;
+  padding: 23px 34px 10px 34px;
   }
   
   /*------------------------*/
