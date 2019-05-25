@@ -1981,8 +1981,6 @@ visibility: hidden;
     display: table-cell;
     vertical-align: top;
   }
-  #settingTabs ul li{
-  }
   #setting_navbar{
     list-style-type: none;
     margin-top: 10px;
@@ -1992,9 +1990,9 @@ visibility: hidden;
     align-items:center;
     }
   #setting_navbar li {
-  display:inline-block;
+  display:inline-flex;
   min-width:50px;
-  padding: 0px 70px 0 0;
+  padding: 0px 50px 10px 0;
 }
   #setting_navbar a {
     text-decoration:none;
@@ -2018,63 +2016,8 @@ visibility: hidden;
     width: 90%;
     background: #FFD32A;
   }
-  #fullname-settings{
-    display:table ;
-  }
-  #fullname-settings div{
-   display:table-cell;
-  }
-  #settingTabs{
-    border-radius: 12px;
-    height: 90%;
-    width: 30%
-  }
-  #basicInfo{
-    font-family: Montserrat,sans-serif;
-    width: 70%;
-  }
-  #basicInfoDIV{
-    width: 100%;
-    height: 100%;
-    display: table;
-    position: relative;
-
-  }
-  #basicInfoDIV-forms{
-    display: table-cell;
-    vertical-align: top;
-    height: 425px;
-    padding: 15px 10px 0px 7px;
-    width: 70%
-
-  }
   
-  #basicInfo h1 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    margin-left:13px ;
-  }
-   
-  #basicInfo label{
-    font-size: 17px;
-    color: #000;
-  }
-
-  #basicInfoDIV-image{
-    display: table-cell;
-    vertical-align: middle;
-    width: 30%;
-    text-align: center;
-
-  }
-  #basicInfoDIV-image img{
-    width: 139px;
-    border-radius: 7px;
-  }
-
-#setting_navbar li :hover {
+ #setting_navbar li :hover {
   color:#FFD32A;
 }
   .GeneralInformation{
@@ -2085,9 +2028,7 @@ visibility: hidden;
   margin-right:26px;
   padding: 40px 40px 40px 40px ;
   }
-  #inputBio{
-
-  }
+  
   /*------------------------*/
   .wrap {
     position: absolute;
@@ -2217,46 +2158,72 @@ visibility: hidden;
   #Note i {
   float:left ;
   }
-   #profil-pic{
-    border-radius: 55%;
-    width: 60%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    
+
+  .profilepic {
+    position: relative;
+    width:60%;
+    border-radius: 80px !important;
+    margin-left:auto;
+    margin-right:auto;
   }
-  #boutton{
-  position: absolute;
-  bottom: 0;
-  right: 30px;    
+  
+  .pic {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height: auto;
+    border-radius: 55% ;
   }
-  #cancelboutton{
-    background: #EFEFEF;
-    border: 1px solid rgb(22, 216, 96);
-    box-sizing: border-box;
-    border-radius: 5px; 
-    color:#1DBF70;
-    width:85px;
+  
+  
+  .profilepic:hover .overlay {
+    height: 50%;
+    border-radius: 0px 0px 80px 80px ;
   }
-  #saveboutton{
-    background: rgb(22, 216, 96);
-    border: 1px solid rgb(22, 216, 96);
-    box-sizing: border-box;
-    border-radius: 5px; 
-    color:white;
-    width:85px;
-    margin: 0px 17px 0px 28px;
+  
+  .edit-pic{
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
   }
 
-  #modifier-pic{
+  .overlay {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #FF5E57;
-    border-radius: 60%;
-    left: 58%;
-    top: 36%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #323b43;
+    overflow: hidden;
+    width: ;
+    height: 0;
+    transition: .5s ease;
+    opacity: 1;
+    border-radius: 0px 0px 80px 80px ;
   }
+  .saveboutton{
+    border-radius: 5px; 
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .resetboutton{
+    border-radius: 5px;
+    background: #EFEFEF !important;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
   .settingsCard{
     padding: 10px,10px,10px,10px ;
     display:flex;

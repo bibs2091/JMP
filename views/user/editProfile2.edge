@@ -14,11 +14,14 @@
  <div class="container settingsCard " >
     <div class="row ">     
           <div class="col-md-4 GeneralInformation "> 
-            <div>
-                  <img src="/img/ouss.jpg" alt="picture profile " id="profil-pic">
-
-                  <i class="fal fa-pen"  id="modifier-pic"></i>
-            </div>
+              <div class="profilepic">
+                  <img src="/img/ouss.jpg" alt="Avatar" class=" pic ">
+                  <div class="overlay">
+                    <div class="edit-pic"><i class="fas fa-camera"></i></div>
+                  </div>
+                </div>
+            
+            
             <form>
               <div class="md-form form-group  mt-5 ">
                 <label for="formGroupExampleInputMD">First Name </label>
@@ -126,14 +129,17 @@
                   <textarea id="form7" class="md-textarea form-control" rows="3"></textarea>
                   <label for="form7">Bio</label>
                 </div>
-             <!--<div id="boutton" >
-                  <button type="submit" class="btn " id ="cancelboutton" >Cancel</button>
-                  <button type="submit" class="btn" id="saveboutton" >Save</button>
-              </div> -->
+                <div class="pull-right">
+                <button type="button" class="btn btn-outline-success waves-effect resetboutton">Reset</button>
+                <button type="button" class="btn btn-success saveboutton">Save</button>
+                </div>
             </form>
+            
           </div>  
         </div>
 
     </div>
   </div>
+
+  
 @endsection
