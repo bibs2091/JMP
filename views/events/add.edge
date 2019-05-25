@@ -5,6 +5,9 @@
 body{
   background: #F6F6F6;
 }
+.timepicker{
+  z-index:1200 !important;
+}
 </style>
 <ul class="steps">
   <li class="step step--incomplete step--active">
@@ -17,4 +20,76 @@ body{
      <span class="step__icon"><span class="inner-circle"></span></span>
      <span class="step__label">Planing and sponsors</span></li>
 </ul>
+<div id="addEvent-info">
+  <div id="BasicInformation-addEvent">
+    <h2>Basic Information</h2>
+    <hr>
+    <img src="/img/upload-course-cover.png" alt="upload a cover image" 
+                          id="upload-event-cover" onclick="triggerInput('course-cover-input')">
+    <input type="file" name="cover" accept="image/*" id="course-cover-input" 
+    style="display:none" onchange="loadImage(event,'upload-event-cover')" required>
+    <div class="md-form form-md">
+      <input type="text" placeholder="event title" id="Event-title" class="form-control form-control-lg">
+      <label for="Event-title">Event title</label>
+    </div>
+    <div class="md-form">
+      <textarea id="Event-decription"  placeholder="In your Event description, we recommend providing information abou the content of the course and how students will benefit from that content." class="form-control md-textarea" length="120" rows="3"></textarea>
+      <label for="Event-decription">Event decription</label>
+    </div>
+    <button class="btn event-btn">Next</button>
+  </div>
+
+
+  <!-- timing and location -->
+  <div id="timingLocation">
+    <h2>Timing and location</h2>
+    <hr>
+    <div class="row">
+      <div class="col-6">
+        <div class="md-form">
+          <input type="text" placeholder="pick a date" id="EventStartingdate" class="form-control datepicker">
+          <label for="EventStartingdate">Event Starting Date</label>
+        </div>
+        <div class="md-form">
+            <input type="text"  placeholder="pick a date" id="EventEndingdate" class="form-control datepicker">
+            <label for="EventEndingdate">Event Ending Date</label>
+          </div>
+      </div>
+      <div class="col-6">
+          <div class="md-form">
+              <input type="text" placeholder="pick a time" id="EventStartingTime" class="form-control timepicker">
+              <label for="EventStartingTime">Event Starting Time</label>
+            </div>
+        
+        <div class="md-form">
+          <input type="text" placeholder="pick a time"id="EventEndingTime" class="form-control timepicker">
+          <label for="EventEndingTime">Event Ending Time</label>
+        </div>
+      </div>
+    </div>
+    <!-- the map -->
+    <div id="mapDiv"> 
+        <label>Event Location</label>
+        <div id="map"></div>
+    </div>
+    <button class="btn event-btn">Next</button>
+
+  </div>
+  <div id="PlaningAndSponsors">
+    <h2>Planing and Sponsors</h2>
+    <hr>
+    <div class="form-group md-form">
+        <label class="customized-label">Tags</label>
+        <p style="font-size: 11px;margin-bottom:7px;">
+            In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
+        </p>
+        <label style="width:100%" for="tag-typer">
+                <div id="tags">
+                    <input id="tag-typer" type="text" name="tags" placeholder="Add a tag..."/>
+                </div>
+        </label>
+    </div>
+  </div> 
+  
+</div>
 @endsection

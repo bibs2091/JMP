@@ -124,3 +124,31 @@ $(".lecture-nav").on("click", function () {
   $(this).next().slideToggle("fast");
   $(this).children(".fa-play").toggleClass("rotate90");
 })
+
+
+// ------------ next in event page ---------- //
+function nextStep(currentDiv,currentStepNumber,nextDiv,nextStepNumber) {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    $('#' + currentDiv).hide();
+    console.log('#' + nextDiv)
+    $('#' + nextDiv).show();
+    $(".step:nth-child(" + currentStepNumber + ")").removeClass("step--incomplete step--active")
+    $(".step:nth-child(" + currentStepNumber + ")").addClass("step--complete step--inactive")
+    $(".step:nth-child(" + nextStepNumber + ")").removeClass("step--incomplete step--inactive")
+    $(".step:nth-child(" + nextStepNumber + ")").addClass("step--incomplete step--active")
+}
+$( document ).ready(function() {
+  $('#BasicInformation-addEvent').children().last().click(function(){
+  nextStep('BasicInformation-addEvent',1,'timingLocation',2)
+  });
+  $('#timingLocation').children().last().click(function(){
+    nextStep('timingLocation',2,'PlaningAndSponsors',3)
+  });
+});
+//-----------------------------//
+
+$('.datepicker').pickadate();
+$('.timepicker').pickatime({
+  twelvehour: false,
+});
+
