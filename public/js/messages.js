@@ -12,13 +12,17 @@ $(function () {
     send_msg.click(() => {
         //get input values
         var to = $("#name").val();
-        var text = $("#message").val().trim();
+        var title = $("#title").val();
+        var text = $("#text").val().trim();
+        var date = new Date(Date.now());
 
         var message = {
             to,
-            text
+            text,
+            title,
+            date
         }
-
+        console.log(message)
         if (message.text != '') {
             //send the message to the server
 

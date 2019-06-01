@@ -19,11 +19,26 @@ router.get('/', async (req, res) => {
 			return {
 				from: message.dataValues.from,
 				to: message.dataValues.to,
-				text: message.dataValues.text
+				title: message.dataValues.title,
+				text: message.dataValues.text,
+				date: message.dataValues.date
 			}
-		})
-		// res.status(200).json(inbox)
-		//for front end design 
+		});
+		// FIXME: search 
+
+
+		await Promise.all(inbox.map(async msg => {
+			//do stuff here 
+			let sender = await Users.findByPk(msg.from);
+			sender = sender.dataValues;
+			inbox[inbox.indexOf(msg)].from = sender.firstName + ' ' + sender.lastName;
+			inbox[inbox.indexOf(msg)].senderAvatar = sender.avatar;
+
+		}))
+
+
+
+		// console.log(inbox);
 		res.render('inbox', { inbox })
 	} catch (error) {
 		console.log(error)
