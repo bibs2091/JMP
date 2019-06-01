@@ -27,6 +27,12 @@ const Courses = db.define("Courses", {
     },
     tags: {
         type: Sequelize.STRING
+    },
+    duration: {
+        type: Sequelize.INTEGER
+    },
+    pdfs: {
+        type: Sequelize.INTEGER
     }
 });
 

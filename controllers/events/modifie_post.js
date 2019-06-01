@@ -1,6 +1,8 @@
 const Event = require('../../models/Event');
 module.exports = async(req, res) => {
 	try{
+		console.log(req.body);
+		console.log(req.files);
 		let {cover,planning}=[0,0];
 		if (req.files){
 			if (req.files.cover){

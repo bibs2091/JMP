@@ -24,21 +24,21 @@
                       <li><i class="fas fa-map-marker-alt"></i> &nbsp;{{event.place}}</li>
                       <br>
                     </ul>
-                    <button  type="button" class="btn btn-primary" id="register-boutton">Register Now</button>
+                    <button  type="button" class="btn btn-primary" id="register-boutton">
+                      <a href="/events/register/{{event.id}}">Register Now</a></button>
                   </div>
             </div>
         </div>
 </div>
 <button class = "btn"><a href="/events/modifie/{{event.id}}">modifie</a></button>
+<button class = "btn"><a href="/events/validating/{{event.id}}">validate</a></button>
 
     
                 <div class="container">
                   <div class="row">
-                    <div class="col-md-3"><img src="/images/gsh.jpg" class="sponsors-pic"></div>
-                    <div class="col-md-3"><img src="/images/mobilis.png" class="sponsors-pic"></div>
-                    <div class="col-md-3"><img src="/images/Sonatrach.png" class="sponsors-pic"></div>
-                    <div class="col-md-3"><img src="/images/microsoft.png" class="sponsors-pic"></div>
-
+                    @each(sponsor in sponsors)
+                    <div class="col-md-3"><img src="{{sponsor.logo}}" class="sponsors-pic"></div>
+                    @endeach
                   </div>
                 </div>
                 

@@ -41,13 +41,15 @@ $(".get-category").click(function () {
 
 //Delete category by id
 function deleteCategory(id) {
-    $.ajax({
-        url: '/admin/category/delete/' + id,
-        method: 'DELETE',
-        contentType: 'application/json',
-        success: function (result) {
-            location.reload();
-        }
+    mscConfirm("Delete", "Are you sure you want to delete this category?", function () {
+        $.ajax({
+            url: '/admin/category/delete/' + id,
+            method: 'DELETE',
+            contentType: 'application/json',
+            success: function (result) {
+                location.reload();
+            }
+        });
     });
 }
 /*add chapter*/
@@ -168,10 +170,21 @@ function courseJSON() {
     }
     return JSON.stringify(chaptersArray);
 }
+function tagsJSON() {
+    var tagsElems = document.getElementsByClassName("tag");
+    var tags = [];
+    for (let i = 0; i < tagsElems.length; i++) {
+        let elem = tagsElems[i].getElementsByTagName("p")[0].innerHTML;
+        tags.push(elem);
+    }
+    return JSON.stringify(tags);
+}
 // add courses JSON to the add course form
 function addJSONtoForm() {
     let json = courseJSON();
+    var tags = tagsJSON();
     document.getElementById("courseJSON").value = json;
+    document.getElementById("tag-typer").value = tags;
     console.log(json);
 }
 //Delete Course by id
@@ -203,7 +216,11 @@ function wishlist(id) {
         method: 'POST',
         contentType: 'application/json',
         success: function (result) {
-            alert("done");
+
         }
     });
 }
+//enable toolips every where
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
