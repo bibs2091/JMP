@@ -1,5 +1,97 @@
-@layout('layouts.dashboard')
+@layout('layouts.main')
 
 @section('content')
-  <h1>settings page</h1>
+ <div id="setting_navbar" >
+  <ul > 
+   <li><a href="#">General</a></li>
+   <li><a href="#">Social media</a></li>
+   <li><a href="#">Terms & Conditions</a></li>
+   <li ><a href="#">Others</a></li>
+  </ul> 
+ </div>
+<div style="margin-left:auto;margin-right:auto;">
+ <div class="container settingsCard " >
+    <div class="row "> 
+         <div class="col-md-4 GeneralInformation ">   
+           
+              <div class="profilepic">
+                  <img src="/images/junior.png" alt="Avatar" class="logo">
+                  <div class="overlay">
+                    <div class="edit-pic"><i class="fas fa-camera"></i></div>
+                  </div>
+              </div>
+            <form>
+              <div class="md-form form-group  mt-5 ">
+                <label for="formGroupExampleInputMD">Website Name </label>
+                <input type="text" class="form-control" id="websiteName" >
+                
+              </div>
+              
+            </form>
+          </div>
+          
+        
+          
+          <div class="col-md-7 GeneralInformation ">   
+            <form>
+             
+            </br>
+            </br>
+              
+                <div class="form-group  md-form col-md-13">
+                  <label for="websiteEmail">WebSite Email</label>
+                  <input type= "email" class="form-control" id="webSiteEmail" >
+                </div>
+              
+              
+                
+                </br>
+                <div class="md-form">
+                  <textarea id="description" class="md-textarea form-control" rows="5"></textarea>
+                  <label for="description">Description</label>
+                </div>
+                
+            </form>
+            
+          </div> 
+    
+          <div class="General ">   
+           
+            <form>
+              <h3>Registerations</h3>
+               <div>
+                 <label class="switch">
+                  <input type="checkbox" checked>
+                  <span class="slider round"></span>
+                 </label>
+                </div>
+              <div class="md-form">
+                <textarea id="message" class="md-textarea form-control" rows="3"></textarea>
+                <label for="message">Registerations closed Message</label>
+              </div>
+             </form>
+          </div>
+          <div class="localization  ">   
+           
+              <form>
+                
+                  <div class="form-group  md-form col-md-13">
+                      <label for="localadress">Club Adress</label>
+                      <input type="text" class="form-control" id="localAdress" >
+                    </div> 
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-outline-success waves-effect resetboutton">Reset</button>
+                        <button type="button" class="btn btn-success saveboutton">Save</button>
+                        </div>
+               </form>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+  
+
+   
+  
 @endsection
