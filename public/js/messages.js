@@ -6,7 +6,7 @@ $(function () {
     var send_msg = $("#send_msg");
 
     //div to show new messages 
-    var messages = $("#messages-test")
+    var messages = $(".message-list")
 
     //emit message 
     send_msg.click(() => {
@@ -36,9 +36,29 @@ $(function () {
 
     //listen to messages 
     socket.on('newMessage', (data) => {
-        console.log(data);
+        console.log(data)
+
+        var newMessage = '<li class="unread">'
+        newMessage += '<div class="col-one">'
+        newMessage += '<div class="checkbox-wrapper">'
+        newMessage += '<input type="checkbox" id="chk1">'
+        newMessage += '<label for="chk1" class="toggle"></label> '
+        newMessage += '</div>'
+        newMessage += '<img src=' + data.senderAvatar + ' alt="sender avatar">'
+        newMessage += '</div>'
+        newMessage += '<div class="col-two">'
+        newMessage += '<p class="reciever" style="display: none">You</p> '
+        newMessage += '<p class="message-date" style="display: none">' + data.date.toString() + '</p> '
+        newMessage += '<p class="sender">' + data.senderName + '</p>'
+        newMessage += '<p class="title"> ' + data.title + '</p>'
+        newMessage += '<p class="content">' + data.text + '</p> '
+        newMessage += ' </div>'
+        newMessage += '<div class="col-three"> '
+        newMessage += '<div class="date">' + data.date + '</div> '
+        newMessage += '</div>'
+        newMessage += '</li>'
         playNewMessageAudio()
-        messages.append("<h4>" + data.text + "</h4>")
+        messages.prepend(newMessage)
 
     })
 

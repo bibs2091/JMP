@@ -14,7 +14,12 @@ const Users = require('../models/UsersInfo')
 
 router.get('/', async (req, res) => {
 	try {
-		let inbox = await Messages.findAll({ where: { to: req.user.id } })
+
+		//number of page must start with 0 
+		let offset = 5; //number of the page * number of msg per page
+		let limit = 10; //number of messages per page
+
+		let inbox = await Messages.findAll({ where: { to: req.user.id }, offset, limit })
 		inbox = inbox.map(message => {
 			return {
 				from: message.dataValues.from,
@@ -24,9 +29,8 @@ router.get('/', async (req, res) => {
 				date: message.dataValues.date
 			}
 		});
-		// FIXME: search 
 
-
+		//get infos 
 		await Promise.all(inbox.map(async msg => {
 			//do stuff here 
 			let sender = await Users.findByPk(msg.from);

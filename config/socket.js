@@ -25,14 +25,16 @@ const events = (io) => {
             message.from = socket.request.session.passport.user;
 
             //post req
-            sendMessage(message).then(message => {
+            sendMessage(message).then(async message => {
                 if (message) {
-
+                    //get socket id 
                     const socketId = connectedUsers.get(message.to);
 
-                    //broadcast message
+                    //format message
+                    let msg = await formatMessage(message)
 
-                    io.to(socketId).emit('newMessage', message);
+                    //broadcast message
+                    io.to(socketId).emit('newMessage', msg);
                     console.log('message has been sent with success')
                 } else {
                     console.log('user not found');
@@ -99,5 +101,18 @@ const sendMessage = async (message) => {
     } catch (err) {
         console.log(err)
     }
+
+
+}
+
+const formatMessage = async (msg) => {
+
+    let sender = await Users.findByPk(msg.from);
+    sender = sender.dataValues;
+    msg.senderName = sender.firstName + ' ' + sender.lastName;
+    msg.senderUsername = sender.username;
+    msg.senderAvatar = sender.avatar;
+    console.log('message has been formatted');
+    return msg;
 
 }
