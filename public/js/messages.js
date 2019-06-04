@@ -22,13 +22,13 @@ $(function () {
             title,
             date
         }
-        console.log(message)
+
         if (message.text != '') {
             //send the message to the server
 
             socket.emit('newMessage', message);
 
-            $("#message").val('').focus()
+            $("#text").val('').focus()
         }
 
     })
@@ -36,7 +36,6 @@ $(function () {
 
     //listen to messages 
     socket.on('newMessage', (data) => {
-        console.log(data)
 
         var newMessage = '<li class="unread">'
         newMessage += '<div class="col-one">'
