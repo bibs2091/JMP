@@ -13,13 +13,24 @@ const Users = require('../models/UsersInfo')
 //desc		get user's inbox
 
 router.get('/', async (req, res) => {
+
 	try {
+		//pagination
+		const paginate = ({ page, pageSize }) => {
+			const offset = page * pageSize
+			const limit = offset + pageSize
 
-		//number of page must start with 0 
-		let offset = 5; //number of the page * number of msg per page
-		let limit = 10; //number of messages per page
+			return {
+				offset,
+				limit,
+			}
+		}
 
-		let inbox = await Messages.findAll({ where: { to: req.user.id }, offset, limit })
+		//TODO: replace later with query from req.body
+		let { page, pageSize } = { page: 0, pageSize: 5 };
+
+		//request
+		let inbox = await Messages.findAll({ where: { to: req.user.id }, ...paginate({ page, pageSize }) });
 		inbox = inbox.map(message => {
 			return {
 				from: message.dataValues.from,
@@ -47,6 +58,7 @@ router.get('/', async (req, res) => {
 	} catch (error) {
 		console.log(error)
 	}
+
 
 })
 
