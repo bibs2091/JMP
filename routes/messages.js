@@ -17,17 +17,18 @@ router.get('/', async (req, res) => {
 	try {
 		//pagination
 		const paginate = ({ page, pageSize }) => {
-			const offset = page * pageSize
-			const limit = offset + pageSize
+			const offset = (page - 1) * pageSize
+			const limit = pageSize
 
 			return {
-				offset,
-				limit,
+				offset, // the records we jump
+				limit,  // how many we retrieve
 			}
 		}
 
 		//TODO: replace later with query from req.body
-		let { page, pageSize } = { page: 0, pageSize: 5 };
+
+		let { page, pageSize } = { page: 1, pageSize: 5 };
 
 		//request
 		let inbox = await Messages.findAll({ where: { to: req.user.id }, ...paginate({ page, pageSize }), order: [['updatedAt', 'DESC']] });
