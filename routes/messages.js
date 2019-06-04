@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 		let { page, pageSize } = { page: 0, pageSize: 5 };
 
 		//request
-		let inbox = await Messages.findAll({ where: { to: req.user.id }, ...paginate({ page, pageSize }) });
+		let inbox = await Messages.findAll({ where: { to: req.user.id }, ...paginate({ page, pageSize }), order: [['updatedAt', 'DESC']] });
 		inbox = inbox.map(message => {
 			return {
 				from: message.dataValues.from,
