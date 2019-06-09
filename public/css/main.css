@@ -2285,8 +2285,8 @@ input:checked + .slider:before {
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 70%;
+  line-height: 135%;
 }
 .resetboutton {
   border-radius: 5px;
@@ -2294,8 +2294,8 @@ input:checked + .slider:before {
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 12px;
-  line-height: 17px;
+  font-size: 65%;
+  line-height: 150%;
 }
 
 .settingsCard {
@@ -2490,4 +2490,37 @@ input:checked + .slider:before {
       text-transform: uppercase;
     }
   }
+}
+/*edit photo settings admin-----------------*/
+.imagebox {
+  background: #737373;
+  padding: 0px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  border-radius: 55%;
+}
+
+.imagebox .imagebox-desc {
+  background-color: rgba(0, 0, 0, 0.6);
+  bottom: 0px;
+  position: absolute;
+  transition: 1.2s padding;
+  text-align: center;
+  width: 37%;
+  height: 37%;
+  border-radius: 60px;
+  left: 58%;
+}
+
+.imagebox:hover .imagebox-desc {
+  padding-right: 2%;
+  width: 50%;
+  height: 50%;
+  left: 46%;
+  transition: 0.5s;
+}
+#cam {
+  width: 52%;
+  margin-top: 24%;
 }
