@@ -2515,9 +2515,9 @@ input:checked + .slider:before {
 
 .imagebox:hover .imagebox-desc {
   padding-right: 2%;
-  width: 50%;
-  height: 50%;
-  left: 46%;
+  width: 45%;
+  height: 45%;
+  left: 48%;
   transition: 0.5s;
 }
 #cam {
