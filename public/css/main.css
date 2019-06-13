@@ -248,6 +248,11 @@ input[type="search"]:focus {
   margin-right: 5px;
 }
 
+.header-right {
+  position: relative;
+  justify-content: flex-end;
+}
+
 .logo {
   background-color: #e9e9e9;
   height: 2.4rem;
@@ -296,7 +301,7 @@ input[type="search"]:focus {
   border-radius: 4px;
   margin-top: .5rem;
   padding: 1.5rem;
-  padding-top: 20px;
+  padding-top: 10px;
   background-color: #fff;
   box-shadow: 0 0 0 1px rgba(50, 50, 93, 0.08), 0 2px 4px 0 rgba(50, 50, 93, 0.05), 0 4px 8px 0 rgba(136, 152, 170, 0.08);
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -313,7 +318,8 @@ input[type="search"]:focus {
 
 .dropdown-profile-details {
   display: table;
-  padding-bottom: 0px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 15px;
 }
 
 .dropdown-profile-details img{
@@ -325,9 +331,7 @@ input[type="search"]:focus {
 .dropdown-profile-details div{
   display: table-cell;
   vertical-align: middle;
-  text-align: center;
 }
-
 .dropdown-profile-details div h5{
   color:#333333;
   font-weight: bold;
@@ -348,7 +352,7 @@ input[type="search"]:focus {
 .dropdown-links {
   display: flex;
   flex-direction: column;
-  padding-top: 0.7rem;
+  padding-top: 1.5rem;
 }
 .dropdown-links a {
   color: #525F7F;
@@ -358,6 +362,7 @@ input[type="search"]:focus {
 }
 .dropdown-links a:hover {
   opacity: 0.5;
+  color: #ebeff5;
 }
 .dropdown-links a:last-of-type {
   padding-bottom: 0;
@@ -365,8 +370,6 @@ input[type="search"]:focus {
 
 
 @media (max-width: 672px) {
-  #navbar {
-  }
 
   nav #profile-pic-nav {
     top: 15px;
@@ -382,8 +385,6 @@ input[type="search"]:focus {
   }
   nav #search {
     display: none;
-  }
-  #search_responsive {
   }
   #main-content {
     margin-left: -22px;
@@ -1393,8 +1394,6 @@ visibility: hidden;
   #coverImage #imgTags span {
     font-size: 8px;
   }
-  .courseDescription h3 {
-  }
   .courseDescription p {
     padding: 3px;
   }
@@ -1535,8 +1534,7 @@ visibility: hidden;
   #coverImage #imgTags span {
     font-size: 8px;
   }
-  .courseDescription h3 {
-  }
+  
   .courseDescription p {
     padding: 3px;
   }
@@ -1893,8 +1891,6 @@ visibility: hidden;
   margin: 29px 0;
 }
 
-.add_sponsor {
-}
 .add_sponsor span {
   display: inline;
 }
@@ -1944,7 +1940,7 @@ visibility: hidden;
 @media (max-width: 765px) {
   #upload-event-cover {
     height: 31vw;
-    margin-bottom: 22px;
+    margin-bottom: 22px;   
   }
   #submit-form-sponsor {
     margin-top: 22px;
@@ -2000,32 +1996,200 @@ visibility: hidden;
 }
 
   /* ------------ settings ------------*/
- 
-  #settingTabs{
-    background: #FFFFFF;
-    border-radius: 12px;
-    height: 370px;
-    width: 90%;
+  #settingsCard{
+   background: #ffffff;
+   width:95%;
+   position: relative;
+   top: 30px;
+   z-index: 2;
+   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+   border-radius: 50px;
+   margin-bottom: 50px;
+   padding-bottom: 20px;
+   display:table;
+   margin: 0 auto;
+   
+   }
+  #settingsCard > div {
+    display: table-cell;
+    vertical-align: top;
   }
-  #settingTabs ul li{
+  #setting_navbar{
+    list-style-type: none;
+    margin-top: 10px;
+    overflow: hidden;
     display:flex;
-    align-items:center;
-    height: 56px;
-    color: #000;
-    font-weight: 600;
-  }
-  #settingTabs ul > :first-child {
-    font-size: 17px;
-    color: #787878;
-    margin-bottom: 5px;
     justify-content:center;
-  }
-  #settingTabs ul li img{
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  .inSettingsTab{
+    align-items:center;
+    }
+  #setting_navbar li {
+  display:inline-flex;
+  min-width:50px;
+  padding: 0px 50px 10px 0;
+}
+  #setting_navbar a {
+    text-decoration:none;
+    line-height: 70px;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 1.3em;
+    color: #444444;
+    text-transform: uppercase;
+}
+  #setting_navbar li a:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0;
+    background:#FFD32A ;
+    transition: width .5s ease, background-color .5s ease;
+}
+#setting_navbar li a:hover:after {
+    width: 90%;
     background: #FFD32A;
+  }
+  
+ #setting_navbar li :hover {
+  color:#FFD32A;
+}
+  .GeneralInformation{
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+  color: #828282;
+  margin-right:26px;
+  padding: 23px 34px 10px 34px;
+  }
+  
+  /*------------------------*/
+  .wrap {
+    position: absolute;
+    right: 0;
+    top: 40%;
+    width: 350px;
+    left: 0;
+    margin: 0 auto;
+  }
+  
+  /* select starting stylings ------------------------------*/
+  .select {
+    font-family:Montserrat ;
+    position: relative;
+    width: 350px;
+  }
+  
+  .select-text  {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 23px;
+    text-align: center;
+    color: #333333;
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px 10px 10px 0;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, 0.12);
+  }
+    
+  /* Remove focus */
+  .select-text:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(0,0,0, 0);
+  }
+  
+    /* Use custom arrow */
+  .select .select-text {
+    appearance: none;
+    -webkit-appearance:none
+  }
+  
+  .select:after {
+    position: absolute;
+    top: 18px;
+    right: 10px;
+    /* Styling the down arrow */
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+  }
+  
+  
+  /* LABEL ======================================= */
+  .select-label {
+    color: #828282;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 10px;
+    transition: 0.2s ease all;
+  }
+  
+  /* active state */
+  .select-text:focus ~ .select-label, .select-text:valid ~ .select-label {
+    top: -20px;
+    transition: 0.2s ease all;
+    font-size: 1rem;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+
+  }
+  
+  
+  /* BOTTOM BARS ================================= */
+  .select-bar {
+    position: relative;
+    display: block;
+    width: 350px;
+  }
+  
+  .select-bar:before, .select-bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #FFD32A;
+    transition: 0.2s ease all;
+  }
+  
+  /* active state */
+  .select-text:focus ~ .select-bar:before, .select-text:focus ~ .select-bar:after {
+    width: 78%;
+  }
+  
+  /* HIGHLIGHTER ================================== */
+  .select-highlight {
+    position: absolute;
+    height:100%;
+    width: 100%;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  /*-------------------------------*/
+  #Note{
+    border : 1.4px dashed  #828282;
+    padding: 5px 5px 5px 5px ;
+  }  
+  #Note i {
+  float:left ;
   }
   #fullname-settings{
     display:table ;
@@ -2076,6 +2240,84 @@ visibility: hidden;
     
     font-size: 140px;
   }
+  .profilepic {
+    position: relative;
+    width:60%;
+    border-radius: 80px !important;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  .pic {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height: auto;
+    border-radius: 55% ;
+  }
+  
+  
+  .profilepic:hover .overlay {
+    height: 50%;
+    border-radius: 0px 0px 80px 80px ;
+  }
+  
+  .edit-pic{
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #323b43;
+    overflow: hidden;
+    width: ;
+    height: 0;
+    transition: .5s ease;
+    opacity: 1;
+    border-radius: 0px 0px 80px 80px ;
+  }
+  .saveboutton{
+    border-radius: 5px; 
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .resetboutton{
+    border-radius: 5px;
+    background: #EFEFEF !important;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .settingsCard{
+    padding: 10px,10px,10px,10px ;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+  }
+  #formGroupExampleInputMD{
+    text-decoration-line: none;
+  }
+
+
+
 
 /* for xl screens --------keep it in the bottom of the file-------- */
 @media (max-width: 1140px) {
@@ -2293,3 +2535,5 @@ display:none;
     margin-left: 22px;
   }
 }
+
+

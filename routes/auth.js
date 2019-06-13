@@ -48,8 +48,6 @@ router.get("/register", notAuthenticated, inscription, (req, res) => {
 });
 
 router.post("/register", notAuthenticated, inscription, registerController);
-
-
 // for development :
 router.get("/postregister", (req, res) => {
 	res.render("auth.after_register")
