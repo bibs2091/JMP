@@ -6,6 +6,7 @@ const homeController = require("../controllers/user/home");
 const showWishlistController = require("../controllers/user/wishlist");
 const myCoursesController = require("../controllers/user/mycourses");
 const catalogController = require("../controllers/user/catalog");
+const userSettingsController = require("../controllers/user/settings");
 
 //load userInfo model
 const userInfo = require("../models/UsersInfo");
@@ -23,12 +24,7 @@ router.get("/mycourses", isAuthenticated, isStudent, myCoursesController);
 //access	private
 //desc		get current user profile
 
-router.get("/settings", (req, res) => {
-	res.render("user.editprofile2", {
-		pageTitle: "Profile settings",
-		pageName: "Profile Settings"
-	})
-})
+router.get("/settings", userSettingsController);
 //route		/user/editprofile
 //methode 	POST
 //access	private
