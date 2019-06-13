@@ -7,6 +7,7 @@ module.exports = async (req, res) => {
     delete currentUser.password;
     currentUser.info = userInfo.dataValues;
 
+    console.log(currentUser);
     res.render("user.editprofile2", {
         pageTitle: "Profile settings",
         pageName: "Profile Settings",

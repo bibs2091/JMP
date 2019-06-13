@@ -23,13 +23,13 @@
             <form>
               <div class="md-form form-group  mt-5 ">
                 <label for="formGroupExampleInputMD">First Name </label>
-                <input type="text" value="Bahia" class="form-control" id="formGroupExampleInputMD" >
+                <input type="text" value="{{currentUser.info.firstName}}" class="form-control" id="formGroupExampleInputMD" >
                 
               </div>
               
               <div class="md-form form-group mt-5">
                 <label for="formGroupExampleInputtMD">Last Name </label>
-                <input type="text"  value="Guitt"class="form-control" id="formGroupExampleInput2tMD" >
+                <input type="text"  value="{{currentUser.info.lastName}}" class="form-control" id="formGroupExampleInput2tMD" >
               </div>
               
             </form>
@@ -46,11 +46,11 @@
               <div class="form-row">
                 <div class="form-group  md-form col-md-6 ">
                   <label for="inputPhoneNumber">Phone Number </label>
-                  <input type="text" value="0555555555" class="form-control" id="inputPhoneNumber" >
+                  <input type="text" value="{{currentUser.info.phone}}" class="form-control" id="inputPhoneNumber" >
                 </div>
                 <div class="form-group md-form col-md-6">
                   <label for="inputEmail">Email Address</label>
-                  <input type="email" value="b.guitt@esi-sba.dz" class="form-control" id="inputEmail" >
+                  <input type="email" value="{{currentUser.email}}" class="form-control" id="inputEmail" >
                 </div>
               </div>
               <div class="form-row">
@@ -124,7 +124,9 @@
                   </div>
                 </br>
                 <div class="md-form">
-                  <textarea id="form7" class="md-textarea form-control" rows="3"></textarea>
+                  <textarea id="form7" class="md-textarea form-control" rows="3">
+                    {{currentUser.info.bio}}
+                  </textarea>
                   <label for="form7">Bio</label>
                 </div>
                 <div class="pull-right">
