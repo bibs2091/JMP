@@ -318,7 +318,6 @@ input[type="search"]:focus {
 
 .dropdown-profile-details {
   display: table;
-  border-bottom: 1px solid #eaeaea;
   padding-bottom: 15px;
 }
 
@@ -336,9 +335,11 @@ input[type="search"]:focus {
   color:#333333;
   font-weight: bold;
   margin-bottom: 7px;
+  text-align: center;
 }
 .dropdown-profile-details div h6{
   color:#6f6f6f;
+  text-align: center;
 }
 .dropdown-profile-details div a{
   color:#c9ab38;
