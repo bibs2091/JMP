@@ -15,9 +15,10 @@
     <div class="row ">     
           <div class="col-md-4 GeneralInformation "> 
               <div class="profilepic">
-                  <img src="/img/ouss.jpg" alt="Avatar" class=" pic ">
-                  <div class="overlay">
+                  <img src="{{currentUser.info.avatar}}" alt="Avatar" class=" pic ">
+                  <div class="overlay" onclick="triggerInput('userAvatar')">
                     <div class="edit-pic"><i class="fas fa-camera"></i></div>
+                    <input type="file" accept="images/*" hidden id="userAvatar">
                   </div>
               </div>
             <form>
@@ -100,11 +101,10 @@
                         <option value="tipaza">Tipaza</option>
                         <option value="mila"> Mila</option>
                         <option value="ain Defla">Aïn Defla</option>
-                        <option value="naâma"> Naâma</option>
+                        <option value="naâma">Naâma</option>
                         <option value="aïn Témouchent">Aïn Témouchent</option>
                         <option value="ghardaïa">Ghardaïa</option>
                         <option value="relizane">Relizane</option>
-                        
                       </select>
                       <span class="select-highlight"></span>
                       <span class="select-bar"></span>
@@ -115,7 +115,6 @@
                         <option value="" disabled selected></option>
                         <option>Male</option>
                         <option>Female</option>
-
                       </select>
                       <span class="select-highlight"></span>
                       <span class="select-bar"></span>

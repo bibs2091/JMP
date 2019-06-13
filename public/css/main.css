@@ -2282,11 +2282,10 @@ visibility: hidden;
     right: 0;
     background-color: #323b43;
     overflow: hidden;
-    width: ;
     height: 0;
-    transition: .5s ease;
     opacity: 1;
     border-radius: 0px 0px 80px 80px ;
+    cursor: pointer;
   }
   .saveboutton{
     border-radius: 5px; 
