@@ -20,7 +20,12 @@ const Report = db.define("Report", {
     },
     reportDetails: {
         type: Sequelize.STRING
-    }
+    },
+    read:{
+        type:Sequelize.BOOLEAN,
+        defaultValue:false
+    },
+
 });
 
 db.sync({ forced: true });
