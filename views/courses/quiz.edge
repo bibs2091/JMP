@@ -79,7 +79,7 @@
         <main class="s-layout__content">
             <nav id="navbar">
                 <div id="container">
-                        <h1>{{content.title}}</h1>
+                        <h1>quiz title</h1>
                         <h5>SEND FEEDBACK</h5>
                 </div>
             </nav> 
@@ -88,31 +88,6 @@
 
 
             <section id="main-content">
-                
-                @if(content.type == "video")
-                <div id="course-content-video">
-                    <iframe
-                    src="{{content.link.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, 'www.youtube.com/embed/$1');}}">
-                    </iframe>
-                </div>
-                @else
-                 <div id="course-content-pdf">
-                    <object data="{{content.link}}" type="application/pdf">
-                        <embed src="https://docs.google.com/viewer?url={{content.link}}&embedded=true"/>
-                    </object>
-                </div>
-                @endif
-                @if(content.id == lastLecture.id)
-                <button type="button" class="btn" style="width: auto"
-                onclick="window.open('/courses/classroom/{{courseId}}/certificat','_blank')">Get certificat</button>
-                @else
-                <button type="button" class="btn" onclick="window.location.href ='/courses/classroom/{{courseId}}/{{content.id+1}}'">NEXT</button>
-                @endif
-                
-                <div id="course-discription">
-                    <h3>Description:</h3>
-                    <p>{{content.description}}</p>
-                </div>
                 
 
             </section>
