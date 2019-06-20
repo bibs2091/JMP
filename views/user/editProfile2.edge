@@ -1,47 +1,145 @@
 @layout('layouts.main')
 
 @section('content')
-  
 
-<div id="settingsCard">
-  <div id="settingTabs">
-    <ul>
-        <li>Settings</li>
-        <li class="settingsTabsElements inSettingsTab"><img src="/images/settings/basicInfo.png"><span>Basic information</span></li>
-        <li class="settingsTabsElements"><img src="/images/settings/social media.png"><span>Social media</span></li>
-        <li class="settingsTabsElements"><img src="/images/settings/password.png"><span>Password</span></li>
-        <li class="settingsTabsElements"><img src="/images/settings/notification.png"><span>Notifications</span></li>
-        <li class="settingsTabsElements"><img src="/images/settings/language.png"><span>Language</span></li>
-    </ul>
-  </div>
-  <div id="basicInfo" >
-    <h1>Basic informations </h1>
-    <hr>
-    <div id="fullname-settings">
-        <div class="form-group">
-            <label for="firstNameSettings">First Name :</label>
-            <input type="text" class="form-control" id="firstNameSettings" name="firstname">
+ <div id="setting_navbar" >
+  <ul > 
+   <li><a href="#">Account</a> </li>
+   <li><a href="#">General</a></li>
+   <li><a href="#">Security</a></li>
+   <li><a href="#">Website</a></li>
+   <li id="setting_others"><a href="#">Others</a></li>
+  </ul> 
+ </div>
+<div style="margin-left:auto;margin-right:auto;">
+ <div class="container settingsCard " >
+    <div class="row ">     
+          <div class="col-md-4 GeneralInformation "> 
+              <div class="profilepic">
+                  <img src="{{currentUser.info.avatar}}" alt="Avatar" class=" pic ">
+                  <div class="overlay" onclick="triggerInput('userAvatar')">
+                    <div class="edit-pic"><i class="fas fa-camera"></i></div>
+                    <input type="file" accept="images/*" hidden id="userAvatar">
+                  </div>
+              </div>
+            <form>
+              <div class="md-form form-group  mt-5 ">
+                <label for="formGroupExampleInputMD">First Name </label>
+                <input type="text" value="{{currentUser.info.firstName}}" class="form-control" id="formGroupExampleInputMD" >
+                
+              </div>
+              
+              <div class="md-form form-group mt-5">
+                <label for="formGroupExampleInputtMD">Last Name </label>
+                <input type="text"  value="{{currentUser.info.lastName}}" class="form-control" id="formGroupExampleInput2tMD" >
+              </div>
+              
+            </form>
+          </div>
+          
+          <div class="col-md-7 GeneralInformation ">   
+            <form>
+              <div class="row" id="Note">
+                  <i class="fas fa-exclamation-triangle col-1 "></i>
+                  <p class="col-10">This information are only for security and statistical perpuses and it will not be showen in your profile </p>
+              </div>
+            </br>
+            </br>
+              <div class="form-row">
+                <div class="form-group  md-form col-md-6 ">
+                  <label for="inputPhoneNumber">Phone Number </label>
+                  <input type="text" value="{{currentUser.info.phone}}" class="form-control" id="inputPhoneNumber" >
+                </div>
+                <div class="form-group md-form col-md-6">
+                  <label for="inputEmail">Email Address</label>
+                  <input type="email" value="{{currentUser.email}}" class="form-control" id="inputEmail" >
+                </div>
+              </div>
+              <div class="form-row">
+                    <div class="select col-md-6">
+                      <select class="select-text" required>
+                        <option value="" disabled selected></option><option selected>Choose...</option><option value="adrar">Adrar</option>
+                        <option value="chlef">Chlef</option>
+                        <option value="laghouat	">Laghouat	</option>
+                        <option value="oum El Bouaghi">Oum El Bouaghi</option>
+                        <option value="batna">Batna</option>
+                        <option value="béjaïa">Béjaïa</option>
+                        <option value="biskra">Biskra</option>
+                        <option value="béchar">Béchar</option>
+                        <option value="blida">Blida</option>
+                        <option value="bouira">Bouira</option>
+                        <option value="tamanrasset">Tamanrasset</option>
+                        <option value="tébessa">Tébessa</option>
+                        <option value="tlemcen">Tlemcen</option>
+                        <option value="tiaret">Tiaret</option>                      
+                        <option value="tizi Ouzou">Tizi Ouzou</option>
+                        <option value="alger">Alger</option>
+                        <option value="djelfa">Djelfa</option>
+                        <option value="jijel">Jijel</option>
+                        <option value="sétif">Sétif</option>
+                        <option value="saïda">Saïda</option>
+                        <option value="skikda">Skikda</option>                     
+                        <option value="sidi Bel Abbès">Sidi Bel Abbès</option>
+                        <option value="annaba">Annaba</option>
+                        <option value="guelma">Guelma</option>
+                        <option value="constantine">Constantine</option>
+                        <option value="médéa">Médéa</option>
+                        <option value="mostaganem">Mostaganem</option>
+                        <option value="m'Sila">M'Sila</option>
+                        <option value="mascara">Mascara</option>
+                        <option value="ouargla">Ouargla</option>
+                        <option value="oran">Oran</option>
+                        <option value="el Bayadh">El Bayadh</option>
+                        <option value="illizi">Illizi</option>
+                        <option value="bordj Bou Arreridj">Bordj Bou Arreridj</option>
+                        <option value="boumerdès">Boumerdès</option>
+                        <option value="el Tarf">El Tarf</option>
+                        <option value="tindouf">Tindouf</option>
+                        <option value="tissemsilt">Tissemsilt</option>
+                        <option value="el Oued">El Oued</option>
+                        <option value="khenchela">Khenchela</option>
+                        <option value="souk Ahras">Souk Ahras</option>
+                        <option value="tipaza">Tipaza</option>
+                        <option value="mila"> Mila</option>
+                        <option value="ain Defla">Aïn Defla</option>
+                        <option value="naâma">Naâma</option>
+                        <option value="aïn Témouchent">Aïn Témouchent</option>
+                        <option value="ghardaïa">Ghardaïa</option>
+                        <option value="relizane">Relizane</option>
+                      </select>
+                      <span class="select-highlight"></span>
+                      <span class="select-bar"></span>
+                      <label class="select-label">State</label>
+                    </div>
+                    <div class="select col-md-6">
+                      <select class="select-text" required>
+                        <option value="" disabled selected></option>
+                        <option>Male</option>
+                        <option>Female</option>
+                      </select>
+                      <span class="select-highlight"></span>
+                      <span class="select-bar"></span>
+                      <label class="select-label">Sex</label>
+                    </div>
+                  </div>
+                </br>
+                <div class="md-form">
+                  <textarea id="form7" class="md-textarea form-control" rows="3">
+                    {{currentUser.info.bio}}
+                  </textarea>
+                  <label for="form7">Bio</label>
+                </div>
+                <div class="pull-right">
+                <button type="button" class="btn btn-outline-success waves-effect resetboutton">Reset</button>
+                <button type="button" class="btn btn-success saveboutton">Save</button>
+                </div>
+            </form>
+            
+          </div>  
         </div>
-        <div class="form-group">
-            <label for="lastNameSettings">Last Name :</label>
-            <input type="text" class="form-control" id="lastNameSettings" name="lasttname">
-        </div>
-        <img src="/images/user.png" alt="picture profile " class="upload-profile-pic ">
-    </div>
-   </br>
-    <div class="form-group">
-        <label for="BioSettings">Bio :</label>
-        <textarea name="description" class="form-control" id="BioSettings"  name="Bio"></textarea>
-    </div>
-    </br>
-    <div class="form-group">
-        <label for="phoneNumberSettings">Phone Number :</label>
-        <input type="text" class="form-control" id="phoneNumberSettings" name="phone number">
-    </div>
-    <div id="boutton" >
-      <button type="submit" class="btn" id ="cancelboutton" >Cancel</button>
-      <button type="submit" class="btn" id="saveboutton" >Save</button>
+
     </div>
   </div>
 </div>
+  
 @endsection
