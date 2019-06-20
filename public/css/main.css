@@ -3,7 +3,6 @@ body {
 }
 html, body{
   max-width: 100%;
-  overflow-x: hidden;
 }
 #main-content {
   padding: 20px;

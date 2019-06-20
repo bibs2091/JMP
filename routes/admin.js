@@ -15,6 +15,7 @@ const updateCategoryController = require("../controllers/admin/updateCategory");
 const usersController = require("../controllers/admin/users");
 const deleteUserController = require("../controllers/admin/deleteUser");
 const settingsController = require("../controllers/admin/settings");
+const reportCenterController = require("../controllers/admin/reportCenter");
 
 //handling requests 
 router.get("/", (req, res) => {
@@ -38,5 +39,6 @@ router.put("/users/makecoach/:id", (req, res) => {
     res.send({ success: true });
 });
 router.get("/settings", settingsController);
+router.get("/reportcenter", reportCenterController);
 
 module.exports = router;
