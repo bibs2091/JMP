@@ -103,10 +103,10 @@
                 </div>
                 @endif
                 @if(content.id == lastLecture.id)
-                <button type="button" class="btn" style="width: auto"
+                <button type="button" class="btn vp" style="width: auto"
                 onclick="window.open('/courses/classroom/{{courseId}}/certificat','_blank')">Get certificat</button>
                 @else
-                <button type="button" class="btn" onclick="window.location.href ='/courses/classroom/{{courseId}}/{{content.id+1}}'">NEXT</button>
+                <button type="button" class="btn vp" onclick="window.location.href ='/courses/classroom/{{courseId}}/{{content.id+1}}'">NEXT</button>
                 @endif
                 
                 <div id="course-discription">

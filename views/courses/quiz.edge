@@ -15,6 +15,8 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+   <link href="/css/mdb.min.css" rel="stylesheet">
+
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     {{--  importing fonts  --}}
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Poppins|Ubuntu" rel="stylesheet">
@@ -88,7 +90,31 @@
 
 
             <section id="main-content">
-                
+                <style scoped>
+                    #main-content{
+                        position: relative;
+                    }
+                </style>
+                <div class="quiz">
+                    <hr>
+                    <h2>Question 2 :</h2>
+                    <p>Am i a joke to you?</p>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="answer1">
+                        <label class="form-check-label" for="answer1"> A. &nbsp;Yes</label>
+                    </div>
+                    <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="answer2">
+                            <label class="form-check-label" for="answer2"> B. &nbsp;No</label>
+                    </div>
+                    <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="answer3">
+                            <label class="form-check-label" for="answer3"> C. &nbsp;Well yes, But actually no</label>
+                    </div>
+                </div>  
+
+                <a id="quiz-restart" href="#"><button>Restart</button></a>
+                <a id="quiz-next" href="#"><button class="btn">Next</button></a>
 
             </section>
              
@@ -119,6 +145,8 @@
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     <script src="/js/Heart animation.js"></script>
+    <script src="/js/mdb.min.js"></script>
+
 </body>
 
 </html>
