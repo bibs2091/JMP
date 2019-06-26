@@ -2548,7 +2548,7 @@ display:none;
 /* ----------------- report center ----------------- */
 
 .report_center{
-  width: 90%;
+  width: 80%;
   display: block;
   margin: 30px auto;
   background-color: #fff;
@@ -2579,7 +2579,7 @@ display:none;
 }
 .report_center li .report_title{
   display: inline-block;
-  white-space: nowrap; 
+  /* white-space: nowrap;  */
   width: 100%; 
   overflow: hidden;
   text-overflow: ellipsis; 
@@ -2591,7 +2591,7 @@ display:none;
 .report_center li .report_detailB{
   display: block;
   white-space: nowrap; 
-  width: 650px; 
+  width: 600px  ; 
   overflow: hidden;
   text-overflow: ellipsis; 
   color: #BDBDBD;
@@ -2603,4 +2603,27 @@ position: absolute;
 right: 25px;
 color: #828282;
 font-size: 11px;
+}
+@media (max-width: 1175px) {
+  .report_center li .report_detailB{
+    width: 550px  ; 
+  }
+}
+@media (max-width: 960px) {
+  .report_center li .report_detailB{
+    width: 55vw; 
+  }
+  .report_center li .report_title{
+    font-size: 15px;
+  }
+}
+@media (max-width: 815px) {
+  .report_center li .report_title{
+    width: 55vw;
+  }
+}
+@media (max-width: 550px) {
+  .report_center li .report_title{
+    font-size: 13px;  
+  }
 }
