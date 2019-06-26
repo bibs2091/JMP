@@ -1969,10 +1969,8 @@ visibility: hidden;
 }
 
   /* ------------ settings ------------*/
-<<<<<<< HEAD
   #settingTabs ul li{
-=======
-  #settingsCard{
+
    background: #ffffff;
    width:95%;
    position: relative;
@@ -1994,7 +1992,6 @@ visibility: hidden;
     list-style-type: none;
     margin-top: 10px;
     overflow: hidden;
->>>>>>> ff8f512b813a77ee7dc29c0681415c31cc36f614
     display:flex;
     justify-content:center;
     align-items:center;
@@ -2548,4 +2545,62 @@ display:none;
   }
 }
 
+/* ----------------- report center ----------------- */
 
+.report_center{
+  width: 90%;
+  display: block;
+  margin: 30px auto;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #828282;
+}
+.report_center #action_bar .form-check{
+  padding-left: 25px;
+  color:#828282;
+}
+.report_center li{
+  position: relative;
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid #828282;
+  display:flex;
+  align-items:center;
+  font-family: Rubik,sans-serif;
+
+}
+.report_center li:last-child{
+  border-bottom: none;
+}
+.report_center li .form-check{
+  padding: 0 31px;
+  padding-right: 14px;
+  display: inline-block;
+}
+.report_center li .report_title{
+  display: inline-block;
+  white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  color: #171717;
+  font-size: 16px;
+  font-weight: 600;
+
+}
+.report_center li .report_detailB{
+  display: block;
+  white-space: nowrap; 
+  width: 650px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  color: #BDBDBD;
+  font-size: 13px;
+  font-weight: 500;
+}
+.report_center li .report_timing{
+position: absolute;
+right: 25px;
+color: #828282;
+font-size: 11px;
+}
