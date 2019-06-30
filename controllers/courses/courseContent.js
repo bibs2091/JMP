@@ -44,6 +44,7 @@ module.exports = async (req, res) => {
         for (let i = 0; i < chaps.length; i++) {
             var currentChap = {};
             currentChap.title = chaps[i].title;
+            currentChap.id = chaps[i].id;
             var lects = await Lectures.findAll({ where: { chapter: chaps[i].id } });
             var currentLects = [];
             for (let j = 0; j < lects.length; j++) {
@@ -72,6 +73,7 @@ module.exports = async (req, res) => {
                 }
             });
         }
+        console.log(chaptersList);
         res.render("courses.course", {
             pageTitle: content.title,
             chaptersList,
@@ -80,6 +82,7 @@ module.exports = async (req, res) => {
             courseId,
             lastLecture
         });
+
     }
     catch (err) {
         console.log(err);
