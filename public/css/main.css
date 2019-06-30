@@ -1969,8 +1969,10 @@ visibility: hidden;
 }
 
   /* ------------ settings ------------*/
-  #settingTabs ul li{
 
+  #settingTabs ul li{}
+
+  #settingsCard{
    background: #ffffff;
    width:95%;
    position: relative;
@@ -1992,6 +1994,7 @@ visibility: hidden;
     list-style-type: none;
     margin-top: 10px;
     overflow: hidden;
+
     display:flex;
     justify-content:center;
     align-items:center;
@@ -2097,7 +2100,7 @@ visibility: hidden;
     pointer-events: none;
   }
   
-  
+
   /* LABEL ======================================= */
   .select-label {
     color: #828282;
@@ -2545,85 +2548,37 @@ display:none;
   }
 }
 
-/* ----------------- report center ----------------- */
-
-.report_center{
-  width: 80%;
-  display: block;
-  margin: 30px auto;
-  background-color: #fff;
-  border-radius: 3px;
-  border: 1px solid #828282;
-}
-.report_center #action_bar .form-check{
-  padding-left: 25px;
-  color:#828282;
-}
-.report_center li{
-  position: relative;
-  height: 90px;
-  width: 100%;
-  border-bottom: 1px solid #828282;
-  display:flex;
-  align-items:center;
-  font-family: Rubik,sans-serif;
-
-}
-.report_center li:last-child{
-  border-bottom: none;
-}
-.report_center li .form-check{
-  padding: 0 31px;
-  padding-right: 14px;
-  display: inline-block;
-}
-.report_center li .report_title{
-  display: inline-block;
-  /* white-space: nowrap;  */
-  width: 100%; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
-  color: #171717;
-  font-size: 16px;
-  font-weight: 600;
-
-}
-.report_center li .report_detailB{
-  display: block;
-  white-space: nowrap; 
-  width: 600px  ; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
-  color: #BDBDBD;
-  font-size: 13px;
+/* send report */
+#report-header{
+  background: rgba(255, 211, 42, 0.9);
+  font-family: Poppins;
+  font-style: normal;  
   font-weight: 500;
+  font-size: 22px;
+  color: #403C3C;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
 }
-.report_center li .report_timing{
-position: absolute;
-right: 25px;
-color: #828282;
-font-size: 11px;
+#report_form{
+  font-family: Montserrat;
+font-style: normal;
+font-weight: normal;
+font-size: 22px;
+line-height: 27px;
+color: #202020;
 }
-@media (max-width: 1175px) {
-  .report_center li .report_detailB{
-    width: 550px  ; 
-  }
+#radio_bottom{
+  font-family: Montserrat;
+font-style: normal;
+font-weight: normal;
+font-size: 19px;
+line-height: 23px;
+color: #202020 !important;
 }
-@media (max-width: 960px) {
-  .report_center li .report_detailB{
-    width: 55vw; 
-  }
-  .report_center li .report_title{
-    font-size: 15px;
-  }
+#defaultUncheckedDisabled{
+  color: #1DBF70;
 }
-@media (max-width: 815px) {
-  .report_center li .report_title{
-    width: 55vw;
-  }
-}
-@media (max-width: 550px) {
-  .report_center li .report_title{
-    font-size: 13px;  
-  }
+.report_card{
+  border-radius: 5px;
 }
