@@ -2,16 +2,18 @@ const Report = require("../../models/Report");
 module.exports = async (req, res) => {
 	try{
 		//getting the report data
-	let {userId,type,indictedType,indictedId,reportDetails} = req.body;
+	let {userId,indictedType,indictedId} = req.body;
 
-	const report = await Report.findOne({
+	const report = await Report.findAll({
+		limit: 1,
 		where:{
 			userId,
 			type,
 			indictedType,
 			indictedId,
 			reportDetails
-		}
+		},
+		order: [ [ 'createdAt', 'DESC' ]]
 		
 	});
 	// if the report already exists and the admin didn't read it yet
