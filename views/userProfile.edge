@@ -1,3 +1,4 @@
+
 @layout('layouts.main')
 
 @section('content')
@@ -24,7 +25,7 @@
             <a class="ellipsis" id="more_profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
             <div class="dropdown-menu" aria-labelledby="more_profile">
               <a class="dropdown-item" href="#">Message</a>
-              <a class="dropdown-item" href="#">Report</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Report</a>
             </div>
         </div>
           <ul>
@@ -210,4 +211,49 @@
   @endif
   
 </div>
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog" >
+  
+    <div class="modal-content" style="border-radius:10px">
+      <div class="modal-header" id="report-header">
+        
+        <h4 class="modal-title" >Send a report </h4>
+        <button type="button" class="close" data-dismiss="modal" >&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        
+  <form  id="report_form">  
+  <h1> What is the reason of the report  </h1>  
+  <div id="radio_bottom">
+<div class="custom-control custom-radio" >
+  <input type="radio" class="custom-control-input" id="defaultUncheckedDisabled" name="disabledGroupExample" style="background-color:coral" disabled>
+  <label class="custom-control-label" for="defaultUncheckedDisabled2">Fake account</label>
+</div>
+<div class="custom-control custom-radio">
+  <input type="radio" class="custom-control-input" id="defaultCheckedDisabled" name="disabledGroupExample" checked >
+  <label class="custom-control-label" for="defaultCheckedDisabled2">Harassement /Hate speech</label>
+</div>
+<div class="custom-control custom-radio" style="color:brown;">
+  <input type="radio"  class="custom-control-input" id="defaultCheckedDisabled" name="disabledGroupExample" style="background-color:coral"  checked disabled>
+  <label class="custom-control-label" for="defaultCheckedDisabled2">Others</label>
+</div>
+</div>
+<h1> Can you provide us with some details </h1>
+<div class="md-form">
+  <textarea id="form7" class="md-textarea form-control" rows="3"></textarea>
+  <label for="form7">State the timing and the exact reason...</label>
+</div>
+</form>
+
+      </div>
+      
+     <div class="pull-right" >
+                <button type="button" class="btn btn-outline-success waves-effect resetboutton">cancel</button>
+                <button type="button" class="btn btn-success saveboutton">Send</button>
+                </div>
+    </div>
+    
+    
+  </div>
 @endsection
