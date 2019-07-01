@@ -80,6 +80,9 @@ const init = (app, session) => {
 
 module.exports = init;
 
+
+//******************** helper functions : 
+
 const sendMessage = async (message) => {
     // search fot the receiver
     try {
