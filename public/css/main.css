@@ -2582,3 +2582,9 @@ color: #202020 !important;
 .report_card{
   border-radius: 5px;
 }
+.custom-control-input:checked~.custom-control-label::before {
+  color: #fff;
+  border-color: #FFD32A;
+  background-color: #FFD32A;
+  box-shadow: none;
+}
