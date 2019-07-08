@@ -15,6 +15,7 @@ const wishlistController = require("../controllers/courses/wishlist");
 const courseController = require("../controllers/courses/course");
 const courseContentController = require("../controllers/courses/courseContent");
 const certificatController = require("../controllers/courses/certificat");
+const quizPageController = require("../controllers/courses/quizPage");
 
 //require middelware
 const isAuthenticated = require("../middleware/isAuthenticated");
@@ -43,5 +44,6 @@ router.post("/wishlist/:id", isAuthenticated, wishlistController);
 router.get("/classroom/:id", isAuthenticated, courseController);
 router.get("/classroom/:course/certificat", isAuthenticated, certificatController);
 router.get("/classroom/:course/:lecture", isAuthenticated, courseContentController);
+router.get("/classroom/quiz/:courseId/:chapId", quizPageController);
 
 module.exports = router;
