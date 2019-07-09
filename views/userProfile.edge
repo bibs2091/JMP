@@ -224,31 +224,31 @@
       
       <div class="modal-body">
         
-  <form  id="report_form">  
+  <form action="/report/add/" method="POST" id="report_form">  
   <h1> What is the reason of the report  </h1>  
   <div id="radio_bottom">
       <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="Option1" name="materialExampleRadios">
+          <input type="radio" class="custom-control-input" id="Option1" name="type">
           <label class="custom-control-label" for="Option1">Fake account</label>
         </div>
         
       <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="Option2" name="materialExampleRadios">
+          <input type="radio" class="custom-control-input" id="Option2" name="type">
           <label class="custom-control-label" for="Option2">Harassement /Hate speech</label>
       </div>
       <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="Option3" name="materialExampleRadios">
+          <input type="radio" class="custom-control-input" id="Option3" name="type">
           <label class="custom-control-label" for="Option3">Others</label>
       </div>
   </div>
 <h1 style="margin-top: 26px;"> Can you provide us with some details </h1>
 <div class="md-form">
-  <textarea id="txtarea" class="md-textarea form-control" rows="2"></textarea>
+  <textarea id="txtarea" class="md-textarea form-control" rows="2" name = "reportDetails"></textarea>
   <label for="txtarea">State the timing and the exact reason...</label>
 </div>
 <div style="padding-right: 26px; margin-bottom:20px;" >
-        <button type="button" class="btn btn-success saveboutton pull-right" style="margin-left: 10px;">Send</button>
-        <button type="button" class="btn btn-outline-success waves-effect resetboutton pull-right">cancel</button>
+        <button type="submit" class="btn btn-success saveboutton pull-right" style="margin-left: 10px;">Send</button>
+        <button type="submit" class="btn btn-outline-success waves-effect resetboutton pull-right">cancel</button>
       </div>
     </div>
 </form>

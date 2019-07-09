@@ -10,7 +10,6 @@ module.exports = async (req, res) => {
 
 		if (profile) {
 			const { dataValues } = profile;
-			console.log(dataValues);
 
 			let {
 				firstName,
@@ -53,6 +52,7 @@ module.exports = async (req, res) => {
 			}
 
 			res.render("userProfile", {
+				userId,
 				pageName: username,
 				pageTitle: firstName + " " + lastName,
 				firstName,

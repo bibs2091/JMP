@@ -1,7 +1,9 @@
 const Report = require("../../models/Report");
+const db = require("../../config/database");
+db.sync({ forced: true });
 module.exports = async (req, res) => {
 	try{
-		//getting the report data
+			//getting the report data
 	let {userId,indictedType,indictedId} = req.body;
 
 	const report = await Report.findAll({
@@ -28,8 +30,8 @@ module.exports = async (req, res) => {
 	await Report.create({userId,type,indictedType,indictedId,reportDetails});
 	console.log("report added");
 	res.render("404");
-	console.log('Works!!');
 	}catch (err){
+		console.log("========================================");
 		console.log(err);
 		res.redirect("404");
 	}
