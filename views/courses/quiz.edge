@@ -82,7 +82,7 @@
             <nav id="navbar">
                 <div id="container">
                         <h1>quiz title</h1>
-                        <h5>SEND FEEDBACK</h5>
+                        <a href="#" data-toggle="modal" data-target="#myModal"><h5>SEND FEEDBACK</h5></a>
                 </div>
             </nav> 
 
@@ -140,7 +140,52 @@
              
         </main>
     </div>
-    
+    <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog" >
+            
+              <div class="modal-content" style="border-radius:10px">
+                <div class="modal-header" id="report-header">
+                  
+                  <h4 class="modal-title" >Send a report </h4>
+                  <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                </div>
+                
+                <div class="modal-body">
+                  
+            <form  id="report_form">  
+            <h1> What is the reason of the report  </h1>  
+            <div id="radio_bottom">   
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="Option2" name="materialExampleRadios">
+                        <label class="custom-control-label" for="Option2">Wrong Answers</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="Option3" name="materialExampleRadios">
+                        <label class="custom-control-label" for="Option3">Irrelvent Question</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="Option3" name="materialExampleRadios">
+                            <label class="custom-control-label" for="Option3">Others</label>
+                    </div>
+                </div>
+          <h1 style="margin-top: 26px;"> Can you provide us with some details </h1>
+          <div class="md-form">
+            <textarea id="txtarea" class="md-textarea form-control" rows="2"></textarea>
+            <label for="txtarea">State the question/answer and the exact reason...</label>
+          </div>
+          </form>
+          
+                </div>
+                
+                <div style="padding-right: 26px; margin-bottom:20px;" >
+                  <button type="button" class="btn btn-success saveboutton pull-right" style="margin-left: 10px;">Send</button>
+                  <button type="button" class="btn btn-outline-success waves-effect resetboutton pull-right">cancel</button>
+                </div>
+              </div>
+              
+              
+            </div>
+            </div>
     <!-- needed scripts -->
     <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

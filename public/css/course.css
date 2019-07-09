@@ -226,6 +226,7 @@ body {
     top: 5px;
     color: #FFD32A;
     font-size: 16px;
+    cursor: pointer;
   }
   
   @media (max-width: 672px) {
@@ -506,3 +507,66 @@ body {
 }
 
 
+
+/* send report */
+#report-header{
+  background: rgba(255, 211, 42, 0.9);
+  font-family: Poppins;
+  font-style: normal;  
+  font-weight: 500;
+  font-size: 22px;
+  color: #403C3C;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 9px 18px;
+  display:flex;align-items:center;
+  }
+.modal-header .close{
+  vertical-align: middle;
+}
+.modal-body{
+  padding-bottom: 0;
+}
+#report_form{
+  font-family: Montserrat;
+font-style: normal;
+font-weight: normal;
+font-size: 22px;
+line-height: 27px;
+color: #202020;
+padding: 10px;
+}
+#radio_bottom{
+  font-family: Montserrat;
+font-style: normal;
+font-weight: normal;
+font-size: 19px;
+padding-left: 15px;
+line-height: 23px;
+color: #202020 !important;
+}
+#radio_bottom > div{
+  margin: 8px 0;
+  font-size: 16px;
+}
+#report_form .md-form{
+  margin: 8px 5px 0 5px;
+
+}
+.report_card{
+  border-radius: 5px;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+  color: #fff;
+  border-color: #FFD32A;
+  background-color: #FFD32A;
+  box-shadow: none;
+}
+input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=search-md]:focus:not([readonly]), input[type=search]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=url]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]),.md-form textarea.md-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #FFD32A;
+  box-shadow: 0 1px 0 0 #FFD32A;
+}
+.md-form textarea.md-textarea:focus:not([readonly])+label{
+  color: #202020;
+}

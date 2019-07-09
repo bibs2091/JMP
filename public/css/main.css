@@ -859,6 +859,9 @@ input[name="lastName"] {
   width: 90%;
   border: 1px solid rgb(200, 200, 200);
 }
+.dropdown .dropdown-menu.dropdown-primary .dropdown-item:hover{
+  background-color: rgb(93, 93, 93)!important;
+}
 #profile-skills,
 #profile-7ajahak {
   display: none;
@@ -2610,3 +2613,87 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
 .md-form textarea.md-textarea:focus:not([readonly])+label{
   color: #202020;
 }
+/* ----------------- report center ----------------- */
+
+.report_center{
+  width: 80%;
+  display: block;
+  margin: 30px auto;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #828282;
+}
+.report_center #action_bar {
+  height: 75px;
+}
+.report_center #action_bar .form-check{
+  padding-left: 31px;
+  color:#828282;
+}
+.report_center li{
+  position: relative;
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid #828282;
+  display:flex;
+  align-items:center;
+  font-family: Rubik,sans-serif;
+
+}
+.report_center li:last-child{
+  border-bottom: none;
+}
+.report_center li .form-check{
+  padding: 0 31px;
+  padding-right: 14px;
+  display: inline-block;
+}
+.report_center li .report_title{
+  display: inline-block;
+  /* white-space: nowrap;  */
+  width: 100%; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  color: #171717;
+  font-size: 16px;
+  font-weight: 600;
+
+}
+.report_center li .report_detailB{
+  display: block;
+  white-space: nowrap; 
+  width: 600px  ; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  color: #BDBDBD;
+  font-size: 13px;
+}
+.report_center li .report_timing{
+  position: absolute;
+  right: 25px;
+  color: #828282;
+  font-size: 11px;
+  }
+  @media (max-width: 1175px) {
+    .report_center li .report_detailB{
+      width: 550px  ; 
+    }
+  }
+  @media (max-width: 960px) {
+    .report_center li .report_detailB{
+      width: 55vw; 
+    }
+    .report_center li .report_title{
+      font-size: 15px;
+    }
+  }
+  @media (max-width: 815px) {
+    .report_center li .report_title{
+      width: 55vw;
+    }
+  }
+  @media (max-width: 550px) {
+    .report_center li .report_title{
+      font-size: 13px;  
+    }
+  } 
