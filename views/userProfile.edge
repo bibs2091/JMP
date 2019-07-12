@@ -16,6 +16,11 @@
     <div class="col-md-7" id="profile_details">
     <h1>{{firstName + " " + lastName}}</h1>
       <h6>Student</h6>
+      @if(messages.reportAdded)
+                <div class="alert alert-success">{{messages.reportAdded[0]}}</div>
+      @elseif(messages.reportNotAdded)
+                <div class="alert alert-warning">{{messages.reportNotAdded[0]}}</div>
+      @endif
       <p>{{bio}} </p>
     </div>
     <div class="col-md-2" style="position: relative;">
@@ -224,7 +229,7 @@
       
       <div class="modal-body">
         
-  <form action="/report/add/{{userId}}/User" method="POST" id="report_form">  
+  <form action="/report/add/{{userId}}/User" method="POST" id="report_form"> 
   <h1> What is the reason of the report  </h1>  
   <div id="radio_bottom">
       <div class="custom-control custom-radio">

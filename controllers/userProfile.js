@@ -50,8 +50,13 @@ module.exports = async (req, res) => {
 					console.log(error);
 				}
 			}
-
+			let messages = req.flash();
+			if (Object.keys(messages).length===0){
+				messages = undefined;
+			}
+			console.log(messages);
 			res.render("userProfile", {
+				messages,
 				userId,
 				pageName: username,
 				pageTitle: firstName + " " + lastName,
