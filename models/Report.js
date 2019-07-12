@@ -2,8 +2,8 @@ const Sequelize = require("sequelize");
 const db = require("../config/database");
 
 const Report = db.define("Report", {
-    userId: {
-        type: Sequelize.INTEGER,
+    username: {
+        type: Sequelize.STRING,
         allowNull: false
     },
     type: {
@@ -14,8 +14,8 @@ const Report = db.define("Report", {
         type: Sequelize.STRING,
         allowNull: false
     },
-    indictedId: {
-        type: Sequelize.INTEGER,
+    indicted: {
+        type: Sequelize.STRING,
         allowNull: false
     },
     reportDetails: {
