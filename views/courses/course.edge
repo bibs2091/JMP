@@ -133,7 +133,7 @@
                 
                 <div class="modal-body">
                   
-            <form  action="/report/add/{{courseId}}/Courses" method="POST" id="report_form">  
+            <form  action="/report/add/{{courseId}}/Course" method="POST" id="report_form">  
             <h1> What is the reason of the report  </h1>  
             <div id="radio_bottom">
                 <div class="custom-control custom-radio">
@@ -150,8 +150,8 @@
                     <label class="custom-control-label" for="Option3">Dead links</label>
                 </div>
                 <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="Option3" name="type" value="Others">
-                        <label class="custom-control-label" for="Option3">Others</label>
+                        <input type="radio" class="custom-control-input" id="Option4" name="type" value="Others">
+                        <label class="custom-control-label" for="Option4">Others</label>
                 </div>
             </div>
           <h1 style="margin-top: 26px;"> Can you provide us with some details </h1>
@@ -161,7 +161,7 @@
           </div>
            <div style="padding-right: 26px; margin-bottom:20px;" >
                   <button type="submit" class="btn btn-success saveboutton pull-right" style="margin-left: 10px;">Send</button>
-                  <button type="submit" class="btn btn-outline-success waves-effect resetboutton pull-right">cancel</button>
+                  <button type="button" class="btn btn-outline-success waves-effect resetboutton pull-right">cancel</button>
                 </div>
           </form>
           
