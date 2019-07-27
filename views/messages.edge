@@ -1,21 +1,22 @@
 @layout('layouts.main') 
 @section('content')
 
-<div class='container'>
+<div <div id="send-msg-contianer">
     <br>
     @if(msg)
         <div class="alert alert-danger">{{msg}}</div>
     @endif
-    <div class="jumbotron">
-        
-            <h1>Send a message</h1>
-            <br>
-            <label for="to">To</label>
-            <input id="name" class="form-control" placeholder="Name" name="receiver" required>
-            <br>
-            <label for="title">Title</label>
-            <input id="title" name="title" type="text">
-            <br>
+    <div id="message-header">
+        <h1>New message</h1>
+    </div>    
+            <div class="md-form">
+                <input type="text" id="To" class="form-control" name="receiver" required> 
+                <label for="To">To</label>
+            </div>
+            <div class="md-form">
+                <input type="text" id="Title" class="form-control" name="receiver" required> 
+                <label for="Title">Title</label>
+            </div>
             <label for="message">Message</label>
             <br>
             <textarea name="message" id="text" class="form-control"  required></textarea>
@@ -23,10 +24,6 @@
             <center>
                 <button class="btn btn-success" id="send_msg">Send</button>
             </center>
-    </div>
-    <div id="messages-test">
-        <h1>messages</h1>
-    </div>
 </div>
 
 @endsection

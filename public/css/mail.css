@@ -910,3 +910,26 @@
     opacity: 0.99;
   }
   
+
+
+
+  /* ------------------------ send message page --------------------*/
+  #send-msg-contianer{
+    position: relative;
+    border-radius: 7px;
+    height: 100%;
+    width: 95%;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  #message-header{
+    width:100%;
+    height: 40px;
+    background: linear-gradient(267.39deg, #FFBD3D 0.9%, rgba(255, 211, 42, 0.9) 99.96%);
+    padding-left:15px;
+    display:flex;
+    align-items:center;
+  }
+  #message-header h1{
+    font-size: 22px;
+  }
