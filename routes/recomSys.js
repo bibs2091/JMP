@@ -40,6 +40,12 @@ router.get('/mostPopCourses', (req, res) => {
     })
 })
 
+//get most similaire users to the current user
+router.get('/similairUsers', (req, res) => {
 
+    raccoon.mostSimilarUsers(req.user.id).then(result => {
+        res.json(result)
+    })
+})
 
 module.exports = router
