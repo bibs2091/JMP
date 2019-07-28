@@ -2305,6 +2305,7 @@ visibility: hidden;
     font-weight: bold;
     font-size: 14px;
     line-height: 17px;
+    float: right;
   }
   .resetboutton{
     border-radius: 5px;
@@ -2314,6 +2315,7 @@ visibility: hidden;
     font-weight: bold;
     font-size: 14px;
     line-height: 17px;
+    float: right;
   }
 
   .settingsCard{
@@ -2587,4 +2589,8 @@ color: #202020 !important;
   border-color: #FFD32A;
   background-color: #FFD32A;
   box-shadow: none;
+}
+
+.report_details{
+  background-color: #FFD32A;
 }
