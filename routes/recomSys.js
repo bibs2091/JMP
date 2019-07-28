@@ -7,16 +7,29 @@ raccoon.config.nearestNeighbors = 5
 raccoon.config.className = 'course'
 raccoon.config.numOfRecStore = 30
 
-router.get('/:id', (req, res) => {
-    raccoon.recommendFor(req.params.id, 5).then(result => {
+//get recommendation for current user
+router.get('/', (req, res) => {
+    raccoon.recommendFor(req.user.id, 5).then(result => {
         console.log(result)
         res.json(result)
     })
 })
+
+//if a user start a course 
 router.post('/likedCourse/:id', (req, res) => {
-    console.log(req.user)
-    // raccoon.liked(req.user,req.params.id)
+
+    raccoon.liked(req.user.id, req.params.id).then(() => {
+        console.log('user ' + req.user.id + ' liked course: ' + req.params.id)
+        res.send('user ' + req.user.id + ' liked course: ' + req.params.id)
+    })
 })
 
+//get the most populaire course 
+router.get('/mostPopCourses', (req, res) => {
+    raccoon.bestRated().then(result => {
+        console.log(result)
+        res.json(result)
+    })
+})
 
 module.exports = router
