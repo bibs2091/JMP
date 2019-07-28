@@ -1113,3 +1113,8 @@ $('.refresh').click(function(){
   }, 2000);
   
 });
+
+
+// text editor
+CKEDITOR.replace('message');
+

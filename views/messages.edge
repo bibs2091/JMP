@@ -1,29 +1,32 @@
 @layout('layouts.main') 
 @section('content')
+<style scoped>
+    body{
+        background-color: #F2F2F2;
+    }
+</style>
+<div id="send-msg-contianer">
 
-<div <div id="send-msg-contianer">
-    <br>
     @if(msg)
         <div class="alert alert-danger">{{msg}}</div>
     @endif
     <div id="message-header">
         <h1>New message</h1>
     </div>    
-            <div class="md-form">
-                <input type="text" id="To" class="form-control" name="receiver" required> 
-                <label for="To">To</label>
-            </div>
-            <div class="md-form">
-                <input type="text" id="Title" class="form-control" name="receiver" required> 
-                <label for="Title">Title</label>
-            </div>
-            <label for="message">Message</label>
-            <br>
-            <textarea name="message" id="text" class="form-control"  required></textarea>
-            <br>
-            <center>
-                <button class="btn btn-success" id="send_msg">Send</button>
-            </center>
+    <div id="send-msg-info">
+        <div class="md-form">
+            <input type="text" id="To" class="form-control" name="receiver" required> 
+            <label for="To">To</label>
+        </div>
+        <div class="md-form">
+            <input type="text" id="Title" class="form-control" name="receiver" required> 
+            <label for="Title">Title</label>
+        </div>
+            <h3>Message:</h3>
+            <textarea name="message" id="text" required></textarea>
+                <a href="" id="cancel-msg"></a> 
+                <button id="send_msg">Send &nbsp;<img src="/images/messaging/sent.png" alt="send"></button>
+    </div>
 </div>
 
 @endsection
