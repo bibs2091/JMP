@@ -24,6 +24,14 @@ router.post('/likedCourse/:id', (req, res) => {
     })
 })
 
+//route for user to dislike a course 
+router.post('/dislikedCourse/:id', (req, res) => {
+    raccoon.disliked(req.user.id, req.params.id).then(() => {
+        console.log('user ' + req.user.id + ' disliked course: ' + req.params.id)
+        res.send('user ' + req.user.id + ' disliked course: ' + req.params.id)
+    })
+})
+
 //get the most populaire course 
 router.get('/mostPopCourses', (req, res) => {
     raccoon.bestRated().then(result => {
@@ -31,5 +39,7 @@ router.get('/mostPopCourses', (req, res) => {
         res.json(result)
     })
 })
+
+
 
 module.exports = router
