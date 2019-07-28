@@ -859,6 +859,9 @@ input[name="lastName"] {
   width: 90%;
   border: 1px solid rgb(200, 200, 200);
 }
+.dropdown .dropdown-menu.dropdown-primary .dropdown-item:hover{
+  background-color: rgb(93, 93, 93)!important;
+}
 #profile-skills,
 #profile-7ajahak {
   display: none;
@@ -2299,7 +2302,7 @@ visibility: hidden;
     cursor: pointer;
   }
   .saveboutton{
-    border-radius: 5px; 
+    border-radius: 3px; 
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
@@ -2308,7 +2311,7 @@ visibility: hidden;
     float: right;
   }
   .resetboutton{
-    border-radius: 5px;
+    border-radius: 3px;
     background: #EFEFEF !important;
     font-family: Montserrat;
     font-style: normal;
@@ -2560,7 +2563,14 @@ display:none;
   color: #403C3C;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-
+  padding: 9px 18px;
+  display:flex;align-items:center;
+  }
+.modal-header .close{
+  vertical-align: middle;
+}
+.modal-body{
+  padding-bottom: 0;
 }
 #report_form{
   font-family: Montserrat;
@@ -2569,28 +2579,130 @@ font-weight: normal;
 font-size: 22px;
 line-height: 27px;
 color: #202020;
+padding: 10px;
 }
 #radio_bottom{
   font-family: Montserrat;
 font-style: normal;
 font-weight: normal;
 font-size: 19px;
+padding-left: 15px;
 line-height: 23px;
 color: #202020 !important;
 }
-#defaultUncheckedDisabled{
-  color: #1DBF70;
+#radio_bottom > div{
+  margin: 8px 0;
+  font-size: 16px;
+}
+#report_form .md-form{
+  margin: 8px 5px 0 5px;
+
 }
 .report_card{
   border-radius: 5px;
 }
+
 .custom-control-input:checked~.custom-control-label::before {
   color: #fff;
   border-color: #FFD32A;
   background-color: #FFD32A;
   box-shadow: none;
 }
+<<<<<<< HEAD
 
 .report_details{
   background-color: #FFD32A;
 }
+=======
+input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=search-md]:focus:not([readonly]), input[type=search]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=url]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]),.md-form textarea.md-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #FFD32A;
+  box-shadow: 0 1px 0 0 #FFD32A;
+}
+.md-form textarea.md-textarea:focus:not([readonly])+label{
+  color: #202020;
+}
+/* ----------------- report center ----------------- */
+
+.report_center{
+  width: 80%;
+  display: block;
+  margin: 30px auto;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #828282;
+}
+.report_center #action_bar {
+  height: 75px;
+}
+.report_center #action_bar .form-check{
+  padding-left: 31px;
+  color:#828282;
+}
+.report_center li{
+  position: relative;
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid #828282;
+  display:flex;
+  align-items:center;
+  font-family: Rubik,sans-serif;
+
+}
+.report_center li:last-child{
+  border-bottom: none;
+}
+.report_center li .form-check{
+  padding: 0 31px;
+  padding-right: 14px;
+  display: inline-block;
+}
+.report_center li .report_title{
+  display: inline-block;
+  /* white-space: nowrap;  */
+  width: 100%; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  color: #171717;
+  font-size: 16px;
+  font-weight: 600;
+
+}
+.report_center li .report_detailB{
+  display: block;
+  white-space: nowrap; 
+  width: 600px  ; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  color: #BDBDBD;
+  font-size: 13px;
+}
+.report_center li .report_timing{
+  position: absolute;
+  right: 25px;
+  color: #828282;
+  font-size: 11px;
+  }
+  @media (max-width: 1175px) {
+    .report_center li .report_detailB{
+      width: 550px  ; 
+    }
+  }
+  @media (max-width: 960px) {
+    .report_center li .report_detailB{
+      width: 55vw; 
+    }
+    .report_center li .report_title{
+      font-size: 15px;
+    }
+  }
+  @media (max-width: 815px) {
+    .report_center li .report_title{
+      width: 55vw;
+    }
+  }
+  @media (max-width: 550px) {
+    .report_center li .report_title{
+      font-size: 13px;  
+    }
+  } 
+>>>>>>> ec1f30a989fd24dc34089cccac7bbf04569d24ce
