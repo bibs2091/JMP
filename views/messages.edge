@@ -14,19 +14,21 @@
         <h1>New message</h1>
     </div>    
     <div id="send-msg-info">
+            <div class="email-id-row">
+                    <span class="to-input">To</span>
+                       <div class="all-mail"></div>
+                       <input type="text"  id="form-autocomplete" autocomplete="off" class="enter-mail-id mdb-autocomplete" placeholder="Enter the email id .." />
+            </div>       
         <div class="md-form">
-            <input type="text" id="To" class="form-control" name="receiver" required> 
-            <label for="To">To</label>
-        </div>
-        <div class="md-form">
-            <input type="text" id="Title" class="form-control" name="receiver" required> 
-            <label for="Title">Title</label>
+            <input type="text" id="Title" class="form-control" name="receiver" style="margin-top: 5px;" required> 
+            <label for="Title" style="font-size: 14px;">Title</label>
         </div>
             <h3>Message:</h3>
-            <textarea name="message" id="text" required></textarea>
+            <textarea name="message" id="text" style="display: none;" required></textarea>
                 <a href="" id="cancel-msg"></a> 
                 <button id="send_msg">Send &nbsp;<img src="/images/messaging/sent.png" alt="send"></button>
     </div>
 </div>
+
 
 @endsection

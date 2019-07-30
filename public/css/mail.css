@@ -434,7 +434,7 @@
      -khtml-user-select: none; /* Konqueror HTML */
        -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /
+            user-select: none; 
   }
   #main #main-nano-wrapper {
     position: absolute;
@@ -921,7 +921,7 @@
     width: 95%;
     overflow: hidden;
     background-color: #fff;
-    margin: 10px auto;
+    margin: 18px auto;
   }
   #message-header{
     width:100%;
@@ -933,6 +933,7 @@
   }
   #message-header h1{
     font-size: 22px;
+    font-family: ubunt  u;
   }
   #send-msg-info{
     padding: 10px 25px;
@@ -952,9 +953,9 @@
   }
   #send_msg{
     float:right;
-    margin: 25px 0 15px 0;
+    margin: 25px 0 20px 0;
     background: linear-gradient(257.03deg, #FFBD3D 0.86%, rgba(255, 211, 42, 0.9) 100.53%);
-    border-radius: 7px;
+    border-radius: 5px;
     color: black;
     font-family: Poppins;
     font-size: 17px;
@@ -963,3 +964,61 @@
     padding: 5px;
     border: none;
   }
+  span.email-ids {
+  float: left;
+  display: inline-block;
+  background: #ffd32a;
+  border-radius: 3px;
+  color: #000;
+  padding: 3px 6px;
+  font-family: Poppins;
+  position: relative;
+  cursor: default;
+  /* margin-top: -2px; */
+  margin-right: 10px;
+  margin-top: 5px;
+
+}
+span.cancel-email {
+  width: 18px;
+  display: block;
+  float: right;
+  text-align: center;
+  margin-left: 6px;
+  border-radius: 49%;
+  height: 18px;
+  line-height: 15px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+.email-id-row {
+    border-bottom: 1px solid rgb(206, 212, 218);;
+}
+.email-id-row input {
+    border: 0px; outline:0px;
+    
+}
+span.to-input {
+    display: block;
+    float: left;
+    padding-right: 11px;
+    padding-top: 9px;
+
+}
+.email-id-row {
+    padding-top: 6px;
+    padding-bottom: 7px;
+    margin-top: 23px;
+}
+.email-id-row input[type=text]:focus:not([readonly]){
+  border-bottom:none!important;
+  box-shadow:none!important;
+}
+.email-id-row input[type=text]{
+  border-bottom: none!important;
+  padding-top: 10px;
+}
+
+.mdb-autocomplete-wrap li {
+  font-size: 12px;
+}
