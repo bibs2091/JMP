@@ -1113,38 +1113,42 @@ $('.refresh').click(function(){
   }, 2000);
   
 });
+// text editor
+CKEDITOR.replace('message');
 
 // bootstrap tokenfield
-$(".enter-mail-id").keydown(function (e) {
-  if (e.keyCode == 13) {
-    //alert('You Press enter');
-	 var getValue = $(this).val();
-	 $('.all-mail').append('<span class="email-ids">'+ getValue +' <span class="cancel-email">x</span></span>');
-	 $(this).val('');
-  }
+
+$(function() {
+  $('#msgTo').tokenInput([{
+      id: 7,
+      name: "bibs2091"
+  }, {
+      id: 11,
+      name: "yasser"
+  }, {
+      id: 13,
+      name: "L"
+  }, {
+      id: 17,
+      name: "mou97"
+  }], {
+      theme: "users",
+      hintText: "Write the username",
+      noResultsText: "Nothing found.",
+      searchingText: "Searching...",
+      preventDuplicates: true,
+      onAdd: function(item){
+         sync(this.tokenInput("get"));
+      },
+      onDelete: function(item){
+         sync(this.tokenInput("get"));
+      }
+  }); 
+
 });
 
 
-/// Cancel 
 
-$(document).on('click','.cancel-email',function(){
-	  
-	      $(this).parent().remove();
-	
-  });
-  var users = [
-    "Naas Mohamed",
-    "Tagouine mounir",
-    "bahou",
-    "fatima merzoug"
-    ];
-    
-    $('#form-autocomplete').mdbAutocomplete({
-    data: users
-    });
 
-  // $('.enter-mail-id').click()
-// text editor
-CKEDITOR.replace('message');
 
 

@@ -946,8 +946,8 @@
   }
   #send-msg-contianer h3{
     margin-top: 25px;
-    margin-bottom: 5px;
-    color: black;    
+    margin-bottom: 7px;
+    color: #757575;
   }
   #cancel-msg{
   }
@@ -964,61 +964,210 @@
     padding: 5px;
     border: none;
   }
-  span.email-ids {
-  float: left;
-  display: inline-block;
-  background: #ffd32a;
-  border-radius: 3px;
-  color: #000;
-  padding: 3px 6px;
-  font-family: Poppins;
-  position: relative;
-  cursor: default;
-  /* margin-top: -2px; */
-  margin-right: 10px;
-  margin-top: 5px;
+   /*autocomplition mail */
+  #searchbar{
+    margin-top: 25px;
+  }
+  .token-input-token-users p {
+      font-size: 1.0em;
+      color: black;
+  }
+  .token-input-selected-token-users p {
+      color: #fff;
+  }
+  ul.token-input-list {
+      overflow: hidden;
+      height: auto !important;
+      height: 1%;
+      width: 400px;
+      border: 1px solid #999;
+      cursor: text;
+      font-size: 12px;
+      font-family: Verdana;
+      z-index: 999;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      list-style-type: none;
+      clear: left;
+  }
+  ul.token-input-list li {
+      list-style-type: none;
+  }
+  ul.token-input-list li input {
+      border: 0;
+      width: 350px;
+      padding: 3px 8px;
+      background-color: white;
+      -webkit-appearance: caret;
+  }
+  li.token-input-token {
+      overflow: hidden;
+      height: auto !important;
+      height: 1%;
+      margin: 3px;
+      padding: 3px 5px;
+      background-color: #d0efa0;
+      color: #000;
+      font-weight: bold;
+      cursor: default;
+      display: block;
+  }
+  li.token-input-token p {
+      float: left;
+      padding: 0;
+      margin: 0;
+  }
+  li.token-input-token span {
+      float: right;
+      color: #777;
+      cursor: pointer;
+  }
+  li.token-input-selected-token {
+      background-color: #08844e;
+      color: #fff;
+  }
+  li.token-input-selected-token span {
+      color: #bbb;
+  }
+  div.token-input-dropdown {
+      position: absolute;
+      width: 400px;
+      background-color: #fff;
+      overflow: hidden;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      cursor: default;
+      font-size: 12px;
+      font-family: Verdana;
+      z-index: 1;
+  }
+  div.token-input-dropdown p {
+      margin: 0;
+      padding: 5px;
+      font-weight: bold;
+      color: #777;
+  }
+  div.token-input-dropdown ul {
+      margin: 0;
+      padding: 0;
+  }
+  div.token-input-dropdown ul li {
+      background-color: #fff;
+      padding: 3px;
+      list-style-type: none;
+  }
+  div.token-input-dropdown ul li.token-input-dropdown-item {
+      background-color: #fafafa;
+  }
+  div.token-input-dropdown ul li.token-input-dropdown-item2 {
+      background-color: #fff;
+  }
+  div.token-input-dropdown ul li em {
+      font-weight: bold;
+      font-style: normal;
+  }
+  div.token-input-dropdown ul li.token-input-selected-dropdown-item {
+      background-color: #d0efa0;
+  }
 
-}
-span.cancel-email {
-  width: 18px;
-  display: block;
-  float: right;
-  text-align: center;
-  margin-left: 6px;
-  border-radius: 49%;
-  height: 18px;
-  line-height: 15px;
-  margin-top: 2px;
-  cursor: pointer;
-}
-.email-id-row {
-    border-bottom: 1px solid rgb(206, 212, 218);;
-}
-.email-id-row input {
-    border: 0px; outline:0px;
-    
-}
-span.to-input {
-    display: block;
-    float: left;
-    padding-right: 11px;
-    padding-top: 9px;
-
-}
-.email-id-row {
-    padding-top: 6px;
-    padding-bottom: 7px;
-    margin-top: 23px;
-}
-.email-id-row input[type=text]:focus:not([readonly]){
-  border-bottom:none!important;
-  box-shadow:none!important;
-}
-.email-id-row input[type=text]{
-  border-bottom: none!important;
-  padding-top: 10px;
-}
-
-.mdb-autocomplete-wrap li {
-  font-size: 12px;
-}
+  ul.token-input-list-users {
+      overflow: hidden;
+      height: auto !important;
+      border-bottom: 1px solid rgb(206, 212, 218);;
+      cursor: text;
+      font-size: 12px;
+      z-index: 999;
+      list-style-type: none;
+      clear: left;
+  }
+  ul.token-input-list-users li input {
+      border: 0;
+      width: 100px;
+      padding: 3px 8px;
+      background-color: white;
+      margin: 2px 0;
+      -webkit-appearance: caret;
+  }
+  li.token-input-token-users {
+      overflow: hidden;
+      height: auto !important;
+      height: 15px;
+      margin: 3px;
+      padding: 2px 6px;
+      color: #000;
+      cursor: default;
+      border: 1px solid #ccd5e4;
+      font-size: 14px;
+      float: left;
+      white-space: nowrap;
+      background: #ffd32a;
+      border-radius: 3px;
+      font-family: Poppins;
+  }
+  li.token-input-token-users p {
+      display: inline;
+      padding: 0;
+      margin: 0;
+  }
+  li.token-input-token-users span {
+      color: #38589e;
+      margin-left: 5px;
+      font-weight: bold;
+      cursor: pointer;
+  }
+  li.token-input-selected-token-users {
+      background-color: #5670a6;
+      border: 1px solid #3b5998;
+      color: #fff;
+  }
+  li.token-input-input-token-users {
+      float: left;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+  }
+  div.token-input-dropdown-users {
+      position: absolute;
+      width: 400px;
+      background-color: #fff;
+      overflow: hidden;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      cursor: default;
+      font-size: 11px;
+      font-family: Verdana;
+      z-index: 1;
+  }
+  div.token-input-dropdown-users p {
+      margin: 0;
+      padding: 5px;
+      font-weight: bold;
+      color: #777;
+  }
+  div.token-input-dropdown-users ul {
+      margin: 0;
+      padding: 0;
+  }
+  div.token-input-dropdown-users ul li {
+      background-color: #fff;
+      padding: 3px;
+      margin: 0;
+      list-style-type: none;
+  }
+  div.token-input-dropdown-users ul li.token-input-dropdown-item-users {
+      background-color: #fff;
+  }
+  div.token-input-dropdown-users ul li.token-input-dropdown-item2-users {
+      background-color: #fff;
+  }
+  div.token-input-dropdown-users ul li em {
+      font-weight: bold;
+      font-style: normal;
+  }
+  div.token-input-dropdown-users ul li.token-input-selected-dropdown-item-users {
+      background-color: #3b5998;
+      color: #fff;
+  }
