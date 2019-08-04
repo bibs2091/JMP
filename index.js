@@ -29,6 +29,7 @@ const events = require("./routes/events");
 const courses = require("./routes/courses");
 const message = require("./routes/messages");
 const api = require("./routes/api");
+const recApi = require('./routes/recomSys')
 
 //environment variables
 const {
@@ -121,6 +122,7 @@ app.use("/events", events);
 app.use("/courses", courses);
 app.use("/messages", message);
 app.use("/api", api);
+app.use("/recSys", recApi)
 app.get("*", (req, res) => {
 	res.render("404");
 });
