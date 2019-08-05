@@ -224,3 +224,39 @@ function wishlist(id) {
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
+
+//get all chapters
+function getChaps() {
+    var container = document.getElementById("chapters-list");
+    var elems = container.getElementsByClassName("chapter-title");
+    var chaps = [];
+    for (let i = 0; i < elems.length; i++) {
+        chaps.push(elems[i].getElementsByTagName("h6")[0].innerHTML);
+    }
+    return chaps;
+}
+//print chapters
+function printChaps() {
+    var chaps = getChaps();
+    var container = document.getElementById("chapters-list2");
+    container.innerHTML = "";
+    for (let i = 0; i < chaps.length; i++) {
+        var HTML = `
+        <li>
+            <div class="chapter-title">
+                <h6>${chaps[i]}</h6>
+            </div>
+            <div class='add-lecture' onclick=''>
+                    <ul> <li class="lesson addLesson">
+                        <p style="display:block; margin:0 auto; color:#868686;">
+                            <i class="fas fa-plus"></i> &nbsp; 
+                            Add a quiz
+                        </p></li>
+                    </ul>
+            </div>
+
+        </li>
+        `;
+        container.innerHTML += HTML;
+    }
+}

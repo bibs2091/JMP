@@ -1595,10 +1595,11 @@ input[name="lastName"] {
   opacity: 0.8;
   transition: 0.3s;
 }
-#chapters-list {
+#chapters-list, #chapters-list2{
   margin-top: 60px;
 }
-#chapters-list li ul li,
+
+#chapters-list li ul li,#chapters-list2 li ul li,
 .chapter-title {
   height: 62px;
   text-align: center;
@@ -1612,6 +1613,10 @@ input[name="lastName"] {
 .chapter-title h6 {
   display: table-cell;
   vertical-align: middle;
+}
+#chapters-list2,
+#chapters-list2 ul {
+  list-style: none;
 }
 #chapters-list,
 #chapters-list ul {
@@ -1761,7 +1766,7 @@ input[name="lastName"] {
   .add-course-container {
     padding: 0;
   }
-  #chapters-list {
+  #chapters-list, #chapters-list2{
     margin-top: 30px;
   }
 }
