@@ -12,7 +12,7 @@ router.get("/add/:id", (req, res) => {
 
 router.get('/details', (req, res) => {
 	// naas put ur view here 
-	res.render('')
+	res.render('reportDetails')
 })
 
 

@@ -2695,68 +2695,109 @@ textarea.md-textarea:focus:not([readonly]),
     font-size: 13px;
   }
 }
-.fillingReportBox {
-  background: #fcfcfc;
-  width: 80%;
-  position: absolute;
-  top: 100px;
-  z-index: 2;
-  border-radius: 3px;
 
-  padding-bottom: 20px;
+#reportMiddel{
+  margin: 0 auto;
+  width: 90%;
+  font-family: "Montserrat", sans-serif;
 }
+#reportMiddel > h1{
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: black;
 
-.fillingReportBox h3 {
-  font-family: Poppins;
-  font-size: 20px;
+}
+#report_details{
+  background: #fcfcfc;
+  border-radius: 5px;
+  padding-bottom: 20px
+}
+#report_details h3 {
+  font-size: 17px;
   margin-top: 24px;
   margin-left: 55px;
   color: #828282;
 }
 
 #report-pic {
-  height: 115px;
-  width: 115px;
+  height: 110px;
+  width: 110px;
   border-radius: 50%;
   float: none;
   z-index: 2;
   margin: 0 auto;
+  margin-top: 24px;
+  margin-left: 55px;
 }
 
-.fillingReportBox h6 {
+#report_details h6 {
   margin-top: -88px;
-  font-size: 21px;
+  font-size: 18px;
   color: #000;
-  font-family: "Roboto", sans-serif;
-  font-weight: normal;
   margin-bottom: 50px;
   margin-left: 180px;
 }
-.fillingReportBox h5 {
+#report_details h5 {
   margin-top: -20px;
-  font-size: 21px;
+  font-size: 17px;
   color: #333333;
-  font-family: "Roboto", sans-serif;
-  font-weight: normal;
   margin-bottom: 50px;
   margin-left: 110px;
 }
-.fillingReportBox h4 {
+#report_details h4 {
   margin-top: -41px;
-  font-family: "Roboto", sans-serif;
-  font-weight: normal;
   font-size: 14px;
   color: #828282;
   line-height: 26px;
   margin-bottom: 50px;
   margin-left: 190px;
 }
-.fillingReportBox p {
-  font-family: "Roboto", sans-serif;
-  font-weight: normal;
-  font-size: 18px;
+#report_details_info{
+  padding-right: 35px;
+}
+#report_details_info div{
+  margin-bottom: 25px;
+}
+#report_details_info div p{
+  margin-top: 10px;
+  font-size: 17px;
   color: #000000;
   line-height: 26px;
-  margin-top: 24px;
-  margin-left: 55px;
+  margin-left: 55px
+}
+.report_titles,.report_titles2{
+  display: inline;
+
+}
+.report_titles2{
+  margin-left: 11px!important;
+}
+#Actions_report{
+  background: #fcfcfc;
+  border-radius: 5px;
+  padding: 30px 0;
+}
+#Actions_report img{
+  
+  border-radius: 5px;
+  width: 100%;
+}
+#Actions_report img:hover{
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.action_adjust{
+  width: 11vw;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}    
+
+.action_adjust p{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-weight: bold;
+  width: 60%;
 }

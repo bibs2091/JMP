@@ -5,54 +5,29 @@
   #main-content{
     background-color: #F2F2F2;
     padding: 20px 0;
-    height: 100%;
-    
+    height: auto;
   }
 </style>
-
-    <div id="center_fillingInfosBox">
-    <form class="fillingReportBox" action="/admin/reportCenter" method="POST">
-      
-      <div class="row">
-        
-          <div class="col-md-6">
-              <h3>User<h3>
-              <img src="/images/avatar.jpg" alt="avatar" id="report-pic">
-              <h6>UserName</h6>
-              <h4>@ e-mail</h4>
-            </div>
-            
-              
-              
-           
-            <div class="col-md-6">
-                <h3>Reported<h3>
-                <img src="/images/avatar.jpg" alt="avatar" id="report-pic">
-                <h6>Reported Name</h6>
-                <h4>@ e-mail</h4>
-              </div>
-      </div>       
-            
-      <div>
-        <h3>For  </h3>
-        <h5>hate speach and harassment </h5>
+    <ul class="report_center">
+      <li id="action_bar">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="All">
+          <label class="form-check-label" for="All">All</label>
         </div>
-        <div>
-            <h3>Date</h3>
-            <h5>22/07/2019 at 21:30 </h5>
-            </div>
-            <div>
-           <h3>Description </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                  sed do eiusmod tempor incididunt ut  </p>
-            </div>
-       
-               
-             
-    </form>
-    
-    </div>
-
+      </li>
+      @each(report in reports)
+      <li>
+          <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="{{report.id}}">
+              <label class="form-check-label" for="report1"></label>
+          </div>
+          <div>
+            <p class="report_title">{{report.indictedType}} {{report.indictedId}} has been reported for {{report.type}}</p>
+            <p class="report_detailB">{{report.reportDetails}}</p>
+          </div>
+          <p class="report_timing">{{report.createdAt}}</p>
+      </li>
+      @endeach
+      
+    </ul>
 @endsection

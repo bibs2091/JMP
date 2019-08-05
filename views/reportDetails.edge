@@ -1,0 +1,68 @@
+@layout('layouts.dashboard')
+
+@section('content')
+<style scoped>
+  #main-content{
+    background-color: #F2F2F2;
+    padding: 20px 0;
+    height: 100%;
+    
+  }
+</style>
+  <div id="reportMiddel">
+    <h1>Details</h1>
+    <div id="report_details">
+      
+      <div class="row">
+        
+          <div class="col-md-6">
+              <h3>Reporter</h3>
+              <img src="/images/avatar.jpg" alt="avatar" id="report-pic">
+              <h6>Reporter Name</h6>
+              <h4>@ username</h4>
+            </div>
+            
+              
+              
+           
+            <div class="col-md-6">
+                <h3>Reported</h3>
+                <img src="/images/avatar.jpg" alt="avatar" id="report-pic">
+                <h6>Reported Name</h6>
+                <h4>@ username</h4>
+              </div>
+      </div>       
+      <div id="report_details_info">      
+        <div>
+          <h3 class="report_titles">For  </h3>
+          <h5 class="report_titles2">hate speach and harassment </h5>
+        </div>
+        <div>
+            <h3 class="report_titles">Date</h3>
+            <h5 class="report_titles2">22/07/2019 at 21:30 </h5>
+        </div>
+        <div>
+          <h3>Description </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                  sed do eiusmod tempor incididunt ut  
+          </p>
+        </div>
+      </div> 
+               
+             
+    
+    </div>
+
+
+    <!-- actions to take -->
+    <h1 style="margin-top:20px;">Action to take</h1>  
+    <div id="Actions_report" class="row">
+      <div class="col-sm-3"><div class="action_adjust"><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
+      <div class="col-sm-3"><div class="action_adjust"><p>Notify a user</p><img src="/img/reports/Notify.png" alt=""></div></div>
+      <div class="col-sm-3"><div class="action_adjust"><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
+      <div class="col-sm-3"><div class="action_adjust"><p>Delete the report</p><img src="/img/reports/DeleteR.png" alt=""></div></div>
+    </div>  
+  </div>
+@endsection
