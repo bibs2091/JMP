@@ -5,12 +5,15 @@ const router = express.Router();
 const reportAddController = require('../controllers/report/add.js');
 //handling requests
 router.post("/add/:id/:type", reportAddController);
-router.get("/add/:id",(req, res) => {
+router.get("/add/:id", (req, res) => {
 	console.log("oki=============");
 	res.render("404");
 });
 
-
+router.get('/details', (req, res) => {
+	// naas put ur view here 
+	res.render('')
+})
 
 
 
