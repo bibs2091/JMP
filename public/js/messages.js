@@ -9,7 +9,7 @@ $(function () {
     var messages = $(".message-list")
 
     //div to show message content
-    var msg_container = $('.message-container')
+    // var msg_container = $('.message-container')
 
     //emit message 
     send_msg.click(() => {
@@ -25,7 +25,7 @@ $(function () {
             title,
             date
         }
-
+        console.log(message)
         if (message.text != '') {
             //send the message to the server
 
@@ -79,7 +79,7 @@ $(function () {
         playNewMessageAudio()
         messages.prepend(newMessage)
 
-        msg_container.prepend(newMessageContent)
+        // msg_container.prepend(newMessageContent)
 
     })
 
