@@ -5,9 +5,12 @@
   #main-content{
     background-color: #F2F2F2;
     padding: 20px 0;
-    height: 100%;
-    
+    height: 100%; 
   }
+  @media (max-width: 672px){
+#main-content {
+  margin-left: 0;
+} 
 </style>
   <div id="reportMiddel">
     <h1>Details</h1>
@@ -59,10 +62,10 @@
     <!-- actions to take -->
     <h1 style="margin-top:20px;">Action to take</h1>  
     <div id="Actions_report" class="row">
-      <div class="col-sm-3"><div class="action_adjust"><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
-      <div class="col-sm-3"><div class="action_adjust"><p>Notify a user</p><img src="/img/reports/Notify.png" alt=""></div></div>
-      <div class="col-sm-3"><div class="action_adjust"><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
-      <div class="col-sm-3"><div class="action_adjust"><p>Delete the report</p><img src="/img/reports/DeleteR.png" alt=""></div></div>
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Notify a user</p><img src="/img/reports/Notify.png" alt=""></div></div>
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Delete the report</p><img src="/img/reports/DeleteR.png" alt=""></div></div>
     </div>  
   </div>
 @endsection
