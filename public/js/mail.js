@@ -1114,12 +1114,12 @@ $('.refresh').click(function(){
   
 });
 // text editor
-CKEDITOR.replace('message');
+CKEDITOR.replace('msg');
 
 // bootstrap tokenfield
 
 $(function() {
-  $('#msgTo').tokenInput([{
+  $('#name').tokenInput([{
       id: 7,
       name: "bibs2091"
   }, {

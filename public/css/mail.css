@@ -1171,3 +1171,11 @@
       background-color: #3b5998;
       color: #fff;
   }
+  #searchbar input[type=text]:focus:not([readonly]){
+    border-bottom:none!important;
+    box-shadow:none!important;
+  }
+  #searchbar input[type=text]{
+    border-bottom: none!important;
+    padding-top: 10px;
+  }
