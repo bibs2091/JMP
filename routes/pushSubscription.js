@@ -31,8 +31,10 @@ router.post('/', async (req, res) => {
 router.post('/triggerPush', async (req, res) => {
     const payload = JSON.stringify({
         // TODO: format the data later
-        data: req.body.data
+        title: 'JMP has a notification ',
+        body: req.body.data
     })
+
     try {
         const subs = await PushSubs.findAll({ attributes: ['userId', "subKey"] })
         subs.map(sub => sub.dataValues)
@@ -60,6 +62,7 @@ router.post('/triggerPush', async (req, res) => {
     }
 
 })
+
 
 
 module.exports = router;
