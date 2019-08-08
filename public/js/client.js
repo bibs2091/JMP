@@ -24,15 +24,18 @@ async function send() {
             });
 
             //send post request
-            await fetch('/subscribe', {
+            const response = await fetch('/subscribe', {
                 method: 'POST',
                 body: JSON.stringify(subscription),
                 headers: {
                     "Content-Type": 'application/json',
                 }
             })
-
             console.log('push has been sent')
+            if (!response.ok) {
+                throw new Error('Bad status code from server')
+            }
+            return response.json()
 
         } catch (err) {
             console.error(err)
