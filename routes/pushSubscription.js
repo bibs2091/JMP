@@ -15,21 +15,14 @@ router.post('/', async (req, res) => {
     if (isValidSaveReq(subscription)) {
 
         try {
-            // FIXME:  change to search for both userid and sub
-            await PushSubs.findOrCreate({ where: { userId: req.user.id }, defaults: { subKey: subscription } })
+            await PushSubs.findOrCreate({ where: { userId: req.user.id, subKey: subscription } })
 
         } catch (error) {
             console.log(error)
         }
 
-
         res.status(201).json({});
 
-        //create payload
-        const payload = JSON.stringify({ title: 'Push notification' });
-
-        //pass object into sendNotification
-        webpush.sendNotification(subscription, payload).catch(err => { console.error(err) })
     }
 
 })
