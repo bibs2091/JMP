@@ -7,7 +7,7 @@ const PushSubs = db.define("PushSubs", {
         allowNull: false
     },
     subKey: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.JSONB,
         allowNull: false
     }
 });
