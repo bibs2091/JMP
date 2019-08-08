@@ -4,12 +4,27 @@ const { vapidKeys } = require('../config/keys')
 const express = require('express');
 const router = express.Router();
 
+//subsciption model
+const PushSubs = require('../models/pushSubsciption')
+
 webpush.setVapidDetails('mailto:test@test.com', vapidKeys.public, vapidKeys.private)
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const subscription = req.body;
+    console.log(subscription)
     if (isValidSaveReq(subscription)) {
-        //TODO: save subscription to db
+        const sub = {
+            userId: req.user.id,
+            subKey: JSON.stringify(subscription)
+        }
+        try {
+            await PushSubs.create(sub)
+
+        } catch (error) {
+            console.log(error)
+        }
+
+
         res.status(201).json({});
 
         //create payload
@@ -20,6 +35,7 @@ router.post('/', (req, res) => {
     }
 
 })
+
 
 
 module.exports = router;
