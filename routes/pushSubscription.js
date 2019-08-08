@@ -13,12 +13,12 @@ router.post('/', async (req, res) => {
     const subscription = req.body;
     console.log(subscription)
     if (isValidSaveReq(subscription)) {
-        const sub = {
-            userId: req.user.id,
-            subKey: JSON.stringify(subscription)
-        }
+        // const sub = {
+        //     userId: req.user.id,
+        //     subKey: JSON.stringify(subscription)
+        // }
         try {
-            await PushSubs.create(sub)
+            await PushSubs.findOrCreate({ where: { userId: req.user.id }, defaults: { subKey: subscription } })
 
         } catch (error) {
             console.log(error)
@@ -35,7 +35,6 @@ router.post('/', async (req, res) => {
     }
 
 })
-
 
 
 module.exports = router;
