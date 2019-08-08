@@ -37,25 +37,30 @@ router.post('/triggerPush', async (req, res) => {
 
     try {
         const subs = await PushSubs.findAll({ attributes: ['userId', "subKey"] })
-        subs.map(sub => sub.dataValues)
+        if (subs.length > 0) {
+            subs.map(sub => sub.dataValues)
 
-        subs.forEach(sub => {
-            webpush.sendNotification(sub.subKey, payload).catch(err => {
-                console.error(err)
-                if (err.statusCode === 404 || err.statusCode === 410) {
-                    console.log('subscription has expired')
-                    //detele from db
-                    PushSubs.destroy({ where: { sub } }).then(sub => {
-                        console.log('deleting subscription from db')
+            subs.forEach(sub => {
+                webpush.sendNotification(sub.subKey, payload).catch(err => {
+                    console.error(err)
+                    if (err.statusCode === 404 || err.statusCode === 410) {
+                        console.log('subscription has expired')
+                        //detele from db
+                        PushSubs.destroy({ where: { sub } }).then(sub => {
+                            console.log('deleting subscription from db')
 
-                    })
-                } else {
-                    throw err
-                }
+                        })
+                    } else {
+                        throw err
+                    }
+                })
             })
-        })
-        res.setHeader("Content-Type", "application/data")
-        res.send(JSON.stringify({ data: { success: true } }))
+            res.setHeader("Content-Type", "application/data")
+            res.send(JSON.stringify({ data: { success: true } }))
+        } else {
+            sendError('No subscriptions available at the moment', res)
+        }
+
 
     } catch (error) {
         console.log(error)
@@ -86,15 +91,16 @@ router.post('/triggerPush/:id', async (req, res) => {
                         console.log('deleting subscription from db')
 
                     })
+                    sendError('Subscription has expired', res)
                 } else {
-                    sendError(err)
+                    sendError(err, res)
                 }
             })
 
             res.setHeader("Content-Type", "application/data")
             res.send(JSON.stringify({ data: { success: true } }))
         } else {
-            sendError('Unable to find the user')
+            sendError('Unable to find the user', res)
         }
 
 
@@ -126,7 +132,7 @@ const isValidSaveReq = (sub) => {
 }
 
 // error handler 
-const sendError = (message) => {
+const sendError = (message, res) => {
     res.status(500);
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({
