@@ -63,7 +63,47 @@ router.post('/triggerPush', async (req, res) => {
 
 })
 
+//send a push notification for a specific user 
+router.post('/triggerPush/:id', async (req, res) => {
+    const userId = req.params.id
+    const payload = JSON.stringify({
+        // TODO: format the data later
+        title: 'JMP has a notification ',
+        body: req.body.data
+    })
 
+    try {
+        let sub = await PushSubs.findOne({ where: { userId } })
+        if (sub) {
+            sub = sub.dataValues
+
+            webpush.sendNotification(sub.subKey, payload).catch(err => {
+                console.error(err)
+                if (err.statusCode === 404 || err.statusCode === 410) {
+                    console.log('subscription has expired')
+                    //detele from db
+                    PushSubs.destroy({ where: { sub } }).then(sub => {
+                        console.log('deleting subscription from db')
+
+                    })
+                } else {
+                    sendError(err)
+                }
+            })
+
+            res.setHeader("Content-Type", "application/data")
+            res.send(JSON.stringify({ data: { success: true } }))
+        } else {
+            sendError('Unable to find the user')
+        }
+
+
+    } catch (error) {
+        console.log(error)
+    }
+
+
+})
 
 module.exports = router;
 
@@ -83,4 +123,17 @@ const isValidSaveReq = (sub) => {
         return false
     }
     return true
+}
+
+// error handler 
+const sendError = (message) => {
+    res.status(500);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({
+        error: {
+            id: 'unable-to-send-messages',
+            message: `We were unable to send messages to the user : ${message}`
+
+        }
+    }));
 }
