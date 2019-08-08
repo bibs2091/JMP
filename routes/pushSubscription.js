@@ -83,7 +83,6 @@ router.post('/triggerPush/:id', async (req, res) => {
             sub = sub.dataValues
 
             webpush.sendNotification(sub.subKey, payload).catch(err => {
-                console.error(err)
                 if (err.statusCode === 404 || err.statusCode === 410) {
                     console.log('subscription has expired')
                     //detele from db
@@ -114,6 +113,8 @@ router.post('/triggerPush/:id', async (req, res) => {
 module.exports = router;
 
 //helper function 
+/***************************************************** */
+
 // check if the save req is valid
 const isValidSaveReq = (sub) => {
     if (!sub || !sub.endpoint) {
