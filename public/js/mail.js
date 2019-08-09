@@ -1126,6 +1126,7 @@ $(function () {
     searchingText: "Searching...",
     preventDuplicates: true,
     animateDropdown: true,
+    tokenValue: "name",
     onResult: function (item) {
       console.log(item)
       if (item.length > 0) {
