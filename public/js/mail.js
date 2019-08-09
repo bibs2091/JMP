@@ -1,55 +1,55 @@
 
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 
-	var cols = {},
+  var cols = {},
 
-		messageIsOpen = false;
+    messageIsOpen = false;
 
-	cols.showOverlay = function() {
-		$('body').addClass('show-main-overlay');
-	};
-	cols.hideOverlay = function() {
-		$('body').removeClass('show-main-overlay');
-	};
-
-
-	cols.showMessage = function() {
-		$('body').addClass('show-message');
-		messageIsOpen = true;
-	};
-	cols.hideMessage = function() {
-		$('body').removeClass('show-message');
-		$('#main .message-list li').removeClass('active');
-		messageIsOpen = false;
-	};
+  cols.showOverlay = function () {
+    $('body').addClass('show-main-overlay');
+  };
+  cols.hideOverlay = function () {
+    $('body').removeClass('show-main-overlay');
+  };
 
 
-	cols.showSidebar = function() {
-		$('body').addClass('show-sidebar');
-	};
-	cols.hideSidebar = function() {
-		$('body').removeClass('show-sidebar');
-	};
+  cols.showMessage = function () {
+    $('body').addClass('show-message');
+    messageIsOpen = true;
+  };
+  cols.hideMessage = function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+  };
 
 
-	// Show sidebar when trigger is clicked
-
-	$('.trigger-toggle-sidebar').on('click', function() {
-		cols.showSidebar();
-		cols.showOverlay();
-	});
-
-
-	$('.trigger-message-close').on('click', function() {
-		cols.hideMessage();
-		cols.hideOverlay();
-	});
+  cols.showSidebar = function () {
+    $('body').addClass('show-sidebar');
+  };
+  cols.hideSidebar = function () {
+    $('body').removeClass('show-sidebar');
+  };
 
 
-	// When you click on a message, show it
+  // Show sidebar when trigger is clicked
 
-	$('#main .message-list li').on('click', function(e) {
+  $('.trigger-toggle-sidebar').on('click', function () {
+    cols.showSidebar();
+    cols.showOverlay();
+  });
+
+
+  $('.trigger-message-close').on('click', function () {
+    cols.hideMessage();
+    cols.hideOverlay();
+  });
+
+
+  // When you click on a message, show it
+
+  $('#main .message-list li').on('click', function (e) {
     //getting msg data
     var messageTitle = this.getElementsByClassName("title")[0].innerHTML;
     var messageContent = this.getElementsByClassName("content")[0].innerHTML;
@@ -63,100 +63,100 @@ jQuery(document).ready(function($) {
     document.getElementById("message-content").innerHTML = messageContent;
     document.getElementById("message-date").innerHTML = messageDate;
 
-		var item = $(this),
-			target = $(e.target);
+    var item = $(this),
+      target = $(e.target);
 
-		if(target.is('label')) {
-			item.toggleClass('selected');
-		} else {
-			if(messageIsOpen && item.is('.active')) {
-				cols.hideMessage();
-				cols.hideOverlay();
-			} else {
-				if(messageIsOpen) {
-					cols.hideMessage();
-					item.addClass('active');
-					setTimeout(function() {
-						cols.showMessage();
-					}, 300);
-				} else {
-					item.addClass('active');
-					cols.showMessage();
-				}
-				cols.showOverlay();
-			}
-		}
-	});
-
-
-	// This will prevent click from triggering twice when clicking checkbox/label
-
-	$('input[type=checkbox]:not(#ck-all)').on('click',function(e) {
-		e.stopImmediatePropagation();
+    if (target.is('label')) {
+      item.toggleClass('selected');
+    } else {
+      if (messageIsOpen && item.is('.active')) {
+        cols.hideMessage();
+        cols.hideOverlay();
+      } else {
+        if (messageIsOpen) {
+          cols.hideMessage();
+          item.addClass('active');
+          setTimeout(function () {
+            cols.showMessage();
+          }, 300);
+        } else {
+          item.addClass('active');
+          cols.showMessage();
+        }
+        cols.showOverlay();
+      }
+    }
   });
-  
-  var checkBoxes= $('input[type=checkbox]');
 
-  $("#ck-all").click(function(){
+
+  // This will prevent click from triggering twice when clicking checkbox/label
+
+  $('input[type=checkbox]:not(#ck-all)').on('click', function (e) {
+    e.stopImmediatePropagation();
+  });
+
+  var checkBoxes = $('input[type=checkbox]');
+
+  $("#ck-all").click(function () {
     var clicks = $(this).data('clicks');
     if (clicks) {
       checkBoxes.prop('checked', false);
       $(".message-list li").removeClass("selected");
-    } 
+    }
     else {
       checkBoxes.prop('checked', true);
-      $(".message-list li").addClass("selected");      
+      $(".message-list li").addClass("selected");
     }
     $(this).data('clicks', !clicks); // you have to set it
 
-  }); 
+  });
 
 
-	// When you click the overlay, close everything
+  // When you click the overlay, close everything
 
-	$('#main > .overlay').on('click', function() {
-		cols.hideOverlay();
-		cols.hideMessage();
-		cols.hideSidebar();
-	});
-
-
-
-	// Enable sexy scrollbars
-	$('.nano').nanoScroller();
+  $('#main > .overlay').on('click', function () {
+    cols.hideOverlay();
+    cols.hideMessage();
+    cols.hideSidebar();
+  });
 
 
 
-	// Disable links
-
-	$('a').on('click', function(e) {
-		e.preventDefault();
-	});
+  // Enable sexy scrollbars
+  $('.nano').nanoScroller();
 
 
 
-	// Search box responsive stuff
+  // Disable links
 
-	$('.search-box input').on('focus', function() {
-		if($(window).width() <= 1360) {
+  $('a').on('click', function (e) {
+    e.preventDefault();
+  });
+
+
+
+  // Search box responsive stuff
+
+  $('.search-box input').on('focus', function () {
+    if ($(window).width() <= 1360) {
       cols.hideMessage();
-      
-		}
-	});
+
+    }
+  });
 
 });
 
-  // Search on messages
-  $('.search-box input').on("keyup",function() {
+// Search on messages
+$('.search-box input').on("keyup", function () {
 
-      if ($(this).val()){
-        var input_val=$(this).val().toLowerCase();
-        $(".message-list li").filter(function() {
-          $(this).toggle(($(this).find('.col-two').find('.sender').text().toLowerCase().indexOf(input_val) > -1) || ($(this).find('.col-two').find('.title').text().toLowerCase().indexOf(input_val) > -1) || ($(this).find('.col-two').find('.content').text().toLowerCase().indexOf(input_val) > -1))
-        });
+  if ($(this).val()) {
+    var input_val = $(this).val().toLowerCase();
+    $(".message-list li").filter(function () {
+      $(this).toggle(($(this).find('.col-two').find('.sender').text().toLowerCase().indexOf(input_val) > -1) || ($(this).find('.col-two').find('.title').text().toLowerCase().indexOf(input_val) > -1) || ($(this).find('.col-two').find('.content').text().toLowerCase().indexOf(input_val) > -1))
+    });
 
 
-      }
+  }
 });
 
 
@@ -164,7 +164,7 @@ jQuery(document).ready(function($) {
 /*! nanoScrollerJS - v0.8.0 - 2014
 * https://jamesflorentino.github.com/nanoScrollerJS/
 * Copyright (c) 2014 James Florentino; Licensed MIT */
-(function($, window, document) {
+(function ($, window, document) {
   "use strict";
   var BROWSER_IS_IE7, BROWSER_SCROLLBAR_WIDTH, DOMSCROLL, DOWN, DRAG, KEYDOWN, KEYUP, MOUSEDOWN, MOUSEMOVE, MOUSEUP, MOUSEWHEEL, NanoScroll, PANEDOWN, RESIZE, SCROLL, SCROLLBAR, TOUCHMOVE, UP, WHEEL, cAF, defaults, getBrowserScrollbarWidth, hasTransform, isFFWithBuggyScrollbar, rAF, transform, _elementStyle, _prefixStyle, _vendor;
   defaults = {
@@ -428,7 +428,7 @@ jQuery(document).ready(function($) {
   rAF = window.requestAnimationFrame;
   cAF = window.cancelAnimationFrame;
   _elementStyle = document.createElement('div').style;
-  _vendor = (function() {
+  _vendor = (function () {
     var i, transform, vendor, vendors, _i, _len;
     vendors = ['t', 'webkitT', 'MozT', 'msT', 'OT'];
     for (i = _i = 0, _len = vendors.length; _i < _len; i = ++_i) {
@@ -440,7 +440,7 @@ jQuery(document).ready(function($) {
     }
     return false;
   })();
-  _prefixStyle = function(style) {
+  _prefixStyle = function (style) {
     if (_vendor === false) {
       return false;
     }
@@ -459,7 +459,7 @@ jQuery(document).ready(function($) {
     @static
     @private
    */
-  getBrowserScrollbarWidth = function() {
+  getBrowserScrollbarWidth = function () {
     var outer, outerStyle, scrollbarWidth;
     outer = document.createElement('div');
     outerStyle = outer.style;
@@ -473,7 +473,7 @@ jQuery(document).ready(function($) {
     document.body.removeChild(outer);
     return scrollbarWidth;
   };
-  isFFWithBuggyScrollbar = function() {
+  isFFWithBuggyScrollbar = function () {
     var isOSXFF, ua, version;
     ua = window.navigator.userAgent;
     isOSXFF = /(?=.+Mac OS X)(?=.+Firefox)/.test(ua);
@@ -493,7 +493,7 @@ jQuery(document).ready(function($) {
     @param options {Object} nanoScroller's options
     @constructor
    */
-  NanoScroll = (function() {
+  NanoScroll = (function () {
     function NanoScroll(el, options) {
       this.el = el;
       this.options = options;
@@ -524,7 +524,7 @@ jQuery(document).ready(function($) {
       @private
      */
 
-    NanoScroll.prototype.preventScrolling = function(e, direction) {
+    NanoScroll.prototype.preventScrolling = function (e, direction) {
       if (!this.isActive) {
         return;
       }
@@ -549,7 +549,7 @@ jQuery(document).ready(function($) {
       @private
      */
 
-    NanoScroll.prototype.nativeScrolling = function() {
+    NanoScroll.prototype.nativeScrolling = function () {
       this.$content.css({
         WebkitOverflowScrolling: 'touch'
       });
@@ -565,7 +565,7 @@ jQuery(document).ready(function($) {
       @private
      */
 
-    NanoScroll.prototype.updateScrollValues = function() {
+    NanoScroll.prototype.updateScrollValues = function () {
       var content;
       content = this.content;
       this.maxScrollTop = content.scrollHeight - content.clientHeight;
@@ -585,7 +585,7 @@ jQuery(document).ready(function($) {
       @private
      */
 
-    NanoScroll.prototype.setOnScrollStyles = function() {
+    NanoScroll.prototype.setOnScrollStyles = function () {
       var cssValue;
       if (hasTransform) {
         cssValue = {};
@@ -597,8 +597,8 @@ jQuery(document).ready(function($) {
       }
       if (rAF) {
         if (!this.scrollRAF) {
-          this.scrollRAF = rAF((function(_this) {
-            return function() {
+          this.scrollRAF = rAF((function (_this) {
+            return function () {
               _this.scrollRAF = null;
               _this.slider.css(cssValue);
             };
@@ -616,10 +616,10 @@ jQuery(document).ready(function($) {
       @private
      */
 
-    NanoScroll.prototype.createEvents = function() {
+    NanoScroll.prototype.createEvents = function () {
       this.events = {
-        down: (function(_this) {
-          return function(e) {
+        down: (function (_this) {
+          return function (e) {
             _this.isBeingDragged = true;
             _this.offsetY = e.pageY - _this.slider.offset().top;
             _this.pane.addClass('active');
@@ -627,8 +627,8 @@ jQuery(document).ready(function($) {
             return false;
           };
         })(this),
-        drag: (function(_this) {
-          return function(e) {
+        drag: (function (_this) {
+          return function (e) {
             _this.sliderY = e.pageY - _this.$el.offset().top - _this.offsetY;
             _this.scroll();
             if (_this.contentScrollTop >= _this.maxScrollTop && _this.prevScrollTop !== _this.maxScrollTop) {
@@ -639,29 +639,29 @@ jQuery(document).ready(function($) {
             return false;
           };
         })(this),
-        up: (function(_this) {
-          return function(e) {
+        up: (function (_this) {
+          return function (e) {
             _this.isBeingDragged = false;
             _this.pane.removeClass('active');
             _this.doc.unbind(MOUSEMOVE, _this.events[DRAG]).unbind(MOUSEUP, _this.events[UP]);
             return false;
           };
         })(this),
-        resize: (function(_this) {
-          return function(e) {
+        resize: (function (_this) {
+          return function (e) {
             _this.reset();
           };
         })(this),
-        panedown: (function(_this) {
-          return function(e) {
+        panedown: (function (_this) {
+          return function (e) {
             _this.sliderY = (e.offsetY || e.originalEvent.layerY) - (_this.sliderHeight * 0.5);
             _this.scroll();
             _this.events.down(e);
             return false;
           };
         })(this),
-        scroll: (function(_this) {
-          return function(e) {
+        scroll: (function (_this) {
+          return function (e) {
             _this.updateScrollValues();
             if (_this.isBeingDragged) {
               return;
@@ -690,8 +690,8 @@ jQuery(document).ready(function($) {
             }
           };
         })(this),
-        wheel: (function(_this) {
-          return function(e) {
+        wheel: (function (_this) {
+          return function (e) {
             var delta;
             if (e == null) {
               return;
@@ -714,7 +714,7 @@ jQuery(document).ready(function($) {
       @private
      */
 
-    NanoScroll.prototype.addEvents = function() {
+    NanoScroll.prototype.addEvents = function () {
       var events;
       this.removeEvents();
       events = this.events;
@@ -735,7 +735,7 @@ jQuery(document).ready(function($) {
       @private
      */
 
-    NanoScroll.prototype.removeEvents = function() {
+    NanoScroll.prototype.removeEvents = function () {
       var events;
       events = this.events;
       this.win.unbind(RESIZE, events[RESIZE]);
@@ -754,7 +754,7 @@ jQuery(document).ready(function($) {
       @private
      */
 
-    NanoScroll.prototype.generate = function() {
+    NanoScroll.prototype.generate = function () {
       var contentClass, cssRule, currentPadding, options, paneClass, sliderClass;
       options = this.options;
       paneClass = options.paneClass, sliderClass = options.sliderClass, contentClass = options.contentClass;
@@ -787,7 +787,7 @@ jQuery(document).ready(function($) {
       @private
      */
 
-    NanoScroll.prototype.restore = function() {
+    NanoScroll.prototype.restore = function () {
       this.stopped = false;
       if (!this.iOSNativeScrolling) {
         this.pane.show();
@@ -804,7 +804,7 @@ jQuery(document).ready(function($) {
           $(".nano").nanoScroller();
      */
 
-    NanoScroll.prototype.reset = function() {
+    NanoScroll.prototype.reset = function () {
       var content, contentHeight, contentPosition, contentStyle, contentStyleOverflowY, paneBottom, paneHeight, paneOuterHeight, paneTop, parentMaxHeight, right, sliderHeight;
       if (this.iOSNativeScrolling) {
         this.contentHeight = this.content.scrollHeight;
@@ -885,7 +885,7 @@ jQuery(document).ready(function($) {
           $(".nano").nanoScroller({ scroll: 'top' });
      */
 
-    NanoScroll.prototype.scroll = function() {
+    NanoScroll.prototype.scroll = function () {
       if (!this.isActive) {
         return;
       }
@@ -909,7 +909,7 @@ jQuery(document).ready(function($) {
           $(".nano").nanoScroller({ scrollBottom: value });
      */
 
-    NanoScroll.prototype.scrollBottom = function(offsetY) {
+    NanoScroll.prototype.scrollBottom = function (offsetY) {
       if (!this.isActive) {
         return;
       }
@@ -928,7 +928,7 @@ jQuery(document).ready(function($) {
           $(".nano").nanoScroller({ scrollTop: value });
      */
 
-    NanoScroll.prototype.scrollTop = function(offsetY) {
+    NanoScroll.prototype.scrollTop = function (offsetY) {
       if (!this.isActive) {
         return;
       }
@@ -947,7 +947,7 @@ jQuery(document).ready(function($) {
           $(".nano").nanoScroller({ scrollTo: $('#a_node') });
      */
 
-    NanoScroll.prototype.scrollTo = function(node) {
+    NanoScroll.prototype.scrollTo = function (node) {
       if (!this.isActive) {
         return;
       }
@@ -965,7 +965,7 @@ jQuery(document).ready(function($) {
           $(".nano").nanoScroller({ stop: true });
      */
 
-    NanoScroll.prototype.stop = function() {
+    NanoScroll.prototype.stop = function () {
       if (cAF && this.scrollRAF) {
         cAF(this.scrollRAF);
         this.scrollRAF = null;
@@ -987,7 +987,7 @@ jQuery(document).ready(function($) {
           $(".nano").nanoScroller({ destroy: true });
      */
 
-    NanoScroll.prototype.destroy = function() {
+    NanoScroll.prototype.destroy = function () {
       if (!this.stopped) {
         this.stop();
       }
@@ -1017,7 +1017,7 @@ jQuery(document).ready(function($) {
           $(".nano").nanoScroller({ flash: true });
      */
 
-    NanoScroll.prototype.flash = function() {
+    NanoScroll.prototype.flash = function () {
       if (this.iOSNativeScrolling) {
         return;
       }
@@ -1026,8 +1026,8 @@ jQuery(document).ready(function($) {
       }
       this.reset();
       this.pane.addClass('flashed');
-      setTimeout((function(_this) {
-        return function() {
+      setTimeout((function (_this) {
+        return function () {
           _this.pane.removeClass('flashed');
         };
       })(this), this.options.flashDelay);
@@ -1037,8 +1037,8 @@ jQuery(document).ready(function($) {
     return NanoScroll;
 
   })();
-  $.fn.nanoScroller = function(settings) {
-    return this.each(function() {
+  $.fn.nanoScroller = function (settings) {
+    return this.each(function () {
       var options, scrollbar;
       if (!(scrollbar = this.nanoscroller)) {
         options = $.extend({}, defaults, settings);
@@ -1083,67 +1083,67 @@ jQuery(document).ready(function($) {
 //# sourceMappingURL=jquery.nanoscroller.js.map
 pageSize = 3;
 
-showPage = function(page) {
-    $(".content").hide();
-    $(".content").each(function(n) {
-        if (n >= pageSize * (page - 1) && n < pageSize * page)
-            $(this).show();
-    });        
+showPage = function (page) {
+  $(".content").hide();
+  $(".content").each(function (n) {
+    if (n >= pageSize * (page - 1) && n < pageSize * page)
+      $(this).show();
+  });
 }
-    
+
 showPage(1);
 
-$("#pagin li a").click(function() {
-    $("#pagin li a").removeClass("current");
-    $(this).addClass("current");
-    showPage(parseInt($(this).text())) 
+$("#pagin li a").click(function () {
+  $("#pagin li a").removeClass("current");
+  $(this).addClass("current");
+  showPage(parseInt($(this).text()))
 });
-    
+
 // refresh buttons 
-$('.refresh').click(function(){
+$('.refresh').click(function () {
   var el = $(this);
   el.addClass('refreshing');
-  
-  setTimeout(function(){
+
+  setTimeout(function () {
     el.addClass('complete');
-    setTimeout(function(){
+    setTimeout(function () {
       el.removeClass('refreshing');
       el.removeClass('complete');
     }, 500);
   }, 2000);
-  
+
 });
 // text editor
-CKEDITOR.replace('msg');
+CKEDITOR.replace('text');
 
 // bootstrap tokenfield
 
-$(function() {
+$(function () {
   $('#name').tokenInput([{
-      id: 7,
-      name: "bibs2091"
+    id: 7,
+    name: "bibs2091"
   }, {
-      id: 11,
-      name: "yasser"
+    id: 11,
+    name: "yasser"
   }, {
-      id: 13,
-      name: "L"
+    id: 13,
+    name: "L"
   }, {
-      id: 17,
-      name: "mou97"
+    id: 17,
+    name: "mou97"
   }], {
       theme: "users",
       hintText: "Write the username",
       noResultsText: "Nothing found.",
       searchingText: "Searching...",
       preventDuplicates: true,
-      onAdd: function(item){
-         sync(this.tokenInput("get"));
+      onAdd: function (item) {
+        sync(this.tokenInput("get"));
       },
-      onDelete: function(item){
-         sync(this.tokenInput("get"));
+      onDelete: function (item) {
+        sync(this.tokenInput("get"));
       }
-  }); 
+    });
 
 });
 

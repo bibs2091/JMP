@@ -16,7 +16,7 @@ $(function () {
         //get input values
         var to = $("#name").val();
         var title = $("#title").val();
-        var text = $("#text").val().trim();
+        var text = CKEDITOR.instances.text.getData()
         var date = new Date(Date.now());
 
         var message = {
