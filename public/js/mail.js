@@ -1128,6 +1128,17 @@ $(function () {
     animateDropdown: true,
     onResult: function (item) {
       console.log(item)
+      if (item.length > 0) {
+        let newData = item.map(data => {
+          return {
+            id: data.id,
+            name: data.name
+          }
+        })
+        return newData
+      } else {
+        return item
+      }
 
     },
     onAdd: function (item) {
