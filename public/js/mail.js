@@ -1119,31 +1119,24 @@ CKEDITOR.replace('text');
 // bootstrap tokenfield
 
 $(function () {
-  $('#name').tokenInput([{
-    id: 7,
-    name: "bibs2091"
-  }, {
-    id: 11,
-    name: "yasser"
-  }, {
-    id: 13,
-    name: "L"
-  }, {
-    id: 17,
-    name: "mou97"
-  }], {
-      theme: "users",
-      hintText: "Write the username",
-      noResultsText: "Nothing found.",
-      searchingText: "Searching...",
-      preventDuplicates: true,
-      onAdd: function (item) {
-        sync(this.tokenInput("get"));
-      },
-      onDelete: function (item) {
-        sync(this.tokenInput("get"));
-      }
-    });
+  $('#name').tokenInput("http://localhost:3000/api/users/search", {
+    theme: "users",
+    hintText: "Write the username",
+    noResultsText: "Nothing found.",
+    searchingText: "Searching...",
+    preventDuplicates: true,
+    animateDropdown: true,
+    onResult: function (item) {
+      console.log(item)
+
+    },
+    onAdd: function (item) {
+      sync(this.tokenInput("get"));
+    },
+    onDelete: function (item) {
+      sync(this.tokenInput("get"));
+    }
+  });
 
 });
 
