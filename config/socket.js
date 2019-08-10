@@ -90,7 +90,9 @@ const sendMessage = async (message) => {
         if (user) {
             try {
                 message.to = user.dataValues.id;
-                await Messages.create(message);
+                const msg = await Messages.create(message);
+                message.id = msg.id
+                message.isRead = msg.isRead
                 return message
 
             } catch (err) {
