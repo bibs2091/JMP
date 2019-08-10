@@ -43,7 +43,7 @@ $(function () {
         var newMessage = '<li class="unread">'
         newMessage += '<div class="col-one">'
         newMessage += '<div class="checkbox-wrapper">'
-        newMessage += '<input type="checkbox" id="chk1">'
+        newMessage += '<input type="checkbox" id="chk' + data.id + '">'
         newMessage += '<label for="chk1" class="toggle"></label> '
         newMessage += '</div>'
         newMessage += '<img src=' + data.senderAvatar + ' alt="sender avatar">'
