@@ -47,41 +47,20 @@
     color: #791C1E;
     border-color: #791C1E;
   }
-  .checkbox-wrapper {
-    cursor: pointer;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    display: inline-block;
-    box-shadow: inset 0 0 0 1px #A3ADB2;
-    border-radius: 1px;
-    margin-left: 22px;
+  .col-one .form-check{
+    margin-left: 22px; 
+    display: flex;
+    align-items: center;
   }
-  .checkbox-wrapper input {
-    opacity: 0;
-    cursor: pointer;
-  }
-  .checkbox-wrapper input:checked ~ label {
-    opacity: 1;
-  }
-  .checkbox-wrapper label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    cursor: pointer;
-    background: #A3ADB2;
-    opacity: 0;
-    transition-duration: 0.05s;
-  }
-  .checkbox-wrapper label:hover {
-    background: #95a1a6;
-    opacity: 0.5;
-  }
-  .checkbox-wrapper label:active {
-    background: #87949b;
-  }
+  .action-bar label{
+    padding-left:25px;
+     font-weight: bold;
+     font-size: 15px;
+    }
+    .glyphicon-chevron-left:before {
+      position: relative;
+      top: -1px;
+    }
   #sidebar {
     position: absolute;
     top: 0;
@@ -506,7 +485,7 @@
     border-radius: 50%;
     width: 45px;
     height: 45px;
-    margin-left: 25px;
+    margin-left: 0;
   }
   #main .message-list li .col-two p{
     white-space: nowrap;
@@ -538,88 +517,33 @@
     }
   }
 
-  @media only screen and (max-width: 920px) {
+  @media only screen and (min-width: 780px) and (max-width: 920px) {
     #main .message-list li .col-two{
-      width: 490px;
+      width: 450px;
     }
   }
-  /* #main .message-list li .col {
-    float: left;
-    position: relative;
+  @media only screen and (max-width: 780px) {
+    #messenger-contianer{
+      border: none;
+      border-radius: 0;
+      margin-left: 18px;
+
+    }
+    #main .message-list li .col-two{
+      width: 240px;
+      margin-left: 100px;
+    }
+    #main .message-list li .col-three {
+      right: 10px;
+    }
+    .checkbox-wrapper {
+      margin-left: 10px;
+    }
+    #main .message-list li img {
+      margin-left: 15px;
+    }
+    
   }
-  #main .message-list li.blue-dot .col-1 .dot {
-    border-color: #1BC3E1;
-  }
-  #main .message-list li.orange-dot .col-1 .dot {
-    border-color: #E2A917;
-  }
-  #main .message-list li.green-dot .col-1 .dot {
-    border-color: #9AE14F;
-  }
-  #main .message-list li .col-1 {
-    width: 400px;
-  }
-  #main .message-list li .col-1 .star-toggle,
-  #main .message-list li .col-1 .checkbox-wrapper,
-  #main .message-list li .col-1 .dot {
-    display: block;
-    float: left;
-  }
-  #main .message-list li .col-1 .dot {
-    border: 4px solid transparent;
-    border-radius: 100px;
-    margin: 22px 26px 0;
-    height: 0;
-    width: 0;
-    line-height: 0;
-    font-size: 0;
-  }
-  #main .message-list li .col-1 .checkbox-wrapper {
-    margin-top: 15px;
-    margin-right: 10px;
-    margin-left:30px;
-  }
-  #main .message-list li .col-1 .star-toggle {
-    margin-top: 15px;
-  }
-  #main .message-list li .col-1 .title {
-    position: absolute;
-    top: 0;
-    left: 80px;
-    right: 0;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  #main .message-list li .col-2 {
-    position: absolute;
-    top: 0;
-    left: 400px;
-    right: 0;
-    bottom: 0;
-  }
-  #main .message-list li .col-2 .subject,
-  #main .message-list li .col-2 .date {
-    position: absolute;
-    top: 0;
-  }
-  #main .message-list li .col-2 .subject {
-    left: 0;
-    right: 200px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  #main .message-list li .col-2 .date {
-    right: 0;
-    width: 200px;
-    padding-left: 80px;
-  }
-  #main .load-more-link {
-    display: block;
-    text-align: center;
-    margin: 30px 0 100px 0;
-  } */
   #message {
     position: absolute;
     top: 0;
@@ -936,7 +860,7 @@
   }
   #message-header h1{
     font-size: 22px;
-    font-family: ubunt  u;
+    font-family: ubuntu;
   }
   #send-msg-info{
     padding: 10px 25px;

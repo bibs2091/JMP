@@ -1,7 +1,9 @@
 @layout('layouts.main')
 @section('content')
 <style scoped>
-  
+  html{
+    font-size: 15px;
+  }
   #main-content{
     position: relative;
     height: 100%;
@@ -16,6 +18,11 @@
   }
   a:hover{
   text-decoration: none;
+  }
+  @media only screen and (max-width: 780px) {
+    #main-content{
+      padding:0;
+    }
   }
 
 </style>
@@ -34,18 +41,18 @@
   </div>
 </aside>
 <main id="main">
+  
   <div class="overlay"></div>
   
   <div class="action-bar">
     <ul>
       <li><a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span></a></li>
-      <li><div class="checkbox-wrapper">
-          <input type="checkbox" id="ck-all">
-          <label for="ck-all" class="toggle"></label>
-        </div>
-      </li>
-      <li>     
-         <label for="ck-all" class="toggle">All</label>
+      <li>
+          <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="ck-all">
+              <label class="form-check-label" for="ck-all">All &nbsp; </label>
+          </div>
+
       </li>
       <li><div class="refresh"></div></li>
       <li><img src="/images/messaging/garbage.png" alt="delete" id="delete_msg"></li>
@@ -63,9 +70,9 @@
         @each(item in inbox)
           <li class="unread">
             <div class="col-one">
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" id="chk1">
-                    <label for="chk1" class="toggle"></label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input"  id="chk1">
+                    <label class="form-check-label" for="ck-all"></label>
                 </div>
                 <img src={{item.senderAvatar}} alt="sender avatar">
             </div>
