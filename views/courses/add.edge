@@ -49,7 +49,9 @@
                                     </p></li>
                                 </ul>
                     </div>
-
+                    <div class="btn btn-success" onclick="printChaps()">
+                        quiz step
+                    </div>
                     <ul id="chapters-list2">
                         
                     </ul>
@@ -195,6 +197,62 @@
             </div>
             <div style="display:table; width: 100%; margin-top: 15px;">
                 <button type="submit" class="btn submit-form" onclick="editLecture(this.parentNode)">Update</button>
+            </div>
+        </div>
+    </div>
+    <div class="add-category-modal" id="add-quiz-modal">
+        <div class="info-container">
+            <div class="header">
+                <h6>Add Quiz</h6> 
+                <span class="close-category-modal" onclick="hideModal('add-quiz-modal')">&times;</span>
+            </div>    
+            <div class="info">
+                <h6>Add questions for the quiz</h6>
+                <p>Enter 4 options , don’t forget to check the right answers :</p>
+                <div id="question-cards">
+                    <div class="question-card">
+                        Question 1 
+                        <br><br>
+                        <div class="container">
+                            <input type="text" class="form-group quiz-title-input" 
+                            placeholder="Enter title here">                        
+                            <div class="suggestions">
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;">
+                                    <input type="text" class="quiz-title-input"
+                                        placeholder="a- option 1" style="width: 95%">
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;">
+                                    <input type="text" class="quiz-title-input"
+                                        placeholder="b- option 2" style="width: 95%">
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;">
+                                    <input type="text" class="quiz-title-input"
+                                        placeholder="c- option 3" style="width: 95%">
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;">
+                                    <input type="text" class="quiz-title-input"
+                                        placeholder="d- option 4" style="width: 95%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="add-question" class="btn">
+                    Add Question
+                </div>
+                <div class="done-btn-container">
+                    <div class="btn btn-success">
+                        Done
+                    </div>
+                </div>
             </div>
         </div>
     </div>

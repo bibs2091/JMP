@@ -246,7 +246,7 @@ function printChaps() {
             <div class="chapter-title">
                 <h6>${chaps[i]}</h6>
             </div>
-            <div class='add-lecture' onclick=''>
+            <div class='add-lecture' onclick='showModal("add-quiz-modal")'>
                     <ul> <li class="lesson addLesson">
                         <p style="display:block; margin:0 auto; color:#868686;">
                             <i class="fas fa-plus"></i> &nbsp; 
