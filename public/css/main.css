@@ -2314,7 +2314,7 @@ input[name="lastName"] {
     text-align: center;
   }
 
-  .overlay {
+  .profilepic .overlay {
     position: absolute;
     bottom: 0;
     left: 0;

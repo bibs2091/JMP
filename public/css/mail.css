@@ -1,4 +1,7 @@
 
+  a:hover{
+    text-decoration: none;
+  }
   #messenger-contianer{
     position: relative;
     border: 1px solid #2D8AFF;
@@ -461,7 +464,7 @@
   #main .message-list li:hover,
   #main .message-list li.active,
   #main .message-list li.selected {
-    background: #dfdfdf!important;
+    background: #f2f5f5cc!important;
     transition-duration: 0.05s;
   }
   #main .message-list li.active,
