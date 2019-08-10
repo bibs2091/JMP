@@ -39,7 +39,7 @@ $(function () {
 
     //listen to messages 
     socket.on('newMessage', (data) => {
-
+        console.log(data.text)
         var newMessage = '<li class="unread">'
         newMessage += '<div class="col-one">'
         newMessage += '<div class="checkbox-wrapper">'
