@@ -210,7 +210,8 @@
                 <h6>Add questions for the quiz</h6>
                 <p>Enter 4 options , don’t forget to check the right answers :</p>
                 <div id="question-cards">
-                    <div class="question-card">
+                    <div class="question-card" style="position:relative">
+                        <span class="close-category-modal" >&times;</span>
                         Question 1 
                         <br><br>
                         <div class="container">
@@ -245,7 +246,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="add-question" class="btn">
+                <div id="add-question" class="btn" onclick="addQuestion()">
                     Add Question
                 </div>
                 <div class="done-btn-container">

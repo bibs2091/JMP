@@ -260,3 +260,49 @@ function printChaps() {
         container.innerHTML += HTML;
     }
 }
+//generate question card html
+function questionCardHTML(number) {
+    var html = `
+    <div class="question-card" style="position:relative">
+        <span class="close-category-modal" >&times;</span>
+        Question ${number} 
+        <br><br>
+        <div class="container">
+            <input type="text" class="form-group quiz-title-input" 
+            placeholder="Enter title here">                        
+            <div class="suggestions">
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} "
+                    style="margin-right: 7px;">
+                    <input type="text" class="quiz-title-input"
+                        placeholder="a- option 1" style="width: 95%">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} "
+                    style="margin-right: 7px;">
+                    <input type="text" class="quiz-title-input"
+                        placeholder="b- option 2" style="width: 95%">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} "
+                    style="margin-right: 7px;">
+                    <input type="text" class="quiz-title-input"
+                        placeholder="c- option 3" style="width: 95%">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} "
+                    style="margin-right: 7px;">
+                    <input type="text" class="quiz-title-input"
+                        placeholder="d- option 4" style="width: 95%">
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+    return html;
+}
+// add question card
+function addQuestion() {
+    var number = document.getElementsByClassName("question-card").length + 1;
+    document.getElementById("question-cards").innerHTML += questionCardHTML(number);
+}

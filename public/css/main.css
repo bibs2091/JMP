@@ -2834,13 +2834,14 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
 #add-quiz-modal .header span{
   text-align: right;
 }
-#add-quiz-modal .close-category-modal{
+#add-quiz-modal .header .close-category-modal{
   position: static;
 }
 #add-quiz-modal .info-container .info{
   padding: 30px 30px 10px 30px;
   background: #F8F8F8;
   border-radius: 0px 0px 9px 9px;
+  overflow-x: scroll;
 }
 #add-quiz-modal .info h6{
   font-family: Poppins;
