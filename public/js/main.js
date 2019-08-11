@@ -264,8 +264,8 @@ function printChaps() {
 function questionCardHTML(number) {
     var html = `
     <div class="question-card" style="position:relative">
-        <span class="close-category-modal" >&times;</span>
-        Question ${number} 
+        <span class="close-category-modal" onclick="deleteQuestion(this)">&times;</span>
+        Question <span class="question-number">${number}</span>
         <br><br>
         <div class="container">
             <input type="text" class="form-group quiz-title-input" 
@@ -301,8 +301,23 @@ function questionCardHTML(number) {
     `
     return html;
 }
-// add question card
+// add a question card
 function addQuestion() {
     var number = document.getElementsByClassName("question-card").length + 1;
     document.getElementById("question-cards").innerHTML += questionCardHTML(number);
+}
+//reset question numbers
+function resetQuestionNumbers() {
+    var cards = document.getElementsByClassName("question-card");
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].getElementsByClassName("question-number")[0].innerHTML = i + 1;
+    }
+}
+//delete a question card 
+function deleteQuestion(obj) {
+    if (document.getElementsByClassName("question-card").length > 1) {
+        obj.parentNode.remove();
+        resetQuestionNumbers();
+    }
+
 }
