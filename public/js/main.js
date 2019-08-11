@@ -246,7 +246,7 @@ function printChaps() {
             <div class="chapter-title">
                 <h6>${chaps[i]}</h6>
             </div>
-            <div class='add-lecture' onclick='showModal("add-quiz-modal")'>
+            <div class='add-lecture' onclick='showAddQuizModal()'>
                     <ul> <li class="lesson addLesson">
                         <p style="display:block; margin:0 auto; color:#868686;">
                             <i class="fas fa-plus"></i> &nbsp; 
@@ -273,25 +273,25 @@ function questionCardHTML(number) {
             <div class="suggestions">
                 <div class="suggestion">
                     <input type="radio" name="answer${number} "
-                    style="margin-right: 7px;">
+                    style="margin-right: 7px;" value="0">
                     <input type="text" class="quiz-title-input"
                         placeholder="a- option 1" style="width: 95%">
                 </div>
                 <div class="suggestion">
                     <input type="radio" name="answer${number} "
-                    style="margin-right: 7px;">
+                    style="margin-right: 7px;" value="1">
                     <input type="text" class="quiz-title-input"
                         placeholder="b- option 2" style="width: 95%">
                 </div>
                 <div class="suggestion">
                     <input type="radio" name="answer${number} "
-                    style="margin-right: 7px;">
+                    style="margin-right: 7px;" value="2">
                     <input type="text" class="quiz-title-input"
                         placeholder="c- option 3" style="width: 95%">
                 </div>
                 <div class="suggestion">
                     <input type="radio" name="answer${number} "
-                    style="margin-right: 7px;">
+                    style="margin-right: 7px;" value="3">
                     <input type="text" class="quiz-title-input"
                         placeholder="d- option 4" style="width: 95%">
                 </div>
@@ -319,5 +319,40 @@ function deleteQuestion(obj) {
         obj.parentNode.remove();
         resetQuestionNumbers();
     }
+}
+//reset the add quiz modal
+function resetAddQuizModal() {
+    document.getElementById("question-cards").innerHTML = questionCardHTML(1);
+}
+//show add quiz modal
+function showAddQuizModal() {
+    showModal("add-quiz-modal");
+}
+//adding chapter quiz data
+function addChapQuiz(obj) {
+    //selecting the place where to put data
+    var container = obj.parentNode.parentNode;
+    var place = container.getElementsByClassName("quiz-data")[0];
 
+    //selecting the quiz's data
+    var cardsContainer = container.getElementsByTagName("div")[0];
+    var cards = cardsContainer.children;
+    var chapQuiz = [];
+
+    for (let i = 0; i < cards.length; i++) {
+        let inputs = cards[i].getElementsByTagName("input");
+        let answer;
+        for (let i = 1; i < inputs.length; i += 2) {
+            if (inputs[i].checked) {
+                answer = inputs[i].value;
+            }
+        }
+        let question = {
+            title: inputs[0].value,
+            answer: answer,
+            suggestions: [inputs[2].value, inputs[4].value, inputs[6].value, inputs[8].value]
+        }
+        chapQuiz.push(question);
+    }
+    place.innerHTML = JSON.stringify(chapQuiz);
 }

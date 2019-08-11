@@ -220,25 +220,25 @@
                             <div class="suggestions">
                                 <div class="suggestion">
                                     <input type="radio" name="answer"
-                                    style="margin-right: 7px;">
+                                    style="margin-right: 7px;" value="0">
                                     <input type="text" class="quiz-title-input"
                                         placeholder="a- option 1" style="width: 95%">
                                 </div>
                                 <div class="suggestion">
                                     <input type="radio" name="answer"
-                                    style="margin-right: 7px;">
+                                    style="margin-right: 7px;" value="1">
                                     <input type="text" class="quiz-title-input"
                                         placeholder="b- option 2" style="width: 95%">
                                 </div>
                                 <div class="suggestion">
                                     <input type="radio" name="answer"
-                                    style="margin-right: 7px;">
+                                    style="margin-right: 7px;" value="2">
                                     <input type="text" class="quiz-title-input"
                                         placeholder="c- option 3" style="width: 95%">
                                 </div>
                                 <div class="suggestion">
                                     <input type="radio" name="answer"
-                                    style="margin-right: 7px;">
+                                    style="margin-right: 7px;" value="3">
                                     <input type="text" class="quiz-title-input"
                                         placeholder="d- option 4" style="width: 95%">
                                 </div>
@@ -249,8 +249,9 @@
                 <div id="add-question" class="btn" onclick="addQuestion()">
                     Add Question
                 </div>
+                <div class="quiz-data" style="display: none"></div>
                 <div class="done-btn-container">
-                    <div class="btn btn-success">
+                    <div class="btn btn-success" onclick="addChapQuiz(this)" >
                         Done
                     </div>
                 </div>
