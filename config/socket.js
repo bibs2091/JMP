@@ -205,3 +205,8 @@ const isAdmin = async (id) => {
     let user = await Users.findByPk(id)
     return user.dataValues.groupId === 0
 }
+
+const isCoach = async (id) => {
+    let user = await Users.findByPk(id)
+    return user.dataValues.groupId === 1
+}
