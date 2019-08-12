@@ -33,23 +33,33 @@ const events = (io) => {
                 console.log(message.to)
                 switch (message.to) {
                     case 'toAll': {
-                        if (isAdmin(message.from)) {
+                        if (await isAdmin(message.from)) {
                             const msgSuccessfullySent = await sendToAll(message, io)
                             if (msgSuccessfullySent) {
                                 console.log('msg sent to all users')
                                 //TODO: emit success msg with socket
                                 // console.log("message has been sent with success")
                             } else {
-                                console.log('something went wrong, unable to send msg to all users')
+                                console.log('failed to send msg')
                                 //TODO: emit error msg with socket
 
                                 // console.log("Oops !! Something went wrong, Try again later")
                             }
+                        } else {
+                            console.log('unauth .. not an admin')
                         }
                         break;
                     }
                     case 'student': {
-                        if (isAdmin(message.from) || isCoach(message.from)) {
+                        if (await isAdmin(message.from) || await isCoach(message.from)) {
+                            const msgSuccessfullySent = await sendToStudents(message, io)
+                            if (msgSuccessfullySent) {
+                                console.log("msg sent to all students")
+                            } else {
+                                console.log('failed to send msg')
+                            }
+                        } else {
+                            console.log('unauth .. not an admin or coach')
 
                         }
                         break
