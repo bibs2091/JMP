@@ -269,30 +269,30 @@ function questionCardHTML(number) {
         <br><br>
         <div class="container">
             <input type="text" class="form-group quiz-title-input" 
-            placeholder="Enter title here">                        
+            placeholder="Enter title here" onkeyup="saveInputState(this)">                        
             <div class="suggestions">
                 <div class="suggestion">
-                    <input type="radio" name="answer${number} "
-                    style="margin-right: 7px;" value="0">
-                    <input type="text" class="quiz-title-input"
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="0" checked>
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
                         placeholder="a- option 1" style="width: 95%">
                 </div>
                 <div class="suggestion">
-                    <input type="radio" name="answer${number} "
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
                     style="margin-right: 7px;" value="1">
-                    <input type="text" class="quiz-title-input"
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
                         placeholder="b- option 2" style="width: 95%">
                 </div>
                 <div class="suggestion">
-                    <input type="radio" name="answer${number} "
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
                     style="margin-right: 7px;" value="2">
-                    <input type="text" class="quiz-title-input"
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
                         placeholder="c- option 3" style="width: 95%">
                 </div>
                 <div class="suggestion">
-                    <input type="radio" name="answer${number} "
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
                     style="margin-right: 7px;" value="3">
-                    <input type="text" class="quiz-title-input"
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
                         placeholder="d- option 4" style="width: 95%">
                 </div>
             </div>
@@ -356,3 +356,13 @@ function addChapQuiz(obj) {
     }
     place.innerHTML = JSON.stringify(chapQuiz);
 }
+// saving quiz inputs state
+//the text inputs
+function saveInputState(obj) {
+    $(obj).attr("value", $(obj).val());
+}
+//the radio inputs
+function saveRadioState(obj) {
+    $(obj).attr("checked", true);
+}
+

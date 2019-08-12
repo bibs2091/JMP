@@ -215,31 +215,31 @@
                         Question <span class="question-number">1</span> 
                         <br><br>
                         <div class="container">
-                            <input type="text" class="form-group quiz-title-input" 
+                            <input type="text" class="form-group quiz-title-input" onkeyup="saveInputState(this)" 
                             placeholder="Enter title here">                        
                             <div class="suggestions">
                                 <div class="suggestion">
                                     <input type="radio" name="answer"
-                                    style="margin-right: 7px;" value="0">
-                                    <input type="text" class="quiz-title-input"
-                                        placeholder="a- option 1" style="width: 95%">
+                                    style="margin-right: 7px;" value="0" checked onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="a- option 1" style="width: 95%" >
                                 </div>
                                 <div class="suggestion">
-                                    <input type="radio" name="answer"
-                                    style="margin-right: 7px;" value="1">
-                                    <input type="text" class="quiz-title-input"
+                                    <input type="radio" name="answer" 
+                                    style="margin-right: 7px;" value="1" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
                                         placeholder="b- option 2" style="width: 95%">
                                 </div>
                                 <div class="suggestion">
                                     <input type="radio" name="answer"
-                                    style="margin-right: 7px;" value="2">
-                                    <input type="text" class="quiz-title-input"
+                                    style="margin-right: 7px;" value="2" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
                                         placeholder="c- option 3" style="width: 95%">
                                 </div>
                                 <div class="suggestion">
                                     <input type="radio" name="answer"
-                                    style="margin-right: 7px;" value="3">
-                                    <input type="text" class="quiz-title-input"
+                                    style="margin-right: 7px;" value="3" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
                                         placeholder="d- option 4" style="width: 95%">
                                 </div>
                             </div>
