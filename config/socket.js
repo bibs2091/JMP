@@ -60,11 +60,20 @@ const events = (io) => {
                             }
                         } else {
                             console.log('unauth .. not an admin or coach')
-
                         }
                         break
                     }
                     case 'coach': {
+                        if (await isAdmin(message.from) || await isCoach(message.from)) {
+                            const msgSuccessfullySent = await sendToCoach(message, io)
+                            if (msgSuccessfullySent) {
+                                console.log("msg sent to all coaches")
+                            } else {
+                                console.log('failed to send msg')
+                            }
+                        } else {
+                            console.log('unauth .. not an admin or coach')
+                        }
                         break
                     }
 
@@ -176,7 +185,7 @@ const sendToAll = async (message, io) => {
         let users = await Users.findAll(
             {
                 where: {
-                    userId: { [Op.notIn]: [message.from] }
+                    [Op.not]: { userId: message.from }
                 }
             },
             { attributes: ['userId'] })
@@ -237,6 +246,48 @@ const sendToStudents = async (message, io) => {
             }
         })
         return true
+
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+}
+
+const sendToCoach = async (message, io) => {
+
+    try {
+        let users = await RawUsers.findAll({
+            where: {
+                groupId: 1,
+                [Op.and]: { [Op.not]: { id: message.from } }
+            }
+        },
+            { attributes: ['id'] })
+        if (users.length > 0) {
+            users.forEach(async (user) => {
+                try {
+                    message.to = user.dataValues.id
+                    const msg = await Messages.create(message);
+                    message.id = msg.id
+                    message.isRead = msg.isRead
+                    //get socket id of connected user
+                    const socketId = connectedUsers.get(message.to);
+
+                    //format message
+                    let msgFormated = await formatMessage(message)
+
+                    //broadcast message
+                    io.to(socketId).emit('newMessage', msgFormated);
+
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+            return true
+        } else {
+            console.log('No coaches available')
+            return false
+        }
 
     } catch (error) {
         console.log(error)
