@@ -32,8 +32,6 @@ const events = (io) => {
                 console.log(message.to)
                 switch (message.to) {
                     case 'toAll': {
-                        console.log('inside to all')
-
                         if (isAdmin(message.from)) {
                             const msgSuccessfullySent = await sendToAll(message, io)
                             if (msgSuccessfullySent) {
@@ -45,9 +43,7 @@ const events = (io) => {
                                 //TODO: emit error msg with socket
 
                                 // console.log("Oops !! Something went wrong, Try again later")
-
                             }
-
                         }
                         break;
                     }
