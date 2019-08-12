@@ -23,7 +23,7 @@ $(function () {
         if (to.search(',') === -1) {
             //one receiver 
             var message = {
-                to,
+                to: "toAll",
                 text,
                 title,
                 date

@@ -21,25 +21,58 @@ const events = (io) => {
 
 
         // messages 
-        socket.on('newMessage', (message) => {
+        socket.on('newMessage', async (message) => {
             message.from = socket.request.session.passport.user;
 
-            //post req
-            sendMessage(message).then(async message => {
-                if (message) {
-                    //get socket id 
-                    const socketId = connectedUsers.get(message.to);
+            // search fot the receiver
+            if (message.to) {
+                console.log(message.to)
+                switch (message.to) {
+                    case 'toAll': {
+                        console.log('inside to all')
 
-                    //format message
-                    let msg = await formatMessage(message)
+                        if (req.user.groupId == 0) {
+                            const msgSuccessfullySent = await sendToAll(message)
+                            if (msgSuccessfullySent) {
+                                console.log('msg sent to all users')
+                                res.render('messages', { msg: "message has been sent with success" })
+                            } else {
+                                console.log('something went wrong, unable to send msg to all users')
+                                res.render('messages', { msg: "Oops !! Something went wrong, Try again later" })
 
-                    //broadcast message
-                    io.to(socketId).emit('newMessage', msg);
-                    console.log('message has been sent with success')
-                } else {
-                    console.log('user not found');
+                            }
+
+                        }
+                        break;
+                    }
+                    case 'student': {
+                        break
+                    }
+                    case 'coach': {
+                        break
+                    }
+
+                    default: {
+                        //post req
+                        sendMessage(message).then(async message => {
+                            if (message) {
+                                //get socket id 
+                                const socketId = connectedUsers.get(message.to);
+
+                                //format message
+                                let msg = await formatMessage(message)
+
+                                //broadcast message
+                                io.to(socketId).emit('newMessage', msg);
+                                console.log('message has been sent with success')
+                            } else {
+                                console.log('user not found');
+                            }
+                        });
+                        break;
+                    }
                 }
-            });
+            }
 
         })
 
@@ -119,5 +152,49 @@ const formatMessage = async (msg) => {
     msg.senderAvatar = sender.avatar;
     console.log('message has been formatted');
     return msg;
+
+}
+
+const sendToAll = async (message) => {
+    try {
+        let users = await Users.findAll(
+            {
+                where: {
+                    id: { [Op.notIn]: [req.user.id] }
+                }
+            },
+            { attributes: ['id'] })
+        if (users.length > 0) {
+            users.forEach(async user => {
+                try {
+                    message.to = user.dataValues.id;
+                    const msg = await Messages.create(message);
+                    message.id = msg.id
+                    message.isRead = msg.isRead
+                    //get socket id of connected user
+                    const socketId = connectedUsers.get(message.to);
+
+                    //format message
+                    let msgFormated = await formatMessage(message)
+
+                    //broadcast message
+                    io.to(socketId).emit('newMessage', msgFormated);
+
+                } catch (err) {
+                    console.log(err);
+                }
+            })
+            return true
+        }
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+
+}
+
+
+//middleware functions 
+const isAdmin = async (id) => {
 
 }

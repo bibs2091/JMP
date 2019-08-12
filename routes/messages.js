@@ -130,8 +130,11 @@ router.post('/new_message', async (req, res) => {
 
 	// search fot the receiver
 	if (message.to) {
+		console.log(message.to)
 		switch (message.to) {
 			case 'toAll': {
+				console.log('inside to all')
+
 				if (req.user.groupId == 0) {
 					await sendToAll(message)
 				}
@@ -145,29 +148,30 @@ router.post('/new_message', async (req, res) => {
 			}
 
 			default: {
+				try {
+					const user = await Users.findOne({ where: { username: message.to } });
+					if (user) {
+						try {
+							message.to = user.dataValues.id;
+							await Messages.create(message);
+							console.log('ready to render')
+							res.render('messages', { msg: "message has been sent with success" })
+
+						} catch (err) {
+							console.log(err);
+
+						}
+					} else {
+						res.render('messages', { msg: "there is no user under the username " + message.to })
+
+					}
+				} catch (err) {
+					console.log(err)
+				}
 				break;
 			}
 		}
-		try {
-			const user = await Users.findOne({ where: { username: message.to } });
-			if (user) {
-				try {
-					message.to = user.dataValues.id;
-					await Messages.create(message);
-					console.log('ready to render')
-					res.render('messages', { msg: "message has been sent with success" })
 
-				} catch (err) {
-					console.log(err);
-
-				}
-			} else {
-				res.render('messages', { msg: "there is no user under the username " + message.to })
-
-			}
-		} catch (err) {
-			console.log(err)
-		}
 
 	}
 
@@ -196,14 +200,20 @@ module.exports = router;
 
 const sendToAll = async (message) => {
 	try {
-		let users = await Users.findAll({ attributes: ['id'] })
+		let users = await Users.findAll(
+			{
+				where: {
+					id: { [Op.notIn]: [req.user.id] }
+				}
+			},
+			{ attributes: ['id'] })
 		if (users.length > 0) {
 			users.forEach(async user => {
 				try {
 					if (message.from == user.dataValues)
 						message.to = user.dataValues.id;
 					await Messages.create(message);
-					console.log('ready to render')
+					console.log('msg sent to all users')
 					res.render('messages', { msg: "message has been sent with success" })
 
 				} catch (err) {
