@@ -99,20 +99,11 @@
                     }
                 </style>
 
-                <h5>Question 2 out of 3 </h5>
+                <h5>Question <span>1</span> out of {{questions.length}} </h5>
                 <ol class="quiz-tracker">
-                        <li class="step done"><span class="step-name"></span></li>
-                        <li class="step done"><span class="step-name"></span></li>
-                        <li class="step done"><span class="step-name"></span></li>
-                        <li class="step active"><span class="step-name"></span></li>
-                        <li class="step"><span class="step-name"></span></li>
-                        <li class="step"><span class="step-name"></span></li>
-                        <li class="step"><span class="step-name"></span></li>
-                        <li class="step"><span class="step-name"></span></li>
-                        <li class="step"><span class="step-name"></span></li>
-                        <li class="step"><span class="step-name"></span></li>
-
-
+                        @each(question in questions)
+                            <li class="step"><span class="step-name"></span></li>
+                        @endeach
                 </ol>
                       
                 <div class="quiz">

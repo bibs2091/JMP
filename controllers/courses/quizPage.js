@@ -2,6 +2,8 @@ const Courses = require("../../models/Courses");
 const Chapters = require("../../models/Chapters");
 const Lectures = require("../../models/Lectures");
 const Progress = require("../../models/Progress");
+const Quizs = require("../../models/Quizs");
+const Suggestions = require("../../models/Suggestions");
 
 module.exports = async (req, res) => {
     var courseId = req.params.courseId;
@@ -39,10 +41,33 @@ module.exports = async (req, res) => {
         chaptersList.push(currentChap);
     };
 
+    //getting the questions
+    var questions = await Quizs.findAll({
+        where: {
+            chapterId: chapId
+        }
+    });
+    for (let n = 0; n < questions.length; n++) {
+        questions[n] = questions[n].dataValues;
+        let suggestions = await Suggestions.findAll({
+            where: {
+                quizId: questions[n].id
+            }
+        });
+        let rsugg = []
+        for (let j = 0; j < 4; j++) {
+            rsugg.push(suggestions[j].content);
+            console.log(suggestions[j].content);
+        }
+        questions[n].suggestions = rsugg;
+    }
+    console.log(questions)
+
     res.render("courses.quiz", {
         chaptersList,
         lastLecture,
         newProgress,
-        courseId
+        courseId,
+        questions
     });
 }
