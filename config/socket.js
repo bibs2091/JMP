@@ -1,6 +1,9 @@
 const Users = require('../models/UsersInfo')
 const Messages = require('../models/Message')
 
+const Op = require('sequelize').Op
+
+
 let connectedUsers = new Map();
 // define events 
 const events = (io) => {
@@ -31,14 +34,17 @@ const events = (io) => {
                     case 'toAll': {
                         console.log('inside to all')
 
-                        if (req.user.groupId == 0) {
-                            const msgSuccessfullySent = await sendToAll(message)
+                        if (isAdmin(message.from)) {
+                            const msgSuccessfullySent = await sendToAll(message, io)
                             if (msgSuccessfullySent) {
                                 console.log('msg sent to all users')
-                                res.render('messages', { msg: "message has been sent with success" })
+                                //TODO: emit success msg with socket
+                                // console.log("message has been sent with success")
                             } else {
                                 console.log('something went wrong, unable to send msg to all users')
-                                res.render('messages', { msg: "Oops !! Something went wrong, Try again later" })
+                                //TODO: emit error msg with socket
+
+                                // console.log("Oops !! Something went wrong, Try again later")
 
                             }
 
@@ -155,19 +161,19 @@ const formatMessage = async (msg) => {
 
 }
 
-const sendToAll = async (message) => {
+const sendToAll = async (message, io) => {
     try {
         let users = await Users.findAll(
             {
                 where: {
-                    id: { [Op.notIn]: [req.user.id] }
+                    userId: { [Op.notIn]: [message.from] }
                 }
             },
-            { attributes: ['id'] })
+            { attributes: ['userId'] })
         if (users.length > 0) {
             users.forEach(async user => {
                 try {
-                    message.to = user.dataValues.id;
+                    message.to = user.dataValues.userId;
                     const msg = await Messages.create(message);
                     message.id = msg.id
                     message.isRead = msg.isRead
@@ -196,5 +202,6 @@ const sendToAll = async (message) => {
 
 //middleware functions 
 const isAdmin = async (id) => {
-
+    let user = await Users.findByPk(id)
+    return user.dataValues.groupId === 0
 }
