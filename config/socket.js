@@ -1,5 +1,6 @@
 const Users = require('../models/UsersInfo')
 const Messages = require('../models/Message')
+const RawUsers = require('../models/Users')
 
 const Op = require('sequelize').Op
 
@@ -48,6 +49,9 @@ const events = (io) => {
                         break;
                     }
                     case 'student': {
+                        if (isAdmin(message.from) || isCoach(message.from)) {
+
+                        }
                         break
                     }
                     case 'coach': {
@@ -195,14 +199,49 @@ const sendToAll = async (message, io) => {
 
 }
 
+const sendToStudents = async (message, io) => {
+    try {
+        let users = await RawUsers.findAll({
+            where: {
+                groupId: 2
+            }
+        },
+            { attributes: ['id'] })
+        users.forEach(async (user) => {
+            try {
+                message.to = user.dataValues.id
+                const msg = await Messages.create(message);
+                message.id = msg.id
+                message.isRead = msg.isRead
+                //get socket id of connected user
+                const socketId = connectedUsers.get(message.to);
+
+                //format message
+                let msgFormated = await formatMessage(message)
+
+                //broadcast message
+                io.to(socketId).emit('newMessage', msgFormated);
+
+            } catch (error) {
+                console.log(error)
+            }
+        })
+        return true
+
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+}
+
 
 //middleware functions 
 const isAdmin = async (id) => {
-    let user = await Users.findByPk(id)
+    let user = await RawUsers.findByPk(id)
     return user.dataValues.groupId === 0
 }
 
 const isCoach = async (id) => {
-    let user = await Users.findByPk(id)
+    let user = await RawUsers.findByPk(id)
     return user.dataValues.groupId === 1
 }
