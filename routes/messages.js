@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+const Op = require('sequelize').Op
 
 //requiring the messages model
 const Messages = require('../models/Message')
@@ -129,6 +130,24 @@ router.post('/new_message', async (req, res) => {
 
 	// search fot the receiver
 	if (message.to) {
+		switch (message.to) {
+			case 'toAll': {
+				if (req.user.groupId == 0) {
+					await sendToAll(message)
+				}
+				break;
+			}
+			case 'student': {
+				break
+			}
+			case 'coach': {
+				break
+			}
+
+			default: {
+				break;
+			}
+		}
 		try {
 			const user = await Users.findOne({ where: { username: message.to } });
 			if (user) {
@@ -181,7 +200,8 @@ const sendToAll = async (message) => {
 		if (users.length > 0) {
 			users.forEach(async user => {
 				try {
-					message.to = user.dataValues.id;
+					if (message.from == user.dataValues)
+						message.to = user.dataValues.id;
 					await Messages.create(message);
 					console.log('ready to render')
 					res.render('messages', { msg: "message has been sent with success" })
