@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="/courses/add" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm()">
+        <form action="/courses/add" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm();quizsJSON()">
             <div class="row">
                 <div class="col-md-6">
                     <img src="/img/upload-course-cover.png" alt="upload a cover image" 
@@ -55,6 +55,7 @@
                     <ul id="chapters-list2">
                         
                     </ul>
+                    <div class="btn btn-success" onclick="quizsJSON()">add quizs to form</div>
                 </div>
                 <div class="col-md-6">
                     <h2>Basic course information</h2>
@@ -98,6 +99,7 @@
                         </label>
                     </div>
                     <input type="text" name="courseJSON" id="courseJSON" style="display:none">
+                    <input type="hidden" name="quizs" id="quizsJSON">
                     <input class="btn" type="submit" value="Create">
                 </div>
             </div>
@@ -249,7 +251,6 @@
                 <div id="add-question" class="btn" onclick="addQuestion()">
                     Add Question
                 </div>
-                <div class="quiz-data" style="display: none"></div>
                 <div class="done-btn-container">
                     <div class="btn btn-success" onclick="addChapQuiz(this)" >
                         Done

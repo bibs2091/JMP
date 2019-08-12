@@ -246,7 +246,8 @@ function printChaps() {
             <div class="chapter-title">
                 <h6>${chaps[i]}</h6>
             </div>
-            <div class='add-lecture' onclick='showAddQuizModal()'>
+            <div class='add-lecture' onclick='showAddQuizModal(${i})'>
+                    <div class="quiz-data" style="display:none"></div>
                     <ul> <li class="lesson addLesson">
                         <p style="display:block; margin:0 auto; color:#868686;">
                             <i class="fas fa-plus"></i> &nbsp; 
@@ -324,15 +325,19 @@ function deleteQuestion(obj) {
 function resetAddQuizModal() {
     document.getElementById("question-cards").innerHTML = questionCardHTML(1);
 }
+var whereToAddQuizIndex;
 //show add quiz modal
-function showAddQuizModal() {
+function showAddQuizModal(i) {
+    whereToAddQuizIndex = i;
+    resetAddQuizModal();
     showModal("add-quiz-modal");
 }
 //adding chapter quiz data
 function addChapQuiz(obj) {
     //selecting the place where to put data
     var container = obj.parentNode.parentNode;
-    var place = container.getElementsByClassName("quiz-data")[0];
+    var addAreas = document.getElementsByClassName("quiz-data");
+    var place = addAreas[whereToAddQuizIndex];
 
     //selecting the quiz's data
     var cardsContainer = container.getElementsByTagName("div")[0];
@@ -355,6 +360,7 @@ function addChapQuiz(obj) {
         chapQuiz.push(question);
     }
     place.innerHTML = JSON.stringify(chapQuiz);
+    hideModal("add-quiz-modal");
 }
 // saving quiz inputs state
 //the text inputs
@@ -365,4 +371,14 @@ function saveInputState(obj) {
 function saveRadioState(obj) {
     $(obj).attr("checked", true);
 }
-
+// add quizs json to the form
+function quizsJSON() {
+    var quizsElems = document.getElementsByClassName("quiz-data");
+    var quizs = [];
+    for (let i = 0; i < quizsElems.length; i++) {
+        quizs.push(quizsElems[i].innerHTML);
+    }
+    console.log(quizs);
+    let json = JSON.stringify(quizs);
+    document.getElementById("quizsJSON").value = json;
+}
