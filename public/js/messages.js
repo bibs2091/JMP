@@ -19,12 +19,37 @@ $(function () {
         var text = CKEDITOR.instances.text.getData()
         var date = new Date(Date.now());
 
-        var message = {
-            to,
-            text,
-            title,
-            date
+        //split 
+        if (to.search(',') === -1) {
+            //one receiver 
+            var message = {
+                to,
+                text,
+                title,
+                date
+            }
+            sendMessage(message)
+
+        } else {
+            //more than one receiver
+            var receivers = to.split(',')
+            console.log(receivers)
+            receivers.forEach(user => {
+                var message = {
+                    to: user,
+                    text,
+                    title,
+                    date
+                }
+                sendMessage(message)
+            })
         }
+
+
+
+    })
+
+    function sendMessage(message) {
         console.log(message)
         if (message.text != '') {
             //send the message to the server
@@ -33,9 +58,7 @@ $(function () {
 
             $("#text").val('').focus()
         }
-
-    })
-
+    }
 
     //listen to messages 
     socket.on('newMessage', (data) => {
