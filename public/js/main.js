@@ -376,7 +376,7 @@ function quizsJSON() {
     var quizsElems = document.getElementsByClassName("quiz-data");
     var quizs = [];
     for (let i = 0; i < quizsElems.length; i++) {
-        quizs.push(quizsElems[i].innerHTML);
+        quizs.push(JSON.parse(quizsElems[i].innerHTML));
     }
     console.log(quizs);
     let json = JSON.stringify(quizs);
