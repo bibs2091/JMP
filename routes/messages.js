@@ -126,9 +126,6 @@ router.post('/new_message', async (req, res) => {
 	// create the message object
 	let message = req.body;
 	message.from = req.user.id;
-	console.log('message in router :');
-	console.log(message);
-
 
 	// search fot the receiver
 	if (message.to) {
