@@ -177,3 +177,25 @@ router.post('/delete/:id', async (req, res) => {
 })
 
 module.exports = router;
+
+const sendToAll = async (message) => {
+	try {
+		let users = await Users.findAll({ attributes: ['id'] })
+		if (users.length > 0) {
+			users.forEach(async user => {
+				try {
+					message.to = user.dataValues.id;
+					await Messages.create(message);
+					console.log('ready to render')
+					res.render('messages', { msg: "message has been sent with success" })
+
+				} catch (err) {
+					console.log(err);
+				}
+			})
+		}
+	} catch (error) {
+		console.log(error)
+	}
+
+}
