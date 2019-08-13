@@ -60,6 +60,7 @@ module.exports = async (req, res) => {
             console.log(suggestions[j].content);
         }
         questions[n].suggestions = rsugg;
+        questions[n].index = n;
     }
     console.log(questions)
 

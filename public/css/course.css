@@ -471,7 +471,7 @@ body {
   margin-bottom: 12px;
 }
 
-#quiz-next {
+#quiz-next,#quiz-submit {
   position: absolute;
   right: 80px;
   margin-top: 50px;
@@ -483,7 +483,7 @@ body {
   margin-top: 50px;
 }
 
-#quiz-next button{
+#quiz-next button, #quiz-submit button{
     background: #FFD32A;
     border: 1px solid #FFD32A;
     font-weight: bold;
