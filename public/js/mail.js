@@ -1164,5 +1164,14 @@ function convert_date(str) {
 //   $(".date").html( convert_date($(this).text() ) )
 // });
 
-$('.date').each(function(){ $(this).html( convert_date($(this).text() ) ) })
+
+$('.date').each(function () { $(this).html(convert_date($(this).text())) })
+
+//pagination code
+$('#prevPage').click(() => {
+  //code
+})
+$('#nextPage').click(() => {
+  //code
+})
 
