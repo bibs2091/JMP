@@ -91,18 +91,26 @@
 
             <section id="main-content">
                 <style scoped>
+                    body{
+                        background: #F8F8F8;
+                    }
                     #main-content{
                         position: relative;
+                        padding-top: 35px;
+                        background: #F8F8F8;
                     }
-                    hr{
+                    #main-content h5{
                         margin-top: 0;
                     }
                     .question{
                         display: none;
+                        padding: 10px 20px;
+                        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+                        border-radius: 7px;
                     }
                 </style>
 
-                <h5>Question <span id="question-number">1</span> out of {{questions.length}} </h5>
+                <h5>Question <span id="question-number">1</span> out of <span id="quetions-length">{{questions.length}}</span></h5>
                 <ol class="quiz-tracker">
                     @each(question in questions)
                         <li class="step 
@@ -115,12 +123,11 @@
                       
                 <div class="quiz">
                     @each(question in questions)
-                    <div id="question{{question.index +1}}" class="question"
+                    <div id="question{{question.index +1}}" class="question card"
                     @if($loop.first)
                       style="display: block"
                     @endif
                     >
-                        <hr>
                         <h2>Question {{question.index +1}} :</h2>
                         <p>{{question.title}}</p>
                         <div class="form-check">
@@ -139,14 +146,11 @@
                             <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s4">
                             <label class="form-check-label" for="Q{{question.index +1}}s4">{{question.suggestions[3]}}</label>
                         </div>
-                        <a id="quiz-restart" onclick="location.reload()"><button>Restart</button></a>
-                        @if($loop.last)
-                        <a id="quiz-submit" href="#"><button class="btn">Submit</button></a>
-                        @else
-                        <a id="quiz-next" href="#"><button class="btn" onclick="nextQuest({{$loop.index+2}})">Next</button></a>
-                        @endif
                     </div>
                     @endeach
+                    <a id="quiz-restart" onclick="location.reload()"><button>Restart</button></a>
+                    <a id="quiz-submit" href="#" style="display:none;"><button class="btn">Submit</button></a>
+                    <a id="quiz-next" href="#"><button class="btn" onclick="nextQuest(this)" data-step="2">Next</button></a>
                 </div>  
 
                 
@@ -215,7 +219,6 @@
     <!-- main scripts file -->
     <script src="/js/main.js"></script>
     <script src="/js/myScript.js"></script>
-    <script src="/js/quiz.js"></script>
 
 
     <!-- Google Analytics
@@ -226,8 +229,9 @@
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     
-    <script src="/js/Heart animation.js"></script>
     <script src="/js/mdb.min.js"></script>
+    <script src="/js/quiz.js"></script>
+
 
 </body>
 
