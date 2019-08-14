@@ -101,6 +101,7 @@ const events = (io) => {
 
         })
 
+
         //disconnect 
         socket.on('disconnect', () => {
             const userId = socket.request.session.passport
