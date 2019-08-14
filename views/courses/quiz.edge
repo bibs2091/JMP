@@ -9,6 +9,7 @@
 
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
    <!-- importing needed libraries -->
    <link rel="stylesheet" href="/css/normalize.css">
@@ -104,9 +105,10 @@
                     }
                     .question{
                         display: none;
-                        padding: 10px 20px;
+                        padding: 7px 30px;
                         box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
                         border-radius: 7px;
+                        height: 270px;
                     }
                 </style>
 
@@ -148,9 +150,12 @@
                         </div>
                     </div>
                     @endeach
-                    <a id="quiz-restart" onclick="location.reload()"><button>Restart</button></a>
-                    <a id="quiz-submit" href="#" style="display:none;"><button class="btn">Submit</button></a>
-                    <a id="quiz-next" href="#"><button class="btn" onclick="nextQuest(this)" data-step="2">Next</button></a>
+                    <div id="quiz-result" class="question card">
+                        result
+                    </div>
+                    <a id="quiz-restart" class="quiz-btm-btns" onclick="location.reload()"><button>Restart</button></a>
+                    <a id="quiz-submit" class="quiz-btm-btns" style="display:none;" onclick="quizResult()"><button class="btn">Submit</button></a>
+                    <a id="quiz-next" class="quiz-btm-btns"><button class="btn" onclick="nextQuest(this)" data-step="2">Next</button></a>
                 </div>  
 
                 
