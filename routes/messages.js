@@ -143,11 +143,18 @@ router.post('/delete/:id', async (req, res) => {
 
 router.post('/read/:id', async (req, res) => {
 	const id = req.params.id
-	let msg = await Messages.update({ isRead: true }, { returning: true, where: { id } })
-	if (msg[1][0]) {
-		console.log(msg[1][0].dataValues)
-		res.send('msg ' + id + ' marked as read')
+	try {
+		let msg = await Messages.update({ isRead: true }, { returning: true, where: { id } })
+		if (msg[1][0]) {
+			console.log(msg[1][0].dataValues)
+			res.send('msg ' + id + ' marked as read')
+		}
+		res.status(400).send('Bad request')
+	} catch (error) {
+		console.log(error)
+		res.status(500)
 	}
+
 
 })
 
