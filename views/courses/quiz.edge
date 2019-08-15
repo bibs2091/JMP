@@ -127,7 +127,7 @@
                       
                 <div class="quiz">
                     @each(question in questions)
-                    <div id="question{{question.index +1}}" class="question card"
+                    <div id="question{{question.index +1}}" class="question card" question-id="{{question.id}}"
                     @if($loop.first)
                       style="display: block"
                     @endif
@@ -135,19 +135,19 @@
                         <h2>Question {{question.index +1}} :</h2>
                         <p>{{question.title}}</p>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s1">
+                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s1" value="0">
                             <label class="form-check-label" for="Q{{question.index +1}}s1">{{question.suggestions[0]}}</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s2">
+                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s2" value="1">
                             <label class="form-check-label" for="Q{{question.index +1}}s2">{{question.suggestions[1]}}</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s3">
+                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s3" value="2">
                             <label class="form-check-label" for="Q{{question.index +1}}s3">{{question.suggestions[2]}}</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s4">
+                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s4" value="3">
                             <label class="form-check-label" for="Q{{question.index +1}}s4">{{question.suggestions[3]}}</label>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
                         </div>
                     </center>
                     <a id="quiz-restart" class="quiz-btm-btns" onclick="location.reload()"><button>Restart</button></a>
-                    <a id="quiz-submit" class="quiz-btm-btns" style="display:none;" onclick="quizResult()"><button class="btn">Submit</button></a>
+                    <a id="quiz-submit" class="quiz-btm-btns" style="display:none;" onclick="quizResult({{quizId}})"><button class="btn">Submit</button></a>
                     <a id="quiz-next" class="quiz-btm-btns"><button class="btn" onclick="nextQuest(this)" data-step="2">Next</button></a>
                 </div>  
 
@@ -257,7 +257,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- main scripts file -->
     <script src="/js/main.js"></script>
-    <script src="/js/myScript.js"></script>
 
 
     <!-- Google Analytics

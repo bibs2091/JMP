@@ -70,6 +70,7 @@ module.exports = async (req, res) => {
         newProgress,
         courseId,
         questions,
+        quizId: chapId,
         pageTitle: "JMP - Quiz"
     });
 }

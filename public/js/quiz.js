@@ -1,9 +1,7 @@
 //show next step
 var currentQuestion = document.getElementById("question1");
 var numberOfQuestion = $("#quetions-length").html();
-console.log(numberOfQuestion);
 function nextQuest(obj) {
-    console.log(obj);
     step = obj.getAttribute("data-step");
     //updating data-step value
     obj.setAttribute("data-step", parseInt(step) + 1);
@@ -32,6 +30,32 @@ function showQuizResult() {
     $("#question-number").parent().html("Result");
 }
 //calculating and showing the result
-function quizResult() {
-    showQuizResult();
+function quizResult(quizId) {
+    var questions = $(".question");
+    var answers = [];
+    for (let i = 0; i < questions.length - 1; i++) {
+        let answer = {
+            questionId: questions[i].getAttribute("question-id")
+        };
+        //getting the inputs
+        let inputs = questions[i].getElementsByTagName("input");
+        for (let j = 0; j < inputs.length; j++) {
+            if (inputs[j].checked) {
+                answer.answer = inputs[j].value;
+                break;
+            }
+        }
+        answers.push(answer)
+    }
+    $.ajax({
+        url: `/api/quiz/${quizId}/result`,
+        method: 'POST',
+        data: {
+            answers: answers
+        },
+        success: function (result) {
+            console.log(result);
+            showQuizResult();
+        }
+    });
 }
