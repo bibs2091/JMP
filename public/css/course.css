@@ -454,7 +454,7 @@ body {
 .quiz{
   font-family: "Open Sans",sans-serif;
   color: #000;
-  padding: 0 80px;
+  padding: 0 100px;
 }
 .quiz h2{
   font-size: 23px;
@@ -569,4 +569,56 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
 }
 .md-form textarea.md-textarea:focus:not([readonly])+label{
   color: #202020;
+}
+#quiz-result{
+  max-width: 800px;
+  text-align: left;
+}
+#quiz-result h6{
+  margin: 5px;
+  font-size: 26px;
+  font-family: Poppins;
+}
+#quiz-observation{
+  font-family: Poppins;
+}
+#quiz-observation h6{
+  font-weight: 500;
+  font-size: 64px;
+}
+#quiz-progress .progress-bar{
+  background-color: white;
+  width: 300px
+}
+#quiz-progress .progress-bar .bar{
+  background: linear-gradient(88.39deg, #F71111 0%, #FFD32A 50.49%, #1DBF70 99.93%);
+  border-radius: 50px;
+  height: 13px;
+  width: 100%;
+}
+#quiz-progress .percentage{
+  font-size: 40px;
+  color: #BDBDBD;
+  font-family: Poppins;
+}
+#quiz-progress .percentage span{
+  font-size: 45px;
+  color: black;
+}
+.quiz-observation{
+  margin-top: 32px;
+}
+.quiz-observation h6{
+  font-size: 35px !important;
+}
+.quiz-observation p{
+  font-size: 28px !important;
+}
+.arrow-up {
+  margin-left: -4px;
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid black;
 }

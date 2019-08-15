@@ -25,8 +25,13 @@ function nextQuest(obj) {
     }
 }
 //showing the quiz result
-function quizResult() {
+function showQuizResult() {
     $(".question").hide();
     $(".quiz-btm-btns").hide();
     $("#quiz-result").addClass("animated jackInTheBox").show();
+    $("#question-number").parent().html("Result");
+}
+//calculating and showing the result
+function quizResult() {
+    showQuizResult();
 }

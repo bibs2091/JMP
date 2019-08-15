@@ -69,6 +69,7 @@ module.exports = async (req, res) => {
         lastLecture,
         newProgress,
         courseId,
-        questions
+        questions,
+        pageTitle: "JMP - Quiz"
     });
 }

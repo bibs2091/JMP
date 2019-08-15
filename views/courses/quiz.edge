@@ -24,6 +24,8 @@
 
     <!-- main CSS style sheet -->
     <link rel="stylesheet" href="/css/course.css">
+    <!-- Emojis CSS style sheet -->
+    <link rel="stylesheet" href="/css/emojis.css">
 </head>
 
 <body>
@@ -105,10 +107,10 @@
                     }
                     .question{
                         display: none;
-                        padding: 7px 30px;
+                        padding: 25px 40px;
                         box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
                         border-radius: 7px;
-                        height: 270px;
+                        height: 350px;
                     }
                 </style>
 
@@ -150,9 +152,41 @@
                         </div>
                     </div>
                     @endeach
-                    <div id="quiz-result" class="question card">
-                        result
-                    </div>
+                    <center>
+                        <div id="quiz-result" class="question card" >
+                            <h6>Your result is</h6>
+                            <div class="container" style="padding: 30px;">
+                                <div class="row">
+                                    <div class="col-md-6" style="padding: 10px 35px;">
+                                        <div id="quiz-progress">
+                                            <div class="percentage">
+                                                <span>75</span>%
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="bar"></div>
+                                                <div class="triangle" style="padding:1px 0 0 0">
+                                                    <div class="arrow-up"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="quiz-observation">
+                                            <h6>Bad!!,</h6>
+                                            <p>You can do better</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <center id="emoji-place">
+                                            <div class="emoji  emoji--like">
+                                                <div class="emoji__hand">
+                                                    <div class="emoji__thumb"></div>
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
                     <a id="quiz-restart" class="quiz-btm-btns" onclick="location.reload()"><button>Restart</button></a>
                     <a id="quiz-submit" class="quiz-btm-btns" style="display:none;" onclick="quizResult()"><button class="btn">Submit</button></a>
                     <a id="quiz-next" class="quiz-btm-btns"><button class="btn" onclick="nextQuest(this)" data-step="2">Next</button></a>
