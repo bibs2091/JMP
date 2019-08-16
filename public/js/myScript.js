@@ -175,3 +175,8 @@ $('.scroller-left').click(function() {
   	
   	});
 });
+/* ----- */
+$(".message-list li").click(function(){
+  $.post("/messages/read/{msgId}")
+  console.log('moh')
+});

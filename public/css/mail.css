@@ -10,6 +10,7 @@
     width: 98%;
     overflow: hidden;
     margin: 0 auto;
+    background-color: #FFFFFF;
   }
   @media only screen and (max-width: 672px) {
     #messenger-contianer {
