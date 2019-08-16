@@ -1175,3 +1175,9 @@ $('#nextPage').click(() => {
   //code
 })
 
+$(".message-list li").click(function () {
+  // $.post("/messages/read/")
+
+  $(this).toggleClass('unread readed')
+  console.log('moh')
+});

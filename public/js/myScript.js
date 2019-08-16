@@ -3,9 +3,9 @@ var headerProfileAvatar = document.getElementById("avatarWrapper")
 var headerProfileDropdownArrow = document.getElementById("dropdownWrapperArrow");
 var headerProfileDropdown = document.getElementById("dropdownWrapper");
 
-document.addEventListener("click", function(event) {
+document.addEventListener("click", function (event) {
   var headerProfileDropdownClickedWithin = headerProfileDropdown.contains(event.target);
-  
+
   if (!headerProfileDropdownClickedWithin) {
     if (headerProfileDropdown.classList.contains("active")) {
       headerProfileDropdown.classList.remove("active");
@@ -14,7 +14,7 @@ document.addEventListener("click", function(event) {
   }
 });
 
-headerProfileAvatar.addEventListener("click", function(event) {
+headerProfileAvatar.addEventListener("click", function (event) {
   headerProfileDropdown.classList.toggle("active");
   headerProfileDropdownArrow.classList.toggle("active");
   event.stopPropagation();
@@ -66,12 +66,12 @@ $(document).ready(function () {
 
 
 // ----------- add sponsor ------------
-var countSP=0;
-$(document).ready(function(){
-  $("#plus_sponsor").click(function(){
-    countSP=countSP + 1;
-    if (countSP <4){
-    $("#sponsorsToAdd").append(`<div class="add_sponsor">
+var countSP = 0;
+$(document).ready(function () {
+  $("#plus_sponsor").click(function () {
+    countSP = countSP + 1;
+    if (countSP < 4) {
+      $("#sponsorsToAdd").append(`<div class="add_sponsor">
           <div>
             <span>Name</span>
             <input type="text" class="form-control sponsorNameInput"  name="sponsorsName" id="sponsorName" required>
@@ -81,29 +81,31 @@ $(document).ready(function(){
         <input type="file" name="logo" accept="image/*" id="sponsor-logo-input "required> 
           </div>
         </div> `);
-    if (countSP ==2){
-      $("#submit-form-sponsor").css("margin-top","22px")
+      if (countSP == 2) {
+        $("#submit-form-sponsor").css("margin-top", "22px")
+      }
     }
-  }});
+  });
 });
 // ------------ delete sponsor ---------------
-$(document).ready(function(){
-$("#delete_sponsor").click(function(){
-  if (countSP > -1){
-  $("#sponsorsToAdd").children().last().remove();
-  countSP= countSP -1;
-}});
+$(document).ready(function () {
+  $("#delete_sponsor").click(function () {
+    if (countSP > -1) {
+      $("#sponsorsToAdd").children().last().remove();
+      countSP = countSP - 1;
+    }
+  });
 });
 //----------- share -------------
-$( document ).ready(function() {
-	//custom button for homepage
-     $( ".share-btn" ).click(function(e) {
-     	 $('.networks-5').not($(this).next( ".networks-5" )).each(function(){
-         	$(this).removeClass("active");
-    	 });
-     
-            $(this).next( ".networks-5" ).toggleClass( "active" );
-    });   
+$(document).ready(function () {
+  //custom button for homepage
+  $(".share-btn").click(function (e) {
+    $('.networks-5').not($(this).next(".networks-5")).each(function () {
+      $(this).removeClass("active");
+    });
+
+    $(this).next(".networks-5").toggleClass("active");
+  });
 });
 
 //------------- lecture-nav ---------------
@@ -116,67 +118,62 @@ $(".lecture-nav").on("click", function () {
 var hidWidth;
 var scrollBarWidths = 40;
 
-var widthOfList = function(){
+var widthOfList = function () {
   var itemsWidth = 0;
-  $('.list li').each(function(){
+  $('.list li').each(function () {
     var itemWidth = $(this).outerWidth();
-    itemsWidth+=itemWidth;
+    itemsWidth += itemWidth;
   });
   return itemsWidth;
 };
 
-var widthOfHidden = function(){
-  return (($('.wrapper').outerWidth())-widthOfList()-getLeftPosi())-scrollBarWidths;
+var widthOfHidden = function () {
+  return (($('.wrapper').outerWidth()) - widthOfList() - getLeftPosi()) - scrollBarWidths;
 };
 
-var getLeftPosi = function(){
+var getLeftPosi = function () {
   return $('.list').position().left;
 };
 
-var reAdjust = function(){
+var reAdjust = function () {
   if (($('.wrapper').outerWidth()) < widthOfList()) {
     $('.scroller-right').show();
   }
   else {
     $('.scroller-right').hide();
   }
-  
-  if (getLeftPosi()<0) {
+
+  if (getLeftPosi() < 0) {
     $('.scroller-left').show();
   }
   else {
-    $('.item').animate({left:"-="+getLeftPosi()+"px"},'slow');
-  	$('.scroller-left').hide();
+    $('.item').animate({ left: "-=" + getLeftPosi() + "px" }, 'slow');
+    $('.scroller-left').hide();
   }
 }
 
 reAdjust();
 
-$(window).on('resize',function(e){  
-  	reAdjust();
+$(window).on('resize', function (e) {
+  reAdjust();
 });
 
-$('.scroller-right').click(function() {
-  
+$('.scroller-right').click(function () {
+
   $('.scroller-left').fadeIn('slow');
   $('.scroller-right').fadeOut('slow');
-  
-  $('.list').animate({left:"+="+widthOfHidden()+"px"},'slow',function(){
+
+  $('.list').animate({ left: "+=" + widthOfHidden() + "px" }, 'slow', function () {
 
   });
 });
 
-$('.scroller-left').click(function() {
-  
-	$('.scroller-right').fadeIn('slow');
-	$('.scroller-left').fadeOut('slow');
-  
-  	$('.list').animate({left:"-="+getLeftPosi()+"px"},'slow',function(){
-  	
-  	});
-});
-/* ----- */
-$(".message-list li").click(function(){
-  $.post("/messages/read/{msgId}")
-  console.log('moh')
+$('.scroller-left').click(function () {
+
+  $('.scroller-right').fadeIn('slow');
+  $('.scroller-left').fadeOut('slow');
+
+  $('.list').animate({ left: "-=" + getLeftPosi() + "px" }, 'slow', function () {
+
+  });
 });
