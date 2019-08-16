@@ -40,7 +40,8 @@ router.get('/', async (req, res) => {
 				to: message.dataValues.to,
 				title: message.dataValues.title,
 				text: message.dataValues.text,
-				date: message.dataValues.date
+				date: message.dataValues.date,
+				isRead: message.dataValues.isRead ? 'unread' : 'readed'
 			}
 		});
 
