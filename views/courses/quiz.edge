@@ -188,8 +188,12 @@
                         </div>
                     </center>
                     <a id="quiz-restart" class="quiz-btm-btns" onclick="location.reload()"><button>Restart</button></a>
-                    <a id="quiz-submit" class="quiz-btm-btns" style="display:none;" onclick="quizResult({{quizId}})"><button class="btn">Submit</button></a>
+                    @if(questions.length == 1)
+                    <a id="quiz-submit" class="quiz-btm-btns" onclick="quizResult({{quizId}})"><button class="btn">Submit</button></a>                      
+                    @else
+                    <a id="quiz-submit" class="quiz-btm-btns" style="display:none;" onclick="quizResult({{quizId}})"><button class="btn">Submit</button></a>                      
                     <a id="quiz-next" class="quiz-btm-btns"><button class="btn" onclick="nextQuest(this)" data-step="2">Next</button></a>
+                    @endif
                 </div>  
 
                 
