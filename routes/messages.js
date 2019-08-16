@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 		let { page, pageSize } = { page: 1, pageSize: 5 };
 
 		//request
-		let inbox = await Messages.findAll({ where: { to: req.user.id }, ...paginate({ page, pageSize }), order: [['updatedAt', 'DESC']] });
+		let inbox = await Messages.findAll({ where: { to: req.user.id }, ...paginate({ page, pageSize }), order: [['createdAt', 'DESC']] });
 		inbox = inbox.map(message => {
 			return {
 				id: message.dataValues.id,
@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
 				title: message.dataValues.title,
 				text: message.dataValues.text,
 				date: message.dataValues.date,
-				isRead: message.dataValues.isRead ? 'unread' : 'readed'
+				isRead: message.dataValues.isRead == true ? 'readed' : 'unread'
 			}
 		});
 
