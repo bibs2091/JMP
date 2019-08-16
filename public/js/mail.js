@@ -1189,3 +1189,16 @@ $(".message-list li").click(function () {
 
 
 });
+
+ /* fix message content */ 
+ function html_entity_decode(s) {
+    var t=document.createElement('textarea');
+    t.innerHTML = s;
+    var v = t.value;
+    return v;
+  }
+ $(function(){ 
+    var a = $(".message-list li .content").html()
+    $(".message-list li .content").empty();
+    $(".message-list li .content").prepend(html_entity_decode(a));
+ });

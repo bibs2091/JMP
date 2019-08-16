@@ -12,6 +12,12 @@ $(function () {
     // var msg_container = $('.message-container')
 
     //emit message 
+    function html_entity_decode(s) {
+        var t=document.createElement('textarea');
+        t.innerHTML = s;
+        var v = t.value;
+        return v;
+      }
     send_msg.click(() => {
         //get input values
         var to = $("#name").val();
