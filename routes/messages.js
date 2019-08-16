@@ -54,10 +54,15 @@ router.get('/', async (req, res) => {
 
 		}))
 
-
+		// coount unread messages in inbox
+		const unreadMsg = await Messages.findAndCountAll(
+			{
+				where: { isRead: false }
+			})
+		const count = unreadMsg.count
 
 		// console.log(inbox);
-		res.render('inbox', { inbox })
+		res.render('inbox', { inbox, count })
 	} catch (error) {
 		console.log(error)
 	}
