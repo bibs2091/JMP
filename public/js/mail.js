@@ -1176,8 +1176,13 @@ $('#nextPage').click(() => {
 })
 
 $(".message-list li").click(function () {
-  // $.post("/messages/read/")
+  var element = $(this)
+  var id = $(this).attr('id')
+  console.log(id)
+  $.post("/messages/read/" + id, (data, status) => {
+    if (id) {
+      element.toggleClass('unread readed')
+    }
+  })
 
-  $(this).toggleClass('unread readed')
-  console.log('moh')
 });
