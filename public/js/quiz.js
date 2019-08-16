@@ -29,6 +29,38 @@ function showQuizResult() {
     $("#quiz-result").addClass("animated jackInTheBox").show();
     $("#question-number").parent().html("Result");
 }
+//generating emojis HTML
+function emojiHTML(name) {
+    var html;
+    if (name == "like") {
+        html = `<div class="emoji  emoji--like">
+        <div class="emoji__hand">
+            <div class="emoji__thumb"></div>
+        </div>
+      </div>`;
+    } else if (name == "love") {
+        html = `<div class="emoji  emoji--love">
+        <div class="emoji__heart"></div>
+      </div>`;
+    } else if (name == "angry") {
+        html = `<div class="emoji  emoji--angry">
+        <div class="emoji__face">
+          <div class="emoji__eyebrows"></div>
+          <div class="emoji__eyes"></div>
+          <div class="emoji__mouth"></div>
+        </div>
+      </div>`;
+    } else if (name == "sad") {
+        html = `<div class="emoji  emoji--sad">
+        <div class="emoji__face">
+          <div class="emoji__eyebrows"></div>
+          <div class="emoji__eyes"></div>
+          <div class="emoji__mouth"></div>
+        </div>
+      </div>`;
+    }
+    return html;
+}
 //calculating and showing the result
 function quizResult(quizId) {
     var questions = $(".question");
@@ -55,6 +87,11 @@ function quizResult(quizId) {
         },
         success: function (result) {
             console.log(result);
+            $(".percentage span").html(result.percentage);
+            $(".quiz-observation h6").html(result.rate);
+            $(".quiz-observation p").html(result.remark);
+            $("#triangle").css("padding-left", result.percentage + '%');
+            $("#emoji-place").html(emojiHTML(result.emoji))
             showQuizResult();
         }
     });

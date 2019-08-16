@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
     } else if (percentage <= 50) {
         rate = "Not Bad,";
         remark = "Must improve work habits";
-        emoji = "Sad";
+        emoji = "sad";
     } else if (percentage <= 75) {
         rate = "Good job,";
         remark = "You can do better";
