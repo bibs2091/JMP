@@ -96,3 +96,11 @@ function quizResult(quizId) {
         }
     });
 }
+//choose only one option in quiz
+$(".quiz input").on("click", function () {
+    var inputs = $(this).parent().siblings();
+    for (let i = 2; i < inputs.length; i++) {
+        let checkbox = inputs[i].children[0];
+        checkbox.checked = false;
+    }
+})
