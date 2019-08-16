@@ -146,7 +146,7 @@ router.post('/delete/:id', async (req, res) => {
 
 })
 
-router.post('/read/:id', async (req, res) => {
+router.get('/read/:id', async (req, res) => {
 	const id = req.params.id
 	try {
 		let msg = await Messages.update({ isRead: true }, { returning: true, where: { id } })
