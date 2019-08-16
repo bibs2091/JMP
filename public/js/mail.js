@@ -1178,11 +1178,14 @@ $('#nextPage').click(() => {
 $(".message-list li").click(function () {
   var element = $(this)
   var id = $(this).attr('id')
-  console.log(id)
-  $.post("/messages/read/" + id, (data, status) => {
-    if (id) {
-      element.toggleClass('unread readed')
-    }
-  })
+
+  if (element.attr('class') == 'unread') {
+    $.post("/messages/read/" + id, (data, status) => {
+
+      element.addClass('readed').removeClass('unread')
+
+    })
+  }
+
 
 });
