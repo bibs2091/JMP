@@ -82,7 +82,7 @@
     <div class="nano-content">
       <ul class="message-list">
         @each(item in inbox)
-          <li class="unread">
+          <li class="unread" id="{{item.id}}">
             <div class="col-one">
                 <div class="form-check">
                   <input type="checkbox" class="form-check-input" id={{"ck" + item.id}}  >
