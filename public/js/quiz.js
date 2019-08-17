@@ -104,7 +104,7 @@ $(".quiz input").on("click", function () {
     var currentInput = $(this);
     var button = $("#quiz-next").children()[0];
     var submitBtn = $("#quiz-submit").children()[0];
-    console.log(button);
+    console.log($("#quiz-next"));
     button.disabled = false;
     submitBtn.disabled = false;
     if (!currentInput[0].checked) {
