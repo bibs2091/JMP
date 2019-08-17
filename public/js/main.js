@@ -246,9 +246,16 @@ function printChaps() {
             <div class="chapter-title">
                 <h6>${chaps[i]}</h6>
             </div>
-            <div class='add-lecture' onclick='showAddQuizModal(${i})'>
+            <div class='add-lecture' >
                     <div class="quiz-data" style="display:none"></div>
-                    <ul> <li class="lesson addLesson">
+                    <ul> <li class="lecture" style="display:none">
+                    <h5>quiz</h5>
+                    <div class="tools">
+                        <i class="far fa-trash-alt" onclick='deleteQuiz(this)'></i>&nbsp;
+                        <i class="far fa-edit" onclick=""></i>
+                    </div>
+                </li>
+                    <li class="lesson addLesson" onclick='showAddQuizModal(${i})'>
                         <p style="display:block; margin:0 auto; color:#868686;">
                             <i class="fas fa-plus"></i> &nbsp; 
                             Add a quiz
@@ -338,7 +345,11 @@ function addChapQuiz(obj) {
     var container = obj.parentNode.parentNode;
     var addAreas = document.getElementsByClassName("quiz-data");
     var place = addAreas[whereToAddQuizIndex];
-
+    var buffer1 = place.nextElementSibling.children
+    var addBtn = buffer1[1];
+    var quizBtn = buffer1[0];
+    $(addBtn).hide();
+    $(quizBtn).show();
     //selecting the quiz's data
     var cardsContainer = container.getElementsByTagName("div")[0];
     var cards = cardsContainer.children;
@@ -381,4 +392,11 @@ function quizsJSON() {
     console.log(quizs);
     let json = JSON.stringify(quizs);
     document.getElementById("quizsJSON").value = json;
+}
+//delete quiz
+function deleteQuiz(obj) {
+    var buffer = obj.parentNode.parentNode;
+    buffer.parentNode.previousElementSibling.innerHTML = "";
+    $(buffer).hide();
+    $(buffer.nextElementSibling).show();
 }
