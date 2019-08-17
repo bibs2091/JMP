@@ -309,6 +309,46 @@ function questionCardHTML(number) {
     `
     return html;
 }
+function questionCardHTML(number, title, s1, s2, s3, s4) {
+    var html = `
+    <div class="question-card" style="position:relative">
+        <span class="close-category-modal" onclick="deleteQuestion(this)">&times;</span>
+        Question <span class="question-number">${number}</span>
+        <br><br>
+        <div class="container">
+            <input type="text" class="form-group quiz-title-input" 
+            placeholder="Enter title here" onkeyup="saveInputState(this)" value="${title}">                        
+            <div class="suggestions">
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="0" checked>
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="a- option 1" style="width: 95%" value="${s1}">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="1">
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="b- option 2" style="width: 95%" value="${s2}">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="2">
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="c- option 3" style="width: 95%" value="${s3}">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="3">
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="d- option 4" style="width: 95%" value="${s4}">
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+    return html;
+}
 // add a question card
 function addQuestion() {
     var number = document.getElementsByClassName("question-card").length + 1;
