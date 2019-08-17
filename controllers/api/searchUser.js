@@ -9,6 +9,9 @@ module.exports = async (req, res) => {
             where: {
                 username: {
                     [Op.like]: '%' + query + '%'
+                },
+                [Op.and]: {
+                    [Op.not]: { userId: req.user.id }
                 }
             }
         })

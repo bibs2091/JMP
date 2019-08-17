@@ -12,6 +12,12 @@ $(function () {
     // var msg_container = $('.message-container')
 
     //emit message 
+    function html_entity_decode(s) {
+        var t=document.createElement('textarea');
+        t.innerHTML = s;
+        var v = t.value;
+        return v;
+      }
     send_msg.click(() => {
         //get input values
         var to = $("#name").val();
@@ -19,12 +25,37 @@ $(function () {
         var text = CKEDITOR.instances.text.getData()
         var date = new Date(Date.now());
 
-        var message = {
-            to,
-            text,
-            title,
-            date
+        //split 
+        if (to.search(',') === -1) {
+            //one receiver 
+            var message = {
+                to,
+                text,
+                title,
+                date
+            }
+            sendMessage(message)
+
+        } else {
+            //more than one receiver
+            var receivers = to.split(',')
+            console.log(receivers)
+            receivers.forEach(user => {
+                var message = {
+                    to: user,
+                    text,
+                    title,
+                    date
+                }
+                sendMessage(message)
+            })
         }
+
+
+
+    })
+
+    function sendMessage(message) {
         console.log(message)
         if (message.text != '') {
             //send the message to the server
@@ -33,17 +64,15 @@ $(function () {
 
             $("#text").val('').focus()
         }
-
-    })
-
+    }
 
     //listen to messages 
     socket.on('newMessage', (data) => {
-
+        console.log(data.text)
         var newMessage = '<li class="unread">'
         newMessage += '<div class="col-one">'
         newMessage += '<div class="checkbox-wrapper">'
-        newMessage += '<input type="checkbox" id="chk1">'
+        newMessage += '<input type="checkbox" id="chk' + data.id + '">'
         newMessage += '<label for="chk1" class="toggle"></label> '
         newMessage += '</div>'
         newMessage += '<img src=' + data.senderAvatar + ' alt="sender avatar">'

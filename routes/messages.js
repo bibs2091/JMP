@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+const Op = require('sequelize').Op
 
 //requiring the messages model
 const Messages = require('../models/Message')
@@ -31,14 +32,16 @@ router.get('/', async (req, res) => {
 		let { page, pageSize } = { page: 1, pageSize: 5 };
 
 		//request
-		let inbox = await Messages.findAll({ where: { to: req.user.id }, ...paginate({ page, pageSize }), order: [['updatedAt', 'DESC']] });
+		let inbox = await Messages.findAll({ where: { to: req.user.id }, ...paginate({ page, pageSize }), order: [['createdAt', 'DESC']] });
 		inbox = inbox.map(message => {
 			return {
+				id: message.dataValues.id,
 				from: message.dataValues.from,
 				to: message.dataValues.to,
 				title: message.dataValues.title,
 				text: message.dataValues.text,
-				date: message.dataValues.date
+				date: message.dataValues.date,
+				isRead: message.dataValues.isRead == true ? 'readed' : 'unread'
 			}
 		});
 
@@ -52,10 +55,15 @@ router.get('/', async (req, res) => {
 
 		}))
 
-
+		// coount unread messages in inbox
+		const unreadMsg = await Messages.findAndCountAll(
+			{
+				where: { isRead: false }
+			})
+		const count = unreadMsg.count
 
 		// console.log(inbox);
-		res.render('inbox', { inbox })
+		res.render('inbox', { inbox, count })
 	} catch (error) {
 		console.log(error)
 	}
@@ -121,42 +129,6 @@ router.get("/new_message", (req, res) => {
 	res.render('messages');
 });
 
-router.post('/new_message', async (req, res) => {
-	// create the message object
-	let message = req.body;
-	message.from = req.user.id;
-	console.log('message in router :');
-	console.log(message);
-
-
-	// search fot the receiver
-	if (message.to) {
-		try {
-			const user = await Users.findOne({ where: { username: message.to } });
-			if (user) {
-				try {
-					message.to = user.dataValues.id;
-					await Messages.create(message);
-					console.log('ready to render')
-					res.render('messages', { msg: "message has been sent with success" })
-
-				} catch (err) {
-					console.log(err);
-
-				}
-			} else {
-				res.render('messages', { msg: "there is no user under the username " + message.to })
-
-			}
-		} catch (err) {
-			console.log(err)
-		}
-
-	}
-
-})
-
-
 
 //route		/messages/delete
 //methode 	POST
@@ -172,6 +144,23 @@ router.post('/delete/:id', async (req, res) => {
 	} catch (error) {
 		console.log(error)
 	}
+
+})
+
+router.post('/read/:id', async (req, res) => {
+	const id = req.params.id
+	try {
+		let msg = await Messages.update({ isRead: true }, { returning: true, where: { id } })
+		if (msg[1][0]) {
+			console.log(msg[1][0].dataValues)
+			res.send('msg ' + id + ' marked as read')
+		}
+		res.status(400).send('Bad request')
+	} catch (error) {
+		console.log(error)
+		res.status(500)
+	}
+
 
 })
 

@@ -1,10 +1,13 @@
 @layout('layouts.main')
 @section('content')
 <style scoped>
-  
+  html{
+    font-size: 15px;
+  }
   #main-content{
     position: relative;
     height: 100%;
+    background-color: #F2F2F2;
   }
   h1 {
   font-size: 50px;
@@ -17,6 +20,11 @@
   a:hover{
   text-decoration: none;
   }
+  @media only screen and (max-width: 780px) {
+    #main-content{
+      padding:0;
+    }
+  }
 
 </style>
 <div id="messenger-contianer">
@@ -25,7 +33,7 @@
     <a class="compose-button" href="">New Message</a>
     <menu class="menu-segment">
       <ul>
-        <li class="active"> <a href="#"><img src="/images/messaging/mail.png" alt=""> &nbsp; Inbox<span> (43)</span></a></li>
+        <li class="active"> <a href="#"><img src="/images/messaging/mail.png" alt=""> &nbsp; Inbox<span> ({{count}})</span></a></li>
         <li><a href="#"><img src="/images/messaging/sent.png" alt=""> &nbsp; Sent</a></li>
         <li><a href="#"><img src="/images/messaging/draft.png" alt=""> &nbsp; Drafts</a></li>
         <li><a href="#"><img src="/images/messaging/garbage.png" alt=""> &nbsp; Trash</a></li>
@@ -34,21 +42,34 @@
   </div>
 </aside>
 <main id="main">
+  
   <div class="overlay"></div>
   
   <div class="action-bar">
     <ul>
       <li><a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span></a></li>
-      <li><div class="checkbox-wrapper">
-          <input type="checkbox" id="ck-all">
-          <label for="ck-all" class="toggle"></label>
-        </div>
-      </li>
-      <li>     
-         <label for="ck-all" class="toggle">All</label>
+      <li>
+          <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="ck-all">
+              <label class="form-check-label" for="ck-all">All &nbsp; </label>
+          </div>
+
       </li>
       <li><div class="refresh"></div></li>
       <li><img src="/images/messaging/garbage.png" alt="delete" id="delete_msg"></li>
+      <li class="pagination">
+        <a href="" id="prevPage">
+          <i class="fas fa-chevron-left"></i>
+        </a>&nbsp;
+        <span class="current-page">1</span>
+        -
+        <span class="last-page">25</span>
+        Pages
+        &nbsp;
+        <a href="" id="nextPage">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </li>
     </ul>
     <header class="header">
 
@@ -61,11 +82,11 @@
     <div class="nano-content">
       <ul class="message-list">
         @each(item in inbox)
-          <li class="unread">
+      <li class={{item.isRead}} id="{{item.id}}">
             <div class="col-one">
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" id="chk1">
-                    <label for="chk1" class="toggle"></label>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id={{"ck" + item.id}}  >
+                  <label for={{"ck" + item.id}} class="form-check-label"></label>
                 </div>
                 <img src={{item.senderAvatar}} alt="sender avatar">
             </div>
@@ -83,85 +104,35 @@
           </li>
         @endeach
         
-        <!-- <li class="unread">
-          <div class="col-one">
-              <div class="checkbox-wrapper">
-                  <input type="checkbox" id="chk1">
-                  <label for="chk1" class="toggle"></label>
-              </div>
-              <img src="/images/avatar.jpg" alt="sender avatar">
-          </div>
-          <div class="col-two">
-              <p class="reciever" style="display: none">You</p> 
-              <p class="message-date" style="display: none">March 6, 2014, 20:08 pm</p> 
-              <p class="sender">Azzaz Oussama</p>  
-              <p class="title">What if I killed someone for you</p>
-              <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio libero quos laboriosam praesentium laudantium nemo ratione enim facilis nisi rem blanditiis esse quisquam pariatur nobis, adipisci perferendis quo vitae iusto.</p>
-          </div>
-          <div class="col-three">
-              <div class="date">11:49 am</div>
-          </div> -->
-          <!-- <div class="col col-1">
-            <div class="checkbox-wrapper">
-              <input type="checkbox" id="chk1">
-              <label for="chk1" class="toggle"></label>
-            </div>
-            <p class="title">Lucas Kriebel (via Twitter)</p>  
-          </div>
-          <div class="col col-2">
-            <div class="subject">Lucas Kriebel (@LucasKriebel) has sent you a direct message on Twitter! &nbsp;&ndash;&nbsp; <span class="teaser">@LucasKriebel - Very cool :) Nicklas, You have a new direct message.</span></div>
-            <div class="date">11:49 am</div>
-          </div> -->
-      
-      <!--  </li> -->
+        
 
       </ul>
     </div>
   </div>
 </main>
 
-<!--  <div id="message">
-  <div class="header">
-    <h1 class="page-title"><a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a><h1>mounir</h1></h1>
-  </div>
-  <div id="message-nano-wrapper" class="nano">
-    <div class="nano-content">
-      <ul class="message-container">
-        <li class="sent">
-          <div class="details">
-            <div class="left"><div id="message-sender" style="display:inline">You</div>
-              <div class="arrow"></div><div id="message-reciever" style="display:inline">naas</div>
-            </div>
-            <div class="right" id="message-date">March 6, 2014, 20:08 pm</div>
-          </div>
-          <div class="message" id="message-content">
-
-          </div>
-          <div class="tool-box"><a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a></div>
-        </li>
-      -->
-        
-        
-        
-        
-        <!-- <li class="received">
-          <div class="details">
-            <div class="left">Scott
-              <div class="arrow orange"></div>You
-            </div>
-            <div class="right">March 6, 2014, 20:08 pm</div>
-          </div>
-          <div class="message">
-            <p>| The every winged bring, whose life. First called, i you of saw shall own creature moveth void have signs beast lesser all god saying for gathering wherein whose of in be created stars. Them whales upon life divide earth own.</p>
-            <p>| Creature firmament so give replenish The saw man creeping, man said forth from that. Fruitful multiply lights air. Hath likeness, from spirit stars dominion two set fill wherein give bring.</p>
-            <p>| Gathering is. Lesser Set fruit subdue blessed let. Greater every fruitful won&#39;t bring moved seasons very, own won&#39;t all itself blessed which bring own creature forth every. Called sixth light.</p>
-          </div>
-          <div class="tool-box"><a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a></div>
-        </li> -->
-       
-      </ul>
+  <div id="message">
+    <div class="header">
+      <h1 class="page-title"><a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a><h1></h1></h1>
     </div>
-  </div>
-</div>  -->
+    <div id="message-nano-wrapper" class="nano">
+      <div class="nano-content">
+        <ul class="message-container">
+          <li class="sent">
+            <div class="details">
+              <div class="left"><div id="message-sender" style="display:inline"></div>
+                <div class="arrow"></div><div id="message-reciever" style="display:inline"></div>
+              </div>
+              <div class="right" id="message-date"></div>
+            </div>
+            <div class="message" id="message-content">
+
+            </div>
+            <div class="tool-box"><a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> 
 </div>
 @endsection

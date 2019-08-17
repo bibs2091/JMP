@@ -1152,8 +1152,53 @@ $(function () {
 
 });
 
+//format the messageDate
+function convert_date(str) {
+  var date = new Date(str),
+    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [date.getFullYear(), mnth, day].join("-");
+}
+
+// $(document).ready(function () {
+//   $(".date").html( convert_date($(this).text() ) )
+// });
 
 
+$('.date').each(function () { $(this).html(convert_date($(this).text())) })
+
+//pagination code
+$('#prevPage').click(() => {
+  //code
+})
+$('#nextPage').click(() => {
+  //code
+})
+
+$(".message-list li").click(function () {
+  var element = $(this)
+  var id = $(this).attr('id')
+
+  if (element.attr('class') == 'unread') {
+    $.post("/messages/read/" + id, (data, status) => {
+
+      element.addClass('readed').removeClass('unread')
+
+    })
+  }
 
 
+});
 
+ /* fix message content */ 
+ function html_entity_decode(s) {
+    var t=document.createElement('textarea');
+    t.innerHTML = s;
+    var v = t.value;
+    return v;
+  }
+ $(function(){ 
+    var a = $(".message-list li .content").html()
+    $(".message-list li .content").empty();
+    $(".message-list li .content").prepend(html_entity_decode(a));
+ });
