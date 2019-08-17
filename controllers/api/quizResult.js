@@ -1,6 +1,7 @@
 const Quizs = require("../../models/Quizs");
 const Progress = require("../../models/Progress");
 const Lectures = require("../../models/Lectures");
+const axios = require('axios');
 
 module.exports = async (req, res) => {
     var courseId = req.body.courseId;
@@ -41,16 +42,26 @@ module.exports = async (req, res) => {
             courseId
         }
     });
+    //getting last lecture
+    var lastLect = await axios.get(`http://localhost:3000/api/course/${courseId}/lastLecture`);
+    lastLect = lastLect.data.id;
     //updating the user progress
     let lect = await Lectures.findByPk(progress.lastLecture + 1);
-    if (lect && lect.type == "quiz")
+    if (lect && lect.type == "quiz") {
         await Progress.update({ lastLecture: progress.lastLecture + 1 }, {
             where: {
                 userId,
                 courseId
             }
         });
-
+        if (progress.lastLecture + 1 == lastLect)
+            await Progress.update({ state: "finished" }, {
+                where: {
+                    userId,
+                    courseId
+                }
+            });
+    }
     res.send({
         percentage,
         rate,
