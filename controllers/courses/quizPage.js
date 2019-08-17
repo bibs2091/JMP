@@ -57,13 +57,10 @@ module.exports = async (req, res) => {
         let rsugg = []
         for (let j = 0; j < 4; j++) {
             rsugg.push(suggestions[j].content);
-            console.log(suggestions[j].content);
         }
         questions[n].suggestions = rsugg;
         questions[n].index = n;
     }
-    console.log(questions)
-
     res.render("courses.quiz", {
         chaptersList,
         lastLecture,

@@ -62,7 +62,7 @@ function emojiHTML(name) {
     return html;
 }
 //calculating and showing the result
-function quizResult(quizId) {
+function quizResult(quizId, courseId) {
     var questions = $(".question");
     var answers = [];
     for (let i = 0; i < questions.length - 1; i++) {
@@ -83,10 +83,10 @@ function quizResult(quizId) {
         url: `/api/quiz/${quizId}/result`,
         method: 'POST',
         data: {
-            answers: answers
+            answers: answers,
+            courseId: courseId
         },
         success: function (result) {
-            console.log(result);
             $(".percentage span").html(result.percentage);
             $(".quiz-observation h6").html(result.rate);
             $(".quiz-observation p").html(result.remark);

@@ -64,13 +64,14 @@ module.exports = async (req, res) => {
                 currentLecture.chapter = chapterId;
                 let lecture = await Lectures.create(currentLecture);
             }
+            await Lectures.create({ type: "quiz", title: "quiz", chapter: chapterId });
         }
         await Courses.update({
             pdfs,
         }, { where: { id: courseId } });
         res.redirect("/courses/" + courseId);
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.redirect("/error");
     }
 }
