@@ -19,6 +19,8 @@ function nextQuest(obj) {
     //displaying submit button for the last question
     if (step == numberOfQuestion) {
         $("#quiz-next").hide();
+        let btn = $("#quiz-submit").children()[0];
+        btn.disabled = true;
         $("#quiz-submit").show();
     }
 }
@@ -99,6 +101,16 @@ function quizResult(quizId, courseId) {
 //choose only one option in quiz
 $(".quiz input").on("click", function () {
     var inputs = $(this).parent().siblings();
+    var currentInput = $(this);
+    var button = $("#quiz-next").children()[0];
+    var submitBtn = $("#quiz-submit").children()[0];
+    console.log(button);
+    button.disabled = false;
+    submitBtn.disabled = false;
+    if (!currentInput[0].checked) {
+        button.disabled = true;
+        submitBtn.disabled = true;
+    }
     for (let i = 2; i < inputs.length; i++) {
         let checkbox = inputs[i].children[0];
         checkbox.checked = false;
