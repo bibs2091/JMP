@@ -181,11 +181,11 @@ function tagsJSON() {
 }
 // add courses JSON to the add course form
 function addJSONtoForm() {
+    quizsJSON();
     let json = courseJSON();
     var tags = tagsJSON();
     document.getElementById("courseJSON").value = json;
     document.getElementById("tag-typer").value = tags;
-    console.log(json);
 }
 //Delete Course by id
 function deleteCourse(id) {
