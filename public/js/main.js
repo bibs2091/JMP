@@ -252,7 +252,7 @@ function printChaps() {
                     <h5>quiz</h5>
                     <div class="tools">
                         <i class="far fa-trash-alt" onclick='deleteQuiz(this)'></i>&nbsp;
-                        <i class="far fa-edit" onclick=""></i>
+                        <i class="far fa-edit" onclick="updateQuiz(${i})"></i>
                     </div>
                 </li>
                     <li class="lesson addLesson" onclick='showAddQuizModal(${i})'>
@@ -309,7 +309,7 @@ function questionCardHTML(number) {
     `
     return html;
 }
-function questionCardHTML(number, title, s1, s2, s3, s4) {
+function questionCardHTMLo(number, title, s, answer) {
     var html = `
     <div class="question-card" style="position:relative">
         <span class="close-category-modal" onclick="deleteQuestion(this)">&times;</span>
@@ -321,27 +321,40 @@ function questionCardHTML(number, title, s1, s2, s3, s4) {
             <div class="suggestions">
                 <div class="suggestion">
                     <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
-                    style="margin-right: 7px;" value="0" checked>
+                    style="margin-right: 7px;" value="0" `;
+    if (answer == 0)
+        html += "checked";
+    html += `>
                     <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
-                        placeholder="a- option 1" style="width: 95%" value="${s1}">
+                        placeholder="a- option 1" style="width: 95%" value="${s[0]}">
                 </div>
                 <div class="suggestion">
                     <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
-                    style="margin-right: 7px;" value="1">
+                    style="margin-right: 7px;" value="1"`;
+    if (answer == 1)
+        html += "checked";
+    html +=
+        `>
                     <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
-                        placeholder="b- option 2" style="width: 95%" value="${s2}">
+                        placeholder="b- option 2" style="width: 95%" value="${s[1]}">
                 </div>
                 <div class="suggestion">
                     <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
-                    style="margin-right: 7px;" value="2">
+                    style="margin-right: 7px;" value="2"`;
+    if (answer == 2)
+        html += "checked";
+    html += `>
                     <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
-                        placeholder="c- option 3" style="width: 95%" value="${s3}">
+                        placeholder="c- option 3" style="width: 95%" value="${s[2]}">
                 </div>
                 <div class="suggestion">
                     <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
-                    style="margin-right: 7px;" value="3">
+                    style="margin-right: 7px;" value="3"`;
+    if (answer == 3)
+        html += "checked";
+    html += `>
                     <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
-                        placeholder="d- option 4" style="width: 95%" value="${s4}">
+                        placeholder="d- option 4" style="width: 95%" value="${s[3]}">
                 </div>
             </div>
         </div>
@@ -439,4 +452,21 @@ function deleteQuiz(obj) {
     buffer.parentNode.previousElementSibling.innerHTML = "";
     $(buffer).hide();
     $(buffer.nextElementSibling).show();
+}
+//update quiz
+function updateQuiz(i) {
+    whereToAddQuizIndex = i;
+    //getting the add quiz modal
+    var cardsArea = document.getElementById("question-cards");
+    cardsArea.innerHTML = "";
+    //getting the data
+    var data = document.getElementsByClassName("quiz-data")[i].innerHTML;
+    data = JSON.parse(data);
+    for (let i = 0; i < data.length; i++) {
+        let title = data[i].title;
+        let suggs = data[i].suggestions;
+        let answer = data[i].anwser;
+        cardsArea.innerHTML += questionCardHTMLo(i + 1, title, suggs, answer);
+    }
+    showModal("add-quiz-modal");
 }
