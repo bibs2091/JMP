@@ -1595,10 +1595,11 @@ input[name="lastName"] {
   opacity: 0.8;
   transition: 0.3s;
 }
-#chapters-list {
+#chapters-list, #chapters-list2{
   margin-top: 60px;
 }
-#chapters-list li ul li,
+
+#chapters-list li ul li,#chapters-list2 li ul li,
 .chapter-title {
   height: 62px;
   text-align: center;
@@ -1612,6 +1613,10 @@ input[name="lastName"] {
 .chapter-title h6 {
   display: table-cell;
   vertical-align: middle;
+}
+#chapters-list2,
+#chapters-list2 ul {
+  list-style: none;
 }
 #chapters-list,
 #chapters-list ul {
@@ -1761,7 +1766,7 @@ input[name="lastName"] {
   .add-course-container {
     padding: 0;
   }
-  #chapters-list {
+  #chapters-list, #chapters-list2{
     margin-top: 30px;
   }
 }
@@ -2806,3 +2811,100 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
     }
   } 
 
+/* add quiz modal */
+#add-quiz-modal .info-container{
+  padding: 0;
+  border-radius: 9px;
+  background: #F8F8F8;
+}
+#add-quiz-modal .header{
+  background: linear-gradient(272.67deg, rgba(255, 189, 61, 0.9) 0%, rgba(255, 211, 42, 0.9) 99.62%);
+  height: 50px;
+  border-radius: 9px 9px 0px 0px;
+  font-family: Poppins;
+  font-size: 20px;
+  display: table;
+  width: 100%;
+  padding: 0 20px;
+}
+#add-quiz-modal .header > *{
+  display: table-cell;
+  vertical-align: middle;
+}
+#add-quiz-modal .header span{
+  text-align: right;
+}
+#add-quiz-modal .header .close-category-modal{
+  position: static;
+}
+#add-quiz-modal .info-container .info{
+  padding: 30px 30px 10px 30px;
+  background: #F8F8F8;
+  border-radius: 0px 0px 9px 9px;
+  overflow-x: scroll;
+}
+#add-quiz-modal .info h6{
+  font-family: Poppins;
+  font-size: 16px;
+  line-height: 25px;
+}
+#add-quiz-modal .info p{
+  font-size: 13px;
+  line-height: 15px;
+  color: #202020;
+}
+.question-card{
+  margin-top: 20px;
+  background-color: white;
+  padding: 15px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+  font-size: 15px;
+  border-radius: 5px;
+}
+.quiz-title-input{
+  width: 100%;
+  padding: 5px 9px;
+  border-width: 0 0 2px;
+}
+.suggestions{
+  margin-top: 10px;
+}
+.suggestion{
+  display: table;
+  width: 100%;
+  margin-bottom: 14px;
+}
+.suggestion > *{
+  display: table-cell;
+}
+.done-btn-container{
+  width: 100%;
+  position: relative;
+  height: 40px;
+  margin: 19px 0 4px 0;
+}
+.done-btn-container div{
+  height: 100%;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  width: 150px;
+  background: #1DBF70;
+  border-radius: 4px;
+}
+#add-question{
+  margin-top: 20px;
+  padding: 10px;
+  background: white;
+  width: 100%;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  color: #828282;
+  cursor: pointer;
+  transition: .4s;
+}
+#add-question:hover{
+  background-color: #828282;
+  color: white;
+
+}

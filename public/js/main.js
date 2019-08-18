@@ -181,11 +181,11 @@ function tagsJSON() {
 }
 // add courses JSON to the add course form
 function addJSONtoForm() {
+    quizsJSON();
     let json = courseJSON();
     var tags = tagsJSON();
     document.getElementById("courseJSON").value = json;
     document.getElementById("tag-typer").value = tags;
-    console.log(json);
 }
 //Delete Course by id
 function deleteCourse(id) {
@@ -224,3 +224,249 @@ function wishlist(id) {
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
+
+//get all chapters
+function getChaps() {
+    var container = document.getElementById("chapters-list");
+    var elems = container.getElementsByClassName("chapter-title");
+    var chaps = [];
+    for (let i = 0; i < elems.length; i++) {
+        chaps.push(elems[i].getElementsByTagName("h6")[0].innerHTML);
+    }
+    return chaps;
+}
+//print chapters
+function printChaps() {
+    var chaps = getChaps();
+    var container = document.getElementById("chapters-list2");
+    container.innerHTML = "";
+    for (let i = 0; i < chaps.length; i++) {
+        var HTML = `
+        <li>
+            <div class="chapter-title">
+                <h6>${chaps[i]}</h6>
+            </div>
+            <div class='add-lecture' >
+                    <div class="quiz-data" style="display:none"></div>
+                    <ul> <li class="lecture" style="display:none">
+                    <h5>quiz</h5>
+                    <div class="tools">
+                        <i class="far fa-trash-alt" onclick='deleteQuiz(this)'></i>&nbsp;
+                        <i class="far fa-edit" onclick="updateQuiz(${i})"></i>
+                    </div>
+                </li>
+                    <li class="lesson addLesson" onclick='showAddQuizModal(${i})'>
+                        <p style="display:block; margin:0 auto; color:#868686;">
+                            <i class="fas fa-plus"></i> &nbsp; 
+                            Add a quiz
+                        </p></li>
+                    </ul>
+            </div>
+
+        </li>
+        `;
+        container.innerHTML += HTML;
+    }
+}
+//generate question card html
+function questionCardHTML(number) {
+    var html = `
+    <div class="question-card" style="position:relative">
+        <span class="close-category-modal" onclick="deleteQuestion(this)">&times;</span>
+        Question <span class="question-number">${number}</span>
+        <br><br>
+        <div class="container">
+            <input type="text" class="form-group quiz-title-input" 
+            placeholder="Enter title here" onkeyup="saveInputState(this)">                        
+            <div class="suggestions">
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="0" checked>
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="a- option 1" style="width: 95%">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="1">
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="b- option 2" style="width: 95%">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="2">
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="c- option 3" style="width: 95%">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="3">
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="d- option 4" style="width: 95%">
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+    return html;
+}
+function questionCardHTMLo(number, title, s, answer) {
+    var html = `
+    <div class="question-card" style="position:relative">
+        <span class="close-category-modal" onclick="deleteQuestion(this)">&times;</span>
+        Question <span class="question-number">${number}</span>
+        <br><br>
+        <div class="container">
+            <input type="text" class="form-group quiz-title-input" 
+            placeholder="Enter title here" onkeyup="saveInputState(this)" value="${title}">                        
+            <div class="suggestions">
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="0" `;
+    if (answer == 0)
+        html += "checked";
+    html += `>
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="a- option 1" style="width: 95%" value="${s[0]}">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="1"`;
+    if (answer == 1)
+        html += "checked";
+    html +=
+        `>
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="b- option 2" style="width: 95%" value="${s[1]}">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="2"`;
+    if (answer == 2)
+        html += "checked";
+    html += `>
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="c- option 3" style="width: 95%" value="${s[2]}">
+                </div>
+                <div class="suggestion">
+                    <input type="radio" name="answer${number} " onchange="saveRadioState(this)"
+                    style="margin-right: 7px;" value="3"`;
+    if (answer == 3)
+        html += "checked";
+    html += `>
+                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                        placeholder="d- option 4" style="width: 95%" value="${s[3]}">
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+    return html;
+}
+// add a question card
+function addQuestion() {
+    var number = document.getElementsByClassName("question-card").length + 1;
+    document.getElementById("question-cards").innerHTML += questionCardHTML(number);
+}
+//reset question numbers
+function resetQuestionNumbers() {
+    var cards = document.getElementsByClassName("question-card");
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].getElementsByClassName("question-number")[0].innerHTML = i + 1;
+    }
+}
+//delete a question card 
+function deleteQuestion(obj) {
+    if (document.getElementsByClassName("question-card").length > 1) {
+        obj.parentNode.remove();
+        resetQuestionNumbers();
+    }
+}
+//reset the add quiz modal
+function resetAddQuizModal() {
+    document.getElementById("question-cards").innerHTML = questionCardHTML(1);
+}
+var whereToAddQuizIndex;
+//show add quiz modal
+function showAddQuizModal(i) {
+    whereToAddQuizIndex = i;
+    resetAddQuizModal();
+    showModal("add-quiz-modal");
+}
+//adding chapter quiz data
+function addChapQuiz(obj) {
+    //selecting the place where to put data
+    var container = obj.parentNode.parentNode;
+    var addAreas = document.getElementsByClassName("quiz-data");
+    var place = addAreas[whereToAddQuizIndex];
+    var buffer1 = place.nextElementSibling.children
+    var addBtn = buffer1[1];
+    var quizBtn = buffer1[0];
+    $(addBtn).hide();
+    $(quizBtn).show();
+    //selecting the quiz's data
+    var cardsContainer = container.getElementsByTagName("div")[0];
+    var cards = cardsContainer.children;
+    var chapQuiz = [];
+
+    for (let i = 0; i < cards.length; i++) {
+        let inputs = cards[i].getElementsByTagName("input");
+        let answer;
+        for (let i = 1; i < inputs.length; i += 2) {
+            if (inputs[i].checked) {
+                answer = inputs[i].value;
+            }
+        }
+        let question = {
+            title: inputs[0].value,
+            answer: answer,
+            suggestions: [inputs[2].value, inputs[4].value, inputs[6].value, inputs[8].value]
+        }
+        chapQuiz.push(question);
+    }
+    place.innerHTML = JSON.stringify(chapQuiz);
+    hideModal("add-quiz-modal");
+}
+// saving quiz inputs state
+//the text inputs
+function saveInputState(obj) {
+    $(obj).attr("value", $(obj).val());
+}
+//the radio inputs
+function saveRadioState(obj) {
+    $(obj).attr("checked", true);
+}
+// add quizs json to the form
+function quizsJSON() {
+    var quizsElems = document.getElementsByClassName("quiz-data");
+    var quizs = [];
+    for (let i = 0; i < quizsElems.length; i++) {
+        quizs.push(JSON.parse(quizsElems[i].innerHTML));
+    }
+    console.log(quizs);
+    let json = JSON.stringify(quizs);
+    document.getElementById("quizsJSON").value = json;
+}
+//delete quiz
+function deleteQuiz(obj) {
+    var buffer = obj.parentNode.parentNode;
+    buffer.parentNode.previousElementSibling.innerHTML = "";
+    $(buffer).hide();
+    $(buffer.nextElementSibling).show();
+}
+//update quiz
+function updateQuiz(i) {
+    whereToAddQuizIndex = i;
+    //getting the add quiz modal
+    var cardsArea = document.getElementById("question-cards");
+    cardsArea.innerHTML = "";
+    //getting the data
+    var data = document.getElementsByClassName("quiz-data")[i].innerHTML;
+    data = JSON.parse(data);
+    for (let i = 0; i < data.length; i++) {
+        let title = data[i].title;
+        let suggs = data[i].suggestions;
+        let answer = data[i].anwser;
+        cardsArea.innerHTML += questionCardHTMLo(i + 1, title, suggs, answer);
+    }
+    showModal("add-quiz-modal");
+}

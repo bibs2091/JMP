@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="/courses/add" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm()">
+        <form action="/courses/add" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm();">
             <div class="row">
                 <div class="col-md-6">
                     <img src="/img/upload-course-cover.png" alt="upload a cover image" 
@@ -49,6 +49,12 @@
                                     </p></li>
                                 </ul>
                     </div>
+                    <div class="btn btn-success" onclick="printChaps()">
+                        quiz step
+                    </div>
+                    <ul id="chapters-list2">
+                        
+                    </ul>
                 </div>
                 <div class="col-md-6">
                     <h2>Basic course information</h2>
@@ -92,6 +98,7 @@
                         </label>
                     </div>
                     <input type="text" name="courseJSON" id="courseJSON" style="display:none">
+                    <input type="hidden" name="quizs" id="quizsJSON">
                     <input class="btn" type="submit" value="Create">
                 </div>
             </div>
@@ -191,6 +198,63 @@
             </div>
             <div style="display:table; width: 100%; margin-top: 15px;">
                 <button type="submit" class="btn submit-form" onclick="editLecture(this.parentNode)">Update</button>
+            </div>
+        </div>
+    </div>
+    <div class="add-category-modal" id="add-quiz-modal">
+        <div class="info-container">
+            <div class="header">
+                <h6>Add Quiz</h6> 
+                <span class="close-category-modal" onclick="hideModal('add-quiz-modal')">&times;</span>
+            </div>    
+            <div class="info">
+                <h6>Add questions for the quiz</h6>
+                <p>Enter 4 options , don’t forget to check the right answers :</p>
+                <div id="question-cards">
+                    <div class="question-card" style="position:relative">
+                        <span class="close-category-modal" onclick="deleteQuestion(this)">&times;</span>
+                        Question <span class="question-number">1</span> 
+                        <br><br>
+                        <div class="container">
+                            <input type="text" class="form-group quiz-title-input" onkeyup="saveInputState(this)" 
+                            placeholder="Enter title here">                        
+                            <div class="suggestions">
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;" value="0" checked onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="a- option 1" style="width: 95%" >
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer" 
+                                    style="margin-right: 7px;" value="1" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="b- option 2" style="width: 95%">
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;" value="2" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="c- option 3" style="width: 95%">
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;" value="3" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="d- option 4" style="width: 95%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="add-question" class="btn" onclick="addQuestion()">
+                    Add Question
+                </div>
+                <div class="done-btn-container">
+                    <div class="btn btn-success" onclick="addChapQuiz(this)" >
+                        Done
+                    </div>
+                </div>
             </div>
         </div>
     </div>
