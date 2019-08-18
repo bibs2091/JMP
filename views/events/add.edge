@@ -113,4 +113,47 @@ body{
     </div>
   </div> 
 </div>
+<div class="add-category-modal add-event-modal" id="add-schedule-modal" style="display:block">
+    <div class="info-container">
+        <div class="header">
+            <h6>Schedule</h6> 
+            <span class="close-category-modal" onclick="hideModal('add-schedule-modal')">&times;</span>
+        </div>    
+        <div class="info">
+            <div id="schedule-cards">
+                <div class="question-card" style="position:relative">
+                    <span class="close-category-modal" onclick="deleteSchedule(this)">&times;</span>
+                    Item <span class="shedule-number">1</span> 
+                    <br><br>
+                    <div class="md-form form-md">
+                      <input type="text" placeholder="Describe this item in the Schedule" class="form-control form-control-lg">
+                      <label>Item name</label>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                          <div class="md-form form-md">
+                            <input type="text" placeholder="Select a date" class="form-control form-control-lg datepicker">
+                            <label>Start day</label>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="md-form form-md">
+                            <input type="text" placeholder="Select a date" class="form-control form-control-lg timepicker">
+                            <label>Start time</label>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div id="add-question" class="btn" onclick="addSchedule()">
+                Add an Item
+            </div>
+            <div class="done-btn-container">
+                <div class="btn btn-success" onclick="" >
+                    Done
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
