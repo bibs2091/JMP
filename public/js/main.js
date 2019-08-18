@@ -474,3 +474,37 @@ function updateQuiz(i) {
 function showAddSchedModal() {
     showModal("add-schedule-modal");
 }
+//generating schedule item card html
+function scheduleCardHTML(number) {
+    let html = `
+    <div class="schedule-card" style="position:relative">
+        <span class="close-category-modal" onclick="deleteSchedule(this)">&times;</span>
+        Item <span class="shedule-number">${number}</span> 
+        <br><br>
+        <div class="md-form form-md">
+            <input type="text" placeholder="Describe this item in the Schedule" class="form-control form-control-lg">
+            <label class="active">Item name</label>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="md-form form-md">
+                <input type="text" placeholder="Select a date" class="form-control form-control-lg datepicker">
+                <label class="active">Start day</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="md-form form-md">
+                <input type="text" placeholder="Select a date" class="form-control form-control-lg timepicker">
+                <label class="active">Start time</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+    return html;
+}
+//add schedule item card
+function addScheduleCard() {
+    var number = document.getElementsByClassName("schedule-card").length + 1;
+    document.getElementById("schedule-cards").innerHTML += scheduleCardHTML(number);
+}

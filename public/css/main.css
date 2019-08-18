@@ -3024,7 +3024,7 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
   line-height: 15px;
   color: #202020;
 }
-.question-card{
+.question-card, .schedule-card, .sponsor-card{
   margin-top: 20px;
   background-color: white;
   padding: 15px;
