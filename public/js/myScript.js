@@ -96,6 +96,19 @@ $(document).ready(function () {
     }
   });
 });
+//---------------progress step (event) -------------
+$('.steps').on('click', '.step--active', function () {
+  $(this).removeClass('step--incomplete').addClass('step--complete');
+  $(this).removeClass('step--active').addClass('step--inactive');
+  $(this).next().removeClass('step--inactive').addClass('step--active');
+});
+
+$('.steps').on('click', '.step--complete', function () {
+  $(this).removeClass('step--complete').addClass('step--incomplete');
+  $(this).removeClass('step--inactive').addClass('step--active');
+  $(this).nextAll().removeClass('step--complete').addClass('step--incomplete');
+  $(this).nextAll().removeClass('step--active').addClass('step--inactive')
+})
 //----------- share -------------
 $(document).ready(function () {
   //custom button for homepage
@@ -177,3 +190,23 @@ $('.scroller-left').click(function () {
 
   });
 });
+
+// ------------ next in event page ---------- //
+function nextStep(currentDiv, currentStepNumber, nextDiv, nextStepNumber) {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  $('#' + currentDiv).hide();
+  console.log('#' + nextDiv)
+  $('#' + nextDiv).show();
+  $(".step:nth-child(" + currentStepNumber + ")").removeClass("step--incomplete step--active")
+  $(".step:nth-child(" + currentStepNumber + ")").addClass("step--complete step--inactive")
+  $(".step:nth-child(" + nextStepNumber + ")").removeClass("step--incomplete step--inactive")
+  $(".step:nth-child(" + nextStepNumber + ")").addClass("step--incomplete step--active")
+}
+
+//-----------------------------//
+
+$('.datepicker').pickadate();
+$('.timepicker').pickatime({
+  twelvehour: false,
+});
+

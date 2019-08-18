@@ -1,57 +1,116 @@
 @layout('layouts.coach')
 
 @section('content')
-<form method="POST" action="/events/add" class="add-event-container" enctype="multipart/form-data">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7">
-        <img src="/img/upload-course-cover.png" alt="upload a cover image" 
+<style scoped>
+body{
+  background: #F6F6F6;
+}
+.timepicker{
+  z-index:1200 !important;
+}
+</style>
+<ul class="steps">
+  <li class="step step--incomplete step--active">
+    <span class="step__label">Basic  information</span>
+    <span class="step__icon"><span class="inner-circle"></span></span></li>
+   <li class="step step--incomplete step--inactive">
+     <span class="step__icon"><span class="inner-circle"></span></span>
+     <span class="step__label">Timing  and location</span></li>
+   <li class="step step--incomplete step--inactive">
+     <span class="step__icon"><span class="inner-circle"></span></span>
+     <span class="step__label">Planing and sponsors</span></li>
+</ul>
+<div id="addEvent-info">
+  <div id="BasicInformation-addEvent">
+    <h2>Basic Information</h2>
+    <hr>
+    <img src="/img/upload-course-cover.png" alt="upload a cover image" 
                           id="upload-event-cover" onclick="triggerInput('course-cover-input')">
-        <input type="file" name="cover" accept="image/*" id="course-cover-input" 
-                          style="display:none" onchange="loadImage(event,'upload-event-cover')" required>
-      </div>
-      <div class="col-md-5">
-        <h2 style="font-size:22px;">Event information</h2>
-        <hr>
-        <div class="form-group">
-            <label for="event-title" class="customized-label">Event title</label>
-            <input type="text" class="form-control" name="name" id="event-title" required>
-        </div>
-        <div class="form-group">
-            <label for="event-description" class="customized-label">Event description</label>
-            <p style="font-size: 11px;margin-bottom:7px;">
-                In your Event description, we recommend providing information about the content of the Event and how students will benefit from that content.
-            </p>
-            <textarea name="description" id="event-description" rows="4" class="form-control" required></textarea>
-        </div>
-      </div>
+    <input type="file" name="cover" accept="image/*" id="course-cover-input" 
+    style="display:none" onchange="loadImage(event,'upload-event-cover')" required>
+    <div class="md-form form-md">
+      <input type="text" placeholder="event title" id="Event-title" class="form-control form-control-lg">
+      <label for="Event-title">Event title</label>
     </div>
+    <div class="md-form">
+      <textarea id="Event-decription"  placeholder="In your Event description, we recommend providing information abou the content of the course and how students will benefit from that content." class="form-control md-textarea" length="120" rows="3"></textarea>
+      <label for="Event-decription">Event decription</label>
+    </div>
+    <button class="btn event-btn" onclick="nextStep('BasicInformation-addEvent', 1, 'timingLocation', 2)">Next</button>
   </div>
-  <hr>
-  <div class="container">
+
+
+  <!-- timing and location -->
+  <div id="timingLocation">
+    <h2>Timing and location</h2>
+    <hr>
     <div class="row">
-      <div class="col-md-7">
-        <h3>Details</h3>
-        <div class="form-group">
-          <label for="event-date" class="customized-label"><i class="far fa-calendar"></i>&nbsp; Date</label>
-          <input type="date" class="form-control" name="date" id="event-date" required>
+      <div class="col-6">
+        <div class="md-form">
+          <input type="text" placeholder="pick a date" id="EventStartingdate" class="form-control datepicker">
+          <label for="EventStartingdate">Event Starting Date</label>
         </div>
-        <div class="form-group">
-          <label for="event-time" class="customized-label"><i class="fas fa-clock"></i>&nbsp; Time</label>
-          <input type="time" class="form-control" name="time" id="event-time" required>
-        </div>
-        <div class="form-group">
-          <label for="event-location" class="customized-label"><i class="fas fa-map-marker-alt"></i>&nbsp; Location</label>
-          <textarea name="place" id="event-location" rows="4" class="form-control" required></textarea>
-        </div>
+        <div class="md-form">
+            <input type="text"  placeholder="pick a date" id="EventEndingdate" class="form-control datepicker">
+            <label for="EventEndingdate">Event Ending Date</label>
+          </div>
       </div>
-      <div class="col-md-5" id="sponsorsToAdd">
-        <h3>Sponsors
-          <i class="fas fa-plus"  title="add sponsor" id="plus_sponsor"></i>
-          <i class="far fa-trash-alt" id="delete_sponsor"></i></h3>
+      <div class="col-6">
+          <div class="md-form">
+              <input type="text" placeholder="pick a time" id="EventStartingTime" class="form-control timepicker">
+              <label for="EventStartingTime">Event Starting Time</label>
+            </div>
+        <div class="md-form">
+          <input type="text" placeholder="pick a time"id="EventEndingTime" class="form-control timepicker">
+          <label for="EventEndingTime">Event Ending Time</label>
+        </div>
       </div>
     </div>
-    <input type="submit" value="Add event" class="btn btn-success" id="submit-form-sponsor">
+    <!-- the map -->
+    <div id="mapDiv"> 
+        <label>Event Location</label>
+        <div id="map"></div>
+    </div>
+    <button class="btn event-btn" onclick="nextStep('timingLocation', 2, 'PlaningAndSponsors', 3)">Next</button>
+
   </div>
-</form>
+  <div id="PlaningAndSponsors">
+    <h2>Planing and Sponsors</h2>
+    <hr>
+    <div class="form-group md-form">
+        <label class="customized-label">Tags</label>
+        <p style="font-size: 11px;margin-bottom:7px;">
+            In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
+        </p>
+        <label style="width:100%" for="tag-typer">
+                <div id="tags">
+                    <input id="tag-typer" type="text" name="tags" placeholder="Add a tag..."/>
+                </div>
+        </label>
+    </div>
+    <div>
+      <style scoped>
+        label{
+          font-family: Poppins;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 31px;
+        }
+      </style>
+      <div class="form-group" style="margin-top: 80px">
+        <label for="add-schedule">Schedule</label>
+        <button id="add-schedule" class="btn-add" onclick="showAddSchedModal()">
+          <i class="fa fa-plus"></i> Add Schedule
+        </button>
+      </div>
+      <div class="form-group" style="margin-top: 50px">
+        <label for="add-sponsor">Sponsors</label>
+        <button id="add-sponsor" class="btn-add" onclick="showAddSponsorModal()">
+          <i class="fa fa-plus"></i> Add Sponsor
+        </button>
+      </div>
+      <button class="btn event-btn" style="color:#FFF;background: #1DBF70;">Save</button>
+    </div>
+  </div> 
+</div>
 @endsection

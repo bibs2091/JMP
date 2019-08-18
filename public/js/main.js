@@ -470,3 +470,7 @@ function updateQuiz(i) {
     }
     showModal("add-quiz-modal");
 }
+//add schedule modal
+function showAddSchedModal() {
+    showModal("add-schedule-modal");
+}

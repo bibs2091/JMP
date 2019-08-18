@@ -14,7 +14,8 @@ module.exports = async(req, res) => {
 		event.dataValues.date = event.dataValues.date.getFullYear()  + '-' + ('0'+(event.dataValues.date.getMonth()+1)).slice(-2) + '-' + ('0'+event.dataValues.date.getUTCDate()).slice(-2);
 		res.render('events.modifie',{
 			event,
-			sponsors
+			sponsors,
+			pageTitle: "update event"
 		})
 	} catch(err ) {
 		console.log(err);

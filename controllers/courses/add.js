@@ -3,7 +3,7 @@ const Chapters = require("../../models/Chapters");
 const Lectures = require("../../models/Lectures");
 const Quizs = require("../../models/Quizs");
 const Suggestions = require("../../models/Suggestions");
-// const videoInfo = require("youtube-info");
+
 
 module.exports = async (req, res) => {
     try {
