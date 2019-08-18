@@ -60,7 +60,6 @@ body{
               <input type="text" placeholder="pick a time" id="EventStartingTime" class="form-control timepicker">
               <label for="EventStartingTime">Event Starting Time</label>
             </div>
-        
         <div class="md-form">
           <input type="text" placeholder="pick a time"id="EventEndingTime" class="form-control timepicker">
           <label for="EventEndingTime">Event Ending Time</label>
@@ -89,7 +88,29 @@ body{
                 </div>
         </label>
     </div>
+    <div>
+      <style scoped>
+        label{
+          font-family: Poppins;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 31px;
+        }
+      </style>
+      <div class="form-group" style="margin-top: 80px">
+        <label for="add-schedule">Schedule</label>
+        <button id="add-schedule" class="btn-add" onclick="showAddSchedModal()">
+          <i class="fa fa-plus"></i> Add Schedule
+        </button>
+      </div>
+      <div class="form-group" style="margin-top: 50px">
+        <label for="add-sponsor">Sponsors</label>
+        <button id="add-sponsor" class="btn-add" onclick="showAddSponsorModal()">
+          <i class="fa fa-plus"></i> Add Sponsor
+        </button>
+      </div>
+      <button class="btn event-btn" style="color:#FFF;background: #1DBF70;">Save</button>
+    </div>
   </div> 
-  
 </div>
 @endsection

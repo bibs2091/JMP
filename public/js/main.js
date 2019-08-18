@@ -224,3 +224,7 @@ function wishlist(id) {
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
+//add schedule modal
+function showAddSchedModal() {
+    showModal("add-schedule-modal");
+}

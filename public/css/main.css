@@ -2418,3 +2418,14 @@ visibility: hidden;
 #catalog-content{
   padding: 35px;
 }
+/* add event */
+.btn-add{
+  margin-left: 30px;
+  background: #F5F6F7;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 180px;
+  height: 40px;
+  color: #404347;
+}

@@ -1,7 +1,7 @@
 const Courses = require("../../models/Courses");
 const Chapters = require("../../models/Chapters");
 const Lectures = require("../../models/Lectures");
-const videoInfo = require("youtube-info");
+//const videoInfo = require("youtube-info");
 
 module.exports = async (req, res) => {
     let courseDATA = req.body;
@@ -35,9 +35,9 @@ module.exports = async (req, res) => {
             if (currentLecture.type == "PDF") {
                 pdfs++;
             } else {
-                var videoID = currentLecture.link.split("v=")[1];
-                var vidInfo = await videoInfo(videoID);
-                duration += vidInfo.duration;
+                // var videoID = currentLecture.link.split("v=")[1];
+                // var vidInfo = await videoInfo(videoID);
+                // duration += vidInfo.duration;
             }
             currentLecture.chapter = chapterId;
             let lecture = await Lectures.create(currentLecture);
