@@ -479,7 +479,7 @@ function scheduleCardHTML(number) {
     let html = `
     <div class="schedule-card" style="position:relative">
         <span class="close-category-modal" onclick="deleteSchedule(this)">&times;</span>
-        Item <span class="shedule-number">${number}</span> 
+        Item <span class="schedule-number">${number}</span> 
         <br><br>
         <div class="md-form form-md">
             <input type="text" placeholder="Describe this item in the Schedule" class="form-control form-control-lg">
@@ -507,4 +507,18 @@ function scheduleCardHTML(number) {
 function addScheduleCard() {
     var number = document.getElementsByClassName("schedule-card").length + 1;
     document.getElementById("schedule-cards").innerHTML += scheduleCardHTML(number);
+}
+//delete schedule card 
+function deleteSchedule(obj) {
+    if (document.getElementsByClassName("schedule-card").length > 1) {
+        obj.parentNode.remove();
+        resetScheduleNumbers();
+    }
+}
+//reset schedule numbers
+function resetScheduleNumbers() {
+    var cards = document.getElementsByClassName("schedule-card");
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].getElementsByClassName("schedule-number")[0].innerHTML = i + 1;
+    }
 }
