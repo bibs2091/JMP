@@ -3064,7 +3064,7 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
   border-radius: 4px;
 }
 #add-question{
-  margin-top: 20px;
+  margin: 20px 0 0 0;
   padding: 10px;
   background: white;
   width: 100%;
