@@ -21,7 +21,7 @@
               <input type="checkbox" class="form-check-input" id="{{report.id}}">
               <label class="form-check-label" for="report1"></label>
           </div>
-          <div>
+          <div onclick="getDetails({{report.id}})">
             <p class="report_title">{{report.indictedType}} {{report.indictedId}} has been reported for {{report.type}}</p>
             <p class="report_detailB">{{report.reportDetails}}</p>
           </div>

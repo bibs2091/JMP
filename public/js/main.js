@@ -220,6 +220,9 @@ function deleteReport(id) {
         }
     });
 }
+function getDetails(id) {
+     location.replace("/report/details/"+id);
+}
 //get current user
 function getCurrentUser() {
     $.ajax({
