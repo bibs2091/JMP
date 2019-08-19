@@ -105,7 +105,7 @@ body{
       </div>
       <div class="form-group" style="margin-top: 50px">
         <label for="add-sponsor">Sponsors</label>
-        <button id="add-sponsor" class="btn-add" onclick="showAddSponsorModal()">
+        <button id="add-sponsor" class="btn-add" onclick="showModal('add-sponsor-modal')">
           <i class="fa fa-plus"></i> Add Sponsor
         </button>
       </div>
@@ -114,7 +114,7 @@ body{
   </div> 
   <input type="hidden" name="scheduleJSON" id="scheduleJSON-input">
 </form>
-<div class="add-category-modal add-event-modal" id="add-schedule-modal" style="display:block">
+<div class="add-category-modal add-event-modal" id="add-schedule-modal">
     <div class="info-container">
         <div class="header">
             <h6>Schedule</h6> 
@@ -154,6 +154,42 @@ body{
             </div>
             <div class="done-btn-container">
                 <div class="btn btn-success" onclick="saveSchedule()" >
+                    Done
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="add-category-modal add-event-modal" id="add-sponsor-modal" style="display:block">
+    <div class="info-container">
+        <div class="header">
+            <h6>Schedule</h6> 
+            <span class="close-category-modal" onclick="hideModal('add-schedule-modal')">&times;</span>
+        </div>    
+        <div class="info">
+            <div id="sponsor-cards">
+                <div class="sponsor-card" style="position:relative">
+                    <span class="close-category-modal" onclick="deleteSchedule(this)">&times;</span>
+                    Sponsor <span class="sponsor-number">1</span> 
+                    <br><br>
+                    <div class="md-form form-md">
+                      <input type="text" placeholder="The name of the sponsor" 
+                      onkeyup="saveInputState(this)" class="form-control form-control-lg">
+                      <label>Sponsor name</label>
+                    </div>
+                    <div class="md-form form-md">
+                      <input type="text" placeholder="Image" 
+                      onkeyup="saveInputState(this)" class="form-control form-control-lg">
+                      <label>Image</label>
+                    </div>
+
+                </div>
+            </div>
+            <div id="add-question" class="btn" onclick="addSponsorCard()">
+                Add an Item
+            </div>
+            <div class="done-btn-container">
+                <div class="btn btn-success" onclick="saveSponsors()" >
                     Done
                 </div>
             </div>

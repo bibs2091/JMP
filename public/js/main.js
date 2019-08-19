@@ -538,4 +538,22 @@ function saveSchedule() {
         });
     }
     $("#scheduleJSON-input").val(JSON.stringify(schedule));
+    hideModal('add-schedule-modal');
+}
+//add sponsor item card
+function addSponsorCard() {
+    var number = document.getElementsByClassName("sponsor-card").length + 1;
+    document.getElementById("sponsor-cards").innerHTML += sponsorCardHTML(number);
+}
+//reset sponsor numbers
+function resetSponsorNumbers() {
+    var cards = document.getElementsByClassName("sponsor-card");
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].getElementsByClassName("sponsor-number")[0].innerHTML = i + 1;
+    }
+}
+//generating sponsor card html
+function sponsorCardHTML(number) {
+    let html = ``;
+    return html;
 }
