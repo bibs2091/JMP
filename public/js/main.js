@@ -482,19 +482,22 @@ function scheduleCardHTML(number) {
         Item <span class="schedule-number">${number}</span> 
         <br><br>
         <div class="md-form form-md">
-            <input type="text" placeholder="Describe this item in the Schedule" class="form-control form-control-lg">
+            <input type="text" placeholder="Describe this item in the Schedule" 
+            onkeyup="saveInputState(this)" class="form-control form-control-lg">
             <label class="active">Item name</label>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="md-form form-md">
-                <input type="text" placeholder="Select a date" class="form-control form-control-lg datepicker">
+                <input type="text" placeholder="Select a date" 
+                onkeyup="saveInputState(this)" class="form-control form-control-lg datepicker">
                 <label class="active">Start day</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="md-form form-md">
-                <input type="text" placeholder="Select a date" class="form-control form-control-lg timepicker">
+                <input type="text" placeholder="Select a date" 
+                onkeyup="saveInputState(this)" class="form-control form-control-lg timepicker">
                 <label class="active">Start time</label>
                 </div>
             </div>
