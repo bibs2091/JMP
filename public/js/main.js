@@ -554,6 +554,50 @@ function resetSponsorNumbers() {
 }
 //generating sponsor card html
 function sponsorCardHTML(number) {
-    let html = ``;
+    let html = `<div class="sponsor-card" style="position:relative">
+    <span class="close-category-modal" onclick="deleteSponsor(this)">&times;</span>
+    Sponsor <span class="sponsor-number">${number}</span> 
+    <br><br>
+    <div class="md-form form-md">
+      <input type="text" placeholder="The name of the sponsor" 
+      onkeyup="saveInputState(this)" class="form-control form-control-lg">
+      <label class="active">Sponsor name</label>
+    </div>
+    <div class="md-form">
+      <div class="file-field">
+        <a class="btn-floating mt-0 float-left">
+          <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d)">
+            <path d="M30.8384 9.21571C30.4855 7.11886 29.4473 5.20522 27.8593 3.75303C26.095 2.13798 23.8014 1.24902 21.4127 1.24902C19.5669 1.24902 17.7687 1.77833 16.2283 2.77586C14.9457 3.60374 13.8803 4.72342 13.1271 6.03989C12.8014 5.97882 12.4621 5.94489 12.1228 5.94489C9.23874 5.94489 6.89081 8.29282 6.89081 11.1768C6.89081 11.5501 6.93152 11.9097 6.99938 12.2626C5.13325 13.6198 4 15.8049 4 18.1324C4 20.0121 4.69895 21.8375 5.97471 23.283C7.28439 24.7623 9.01481 25.6377 10.8606 25.7395C10.8809 25.7395 10.8945 25.7395 10.9149 25.7395H16.7508C17.2597 25.7395 17.6669 25.3323 17.6669 24.8234C17.6669 24.3144 17.2597 23.9073 16.7508 23.9073H10.942C8.16656 23.7376 5.8322 21.0979 5.8322 18.1256C5.8322 16.2052 6.86366 14.4137 8.52622 13.4433C8.91302 13.2194 9.07588 12.7512 8.92659 12.3305C8.79087 11.964 8.72301 11.5772 8.72301 11.1633C8.72301 9.29036 10.2498 7.76352 12.1228 7.76352C12.5231 7.76352 12.9167 7.83138 13.2832 7.9671C13.731 8.12996 14.2264 7.92638 14.43 7.49887C15.699 4.80485 18.4405 3.06765 21.4195 3.06765C25.4232 3.06765 28.7279 6.06704 29.108 10.0436C29.1487 10.4575 29.4608 10.79 29.868 10.8579C32.8877 11.3736 35.1678 14.1627 35.1678 17.3453C35.1678 20.7179 32.5145 23.6494 29.2437 23.9005H24.2424C23.7335 23.9005 23.3263 24.3076 23.3263 24.8166C23.3263 25.3255 23.7335 25.7327 24.2424 25.7327H29.2776C29.298 25.7327 29.3183 25.7327 29.3455 25.7327C31.4152 25.5834 33.3492 24.6334 34.7878 23.0454C36.2196 21.4711 37 19.4489 37 17.3453C36.9932 13.5384 34.3942 10.1522 30.8384 9.21571Z" fill="#333333"/>
+            <path d="M26.0003 19.0015C26.3599 18.6419 26.3599 18.0651 26.0003 17.7054L21.1483 12.8535C20.9787 12.6838 20.7412 12.582 20.5037 12.582C20.2661 12.582 20.0286 12.677 19.859 12.8535L15.007 17.7054C14.6474 18.0651 14.6474 18.6419 15.007 19.0015C15.1835 19.178 15.421 19.273 15.6517 19.273C15.8824 19.273 16.1199 19.1847 16.2964 19.0015L19.5876 15.7103V30.8362C19.5876 31.3451 19.9947 31.7523 20.5037 31.7523C21.0126 31.7523 21.4198 31.3451 21.4198 30.8362V15.7103L24.7109 19.0015C25.0638 19.3612 25.6406 19.3612 26.0003 19.0015Z" fill="#333333"/>
+            </g>
+            <defs>
+            <filter id="filter0_d" x="0" y="0" width="41" height="41" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+            <feOffset dy="4"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+            </filter>
+            </defs>
+            </svg>
+            
+          <input type="file" accept="images/*" name="sponsorImage">
+        </a>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Upload your file">
+        </div>
+      </div>
+    </div>
+</div>`;
     return html;
+}
+//delete sponsor card
+function deleteSponsor(obj) {
+    if (document.getElementsByClassName("sponsor-card").length > 1) {
+        obj.parentNode.remove();
+        resetSponsorNumbers();
+    }
 }

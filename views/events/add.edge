@@ -164,12 +164,12 @@ body{
     <div class="info-container">
         <div class="header">
             <h6>Schedule</h6> 
-            <span class="close-category-modal" onclick="hideModal('add-schedule-modal')">&times;</span>
+            <span class="close-category-modal" onclick="hideModal('add-sponsor-modal')">&times;</span>
         </div>    
         <div class="info">
             <div id="sponsor-cards">
                 <div class="sponsor-card" style="position:relative">
-                    <span class="close-category-modal" onclick="deleteSchedule(this)">&times;</span>
+                    <span class="close-category-modal" onclick="deleteSponsor(this)">&times;</span>
                     Sponsor <span class="sponsor-number">1</span> 
                     <br><br>
                     <div class="md-form form-md">
@@ -198,14 +198,13 @@ body{
                             </defs>
                             </svg>
                             
-                          <input type="file">
+                          <input type="file" accept="images/*" name="sponsorImage">
                         </a>
                         <div class="file-path-wrapper">
                           <input class="file-path validate" type="text" placeholder="Upload your file">
                         </div>
                       </div>
                     </div>
-
                 </div>
             </div>
             <div id="add-question" class="btn" onclick="addSponsorCard()">
