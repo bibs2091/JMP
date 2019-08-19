@@ -4,10 +4,13 @@
 <style scoped>
 body{
   background: #F6F6F6;
+  overflow-x: hidden;
+
 }
 .timepicker{
   z-index:1200 !important;
 }
+
 </style>
 <ul class="steps">
   <li class="step step--incomplete step--active">
@@ -20,7 +23,7 @@ body{
      <span class="step__icon"><span class="inner-circle"></span></span>
      <span class="step__label">Planing and sponsors</span></li>
 </ul>
-<form id="addEvent-info">
+<form id="addEvent-info" method="POST" action="/events/add" enctype="multipart/form-data">
   <div id="BasicInformation-addEvent">
     <h2>Basic Information</h2>
     <hr>
@@ -109,7 +112,8 @@ body{
           <i class="fa fa-plus"></i> Add Sponsor
         </button>
       </div>
-      <input class="btn event-btn" style="color:#FFF;background: #1DBF70;" type="submit" value="Save">
+      <button class="btn event-btn" style="color:#FFF;background: #1DBF70;" 
+      onclick="this.parentNode.parentNode.parentNode.submit()">Save</button>
     </div>
   </div> 
   <input type="hidden" name="scheduleJSON" id="scheduleJSON-input">
