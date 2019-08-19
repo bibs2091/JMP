@@ -20,7 +20,7 @@ body{
      <span class="step__icon"><span class="inner-circle"></span></span>
      <span class="step__label">Planing and sponsors</span></li>
 </ul>
-<div id="addEvent-info">
+<form id="addEvent-info">
   <div id="BasicInformation-addEvent">
     <h2>Basic Information</h2>
     <hr>
@@ -109,10 +109,11 @@ body{
           <i class="fa fa-plus"></i> Add Sponsor
         </button>
       </div>
-      <button class="btn event-btn" style="color:#FFF;background: #1DBF70;">Save</button>
+      <input class="btn event-btn" style="color:#FFF;background: #1DBF70;" type="submit" value="Save">
     </div>
   </div> 
-</div>
+  <input type="hidden" name="scheduleJSON" id="scheduleJSON-input">
+</form>
 <div class="add-category-modal add-event-modal" id="add-schedule-modal" style="display:block">
     <div class="info-container">
         <div class="header">
@@ -149,7 +150,7 @@ body{
                 Add an Item
             </div>
             <div class="done-btn-container">
-                <div class="btn btn-success" onclick="" >
+                <div class="btn btn-success" onclick="saveSchedule()" >
                     Done
                 </div>
             </div>

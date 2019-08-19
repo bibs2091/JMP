@@ -522,3 +522,17 @@ function resetScheduleNumbers() {
         cards[i].getElementsByClassName("schedule-number")[0].innerHTML = i + 1;
     }
 }
+//saving schedule as json
+function saveSchedule() {
+    var cards = document.getElementsByClassName("schedule-card");
+    var schedule = [];
+    for (let i = 0; i < cards.length; i++) {
+        var inputs = cards[i].getElementsByTagName("input");
+        schedule.push({
+            name: inputs[0].value,
+            startDate: inputs[1].value,
+            startTime: inputs[2].value,
+        });
+    }
+    $("#scheduleJSON-input").val(JSON.stringify(schedule));
+}
