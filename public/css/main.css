@@ -3140,3 +3140,12 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
 .add-event-modal input{
   font-size: 16px;
 }
+.sponsor-card .md-form .file-field a{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background: linear-gradient(140.66deg, #FFD200 1.45%, rgb(221, 184, 19) 100%);
+}
+.sponsor-card .md-form .file-field a svg{
+  margin-top: 6px;
+}
