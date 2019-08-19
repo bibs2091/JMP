@@ -601,3 +601,14 @@ function deleteSponsor(obj) {
         resetSponsorNumbers();
     }
 }
+//saving sponsors names as json
+function saveSponsors() {
+    var cards = document.getElementsByClassName("sponsor-card");
+    var sponsors = [];
+    for (let i = 0; i < cards.length; i++) {
+        var inputs = cards[i].getElementsByTagName("input");
+        sponsors.push(inputs[0].value);
+    }
+    $("#sponsorsJSON-input").val(JSON.stringify(sponsors));
+    hideModal('add-sponsor-modal');
+}
