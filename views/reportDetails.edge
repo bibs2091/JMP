@@ -30,9 +30,14 @@
            
             <div class="col-md-6">
                 <h3>Reported</h3>
+                @if(reported.username)
                 <img src={{reported.avatar}} alt="avatar" id="report-pic">
                 <h6>{{reported.firstName + " " + reported.lastName}}</h6>
                 <h4>{{reported.username}}</h4>
+                @else
+                <img src={{reported.cover}} alt="avatar" id="report-pic">
+                <h6>{{reported.title}}</h6>
+                @endif
               </div>
       </div>       
       <div id="report_details_info">      
@@ -58,9 +63,12 @@
     <!-- actions to take -->
     <h1 style="margin-top:20px;">Action to take</h1>  
     <div id="Actions_report" class="row">
+      @if(report.indectedType=="User")
       <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
-      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Notify a user</p><img src="/img/reports/Notify.png" alt=""></div></div>
+      @else
       <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
+      @endif
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Notify a user</p><img src="/img/reports/Notify.png" alt=""></div></div>
       <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Delete the report</p><img src="/img/reports/DeleteR.png" alt=""></div></div>
     </div>  
   </div>
