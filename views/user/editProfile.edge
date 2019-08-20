@@ -126,9 +126,13 @@
                   </div>
                 </br>
                 <div class="md-form">
-                  <textarea id="form7" class="md-textarea form-control" rows="3">
-                    {{userInfo.bio ||''}}
-                  </textarea>
+                  @if(userInfo.bio == null)
+                    <textarea id="form7" class="md-textarea form-control" rows="3" placeholder="Write something about you"></textarea>                    
+                  @else
+                  <textarea id="form7" class="md-textarea form-control" rows="3" >
+                     {{userInfo.bio}}
+                  </textarea>  
+                  @endif
                   <label for="form7">Bio</label>
                 </div>
                 <div class="pull-right">
