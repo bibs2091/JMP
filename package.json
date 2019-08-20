@@ -29,7 +29,7 @@
 		"pg-hstore": "^2.3.2",
 		"raccoon": "^0.2.8",
 		"redis": "^2.8.0",
-		"sequelize": "^5.12.3",
+		"sequelize": "^5.15.1",
 		"socket.io": "^2.2.0",
 		"web-push": "^3.3.5"
 	},
