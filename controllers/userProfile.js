@@ -23,13 +23,11 @@ module.exports = async (req, res) => {
 				skills,
 				facebook,
 				twitter,
-				instagram,
 				github,
 				linkedin,
 			} = dataValues;
 			// format the social media links
 			facebook = facebook || "";
-			instagram = instagram || "";
 			twitter = twitter || "";
 			linkedin = linkedin || "";
 			github = github || "";
@@ -65,7 +63,6 @@ module.exports = async (req, res) => {
 				skills,
 				facebook,
 				twitter,
-				instagram,
 				github,
 				linkedin,
 				repos,
