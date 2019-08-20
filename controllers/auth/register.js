@@ -103,7 +103,7 @@ module.exports = async (req, res) => {
 							" You now registred and can login"
 						);
 						//mba3da nriglouha
-						res.redirect("/");
+						res.render("auth.after_register");
 					}
 				});
 			});

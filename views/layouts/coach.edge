@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{pageTitle}}</title>
+    <meta name="description" content="Junior makers program website">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/favicon.png">
+
+   <!-- importing needed libraries -->
+   <link rel="stylesheet" href="/css/mdb.min.css">
+   <link rel="stylesheet" href="/css/normalize.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css'>
+
+
+   {{--  importing fonts  --}}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Poppins|Ubuntu" rel="stylesheet">
+
+    <!-- main CSS style sheet -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <div class="s-layout">
+        <!-- Sidebar -->
+        <div class="s-layout__sidebar">
+          <a class="s-sidebar__trigger" href="#">
+             <i class="fa fa-bars"></i>
+          </a>
+        
+          <nav class="s-sidebar__nav">
+            <a href="/" id="s-sidebar__nav-logo">
+                <img src="/favicon.png" class="s-sidebar-logo">
+            </a>
+            <ul>
+                <li>
+                    <a class="s-sidebar__nav-link" href="/coach/home">
+                        <i class="icon-home"></i><em>Home</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" href="/coach/mycourses">
+                        <i class="icon-courses"></i><em>My courses</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" href="/coach/myevents">
+                        <i class="icon-events"></i><em>My Events</em>
+                    </a>
+                </li>
+            </ul>
+          </nav>
+        </div>
+        
+        <!-- Content -->
+        <main class="s-layout__content">
+            <nav id="navbar">
+                <div id="container">
+                    <h1>{{pageName}}</h1>
+                    <div id="tocenter">
+                        <div id="search">     
+                                <input type="search" placeholder="What would you like to learn" />
+                                <i class="fas fa-search"></i>
+                        </div>
+                        <i class="fas fa-search" id="search_responsive"></i>
+                        <span class="icon-Message_notification" data-toggle="tooltip" title="Your messages"></span>
+                        <span class="icon-bell" data-toggle="tooltip" title="Your Notifications"></span>
+
+                        <div class='header-right'>
+                            <div class='avatar-wrapper' id='avatarWrapper'>
+                            <img alt='Profile Photo' class='avatar-photo' src='{{currentUser.info.avatar}}'
+                            data-toggle="tooltip" data-placement="left" title="Profile and Settings">
+                            <svg class='avatar-dropdown-arrow' height='24' id='dropdownWrapperArrow' viewbox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'>
+                                <title>Dropdown Arrow</title>
+                                <path d='M12 14.5c-.2 0-.3-.1-.5-.2l-3.8-3.6c-.2-.2-.2-.4-.2-.5 0-.1 0-.3.2-.5.3-.3.7-.3 1 0l3.3 3.1 3.3-3.1c.2-.2.5-.2.8-.1.3.1.4.4.4.6 0 .2-.1.4-.2.5l-3.8 3.6c-.1.1-.3.2-.5.2z'></path>
+                            </svg>
+                            </div>
+                            <div class='dropdown-wrapper' id='dropdownWrapper' style='width: 250px'>
+                            <div class='dropdown-profile-details'>
+                                <img alt='Profile Photo' src='{{currentUser.info.avatar}}'
+                                data-toggle="tooltip" title="Profile Picture">
+                                <div>
+                                    <h5>{{currentUser.info.firstName}}&nbsp;{{currentUser.info.lastName}}</h5>
+                                    <h6><span>@</span>{{currentUser.info.username}}</h6>
+                                    
+                                        <a href="/profile/user/{{currentUser.id}}">View profile</a>
+                                </div>
+
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class='dropdown-links'>
+                                <a href='/user/editprofile'><i class="fa fa-gear"></i> &nbsp;&nbsp;Settings</a>
+                                <a href="/help"><i class="fa fa-info-circle"></i> &nbsp;&nbsp;Help</a>
+                                <a href='/auth/logout'><i class="fa fa-power-off"></i> &nbsp;&nbsp;Sign out</a>
+
+                            </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </nav> 
+            <section id="main-content">
+                @!section('content') 
+            </section>
+             
+        </main>
+    </div>
+    
+    <!-- needed scripts -->
+    <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+    <!-- scripts for geolocalization in events pages -->
+    @if(pageTitle == "add event" || pageTitle == "event page"||pageTitle == "update event")
+    <script src="/js/map.js"></script>  
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5VYQdCzdTBT5k-60TjBNHRRkSwgMM1Pk&callback=initMap">
+    </script>
+    @endif
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="/js/mdb.min.js"></script>
+
+    <!-- main scripts file -->
+    <script src="/js/main.js"></script>
+    
+    <script src="/js/myScript.js"></script>
+    
+
+    <!-- Google Analytics
+    UA-XXXXX-Y to be replaced with our site's ID. -->
+    <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    <script src="/js/Heart animation.js"></script>
+
+</body>
+
+</html>

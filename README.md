@@ -5,7 +5,7 @@ This Website is an E-learning platform developed for junior makers program.
 ---
 ## Requirements:
 
-For development, you will need Node.js, a node global package and postgres installed in your environement.
+For development, you will need Node.js, redis server, a node global package and postgres installed in your environement.
 
 ## Installation:
 First of all, get the source code of the project by running the command:  
@@ -25,6 +25,11 @@ $ npm install
 
 ## Running the server:
 Open the `.env` file and change the environment variables based on your configuration.
+
+Run redis server by:
+```bash
+$ redis-server
+```
 
 Run the server by:
 ```bash

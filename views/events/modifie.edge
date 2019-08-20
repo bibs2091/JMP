@@ -1,0 +1,79 @@
+@layout('layouts.main')
+
+@section('content')
+<form method="POST" action="/events/modifie/{{event.id}}" class="add-event-container" enctype="multipart/form-data">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <img src="{{event.cover}}" alt="upload a cover image" 
+                          id="upload-event-cover" onclick="triggerInput('course-cover-input')">
+        <input type="file" name="cover" accept="image/*" id="course-cover-input" 
+                          style="display:none" onchange="loadImage(event,'upload-event-cover')" >
+      </div>
+      <div class="col-md-5">
+        <h2 style="font-size:22px;">Event information</h2>
+        <hr>
+        <div class="form-group">
+            <label for="event-title" class="customized-label">Event title</label>
+            <input type="text" class="form-control" name="name" id="event-title" value= {{event.name}} required>
+        </div>
+        <div class="form-group">
+            <label for="event-description" class="customized-label">Event description</label>
+            <p style="font-size: 11px;margin-bottom:7px;">
+                In your Event description, we recommend providing information about the content of the Event and how students will benefit from that content.
+            </p>
+            <textarea name="description" id="event-description" rows="4" class="form-control" required>{{event.description}}</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h3>Details</h3>
+        <div class="form-group">
+          <label for="event-date" class="customized-label"><i class="far fa-calendar"></i>&nbsp; Date</label>
+          <input type="date" class="form-control" name="date" id="event-date" value= {{event.date}} required>
+        </div>
+        <div class="form-group">
+          <label for="event-time" class="customized-label"><i class="fas fa-clock"></i>&nbsp; Time</label>
+          <input type="time" class="form-control" name="time" id="event-time" value= {{event.time}} required>
+        </div>
+        <div  style="display: none;" class="form-group">
+            <label for="location" class="customized-label"></label>
+            <input type="text" class="form-control" name="location" id="location" 
+            lat={{event.locationLat}} lng={{event.locationLng}}
+            required>
+        </div>
+        <div class="form-group">
+          <div id="map"></div>
+          
+        </div>
+      </div>
+      <div class="col-md-5" id="sponsorsToAdd">
+        <h3>Sponsors
+          <i class="fas fa-plus"  title="add sponsor" id="plus_sponsor"></i>
+          <i class="far fa-trash-alt" id="delete_sponsor"></i></h3>
+        @each(sponsor in sponsors)
+        <div class="add_sponsor">
+          <div>
+            <span>Name</span>
+            <input type="text" class="form-control sponsorNameInput"  name="sponsorsName" id="sponsorName" value={{sponsor.name}} required>
+          </div>
+          <div>
+            <span>Logo</span>
+            <input type="file" name="logo" accept="image/*" id="sponsor-logo-input " value={{sponsor.logo}} required>
+          </div>
+        </div>
+        @endeach
+      </div>
+    </div>
+    <input type="submit" value="Update" class="btn btn-success" id="submit-form-sponsor">
+  </div>
+</form>
+<form method="POST" action="/events/delete/{{event.id}}">
+	<input class="btn btn-danger" type="submit" value="Delete event">
+</form>
+@endsection
+

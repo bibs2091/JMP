@@ -20,13 +20,19 @@ const Courses = db.define("Courses", {
         type: Sequelize.STRING
     },
     author: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
     },
     rating: {
         type: Sequelize.INTEGER
     },
     tags: {
         type: Sequelize.STRING
+    },
+    duration: {
+        type: Sequelize.INTEGER
+    },
+    pdfs: {
+        type: Sequelize.INTEGER
     }
 });
 

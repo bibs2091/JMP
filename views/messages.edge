@@ -1,0 +1,33 @@
+@layout('layouts.main') 
+@section('content')
+<style scoped>
+    body{
+        background-color: #F2F2F2;
+    }
+</style>
+<div id="send-msg-contianer">
+
+    @if(msg)
+        <div class="alert alert-danger">{{msg}}</div>
+    @endif
+    <div id="message-header">
+        <h1>New message</h1>
+    </div>    
+    <div id="send-msg-info">
+        <div id="searchbar">
+            <label for="text" style="font-size: 13px; color: #757575">To</label>
+            <input type="text" id="name" name="name" autocomplete="off" style="display: none;">
+        </div> 
+        <div class="md-form" style="margin-top: 30px;">
+            <input type="text" id="title" class="form-control"  autocomplete="off" placeholder="Enter the message title"  name="title" style="margin-top: 5px;" required> 
+            <label for="Title" style="font-size: 14px;">Title</label>
+        </div>
+            <h3>Message:</h3>
+            <textarea name="msg" id="text" style="display: none;" required></textarea>
+                <a href="" id="cancel-msg"></a> 
+                <button id="send_msg">Send &nbsp;<img src="/images/messaging/sent.png" alt="send"></button>
+    </div>
+</div>
+
+
+@endsection

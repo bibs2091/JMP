@@ -42,7 +42,7 @@ module.exports = async (req, res) => {
 				const sort = "created: asc";
 				const link = `https://api.github.com/users/${github}/repos?per_page=${count}&sort=${sort}&client_id=${
 					githubApi.clientId
-				}&client_secret=${githubApi.clientSecret}`;
+					}&client_secret=${githubApi.clientSecret}`;
 
 				try {
 					const response = await axios.get(link);
@@ -71,7 +71,7 @@ module.exports = async (req, res) => {
 				repos,
 			});
 		} else {
-			res.status(404).send("user doesnt exist");
+			return res.render("404");
 		}
 	} catch (err) {
 		console.log(err);

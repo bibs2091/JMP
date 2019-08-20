@@ -1,45 +1,62 @@
-@layout('layouts.main')
+@layout('layouts.coach')
 
 @section('content')
     <div class="container">
-        <form action="/courses/add" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm()">
+        <form action="/courses/add" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm();">
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-6">
                     <img src="/img/upload-course-cover.png" alt="upload a cover image" 
                         id="upload-course-cover" onclick="triggerInput('course-cover-input')">
-                    <input type="file" name="cover" accept="image/*" id="course-cover-input" style="display:none" required>
+                    <input type="file" name="cover" accept="image/*" id="course-cover-input" 
+                        style="display:none" onchange="loadImage(event,'upload-course-cover')" required>
                     <ul id="chapters-list">
                         <li>
                             <div class="chapter-title">
-                                <h6>1- sdjflksd</h6>
+                                <h6>1- Chapter 1</h6>
                                 <div class="tools">
-                                    <i class="fa fa-times" onclick="deleteChapter(this)"></i>&nbsp;
-                                    <i class="fa fa-edit" onclick="showEditChapterModal(this)"></i>
+                                    <i class="far fa-trash-alt" onclick="deleteChapter(this)"></i>&nbsp;
+                                    <i class="far fa-edit" onclick="showEditChapterModal(this)"></i>
                                 </div>
                             </div>
                             <ul class="lectures">
                                 <li class="lecture">
-                                    <h5> a- lecture one</h5>
+                                    <h5> a- Lecture one</h5>
                                     <span>video</span>
                                     <p>description</p>
                                     <h6>link</h6>
                                     <div class="tools">
-                                        <i class="fa fa-times" onclick='deleteLecture(this)'></i>&nbsp;
-                                        <i class="fa fa-edit" onclick="showEditLectureModal(this)"></i>
+                                        <i class="far fa-trash-alt" onclick='deleteLecture(this)'></i>&nbsp;
+                                        <i class="far fa-edit" onclick="showEditLectureModal(this)"></i>
                                     </div>
                                 </li>
                             </ul>
-                            <div class="add-lecture" onclick="showAddLectureModal(this)">
-                                <img src="/img/add_lecture.png">
+                            <div class='add-lecture' onclick='showAddLectureModal(this)'>
+                                    <ul> <li class="lesson addLesson">
+                                        <p style="display:block; margin:0 auto; color:#868686;">
+                                            <i class="fas fa-plus"></i> &nbsp; 
+                                            Add a lesson
+                                        </p></li>
+                                    </ul>
                             </div>
 
                         </li>
                     </ul>
                     <div class="add-chapter" onclick="showModal('add-chapter-modal')">
-                        <img src="/img/add_chapter.png">
+                            <ul> <li class="lesson addLesson">
+                                <p style="display:block; margin:0 auto; color:#868686;">
+                                        <i class="fas fa-plus"></i> &nbsp; 
+                                        Add a chapter
+                                    </p></li>
+                                </ul>
                     </div>
+                    <div class="btn btn-success" onclick="printChaps()">
+                        quiz step
+                    </div>
+                    <ul id="chapters-list2">
+                        
+                    </ul>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <h2>Basic course information</h2>
                     <hr>
                     <div class="form-group">
@@ -56,8 +73,9 @@
                     <div class="form-group">
                         <label class="customized-label">Course's category</label>
                         <select class="form-control" name="category" required>
-                            <option value=1>cateogy1</option>
-                            <option value=2>category2</option>
+                            @each(category in categories)
+                            <option value={{category.id}}>{{category.title}}</option>
+                            @endeach
                         </select> 
                     </div>
                     <div class="form-group">
@@ -73,10 +91,15 @@
                         <p style="font-size: 11px;margin-bottom:7px;">
                             In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
                         </p>
-                        <input type="text" class="form-control" name="tags">
+                        <label style="width:100%" for="tag-typer">
+                                <div id="tags">
+                                    <input id="tag-typer" type="text" name="tags" placeholder="Add a tag..."/>
+                                </div>
+                        </label>
                     </div>
                     <input type="text" name="courseJSON" id="courseJSON" style="display:none">
-                    <input class="btn" type="submit" value="Save Changes">
+                    <input type="hidden" name="quizs" id="quizsJSON">
+                    <input class="btn" type="submit" value="Create">
                 </div>
             </div>
         </form>
@@ -175,6 +198,63 @@
             </div>
             <div style="display:table; width: 100%; margin-top: 15px;">
                 <button type="submit" class="btn submit-form" onclick="editLecture(this.parentNode)">Update</button>
+            </div>
+        </div>
+    </div>
+    <div class="add-category-modal" id="add-quiz-modal">
+        <div class="info-container">
+            <div class="header">
+                <h6>Add Quiz</h6> 
+                <span class="close-category-modal" onclick="hideModal('add-quiz-modal')">&times;</span>
+            </div>    
+            <div class="info">
+                <h6>Add questions for the quiz</h6>
+                <p>Enter 4 options , don’t forget to check the right answers :</p>
+                <div id="question-cards">
+                    <div class="question-card" style="position:relative">
+                        <span class="close-category-modal" onclick="deleteQuestion(this)">&times;</span>
+                        Question <span class="question-number">1</span> 
+                        <br><br>
+                        <div class="container">
+                            <input type="text" class="form-group quiz-title-input" onkeyup="saveInputState(this)" 
+                            placeholder="Enter title here">                        
+                            <div class="suggestions">
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;" value="0" checked onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="a- option 1" style="width: 95%" >
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer" 
+                                    style="margin-right: 7px;" value="1" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="b- option 2" style="width: 95%">
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;" value="2" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="c- option 3" style="width: 95%">
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;" value="3" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="d- option 4" style="width: 95%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="add-question" class="btn" onclick="addQuestion()">
+                    Add Question
+                </div>
+                <div class="done-btn-container">
+                    <div class="btn btn-success" onclick="addChapQuiz(this)" >
+                        Done
+                    </div>
+                </div>
             </div>
         </div>
     </div>

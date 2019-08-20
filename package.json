@@ -10,11 +10,12 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"axios": "^0.18.0",
+		"axios": "^0.18.1",
 		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.18.3",
 		"connect-flash": "^0.1.1",
 		"connect-redis": "^3.4.1",
+		"core-util-is": "^1.0.2",
 		"custom-env": "^1.0.0",
 		"express": "^4.16.4",
 		"express-edge": "^1.0.0",
@@ -26,10 +27,13 @@
 		"passport-local": "^1.0.0",
 		"pg": "^7.9.0",
 		"pg-hstore": "^2.3.2",
+		"raccoon": "^0.2.8",
 		"redis": "^2.8.0",
-		"sequelize": "^5.1.1"
+		"sequelize": "^5.15.1",
+		"socket.io": "^2.2.0",
+		"web-push": "^3.3.5"
 	},
 	"devDependencies": {
-		"nodemon": "^1.18.11"
+		"nodemon": "^1.19.1"
 	}
 }

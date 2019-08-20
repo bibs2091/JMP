@@ -14,13 +14,16 @@
    <link rel="stylesheet" href="/css/normalize.css">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     {{--  importing fonts  --}}
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Poppins|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Poppins|Ubuntu|Rubik" rel="stylesheet">
+   <link rel="stylesheet" href="/css/mdb.min.css">
 
     <!-- main CSS style sheet -->
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/mail.css">
+    
+
 </head>
 
 <body>
@@ -35,47 +38,36 @@
           </a>
         
           <nav class="s-sidebar__nav">
-            <a href="/">
+            <a href="/" id="s-sidebar__nav-logo">
                 <img src="/favicon.png" class="s-sidebar-logo">
             </a>
             <ul>
                 <li>
-                    <a class="s-sidebar__nav-link" href="./home">
-                        <i class="fa fa-home"></i><em>Home</em>
+                    <a class="s-sidebar__nav-link" href="/user/home">
+                        <i class="icon-home"></i><em>Home</em>
                     </a>
                 </li>
                 <li>
-                    <a class="s-sidebar__nav-link" href="#">
-                        <i class="fa fa-book"></i><em>Library</em>
+                    <a class="s-sidebar__nav-link" href="/user/catalog">
+                        <i class="icon-catalog"></i><em>Library</em>
                     </a>
                 </li>
                 <li>
-                    <a class="s-sidebar__nav-link" href="#">
-                        <i class="fa fa-desktop"></i><em>My courses</em>
+                    <a class="s-sidebar__nav-link" href="/user/mycourses">
+                        <i class="icon-courses"></i><em>My courses</em>
                     </a>
                 </li>
                 <li>
-                    <a class="s-sidebar__nav-link" href="#">
-                        <i class="fa fa-calendar"></i><em>Events</em>
+                    <a class="s-sidebar__nav-link" href="/user/wishlist">
+                        <i class="icon-heart" style="color:#fff;"></i><em>My wishlist</em>
                     </a>
                 </li>
                 <li>
-                    <a class="s-sidebar__nav-link" href="#">
-                        <i class="fa fa-heart"></i><em>My wishlist</em>
+                    <a class="s-sidebar__nav-link" href="/user/events">
+                        <i class="icon-events"></i><em>Events</em>
                     </a>
                 </li>
-            </ul>
-            <ul class="bottom-buttons">
-                <li>
-                    <a class="s-sidebar__nav-link" href="./editprofile">
-                        <i class="fa fa-gear"></i><em>Settings</em>
-                    </a>
-                </li>
-                <li>
-                    <a class="s-sidebar__nav-link" href="/logout">
-                        <i class="fa fa-power-off"></i><em>Logout</em>
-                    </a>
-                </li>
+                
             </ul>
           </nav>
         </div>
@@ -91,9 +83,39 @@
                                 <i class="fas fa-search"></i>
                         </div>
                         <i class="fas fa-search" id="search_responsive"></i>
-                        <span class="icon-Message_notification"></span>
-                        <span class="icon-bell"></span>
-                        <img src="/images/avatar.jpg" id="profile-pic-nav">    
+                        <span class="icon-Message_notification" data-toggle="tooltip" title="Your messages"></span>
+                        <span class="icon-bell" data-toggle="tooltip" title="Your Notifications"></span>
+
+                        <div class='header-right'>
+                            <div class='avatar-wrapper' id='avatarWrapper'>
+                            <img alt='Profile Photo' class='avatar-photo' src='{{currentUser.info.avatar}}'
+                            data-toggle="tooltip" data-placement="left" title="Profile and Settings">
+                            <svg class='avatar-dropdown-arrow' height='24' id='dropdownWrapperArrow' viewbox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'>
+                                <title>Dropdown Arrow</title>
+                                <path d='M12 14.5c-.2 0-.3-.1-.5-.2l-3.8-3.6c-.2-.2-.2-.4-.2-.5 0-.1 0-.3.2-.5.3-.3.7-.3 1 0l3.3 3.1 3.3-3.1c.2-.2.5-.2.8-.1.3.1.4.4.4.6 0 .2-.1.4-.2.5l-3.8 3.6c-.1.1-.3.2-.5.2z'></path>
+                            </svg>
+                            </div>
+                            <div class='dropdown-wrapper' id='dropdownWrapper' style='width: 250px'>
+                            <div class='dropdown-profile-details'>
+                                <img alt='Profile Photo' src='{{currentUser.info.avatar}}'
+                                data-toggle="tooltip" title="Profile Picture">
+                                <div>
+                                    <h5>{{currentUser.info.firstName}}&nbsp;{{currentUser.info.lastName}}</h5>
+                                    <h6><span>@</span>{{currentUser.info.username}}</h6>
+                                    
+                                        <a href="/profile/user/{{currentUser.id}}">View profile</a>
+                                </div>
+
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class='dropdown-links'>
+                                <a href='/user/settings'><i class="fa fa-gear"></i> &nbsp;&nbsp;Settings</a>
+                                <a href="/help"><i class="fa fa-info-circle"></i> &nbsp;&nbsp;Help</a>
+                                <a href='/auth/logout'><i class="fa fa-power-off"></i> &nbsp;&nbsp;Sign out</a>
+
+                            </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav> 
@@ -106,20 +128,37 @@
     
     <!-- needed scripts -->
     <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
+<<<<<<< HEAD
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- scripts for geolocalization in events pages -->
+    @if(pageTitle == "add event" || pageTitle == "event page"||pageTitle == "update event")
+    <script src="/js/map.js"></script>   
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5VYQdCzdTBT5k-60TjBNHRRkSwgMM1Pk&callback=initMap">
+    </script>
+    @endif
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--  socket.io CDN  -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js'></script>
+    <!--  Momentjs CDN  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/af.js"></script>
+    <!-- Text editor -->
+    <script src="https://cdn.ckeditor.com/4.12.1/basic/ckeditor.js"></script>
+    <!-- Auto complition -->
+    <script src='https://loopj.com/jquery-tokeninput/src/jquery.tokeninput.js'></script>
     <!-- main scripts file -->
     <script src="/js/main.js"></script>
     <script src="/js/myScript.js"></script>
-    
-
+    <script src="/js/messages.js"></script>
+    <script src="/js/client.js"></script>
+   
     <!-- Google Analytics
     UA-XXXXX-Y to be replaced with our site's ID. -->
     <script>
@@ -128,6 +167,8 @@
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     <script src="/js/Heart animation.js"></script>
+    <script type="text/javascript" src="/js/mdb.min.js"></script>
+    <script src="/js/mail.js"></script>
 </body>
 
 </html>

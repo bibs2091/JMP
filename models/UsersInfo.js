@@ -21,6 +21,7 @@ const UsersInfo = db.define("UsersInfo", {
 	},
 	avatar: {
 		type: Sequelize.STRING,
+		defaultValue: "/images/user.png"
 	},
 	bio: {
 		type: Sequelize.STRING,

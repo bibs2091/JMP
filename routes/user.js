@@ -1,38 +1,37 @@
 const express = require("express");
 const router = express.Router();
 
-const passport = require("../config/passport");
-
 //require controllers
 const homeController = require("../controllers/user/home");
-const editProfileController = require("../controllers/user/profile");
+const showWishlistController = require("../controllers/user/wishlist");
+const myCoursesController = require("../controllers/user/mycourses");
+const catalogController = require("../controllers/user/catalog");
+const userSettingsController = require("../controllers/user/settings");
 
 //load userInfo model
 const userInfo = require("../models/UsersInfo");
 
 //middleware for authentication
-const isAuthenticated = (req, res, next) => {
-	if (req.isAuthenticated()) {
-		next();
-	} else {
-		return res.send("unauthorized", 401);
-	}
-};
+const isAuthenticated = require("../middleware/isAuthenticated");
+const isStudent = require("../middleware/isStudent");
 
 //handling requests
-router.get("/home", homeController);
+router.get("/home", isAuthenticated, isStudent, homeController);
+router.get("/mycourses", isAuthenticated, isStudent, myCoursesController);
 
 //route		/user/editprofile
 //methode 	GET
 //access	private
 //desc		get current user profile
 
-router.get("/editprofile", isAuthenticated, editProfileController);
-
+router.get("/settings", userSettingsController);
 //route		/user/editprofile
 //methode 	POST
 //access	private
 //desc		post to current user profile
+
+router.get("/wishlist", isAuthenticated, isStudent, showWishlistController);
+router.get("/catalog", isAuthenticated, isStudent, catalogController);
 
 router.post("/editprofile", isAuthenticated, (req, res) => {
 	console.log(req.body);

@@ -1,0 +1,58 @@
+@layout('layouts.main')
+
+@section('content')
+
+<div  style="margin-left-25px;">
+  <div>
+    <img src={{event.cover}} alt="Event picture"  id="coverImage">
+  </div>
+</div>
+<div class="container" style="padding-left:4vw;">
+        <div class="row">
+          <div class="col-md-7 Description">
+            <h3>Description</h3>
+            <p> {{event.description}} </p>
+          </div>
+            <div class="col-md-5">
+              <h3 id="detailstatle">Details</h3>            
+                  <div id="eventCardInfo">
+                    <ul>
+                      <li> <i class="far fa-calendar-alt"></i> &nbsp; {{event.date.toJSON().slice(0,10).replace(/-/g,'/');}}</li>
+                      <br>
+                      <li><i class="fas fa-clock"></i> &nbsp; {{event.time}} </li>
+                      <br>
+                      <li><i id = "location" class="fas fa-map-marker-alt"
+                       lat={{event.locationLat}} lng={{event.locationLng}}>  
+                       </i> &nbsp;Location
+                      </li>
+                      <div id="map"></div>
+                      <br>
+                    </ul>
+                    @if(registred)
+                    <p>You are registred</p>
+                    @else
+                    <form method="POST" action="/events/register/{{event.id}}">
+                      <input type="submit" value="Register Now" class="btn btn-primary" id="register-boutton">
+                    @endif
+                  </div>
+            </div>
+        </div>
+</div>
+<button class = "btn"><a href="/events/modifie/{{event.id}}">modifie</a></button>
+<button class = "btn"><a href="/events/validating/{{event.id}}">validate</a></button>
+
+    
+                <div class="container">
+                  <div class="row">
+                    @each(sponsor in sponsors)
+                    <div class="col-md-3"><img src="{{sponsor.logo}}" class="sponsors-pic"></div>
+                    @endeach
+                  </div>
+                </div>
+                
+
+    
+@endsection
+
+
+

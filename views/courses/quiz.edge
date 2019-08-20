@@ -1,0 +1,275 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{pageTitle}}</title>
+    <meta name="description" content="Junior makers program website">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+   <!-- importing needed libraries -->
+   <link rel="stylesheet" href="/css/normalize.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+   <link href="/css/mdb.min.css" rel="stylesheet">
+
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    {{--  importing fonts  --}}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Poppins|Ubuntu" rel="stylesheet">
+
+    <!-- main CSS style sheet -->
+    <link rel="stylesheet" href="/css/course.css">
+    <!-- Emojis CSS style sheet -->
+    <link rel="stylesheet" href="/css/emojis.css">
+</head>
+
+<body>
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <div class="s-layout">
+        <!-- Sidebar -->
+        <div class="s-layout__sidebar">
+          <a class="s-sidebar__trigger" href="#">
+             <i class="fa fa-bars"></i>
+          </a>
+        
+          <nav class="s-sidebar__nav">
+            <a href="/" id="back-course">
+                <i class="fas fa-play"></i><span>Home</span>
+            </a>
+            <ul>
+                @each(chapter in chaptersList)
+                <li class="lecture-nav"><span>{{chapter.title}}</span><i class="fas fa-play"></i></li>
+                <li>
+                    <ul class="lesson-navContainer">
+                        @each(lect in chapter.lectures)
+                        <li class="lesson-nav">
+                            @if(lect.id > newProgress.lastLecture + 1)
+                            <div class="disabledLesson">
+                            @endif
+                            <a href="/courses/classroom/{{courseId}}/{{lect.id}}">
+                                @if(lect.id <= newProgress.lastLecture)
+                                <i class="fas fa-check"></i>
+                                @else
+                                <i class="fas fa-circle"></i>
+                                @endif
+                                <span class="lesson-in">{{lect.title}}</span>
+                            </a>
+                            @if(lect.id > newProgress.lastLecture + 1)
+                            </div>
+                            @endif
+                        </li>
+                        @endeach
+                    </ul>
+                </li>
+                @endeach
+                
+            </ul>
+          </nav>
+        </div>
+        
+        <!-- Content -->
+        <main class="s-layout__content">
+            <nav id="navbar">
+                <div id="container">
+                        <h1>quiz title</h1>
+                        <a href="#" data-toggle="modal" data-target="#myModal"><h5>SEND FEEDBACK</h5></a>
+                </div>
+            </nav> 
+
+
+
+
+            <section id="main-content">
+                <style scoped>
+                    body{
+                        background: #F8F8F8;
+                    }
+                    #main-content{
+                        position: relative;
+                        padding-top: 35px;
+                        background: #F8F8F8;
+                    }
+                    #main-content h5{
+                        margin-top: 0;
+                    }
+                    .question{
+                        display: none;
+                        padding: 25px 40px;
+                        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+                        border-radius: 7px;
+                        height: 350px;
+                    }
+                </style>
+
+                <h5>Question <span id="question-number">1</span> out of <span id="quetions-length">{{questions.length}}</span></h5>
+                <ol class="quiz-tracker">
+                    @each(question in questions)
+                        <li class="step 
+                        @if(question.index == 0)
+                        active
+                        @endif
+                        "><span class="step-name"></span></li>
+                    @endeach
+                </ol>
+                      
+                <div class="quiz">
+                    @each(question in questions)
+                    <div id="question{{question.index +1}}" class="question card" question-id="{{question.id}}"
+                    @if($loop.first)
+                      style="display: block"
+                    @endif
+                    >
+                        <h2>Question {{question.index +1}} :</h2>
+                        <p>{{question.title}}</p>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s1" value="0">
+                            <label class="form-check-label" for="Q{{question.index +1}}s1">{{question.suggestions[0]}}</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s2" value="1">
+                            <label class="form-check-label" for="Q{{question.index +1}}s2">{{question.suggestions[1]}}</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s3" value="2">
+                            <label class="form-check-label" for="Q{{question.index +1}}s3">{{question.suggestions[2]}}</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Q{{question.index +1}}s4" value="3">
+                            <label class="form-check-label" for="Q{{question.index +1}}s4">{{question.suggestions[3]}}</label>
+                        </div>
+                    </div>
+                    @endeach
+                    <center>
+                        <div id="quiz-result" class="question card" >
+                            <h6>Your result is</h6>
+                            <div class="container" style="padding: 30px;">
+                                <div class="row">
+                                    <div class="col-md-6" style="padding: 10px 35px;">
+                                        <div id="quiz-progress">
+                                            <div class="percentage">
+                                                <span>75</span>%
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="bar"></div>
+                                                <div id="triangle" style="padding:1px 0 0 0">
+                                                    <div class="arrow-up"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="quiz-observation">
+                                            <h6>Bad!!,</h6>
+                                            <p>You can do better</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <center id="emoji-place">
+                                            <div class="emoji  emoji--like">
+                                                <div class="emoji__hand">
+                                                    <div class="emoji__thumb"></div>
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                    <a id="quiz-restart" class="quiz-btm-btns" onclick="location.reload()"><button>Restart</button></a>
+                    @if(questions.length == 1)
+                    <a id="quiz-submit" class="quiz-btm-btns"><button class="btn" disabled onclick="quizResult({{quizId}} , {{courseId}})">Submit</button></a>                
+                    <a id="quiz-next" style="display: none" class="quiz-btm-btns"><button class="btn" disabled>Next</button></a>      
+                    @else
+                    <a id="quiz-submit" class="quiz-btm-btns" style="display:none;" ><button class="btn" disabled onclick="quizResult({{quizId}} , {{courseId}})">Submit</button></a>                      
+                    <a id="quiz-next" class="quiz-btm-btns"><button class="btn" onclick="nextQuest(this)" disabled data-step="2">Next</button></a>
+                    @endif
+                </div>  
+
+                
+
+            </section>
+             
+        </main>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog" >
+            
+              <div class="modal-content" style="border-radius:10px">
+                <div class="modal-header" id="report-header">
+                  
+                  <h4 class="modal-title" >Send a report </h4>
+                  <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                </div>
+                
+                <div class="modal-body">
+                  
+            <form  id="report_form">  
+            <h1> What is the reason of the report  </h1>  
+            <div id="radio_bottom">   
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="Option2" name="materialExampleRadios">
+                        <label class="custom-control-label" for="Option2">Wrong Answers</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="Option3" name="materialExampleRadios">
+                        <label class="custom-control-label" for="Option3">Irrelvent Question</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="Option4" name="materialExampleRadios">
+                            <label class="custom-control-label" for="Option4">Others</label>
+                    </div>
+                </div>
+          <h1 style="margin-top: 26px;"> Can you provide us with some details </h1>
+          <div class="md-form">
+            <textarea id="txtarea" class="md-textarea form-control" rows="2"></textarea>
+            <label for="txtarea">State the question/answer and the exact reason...</label>
+          </div>
+          </form>
+          
+                </div>
+                
+                <div style="padding-right: 26px; margin-bottom:20px;" >
+                  <button type="button" class="btn btn-success saveboutton pull-right" style="margin-left: 10px;">Send</button>
+                  <button type="button" class="btn btn-outline-success waves-effect resetboutton pull-right">cancel</button>
+                </div>
+              </div>
+              
+              
+            </div>
+            </div>
+    <!-- needed scripts -->
+    <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- main scripts file -->
+    <script src="/js/main.js"></script>
+
+
+    <!-- Google Analytics
+    UA-XXXXX-Y to be replaced with our site's ID. -->
+    <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    
+    <script src="/js/mdb.min.js"></script>
+    <script src="/js/quiz.js"></script>
+
+
+</body>
+
+</html>
