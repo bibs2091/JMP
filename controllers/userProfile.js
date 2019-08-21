@@ -5,7 +5,6 @@ const axios = require("axios");
 module.exports = async (req, res) => {
 	try {
 		const { id } = req.params
-		console.log(id)
 		let profile = await userInfo.findOne({ where: { userId: id } });
 		if (profile) {
 			profile = profile.dataValues
@@ -19,13 +18,11 @@ module.exports = async (req, res) => {
 			profile.linkedin = profile.linkedin || "";
 			profile.github = profile.github || "";
 
-			console.log(profile)
 
 			let repos = [];
 
 			//fetch data from the github api
 			if (profile.github) {
-				console.log('fetching data from github')
 				let github = profile.github
 				const count = 5;
 				const sort = "created: asc";
