@@ -616,3 +616,23 @@ function saveSponsors() {
 $(document).ready(function () {
     $('.mdb-select').materialSelect();
 });
+//Add Course Validation Step 1Ò
+function ACVS1() {
+    console.log("lm")
+    var nextBtn = document.querySelector("#basic-info button");
+    if ($("#basic-info textarea").eq(0).val() == "") {
+        nextBtn.disable = true;
+        return;
+    }
+    var inputs = $("#basic-info input");
+    if (inputs[0].value == "" || inputs[1].value == "") {
+        nextBtn.disable = true;
+        return;
+    }
+    if (inputs[2].value == "Course's category" || inputs[3].value == "Course's level") {
+        nextBtn.disable = true;
+        return;
+    }
+
+    nextBtn.disabled = false;
+}
