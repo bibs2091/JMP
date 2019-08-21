@@ -186,7 +186,6 @@ $('.scroller-left').click(function () {
 function nextStep(currentDiv, currentStepNumber, nextDiv, nextStepNumber) {
   $("html, body").animate({ scrollTop: 0 }, "slow");
   $('#' + currentDiv).hide();
-  console.log('#' + nextDiv)
   $('#' + nextDiv).show();
   $(".step:nth-child(" + currentStepNumber + ")").removeClass("step--incomplete step--active")
   $(".step:nth-child(" + currentStepNumber + ")").addClass("step--complete step--inactive")

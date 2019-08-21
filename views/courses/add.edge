@@ -55,7 +55,7 @@
                         </label>
                     </div>
                     
-                    <button class="btn event-btn" disabled onclick="nextStep('basic-info', 1, 'course-content', 2)">Next</button>
+                    <button class="btn event-btn"  disabled onclick="nextStep('basic-info', 1, 'course-content', 2)">Next</button>
                 </div>
                 <div id="course-content" class="hidden">
                         <h2 style="text-align: center">Course content</h2>
@@ -108,7 +108,7 @@
                     <ul id="chapters-list2"></ul>
                     <input type="text" name="courseJSON" id="courseJSON" style="display:none" required>
                     <input type="hidden" name="quizs" id="quizsJSON" required>
-                    <button class="btn event-btn" onclick="$('#add-course-form').submit()" style="color:#FFF;background: #1DBF70;">
+                    <button class="btn event-btn" disabled onclick="$('#add-course-form').submit()" style="color:#FFF;background: #1DBF70;">
                        <input type="submit" class="hidden" > Create
                     </button>
                 </div>

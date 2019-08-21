@@ -424,6 +424,7 @@ function addChapQuiz(obj) {
         chapQuiz.push(question);
     }
     place.innerHTML = JSON.stringify(chapQuiz);
+    valideQuiz();
     hideModal("add-quiz-modal");
 }
 // saving quiz inputs state
@@ -442,7 +443,6 @@ function quizsJSON() {
     for (let i = 0; i < quizsElems.length; i++) {
         quizs.push(JSON.parse(quizsElems[i].innerHTML));
     }
-    console.log(quizs);
     let json = JSON.stringify(quizs);
     document.getElementById("quizsJSON").value = json;
 }
@@ -452,6 +452,7 @@ function deleteQuiz(obj) {
     buffer.parentNode.previousElementSibling.innerHTML = "";
     $(buffer).hide();
     $(buffer.nextElementSibling).show();
+    valideQuiz()
 }
 //update quiz
 function updateQuiz(i) {
@@ -635,4 +636,17 @@ function ACVS1() {
     }
 
     nextBtn.disabled = false;
+}
+//validating quizs before submit
+function valideQuiz() {
+    var submitBtn = document.querySelector("#quizs-content button");
+    var datas = document.getElementsByClassName("quiz-data");
+
+    for (let i = 0; i < datas.length; i++) {
+        if (datas[i].innerHTML == "") {
+            submitBtn.disabled = true;
+            return;
+        }
+    }
+    submitBtn.disabled = false;
 }
