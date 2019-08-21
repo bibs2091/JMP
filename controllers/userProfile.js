@@ -5,7 +5,7 @@ const axios = require("axios");
 module.exports = async (req, res) => {
 	try {
 		let userId = req.params.id;
-
+		console.log(userId)
 		const profile = await userInfo.findOne({ where: { userId } });
 
 		if (profile) {
@@ -66,6 +66,7 @@ module.exports = async (req, res) => {
 				github,
 				linkedin,
 				repos,
+				myProfile: req.user.id == req.params.id
 			});
 		} else {
 			return res.render("404");
