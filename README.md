@@ -24,6 +24,11 @@ $ npm install
 ``` 
 
 ## Running the server:
+Create a copy of the `.env.example` file and name it `.env` 
+```bash
+$ cp .env.example .env
+```
+
 Open the `.env` file and change the environment variables based on your configuration.
 
 Run redis server by:
