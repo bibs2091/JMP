@@ -4,38 +4,29 @@ const axios = require("axios");
 
 module.exports = async (req, res) => {
 	try {
-		let userId = req.params.id;
-		console.log(userId)
-		const profile = await userInfo.findOne({ where: { userId } });
-
+		const { id } = req.params
+		console.log(id)
+		let profile = await userInfo.findOne({ where: { userId: id } });
 		if (profile) {
-			const { dataValues } = profile;
-			console.log(dataValues);
+			profile = profile.dataValues
+			delete profile.id
+			delete profile.createdAt
+			delete profile.updatedAt
 
-			let {
-				firstName,
-				lastName,
-				username,
-				avatar,
-				bio,
-				score,
-				rank,
-				skills,
-				facebook,
-				twitter,
-				github,
-				linkedin,
-			} = dataValues;
 			// format the social media links
-			facebook = facebook || "";
-			twitter = twitter || "";
-			linkedin = linkedin || "";
-			github = github || "";
+			profile.facebook = profile.facebook || "";
+			profile.twitter = profile.twitter || "";
+			profile.linkedin = profile.linkedin || "";
+			profile.github = profile.github || "";
+
+			console.log(profile)
 
 			let repos = [];
 
 			//fetch data from the github api
-			if (github) {
+			if (profile.github) {
+				console.log('fetching data from github')
+				let github = profile.github
 				const count = 5;
 				const sort = "created: asc";
 				const link = `https://api.github.com/users/${github}/repos?per_page=${count}&sort=${sort}&client_id=${
@@ -49,24 +40,13 @@ module.exports = async (req, res) => {
 					console.log(error);
 				}
 			}
-
+			// res.json(repos)
 			res.render("userProfile", {
-				pageName: username,
-				pageTitle: firstName + " " + lastName,
-				firstName,
-				lastName,
-				username,
-				avatar,
-				bio,
-				score,
-				rank,
-				skills,
-				facebook,
-				twitter,
-				github,
-				linkedin,
+				pageName: profile.username,
+				pageTitle: profile.firstName + " " + profile.lastName,
+				profile,
 				repos,
-				myProfile: req.user.id == req.params.id
+				myProfile: req.user.id == req.params.dude
 			});
 		} else {
 			return res.render("404");
