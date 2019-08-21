@@ -37,9 +37,6 @@ const UsersInfo = db.define("UsersInfo", {
 	facebook: {
 		type: Sequelize.STRING,
 	},
-	instagram: {
-		type: Sequelize.STRING,
-	},
 	twitter: {
 		type: Sequelize.STRING,
 	},
