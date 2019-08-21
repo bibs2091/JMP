@@ -163,13 +163,14 @@
       <p>No skills available</p>
     @endeach
   </div>
- 
+
+  <div class="profile-tab" id="profile-7ajahak">
   @if(repos.length==0)
     @if(myProfile)
       @if(profile.github)
-        <p id="porfile-7ajhak">You dont have any repositories at the moment</p> 
+        <p >You dont have any repositories at the moment</p> 
       @else
-        <form action="/user/editprofile" method="POST" id='profile-7ajahak'>
+        <form action="/user/editprofile" method="POST" >
           <p>To display your repositories please enter your Github username:</p>
           <label for="github-username">Github username</label>
           <input type="text" name="github" class="form-control">
@@ -177,9 +178,9 @@
       @endif
     @else
       @if(profile.github)
-        <p id="profile-7ajahak">{{pageTitle +' '}} doesn't have any repositories</p>
+        <p >{{pageTitle +' '}} doesn't have any repositories</p>
       @else
-      <p id="profile-7ajahak">{{pageTitle +" "}} doesn't have a Github account linked to their profile</p>
+        <p>{{pageTitle +" "}} doesn't have a Github account linked to their profile</p>
       @endif
     @endif
   @else
