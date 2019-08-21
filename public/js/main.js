@@ -612,3 +612,7 @@ function saveSponsors() {
     $("#sponsorsJSON-input").val(JSON.stringify(sponsors));
     hideModal('add-sponsor-modal');
 }
+// Material Select Initialization
+$(document).ready(function () {
+    $('.mdb-select').materialSelect();
+});

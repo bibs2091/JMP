@@ -2052,7 +2052,7 @@ input[name="lastName"] {
   }
 }
 
-#addEvent-info{
+#addEvent-info, #add-course-form{
   width: 70%;
   height: auto;
   margin: 0 auto;
@@ -2073,18 +2073,19 @@ input[name="lastName"] {
   border-top: 1px solid #BABABA;
   margin-top: 10px;
 }
-#addEvent-info h2{
+#addEvent-info h2, #add-course-form h2{
+  text-align: center;
   font-weight: bold;
   font-size: 20px;
   color: #000000;
 }
-#addEvent-info label{
+#addEvent-info label, #add-course-form label{
   color: #1E272E;
 }
-#addEvent-info input{
+#addEvent-info input, #add-course-form input{
   font-size: 17px;
 }
-#addEvent-info  textarea{
+#addEvent-info  textarea, #add-course-form textarea{
   padding-top: 9px;
 }
 #addEvent-info  .md-form{
@@ -2093,7 +2094,7 @@ input[name="lastName"] {
 #addEvent-info input{
   border-bottom: 1px solid #AEB3B7;
 }
-#addEvent-info button.event-btn{
+#addEvent-info button.event-btn, #add-course-form button.event-btn{
   border: 1px solid #1DBF70;
   border-radius: 5px;
   font-size: 18px;
@@ -3149,3 +3150,11 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
 .sponsor-card .md-form .file-field a svg{
   margin-top: 6px;
 }
+/* hidden and displayed divs*/
+.hidden{
+  display: none ;
+}
+.displayed{
+  display: block;
+}
+/* add course form */
