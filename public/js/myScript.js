@@ -194,8 +194,3 @@ function nextStep(currentDiv, currentStepNumber, nextDiv, nextStepNumber) {
 }
 
 //-----------------------------//
-
-$('.datepicker').pickadate();
-$('.timepicker').pickatime({
-  twelvehour: false,
-});
