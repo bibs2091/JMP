@@ -1696,17 +1696,16 @@ input[name="lastName"] {
 }
 /* ---- add tag ---- */
 #tags {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  /* border: 1px solid #ced4da;
-  border-radius: 0.25rem; */
   width: 100%;
   background: #fff;
   margin: auto;
   padding-top: 3px;
   padding-bottom: 3px;
+  border-bottom: 1px solid #AEB3B7;
 }
-
+#tags input[type=text]:focus:not([readonly]){
+  box-shadow: none;
+}
 #tag-typer {
   outline: none;
   border: none;
@@ -2092,7 +2091,6 @@ input[name="lastName"] {
   margin-bottom: 2.5rem;
 }
 #addEvent-info input{
-  border-bottom: 1px solid #AEB3B7;
 }
 #addEvent-info button.event-btn, #add-course-form button.event-btn{
   border: 1px solid #1DBF70;

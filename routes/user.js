@@ -33,7 +33,7 @@ router.get("/settings", userSettingsController);
 router.get("/wishlist", isAuthenticated, isStudent, showWishlistController);
 router.get("/catalog", isAuthenticated, isStudent, catalogController);
 
-router.post("/editprofile", isAuthenticated, (req, res) => {
+router.post("/settings", isAuthenticated, (req, res) => {
 	console.log(req.body);
 	let {
 		firstName,

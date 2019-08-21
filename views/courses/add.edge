@@ -106,11 +106,11 @@
                     <h2 style="text-align: center">Quizs</h2>
                     <hr>
                     <ul id="chapters-list2"></ul>
-                    <button class="btn event-btn" onclick="this.children[0].click()" style="color:#FFF;background: #1DBF70;">
+                    <input type="text" name="courseJSON" id="courseJSON" style="display:none" required>
+                    <input type="hidden" name="quizs" id="quizsJSON" required>
+                    <button class="btn event-btn" onclick="$('#add-course-form').submit()" style="color:#FFF;background: #1DBF70;">
                        <input type="submit" class="hidden" > Create
                     </button>
-                    <input type="text" name="courseJSON" id="courseJSON" style="display:none">
-                    <input type="hidden" name="quizs" id="quizsJSON">
                 </div>
             </div>
         </form>
