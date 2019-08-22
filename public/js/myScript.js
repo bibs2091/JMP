@@ -43,8 +43,7 @@ $(document).ready(function () {
     if (key == 13 || key == 44) {
       event.preventDefault();
       var tag = $(this).val();
-      console.log(tag);
-      if (tag.length > 0 && tag != ' ' && tag != '  ') {
+      if (tag.length > 0 && tag.replace(/\s/g, '').length>0) {
         $("<span class='tag' style='display:none'><span class='close'>&times;</span><p>" + tag + "</p></span>").insertBefore(this).fadeIn(100);
         $(this).val("");
       }

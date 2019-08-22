@@ -1021,17 +1021,6 @@ input[name="lastName"] {
 
 /* adding category modal*/
 .add-category-modal {
-  display: none;
-  position: fixed;
-  z-index: 999999;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
 }
 .add-category-modal .info-container {
   background-color: #fefefe;
@@ -1700,7 +1689,7 @@ input[name="lastName"] {
   background: #fff;
   margin: auto;
   padding-top: 3px;
-  padding-bottom: 3px;
+  padding-bottom: 0;
   border-bottom: 1px solid #AEB3B7;
 }
 #tags input[type=text]:focus:not([readonly]){
@@ -3103,6 +3092,9 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
   display: table;
   width: 100%;
   padding: 0 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 .add-event-modal .header > *{
   display: table-cell;
