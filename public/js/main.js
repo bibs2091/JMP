@@ -222,7 +222,15 @@ function deleteReport(id) {
 }
 // get the details of a report
 function getDetails(id) {
-     location.href="/report/details/"+id;
+    $.ajax({
+        url: '/report/mark/' + id,
+        method: 'POST',
+        contentType: 'application/json',
+        success: function (result) {
+            location.href="/report/details/"+id;
+        }
+    });
+    
 }
 //delete a user by id in report actions
 function banUser(id) {

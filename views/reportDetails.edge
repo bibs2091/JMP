@@ -66,15 +66,12 @@
     <h1 style="margin-top:20px;">Action to take</h1>  
     <div id="Actions_report" class="row">
       @if(report.indictedType=="User")
-      <div class="col-md-3 col-sm-6"><div class="action_adjust"
-        onclick='banUser({{reported.id}});deleteReport({{report.id}})'><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
       @elseif(report.indictedType=="Course")
-      <div class="col-md-3 col-sm-6"><div class="action_adjust" 
-        onclick='deleteCourse2({{reported.id}});deleteReport({{report.id}})'><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
       @endif
       <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Notify a user</p><img src="/img/reports/Notify.png" alt=""></div></div>
-      <div class="col-md-3 col-sm-6"><div class="action_adjust"
-        onclick='deleteReport({{report.id}})'><p>Delete the report</p><img src="/img/reports/DeleteR.png" alt=""></div></div>
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Delete the report</p><img src="/img/reports/DeleteR.png" alt=""></div></div>
     </div>  
   </div>
 @endsection
