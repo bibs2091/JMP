@@ -1021,6 +1021,7 @@ input[name="lastName"] {
 
 /* adding category modal*/
 .add-category-modal {
+  display: none;
 }
 .add-category-modal .info-container {
   background-color: #fefefe;
@@ -1699,7 +1700,6 @@ input[name="lastName"] {
   outline: none;
   border: none;
   padding: 6px;
-  padding-left: 15px;
   margin-right: -25px;
   width: 100px;
   background-color: transparent;
