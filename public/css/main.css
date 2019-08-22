@@ -2050,6 +2050,11 @@ input[name="lastName"] {
   padding: 40px;
   font-family: Poppins, sans-serif;
 }
+@media (max-width: 600px) {
+  #addEvent-info, #add-course-form{
+    width:90%
+  }
+}
 #upload-event-cover {
   width: 100%;
   height: 18vw;
