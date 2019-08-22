@@ -41,10 +41,12 @@
               </div>
       </div>       
       <div id="report_details_info">      
+        @if(!report.type=="Others")      
         <div>
           <h3 class="report_titles">For  </h3>
           <h5 class="report_titles2">{{report.type}} </h5>
         </div>
+      @endif
         <div>
             <h3 class="report_titles">Date</h3>
             <h5 class="report_titles2">{{report.date}} </h5>
@@ -64,10 +66,11 @@
     <h1 style="margin-top:20px;">Action to take</h1>  
     <div id="Actions_report" class="row">
       @if(report.indictedType=="User")
-      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
-      @else
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"
+        onclick='banUser({{reported.id}});deleteReport({{report.id}})'><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
+      @elseif(report.indictedType=="Course")
       <div class="col-md-3 col-sm-6"><div class="action_adjust" 
-        onclick='deleteCourse2({{reported.id}})'><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
+        onclick='deleteCourse2({{reported.id}});deleteReport({{report.id}})'><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
       @endif
       <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Notify a user</p><img src="/img/reports/Notify.png" alt=""></div></div>
       <div class="col-md-3 col-sm-6"><div class="action_adjust"

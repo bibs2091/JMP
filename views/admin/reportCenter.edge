@@ -19,13 +19,13 @@
       <li>
           <div class="form-check">
               <input type="checkbox" class="form-check-input" id="{{report.id}}">
-              <label class="form-check-label" for="report1"></label>
+              <label class="form-check-label" for="{{report.id}}"></label>
           </div>
           <div onclick="getDetails({{report.id}})">
-            <p class="report_title">{{report.indictedType}} {{report.indictedId}} has been reported for {{report.type}}</p>
+            <p class="report_title">{{report.indictedType}} {{report.indicted}} has been reported for {{report.type}}</p>
             <p class="report_detailB">{{report.reportDetails}}</p>
           </div>
-          <p class="report_timing">{{report.createdAt}}</p>
+          <p class="report_timing">{{report.date}}</p>
       </li>
       @endeach
       

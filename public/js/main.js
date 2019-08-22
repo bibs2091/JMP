@@ -205,7 +205,7 @@ function deleteCourse2(id) {
         method: 'DELETE',
         contentType: 'application/json',
         success: function (result) {
-            location.replace("/admin/reportCenter");
+            location.href="/admin/reportCenter";
         }
     });
 }
@@ -216,12 +216,24 @@ function deleteReport(id) {
         method: 'DELETE',
         contentType: 'application/json',
         success: function (result) {
-            location.replace("/admin/reportCenter");
+            location.href="/admin/reportCenter";
         }
     });
 }
+// get the details of a report
 function getDetails(id) {
-     location.replace("/report/details/"+id);
+     location.href="/report/details/"+id;
+}
+//delete a user by id in report actions
+function banUser(id) {
+    $.ajax({
+        url: '/admin/users/delete/' + id,
+        method: 'DELETE',
+        contentType: 'application/json',
+        success: function (result) {
+            location.href="/admin/reportCenter";
+        }
+    });
 }
 //get current user
 function getCurrentUser() {
