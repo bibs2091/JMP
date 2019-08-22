@@ -62,16 +62,9 @@
                             @endif
                         </li>
                         @endeach
-                        <li class="lesson-nav">
-                            <a href="/courses/classroom/quiz/{{courseId}}/{{chapter.id}}">
-                                <i class="fas fa-circle"></i>
-                                <span class="lesson-in">Quiz</span>
-                            </a>
-                        </li>
                     </ul>
                 </li>
                 @endeach
-                
             </ul>
           </nav>
         </div>
@@ -109,16 +102,11 @@
                 @else
                 <button type="button" class="btn vp" onclick="window.location.href ='/courses/classroom/{{courseId}}/{{content.id+1}}'">NEXT</button>
                 @endif
-                
                 <div id="course-discription">
                     <h3>Description:</h3>
                     <p>{{content.description}}</p>
                 </div>
-                
-
-
             </section>
-             
         </main>
     </div>
     <div class="modal fade" id="myModal" role="dialog">

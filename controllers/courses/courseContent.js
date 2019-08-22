@@ -17,6 +17,9 @@ module.exports = async (req, res) => {
             return res.render("404");
         }
         var content = await Lectures.findByPk(req.params.lecture);
+        if (content.type == "quiz") {
+            return res.redirect("/courses/classroom/quiz/" + courseId + "/" + content.chapter);
+        }
         if (!content) {
             return res.render("404");
         }
@@ -73,7 +76,6 @@ module.exports = async (req, res) => {
                 }
             });
         }
-        console.log(chaptersList);
         res.render("courses.course", {
             pageTitle: content.title,
             chaptersList,

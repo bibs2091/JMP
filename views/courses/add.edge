@@ -2,13 +2,64 @@
 
 @section('content')
     <div class="container">
-        <form action="/courses/add" method="POST" class="add-course-container" enctype="multipart/form-data" onsubmit="addJSONtoForm()">
-            <div class="row">
-                <div class="col-md-6">
+            <ul class="steps">
+                <li class="step step--incomplete step--active">
+                <span class="step__label">Basic  information</span>
+                <span class="step__icon"><span class="inner-circle"></span></span></li>
+                <li class="step step--incomplete step--inactive">
+                <span class="step__icon"><span class="inner-circle"></span></span>
+                <span class="step__label">Course content</span></li>
+                <li class="step step--incomplete step--inactive">
+                <span class="step__icon"><span class="inner-circle"></span></span>
+                <span class="step__label">Quizs</span></li>
+            </ul>
+        <form action="/courses/add" method="POST" class="add-course-container" id="add-course-form" enctype="multipart/form-data" onsubmit="addJSONtoForm();">
+            <div id="basic-info">
+                    <h2 style="text-align: center">Basic course information</h2>
+                    <hr>
                     <img src="/img/upload-course-cover.png" alt="upload a cover image" 
                         id="upload-course-cover" onclick="triggerInput('course-cover-input')">
                     <input type="file" name="cover" accept="image/*" id="course-cover-input" 
-                        style="display:none" onchange="loadImage(event,'upload-course-cover')" required>
+                        style="display:none" onchange="loadImage(event,'upload-course-cover');ACVS1();" required >
+                    <div class="md-form form-md">
+                        <input type="text" placeholder="Course title"  class="form-control form-control-lg" onkeyup="ACVS1()" name="title" id="course-title" required>
+                        <label for="course-title">Course title</label>
+                    </div>
+                    <div class="md-form">
+                        <textarea placeholder="In your course description, we recommend providing information about the content of the course and how students will benefit from that content." class="form-control md-textarea" length="120" rows="3"
+                        name="description" id="course-description" onkeyup="ACVS1()"></textarea>
+                        <label for="course-description">Course decription</label>
+                    </div>
+                        <select class="mdb-select md-form displayed" name="category" required onchange="ACVS1()">
+                            <option value="" disabled selected>Course's category</option>
+                            @each(category in categories)
+                            <option value={{category.id}}>{{category.title}}</option>
+                            @endeach
+                        </select>
+                        <select class="mdb-select md-form" name="level" required onchange="ACVS1()">
+                            <option value="" disabled selected>Course's level</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediat">Intermediat</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                        
+                    <div class="form-group">
+                        <label class="customized-label">Tags</label>
+                        <p style="font-size: 11px;margin-bottom:7px;">
+                            In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
+                        </p>
+                        <label style="width:100%" for="tag-typer">
+                                <div id="tags">
+                                    <input id="tag-typer" type="text" name="tags" placeholder="Add a tag..."/>
+                                </div>
+                        </label>
+                    </div>
+                    
+                    <button class="btn event-btn"  disabled onclick="nextStep('basic-info', 1, 'course-content', 2)">Next</button>
+                </div>
+                <div id="course-content" class="hidden">
+                        <h2 style="text-align: center">Course content</h2>
+                        <hr>
                     <ul id="chapters-list">
                         <li>
                             <div class="chapter-title">
@@ -49,50 +100,17 @@
                                     </p></li>
                                 </ul>
                     </div>
+                    <button class="btn event-btn" onclick="printChaps();nextStep('course-content', 2, 'quizs-content', 3)">Next</button>
                 </div>
-                <div class="col-md-6">
-                    <h2>Basic course information</h2>
+                <div id="quizs-content" class="hidden">
+                    <h2 style="text-align: center">Quizs</h2>
                     <hr>
-                    <div class="form-group">
-                        <label for="course-title" class="customized-label">Course title</label>
-                        <input type="text" class="form-control" name="title" id="course-title" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="course-description" class="customized-label">Course description</label>
-                        <p style="font-size: 11px;margin-bottom:7px;">
-                            In your course description, we recommend providing information about the content of the course and how students will benefit from that content.
-                        </p>
-                        <textarea name="description" id="course-description" rows="4" class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="customized-label">Course's category</label>
-                        <select class="form-control" name="category" required>
-                            @each(category in categories)
-                            <option value={{category.id}}>{{category.title}}</option>
-                            @endeach
-                        </select> 
-                    </div>
-                    <div class="form-group">
-                        <label class="customized-label">Course's level</label>
-                        <select class="form-control" name="level" required>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediat">Intermediat</option>
-                            <option value="advanced">Advanced</option>
-                        </select> 
-                    </div>
-                    <div class="form-group">
-                        <label class="customized-label">Tags</label>
-                        <p style="font-size: 11px;margin-bottom:7px;">
-                            In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
-                        </p>
-                        <label style="width:100%" for="tag-typer">
-                                <div id="tags">
-                                    <input id="tag-typer" type="text" name="tags" placeholder="Add a tag..."/>
-                                </div>
-                        </label>
-                    </div>
-                    <input type="text" name="courseJSON" id="courseJSON" style="display:none">
-                    <input class="btn" type="submit" value="Create">
+                    <ul id="chapters-list2"></ul>
+                    <input type="text" name="courseJSON" id="courseJSON" style="display:none" required>
+                    <input type="hidden" name="quizs" id="quizsJSON" required>
+                    <button class="btn event-btn" disabled onclick="$('#add-course-form').submit()" style="color:#FFF;background: #1DBF70;">
+                       <input type="submit" class="hidden" > Create
+                    </button>
                 </div>
             </div>
         </form>
@@ -191,6 +209,63 @@
             </div>
             <div style="display:table; width: 100%; margin-top: 15px;">
                 <button type="submit" class="btn submit-form" onclick="editLecture(this.parentNode)">Update</button>
+            </div>
+        </div>
+    </div>
+    <div class="add-category-modal" id="add-quiz-modal">
+        <div class="info-container">
+            <div class="header">
+                <h6>Add Quiz</h6> 
+                <span class="close-category-modal" onclick="hideModal('add-quiz-modal')">&times;</span>
+            </div>    
+            <div class="info">
+                <h6>Add questions for the quiz</h6>
+                <p>Enter 4 options , don’t forget to check the right answers :</p>
+                <div id="question-cards">
+                    <div class="question-card" style="position:relative">
+                        <span class="close-category-modal" onclick="deleteQuestion(this)">&times;</span>
+                        Question <span class="question-number">1</span> 
+                        <br><br>
+                        <div class="container">
+                            <input type="text" class="form-group quiz-title-input" onkeyup="saveInputState(this)" 
+                            placeholder="Enter title here">                        
+                            <div class="suggestions">
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;" value="0" checked onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="a- option 1" style="width: 95%" >
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer" 
+                                    style="margin-right: 7px;" value="1" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="b- option 2" style="width: 95%">
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;" value="2" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="c- option 3" style="width: 95%">
+                                </div>
+                                <div class="suggestion">
+                                    <input type="radio" name="answer"
+                                    style="margin-right: 7px;" value="3" onchange="saveRadioState(this)">
+                                    <input type="text" class="quiz-title-input" onkeyup="saveInputState(this)"
+                                        placeholder="d- option 4" style="width: 95%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="add-question" class="btn" onclick="addQuestion()">
+                    Add Question
+                </div>
+                <div class="done-btn-container">
+                    <div class="btn btn-success" onclick="addChapQuiz(this)" >
+                        Done
+                    </div>
+                </div>
             </div>
         </div>
     </div>

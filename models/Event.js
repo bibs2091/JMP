@@ -8,7 +8,11 @@ const Event = db.define("Event", {
     date: {
         type: Sequelize.DATE
     },
-    place: {
+    locationLng: {
+        type: Sequelize.STRING
+
+    },
+    locationLat: {
         type: Sequelize.STRING
 
     },

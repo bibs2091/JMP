@@ -24,11 +24,27 @@ router.post('/likedCourse/:id', (req, res) => {
     })
 })
 
+// route for user to unlike a course
+router.post('/unlikeCourse/:id', (req, res) => {
+    raccoon.unliked(req.user.id, req.params.id).then(() => {
+        console.log('user ' + req.user.id + ' unliked course: ' + req.params.id)
+        res.send('user ' + req.user.id + ' unliked course: ' + req.params.id)
+    })
+})
+
 //route for user to dislike a course 
 router.post('/dislikedCourse/:id', (req, res) => {
     raccoon.disliked(req.user.id, req.params.id).then(() => {
         console.log('user ' + req.user.id + ' disliked course: ' + req.params.id)
         res.send('user ' + req.user.id + ' disliked course: ' + req.params.id)
+    })
+})
+
+//route for user to undislike a course 
+router.post('/undislikeCourse/:id', (req, res) => {
+    raccoon.undisliked(req.user.id, req.params.id).then(() => {
+        console.log('user ' + req.user.id + ' undisliked course: ' + req.params.id)
+        res.send('user ' + req.user.id + ' undisliked course: ' + req.params.id)
     })
 })
 

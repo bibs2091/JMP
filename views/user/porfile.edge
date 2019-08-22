@@ -1,0 +1,203 @@
+@layout('layouts.main') 
+@section('content')
+<style scoped>
+    body {
+        overflow-x: hidden !important;
+    }
+
+    #main-content {
+        padding: 0 !important;
+    }
+</style>
+<div class="container-fluid profile_container">
+    <div class="row">
+        <div class="col-md-2">
+
+            <img src="/images/avatar.jpg" alt="avatar" id="profile-pic">
+        </div>
+        <div class="col-md-7" id="profile_details">
+            <h1>{{firstName + " " + lastName}}</h1>
+            <h6>Student</h6>
+            <p>{{bio}} </p>
+        </div>
+        <div class="col-md-2" style="position: relative;">
+
+            <!--<div class="envelope"><a href="#"><i class="fas fa-envelope "></i></a></div>-->
+            <div class="dropdown show">
+                <a class="ellipsis" id="more_profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
+                <div class="dropdown-menu" aria-labelledby="more_profile">
+                    <a class="dropdown-item" href="#">Message</a>
+                    <a class="dropdown-item" href="#">Report</a>
+                </div>
+            </div>
+            <ul>
+                @if(facebook)
+                <li><a href={{facebook}} target="_blank"><i class="fab fa-facebook"></i></a></li>
+                @endif @if(twitter)
+                <li><a href={{twitter}} target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+                @endif @if(linkedin)
+                <li><a href={{linkedin}} target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                @endif @if(github)
+                <li><a href={{github}} target="_blank"><i class="fab fa-github-square"></i></a></li>
+                @endif
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+<div class="profile-stats">
+    <div class="profile-stat">
+    </div>
+    <div class="profile-stat">
+        <p>Ranking<br> @if(rank) {{rank}} @else Unranked @endif
+
+        </p>
+    </div>
+    <div class="profile-stat">
+        <p>Courses enrolled in<br>8</p>
+    </div>
+    <div class="profile-stat">
+        <p>7aja hak<br>8</p>
+    </div>
+    <div class="profile-stat"></div>
+</div>
+<div class="container other-profile">
+    <div class="other-profile-menu">
+        <div class="profile-menu-item pmi-active" onclick="showTab(this,'courses')">
+            Courses
+        </div>
+        <div class="profile-menu-item" onclick="showTab(this,'skills')">
+            Skills
+        </div>
+        <div class="profile-menu-item" onclick="showTab(this,'7ajahak')">
+            Github repos
+        </div>
+    </div>
+</div>
+<div class="container other-profile-info">
+    <div class="profile-tab container" id="profile-courses">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="course-card card">
+                    <img src="/img/flutter.jpg" class="course-img">
+                    <h5 style="position:relative;">How to flutter &nbsp;
+                        <div class="stage">
+                            <div class="heart"></div>
+                        </div>
+                    </h5>
+                    <table class="course-card-content">
+                        <tr>
+                            <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                            <td class="td-space"></td>
+                            <td class="course-author">
+                                <h6>Oussama Azzaz Rahmani</h6>
+                            </td>
+                            <td class="td-devider"></td>
+                            <td class="time-and-diff">
+                                <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                                <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="course-state course-start">
+                        <p><i class="icon-start"></i>&nbsp;Start</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course-card card">
+                    <img src="/img/flutter.jpg" class="course-img">
+                    <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
+                    <table class="course-card-content">
+                        <tr>
+                            <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                            <td class="td-space"></td>
+                            <td class="course-author">
+                                <h6>Oussama Azzaz Rahmani</h6>
+                            </td>
+                            <td class="td-devider"></td>
+                            <td class="time-and-diff">
+                                <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                                <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="course-state course-start">
+                        <p><i class="icon-start"></i>&nbsp;Start</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course-card card">
+                    <img src="/img/flutter.jpg" class="course-img">
+                    <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
+                    <table class="course-card-content">
+                        <tr>
+                            <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                            <td class="td-space"></td>
+                            <td class="course-author">
+                                <h6>Oussama Azzaz Rahmani</h6>
+                            </td>
+                            <td class="td-devider"></td>
+                            <td class="time-and-diff">
+                                <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                                <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="course-state course-start">
+                        <p><i class="icon-start"></i>&nbsp;Start</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile-tab" id="profile-skills">
+        @each(item in skills)
+        <li>item</li>
+        @else Skills @endeach
+    </div>
+
+    @if(github)
+    <div class="profile-tab" id="profile-7ajahak">
+        @if(repos.length==0) An error has occured, please make sure your Github username is correct @endif @if(repos) @each(item
+        in repos)
+        <div class="card card-body mb-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>
+                        <a href={{item.html_url}} class="text-info" target="_blank">
+                {{item.name}}
+                </a>
+                    </h4>
+                    <p>{{item.description}}</p>
+                </div>
+                <div class="col-md-6">
+                    <span class="badge badge-info mr-1">
+                Stars: {{item.stargazers_count}}
+              </span>
+                    <span class="badge badge-secondary mr-1">
+                Watchers: {{item.watchers_count}}
+              </span>
+                    <span class="badge badge-success ">
+                Forks: {{item.forks_count}}
+              </span>
+                </div>
+            </div>
+        </div>
+
+        @endeach @else
+        <div>An error has occured</div>
+        @endif
+    </div>
+    @else
+    <form action="/user/editprofile" method="POST">
+        <p>To display your github repositories please enter your github username:</p>
+        <label for="github-username">Github username</label>
+        <input type="text" name="github" class="form-control">
+    </form>
+    @endif
+
+</div>
+@endsection

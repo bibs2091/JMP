@@ -15,8 +15,8 @@ router.get("/home", (req, res) => {
 	res.redirect("/");
 });
 
-router.get("/profile/user/:id", userProfileController);
-router.get("/profile/coach/:id", coachProfileController);
+router.get("/profile/:id", userProfileController);
+// router.get("/profile/:id", coachProfileController);
 
 router.get("/getuser", getCurrentUser);
 router.post("/report/tech", techReportController);

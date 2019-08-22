@@ -1,15 +1,15 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database");
 
-const Suggestions = db.define("Suggestions", {
-    quizId: {
+const EventInscriptions = db.define("EventInscriptions", {
+    userId: {
         type: Sequelize.INTEGER
     },
-    content: {
+    eventId: {
         type: Sequelize.INTEGER
     }
 });
 
 db.sync({ forced: true });
 
-module.exports = Suggestions;
+module.exports = EventInscriptions;

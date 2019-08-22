@@ -16,7 +16,7 @@
     <div class="row ">     
           <div class="col-md-4 GeneralInformation "> 
               <div class="profilepic">
-                  <img src="{{currentUser.info.avatar}}" alt="Avatar" class=" pic ">
+                  <img src="{{userInfo.avatar}}" alt="Avatar" class=" pic ">
                   <div class="overlay" onclick="triggerInput('userAvatar')">
                     <div class="edit-pic"><i class="fas fa-camera"></i></div>
                     <input type="file" accept="images/*" hidden id="userAvatar">
@@ -25,13 +25,13 @@
             <form>
               <div class="md-form form-group  mt-5 ">
                 <label for="formGroupExampleInputMD">First Name </label>
-                <input type="text" value="{{currentUser.info.firstName}}" class="form-control" id="formGroupExampleInputMD" >
+                <input type="text" value="{{userInfo.firstName}}" class="form-control" id="formGroupExampleInputMD" >
                 
               </div>
               
               <div class="md-form form-group mt-5">
                 <label for="formGroupExampleInputtMD">Last Name </label>
-                <input type="text"  value="{{currentUser.info.lastName}}" class="form-control" id="formGroupExampleInput2tMD" >
+                <input type="text"  value="{{userInfo.lastName}}" class="form-control" id="formGroupExampleInput2tMD" >
               </div>
               
             </form>
@@ -48,15 +48,16 @@
               <div class="form-row">
                 <div class="form-group  md-form col-md-6 ">
                   <label for="inputPhoneNumber">Phone Number </label>
-                  <input type="text" value="{{currentUser.info.phone}}" class="form-control" id="inputPhoneNumber" >
+                  <input type="text" value="{{userInfo.phone}}" class="form-control" id="inputPhoneNumber" >
                 </div>
                 <div class="form-group md-form col-md-6">
-                  <label for="inputEmail">Email Address</label>
-                  <input type="email" value="{{currentUser.email}}" class="form-control" id="inputEmail" >
-                </div>
+                  <label for="inputUsername">Username</label>
+                  <input type="text" value="{{userInfo.username}}" class="form-control" id="inputUsername" >
+                </div>  
               </div>
               <div class="form-row">
                     <div class="select col-md-6">
+                      {{--  wilayas  --}}
                       <select class="select-text" required>
                         <option value="" disabled selected></option><option selected>Choose...</option><option value="adrar">Adrar</option>
                         <option value="chlef">Chlef</option>
@@ -107,6 +108,7 @@
                         <option value="ghardaïa">Ghardaïa</option>
                         <option value="relizane">Relizane</option>
                       </select>
+
                       <span class="select-highlight"></span>
                       <span class="select-bar"></span>
                       <label class="select-label">State</label>
@@ -124,9 +126,13 @@
                   </div>
                 </br>
                 <div class="md-form">
-                  <textarea id="form7" class="md-textarea form-control" rows="3">
-                    {{currentUser.info.bio}}
-                  </textarea>
+                  @if(userInfo.bio == null)
+                    <textarea id="form7" class="md-textarea form-control" rows="3" placeholder="Write something about you"></textarea>                    
+                  @else
+                  <textarea id="form7" class="md-textarea form-control" rows="3" >
+                     {{userInfo.bio}}
+                  </textarea>  
+                  @endif
                   <label for="form7">Bio</label>
                 </div>
                 <div class="pull-right">

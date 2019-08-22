@@ -14,12 +14,18 @@ module.exports = async(req, res) => {
 		}
 		
 		const id = req.params.id 
-		const {name,date,place,description,nbPlace,validated,tags} = req.body;
+
+		const {name,date,place,description,nbPlace,validated,tags,location} = req.body;
+		// getting the location longitude and latitude
+		const locationLat = location.split("||")[0];
+		const locationLng = location.split("||")[1];
 		let newevent = await Event.update(
 	        {
 	        	name,
 	        	date,
 	        	place,
+	        	locationLat,
+	        	locationLng,
 	        	description,
 	        	nbPlace,
 	        	validated,

@@ -43,7 +43,7 @@ $(document).ready(function () {
     if (key == 13 || key == 44) {
       event.preventDefault();
       var tag = $(this).val();
-      if (tag.length > 0) {
+      if (tag.length > 0 && tag.replace(/\s/g, '').length>0) {
         $("<span class='tag' style='display:none'><span class='close'>&times;</span><p>" + tag + "</p></span>").insertBefore(this).fadeIn(100);
         $(this).val("");
       }
@@ -96,6 +96,8 @@ $(document).ready(function () {
     }
   });
 });
+//---------------progress step (event) -------------
+
 //----------- share -------------
 $(document).ready(function () {
   //custom button for homepage
@@ -177,4 +179,17 @@ $('.scroller-left').click(function () {
 
   });
 });
- /* fix
+
+
+// ------------ next in event page ---------- //
+function nextStep(currentDiv, currentStepNumber, nextDiv, nextStepNumber) {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  $('#' + currentDiv).hide();
+  $('#' + nextDiv).show();
+  $(".step:nth-child(" + currentStepNumber + ")").removeClass("step--incomplete step--active")
+  $(".step:nth-child(" + currentStepNumber + ")").addClass("step--complete step--inactive")
+  $(".step:nth-child(" + nextStepNumber + ")").removeClass("step--incomplete step--inactive")
+  $(".step:nth-child(" + nextStepNumber + ")").addClass("step--incomplete step--active")
+}
+
+//-----------------------------//
