@@ -2063,7 +2063,7 @@ input[name="lastName"] {
   padding: 40px;
   font-family: Poppins, sans-serif;
 }
-@media (max-width: 600px) {
+@media (max-width: 669px) {
   #addEvent-info, #add-course-form{
     width:90%
   }
