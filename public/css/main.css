@@ -1286,7 +1286,7 @@ input[name="lastName"] {
   width: 100%;
   background: #f5f5f5;
   border-radius: 8px;
-  padding: 20px 7px 0 0;
+  padding: 20px 7px 50px 0
 }
 #startCourse {
   width: 75%;
