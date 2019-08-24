@@ -58,7 +58,7 @@ function addChapter(obj) {
     var chapterHTML = "<li>";
     chapterHTML += "<div class='chapter-title' onclick='showEditChapterModal2(this)'><h6>" + title + "</h6><div class='tools'><i class='far fa-trash-alt' onclick='deleteChapter(this)'></i>&nbsp;<i class='far fa-edit' onclick='showEditChapterModal(this)'></i></div>";
     chapterHTML += `</div><ul class='lectures'></ul>
-    <div class='add-lecture' onclick='showAddLectureModal(this)'>
+    <div class='add-lecture' data-toggle='modal' data-target='#add-lecture-modal' onclick='showAddLectureModal(this)'>
     <ul> <li class="lesson addLesson">
         <p style="display:block; margin:0 auto; color:#868686;">
             <i class="fas fa-plus"></i> &nbsp; 
@@ -74,29 +74,36 @@ function addChapter(obj) {
 
 function showAddLectureModal(obj) {
     whereToAddLecture = obj.parentNode.getElementsByClassName("lectures")[0];
-    showModal("add-lecture-modal");
+    // showModal("add-lecture-modal");
 }
 //add lecture
 function addLecture(obj) {
     // inputs values
+    console.log(obj);
+
     var inputs = obj.getElementsByTagName("input");
     var title = inputs[0].value;
     var link = inputs[1].value;
     var description = obj.getElementsByTagName("textarea")[0].value;
     var type = obj.getElementsByTagName("select")[0].value;
-    var lectureHTML = "<li class='lecture' onClick='showEditLectureModal2(this)' >";
+    var lectureHTML = "<li class='lecture' onClick='showEditLectureModal2(this)'  data-toggle='modal' data-target='#edit-lecture-modal' >";
     lectureHTML += "<h5>" + title + "</h5><span>" + type + "</span>";
     lectureHTML += "<p>" + description + "</p><h6>" + link + "</h6>";
-    lectureHTML += "<div class='tools'><i class='far fa-trash-alt' onclick='deleteLecture(this)'></i>&nbsp;";
-    lectureHTML += "<i class='far fa-edit' onclick='showEditLectureModal(this)'></i></div></li>";
+    lectureHTML += "<div class='tools'><i class='far fa-trash-alt' onclick='deleteLecture(this);event.stopPropagation();'></i>&nbsp;";
+    lectureHTML += "<i class='far fa-edit' onclick='showEditLectureModal(this)'  data-toggle='modal' data-target='#edit-lecture-modal'></i></div></li>";
     whereToAddLecture.innerHTML += lectureHTML;
-    hideModal("add-lecture-modal");
+    // hideModal("add-lecture-modal");
 }
 // delete chapter
 function deleteChapter(obj) {
     $(obj).parent().parent().parent().remove();
 }
 //delete lecture
+// $("i").on("click", function(){
+//     console.log( "I was clicked, but my parent will not be." );
+
+//     // event.stopPropagation();
+//   });
 function deleteLecture(obj) {
     $(obj).parent().parent().remove();
 }
@@ -137,7 +144,7 @@ function showEditLectureModal(obj) {
     inputs[1].value = link;
     modal.getElementsByTagName("textarea")[0].innerHTML = description;
     modal.getElementsByTagName("select")[0].value = type;
-    showModal("edit-lecture-modal");
+    // showModal("edit-lecture-modal");
 }
 function showEditLectureModal2(obj) {
     lectureToEdit = obj
@@ -152,7 +159,7 @@ function showEditLectureModal2(obj) {
     inputs[1].value = link;
     modal.getElementsByTagName("textarea")[0].innerHTML = description;
     modal.getElementsByTagName("select")[0].value = type;
-    showModal("edit-lecture-modal");
+    // showModal("edit-lecture-modal");
 }
 // edit lecture 
 function editLecture(obj) {
@@ -166,7 +173,7 @@ function editLecture(obj) {
     childs[1].innerHTML = type;
     childs[2].innerHTML = description;
     childs[3].innerHTML = link;
-    hideModal("edit-lecture-modal");
+    // hideModal("edit-lecture-modal");
 }
 //course items to json
 function courseJSON() {

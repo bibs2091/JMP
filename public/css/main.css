@@ -3261,3 +3261,6 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
 
 
 /* add course form */
+.modal-header{
+background: rgba(255, 211, 42, 0.9);
+}
