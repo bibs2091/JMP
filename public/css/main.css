@@ -1103,7 +1103,7 @@ input[name="lastName"] {
 #category-image {
   cursor: pointer;
 }
-@media (max-width: 765px) {
+@media (max-width: 669px) {
   .add-category-modal .info-container {
     width: 100%;
     padding: 30px;
@@ -3018,7 +3018,6 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
   padding: 30px 30px 10px 30px;
   background: #F8F8F8;
   border-radius: 0px 0px 9px 9px;
-  overflow-x: scroll;
 }
 #add-quiz-modal .info h6{
   font-family: Poppins;
