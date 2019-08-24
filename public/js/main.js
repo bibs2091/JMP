@@ -56,7 +56,7 @@ function deleteCategory(id) {
 function addChapter(obj) {
     var title = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
     var chapterHTML = "<li>";
-    chapterHTML += "<div class='chapter-title'><h6>" + title + "</h6><div class='tools'><i class='far fa-trash-alt' onclick='deleteChapter(this)'></i>&nbsp;<i class='far fa-edit' onclick='showEditChapterModal(this)'></i></div>";
+    chapterHTML += "<div class='chapter-title' onclick='showEditChapterModal2(this)'><h6>" + title + "</h6><div class='tools'><i class='far fa-trash-alt' onclick='deleteChapter(this)'></i>&nbsp;<i class='far fa-edit' onclick='showEditChapterModal(this)'></i></div>";
     chapterHTML += `</div><ul class='lectures'></ul>
     <div class='add-lecture' onclick='showAddLectureModal(this)'>
     <ul> <li class="lesson addLesson">
@@ -84,7 +84,7 @@ function addLecture(obj) {
     var link = inputs[1].value;
     var description = obj.getElementsByTagName("textarea")[0].value;
     var type = obj.getElementsByTagName("select")[0].value;
-    var lectureHTML = "<li class='lecture'>";
+    var lectureHTML = "<li class='lecture' onClick='showEditLectureModal2(this)' >";
     lectureHTML += "<h5>" + title + "</h5><span>" + type + "</span>";
     lectureHTML += "<p>" + description + "</p><h6>" + link + "</h6>";
     lectureHTML += "<div class='tools'><i class='far fa-trash-alt' onclick='deleteLecture(this)'></i>&nbsp;";
@@ -109,6 +109,14 @@ function showEditChapterModal(obj) {
     input.value = value;
     showModal("edit-chapter-modal");
 }
+function showEditChapterModal2(obj) {
+    chapterToEdit = obj;
+    var modal = document.getElementById("edit-chapter-modal");
+    var input = modal.getElementsByTagName("input")[0];
+    var value = chapterToEdit.getElementsByTagName("h6")[0].innerHTML;
+    input.value = value;
+    showModal("edit-chapter-modal");
+}
 //edit chapter
 function editChapter(obj) {
     var value = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
@@ -118,6 +126,21 @@ function editChapter(obj) {
 //show edit lecture modal
 function showEditLectureModal(obj) {
     lectureToEdit = obj.parentNode.parentNode;
+    var modal = document.getElementById("edit-lecture-modal");
+    var inputs = modal.getElementsByTagName("input");
+    var childs = lectureToEdit.children;
+    var title = childs[0].innerHTML;
+    var type = childs[1].innerHTML;
+    var description = childs[2].innerHTML;
+    var link = childs[3].innerHTML;
+    inputs[0].value = title;
+    inputs[1].value = link;
+    modal.getElementsByTagName("textarea")[0].innerHTML = description;
+    modal.getElementsByTagName("select")[0].value = type;
+    showModal("edit-lecture-modal");
+}
+function showEditLectureModal2(obj) {
+    lectureToEdit = obj
     var modal = document.getElementById("edit-lecture-modal");
     var inputs = modal.getElementsByTagName("input");
     var childs = lectureToEdit.children;
