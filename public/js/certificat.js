@@ -29,6 +29,6 @@ var saveButton = function(button) {
     setTimeout(function(){
       button.innerHTML = 'Saved';
       button.className = 'done';
-    }, 3000);
+    }, 2000);
     
   };

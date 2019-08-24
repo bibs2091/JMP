@@ -80,11 +80,11 @@ body{
   <div id="PlaningAndSponsors">
     <h2>Planing and Sponsors</h2>
     <hr>
-    <div class="form-group md-form">
-        <label class="customized-label">Tags</label>
-        <p style="font-size: 11px;margin-bottom:7px;">
-            In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
-        </p>
+    <label class="customized-label">Tags</label>
+    <p style="font-size: 11px;margin-bottom:7px;">
+      In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
+  </p>
+    <div class="form-group">
         <label style="width:100%" for="tag-typer">
                 <div id="tags">
                     <input id="tag-typer" type="text" name="tags" placeholder="Add a tag..."/>
@@ -100,15 +100,15 @@ body{
           line-height: 31px;
         }
       </style>
-      <div class="form-group" style="margin-top: 80px">
+      <div class="form-group" style="margin-top: 30px">
         <label for="add-schedule">Schedule</label>
-        <button id="add-schedule" class="btn-add"  data-toggle="modal" data-target="#add-schedule-modal">
+        <button id="add-schedule" class="btn-add saved_animation"  data-toggle="modal" data-target="#add-schedule-modal">
           <i class="fa fa-plus"></i> Add Schedule
         </button>
       </div>
-      <div class="form-group" style="margin-top: 50px">
+      <div class="form-group" style="margin-top: 30px">
         <label for="add-sponsor">Sponsors</label>
-        <button id="add-sponsor" class="btn-add" data-toggle="modal" data-target="#add-sponsor-modal">
+        <button id="add-sponsor" class="btn-add saved_animation" data-toggle="modal" data-target="#add-sponsor-modal">
           <i class="fa fa-plus"></i> Add Sponsor
         </button>
       </div>
@@ -166,7 +166,7 @@ body{
       </div>      </div>
       <div class="modal-footer">
         <div class="done-btn-container">
-          <div class="btn btn-success" onclick="saveSchedule();" data-dismiss="modal" aria-label="Close" >
+          <div class="btn btn-success" onclick="saveSchedule();saveAnimation('add-schedule');" data-dismiss="modal" aria-label="Close" >
               Done
           </div>
       </div>
@@ -235,7 +235,7 @@ body{
       </div>
       <div class="modal-footer">
         <div class="done-btn-container">
-          <div class="btn btn-success" onclick="saveSponsors()" data-dismiss="modal" aria-label="Close" >
+          <div class="btn btn-success" onclick="saveSponsors();saveAnimation('add-sponsor');" data-dismiss="modal" aria-label="Close" >
               Done
           </div>
         </div>

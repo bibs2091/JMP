@@ -3152,4 +3152,99 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
 .displayed{
   display: block;
 }
+.saved_animation {
+  transition: all 150ms ease;
+  cursor: pointer;
+  box-shadow: 0 30px 30px -20px rgba(0, 0, 0, 0.4);
+  font-size: 17px;
+}
+.saved_animation:hover, .saved_animation:focus {
+  outline: 0;
+  box-shadow: 0 30px 30px -25px black;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+  text-decoration: none;
+}
+.saved_animation:active {
+  box-shadow: 0 30px 30px -20px rgba(0, 0, 0, 0.4);
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+.saved_animation.done {
+  /* background: #7DCE94; */
+  -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+          animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+.saved_animation .spinner {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  border-radius: 50%;
+  position:relative;
+  top:3px;
+  background: transparent;
+  border-top: 2px solid rgb(155, 48, 48);
+  border-right: 2px solid rgb(167, 46, 46);
+  border-bottom: 2px solid transparent;
+  border-left: 2px solid transparent;
+  -webkit-animation: loading 0.5s infinite linear;
+          animation: loading 0.5s infinite linear;
+}
+@-webkit-keyframes loading {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes loading {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
+@keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
+
+
 /* add course form */

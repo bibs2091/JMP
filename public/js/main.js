@@ -530,6 +530,7 @@ function resetScheduleNumbers() {
 function saveSchedule() {
     var cards = document.getElementsByClassName("schedule-card");
     var schedule = [];
+    var addSchedule= document.getElementById("add-schedule");
     for (let i = 0; i < cards.length; i++) {
         var inputs = cards[i].getElementsByTagName("input");
         schedule.push({
@@ -540,7 +541,21 @@ function saveSchedule() {
     }
     $("#scheduleJSON-input").val(JSON.stringify(schedule));
     hideModal('add-schedule-modal');
+    addSchedule.innerHTML="Change Schedule";
+    // addSchedule.classList.add("saved_animation");
 }
+var saveAnimation = function(buttonID) {
+    console.log(buttonID);
+    button=document.getElementById(buttonID);
+    button.innerHTML = 'Saving <span class="spinner"></span>';    
+    // Simulate successful AJAX call
+    setTimeout(function(){
+      button.innerHTML = 'Change Schedule';
+      button.classList.add('done');
+    }, 1000);
+    button.classList.remove("done");
+
+  };
 //add sponsor item card
 function addSponsorCard() {
     var number = document.getElementsByClassName("sponsor-card").length + 1;
