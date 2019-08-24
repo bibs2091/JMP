@@ -56,7 +56,7 @@ function deleteCategory(id) {
 function addChapter(obj) {
     var title = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
     var chapterHTML = "<li>";
-    chapterHTML += "<div class='chapter-title' onclick='showEditChapterModal2(this)'><h6>" + title + "</h6><div class='tools'><i class='far fa-trash-alt' onclick='deleteChapter(this)'></i>&nbsp;<i class='far fa-edit' onclick='showEditChapterModal(this)'></i></div>";
+    chapterHTML += "<div class='chapter-title' data-toggle='modal' data-target='#edit-chapter-modal' onclick='showEditChapterModal2(this)'><h6>" + title + "</h6><div class='tools'><i class='far fa-trash-alt' onclick='deleteChapter(this);event.stopPropagation();'></i>&nbsp;<i class='far fa-edit' onclick='showEditChapterModal(this)'></i></div>";
     chapterHTML += `</div><ul class='lectures'></ul>
     <div class='add-lecture' data-toggle='modal' data-target='#add-lecture-modal' onclick='showAddLectureModal(this)'>
     <ul> <li class="lesson addLesson">
@@ -68,7 +68,7 @@ function addChapter(obj) {
     </div>
     </li>`;
     document.getElementById("chapters-list").innerHTML += chapterHTML;
-    hideModal("add-chapter-modal");
+    // hideModal("add-chapter-modal");
 }
 // add lecture modal
 
@@ -114,7 +114,7 @@ function showEditChapterModal(obj) {
     var input = modal.getElementsByTagName("input")[0];
     var value = chapterToEdit.getElementsByTagName("h6")[0].innerHTML;
     input.value = value;
-    showModal("edit-chapter-modal");
+    // showModal("edit-chapter-modal");
 }
 function showEditChapterModal2(obj) {
     chapterToEdit = obj;
@@ -122,13 +122,13 @@ function showEditChapterModal2(obj) {
     var input = modal.getElementsByTagName("input")[0];
     var value = chapterToEdit.getElementsByTagName("h6")[0].innerHTML;
     input.value = value;
-    showModal("edit-chapter-modal");
+    // showModal("edit-chapter-modal");
 }
 //edit chapter
 function editChapter(obj) {
     var value = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
     chapterToEdit.getElementsByTagName("h6")[0].innerHTML = value;
-    hideModal("edit-chapter-modal");
+    // hideModal("edit-chapter-modal");
 }
 //show edit lecture modal
 function showEditLectureModal(obj) {
