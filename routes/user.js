@@ -24,7 +24,7 @@ router.get("/mycourses", isAuthenticated, isStudent, myCoursesController);
 //access	private
 //desc		get current user profile
 
-router.get("/settings", userSettingsController);
+router.get("/settings", isAuthenticated, userSettingsController);
 //route		/user/editprofile
 //methode 	POST
 //access	private
