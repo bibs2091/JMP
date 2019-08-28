@@ -519,14 +519,14 @@ function scheduleCardHTML(number) {
             <div class="col-md-6">
                 <div class="md-form form-md">
                 <input type="text" placeholder="Select a date" 
-                onkeyup="saveInputState(this)" class="form-control form-control-lg datepicker">
+                onchange="saveInputState(this)" class="form-control form-control-lg datepicker">
                 <label class="active">Start day</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="md-form form-md">
                 <input type="text" placeholder="Select a date" 
-                onkeyup="saveInputState(this)" class="form-control form-control-lg timepicker">
+                onchange="saveInputState(this)" class="form-control form-control-lg timepicker">
                 <label class="active">Start time</label>
                 </div>
             </div>
@@ -634,10 +634,10 @@ function sponsorCardHTML(number) {
             </defs>
             </svg>
             
-          <input type="file" accept="images/*" name="sponsorImage">
+          <input type="file" accept="image/*" name="sponsorImage">
         </a>
         <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Upload your file">
+          <input class="file-path validate"  onchange="saveInputState(this)" type="text" placeholder="Upload the photo of the sponsor" disabled>
         </div>
       </div>
     </div>
