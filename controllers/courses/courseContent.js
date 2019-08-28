@@ -76,7 +76,6 @@ module.exports = async (req, res) => {
                 }
             });
         }
-        console.log(content);
         res.render("courses.course", {
             pageTitle: content.title,
             chaptersList,

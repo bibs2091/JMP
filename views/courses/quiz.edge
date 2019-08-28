@@ -78,7 +78,7 @@
         <main class="s-layout__content">
             <nav id="navbar">
                 <div id="container">
-                        <h1>quiz title</h1>
+                        <h1>Quiz</h1>
                         <a href="#" data-toggle="modal" data-target="#myModal"><h5>SEND FEEDBACK</h5></a>
                 </div>
             </nav> 
@@ -189,10 +189,16 @@
                     <a id="quiz-submit" class="quiz-btm-btns" style="display:none;" ><button class="btn" disabled onclick="quizResult({{quizId}} , {{courseId}})">Submit</button></a>                      
                     <a id="quiz-next" class="quiz-btm-btns"><button class="btn" onclick="nextQuest(this)" disabled data-step="2">Next</button></a>
                     @endif
+                    <a id="quiz-next2" class="quiz-btm-btns" style="display: none" href="{{nextLink}}">
+                        <button class="btn">
+                            @if(next == "certificat")
+                            Get certificat
+                            @else
+                            Next
+                            @endif
+                        </button>
+                    </a>
                 </div>  
-
-                
-
             </section>
              
         </main>

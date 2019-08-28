@@ -1,4 +1,3 @@
-const Courses = require("../../models/Courses");
 const Chapters = require("../../models/Chapters");
 const Lectures = require("../../models/Lectures");
 const Progress = require("../../models/Progress");
@@ -8,7 +7,7 @@ const Suggestions = require("../../models/Suggestions");
 module.exports = async (req, res) => {
     var courseId = req.params.courseId;
     var chapId = req.params.chapId;
-
+    var next;
     var newProgress = await Progress.findOne({
         where: {
             userId: req.user.id,
@@ -36,11 +35,18 @@ module.exports = async (req, res) => {
             obj.id = lects[j].id;
             obj.title = lects[j].title;
             currentLects.push(obj);
+            if (chapId == currentChap.id) {
+                if (j == lects.length - 1) {
+                    next = obj.id + 1;
+                }
+                if (i == chaps.length - 1) {
+                    next = "certificat"
+                }
+            }
         };
         currentChap.lectures = currentLects;
         chaptersList.push(currentChap);
     };
-
     //getting the questions
     var questions = await Quizs.findAll({
         where: {
@@ -61,6 +67,12 @@ module.exports = async (req, res) => {
         questions[n].suggestions = rsugg;
         questions[n].index = n;
     }
+    var nextLink;
+    if (next == "certificat") {
+        nextLink = "/courses/classroom/" + courseId + "/certificat"
+    } else {
+        nextLink = "/courses/classroom/" + courseId + "/" + next;
+    }
     res.render("courses.quiz", {
         chaptersList,
         lastLecture,
@@ -68,6 +80,8 @@ module.exports = async (req, res) => {
         courseId,
         questions,
         quizId: chapId,
-        pageTitle: "JMP - Quiz"
+        pageTitle: "JMP - Quiz",
+        nextLink,
+        next
     });
 }
