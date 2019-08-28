@@ -503,7 +503,7 @@ function updateQuiz(i) {
 }
 //add schedule modal
 function showAddSchedModal() {
-    showModal("add-schedule-modal");
+    // showModal("add-schedule-modal");
 }
 //generating schedule item card html
 function scheduleCardHTML(number) {
@@ -535,12 +535,18 @@ function scheduleCardHTML(number) {
         </div>
     </div>
     `;
+    
     return html;
 }
 //add schedule item card
 function addScheduleCard() {
     var number = document.getElementsByClassName("schedule-card").length + 1;
     document.getElementById("schedule-cards").innerHTML += scheduleCardHTML(number);
+    $('.timepicker').pickatime({
+        twelvehour: false,
+        });
+    $('.datepicker').pickadate();
+        
 }
 //delete schedule card 
 function deleteSchedule(obj) {
