@@ -15,7 +15,17 @@ module.exports = async (req, res) => {
         delete currentUser.password;
         currentUser.info = userInfo.dataValues;
         var { data } = await axios.get("http://localhost:3000/recSys/" + req.user.id);
+        var coursesType = data.length > 0 ? "Recommended " : "Discover some ";
         var courses;
+        if (data.length > 0) {
+            for (let i = 0; i < 3; i++) {
+                let tCourse = await Courses.findByPk(data[i]);
+                courses.push(tCourse);
+            }
+        } else {
+            courses = await Courses.findAll({ limit: 3 });
+        }
+        var { data } = await axios.get("http://localhost:3000/recSys/mostPopCourses");
         if (data.length > 0) {
             for (let i = 0; i < 3; i++) {
                 let tCourse = await Courses.findByPk(data[i]);
@@ -72,13 +82,18 @@ module.exports = async (req, res) => {
             events[i].month = months[events[i].date.getMonth()];
         }
         var categories = await Categories.findAll({ limit: 3 });
+        console.log(courses);
+        var pcourses = courses.slice(3, 6);
+        courses = courses.slice(0, 3);
         res.render("user.home", {
             pageName: "Home",
             pageTitle: currentUser.info.username + " - Home",
             currentUser,
             courses,
             categories,
-            events
+            events,
+            coursesType,
+            pcourses
         });
     }
     catch (err) {
