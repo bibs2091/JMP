@@ -3263,3 +3263,9 @@ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([re
 .modal-header{
 background: rgba(255, 211, 42, 0.9);
 }
+/* radio buttons */
+[type="radio"]:checked, [type="radio"]:not(:checked){
+  position: static;
+  opacity: 1;
+  pointer-events: auto;
+}
