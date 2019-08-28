@@ -6,6 +6,7 @@ const Categories = require("../../models/Categories");
 const Events = require("../../models/Event");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+const axios = require("axios");
 
 module.exports = async (req, res) => {
     try {
@@ -13,7 +14,16 @@ module.exports = async (req, res) => {
         var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
         delete currentUser.password;
         currentUser.info = userInfo.dataValues;
-        var courses = await Courses.findAll({ limit: 3 });
+        var { data } = await axios.get("http://localhost:3000/recSys/" + req.user.id);
+        var courses;
+        if (data.length > 0) {
+            for (let i = 0; i < 3; i++) {
+                let tCourse = await Courses.findByPk(data[i]);
+                courses.push(tCourse);
+            }
+        } else {
+            courses = await Courses.findAll({ limit: 3 });
+        }
         for (let i = 0; i < courses.length; i++) {
             courses[i] = courses[i].dataValues;
             var duration = "";
@@ -71,7 +81,8 @@ module.exports = async (req, res) => {
             events
         });
     }
-    catch{
+    catch (err) {
+        console.log(err);
         return res.redirect("/error");
     }
 };
