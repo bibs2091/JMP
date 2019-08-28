@@ -111,12 +111,6 @@ $(document).ready(function () {
   });
 });
 
-//------------- lecture-nav ---------------
-$(".lecture-nav").on("click", function () {
-  $(this).next().slideToggle("fast");
-  $(this).children(".fa-play").toggleClass("rotate90");
-})
-
 //----------------- catalog -----------------
 var hidWidth;
 var scrollBarWidths = 40;

@@ -699,3 +699,10 @@ function valideQuiz() {
     }
     submitBtn.disabled = false;
 }
+
+//------------- lecture-nav ---------------
+$(".lecture-nav").on("click", function () {
+    $(this).next().slideToggle("fast");
+    $(this).children(".fa-play").toggleClass("rotate90");
+  })
+  
