@@ -79,13 +79,11 @@ function showAddLectureModal(obj) {
 //add lecture
 function addLecture(obj) {
     // inputs values
-    console.log(obj);
-
     var inputs = obj.getElementsByTagName("input");
     var title = inputs[0].value;
-    var link = inputs[1].value;
+    var link = inputs[2].value;
     var description = obj.getElementsByTagName("textarea")[0].value;
-    var type = obj.getElementsByTagName("select")[0].value;
+    var type = inputs[1].value;
     var lectureHTML = "<li class='lecture' onClick='showEditLectureModal2(this)'  data-toggle='modal' data-target='#edit-lecture-modal' >";
     lectureHTML += "<h5>" + title + "</h5><span>" + type + "</span>";
     lectureHTML += "<p>" + description + "</p><h6>" + link + "</h6>";
@@ -141,9 +139,9 @@ function showEditLectureModal(obj) {
     var description = childs[2].innerHTML;
     var link = childs[3].innerHTML;
     inputs[0].value = title;
-    inputs[1].value = link;
+    inputs[2].value = link;
     modal.getElementsByTagName("textarea")[0].innerHTML = description;
-    modal.getElementsByTagName("select")[0].value = type;
+    inputs[1].value = type;
     // showModal("edit-lecture-modal");
 }
 function showEditLectureModal2(obj) {
@@ -156,18 +154,18 @@ function showEditLectureModal2(obj) {
     var description = childs[2].innerHTML;
     var link = childs[3].innerHTML;
     inputs[0].value = title;
-    inputs[1].value = link;
+    inputs[2].value = link;
     modal.getElementsByTagName("textarea")[0].innerHTML = description;
-    modal.getElementsByTagName("select")[0].value = type;
+    inputs[1].value = type;
     // showModal("edit-lecture-modal");
 }
 // edit lecture 
 function editLecture(obj) {
     var modal = obj.parentNode;
     var title = modal.getElementsByTagName("input")[0].value;
-    var link = modal.getElementsByTagName("input")[1].value;
+    var link = modal.getElementsByTagName("input")[2].value;
     var description = modal.getElementsByTagName("textarea")[0].innerHTML;
-    var type = modal.getElementsByTagName("select")[0].value;
+    var type = modal.getElementsByTagName("input")[1].value;
     var childs = lectureToEdit.children;
     childs[0].innerHTML = title;
     childs[1].innerHTML = type;
@@ -535,7 +533,7 @@ function scheduleCardHTML(number) {
         </div>
     </div>
     `;
-    
+
     return html;
 }
 //add schedule item card
@@ -544,9 +542,9 @@ function addScheduleCard() {
     document.getElementById("schedule-cards").innerHTML += scheduleCardHTML(number);
     $('.timepicker').pickatime({
         twelvehour: false,
-        });
+    });
     $('.datepicker').pickadate();
-        
+
 }
 //delete schedule card 
 function deleteSchedule(obj) {
@@ -566,7 +564,7 @@ function resetScheduleNumbers() {
 function saveSchedule() {
     var cards = document.getElementsByClassName("schedule-card");
     var schedule = [];
-    var addSchedule= document.getElementById("add-schedule");
+    var addSchedule = document.getElementById("add-schedule");
     for (let i = 0; i < cards.length; i++) {
         var inputs = cards[i].getElementsByTagName("input");
         schedule.push({
@@ -577,21 +575,21 @@ function saveSchedule() {
     }
     $("#scheduleJSON-input").val(JSON.stringify(schedule));
     hideModal('add-schedule-modal');
-    addSchedule.innerHTML="Change Schedule";
+    addSchedule.innerHTML = "Change Schedule";
     // addSchedule.classList.add("saved_animation");
 }
-var saveAnimation = function(buttonID) {
+var saveAnimation = function (buttonID) {
     console.log(buttonID);
-    button=document.getElementById(buttonID);
-    button.innerHTML = 'Saving <span class="spinner"></span>';    
+    button = document.getElementById(buttonID);
+    button.innerHTML = 'Saving <span class="spinner"></span>';
     // Simulate successful AJAX call
-    setTimeout(function(){
-      button.innerHTML = 'Change Schedule';
-      button.classList.add('done');
+    setTimeout(function () {
+        button.innerHTML = 'Change Schedule';
+        button.classList.add('done');
     }, 1000);
     button.classList.remove("done");
 
-  };
+};
 //add sponsor item card
 function addSponsorCard() {
     var number = document.getElementsByClassName("sponsor-card").length + 1;

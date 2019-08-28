@@ -76,6 +76,7 @@ module.exports = async (req, res) => {
                 }
             });
         }
+        console.log(content);
         res.render("courses.course", {
             pageTitle: content.title,
             chaptersList,
@@ -87,7 +88,7 @@ module.exports = async (req, res) => {
 
     }
     catch (err) {
-        console.log(err);
+        console.log(err.message);
         res.redirect("/error");
     }
 
