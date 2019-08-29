@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
 				}
 			}
 			let myCourses = []
-			if (isCoach(id)) {
+			if (await isCoach(id)) {
 				//fetch courses as coach
 				myCourses = await getCoachCourses(id)
 			} else {
@@ -67,27 +67,33 @@ module.exports = async (req, res) => {
 
 //helper functions 
 const getStudentCourses = async (id) => {
-	let courses = await progress.findAll({
-		where: { userId: id }
-	})
-	courses = courses.map(course => {
-		return course.dataValues.courseId
-	})
-	let mycourses = await Courses.findAll({
-		where: {
-			id: { [Op.or]: courses }
-		}
-	})
-	mycourses = mycourses.map(async course => {
-		let author = await userInfo.findByPk(course.author)
-		course.dataValues.author = `${author.dataValues.firstName} ${author.dataValues.lastName}`
-		course.dataValues.authorAvatar = author.dataValues.avatar
-		delete course.dataValues.createdAt
-		delete course.dataValues.updatedAt
-		return course.dataValues
-	})
+	try {
+		let courses = await progress.findAll({
+			where: { userId: id }
+		})
+		courses = courses.map(course => {
+			return course.dataValues.courseId
+		})
+		let mycourses = await Courses.findAll({
+			where: {
+				id: { [Op.or]: courses }
+			}
+		})
+		mycourses = mycourses.map(async course => {
+			let author = await userInfo.findByPk(course.author)
+			course.dataValues.author = `${author.dataValues.firstName} ${author.dataValues.lastName}`
+			course.dataValues.authorAvatar = author.dataValues.avatar
+			delete course.dataValues.createdAt
+			delete course.dataValues.updatedAt
+			return course.dataValues
+		})
 
-	return Promise.all(mycourses)
+		return Promise.all(mycourses)
+	} catch (error) {
+		console.log(error)
+		return
+	}
+
 }
 
 const getCoachCourses = async (id) => {
