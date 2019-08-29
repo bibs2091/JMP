@@ -1,7 +1,10 @@
 const userInfo = require("../models/UsersInfo");
+const progress = require('../models/Progress')
+const Courses = require('../models/Courses')
+const rawUsers = require('../models/Users')
 const { githubApi } = require("../config/keys");
 const axios = require("axios");
-
+const Op = require('sequelize').Op
 module.exports = async (req, res) => {
 	try {
 		const { id } = req.params
@@ -37,12 +40,16 @@ module.exports = async (req, res) => {
 					console.log(error);
 				}
 			}
+			const myCourses = await getCourses(id)
+			console.log(myCourses)
+
 			// res.json(repos)
 			res.render("userProfile", {
 				pageName: profile.username,
 				pageTitle: profile.firstName + " " + profile.lastName,
 				profile,
 				repos,
+				myCourses,
 				myProfile: req.user.id == req.params.dude
 			});
 		} else {
@@ -52,3 +59,28 @@ module.exports = async (req, res) => {
 		console.log(err);
 	}
 };
+
+//helper functions 
+const getCourses = async (id) => {
+	let courses = await progress.findAll({
+		where: { userId: id }
+	})
+	courses = courses.map(course => {
+		return course.dataValues.courseId
+	})
+	let mycourses = await Courses.findAll({
+		where: {
+			id: { [Op.or]: courses }
+		}
+	})
+	mycourses = mycourses.map(async course => {
+		let author = await userInfo.findByPk(course.author)
+		course.dataValues.author = `${author.dataValues.firstName} ${author.dataValues.lastName}`
+		course.dataValues.authorAvatar = author.dataValues.avatar
+		delete course.dataValues.createdAt
+		delete course.dataValues.updatedAt
+		return course.dataValues
+	})
+
+	return Promise.all(mycourses)
+}
