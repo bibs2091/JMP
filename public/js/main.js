@@ -247,17 +247,17 @@ function wishlist(id) {
         }
     });
 }
-$(function(){
+$(function () {
     $(".btn-noWishlist").on("click", function () {
         $(this).hide();
         $('.btn-Wishlist').show();
-      });
-      $(".btn-Wishlist").on("click", function () {
+    });
+    $(".btn-Wishlist").on("click", function () {
         $(this).hide();
         console.log('hi');
         $('.btn-noWishlist').show();
-      })
-      
+    })
+
 });
 //enable toolips every where
 $(function () {
@@ -715,5 +715,31 @@ function valideQuiz() {
 $(".lecture-nav").on("click", function () {
     $(this).next().slideToggle("fast");
     $(this).children(".fa-play").toggleClass("rotate90");
-  })
-  
+})
+/* deleting messages */
+function deleteMessages() {
+    var rows = $(".message-list li");
+    var ids = [];
+    for (let i = 0; i < rows.length; i++) {
+        if (rows[i].classList.contains("selected")) {
+            ids.push(rows[i].getAttribute("id"));
+        }
+    }
+    ids = JSON.stringify(ids);
+    fetch("/messages/delete", {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            ids: ids
+        })
+    }).then(function (res) {
+        return res.json()
+    }).then(function (res) {
+        location.reload(true);
+    }).catch(function () {
+        console.log("error")
+    });
+}

@@ -171,6 +171,12 @@ router.post('/read/:id', async (req, res) => {
 	}
 
 
+});
+
+router.delete("/delete", (req, res) => {
+	var ids = req.body.ids;
+	console.log(ids);
+	res.send({ succuess: true });
 })
 
 module.exports = router;
