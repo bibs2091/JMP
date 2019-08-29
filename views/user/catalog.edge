@@ -42,10 +42,10 @@
         <div class="row">
           @each(course in courses)      
             <div class="col-lg-4" style="margin-bottom: 30px;">
-                <div class="course-card card">
+                <div class="course-card card"  onclick="location.href = '/courses/{{course.id}}'">
                   <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
                   <h5 style="position:relative;">{{course.title}}&nbsp;
-                    <div class="stage" onclick="wishlist({{course.id}})"> 
+                    <div class="stage" onclick="wishlist({{course.id}});event.stopPropagation();"> 
                     @if(course.wishlist == false)
                     <div class="heart"></div> 
                     @else

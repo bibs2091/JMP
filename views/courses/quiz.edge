@@ -78,7 +78,7 @@
         <main class="s-layout__content">
             <nav id="navbar">
                 <div id="container">
-                        <h1>quiz title</h1>
+                        <h1>Quiz</h1>
                         <a href="#" data-toggle="modal" data-target="#myModal"><h5>SEND FEEDBACK</h5></a>
                 </div>
             </nav> 
@@ -189,10 +189,16 @@
                     <a id="quiz-submit" class="quiz-btm-btns" style="display:none;" ><button class="btn" disabled onclick="quizResult({{quizId}} , {{courseId}})">Submit</button></a>                      
                     <a id="quiz-next" class="quiz-btm-btns"><button class="btn" onclick="nextQuest(this)" disabled data-step="2">Next</button></a>
                     @endif
+                    <a id="quiz-next2" class="quiz-btm-btns" style="display: none" href="{{nextLink}}">
+                        <button class="btn">
+                            @if(next == "certificat")
+                            Get certificat
+                            @else
+                            Next
+                            @endif
+                        </button>
+                    </a>
                 </div>  
-
-                
-
             </section>
              
         </main>
@@ -236,13 +242,13 @@
                 
                 <div style="padding-right: 26px; margin-bottom:20px;" >
                   <button type="button" class="btn btn-success saveboutton pull-right" style="margin-left: 10px;">Send</button>
-                  <button type="button" class="btn btn-outline-success waves-effect resetboutton pull-right">cancel</button>
+                  <button type="button" class="btn btn-outline-success waves-effect resetboutton pull-right"  data-dismiss="modal">cancel</button>
                 </div>
               </div>
               
               
             </div>
-            </div>
+        </div>
     <!-- needed scripts -->
     <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

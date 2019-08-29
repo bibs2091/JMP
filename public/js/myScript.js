@@ -33,7 +33,8 @@ function activateLoginButton() {
 //------------- course details ----------
 $(".collapse-chapter").on("click", function () {
   $(this).next().slideToggle("slow");
-})
+  $(this).find(".fa-play").toggleClass("rotate90-v2");
+});
 
 
 //------ tags ------
@@ -43,7 +44,7 @@ $(document).ready(function () {
     if (key == 13 || key == 44) {
       event.preventDefault();
       var tag = $(this).val();
-      if (tag.length > 0) {
+      if (tag.length > 0 && tag.replace(/\s/g, '').length>0) {
         $("<span class='tag' style='display:none'><span class='close'>&times;</span><p>" + tag + "</p></span>").insertBefore(this).fadeIn(100);
         $(this).val("");
       }
@@ -109,12 +110,6 @@ $(document).ready(function () {
     $(this).next(".networks-5").toggleClass("active");
   });
 });
-
-//------------- lecture-nav ---------------
-$(".lecture-nav").on("click", function () {
-  $(this).next().slideToggle("fast");
-  $(this).children(".fa-play").toggleClass("rotate90");
-})
 
 //----------------- catalog -----------------
 var hidWidth;
@@ -185,7 +180,6 @@ $('.scroller-left').click(function () {
 function nextStep(currentDiv, currentStepNumber, nextDiv, nextStepNumber) {
   $("html, body").animate({ scrollTop: 0 }, "slow");
   $('#' + currentDiv).hide();
-  console.log('#' + nextDiv)
   $('#' + nextDiv).show();
   $(".step:nth-child(" + currentStepNumber + ")").removeClass("step--incomplete step--active")
   $(".step:nth-child(" + currentStepNumber + ")").addClass("step--complete step--inactive")

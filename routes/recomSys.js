@@ -8,10 +8,9 @@ raccoon.config.className = 'course'
 raccoon.config.numOfRecStore = 30
 
 //get recommendation for current user
-router.get('/', (req, res) => {
-    raccoon.recommendFor(req.user.id, 5).then(result => {
-        console.log(result)
-        res.json(result)
+router.get('/:id', (req, res) => {
+    raccoon.recommendFor(req.params.id, 5).then(result => {
+        res.send(result)
     })
 })
 

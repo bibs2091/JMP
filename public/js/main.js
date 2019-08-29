@@ -56,9 +56,9 @@ function deleteCategory(id) {
 function addChapter(obj) {
     var title = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
     var chapterHTML = "<li>";
-    chapterHTML += "<div class='chapter-title'><h6>" + title + "</h6><div class='tools'><i class='far fa-trash-alt' onclick='deleteChapter(this)'></i>&nbsp;<i class='far fa-edit' onclick='showEditChapterModal(this)'></i></div>";
+    chapterHTML += "<div class='chapter-title' data-toggle='modal' data-target='#edit-chapter-modal' onclick='showEditChapterModal2(this)'><h6>" + title + "</h6><div class='tools'><i class='far fa-trash-alt' onclick='deleteChapter(this);event.stopPropagation();'></i>&nbsp;<i class='far fa-edit' onclick='showEditChapterModal(this)'></i></div>";
     chapterHTML += `</div><ul class='lectures'></ul>
-    <div class='add-lecture' onclick='showAddLectureModal(this)'>
+    <div class='add-lecture' data-toggle='modal' data-target='#add-lecture-modal' onclick='showAddLectureModal(this)'>
     <ul> <li class="lesson addLesson">
         <p style="display:block; margin:0 auto; color:#868686;">
             <i class="fas fa-plus"></i> &nbsp; 
@@ -68,35 +68,40 @@ function addChapter(obj) {
     </div>
     </li>`;
     document.getElementById("chapters-list").innerHTML += chapterHTML;
-    hideModal("add-chapter-modal");
+    // hideModal("add-chapter-modal");
 }
 // add lecture modal
 
 function showAddLectureModal(obj) {
     whereToAddLecture = obj.parentNode.getElementsByClassName("lectures")[0];
-    showModal("add-lecture-modal");
+    // showModal("add-lecture-modal");
 }
 //add lecture
 function addLecture(obj) {
     // inputs values
     var inputs = obj.getElementsByTagName("input");
     var title = inputs[0].value;
-    var link = inputs[1].value;
+    var link = inputs[2].value;
     var description = obj.getElementsByTagName("textarea")[0].value;
-    var type = obj.getElementsByTagName("select")[0].value;
-    var lectureHTML = "<li class='lecture'>";
+    var type = inputs[1].value;
+    var lectureHTML = "<li class='lecture' onClick='showEditLectureModal2(this)'  data-toggle='modal' data-target='#edit-lecture-modal' >";
     lectureHTML += "<h5>" + title + "</h5><span>" + type + "</span>";
     lectureHTML += "<p>" + description + "</p><h6>" + link + "</h6>";
-    lectureHTML += "<div class='tools'><i class='far fa-trash-alt' onclick='deleteLecture(this)'></i>&nbsp;";
-    lectureHTML += "<i class='far fa-edit' onclick='showEditLectureModal(this)'></i></div></li>";
+    lectureHTML += "<div class='tools'><i class='far fa-trash-alt' onclick='deleteLecture(this);event.stopPropagation();'></i>&nbsp;";
+    lectureHTML += "<i class='far fa-edit' onclick='showEditLectureModal(this)'  data-toggle='modal' data-target='#edit-lecture-modal'></i></div></li>";
     whereToAddLecture.innerHTML += lectureHTML;
-    hideModal("add-lecture-modal");
+    // hideModal("add-lecture-modal");
 }
 // delete chapter
 function deleteChapter(obj) {
     $(obj).parent().parent().parent().remove();
 }
 //delete lecture
+// $("i").on("click", function(){
+//     console.log( "I was clicked, but my parent will not be." );
+
+//     // event.stopPropagation();
+//   });
 function deleteLecture(obj) {
     $(obj).parent().parent().remove();
 }
@@ -107,13 +112,21 @@ function showEditChapterModal(obj) {
     var input = modal.getElementsByTagName("input")[0];
     var value = chapterToEdit.getElementsByTagName("h6")[0].innerHTML;
     input.value = value;
-    showModal("edit-chapter-modal");
+    // showModal("edit-chapter-modal");
+}
+function showEditChapterModal2(obj) {
+    chapterToEdit = obj;
+    var modal = document.getElementById("edit-chapter-modal");
+    var input = modal.getElementsByTagName("input")[0];
+    var value = chapterToEdit.getElementsByTagName("h6")[0].innerHTML;
+    input.value = value;
+    // showModal("edit-chapter-modal");
 }
 //edit chapter
 function editChapter(obj) {
     var value = obj.parentNode.parentNode.getElementsByTagName("input")[0].value;
     chapterToEdit.getElementsByTagName("h6")[0].innerHTML = value;
-    hideModal("edit-chapter-modal");
+    // hideModal("edit-chapter-modal");
 }
 //show edit lecture modal
 function showEditLectureModal(obj) {
@@ -126,24 +139,39 @@ function showEditLectureModal(obj) {
     var description = childs[2].innerHTML;
     var link = childs[3].innerHTML;
     inputs[0].value = title;
-    inputs[1].value = link;
+    inputs[2].value = link;
     modal.getElementsByTagName("textarea")[0].innerHTML = description;
-    modal.getElementsByTagName("select")[0].value = type;
-    showModal("edit-lecture-modal");
+    inputs[1].value = type;
+    // showModal("edit-lecture-modal");
+}
+function showEditLectureModal2(obj) {
+    lectureToEdit = obj
+    var modal = document.getElementById("edit-lecture-modal");
+    var inputs = modal.getElementsByTagName("input");
+    var childs = lectureToEdit.children;
+    var title = childs[0].innerHTML;
+    var type = childs[1].innerHTML;
+    var description = childs[2].innerHTML;
+    var link = childs[3].innerHTML;
+    inputs[0].value = title;
+    inputs[2].value = link;
+    modal.getElementsByTagName("textarea")[0].innerHTML = description;
+    inputs[1].value = type;
+    // showModal("edit-lecture-modal");
 }
 // edit lecture 
 function editLecture(obj) {
     var modal = obj.parentNode;
     var title = modal.getElementsByTagName("input")[0].value;
-    var link = modal.getElementsByTagName("input")[1].value;
+    var link = modal.getElementsByTagName("input")[2].value;
     var description = modal.getElementsByTagName("textarea")[0].innerHTML;
-    var type = modal.getElementsByTagName("select")[0].value;
+    var type = modal.getElementsByTagName("input")[1].value;
     var childs = lectureToEdit.children;
     childs[0].innerHTML = title;
     childs[1].innerHTML = type;
     childs[2].innerHTML = description;
     childs[3].innerHTML = link;
-    hideModal("edit-lecture-modal");
+    // hideModal("edit-lecture-modal");
 }
 //course items to json
 function courseJSON() {
@@ -216,10 +244,21 @@ function wishlist(id) {
         method: 'POST',
         contentType: 'application/json',
         success: function (result) {
-
         }
     });
 }
+$(function () {
+    $(".btn-noWishlist").on("click", function () {
+        $(this).hide();
+        $('.btn-Wishlist').show();
+    });
+    $(".btn-Wishlist").on("click", function () {
+        $(this).hide();
+        console.log('hi');
+        $('.btn-noWishlist').show();
+    })
+
+});
 //enable toolips every where
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
@@ -424,6 +463,7 @@ function addChapQuiz(obj) {
         chapQuiz.push(question);
     }
     place.innerHTML = JSON.stringify(chapQuiz);
+    valideQuiz();
     hideModal("add-quiz-modal");
 }
 // saving quiz inputs state
@@ -442,7 +482,6 @@ function quizsJSON() {
     for (let i = 0; i < quizsElems.length; i++) {
         quizs.push(JSON.parse(quizsElems[i].innerHTML));
     }
-    console.log(quizs);
     let json = JSON.stringify(quizs);
     document.getElementById("quizsJSON").value = json;
 }
@@ -452,6 +491,7 @@ function deleteQuiz(obj) {
     buffer.parentNode.previousElementSibling.innerHTML = "";
     $(buffer).hide();
     $(buffer.nextElementSibling).show();
+    valideQuiz()
 }
 //update quiz
 function updateQuiz(i) {
@@ -472,7 +512,7 @@ function updateQuiz(i) {
 }
 //add schedule modal
 function showAddSchedModal() {
-    showModal("add-schedule-modal");
+    // showModal("add-schedule-modal");
 }
 //generating schedule item card html
 function scheduleCardHTML(number) {
@@ -490,26 +530,32 @@ function scheduleCardHTML(number) {
             <div class="col-md-6">
                 <div class="md-form form-md">
                 <input type="text" placeholder="Select a date" 
-                onkeyup="saveInputState(this)" class="form-control form-control-lg datepicker">
+                onchange="saveInputState(this)" class="form-control form-control-lg datepicker">
                 <label class="active">Start day</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="md-form form-md">
                 <input type="text" placeholder="Select a date" 
-                onkeyup="saveInputState(this)" class="form-control form-control-lg timepicker">
+                onchange="saveInputState(this)" class="form-control form-control-lg timepicker">
                 <label class="active">Start time</label>
                 </div>
             </div>
         </div>
     </div>
     `;
+
     return html;
 }
 //add schedule item card
 function addScheduleCard() {
     var number = document.getElementsByClassName("schedule-card").length + 1;
     document.getElementById("schedule-cards").innerHTML += scheduleCardHTML(number);
+    $('.timepicker').pickatime({
+        twelvehour: false,
+    });
+    $('.datepicker').pickadate();
+
 }
 //delete schedule card 
 function deleteSchedule(obj) {
@@ -529,6 +575,7 @@ function resetScheduleNumbers() {
 function saveSchedule() {
     var cards = document.getElementsByClassName("schedule-card");
     var schedule = [];
+    var addSchedule = document.getElementById("add-schedule");
     for (let i = 0; i < cards.length; i++) {
         var inputs = cards[i].getElementsByTagName("input");
         schedule.push({
@@ -539,7 +586,21 @@ function saveSchedule() {
     }
     $("#scheduleJSON-input").val(JSON.stringify(schedule));
     hideModal('add-schedule-modal');
+    addSchedule.innerHTML = "Change Schedule";
+    // addSchedule.classList.add("saved_animation");
 }
+var saveAnimation = function (buttonID) {
+    console.log(buttonID);
+    button = document.getElementById(buttonID);
+    button.innerHTML = 'Saving <span class="spinner"></span>';
+    // Simulate successful AJAX call
+    setTimeout(function () {
+        button.innerHTML = 'Change Schedule';
+        button.classList.add('done');
+    }, 1000);
+    button.classList.remove("done");
+
+};
 //add sponsor item card
 function addSponsorCard() {
     var number = document.getElementsByClassName("sponsor-card").length + 1;
@@ -584,10 +645,10 @@ function sponsorCardHTML(number) {
             </defs>
             </svg>
             
-          <input type="file" accept="images/*" name="sponsorImage">
+          <input type="file" accept="image/*" name="sponsorImage">
         </a>
         <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Upload your file">
+          <input class="file-path validate"  onchange="saveInputState(this)" type="text" placeholder="Upload the photo of the sponsor" disabled>
         </div>
       </div>
     </div>
@@ -616,3 +677,69 @@ function saveSponsors() {
 $(document).ready(function () {
     $('.mdb-select').materialSelect();
 });
+//Add Course Validation Step 1Ò
+function ACVS1() {
+    console.log("lm")
+    var nextBtn = document.querySelector("#basic-info button");
+    if ($("#basic-info textarea").eq(0).val() == "") {
+        nextBtn.disable = true;
+        return;
+    }
+    var inputs = $("#basic-info input");
+    if (inputs[0].value == "" || inputs[1].value == "") {
+        nextBtn.disable = true;
+        return;
+    }
+    if (inputs[2].value == "Course's category" || inputs[3].value == "Course's level") {
+        nextBtn.disable = true;
+        return;
+    }
+
+    nextBtn.disabled = false;
+}
+//validating quizs before submit
+function valideQuiz() {
+    var submitBtn = document.querySelector("#quizs-content button");
+    var datas = document.getElementsByClassName("quiz-data");
+
+    for (let i = 0; i < datas.length; i++) {
+        if (datas[i].innerHTML == "") {
+            submitBtn.disabled = true;
+            return;
+        }
+    }
+    submitBtn.disabled = false;
+}
+
+//------------- lecture-nav ---------------
+$(".lecture-nav").on("click", function () {
+    $(this).next().slideToggle("fast");
+    $(this).children(".fa-play").toggleClass("rotate90");
+})
+/* deleting messages */
+function deleteMessages() {
+    var rows = $(".message-list li");
+    var ids = [];
+    for (let i = 0; i < rows.length; i++) {
+        if (rows[i].classList.contains("selected")) {
+            ids.push(rows[i].getAttribute("id"));
+        }
+    }
+    ids = JSON.stringify(ids);
+    fetch("/messages/delete", {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            ids: ids
+        })
+    }).then(function (res) {
+        return res.json()
+    }).then(function (res) {
+        location.reload(true);
+    }).catch(function () {
+        console.log("error")
+    });
+}

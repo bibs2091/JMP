@@ -71,7 +71,7 @@ module.exports = async (req, res) => {
         }, { where: { id: courseId } });
         res.redirect("/courses/" + courseId);
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
         res.redirect("/error");
     }
 }

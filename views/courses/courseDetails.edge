@@ -1,10 +1,26 @@
 @layout('layouts.main')
 
 @section('content')
-
-
-<div style="margin-left:-25px;">
-  <div id="coverImage" style="background: url({{course.cover}}) no-repeat;">
+<style scoped>
+  @media (max-width: 672px){
+  #main-content {
+  margin-left: -22px;
+  }
+  @media (max-width: 672px){
+  #main-content {
+    margin-left: 0;
+  }
+  @media (max-width: 672px){
+  #main-content {
+    margin-left: 0;
+  }
+  .container{
+    margin: 0;
+    padding: 0;
+  }
+</style>
+<div>
+  <div id="coverImage" style="background: url({{course.cover}}) no-repeat;  background-size: 100% 100%;">
     <h1>{{course.title}}</h1>
     <div id="imgTags">
       @each(tag in course.tags)
@@ -12,7 +28,7 @@
       @endeach
     </div>
   </div>
-  <div class="container" style="padding-left:4vw;">
+  <div class="container">
     <div class="row">
       <div class="col-md-7 courseDescription">
         <h3>Description</h3>
@@ -40,7 +56,8 @@
     </div>
   </div>
 </div>
-<div class="contain" style="margin-top:30px;">
+
+<div class="contain" style="margin-top:20px;">
     <div class="row">
       <div class="col-md-7">
         <ul id="courseLessons_details"> 
@@ -50,8 +67,7 @@
                 <li class="chapter">
                   <div>
                     <p>{{chapter.title}}</p>
-                    <i class="fas fa-plus expand_chaptre"></i>
-                    <i class="fas fa-minus"></i>
+                    <i class="fas fa-play expand_chaptre"></i>
                   </div>
                 </li>
               </ul>
@@ -67,10 +83,18 @@
 
       </ul>
       </div>
+
       <div class="col-md-5">
         <div id="courseCardInfo">
           <a href="/courses/classroom/{{course.id}}" id="goToCourse"><button  type="button" class="btn btn-primary" id="startCourse">Go to Course</button></a>
-          <button  type="button" class="btn btn-outline-secondary" id="wishlistCourseDetails">Wishlist <i class="far fa-heart"></i></button>
+          <button  type="button" class="btn btn-outline-secondary" onclick="wishlist({{course.id}})" id="wishlistCourseDetails">
+            <div class="btn-noWishlist" style="transition: 1s;">
+            Add to wishlist<i class="far fa-heart"></i>
+            </div>
+            <div class="btn-Wishlist" style="transition: 1s;">
+              <p style="font-weight: bold;">Added to wishlist</p><i class="fas fa-heart"></i>
+            </div>
+          </button>
           <ul>
             <li>This course includes</li>
             <li><i class="far fa-clock"></i> &nbsp;2 h 45 min of content</li>
@@ -106,7 +130,7 @@
       </div>
     </div>
 </div>
-</div>
+<!-- </div> -->
 
 
 

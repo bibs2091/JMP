@@ -93,8 +93,11 @@ function quizResult(quizId, courseId) {
             $(".quiz-observation h6").html(result.rate);
             $(".quiz-observation p").html(result.remark);
             $("#triangle").css("padding-left", result.percentage + '%');
-            $("#emoji-place").html(emojiHTML(result.emoji))
+            $("#emoji-place").html(emojiHTML(result.emoji));
             showQuizResult();
+            $("#quiz-next2 button").css("width", "150px");
+            $("#quiz-next2").show();
+
         }
     });
 }

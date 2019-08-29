@@ -14,9 +14,14 @@
       <img src="/images/avatar.jpg" alt="avatar" id="profile-pic">
     </div>
     <div class="col-md-7" id="profile_details">
-    <h1>{{firstName + " " + lastName}}</h1>
-      <h6>Student</h6>
-      <p>{{bio}} </p>
+    <h1>{{profile.firstName + " " + profile.lastName}}</h1>
+      @if(coach)
+        <h6>Coach</h6>
+        
+      @else
+        <h6>Student</h6>
+      @endif
+      <p>{{profile.bio ||''}} </p>
     </div>
     <div class="col-md-2" style="position: relative;">
       
@@ -30,17 +35,17 @@
         </div>
         
           <ul>
-            @if(facebook)
-            <li><a href={{facebook}} target="_blank"><i class="fab fa-facebook"></i></a></li>     
+            @if(profile.facebook)
+            <li><a href={{profile.facebook}} target="_blank"><i class="fab fa-facebook"></i></a></li>     
             @endif
-            @if(twitter)
-            <li><a href={{twitter}} target="_blank"><i class="fab fa-twitter-square"></i></a></li>              
+            @if(profile.twitter)
+            <li><a href={{profile.twitter}} target="_blank"><i class="fab fa-twitter-square"></i></a></li>              
             @endif
-            @if(linkedin)
-            <li><a href={{linkedin}} target="_blank"><i class="fab fa-linkedin"></i></a></li>              
+            @if(profile.linkedin)
+            <li><a href={{profile.linkedin}} target="_blank"><i class="fab fa-linkedin"></i></a></li>              
             @endif
-            @if(github)
-            <li><a href={{github}} target="_blank"><i class="fab fa-github-square"></i></a></li>              
+            @if(profile.github)
+            <li><a href={{profile.github}} target="_blank"><i class="fab fa-github-square"></i></a></li>              
             @endif
           </ul>
         
@@ -53,19 +58,22 @@
   </div>
   <div class="profile-stat">
     <p>Ranking<br>
-      @if(rank)
-        {{rank}}
-      @else 
-        0
-      @endif
+     
+        {{profile.rank||0}}
+    
+      
       
     </p>
   </div>
   <div class="profile-stat">
-    <p>Courses enrolled in<br>8</p>
+    @if(coach)
+      <p>Courses created<br>{{myCourses.length}}</p>
+    @else
+      <p>Courses enrolled in<br>{{myCourses.length}}</p>  
+    @endif
   </div>
   <div class="profile-stat">
-    <p>Github repos<br>3</p>
+    <p>Github repos<br>{{repos.length}}</p>
   </div>
   <div class="profile-stat"></div>
 </div>
@@ -85,129 +93,100 @@
 <div class="container other-profile-info">
   <div class="profile-tab container" id="profile-courses">
       <div class="row">
-          <div class="col-lg-4">
-            <div class="course-card card">
-              <img src="/img/flutter.jpg" class="course-img">
-              <h5 style="position:relative;">How to flutter &nbsp;<div class="stage">  <div class="heart"></div> </div>  </h5>
-              <table class="course-card-content">
-                <tr>
-                  <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
-                  <td class="td-space"></td>
-                  <td class="course-author">
-                    <h6>Oussama Azzaz Rahmani</h6>
-                  </td>
-                  <td class="td-devider"></td>
-                  <td class="time-and-diff">
-                    <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                    <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
-                  </td>
-                </tr>
-              </table>
-              <div class="course-state course-start">
-                <p><i class="icon-start"></i>&nbsp;Start</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-              <div class="course-card card">
-                <img src="/img/flutter.jpg" class="course-img">
-                <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
-                <table class="course-card-content">
-                  <tr>
-                    <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
-                    <td class="td-space"></td>
-                    <td class="course-author">
-                      <h6>Oussama Azzaz Rahmani</h6>
-                    </td>
-                    <td class="td-devider"></td>
-                    <td class="time-and-diff">
-                      <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                      <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
-                    </td>
-                  </tr>
-                </table>
-                <div class="course-state course-start">
-                  <p><i class="icon-start"></i>&nbsp;Start</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="course-card card">
-                  <img src="/img/flutter.jpg" class="course-img">
-                  <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
-                  <table class="course-card-content">
-                    <tr>
-                      <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
-                      <td class="td-space"></td>
-                      <td class="course-author">
-                        <h6>Oussama Azzaz Rahmani</h6>
-                      </td>
-                      <td class="td-devider"></td>
-                      <td class="time-and-diff">
-                        <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                        <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
-                      </td>
-                    </tr>
-                  </table>
-                  <div class="course-state course-start">
-                    <p><i class="icon-start"></i>&nbsp;Start</p>
+          @if(myCourses.length>0)
+            @each(item in myCourses)
+                <div class="col-lg-4 col-md-6" onclick="location.href='/courses/{{item.id}}' ">
+                  <div class="course-card card" style="cursor:pointer ; height:280px">
+                    <img src={{item.cover}} class="course-img" alt={{item.title}}>
+                    <h5 style="position:relative;">{{item.title}}&nbsp;
+                    </h5>
+                    <table class="course-card-content">
+                      <tr>
+                        <td><img src={{item.authorAvatar}} class="course-author-pic"></td>
+                        <td class="td-space"></td>
+                        <td class="course-author">
+                          <h6>{{item.author}}</h6>
+                        </td>
+                        <td class="td-devider"></td>
+                        <td class="time-and-diff">
+                          <p>{{item.duration}}&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                          <p>{{item.level}}&nbsp;&nbsp;
+                            @if(course.level == "beginner")
+                            <i class="icon-beginner"></i>
+                            @elseif(course.level == "intermediat")
+                            <i class="icon-intermediat"></i>
+                            @else
+                            <i class="icon-advanced"></i>
+                            @endif
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
                   </div>
                 </div>
-              </div>
-        </div>
+            @endeach
+          @endif
+
+      </div>
   </div>
   <div class="profile-tab" id="profile-skills">
-    @each(item in skills)
-      <li>item</li>
+    @each(item in profile.skills)
+      <li>{{item}}</li>
     @else
       Skills
+      <p>No skills available</p>
     @endeach
   </div>
- 
-  @if(github)
+
   <div class="profile-tab" id="profile-7ajahak">
-    @if(repos.length==0)
-      An error has occured, please make sure your Github username is correct
+  @if(repos.length==0)
+    @if(myProfile)
+      @if(profile.github)
+        <p >You dont have any repositories at the moment</p> 
+      @else
+        <form action="/user/editprofile" method="POST" >
+          <p>To display your repositories please enter your Github username:</p>
+          <label for="github-username">Github username</label>
+          <input type="text" name="github" class="form-control">
+        </form>
+      @endif
+    @else
+      @if(profile.github)
+        <p >{{pageTitle +' '}} doesn't have any repositories</p>
+      @else
+        <p>{{pageTitle +" "}} doesn't have a Github account linked to their profile</p>
+      @endif
     @endif
-    @if(repos)
-      @each(item in repos)
-        <div class="card card-body mb-2">
-          <div class="row">
-            <div class="col-md-6">
-              <h4>
-                <a href={{item.html_url}} class="text-info" target="_blank">
-                {{item.name}}
-                </a>
-              </h4>
-              <p>{{item.description}}</p>
-            </div>
-            <div class="col-md-6">
-              <span class="badge badge-info mr-1">
-                Stars: {{item.stargazers_count}}
-              </span>
-              <span class="badge badge-secondary mr-1">
-                Watchers: {{item.watchers_count}}
-              </span>
-              <span class="badge badge-success ">
-                Forks: {{item.forks_count}}
-              </span>
-            </div>
+  @else
+    @each(item in repos)
+      <div class="card card-body mb-2">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>
+              <a href={{item.html_url}} class="text-info" target="_blank">
+              {{item.name}}
+              </a>
+            </h4>
+            <p>{{item.description}}</p>
+          </div>
+          <div class="col-md-6">
+            <span class="badge badge-info mr-1">
+              Stars: {{item.stargazers_count}}
+            </span>
+            <span class="badge badge-secondary mr-1">
+              Watchers: {{item.watchers_count}}
+            </span>
+            <span class="badge badge-success ">
+              Forks: {{item.forks_count}}
+            </span>
           </div>
         </div>
-        
-      @endeach
-    @else
-      <div>An error has occured</div>
-    @endif
-  </div>
-  @else
-    <form action="/user/editprofile" method="POST">
-      <p>To display your github repositories please enter your github username:</p>
-      <label for="github-username">Github username</label>
-      <input type="text" name="github" class="form-control">
-    </form>
+      </div>    
+    @endeach
   @endif
+
   
+
 </div>
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog" >

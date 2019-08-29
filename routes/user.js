@@ -16,7 +16,7 @@ const isAuthenticated = require("../middleware/isAuthenticated");
 const isStudent = require("../middleware/isStudent");
 
 //handling requests
-router.get("/home", isAuthenticated, isStudent, homeController);
+router.get("/home", isAuthenticated, homeController);
 router.get("/mycourses", isAuthenticated, isStudent, myCoursesController);
 
 //route		/user/editprofile
@@ -24,16 +24,16 @@ router.get("/mycourses", isAuthenticated, isStudent, myCoursesController);
 //access	private
 //desc		get current user profile
 
-router.get("/settings", userSettingsController);
+router.get("/settings", isAuthenticated, userSettingsController);
 //route		/user/editprofile
 //methode 	POST
 //access	private
 //desc		post to current user profile
 
-router.get("/wishlist", isAuthenticated, isStudent, showWishlistController);
-router.get("/catalog", isAuthenticated, isStudent, catalogController);
+router.get("/wishlist", isAuthenticated, showWishlistController);
+router.get("/catalog", isAuthenticated, catalogController);
 
-router.post("/editprofile", isAuthenticated, (req, res) => {
+router.post("/settings", isAuthenticated, (req, res) => {
 	console.log(req.body);
 	let {
 		firstName,

@@ -327,7 +327,6 @@ input[type="search"]:focus {
 
 .dropdown-profile-details {
   display: table;
-  border-bottom: 1px solid #eaeaea;
   padding-bottom: 15px;
 }
 
@@ -429,6 +428,14 @@ input[type="search"]:focus {
 }
 .icon-advanced:before {
   content: "\e900";
+  color: #ffd32a;
+}
+.icon-beginner:before {
+  content: "\e901";
+  color: #ffd32a;
+}
+.icon-intermediate:before {
+  content: "\e906";
   color: #ffd32a;
 }
 .icon-start:before {
@@ -628,6 +635,7 @@ input[type="search"]:focus {
   height: 295px;
   border-radius: 8px;
   position: relative;
+  cursor: pointer;
 }
 .course-card .course-img {
   width: 248px;
@@ -1037,6 +1045,7 @@ input[name="lastName"] {
 }
 .add-category-modal {
   display: none;
+  display: none;
   position: fixed;
   z-index: 999999;
   padding-top: 100px;
@@ -1132,7 +1141,7 @@ input[name="lastName"] {
 #category-image {
   cursor: pointer;
 }
-@media (max-width: 765px) {
+@media (max-width: 669px) {
   .add-category-modal .info-container {
     width: 100%;
     padding: 30px;
@@ -1163,15 +1172,15 @@ input[name="lastName"] {
 }
 /* --------------- course details ------------------ */
 #coverImage {
-  width: 90%;
+  width: 100%;
   height: 19vw;
   background: url("/img/cover-nodejs.jpg") no-repeat;
   background-size: 100% 100%;
   display: block;
-  margin: 0 auto 40px auto;
   position: relative;
   overflow: hidden;
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 #coverImage h1 {
   position: absolute;
@@ -1261,7 +1270,6 @@ input[name="lastName"] {
 }
 /*----*/
 #courseLessons_details {
-  margin-left: 5%;
 }
 .chapter {
   width: 95%;
@@ -1290,7 +1298,7 @@ input[name="lastName"] {
 .chapter div i {
   margin-left: 15px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(270deg);
   position: absolute;
   color: #474d51;
 }
@@ -1315,7 +1323,7 @@ input[name="lastName"] {
   width: 100%;
   background: #f5f5f5;
   border-radius: 8px;
-  padding: 20px 7px 0 0;
+  padding: 20px 7px 50px 0
 }
 #startCourse {
   width: 75%;
@@ -1328,7 +1336,6 @@ input[name="lastName"] {
   margin-right: auto;
 }
 #wishlistCourseDetails {
-  margin-top: 14px;
   width: 75%;
   height: 60px;
   font-family: Poppins;
@@ -1358,6 +1365,17 @@ input[name="lastName"] {
 }
 .collapse-chapter {
   cursor: pointer;
+}
+.rotate90{
+  transform: rotate(90deg)!important;
+  transition: 0.3s;
+  margin-top:5px;
+}
+.rotate90-v2{
+  transform: rotate(90deg)!important;
+  transition: 0.3s;
+  margin-top: -10px;
+
 }
 .social .fbtn {
   width: 50px;
@@ -1418,7 +1436,7 @@ input[name="lastName"] {
 }
 @media (max-width: 765px) {
   #coverImage {
-    margin-bottom: 17px;
+    margin-bottom: 30px;
     margin-top: 17px;
   }
   #coverImage #imgTags span {
@@ -1426,6 +1444,7 @@ input[name="lastName"] {
   }
   .courseDescription p {
     padding: 3px;
+    margin-top: 7px;
   }
   #courseLessons_details {
     margin: 15px 0;
@@ -1445,6 +1464,12 @@ input[name="lastName"] {
     text-align: center;
     font-size: 21px;
   }
+  #courseLessons_details .lesson{
+    width: 100%;
+  }
+  #courseLessons_details .chapter{
+    width: 100%;
+  }
 }
 
 @media (max-width: 500px) {
@@ -1457,9 +1482,7 @@ input[name="lastName"] {
   }
 }
 /*----*/
-#courseLessons_details {
-  margin-left: 5%;
-}
+
 .chapter {
   width: 95%;
   height: 60px;
@@ -1484,13 +1507,7 @@ input[name="lastName"] {
 .chapter div p {
   text-align: center;
 }
-.chapter div i {
-  margin-left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;
-  color: #474d51;
-}
+
 
 .lesson {
   width: 95%;
@@ -1524,16 +1541,6 @@ input[name="lastName"] {
   margin-left: auto;
   margin-right: auto;
 }
-#wishlistCourseDetails {
-  margin-top: 14px;
-  width: 75%;
-  height: 60px;
-  font-family: Poppins;
-  color: black;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 #courseCardInfo ul {
   margin-top: 18px;
   margin-left: 12%;
@@ -1556,6 +1563,7 @@ input[name="lastName"] {
 .collapse-chapter {
   cursor: pointer;
 }
+<<<<<<< HEAD
 @media (max-width: 765px) {
   #coverImage {
     margin-bottom: 17px;
@@ -1571,22 +1579,9 @@ input[name="lastName"] {
   #courseLessons_details {
     margin: 15px 0;
   }
+=======
+>>>>>>> bdf78f557ffe060c88192f38c66f7fd06be618fe
 
-  #instructorsHR {
-    display: block;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
-  }
-  #instructorsCard {
-    width: 100%;
-    background: #ffffff;
-    border: none;
-  }
-  #instructorsTitle {
-    margin-top: 12px;
-    text-align: center;
-    font-size: 21px;
-  }
-}
 /* add course page */
 #upload-course-cover {
   width: 100%;
@@ -1642,6 +1637,7 @@ input[name="lastName"] {
   background: #d2dae2;
   display: table;
   position: relative;
+  cursor: pointer;
 }
 .chapter-title h6 {
   display: table-cell;
@@ -1658,6 +1654,7 @@ input[name="lastName"] {
 .lecture {
   background: #f5f5f5;
   display: table;
+  cursor: pointer;
 }
 .lecture h5 {
   display: table-cell;
@@ -1728,22 +1725,20 @@ input[name="lastName"] {
 }
 /* ---- add tag ---- */
 #tags {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  /* border: 1px solid #ced4da;
-  border-radius: 0.25rem; */
   width: 100%;
   background: #fff;
   margin: auto;
   padding-top: 3px;
-  padding-bottom: 3px;
+  padding-bottom: 0;
+  border-bottom: 1px solid #AEB3B7;
 }
-
+#tags input[type=text]:focus:not([readonly]){
+  box-shadow: none;
+}
 #tag-typer {
   outline: none;
   border: none;
   padding: 6px;
-  padding-left: 15px;
   margin-right: -25px;
   width: 100px;
   background-color: transparent;
@@ -2099,6 +2094,11 @@ input[name="lastName"] {
   padding: 40px;
   font-family: Poppins, sans-serif;
 }
+@media (max-width: 669px) {
+  #addEvent-info, #add-course-form{
+    width:90%
+  }
+}
 #upload-event-cover {
   width: 100%;
   height: 18vw;
@@ -2132,8 +2132,12 @@ input[name="lastName"] {
 #addEvent-info .md-form {
   margin-bottom: 2.5rem;
 }
+<<<<<<< HEAD
 #addEvent-info input {
   border-bottom: 1px solid #aeb3b7;
+=======
+#addEvent-info input{
+>>>>>>> bdf78f557ffe060c88192f38c66f7fd06be618fe
 }
 #addEvent-info button.event-btn,
 #add-course-form button.event-btn {
@@ -3064,7 +3068,6 @@ textarea.md-textarea:focus:not([readonly]),
   padding: 30px 30px 10px 30px;
   background: #f8f8f8;
   border-radius: 0px 0px 9px 9px;
-  overflow-x: scroll;
 }
 #add-quiz-modal .info h6 {
   font-family: Poppins;
@@ -3162,6 +3165,9 @@ textarea.md-textarea:focus:not([readonly]),
   display: table;
   width: 100%;
   padding: 0 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 .add-event-modal .header > * {
   display: table-cell;
@@ -3214,4 +3220,108 @@ textarea.md-textarea:focus:not([readonly]),
 .displayed {
   display: block;
 }
+.saved_animation {
+  transition: all 150ms ease;
+  cursor: pointer;
+  box-shadow: 0 30px 30px -20px rgba(0, 0, 0, 0.4);
+  font-size: 17px;
+}
+.saved_animation:hover, .saved_animation:focus {
+  outline: 0;
+  box-shadow: 0 30px 30px -25px black;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+  text-decoration: none;
+}
+.saved_animation:active {
+  box-shadow: 0 30px 30px -20px rgba(0, 0, 0, 0.4);
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+.saved_animation.done {
+  /* background: #7DCE94; */
+  -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+          animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+.saved_animation .spinner {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  border-radius: 50%;
+  position:relative;
+  top:3px;
+  background: transparent;
+  border-top: 2px solid rgb(155, 48, 48);
+  border-right: 2px solid rgb(167, 46, 46);
+  border-bottom: 2px solid transparent;
+  border-left: 2px solid transparent;
+  -webkit-animation: loading 0.5s infinite linear;
+          animation: loading 0.5s infinite linear;
+}
+@-webkit-keyframes loading {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes loading {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
+@keyframes shake {
+  10%, 90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
+
+
 /* add course form */
+.modal-header{
+background: rgba(255, 211, 42, 0.9);
+}
+/* radio buttons */
+[type="radio"]:checked, [type="radio"]:not(:checked){
+  position: static;
+  opacity: 1;
+  pointer-events: auto;
+}
