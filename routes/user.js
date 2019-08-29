@@ -16,7 +16,7 @@ const isAuthenticated = require("../middleware/isAuthenticated");
 const isStudent = require("../middleware/isStudent");
 
 //handling requests
-router.get("/home", isAuthenticated, isStudent, homeController);
+router.get("/home", isAuthenticated, homeController);
 router.get("/mycourses", isAuthenticated, isStudent, myCoursesController);
 
 //route		/user/editprofile
@@ -30,8 +30,8 @@ router.get("/settings", isAuthenticated, userSettingsController);
 //access	private
 //desc		post to current user profile
 
-router.get("/wishlist", isAuthenticated, isStudent, showWishlistController);
-router.get("/catalog", isAuthenticated, isStudent, catalogController);
+router.get("/wishlist", isAuthenticated, showWishlistController);
+router.get("/catalog", isAuthenticated, catalogController);
 
 router.post("/settings", isAuthenticated, (req, res) => {
 	console.log(req.body);

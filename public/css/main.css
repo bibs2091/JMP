@@ -434,6 +434,14 @@ input[type="search"]:focus {
   content: "\e900";
   color: #ffd32a;
 }
+.icon-beginner:before {
+  content: "\e901";
+  color: #ffd32a;
+}
+.icon-intermediate:before {
+  content: "\e906";
+  color: #ffd32a;
+}
 .icon-start:before {
   content: "\e915";
 }
@@ -1491,16 +1499,6 @@ input[name="lastName"] {
   font-family: Poppins;
   border: none;
   height: 60px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-#wishlistCourseDetails {
-  margin-top: 14px;
-  width: 75%;
-  height: 60px;
-  font-family: Poppins;
-  color: black;
   display: block;
   margin-left: auto;
   margin-right: auto;
