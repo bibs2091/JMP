@@ -91,19 +91,23 @@ const getStudentCourses = async (id) => {
 }
 
 const getCoachCourses = async (id) => {
-	let courses = await Courses.findAll({
-		where: { author: id }
-	})
-	courses = courses.map(async course => {
-		let author = await userInfo.findByPk(course.dataValues.author)
-		course.dataValues.author = `${author.dataValues.firstName} ${author.dataValues.lastName}`
-		course.dataValues.authorAvatar = author.dataValues.avatar
-		delete course.dataValues.createdAt
-		delete course.dataValues.updatedAt
-		return course.dataValues
-	})
-	console.log(courses)
-	return Promise.all(courses)
+	try {
+		let courses = await Courses.findAll({
+			where: { author: id }
+		})
+		courses = courses.map(async course => {
+			let author = await userInfo.findByPk(course.dataValues.author)
+			course.dataValues.author = `${author.dataValues.firstName} ${author.dataValues.lastName}`
+			course.dataValues.authorAvatar = author.dataValues.avatar
+			delete course.dataValues.createdAt
+			delete course.dataValues.updatedAt
+			return course.dataValues
+		})
+		return Promise.all(courses)
+	} catch (error) {
+		return []
+	}
+
 }
 
 const isCoach = async (id) => {
