@@ -41,7 +41,6 @@ module.exports = async (req, res) => {
 				}
 			}
 			const myCourses = await getCourses(id)
-			console.log(myCourses)
 
 			// res.json(repos)
 			res.render("userProfile", {
