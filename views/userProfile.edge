@@ -84,29 +84,35 @@
 <div class="container other-profile-info">
   <div class="profile-tab container" id="profile-courses">
       <div class="row">
-          <div class="col-lg-4">
-            <div class="course-card card">
-              <img src="/img/flutter.jpg" class="course-img">
-              <h5 style="position:relative;">How to flutter &nbsp;<div class="stage">  <div class="heart"></div> </div>  </h5>
-              <table class="course-card-content">
-                <tr>
-                  <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
-                  <td class="td-space"></td>
-                  <td class="course-author">
-                    <h6>Oussama Azzaz Rahmani</h6>
-                  </td>
-                  <td class="td-devider"></td>
-                  <td class="time-and-diff">
-                    <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                    <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
-                  </td>
-                </tr>
-              </table>
-              <div class="course-state course-start">
-                <p><i class="icon-start"></i>&nbsp;Start</p>
-              </div>
-            </div>
-          </div>
+          @if(myCourses.length>0)
+            @each(item in myCourses)
+              <div class="col-lg-4">
+                <div class="course-card card">
+                    <img src="/img/flutter.jpg" class="course-img">
+                    <h5 style="position:relative;">{{item.title}}<div class="stage">  <div class="heart"></div> </div>  </h5>
+                    <table class="course-card-content">
+                      <tr>
+                        <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                        <td class="td-space"></td>
+                        <td class="course-author">
+                          <h6>Oussama Azzaz Rahmani</h6>
+                        </td>
+                        <td class="td-devider"></td>
+                        <td class="time-and-diff">
+                          <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                          <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
+                        </td>
+                      </tr>
+                    </table>
+                    <div class="course-state course-start">
+                      <p><i class="icon-start"></i>&nbsp;Start</p>
+                    </div>
+                </div>
+              </div>        
+            @endeach
+          @endif
+          
+
           <div class="col-lg-4">
               <div class="course-card card">
                 <img src="/img/flutter.jpg" class="course-img">
