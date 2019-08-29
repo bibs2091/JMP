@@ -4,7 +4,6 @@ const router = express.Router();
 //require controllers 
 const homeController = require("../controllers/home");
 const userProfileController = require("../controllers/userProfile");
-const coachProfileController = require("../controllers/coachProfile");
 const getCurrentUser = require("../controllers/getCurrentUser");
 const techReportController = require("../controllers/techReport");
 
@@ -16,7 +15,6 @@ router.get("/home", (req, res) => {
 });
 
 router.get("/profile/:id", userProfileController);
-// router.get("/profile/:id", coachProfileController);
 
 router.get("/getuser", getCurrentUser);
 router.post("/report/tech", techReportController);
