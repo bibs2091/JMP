@@ -86,81 +86,39 @@
       <div class="row">
           @if(myCourses.length>0)
             @each(item in myCourses)
-              <div class="col-lg-4">
-                <div class="course-card card">
-                    <img src="/img/flutter.jpg" class="course-img">
-                    <h5 style="position:relative;">{{item.title}}<div class="stage">  <div class="heart"></div> </div>  </h5>
+                <div class="col-lg-4 col-md-6" onclick="location.href='/courses/{{item.id}}' ">
+                  <div class="course-card card" style="cursor:pointer ; height:280px">
+                    <img src={{item.cover}} class="course-img" alt={{item.title}}>
+                    <h5 style="position:relative;">{{item.title}}&nbsp;
+                    </h5>
                     <table class="course-card-content">
                       <tr>
-                        <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                        <td><img src={{item.authorAvatar}} class="course-author-pic"></td>
                         <td class="td-space"></td>
                         <td class="course-author">
-                          <h6>Oussama Azzaz Rahmani</h6>
+                          <h6>{{item.author}}</h6>
                         </td>
                         <td class="td-devider"></td>
                         <td class="time-and-diff">
-                          <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                          <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
+                          <p>{{item.duration}}&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                          <p>{{item.level}}&nbsp;&nbsp;
+                            @if(course.level == "beginner")
+                            <i class="icon-beginner"></i>
+                            @elseif(course.level == "intermediat")
+                            <i class="icon-intermediat"></i>
+                            @else
+                            <i class="icon-advanced"></i>
+                            @endif
+                          </p>
                         </td>
                       </tr>
                     </table>
-                    <div class="course-state course-start">
-                      <p><i class="icon-start"></i>&nbsp;Start</p>
-                    </div>
-                </div>
-              </div>        
-            @endeach
-          @endif
-          
-
-          <div class="col-lg-4">
-              <div class="course-card card">
-                <img src="/img/flutter.jpg" class="course-img">
-                <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
-                <table class="course-card-content">
-                  <tr>
-                    <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
-                    <td class="td-space"></td>
-                    <td class="course-author">
-                      <h6>Oussama Azzaz Rahmani</h6>
-                    </td>
-                    <td class="td-devider"></td>
-                    <td class="time-and-diff">
-                      <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                      <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
-                    </td>
-                  </tr>
-                </table>
-                <div class="course-state course-start">
-                  <p><i class="icon-start"></i>&nbsp;Start</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="course-card card">
-                  <img src="/img/flutter.jpg" class="course-img">
-                  <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
-                  <table class="course-card-content">
-                    <tr>
-                      <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
-                      <td class="td-space"></td>
-                      <td class="course-author">
-                        <h6>Oussama Azzaz Rahmani</h6>
-                      </td>
-                      <td class="td-devider"></td>
-                      <td class="time-and-diff">
-                        <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                        <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
-                      </td>
-                    </tr>
-                  </table>
-                  <div class="course-state course-start">
-                    <p><i class="icon-start"></i>&nbsp;Start</p>
                   </div>
                 </div>
-              </div>
-        </div>
-  </div>
+            @endeach
+          @endif
+
+      </div>
   <div class="profile-tab" id="profile-skills">
     @each(item in profile.skills)
       <li>{{item}}</li>
