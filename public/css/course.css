@@ -126,12 +126,6 @@ body {
     font-size: 12px;
 
   }
-  .rotate90{
-    transform: rotate(90deg)!important;
-    transition: 0.3s;
-    margin-top:5px;
-  }
-
   .disabledLesson{
     color:#a0a0a0;
     cursor: not-allowed;

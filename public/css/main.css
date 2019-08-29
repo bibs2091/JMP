@@ -1142,15 +1142,15 @@ input[name="lastName"] {
 }
 /* --------------- course details ------------------ */
 #coverImage {
-  width: 90%;
+  width: 100%;
   height: 19vw;
   background: url("/img/cover-nodejs.jpg") no-repeat;
   background-size: 100% 100%;
   display: block;
-  margin: 0 auto 40px auto;
   position: relative;
   overflow: hidden;
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 #coverImage h1 {
   position: absolute;
@@ -1240,7 +1240,6 @@ input[name="lastName"] {
 }
 /*----*/
 #courseLessons_details {
-  margin-left: 5%;
 }
 .chapter {
   width: 95%;
@@ -1269,7 +1268,7 @@ input[name="lastName"] {
 .chapter div i {
   margin-left: 15px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(270deg);
   position: absolute;
   color: #474d51;
 }
@@ -1337,6 +1336,17 @@ input[name="lastName"] {
 .collapse-chapter {
   cursor: pointer;
 }
+.rotate90{
+  transform: rotate(90deg)!important;
+  transition: 0.3s;
+  margin-top:5px;
+}
+.rotate90-v2{
+  transform: rotate(90deg)!important;
+  transition: 0.3s;
+  margin-top: -10px;
+
+}
 .social .fbtn {
   width: 50px;
   display: inline-block;
@@ -1396,7 +1406,7 @@ input[name="lastName"] {
 }
 @media (max-width: 765px) {
   #coverImage {
-    margin-bottom: 17px;
+    margin-bottom: 30px;
     margin-top: 17px;
   }
   #coverImage #imgTags span {
@@ -1404,6 +1414,7 @@ input[name="lastName"] {
   }
   .courseDescription p {
     padding: 3px;
+    margin-top: 7px;
   }
   #courseLessons_details {
     margin: 15px 0;
@@ -1423,6 +1434,12 @@ input[name="lastName"] {
     text-align: center;
     font-size: 21px;
   }
+  #courseLessons_details .lesson{
+    width: 100%;
+  }
+  #courseLessons_details .chapter{
+    width: 100%;
+  }
 }
 
 @media (max-width: 500px) {
@@ -1435,9 +1452,7 @@ input[name="lastName"] {
   }
 }
 /*----*/
-#courseLessons_details {
-  margin-left: 5%;
-}
+
 .chapter {
   width: 95%;
   height: 60px;
@@ -1462,13 +1477,7 @@ input[name="lastName"] {
 .chapter div p {
   text-align: center;
 }
-.chapter div i {
-  margin-left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;
-  color: #474d51;
-}
+
 
 .lesson {
   width: 95%;
@@ -1524,37 +1533,7 @@ input[name="lastName"] {
 .collapse-chapter {
   cursor: pointer;
 }
-@media (max-width: 765px) {
-  #coverImage {
-    margin-bottom: 17px;
-    margin-top: 17px;
-  }
-  #coverImage #imgTags span {
-    font-size: 8px;
-  }
-  
-  .courseDescription p {
-    padding: 3px;
-  }
-  #courseLessons_details {
-    margin: 15px 0;
-  }
 
-  #instructorsHR {
-    display: block;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
-  }
-  #instructorsCard {
-    width: 100%;
-    background: #ffffff;
-    border: none;
-  }
-  #instructorsTitle {
-    margin-top: 12px;
-    text-align: center;
-    font-size: 21px;
-  }
-}
 /* add course page */
 #upload-course-cover {
   width: 100%;

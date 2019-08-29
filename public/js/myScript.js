@@ -33,8 +33,8 @@ function activateLoginButton() {
 //------------- course details ----------
 $(".collapse-chapter").on("click", function () {
   $(this).next().slideToggle("slow");
-  $(this).find(".fas").toggleClass("fa-plus fa-minus",1000);
-})
+  $(this).find(".fa-play").toggleClass("rotate90-v2");
+});
 
 
 //------ tags ------
