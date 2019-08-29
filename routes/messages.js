@@ -16,6 +16,11 @@ const Users = require('../models/UsersInfo')
 router.get('/', async (req, res) => {
 
 	try {
+		var currentUser = req.user;
+		var userInfo = await Users.findOne({ where: { userId: req.user.id } });
+		delete currentUser.password;
+		currentUser.info = userInfo.dataValues;
+
 		//pagination
 		const paginate = ({ page, pageSize }) => {
 			const offset = (page - 1) * pageSize
@@ -63,7 +68,7 @@ router.get('/', async (req, res) => {
 		const count = unreadMsg.count
 
 		// console.log(inbox);
-		res.render('inbox', { inbox, count })
+		res.render('inbox', { inbox, count, currentUser })
 	} catch (error) {
 		console.log(error)
 	}
@@ -125,8 +130,12 @@ router.get('/user/:username', async (req, res) => {
 //access	private
 //desc		write a new message
 
-router.get("/new_message", (req, res) => {
-	res.render('messages');
+router.get("/new_message", async (req, res) => {
+	var currentUser = req.user;
+	var userInfo = await Users.findOne({ where: { userId: req.user.id } });
+	delete currentUser.password;
+	currentUser.info = userInfo.dataValues;
+	res.render('messages', { currentUser });
 });
 
 

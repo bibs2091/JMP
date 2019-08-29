@@ -7,7 +7,6 @@ const axios = require("axios");
 const Op = require('sequelize').Op
 module.exports = async (req, res) => {
 	try {
-		console.log(req.user.id);
 		var currentUser = req.user;
 		var userinfo = await userInfo.findOne({ where: { userId: req.user.id } });
 		delete currentUser.password;
