@@ -1,7 +1,7 @@
 const userInfo = require("../models/UsersInfo");
 const progress = require('../models/Progress')
 const Courses = require('../models/Courses')
-const rawUsers = require('../models/Users')
+const RawUsers = require('../models/Users')
 const { githubApi } = require("../config/keys");
 const axios = require("axios");
 const Op = require('sequelize').Op
@@ -40,10 +40,15 @@ module.exports = async (req, res) => {
 					console.log(error);
 				}
 			}
-			//fetch my crouses as a student
-			const myCourses = await getCourses(id)
+			let myCourses = []
+			if (isCoach(id)) {
+				//fetch courses as coach
+				myCourses = await getCoachCourses(id)
+			} else {
+				//fetch crouses as a student
+				myCourses = await getStudentCourses(id)
+			}
 
-			// res.json(repos)
 			res.render("userProfile", {
 				pageName: profile.username,
 				pageTitle: profile.firstName + " " + profile.lastName,
@@ -83,6 +88,17 @@ const getStudentCourses = async (id) => {
 	})
 
 	return Promise.all(mycourses)
+}
+
+const getCoachCourses = async (id) => {
+	let courses = await Courses.findAll({
+		where: { author: id }
+	})
+	courses = courses.map(course => {
+		return course.dataValues
+	})
+	console.log(courses)
+	return courses
 }
 
 const isCoach = async (id) => {
