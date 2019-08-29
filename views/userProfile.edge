@@ -15,7 +15,12 @@
     </div>
     <div class="col-md-7" id="profile_details">
     <h1>{{profile.firstName + " " + profile.lastName}}</h1>
-      
+      @if(coach)
+        <h6>Coach</h6>
+        
+      @else
+        <h6>Student</h6>
+      @endif
       <p>{{profile.bio ||''}} </p>
     </div>
     <div class="col-md-2" style="position: relative;">
