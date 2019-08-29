@@ -111,7 +111,7 @@ const getCoachCourses = async (id) => {
 		})
 		return Promise.all(courses)
 	} catch (error) {
-		return []
+		return
 	}
 
 }
