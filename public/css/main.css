@@ -639,6 +639,7 @@ input[type="search"]:focus {
   height: 295px;
   border-radius: 8px;
   position: relative;
+  cursor: pointer;
 }
 .course-card .course-img {
   width: 248px;
