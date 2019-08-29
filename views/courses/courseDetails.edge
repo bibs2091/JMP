@@ -71,8 +71,14 @@
       <div class="col-md-5">
         <div id="courseCardInfo">
           <a href="/courses/classroom/{{course.id}}" id="goToCourse"><button  type="button" class="btn btn-primary" id="startCourse">Go to Course</button></a>
-          <button  type="button" class="btn btn-outline-secondary" onclick="wishlist({{course.id}})"
-          id="wishlistCourseDetails">Wishlist <i class="far fa-heart"></i></button>
+          <button  type="button" class="btn btn-outline-secondary" onclick="wishlist({{course.id}})" id="wishlistCourseDetails">
+            <div class="btn-noWishlist" style="transition: 1s;">
+            Add to wishlist<i class="far fa-heart"></i>
+            </div>
+            <div class="btn-Wishlist" style="transition: 1s;">
+              <p style="font-weight: bold;">Added to wishlist</p><i class="fas fa-heart"></i>
+            </div>
+          </button>
           <ul>
             <li>This course includes</li>
             <li><i class="far fa-clock"></i> &nbsp;2 h 45 min of content</li>

@@ -247,7 +247,18 @@ function wishlist(id) {
         }
     });
 }
-
+$(function(){
+    $(".btn-noWishlist").on("click", function () {
+        $(this).hide();
+        $('.btn-Wishlist').show();
+      });
+      $(".btn-Wishlist").on("click", function () {
+        $(this).hide();
+        console.log('hi');
+        $('.btn-noWishlist').show();
+      })
+      
+});
 //enable toolips every where
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
