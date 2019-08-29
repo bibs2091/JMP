@@ -40,6 +40,7 @@ module.exports = async (req, res) => {
 					console.log(error);
 				}
 			}
+			//fetch my crouses as a student
 			const myCourses = await getCourses(id)
 
 			// res.json(repos)
@@ -60,7 +61,7 @@ module.exports = async (req, res) => {
 };
 
 //helper functions 
-const getCourses = async (id) => {
+const getStudentCourses = async (id) => {
 	let courses = await progress.findAll({
 		where: { userId: id }
 	})
