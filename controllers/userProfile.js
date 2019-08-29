@@ -83,3 +83,8 @@ const getCourses = async (id) => {
 
 	return Promise.all(mycourses)
 }
+
+const isCoach = async (id) => {
+	let user = await RawUsers.findByPk(id)
+	return user.dataValues.groupId === 1
+}
