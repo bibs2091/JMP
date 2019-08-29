@@ -143,18 +143,7 @@ router.get("/new_message", async (req, res) => {
 //methode 	POST
 //access	private
 //desc		delete a message
-router.post('/delete/:id', async (req, res) => {
-	const msgId = req.params;
-	try {
-		//TODO: complete the delete function
-		let message = await Messages.findByPk(msgId);
-		message = message.dataValues;
 
-	} catch (error) {
-		console.log(error)
-	}
-
-})
 
 router.post('/read/:id', async (req, res) => {
 	const id = req.params.id
@@ -173,9 +162,17 @@ router.post('/read/:id', async (req, res) => {
 
 });
 
-router.delete("/delete", (req, res) => {
+router.delete("/delete", async (req, res) => {
 	var ids = req.body.ids;
 	console.log(ids);
+	try {
+		//TODO: complete the delete function
+		let message = await Messages.findByPk(msgId);
+		message = message.dataValues;
+
+	} catch (error) {
+		console.log(error)
+	}
 	res.send({ succuess: true });
 })
 
