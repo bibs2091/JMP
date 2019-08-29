@@ -7,6 +7,12 @@ const axios = require("axios");
 const Op = require('sequelize').Op
 module.exports = async (req, res) => {
 	try {
+		console.log(req.user.id);
+		var currentUser = req.user;
+		var userinfo = await userInfo.findOne({ where: { userId: req.user.id } });
+		delete currentUser.password;
+		currentUser.info = userinfo.dataValues;
+
 		const { id } = req.params
 		let profile = await userInfo.findOne({ where: { userId: id } });
 		if (profile) {
@@ -57,7 +63,8 @@ module.exports = async (req, res) => {
 				repos,
 				myCourses,
 				myProfile: req.user.id == req.params.dude,
-				coach
+				coach,
+				currentUser
 			});
 		} else {
 			return res.render("404");
