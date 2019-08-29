@@ -41,7 +41,8 @@ module.exports = async (req, res) => {
 				}
 			}
 			let myCourses = []
-			if (await isCoach(id)) {
+			const coach = await isCoach(id)
+			if (coach) {
 				//fetch courses as coach
 				myCourses = await getCoachCourses(id)
 			} else {
@@ -55,7 +56,8 @@ module.exports = async (req, res) => {
 				profile,
 				repos,
 				myCourses,
-				myProfile: req.user.id == req.params.dude
+				myProfile: req.user.id == req.params.dude,
+				coach
 			});
 		} else {
 			return res.render("404");
