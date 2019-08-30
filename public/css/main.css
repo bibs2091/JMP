@@ -1399,7 +1399,9 @@ input[name="lastName"] {
   transform-origin: 0 0 0;
 }
 .share-button.sharer .social {
-  margin-left: 113px;
+  display: flex;
+  justify-content: center;
+  margin-left: 0;
   opacity: 0;
   transition: all 0.4s ease 0s;
   visibility: hidden;
