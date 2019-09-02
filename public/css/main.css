@@ -1060,7 +1060,7 @@ input[name="lastName"] {
 .add-category-modal .info-container {
   background-color: #fefefe;
   margin: auto;
-  padding: 30px 70px 40px 70px;
+  padding: 0 70px 15px 70px;
   width: 43%;
   font-family: Poppins;
   font-size: 22px;
