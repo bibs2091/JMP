@@ -226,6 +226,31 @@ function deleteCourse(id) {
         }
     });
 }
+//Delete Course by id in report actions
+function deleteCourse2(id) {
+    $.ajax({
+        url: '/courses/delete/' + id,
+        method: 'DELETE',
+        contentType: 'application/json',
+        success: function (result) {
+            location.replace("/admin/reportCenter");
+        }
+    });
+}
+//Delete Report by id
+function deleteReport(id) {
+    $.ajax({
+        url: '/report/delete/' + id,
+        method: 'DELETE',
+        contentType: 'application/json',
+        success: function (result) {
+            location.replace("/admin/reportCenter");
+        }
+    });
+}
+function getDetails(id) {
+     location.replace("/report/details/"+id);
+}
 //get current user
 function getCurrentUser() {
     $.ajax({

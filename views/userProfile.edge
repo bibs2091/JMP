@@ -200,20 +200,20 @@
       
       <div class="modal-body">
         
-  <form  id="report_form">  
+  <form action="/report/add/{{userId}}/User" method="POST" id="report_form"> 
   <h1> What is the reason of the report  </h1>  
   <div id="radio_bottom">
       <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="Option1" name="materialExampleRadios">
+          <input type="radio" class="custom-control-input" id="Option1" name="type" value="Fake account">
           <label class="custom-control-label" for="Option1">Fake account</label>
         </div>
         
       <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="Option2" name="materialExampleRadios">
+          <input type="radio" class="custom-control-input" id="Option2" name="type" value="Harassement /Hate speech">
           <label class="custom-control-label" for="Option2">Harassement /Hate speech</label>
       </div>
       <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="Option3" name="materialExampleRadios">
+          <input type="radio" class="custom-control-input" id="Option3" name="type" value="Others">
           <label class="custom-control-label" for="Option3">Others</label>
       </div>
   </div>
