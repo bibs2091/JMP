@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 //require controllers 
-const reportAddController = require('../controllers/report/add.js');
+const reportAddController = require('../controllers/report/add');
 const reportDetailsController = require('../controllers/report/details');
 const deleteReportController = require("../controllers/report/delete");
 
