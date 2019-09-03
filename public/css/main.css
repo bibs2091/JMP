@@ -2330,6 +2330,12 @@ input[name="lastName"] {
     }
   }
 
+  .btn-rounded-important{
+    -webkit-border-radius: 10em!important;
+    border-radius: 10em!important;
+  }
+  }
+  
   #upload-event-cover {
     width: 100%;
     height: 18vw;
@@ -2375,7 +2381,7 @@ input[name="lastName"] {
   #addEvent-info button.event-btn,
   #add-course-form button.event-btn {
     border: 1px solid #1DBF70;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     font-size: 18px;
     color: #1DBF70;
     font-weight: bold;
@@ -3089,41 +3095,6 @@ input[name="lastName"] {
 }
 
 /* for xl screens --------keep it in the bottom of the file-------- */
-@media (max-width: 1140px) {
-  #instructorsTitle {
-    margin-top: 12px;
-    text-align: center;
-    font-size: 21px;
-  }
-
-  #instructorImg {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 7px;
-    display: block;
-  }
-
-  #instructorInfos {
-    padding: 0;
-    width: 100%;
-  }
-
-  #instructorInfos div {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #instructorInfos div h4,
-  #instructorInfos div p {
-    text-align: center;
-    margin-bottom: 7px;
-  }
-}
-
-/* ---- for lg screens ---- */
-@media (max-width: 992px) {
-  .other-profile-info {}
-}
 
 
 
@@ -3157,7 +3128,7 @@ input[name="lastName"] {
     text-align: center;
     margin-bottom: 7px;
   }
-
+}
 
 /* ---- for lg screens ---- */
 @media (max-width: 992px) {
@@ -3736,7 +3707,7 @@ textarea.md-textarea:focus:not([readonly]),
   width: 100%;
   position: relative;
   height: 40px;
-  margin: 19px 0 4px 0;
+  margin: 19px 0;
 }
 
 .done-btn-container div {

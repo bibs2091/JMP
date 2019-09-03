@@ -56,7 +56,7 @@
                         </label>
                     </div>
                     
-                    <button class="btn event-btn" disabled onclick="nextStep('basic-info', 1, 'course-content', 2)">Next</button>
+                    <button class="btn btn-rounded-important event-btn" disabled onclick="nextStep('basic-info', 1, 'course-content', 2)">Next</button>
                 </div>
                 <div id="course-content" class="hidden">
                         <h2 style="text-align: center">Course content</h2>
@@ -101,7 +101,7 @@
                                     </p></li>
                                 </ul>
                     </div>
-                    <button class="btn event-btn" onclick="printChaps();nextStep('course-content', 2, 'quizs-content', 3)">Next</button>
+                    <button class="btn btn-rounded-important event-btn" onclick="printChaps();nextStep('course-content', 2, 'quizs-content', 3)">Next</button>
                 </div>
                 <div id="quizs-content" class="hidden">
                     <h2 style="text-align: center">Quizs</h2>
@@ -109,7 +109,7 @@
                     <ul id="chapters-list2"></ul>
                     <input type="text" name="courseJSON" id="courseJSON" style="display:none" required>
                     <input type="hidden" name="quizs" id="quizsJSON" required>
-                    <button class="btn event-btn" disabled onclick="$('#add-course-form').submit()" style="color:#FFF;background: #1DBF70;">
+                    <button class="btn btn-rounded-important event-btn" disabled onclick="$('#add-course-form').submit()" style="color:#FFF;background: #1DBF70;">
                        <input type="submit" class="hidden" > Create
                     </button>
                 </div>
@@ -131,7 +131,7 @@
                         <label>chapter's title</label>
                     </div>
                     <div class="modal-footer" style="border-top: none;">
-                        <button type="submit" class="btn submit-form" data-dismiss="modal" aria-label="Close"  onclick="addChapter(this)">Add</button>
+                        <button type="submit" class="btn btn-rounded-important submit-form" data-dismiss="modal" aria-label="Close"  onclick="addChapter(this)">Add</button>
                     </div>
                 </div>
                 
@@ -166,7 +166,7 @@
                         <label >Lecture's description</label>
                     </div>
                     <div class="modal-footer">
-                            <button type="submit" class=" submit-form btn" onclick="addLecture(this.parentNode.parentNode)" data-dismiss="modal" aria-label="Close">Add</button>
+                            <button type="submit" class=" submit-form btn btn-rounded-important" onclick="addLecture(this.parentNode.parentNode)" data-dismiss="modal" aria-label="Close">Add</button>
                     </div>
             </div>
             
@@ -188,7 +188,7 @@
                     <label>chapter's title</label>
                 </div>
                 <div class="modal-footer" style="border-top: none;">
-                    <button type="submit" class="btn submit-form" data-dismiss="modal" aria-label="Close" onclick="editChapter(this.parentNode)">Update</button>
+                    <button type="submit" class="btn btn-rounded-important submit-form" data-dismiss="modal" aria-label="Close" onclick="editChapter(this.parentNode)">Update</button>
                 </div>
             </div>
             
@@ -223,7 +223,7 @@
                             <label >Lecture's description</label>
                         </div>
                         <div class="modal-footer">
-                                <button type="submit" class=" submit-form btn" onclick="editLecture(this.parentNode)" data-dismiss="modal" aria-label="Close">Update</button>
+                                <button type="submit" class=" submit-form btn btn-rounded-important" onclick="editLecture(this.parentNode)" data-dismiss="modal" aria-label="Close">Update</button>
                         </div>
                 </div>
                 
@@ -280,7 +280,7 @@
                     Add Question
                 </div>
                 <div class="done-btn-container">
-                    <div class="btn btn-success" onclick="addChapQuiz(this)" >
+                    <div class="btn btn-rounded-important btn-success" onclick="addChapQuiz(this)" >
                         Done
                     </div>
                 </div>

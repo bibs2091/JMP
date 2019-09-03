@@ -12,6 +12,7 @@ body{
 }
 
 </style>
+
 <ul class="steps">
   <li class="step step--incomplete step--active">
     <span class="step__label">Basic  information</span>
@@ -39,7 +40,7 @@ body{
       <textarea id="Event-decription"  placeholder="In your Event description, we recommend providing information abou the content of the course and how students will benefit from that content." class="form-control md-textarea" length="120" rows="3"></textarea>
       <label for="Event-decription">Event decription</label>
     </div>
-    <button class="btn event-btn" onclick="nextStep('BasicInformation-addEvent', 1, 'timingLocation', 2)">Next</button>
+    <button class="btn btn-rounded-important  event-btn" onclick="nextStep('BasicInformation-addEvent', 1, 'timingLocation', 2)">Next</button>
   </div>
 
 
@@ -74,7 +75,7 @@ body{
         <label>Event Location</label>
         <div id="map"></div>
     </div>
-    <button class="btn event-btn" onclick="nextStep('timingLocation', 2, 'PlaningAndSponsors', 3)">Next</button>
+    <button class="btn btn-rounded-important  event-btn" onclick="nextStep('timingLocation', 2, 'PlaningAndSponsors', 3)">Next</button>
 
   </div>
   <div id="PlaningAndSponsors">
@@ -102,17 +103,17 @@ body{
       </style>
       <div class="form-group" style="margin-top: 30px">
         <label for="add-schedule">Schedule</label>
-        <button id="add-schedule" class="btn-add saved_animation"  data-toggle="modal" data-target="#add-schedule-modal">
+        <button id="add-schedule" class="btn-add btn-rounded-important saved_animation"  data-toggle="modal" data-target="#add-schedule-modal">
           <i class="fa fa-plus"></i> Add Schedule
         </button>
       </div>
       <div class="form-group" style="margin-top: 30px">
         <label for="add-sponsor">Sponsors</label>
-        <button id="add-sponsor" class="btn-add saved_animation" data-toggle="modal" data-target="#add-sponsor-modal">
+        <button id="add-sponsor" class="btn-add btn-rounded-important saved_animation" data-toggle="modal" data-target="#add-sponsor-modal">
           <i class="fa fa-plus"></i> Add Sponsor
         </button>
       </div>
-      <button class="btn event-btn" style="color:#FFF;background: #1DBF70;" 
+      <button class="btn btn-rounded-important  event-btn" style="color:#FFF;background: #1DBF70;" 
       onclick="this.parentNode.parentNode.parentNode.submit()">Save</button>
     </div>
   </div> 
@@ -166,7 +167,7 @@ body{
       </div>      </div>
       <div class="modal-footer">
         <div class="done-btn-container">
-          <div class="btn btn-success" onclick="saveSchedule();saveAnimation('add-schedule');" data-dismiss="modal" aria-label="Close" >
+          <div class="btn btn-rounded-important  btn-success" onclick="saveSchedule();saveAnimation('add-schedule');" data-dismiss="modal" aria-label="Close" >
               Done
           </div>
       </div>
@@ -235,7 +236,7 @@ body{
       </div>
       <div class="modal-footer">
         <div class="done-btn-container">
-          <div class="btn btn-success" onclick="saveSponsors();saveAnimation('add-sponsor');" data-dismiss="modal" aria-label="Close" >
+          <div class="btn btn-rounded-important  btn-success" onclick="saveSponsors();saveAnimation('add-sponsor');" data-dismiss="modal" aria-label="Close" >
               Done
           </div>
         </div>
