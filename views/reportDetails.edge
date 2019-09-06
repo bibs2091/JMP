@@ -41,7 +41,7 @@
               </div>
       </div>       
       <div id="report_details_info">      
-        @if(!report.type=="Others")      
+        @if(report.type!="Others")      
         <div>
           <h3 class="report_titles">For  </h3>
           <h5 class="report_titles2">{{report.type}} </h5>
