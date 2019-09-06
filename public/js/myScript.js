@@ -33,7 +33,8 @@ function activateLoginButton() {
 //------------- course details ----------
 $(".collapse-chapter").on("click", function () {
   $(this).next().slideToggle("slow");
-})
+  $(this).find(".fa-play").toggleClass("rotate90-v2");
+});
 
 
 //------ tags ------
@@ -109,12 +110,6 @@ $(document).ready(function () {
     $(this).next(".networks-5").toggleClass("active");
   });
 });
-
-//------------- lecture-nav ---------------
-$(".lecture-nav").on("click", function () {
-  $(this).next().slideToggle("fast");
-  $(this).children(".fa-play").toggleClass("rotate90");
-})
 
 //----------------- catalog -----------------
 var hidWidth;

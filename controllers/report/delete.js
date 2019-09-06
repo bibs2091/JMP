@@ -5,4 +5,5 @@ module.exports = async (req, res) => {
     //delte the course
     await Report.destroy({ where: { id: reportId } });
     res.send({ success: true });
+
 }

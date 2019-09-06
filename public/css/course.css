@@ -126,12 +126,6 @@ body {
     font-size: 12px;
 
   }
-  .rotate90{
-    transform: rotate(90deg)!important;
-    transition: 0.3s;
-    margin-top:5px;
-  }
-
   .disabledLesson{
     color:#a0a0a0;
     cursor: not-allowed;
@@ -471,7 +465,7 @@ body {
   margin-bottom: 12px;
 }
 
-#quiz-next,#quiz-submit {
+#quiz-next,#quiz-next2,#quiz-submit {
   position: absolute;
   right: 80px;
   margin-top: 50px;
@@ -483,7 +477,7 @@ body {
   margin-top: 50px;
 }
 
-#quiz-next button, #quiz-submit button{
+#quiz-next button, #quiz-submit button, #quiz-next2 button{
     background: #FFD32A;
     border: 1px solid #FFD32A;
     font-weight: bold;

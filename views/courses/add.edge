@@ -1,6 +1,7 @@
 @layout('layouts.coach')
 
 @section('content')
+
     <div class="container">
             <ul class="steps">
                 <li class="step step--incomplete step--active">
@@ -20,7 +21,7 @@
                     <img src="/img/upload-course-cover.png" alt="upload a cover image" 
                         id="upload-course-cover" onclick="triggerInput('course-cover-input')">
                     <input type="file" name="cover" accept="image/*" id="course-cover-input" 
-                        style="display:none" onchange="loadImage(event,'upload-course-cover');ACVS1();" required >
+                        style="display:none" onchange="loadImage(event,'upload-course-cover');ACVS1();"  required>
                     <div class="md-form form-md">
                         <input type="text" placeholder="Course title"  class="form-control form-control-lg" onkeyup="ACVS1()" name="title" id="course-title" required>
                         <label for="course-title">Course title</label>
@@ -30,13 +31,13 @@
                         name="description" id="course-description" onkeyup="ACVS1()"></textarea>
                         <label for="course-description">Course decription</label>
                     </div>
-                        <select class="mdb-select md-form displayed" name="category" required onchange="ACVS1()">
+                        <select class="mdb-select md-form displayed" name="category"  onchange="ACVS1()" required>
                             <option value="" disabled selected>Course's category</option>
                             @each(category in categories)
                             <option value={{category.id}}>{{category.title}}</option>
                             @endeach
                         </select>
-                        <select class="mdb-select md-form" name="level" required onchange="ACVS1()">
+                        <select class="mdb-select md-form" name="level"  onchange="ACVS1()" required>
                             <option value="" disabled selected>Course's level</option>
                             <option value="beginner">Beginner</option>
                             <option value="intermediat">Intermediat</option>
@@ -55,33 +56,33 @@
                         </label>
                     </div>
                     
-                    <button class="btn event-btn"  disabled onclick="nextStep('basic-info', 1, 'course-content', 2)">Next</button>
+                    <button class="btn btn-rounded-important event-btn" disabled onclick="nextStep('basic-info', 1, 'course-content', 2)">Next</button>
                 </div>
                 <div id="course-content" class="hidden">
                         <h2 style="text-align: center">Course content</h2>
                         <hr>
                     <ul id="chapters-list">
                         <li>
-                            <div class="chapter-title">
+                            <div class="chapter-title" data-toggle="modal" data-target="#edit-chapter-modal" onclick="showEditChapterModal2(this)">
                                 <h6>1- Chapter 1</h6>
                                 <div class="tools">
-                                    <i class="far fa-trash-alt" onclick="deleteChapter(this)"></i>&nbsp;
-                                    <i class="far fa-edit" onclick="showEditChapterModal(this)"></i>
+                                    <i class="far fa-trash-alt" onclick="deleteChapter(this);event.stopPropagation();"></i>&nbsp;
+                                    <i class="far fa-edit" data-toggle="modal" data-target="#edit-chapter-modal" onclick="showEditChapterModal(this)"></i>
                                 </div>
                             </div>
                             <ul class="lectures">
-                                <li class="lecture">
+                                <li class="lecture" data-toggle="modal" data-target="#edit-lecture-modal" onclick="showEditLectureModal2(this)">
                                     <h5> a- Lecture one</h5>
                                     <span>video</span>
                                     <p>description</p>
                                     <h6>link</h6>
                                     <div class="tools">
-                                        <i class="far fa-trash-alt" onclick='deleteLecture(this)'></i>&nbsp;
-                                        <i class="far fa-edit" onclick="showEditLectureModal(this)"></i>
+                                        <i class="far fa-trash-alt" onclick="deleteLecture(this);event.stopPropagation();"></i>&nbsp;
+                                        <i class="far fa-edit" data-toggle="modal" data-target="#edit-lecture-modal" onclick="showEditLectureModal(this)"></i>
                                     </div>
                                 </li>
                             </ul>
-                            <div class='add-lecture' onclick='showAddLectureModal(this)'>
+                            <div class='add-lecture' data-toggle="modal" data-target="#add-lecture-modal"  onclick='showAddLectureModal(this)'>
                                     <ul> <li class="lesson addLesson">
                                         <p style="display:block; margin:0 auto; color:#868686;">
                                             <i class="fas fa-plus"></i> &nbsp; 
@@ -92,7 +93,7 @@
 
                         </li>
                     </ul>
-                    <div class="add-chapter" onclick="showModal('add-chapter-modal')">
+                    <div class="add-chapter" data-toggle="modal" data-target="#add-chapter-modal" >
                             <ul> <li class="lesson addLesson">
                                 <p style="display:block; margin:0 auto; color:#868686;">
                                         <i class="fas fa-plus"></i> &nbsp; 
@@ -100,7 +101,7 @@
                                     </p></li>
                                 </ul>
                     </div>
-                    <button class="btn event-btn" onclick="printChaps();nextStep('course-content', 2, 'quizs-content', 3)">Next</button>
+                    <button class="btn btn-rounded-important event-btn" onclick="printChaps();nextStep('course-content', 2, 'quizs-content', 3)">Next</button>
                 </div>
                 <div id="quizs-content" class="hidden">
                     <h2 style="text-align: center">Quizs</h2>
@@ -108,111 +109,128 @@
                     <ul id="chapters-list2"></ul>
                     <input type="text" name="courseJSON" id="courseJSON" style="display:none" required>
                     <input type="hidden" name="quizs" id="quizsJSON" required>
-                    <button class="btn event-btn" disabled onclick="$('#add-course-form').submit()" style="color:#FFF;background: #1DBF70;">
+                    <button class="btn btn-rounded-important event-btn" disabled onclick="$('#add-course-form').submit()" style="color:#FFF;background: #1DBF70;">
                        <input type="submit" class="hidden" > Create
                     </button>
                 </div>
             </div>
         </form>
     </div>
-    <div class="add-category-modal" id="add-chapter-modal">
-        <div class="info-container">
-            <span class="close-category-modal" onclick="hideModal('add-chapter-modal')">&times;</span>
-            <h2>Add chapter</h2>
-            <hr>
-            <div class="form-group">
-            <label for="title" class="category-form-text">chapter's title</label>
-            <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
+    <div class="modal fade" id="add-chapter-modal" tabindex="-1" role="dialog" aria-labelledby="add-chapter-modal" aria-hidden="true" style="margin-top: 15vh;">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Add chapter</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="md-form">
+                        <input type="text" class="form-control" placeholder="Enter a Title">
+                        <label>chapter's title</label>
+                    </div>
+                    <div class="modal-footer" style="border-top: none;">
+                        <button type="submit" class="btn btn-rounded-important submit-form" data-dismiss="modal" aria-label="Close"  onclick="addChapter(this)">Add</button>
+                    </div>
+                </div>
+                
             </div>
-            <br>
-
-            <div style="display:table; width: 100%; margin-top: 15px;">
-                <button type="submit" class="btn submit-form" onclick="addChapter(this)">Add</button>
+            </div>
+        </div>
+    <div class="modal fade" id="add-lecture-modal" tabindex="-1" role="dialog" aria-labelledby="add-lecture-modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add lecture</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <div class="md-form">
+                        <input type="text" class="form-control" placeholder="Enter a title">
+                        <label>Lecture's Title</label>
+                    </div>
+                    <select class="mdb-select md-form">
+                        <option value="" disabled selected>Lecture's type</option>
+                        <option value="2">Video</option>
+                        <option value="3">PDF</option>
+                    </select>
+                    <div class="md-form">
+                        <input type="text" class="form-control" placeholder="Enter a Link">
+                        <label>Link</label>
+                    </div>
+                    <div class="md-form">
+                        <textarea  class="md-textarea form-control" rows="3" placeholder="Enter a Description"></textarea>
+                        <label >Lecture's description</label>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="submit" class=" submit-form btn btn-rounded-important" onclick="addLecture(this.parentNode.parentNode)" data-dismiss="modal" aria-label="Close">Add</button>
+                    </div>
+            </div>
+            
             </div>
         </div>
     </div>
-    <div class="add-category-modal" id="add-lecture-modal">
-        <div class="info-container">
-            <span class="close-category-modal" onclick="hideModal('add-lecture-modal')">&times;</span>
-            <h2>Add lecture</h2>
-            <hr>
-            <div class="form-group">
-                <label for="title" class="category-form-text">Lecture's Title</label>
-                <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
+    <div class="modal fade" id="edit-chapter-modal" tabindex="-1" role="dialog" aria-labelledby="edit-chapter-modal" aria-hidden="true" style="margin-top: 15vh;">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Edit chapter</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
             </div>
-            <br>
-            <div class="form-group">
-                <label for="title" class="category-form-text">Lecture's type</label>
-                <select class="form-control">
-                    <option value="video">video</option>
-                    <option value="PDF">PDF</option>
-                </select> 
+            <div class="modal-body">
+                <div class="md-form">
+                    <input type="text" class="form-control" placeholder="Enter a Title">
+                    <label>chapter's title</label>
+                </div>
+                <div class="modal-footer" style="border-top: none;">
+                    <button type="submit" class="btn btn-rounded-important submit-form" data-dismiss="modal" aria-label="Close" onclick="editChapter(this.parentNode)">Update</button>
+                </div>
             </div>
-            <br>
-            <div class="form-group">
-                <label for="title" class="category-form-text">Link</label>
-                <input type="text" class="form-control" name="title" placeholder="Enter a link" required>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="title" class="category-form-text">Lecture's description</label>
-                <textarea name="description" rows="5" class="form-control"></textarea>
-            </div>
-            <div style="display:table; width: 100%; margin-top: 15px;">
-                <button type="submit" class="btn submit-form" onclick="addLecture(this.parentNode.parentNode)">Add</button>
-            </div>
+            
+        </div>
         </div>
     </div>
-
-    <div class="add-category-modal" id="edit-chapter-modal">
-        <div class="info-container">
-            <span class="close-category-modal" onclick="hideModal('edit-chapter-modal')">&times;</span>
-            <h2>Edit chapter</h2>
-            <hr>
-            <div class="form-group">
-            <label for="title" class="category-form-text">chapter's title</label>
-            <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
-            </div>
-            <br>
-
-            <div style="display:table; width: 100%; margin-top: 15px;">
-                <button type="submit" class="btn submit-form" onclick="editChapter(this.parentNode)">Update</button>
-            </div>
-        </div>
-    </div>
-    <div class="add-category-modal" id="edit-lecture-modal">
-        <div class="info-container">
-            <span class="close-category-modal" onclick="hideModal('edit-lecture-modal')">&times;</span>
-            <h2>Edit lecture</h2>
-            <hr>
-            <div class="form-group">
-                <label for="title" class="category-form-text">Lecture's Title</label>
-                <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="title" class="category-form-text">Lecture's type</label>
-                <select class="form-control">
-                    <option value="video">video</option>
-                    <option value="PDF">PDF</option>
-                </select> 
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="title" class="category-form-text">Link</label>
-                <input type="text" class="form-control" name="title" placeholder="Enter a link" required>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="title" class="category-form-text">Lecture's description</label>
-                <textarea name="description" rows="5" class="form-control"></textarea>
-            </div>
-            <div style="display:table; width: 100%; margin-top: 15px;">
-                <button type="submit" class="btn submit-form" onclick="editLecture(this.parentNode)">Update</button>
+    <div class="modal fade" id="edit-lecture-modal" tabindex="-1" role="dialog" aria-labelledby="edit-lecture-modal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update lecture</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="md-form">
+                            <input type="text" class="form-control" placeholder="Enter a title">
+                            <label>Lecture's Title</label>
+                        </div>
+                        <select class="mdb-select md-form">
+                            <option value="" disabled selected>Lecture's type</option>
+                            <option value="2">Video</option>
+                            <option value="3">PDF</option>
+                        </select>
+                        <div class="md-form">
+                            <input type="text" class="form-control" placeholder="Enter a Link">
+                            <label>Link</label>
+                        </div>
+                        <div class="md-form">
+                            <textarea  class="md-textarea form-control" rows="3" placeholder="Enter a Description"></textarea>
+                            <label >Lecture's description</label>
+                        </div>
+                        <div class="modal-footer">
+                                <button type="submit" class=" submit-form btn btn-rounded-important" onclick="editLecture(this.parentNode)" data-dismiss="modal" aria-label="Close">Update</button>
+                        </div>
+                </div>
+                
+                </div>
             </div>
         </div>
-    </div>
-    <div class="add-category-modal" id="add-quiz-modal">
+    <div class="add-category-modal" id="add-quiz-modal" >
         <div class="info-container">
             <div class="header">
                 <h6>Add Quiz</h6> 
@@ -262,7 +280,7 @@
                     Add Question
                 </div>
                 <div class="done-btn-container">
-                    <div class="btn btn-success" onclick="addChapQuiz(this)" >
+                    <div class="btn btn-rounded-important btn-success" onclick="addChapQuiz(this)" >
                         Done
                     </div>
                 </div>

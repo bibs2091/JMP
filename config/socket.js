@@ -15,8 +15,8 @@ const events = (io) => {
         connectedUsers.set(userId, socket.id)
 
 
-        console.log('new user connnected : ' + userId);
-        console.log(connectedUsers)
+        //console.log('new user connnected : ' + userId);
+        //console.log(connectedUsers)
 
         // check if user exists in session
         if (socket.request.session.passport == 'undefined') {
@@ -30,7 +30,7 @@ const events = (io) => {
 
             // search fot the receiver
             if (message.to) {
-                console.log(message.to)
+                //console.log(message.to)
                 switch (message.to) {
                     case 'toAll': {
                         if (await isAdmin(message.from)) {
@@ -110,8 +110,8 @@ const events = (io) => {
             }
 
             connectedUsers.delete(userId.user);
-            console.log(`user ${userId.user} has disconnected`)
-            console.log(connectedUsers)
+            //console.log(`user ${userId.user} has disconnected`)
+            //console.log(connectedUsers)
         })
 
 

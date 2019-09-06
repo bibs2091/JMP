@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const UsersInfo = require("../models/UsersInfo");
 
 //require controllers
 const addController = require("../controllers/events/add");
@@ -23,11 +24,16 @@ router.post("/delete/:id", isAuthenticated, isEventOwner, deleteController);
 router.post("/add", isAuthenticated, addController);
 router.post("/modifie/:id", isAuthenticated, isEventOwner, modifiePostController);
 router.get("/modifie/:id", isAuthenticated, isEventOwner, modifieGetController);
-router.get("/add", isAuthenticated, (req, res) => {
-    res.render("events.add",{
-    	pageTitle:"add event"
+router.get("/add", isAuthenticated, async (req, res) => {
+    var currentUser = req.user;
+    var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
+    delete currentUser.password;
+    currentUser.info = userInfo.dataValues;
+    res.render("events.add", {
+        pageTitle: "add event",
+        currentUser
     });
 });
-router.get("/:id",isAuthenticated,eventController);
-router.post("/register/:id",isAuthenticated,eventPostRegisterController);
+router.get("/:id", isAuthenticated, eventController);
+router.post("/register/:id", isAuthenticated, eventPostRegisterController);
 module.exports = router;

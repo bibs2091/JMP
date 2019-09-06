@@ -5,6 +5,11 @@ const UsersInfo = require("../../models/UsersInfo");
 
 module.exports = async (req, res) => {
     try {
+        var currentUser = req.user;
+        var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
+        delete currentUser.password;
+        currentUser.info = userInfo.dataValues;
+
         var courseId = req.params.id;
         var course = await Courses.findByPk(courseId);
         if (!course) {
@@ -32,7 +37,8 @@ module.exports = async (req, res) => {
             course,
             author,
             chaptersList,
-            url
+            url,
+            currentUser
         });
     } catch (error) {
         console.log(error);

@@ -7,7 +7,6 @@ module.exports = async (req, res) => {
 	try{
 			//getting the report data
 
-
 	let temp = await UsersInfo.findOne({where : {userId : req.user.id}});
 	let username = temp.dataValues.username;
 	let indictedType = req.params.type
@@ -43,6 +42,7 @@ module.exports = async (req, res) => {
 		}
 	// adding the report
 	await Report.create({username,type,indictedType,indicted,reportDetails});
+
 	req.flash("reportAdded","your report had been sent to the admins");	
 	res.redirect(req.headers.referer.slice(21));
 	}catch (err){

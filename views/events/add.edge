@@ -12,6 +12,7 @@ body{
 }
 
 </style>
+
 <ul class="steps">
   <li class="step step--incomplete step--active">
     <span class="step__label">Basic  information</span>
@@ -39,7 +40,7 @@ body{
       <textarea id="Event-decription"  placeholder="In your Event description, we recommend providing information abou the content of the course and how students will benefit from that content." class="form-control md-textarea" length="120" rows="3"></textarea>
       <label for="Event-decription">Event decription</label>
     </div>
-    <button class="btn event-btn" onclick="nextStep('BasicInformation-addEvent', 1, 'timingLocation', 2)">Next</button>
+    <button class="btn btn-rounded-important  event-btn" onclick="nextStep('BasicInformation-addEvent', 1, 'timingLocation', 2)">Next</button>
   </div>
 
 
@@ -74,17 +75,17 @@ body{
         <label>Event Location</label>
         <div id="map"></div>
     </div>
-    <button class="btn event-btn" onclick="nextStep('timingLocation', 2, 'PlaningAndSponsors', 3)">Next</button>
+    <button class="btn btn-rounded-important  event-btn" onclick="nextStep('timingLocation', 2, 'PlaningAndSponsors', 3)">Next</button>
 
   </div>
   <div id="PlaningAndSponsors">
     <h2>Planing and Sponsors</h2>
     <hr>
-    <div class="form-group md-form">
-        <label class="customized-label">Tags</label>
-        <p style="font-size: 11px;margin-bottom:7px;">
-            In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
-        </p>
+    <label class="customized-label">Tags</label>
+    <p style="font-size: 11px;margin-bottom:7px;">
+      In your course tags, we recommend providing information about the content of the course and how students will benefit from that content.
+  </p>
+    <div class="form-group">
         <label style="width:100%" for="tag-typer">
                 <div id="tags">
                     <input id="tag-typer" type="text" name="tags" placeholder="Add a tag..."/>
@@ -100,19 +101,19 @@ body{
           line-height: 31px;
         }
       </style>
-      <div class="form-group" style="margin-top: 80px">
+      <div class="form-group" style="margin-top: 30px">
         <label for="add-schedule">Schedule</label>
-        <button id="add-schedule" class="btn-add"  data-toggle="modal" data-target="#add-schedule-modal">
+        <button id="add-schedule" class="btn-add btn-rounded-important saved_animation"  data-toggle="modal" data-target="#add-schedule-modal">
           <i class="fa fa-plus"></i> Add Schedule
         </button>
       </div>
-      <div class="form-group" style="margin-top: 50px">
+      <div class="form-group" style="margin-top: 30px">
         <label for="add-sponsor">Sponsors</label>
-        <button id="add-sponsor" class="btn-add" data-toggle="modal" data-target="#add-sponsor-modal">
+        <button id="add-sponsor" class="btn-add btn-rounded-important saved_animation" data-toggle="modal" data-target="#add-sponsor-modal">
           <i class="fa fa-plus"></i> Add Sponsor
         </button>
       </div>
-      <button class="btn event-btn" style="color:#FFF;background: #1DBF70;" 
+      <button class="btn btn-rounded-important  event-btn" style="color:#FFF;background: #1DBF70;" 
       onclick="this.parentNode.parentNode.parentNode.submit()">Save</button>
     </div>
   </div> 
@@ -146,14 +147,14 @@ body{
                     <div class="col-md-6">
                         <div class="md-form">
                           <input type="text" placeholder="Select a date" 
-                          onkeyup="saveInputState(this)" class="form-control form-control-lg datepicker">
+                          onchange="saveInputState(this)" id="hh" class="form-control form-control-lg datepicker">
                           <label>Start day</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="md-form form-md">
                           <input type="text" placeholder="Select a date" 
-                          onkeyup="saveInputState(this)" class="form-control form-control-lg timepicker">
+                          onchange="saveInputState(this)" class="form-control form-control-lg timepicker">
                           <label>Start time</label>
                         </div>
                     </div>
@@ -166,7 +167,7 @@ body{
       </div>      </div>
       <div class="modal-footer">
         <div class="done-btn-container">
-          <div class="btn btn-success" onclick="saveSchedule();" data-dismiss="modal" aria-label="Close" >
+          <div class="btn btn-rounded-important  btn-success" onclick="saveSchedule();saveAnimation('add-schedule');" data-dismiss="modal" aria-label="Close" >
               Done
           </div>
       </div>
@@ -218,10 +219,10 @@ body{
                           </defs>
                           </svg>
                           
-                        <input type="file" accept="images/*" name="sponsorImage">
+                        <input type="file" accept="image/*" name="sponsorImage">
                       </a>
                       <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload your file">
+                        <input class="file-path validate" onchange="saveInputState(this)" type="text" placeholder="Upload the photo of the sponsor" disabled>
                       </div>
                     </div>
                   </div>
@@ -235,7 +236,7 @@ body{
       </div>
       <div class="modal-footer">
         <div class="done-btn-container">
-          <div class="btn btn-success" onclick="saveSponsors()" data-dismiss="modal" aria-label="Close" >
+          <div class="btn btn-rounded-important  btn-success" onclick="saveSponsors();saveAnimation('add-sponsor');" data-dismiss="modal" aria-label="Close" >
               Done
           </div>
         </div>

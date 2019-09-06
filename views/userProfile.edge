@@ -15,7 +15,12 @@
     </div>
     <div class="col-md-7" id="profile_details">
     <h1>{{profile.firstName + " " + profile.lastName}}</h1>
-      <h6>Student</h6>
+      @if(coach)
+        <h6>Coach</h6>
+        
+      @else
+        <h6>Student</h6>
+      @endif
       <p>{{profile.bio ||''}} </p>
     </div>
     <div class="col-md-2" style="position: relative;">
@@ -61,7 +66,11 @@
     </p>
   </div>
   <div class="profile-stat">
-    <p>Courses enrolled in<br>8</p>
+    @if(coach)
+      <p>Courses created<br>{{myCourses.length}}</p>
+    @else
+      <p>Courses enrolled in<br>{{myCourses.length}}</p>  
+    @endif
   </div>
   <div class="profile-stat">
     <p>Github repos<br>{{repos.length}}</p>
@@ -84,76 +93,41 @@
 <div class="container other-profile-info">
   <div class="profile-tab container" id="profile-courses">
       <div class="row">
-          <div class="col-lg-4">
-            <div class="course-card card">
-              <img src="/img/flutter.jpg" class="course-img">
-              <h5 style="position:relative;">How to flutter &nbsp;<div class="stage">  <div class="heart"></div> </div>  </h5>
-              <table class="course-card-content">
-                <tr>
-                  <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
-                  <td class="td-space"></td>
-                  <td class="course-author">
-                    <h6>Oussama Azzaz Rahmani</h6>
-                  </td>
-                  <td class="td-devider"></td>
-                  <td class="time-and-diff">
-                    <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                    <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
-                  </td>
-                </tr>
-              </table>
-              <div class="course-state course-start">
-                <p><i class="icon-start"></i>&nbsp;Start</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-              <div class="course-card card">
-                <img src="/img/flutter.jpg" class="course-img">
-                <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
-                <table class="course-card-content">
-                  <tr>
-                    <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
-                    <td class="td-space"></td>
-                    <td class="course-author">
-                      <h6>Oussama Azzaz Rahmani</h6>
-                    </td>
-                    <td class="td-devider"></td>
-                    <td class="time-and-diff">
-                      <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                      <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
-                    </td>
-                  </tr>
-                </table>
-                <div class="course-state course-start">
-                  <p><i class="icon-start"></i>&nbsp;Start</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="course-card card">
-                  <img src="/img/flutter.jpg" class="course-img">
-                  <h5>How to flutter &nbsp;<i class="icon-heart"></i></h5>
-                  <table class="course-card-content">
-                    <tr>
-                      <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
-                      <td class="td-space"></td>
-                      <td class="course-author">
-                        <h6>Oussama Azzaz Rahmani</h6>
-                      </td>
-                      <td class="td-devider"></td>
-                      <td class="time-and-diff">
-                        <p>3h 12 mn&nbsp;&nbsp;<i class="icon-time"></i></p><br>
-                        <p>Advanced&nbsp;&nbsp;<i class="icon-advanced"></i></p>
-                      </td>
-                    </tr>
-                  </table>
-                  <div class="course-state course-start">
-                    <p><i class="icon-start"></i>&nbsp;Start</p>
+          @if(myCourses.length>0)
+            @each(item in myCourses)
+                <div class="col-lg-4 col-md-6" onclick="location.href='/courses/{{item.id}}' ">
+                  <div class="course-card card" style="cursor:pointer ; height:280px">
+                    <img src={{item.cover}} class="course-img" alt={{item.title}}>
+                    <h5 style="position:relative;">{{item.title}}&nbsp;
+                    </h5>
+                    <table class="course-card-content">
+                      <tr>
+                        <td><img src={{item.authorAvatar}} class="course-author-pic"></td>
+                        <td class="td-space"></td>
+                        <td class="course-author">
+                          <h6>{{item.author}}</h6>
+                        </td>
+                        <td class="td-devider"></td>
+                        <td class="time-and-diff">
+                          <p>{{item.duration}}&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                          <p>{{item.level}}&nbsp;&nbsp;
+                            @if(course.level == "beginner")
+                            <i class="icon-beginner"></i>
+                            @elseif(course.level == "intermediat")
+                            <i class="icon-intermediat"></i>
+                            @else
+                            <i class="icon-advanced"></i>
+                            @endif
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
                   </div>
                 </div>
-              </div>
-        </div>
+            @endeach
+          @endif
+
+      </div>
   </div>
   <div class="profile-tab" id="profile-skills">
     @each(item in profile.skills)
@@ -226,20 +200,20 @@
       
       <div class="modal-body">
         
-  <form  id="report_form">  
+  <form action="/report/add/{{userId}}/User" method="POST" id="report_form"> 
   <h1> What is the reason of the report  </h1>  
   <div id="radio_bottom">
       <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="Option1" name="materialExampleRadios">
+          <input type="radio" class="custom-control-input" id="Option1" name="type" value="Fake account">
           <label class="custom-control-label" for="Option1">Fake account</label>
         </div>
         
       <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="Option2" name="materialExampleRadios">
+          <input type="radio" class="custom-control-input" id="Option2" name="type" value="Harassement /Hate speech">
           <label class="custom-control-label" for="Option2">Harassement /Hate speech</label>
       </div>
       <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="Option3" name="materialExampleRadios">
+          <input type="radio" class="custom-control-input" id="Option3" name="type" value="Others">
           <label class="custom-control-label" for="Option3">Others</label>
       </div>
   </div>

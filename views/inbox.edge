@@ -30,7 +30,7 @@
 <div id="messenger-contianer">
 <aside id="sidebar" class="nano">
   <div class="nano-content">
-    <a class="compose-button" href="">New Message</a>
+    <a class="compose-button" href="/messages/new_message">New Message</a>
     <menu class="menu-segment">
       <ul>
         <li class="active"> <a href="#"><img src="/images/messaging/mail.png" alt=""> &nbsp; Inbox<span> ({{count}})</span></a></li>
@@ -56,7 +56,7 @@
 
       </li>
       <li><div class="refresh"></div></li>
-      <li><img src="/images/messaging/garbage.png" alt="delete" id="delete_msg"></li>
+      <li onclick="deleteMessages()"><img src="/images/messaging/garbage.png" alt="delete" id="delete_msg"></li>
       <li class="pagination">
         <a href="" id="prevPage">
           <i class="fas fa-chevron-left"></i>

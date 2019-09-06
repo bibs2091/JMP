@@ -31,6 +31,7 @@ const message = require("./routes/messages");
 const api = require("./routes/api");
 const recApi = require('./routes/recomSys')
 const pushSubscription = require('./routes/pushSubscription')
+const report = require("./routes/report");
 
 //environment variables
 const {
@@ -125,6 +126,7 @@ app.use("/messages", message);
 app.use("/api", api);
 app.use("/recSys", recApi)
 app.use('/subscribe', pushSubscription);
+app.use("/report", report);
 app.get("*", (req, res) => {
 	res.render("404");
 });

@@ -16,5 +16,7 @@ router.get("/users/unapproved", unapprovedUsersController);
 router.get("/users/all", allUsersController);
 router.post("/quiz/:id/result", quizResultController);
 router.get("/course/:id/lastLecture", lastLectureController);
+router.get('/users/search', searchUsers)
+
 
 module.exports = router;
