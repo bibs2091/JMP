@@ -1,0 +1,77 @@
+@layout('layouts.dashboard')
+
+@section('content')
+<style scoped>
+  #main-content{
+    background-color: #F2F2F2;
+    padding: 20px 0;
+    height: 100%; 
+  }
+  @media (max-width: 672px){
+#main-content {
+  margin-left: 0;
+} 
+</style>
+  <div id="reportMiddel">
+    <h1>Details</h1>
+    <div id="report_details">
+      
+      <div class="row">
+        
+          <div class="col-md-6">
+              <h3>Reporter</h3>
+              <img src={{reporter.avatar}} alt="avatar" id="report-pic">
+              <h6>{{reporter.firstName + " " + reporter.lastName}}</h6>
+              <h4>{{reporter.username}}</h4>
+            </div>
+            
+              
+              
+           
+            <div class="col-md-6">
+                <h3>Reported</h3>
+                @if(reported.username)
+                <img src={{reported.avatar}} alt="avatar" id="report-pic">
+                <h6>{{reported.firstName + " " + reported.lastName}}</h6>
+                <h4>{{reported.username}}</h4>
+                @else
+                <img src={{reported.cover}} alt="avatar" id="report-pic">
+                <h6>{{reported.title}}</h6>
+                @endif
+              </div>
+      </div>       
+      <div id="report_details_info">      
+        @if(report.type!="Others")      
+        <div>
+          <h3 class="report_titles">For  </h3>
+          <h5 class="report_titles2">{{report.type}} </h5>
+        </div>
+      @endif
+        <div>
+            <h3 class="report_titles">Date</h3>
+            <h5 class="report_titles2">{{report.date}} </h5>
+        </div>
+        <div>
+          <h3>Description </h3>
+          <p>{{report.reportDetails}}</p>
+        </div>
+      </div> 
+               
+             
+    
+    </div>
+
+
+    <!-- actions to take -->
+    <h1 style="margin-top:20px;">Action to take</h1>  
+    <div id="Actions_report" class="row">
+      @if(report.indictedType=="User")
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
+      @elseif(report.indictedType=="Course")
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
+      @endif
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Notify a user</p><img src="/img/reports/Notify.png" alt=""></div></div>
+      <div class="col-md-3 col-sm-6"><div class="action_adjust"><p>Delete the report</p><img src="/img/reports/DeleteR.png" alt=""></div></div>
+    </div>  
+  </div>
+@endsection
