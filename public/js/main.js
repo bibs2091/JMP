@@ -249,7 +249,14 @@ function deleteReport(id) {
     });
 }
 function getDetails(id) {
-     location.replace("/report/details/"+id);
+    $.ajax({
+        url: '/report/mark/' + id,
+        method: 'POST',
+        contentType: 'application/json',
+        success: function (result) {
+            location.replace("/report/details/"+id);
+        }
+    });
 }
 //get current user
 function getCurrentUser() {

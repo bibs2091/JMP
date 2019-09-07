@@ -9,6 +9,7 @@ module.exports = async (req, res) => {
 	try {
 		var currentUser = req.user;
 		var userinfo = await userInfo.findOne({ where: { userId: req.user.id } });
+		const userId = userinfo.dataValues.id;
 		delete currentUser.password;
 		currentUser.info = userinfo.dataValues;
 
@@ -54,8 +55,14 @@ module.exports = async (req, res) => {
 				//fetch crouses as a student
 				myCourses = await getStudentCourses(id)
 			}
+				let messages = req.flash();
+			if (Object.keys(messages).length===0){
+				messages = undefined;
+			}
 
 			res.render("userProfile", {
+				messages,
+				userId,
 				pageName: profile.username,
 				pageTitle: profile.firstName + " " + profile.lastName,
 				profile,

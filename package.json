@@ -17,7 +17,7 @@
 		"connect-redis": "^3.4.1",
 		"core-util-is": "^1.0.2",
 		"custom-env": "^1.0.0",
-		"express": "^4.16.4",
+		"express": "^4.17.1",
 		"express-edge": "^1.0.0",
 		"express-fileupload": "^1.1.4",
 		"express-session": "^1.15.6",
@@ -29,7 +29,7 @@
 		"pg-hstore": "^2.3.2",
 		"raccoon": "^0.2.8",
 		"redis": "^2.8.0",
-		"sequelize": "^5.15.2",
+		"sequelize": "^5.18.2",
 		"socket.io": "^2.2.0",
 		"web-push": "^3.3.5",
 		"wkx": "^0.4.8"
