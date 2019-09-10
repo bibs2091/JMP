@@ -3622,11 +3622,10 @@ textarea.md-textarea:focus:not([readonly]),
     font-size: 13px;
   }
 }
-  #confirm-popup{
-    border-radius: 21px;
+#confirm-popup{
     margin-top: 20vh;
-  }
- h2{
+}
+h2{
   font-size: 2em;
   color: #252525;
   margin-bottom: 10px;  
@@ -3640,6 +3639,10 @@ textarea.md-textarea:focus:not([readonly]),
   justify-content: center;
   padding: 25px;
 }
+#confirm-popup .modal-content{
+border-radius: 21px;
+}
+
 #confirm-popup .modal-body div button{
 border: 2px solid #ababab;
 padding: 10px 20px;

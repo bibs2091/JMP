@@ -67,12 +67,12 @@
     <h1 style="margin-top:20px;">Action to take</h1>  
     <div id="Actions_report" class="row">
       @if(report.indictedType=="User")
-      <div class="col-md-3 col-sm-6"><div class="action_adjust" data-toggle="modal" data-target="#confirm-popup"><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
+      <div class="col-md-4 col-sm-6"><div class="action_adjust" data-toggle="modal" data-target="#confirm-popup"><p>Ban the user</p><img src="/img/reports/Ban.png" alt=""></div></div>
       @elseif(report.indictedType=="Course")
-      <div class="col-md-3 col-sm-6"><div class="action_adjust" data-toggle="modal" data-target="#confirm-popup"><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
+      <div class="col-md-4 col-sm-6"><div class="action_adjust" data-toggle="modal" data-target="#confirm-popup"><p>Delete the course</p><img src="/img/reports/DeleteC.png" alt=""></div></div>
       @endif
-      <div class="col-md-3 col-sm-6"><div class="action_adjust" data-toggle="modal" data-target="#confirm-popup"><p>Notify a user</p><img src="/img/reports/Notify.png" alt=""></div></div>
-      <div class="col-md-3 col-sm-6"><div class="action_adjust" data-toggle="modal" data-target="#confirm-popup"><p>Delete the report</p><img src="/img/reports/DeleteR.png" alt=""></div></div>
+      <div class="col-md-4 col-sm-6"><div class="action_adjust" data-toggle="modal" data-target="#confirm-popup"><p>Notify a user</p><img src="/img/reports/Notify.png" alt=""></div></div>
+      <div class="col-md-4 col-sm-6"><div class="action_adjust" data-toggle="modal" data-target="#confirm-popup"><p>Delete the report</p><img src="/img/reports/DeleteR.png" alt=""></div></div>
     </div>  
    <!-- confirm pop-up -->
     <div class="modal fade" id="confirm-popup" tabindex="-1" role="dialog" aria-labelledby="confirm-popup" aria-hidden="true">
