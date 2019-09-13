@@ -55,8 +55,8 @@ module.exports = async (req, res) => {
 				//fetch crouses as a student
 				myCourses = await getStudentCourses(id)
 			}
-				let messages = req.flash();
-			if (Object.keys(messages).length===0){
+			let messages = req.flash();
+			if (Object.keys(messages).length === 0) {
 				messages = undefined;
 			}
 

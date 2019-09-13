@@ -1130,7 +1130,7 @@ input[name="lastName"] {
 .blur-image {
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.3) 100%);
+    background: linear-gradient( 180deg, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.3) 100%);
     z-index: 2;
     position: absolute;
     top: 0;
@@ -1140,6 +1140,26 @@ input[name="lastName"] {
 
 
 /* adding category modal*/
+
+.add-category-header {
+    width: calc(100% + 100px);
+    margin-left: -70px;
+    background-color: #ffd32a;
+    margin-top: -30px;
+    height: 60px;
+    position: relative;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.add-category-header h2 {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 27%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
 
 .add-category-modal {
     display: none;
@@ -1165,6 +1185,8 @@ input[name="lastName"] {
     font-size: 22px;
     margin-bottom: 40px;
     position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
 }
 
 .add-category-modal .info-container h2 {
@@ -1173,15 +1195,14 @@ input[name="lastName"] {
 
 .add-category-modal .info-container img {
     width: 100%;
-    height: 17.6vw;
-    margin-bottom: 40px;
+    height: 9.6vw;
+    margin-bottom: 1px;
     border-radius: 5px;
+    transition: transform 0.5s;
 }
 
 .add-category-modal .info-container img:hover {
-    width: 102%;
-    height: 18vw;
-    transition: 0.3s;
+    transform: scale(1.1);
 }
 
 .add-category-modal .category-form-text {
@@ -1189,24 +1210,33 @@ input[name="lastName"] {
     font-size: 19px;
 }
 
+.add-category-label {
+    font-size: 1.2rem !important;
+}
+
+.md-form label {
+    font-size: 1.2rem;
+}
+
+.md-form input[type="text"]:focus {
+    box-shadow: 0 1px 0 0 yellow !important;
+    border-bottom: 1px solid yellow !important;
+}
+
 .submit-form {
     width: 100%;
-    background: #ffd32a;
-    display: table-cell;
-    height: 38px;
+    background: #1dbf70;
+    height: 100%;
     font-weight: 700;
     font-size: 19px;
+    color: lemonchiffon;
+    margin: 19px 0px 0px 0px;
+    border-radius: 4px;
 }
 
-#update-category-modal .submit-form {
-    width: 48%;
-    display: table-cell;
-}
+#update-category-modal .submit-form {}
 
 .delete-button {
-    width: 48%;
-    display: table-cell;
-    height: 38px;
     font-weight: 500;
     font-size: 19px;
     margin-right: 4%;
@@ -1235,6 +1265,7 @@ input[name="lastName"] {
 
 #category-image {
     cursor: pointer;
+    margin-top: 30px;
 }
 
 @media (max-width: 669px) {
@@ -1490,13 +1521,13 @@ input[name="lastName"] {
 }
 
 .rotate90 {
-    transform: rotate(90deg) !important;
+    transform: rotate(90deg)!important;
     transition: 0.3s;
     margin-top: 5px;
 }
 
 .rotate90-v2 {
-    transform: rotate(90deg) !important;
+    transform: rotate(90deg)!important;
     transition: 0.3s;
     margin-top: -10px;
 }
@@ -1706,6 +1737,7 @@ input[name="lastName"] {
 }
 
 @media (max-width: 765px) {
+
     #coverImage {
         margin-bottom: 17px;
         margin-top: 17px;

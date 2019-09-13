@@ -5,7 +5,8 @@
       <div class="row">
           @each(category in categories)
           <div class="col-md-4">
-                <div class="category-container get-category" id="{{category.id}}">
+    
+                <div class="category-container get-category" data-toggle="modal" data-target="#update-category-modal" id="{{category.id}}">
                         <img src="{{category.cover}}">
                         <div class="blur-image"></div>
                         <div class="image-text-centered">{{category.title}}</div>
@@ -30,52 +31,96 @@
     <div class="add-category-modal" id="add-category-modal">
         <form class="info-container" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
   @endif
-            <span class="close-category-modal" onclick="hideModal('add-category-modal')">&times;</span>
+  <div class="add-category-header">         
+  <span class="close-category-modal" onclick="hideModal('add-category-modal')">&times;</span>
             <h2>Add category</h2>
-            <hr>
-            <img src="/img/upload_cover.png" alt="upload a cover" 
+  </div>    
+            <img src="/img/upload-course-cover.png" alt="upload a cover" 
                 for="image" id="category-image"
                 onclick="triggerInput('category-image-input')">
             <input type="file" accept="image/*" style="display:none" 
                 name="image" id="category-image-input" onchange="loadImage(event,'category-image')" required>
-            <div class="form-group">
-            <label for="title" class="category-form-text">Category's title</label>
-            <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
+            <div class="md-form">
+            <label for="title" class="add-category-label">Category's title</label>
+            <input type="text" class="form-control" name="title"  required id="title">
             </div>
+            
             <br>
-            <div class="form-group">
-            <label for="title" class="category-form-text">Category's description</label>
-            <textarea name="description" class="form-control" rows="6" required></textarea>
+            <div class="md-form mb-4 pink-textarea active-pink-textarea">
+            <textarea  name="description" id="description" class="md-textarea form-control" rows="3"></textarea>
+            <label for="title" >Category's description</label>
             </div>
-            <input type="submit" class="btn submit-form">
-        </form>
+            <div style="margin-left:59%;">
+           <input type="submit" class="btn submit-form">
+            </div>
+        </form> 
   </div>
 
-  <div class="add-category-modal" id="update-category-modal">
+  
+
+  <!-- <div class="add-category-modal" id="update-category-modal" >
     <form class="info-container" method="POST" action="/admin/category/update" enctype="multipart/form-data">
         <span class="close-category-modal" onclick="hideModal('update-category-modal')">&times;</span>
         <h2>Update category</h2>
         <hr>
-        <img src="/img/upload_cover.png" alt="upload a cover" 
+        <img src="/img/upload-course-cover.png" alt="upload a cover" 
             for="image" id="update-category-image" height="150"
             onclick="triggerInput('update-category-image-input')">
         <input type="file" accept="image/*" style="display:none" 
             name="image" id="update-category-image-input" onchange="loadImage(event,'update-category-image')">
-        <div class="form-group">
-        <label for="title" class="category-form-text">Category's title</label>
+        <div class="md-form">
+        <label for="title" class="add-category-label">Category's title</label>
         <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
         </div>
         <br>
-        <div class="form-group">
+        <div class="md-form mb-4 pink-textarea active-pink-textarea">
         <label for="title" class="category-form-text">Category's description</label>
-        <textarea name="description" class="form-control" rows="6" required></textarea>
+        <textarea name="description" class="md-textarea form-control" rows="3" required></textarea>
         </div>
-        <div style="display:table; width: 100%; margin-top: 25px;">
+        <div class="modal-footer">
             <button type="button" class="btn btn-danger delete-button" onclick="deleteCategory(this.id)" id="">Delete</button>
             <input type="submit" class="btn submit-form" value="update">
         </div>
+        <div style="display:table; width: 100%; margin-top: 25px;">
+        </div>
     </form>
-</div>   
+</div>    -->
+<div class="modal fade" id="update-category-modal" tabindex="-1" role="dialog" aria-labelledby="update-category-modal"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #ffd32a;">
+        <h5 class="modal-title" style="font-weight: bold;">Update category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="info-container" method="POST" action="/admin/category/update" enctype="multipart/form-data">
+      <div class="modal-body">
+            <img src="/img/upload-course-cover.png" alt="upload a cover" 
+                for="image" id="update-category-image" height="150" style="margin: 0 auto;display: block;"
+                onclick="triggerInput('update-category-image-input')">
+            <input type="file" accept="image/*" style="display:none" 
+                name="image" id="update-category-image-input" onchange="loadImage(event,'update-category-image')">
+            <div class="md-form">
+            <label for="title" class="add-category-label">Category's title</label>
+            <input type="text" class="form-control" name="title" placeholder="Enter a title" required>
+            </div>
+            <br>
+            <div class="md-form mb-4 pink-textarea active-pink-textarea" style="  margin-bottom: 0!important;">
+            <label for="title" class="category-form-text active">Category's description</label>
+            <textarea name="description" class="md-textarea form-control" rows="3" required></textarea>
+            </div>
+      </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger delete-button" onclick="deleteCategory(this.id)" id="">Delete</button>
+            <input type="submit" class="btn submit-form" style="margin-top: 0;"value="update">
+        </div>
+    </form>
+
+    </div>
+  </div>
+</div>
 @endsection
 
 

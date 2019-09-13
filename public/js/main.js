@@ -35,7 +35,7 @@ $(".get-category").click(function () {
         $("#update-category-modal textarea").val(data.description);
         $("#update-category-modal .delete-button").attr("id", data.id);
         $("#update-category-modal .info-container").attr("action", "/admin/category/update/" + data.id);
-        showModal("update-category-modal");
+        // showModal("update-category-modal");
     });
 });
 
@@ -254,7 +254,7 @@ function getDetails(id) {
         method: 'POST',
         contentType: 'application/json',
         success: function (result) {
-            location.replace("/report/details/"+id);
+            location.replace("/report/details/" + id);
         }
     });
 }
