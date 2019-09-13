@@ -10,18 +10,29 @@
 </style>
     <ul class="report_center">
       <li id="action_bar">
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="All">
-          <label class="form-check-label" for="All">All</label>
+        <div class="pagination2">
+            <a href="" id="prevPage">
+              <i class="fas fa-chevron-left"></i>
+            </a>&nbsp;
+            <span class="current-page">1</span>
+            -
+            <span class="last-page">25</span>
+            Pages
+            &nbsp;
+            <a href="" id="nextPage">
+              <i class="fas fa-chevron-right"></i>
+            </a>
         </div>
+        <header class="header">
+
+            <div class="search-box">
+              <input placeholder="Search..."><span class="icon glyphicon glyphicon-search"></span>
+            </div>
+        </header>
       </li>
       @each(report in reports)
       <li>
-          <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="{{report.id}}">
-              <label class="form-check-label" for="{{report.id}}"></label>
-          </div>
-          <div onclick="getDetails({{report.id}})">
+          <div onclick="getDetails({{report.id}})" style="margin-left:24px;">
             <p class="report_title">{{report.indictedType}} {{report.indicted}} has been reported for {{report.type}}</p>
             <p class="report_detailB">{{report.reportDetails}}</p>
           </div>
