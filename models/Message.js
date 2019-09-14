@@ -26,11 +26,11 @@ const Message = db.define("Message", {
 	},
 	delSender: {
 		type: Sequelize.BOOLEAN,
-		default: false
+		defaultValue: false
 	},
 	delReciever: {
 		type: Sequelize.BOOLEAN,
-		default: false
+		defaultValue: false
 	}
 });
 
