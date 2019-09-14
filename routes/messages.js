@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
 		let { page, pageSize } = { page: 1, pageSize: 5 };
 
 		//request
-		let inbox = await Messages.findAll({ where: { to: req.user.id }, ...paginate({ page, pageSize }), order: [['createdAt', 'DESC']] });
+		let inbox = await Messages.findAll({ where: { to: req.user.id, [Op.and]: { delSender: false } }, ...paginate({ page, pageSize }), order: [['createdAt', 'DESC']] });
 		inbox = inbox.map(message => {
 			return {
 				id: message.dataValues.id,
@@ -83,13 +83,19 @@ router.get('/', async (req, res) => {
 
 router.get('/sent', async (req, res) => {
 	try {
-		let sentMessages = await Messages.findAll({ where: { from: req.user.id } });
+		let sentMessages = await Messages.findAll({
+			where: { from: req.user.id, [Op.and]: { delSender: false } }
+		});
 		sentMessages = sentMessages.map(message => {
 			return {
+				id: message.dataValues.id,
 				from: message.dataValues.from,
 				to: message.dataValues.to,
-				text: message.dataValues.text
+				title: message.dataValues.title,
+				text: message.dataValues.text,
+				date: message.dataValues.date,
 			}
+
 		})
 		res.status(200).json(sentMessages)
 	} catch (error) {
