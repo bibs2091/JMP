@@ -3440,6 +3440,7 @@ div.pagination2 {
 .report_center #action_bar {
     height: 75px;
     padding: 20px;
+    cursor: auto;
 }
 
 .report_center #action_bar .form-check {
@@ -3448,6 +3449,7 @@ div.pagination2 {
 }
 
 .report_center>li {
+    cursor: pointer;
     position: relative;
     height: 90px;
     width: 100%;
