@@ -7,6 +7,8 @@ const showWishlistController = require("../controllers/user/wishlist");
 const myCoursesController = require("../controllers/user/mycourses");
 const catalogController = require("../controllers/user/catalog");
 const userSettingsController = require("../controllers/user/settings");
+const eventsController = require("../controllers/user/events");
+
 
 //load userInfo model
 const userInfo = require("../models/UsersInfo");
@@ -32,6 +34,7 @@ router.get("/settings", isAuthenticated, userSettingsController);
 
 router.get("/wishlist", isAuthenticated, showWishlistController);
 router.get("/catalog", isAuthenticated, catalogController);
+router.get("/events", isAuthenticated, eventsController);
 
 router.post("/settings", isAuthenticated, (req, res) => {
 	console.log(req.body);
