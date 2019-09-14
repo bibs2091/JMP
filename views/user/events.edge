@@ -1,5 +1,32 @@
 @layout('layouts.main')
 
 @section('content')
-  <h1>events page</h1>
+<h2 class="user-home-title">Upcoming events:</h2>
+<hr>
+<div class="container">
+  <div class="row">
+            {{--
+    @each(event in events)
+    <div class="col-lg-6">
+        <div class="event_card" onclick="window.open('/events/{{event.id}}')">
+            <img src="{{event.cover}}" alt="Familiarize with Arduino">
+            <div>
+                    <h3>{{event.name}}</h3>
+                    <div style="display: table;    margin-top: 9px;">
+                        <time>{{event.month}} <span>{{event.date.getDate()}}</span></time>
+                        <div style="display: table-cell;">
+                            <p class="eventCard_place">{{event.place}}</p>
+                            <p class="eventCard_placesLeft">{{event.nbPlace}} places left</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <h6>Details</h6>
+                    <p class="eventCard_details">{{event.description}}</p>
+            </div>
+        </div> 
+    </div>
+    @endeach
+--}}
+  </div>
+</div>
 @endsection
