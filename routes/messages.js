@@ -163,17 +163,52 @@ router.post('/read/:id', async (req, res) => {
 });
 
 router.delete("/delete", async (req, res) => {
-	var ids = req.body.ids;
-	console.log(ids);
-	try {
-		//TODO: complete the delete function
-		let message = await Messages.findByPk(msgId);
-		message = message.dataValues;
+	let ids = JSON.parse(req.body.ids);
 
-	} catch (error) {
-		console.log(error)
+
+	if (ids.length > 0) {
+		try {
+			let admin = req.user.id
+
+			let msgToDelete = await Messages.findByPk(ids[0])
+			msgToDelete = msgToDelete.dataValues
+
+			if (admin === msgToDelete.to) {
+				//delete for reciever
+				ids.forEach(async msgId => {
+					let message = await Messages.update(
+						{ delReciever: true },
+						{ returning: true, where: { id: msgId } }
+					)
+					if (!message[1][0]) {
+						throw new Error("Error, wrong data")
+					}
+				})
+
+			} else {
+				// sender deleting sent messages 
+				ids.forEach(async msgId => {
+					let message = await Messages.update(
+						{ delSender: true },
+						{ returning: true, where: { id: msgId } }
+					)
+					if (!message[1][0]) {
+						throw new Error("Error")
+					}
+
+				})
+
+			}
+			res.send({ succuess: true });
+
+		} catch (error) {
+			console.log(error)
+			res.send({ succuess: false })
+		}
+	} else {
+		return res.send({ succuess: false })
 	}
-	res.send({ succuess: true });
+
 })
 
 module.exports = router;
