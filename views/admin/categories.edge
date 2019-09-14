@@ -15,7 +15,7 @@
           @endeach
           
         <div class="col-md-4">
-            <div class="category-container" onclick="showModal('add-category-modal')">
+            <div class="category-container" data-toggle="modal" data-target="#add-category-modal">
                     <img src="/img/addCategory.png">
             </div>
         </div>
@@ -24,40 +24,48 @@
   </div>
 
   @if(errors.length > 0 )
-    <div class="add-category-modal" id="add-category-modal" style="display:block">
-        <form class="info-container" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
-            <div class="alert alert-danger">{{errors[0]}}</div>
+    {{--  <div class="add-category-modal" id="add-category-modal" style="display:block">  --}}
+      <div class="modal fade" id="add-category-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form class="" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
+              <div class="alert alert-danger">{{errors[0]}}</div>
   @else
-    <div class="add-category-modal" id="add-category-modal">
-        <form class="info-container" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
+      <div class="modal fade" id="add-category-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form class="" method="POST" action="/admin/addcategory" enctype="multipart/form-data">
   @endif
-  <div class="add-category-header">         
-  <span class="close-category-modal" onclick="hideModal('add-category-modal')">&times;</span>
-            <h2>Add category</h2>
-  </div>    
-            <img src="/img/upload-course-cover.png" alt="upload a cover" 
-                for="image" id="category-image"
-                onclick="triggerInput('category-image-input')">
-            <input type="file" accept="image/*" style="display:none" 
-                name="image" id="category-image-input" onchange="loadImage(event,'category-image')" required>
-            <div class="md-form">
-            <label for="title" class="add-category-label">Category's title</label>
-            <input type="text" class="form-control" name="title"  required id="title">
-            </div>
-            
-            <br>
-            <div class="md-form mb-4 pink-textarea active-pink-textarea">
-            <textarea  name="description" id="description" class="md-textarea form-control" rows="3"></textarea>
-            <label for="title" >Category's description</label>
-            </div>
-            <div style="margin-left:59%;">
-           <input type="submit" class="btn submit-form">
-            </div>
-        </form> 
-  </div>
-
-  
-
+              <div class="modal-header">
+                  <h5 class="modal-title" style="font-weight:600;">Add category</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <img src="/img/upload-course-cover.png" alt="upload a cover" 
+                  for="image" id="category-image" style="  width: 100%;"
+                  onclick="triggerInput('category-image-input')">
+                  <input type="file" accept="image/*" style="display:none" 
+                  name="image" id="category-image-input" onchange="loadImage(event,'category-image')" required>
+                  <div class="md-form">
+                      <label for="title" class="add-category-label">Category's title</label>
+                      <input type="text" id="title" class="form-control" name="title"  required >
+                  </div>
+                  <div class="md-form mb-4 pink-textarea active-pink-textarea">
+                      <textarea  name="description" id="description" class="md-textarea form-control" rows="3"></textarea>
+                      <label for="title" >Category's description</label>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <input type="submit" class="btn submit-form">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
   <!-- <div class="add-category-modal" id="update-category-modal" >
     <form class="info-container" method="POST" action="/admin/category/update" enctype="multipart/form-data">
         <span class="close-category-modal" onclick="hideModal('update-category-modal')">&times;</span>
