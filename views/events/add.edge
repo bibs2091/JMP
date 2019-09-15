@@ -24,7 +24,8 @@ body{
      <span class="step__icon"><span class="inner-circle"></span></span>
      <span class="step__label">Planing and sponsors</span></li>
 </ul>
-<form id="addEvent-info" method="POST" action="/events/add" enctype="multipart/form-data">
+<form id="addEvent-info" method="POST" onsubmit="addTagsAddEvent()"
+action="/events/add" enctype="multipart/form-data">
   <div id="BasicInformation-addEvent">
     <h2>Basic Information</h2>
     <hr>
@@ -127,6 +128,8 @@ body{
   </div> 
   <input type="hidden" name="scheduleJSON" id="scheduleJSON-input">
   <input type="hidden" name="sponsorsJSON" id="sponsorsJSON-input">
+  <input type="hidden" name="tags" id="tags-input">
+
 </form>
 <!-- schedule-modal -->
 <div class="modal fade add-category-modal add-event-modal" id="add-schedule-modal" tabindex="-1" role="dialog" aria-labelledby="add-schedule-modal"
