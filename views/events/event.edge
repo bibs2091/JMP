@@ -1,56 +1,80 @@
 @layout('layouts.main')
 
 @section('content')
+<style scoped>
+    @media (max-width: 672px){
+    #main-content {
+    margin-left: -22px;
+    }
+    @media (max-width: 672px){
+    #main-content {
+      margin-left: 0;
+    }
+    @media (max-width: 672px){
+    #main-content {
+      margin-left: 0;
+    }
+    .container{
+      margin: 0;
+      padding: 0;
+    }
+</style>
+<div>
+  <div id="coverImage" style="background: url(/img/courses/1.jpg) no-repeat;  background-size: 100% 100%;">
+    <h1>{{event.title}}</h1>
+    <div id="imgTags">
+      @each(tag in event.tags)
+        <span>{{tag}}</span>
+      @endeach
+    </div>
+  </div> 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 courseDescription">
+        <h3>Description</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quam ducimus in voluptatibus, sed minus iure nostrum tempora est.</p>
+        <ul class="timeline">
+          <li class="event">
+            <p>"We can be all things to all people!" 📣</p>    
+          </li>
+          <li class="event">
+           <p>"We can be all things to Squarespace users!" 📣</p>    
+          </li>
+          <li class="event">
+           <p>"We can be all things to Squarespace users!" 📣</p>    
+          </li>
 
-<div  style="margin-left-25px;">
-  <div>
-    <img src={{event.cover}} alt="Event picture"  id="coverImage">
-  </div>
-</div>
-<div class="container" style="padding-left:4vw;">
-        <div class="row">
-          <div class="col-md-7 Description">
-            <h3>Description</h3>
-            <p> {{event.description}} </p>
+        </ul>
+      </div>
+      <div class="col-md-5">
+          <div id="eventCardInfo">
+            <ul>
+              <li> <i class="far fa-calendar-alt"></i> &nbsp; {{event.date.toJSON().slice(0,10).replace(/-/g,'/');}}</li>
+              <br>
+              <li><i class="fas fa-clock"></i> &nbsp; {{event.time}} </li>
+              <br>
+              <li><i id = "location" class="fas fa-map-marker-alt"
+                lat={{event.locationLat}} lng={{event.locationLng}}>  
+                </i> &nbsp;<strong style="font-weight:600;">Location: </strong>{{event.location}}
+                <br>
+                <br>
+                <div id="map"></div>
+              </li>
+            </ul>
+            @if(registred)
+            <p>You are registred</p>
+            @else
+            <form method="POST" action="/events/register/{{event.id}}">
+              <input type="submit" value="Register Now" class="btn btn-primary" id="register-boutton">
+            </form>
+            @endif
           </div>
-            <div class="col-md-5">
-              <h3 id="detailstatle">Details</h3>            
-                  <div id="eventCardInfo">
-                    <ul>
-                      <li> <i class="far fa-calendar-alt"></i> &nbsp; {{event.date.toJSON().slice(0,10).replace(/-/g,'/');}}</li>
-                      <br>
-                      <li><i class="fas fa-clock"></i> &nbsp; {{event.time}} </li>
-                      <br>
-                      <li><i id = "location" class="fas fa-map-marker-alt"
-                       lat={{event.locationLat}} lng={{event.locationLng}}>  
-                       </i> &nbsp;Location
-                      </li>
-                      <div id="map"></div>
-                      <br>
-                    </ul>
-                    @if(registred)
-                    <p>You are registred</p>
-                    @else
-                    <form method="POST" action="/events/register/{{event.id}}">
-                      <input type="submit" value="Register Now" class="btn btn-primary" id="register-boutton">
-                    @endif
-                  </div>
-            </div>
-        </div>
+      </div>
+    </div>
+  </div>   
+
+
 </div>
-<button class = "btn"><a href="/events/modifie/{{event.id}}">modifie</a></button>
-<button class = "btn"><a href="/events/validating/{{event.id}}">validate</a></button>
-
-    
-                <div class="container">
-                  <div class="row">
-                    @each(sponsor in sponsors)
-                    <div class="col-md-3"><img src="{{sponsor.logo}}" class="sponsors-pic"></div>
-                    @endeach
-                  </div>
-                </div>
-                
-
     
 @endsection
 
