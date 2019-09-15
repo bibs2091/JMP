@@ -1,6 +1,14 @@
 @layout('layouts.main')
 
 @section('content')
+  <div id="user-intro">
+    <img src="/img/home_pages.png" alt="Welcome">
+    <div class="welcome-user">
+      <h3>Welcome {{currentUser.info.firstName}},</h3>
+      <p>It’s a good day to learn something new,<br>
+        Ready to get some work done</p>
+    </div>
+  </div>
   <h2 class="user-home-title">{{coursesType}} courses:</h2>
   <hr>
   <div class="container" style="margin-bottom: 30px">

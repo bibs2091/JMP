@@ -4181,3 +4181,38 @@ h2 {
     opacity: 1;
     pointer-events: auto;
 }
+
+/* home intro*/
+#user-intro{
+    width: 100%;
+    height: 221px;
+    position: relative;
+    font-family: Poppins;
+    margin-bottom: 40px;
+}
+#user-intro img{
+    height: 100%;
+    position: absolute;
+    right: 20%;
+    z-index: 12;
+}
+#user-intro .welcome-user{
+    height: 150px;
+    width: 100%;
+    background: linear-gradient(271.35deg, rgba(255, 189, 61, 0.9) 0%, rgba(255, 211, 42, 0.9) 99.62%);
+    border-radius: 8px;
+    position: absolute;
+    top: 45px;
+    padding: 29px 50px;
+}
+#user-intro h3{
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 37px;
+    margin-bottom: 10px;
+}
+#user-intro p{
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 15px;
+}
