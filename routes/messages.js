@@ -101,9 +101,9 @@ router.get('/sent', async (req, res) => {
 		await Promise.all(sentMessages.map(async msg => {
 			//do stuff here 
 			let reciever = await Users.findByPk(msg.to);
-			sender = sender.dataValues;
-			inbox[inbox.indexOf(msg)].from = sender.firstName + ' ' + sender.lastName;
-			inbox[inbox.indexOf(msg)].senderAvatar = sender.avatar;
+			reciever = reciever.dataValues;
+			sentMessages[sentMessages.indexOf(msg)].to = reciever.firstName + ' ' + reciever.lastName;
+			sentMessages[sentMessages.indexOf(msg)].recieverAvatar = reciever.avatar;
 
 		}))
 		res.status(200).json(sentMessages)
