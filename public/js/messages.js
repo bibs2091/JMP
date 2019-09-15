@@ -96,13 +96,20 @@ $(function () {
 
     })
     socket.on('status', (status) => {
-        console.log(status)
+        console.log(status);
+        var type, message;
         if (status.success) {
-            alert('success')
+            type = "success";
+            message = "Message has been sent successfully!";
         } else {
-            alert('nope reya7 3a9el')
-
+            type = "danger";
+            message = "An error has occured, please try again!"
         }
+        var html = `<center><div class="alert alert-${type}" style="width: 70%;">${message}</div></center>`;
+        $("#new-message-alerts").html(html);
+        setTimeout(function () {
+            location.reload();
+        }, 3000);
     })
 
     //sound 
