@@ -39,14 +39,20 @@ const events = (io) => {
                                 console.log('msg sent to all users')
                                 //TODO: emit success msg with socket
                                 // console.log("message has been sent with success")
+                                io.to(socketId).emit('status', { success: true })
+
+
                             } else {
                                 console.log('failed to send msg')
                                 //TODO: emit error msg with socket
 
-                                // console.log("Oops !! Something went wrong, Try again later")
+                                io.to(socketId).emit('status', { success: false })
+
                             }
                         } else {
                             console.log('unauth .. not an admin')
+                            io.to(socketId).emit('status', { success: true })
+
                         }
                         break;
                     }
@@ -55,11 +61,17 @@ const events = (io) => {
                             const msgSuccessfullySent = await sendToStudents(message, io)
                             if (msgSuccessfullySent) {
                                 console.log("msg sent to all students")
+                                io.to(socketId).emit('status', { success: true })
+
                             } else {
                                 console.log('failed to send msg')
+                                io.to(socketId).emit('status', { success: false })
+
                             }
                         } else {
                             console.log('unauth .. not an admin or coach')
+                            io.to(socketId).emit('status', { success: false })
+
                         }
                         break
                     }
@@ -68,11 +80,16 @@ const events = (io) => {
                             const msgSuccessfullySent = await sendToCoach(message, io)
                             if (msgSuccessfullySent) {
                                 console.log("msg sent to all coaches")
+                                io.to(socketId).emit('status', { success: true })
                             } else {
                                 console.log('failed to send msg')
+                                io.to(socketId).emit('status', { success: false })
+
                             }
                         } else {
                             console.log('unauth .. not an admin or coach')
+                            io.to(socketId).emit('status', { success: false })
+
                         }
                         break
                     }
@@ -90,6 +107,7 @@ const events = (io) => {
                                 //broadcast message
                                 io.to(socketId).emit('newMessage', msg);
                                 console.log('message has been sent with success')
+                                io.to(socketId).emit('status', { success: true })
                             } else {
                                 console.log('user not found');
                             }
