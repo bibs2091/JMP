@@ -1,0 +1,135 @@
+@layout('layouts.main')
+@section('content')
+<style scoped>
+  html{
+    font-size: 15px;
+  }
+  #main-content{
+    position: relative;
+    height: 100%;
+    background-color: #F2F2F2;
+  }
+  h1 {
+  font-size: 50px;
+  line-height: 40px;
+  font-weight: 100;
+  }
+  a{
+  text-decoration: none;
+  }
+  a:hover{
+  text-decoration: none;
+  }
+  @media only screen and (max-width: 780px) {
+    #main-content{
+      padding:0;
+    }
+  }
+
+</style>
+<div id="messenger-contianer">
+<aside id="sidebar" class="nano">
+  <div class="nano-content">
+    <a class="compose-button" href="/messages/new_message">New Message</a>
+    <menu class="menu-segment">
+      <ul>
+        <li class="active"> <a href="#"><img src="/images/messaging/mail.png" alt=""> &nbsp; Inbox<span> ({{count}})</span></a></li>
+        <li><a href="#"><img src="/images/messaging/sent.png" alt=""> &nbsp; Sent</a></li>
+        <li><a href="#"><img src="/images/messaging/draft.png" alt=""> &nbsp; Drafts</a></li>
+        <li><a href="#"><img src="/images/messaging/garbage.png" alt=""> &nbsp; Trash</a></li>
+      </ul>
+    </menu>
+  </div>
+</aside>
+<main id="main">
+  
+  <div class="overlay"></div>
+  
+  <div class="action-bar">
+    <ul>
+      <li><a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span></a></li>
+      <li>
+          <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="ck-all">
+              <label class="form-check-label" for="ck-all">All &nbsp; </label>
+          </div>
+
+      </li>
+      <li><div class="refresh"></div></li>
+      <li onclick="deleteMessages()"><img src="/images/messaging/garbage.png" alt="delete" id="delete_msg"></li>
+      <li class="pagination">
+        <a href="" id="prevPage">
+          <i class="fas fa-chevron-left"></i>
+        </a>&nbsp;
+        <span class="current-page">1</span>
+        -
+        <span class="last-page">25</span>
+        Pages
+        &nbsp;
+        <a href="" id="nextPage">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </li>
+    </ul>
+    <header class="header">
+
+      <div class="search-box">
+        <input placeholder="Search..."><span class="icon glyphicon glyphicon-search"></span>
+      </div>
+    </header>
+  </div>
+  <div id="main-nano-wrapper" class="nano">
+    <div class="nano-content">
+      <ul class="message-list">
+        @each(item in inbox)
+      <li class={{item.isRead}} id="{{item.id}}">
+            <div class="col-one">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id={{"ck" + item.id}}  >
+                  <label for={{"ck" + item.id}} class="form-check-label"></label>
+                </div>
+                <img src={{item.senderAvatar}} alt="sender avatar">
+            </div>
+            <div class="col-two">
+                <p class="reciever" style="display: none">You</p> 
+                <p class="message-date" style="display: none">{{item.date.toLocaleDateString()}}</p> 
+            <p class="sender">{{item.from}}</p>  
+                <p class="title">{{item.title}}</p>
+            <p class="content">{{item.text}}</p>
+            </div>
+            <div class="col-three">
+            <div class="date">{{item.date}}</div>
+            </div>
+            
+          </li>
+        @endeach        
+      </ul>
+    </div>
+  </div>
+</main>
+
+  <div id="message">
+    <div class="header">
+      <h1 class="page-title"><a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a><h1></h1></h1>
+    </div>
+    <div id="message-nano-wrapper" class="nano">
+      <div class="nano-content">
+        <ul class="message-container">
+          <li class="sent">
+            <div class="details">
+              <div class="left"><div id="message-sender" style="display:inline"></div>
+                <div class="arrow"></div><div id="message-reciever" style="display:inline"></div>
+              </div>
+              <div class="right" id="message-date"></div>
+            </div>
+            <div class="message" id="message-content">
+
+            </div>
+            <div class="tool-box"><a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> 
+</div>
+@endsection
