@@ -95,7 +95,15 @@ $(function () {
         // msg_container.prepend(newMessageContent)
 
     })
+    socket.on('status', (status) => {
+        console.log(status)
+        if (status.success) {
+            alert('success')
+        } else {
+            alert('nope reya7 3a9el')
 
+        }
+    })
 
     //sound 
     function playNewMessageAudio() {
