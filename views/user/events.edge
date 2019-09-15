@@ -5,28 +5,42 @@
 <hr>
 <div class="container">
   <div class="row">
-            {{--
-    @each(event in events)
-    <div class="col-lg-6">
-        <div class="event_card" onclick="window.open('/events/{{event.id}}')">
-            <img src="{{event.cover}}" alt="Familiarize with Arduino">
+    <div class="col-xl-6">
+        <div class="event_card" onclick="window.open('/events/6')">
+            <div class="card_img"></div>
             <div>
-                    <h3>{{event.name}}</h3>
+                    <h3>Familiarize with Arduino</h3>
                     <div style="display: table;    margin-top: 9px;">
-                        <time>{{event.month}} <span>{{event.date.getDate()}}</span></time>
+                        <time>Mars<span>6</span></time>
                         <div style="display: table-cell;">
-                            <p class="eventCard_place">{{event.place}}</p>
-                            <p class="eventCard_placesLeft">{{event.nbPlace}} places left</p>
+                            <p class="eventCard_place">City naas 471 n8</p>
                         </div>
                     </div>
                     <hr>
                     <h6>Details</h6>
-                    <p class="eventCard_details">{{event.description}}</p>
+                    <p class="eventCard_details">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ut, soluta obcaecati itaque totam dolores molestias quidem animi cum quisquam eos veritatis</p>
             </div>
         </div> 
     </div>
-    @endeach
---}}
+    <div class="col-xl-6">
+      <div class="event_card" onclick="window.open('/events/6')">
+          <div class="card_img"></div>
+          <div>
+                  <h3>Familiarize with Arduino</h3>
+                  <div style="display: table;    margin-top: 9px;">
+                      <time>Mars<span>6</span></time>
+                      <div style="display: table-cell;">
+                          <p class="eventCard_place">City naas 471 n8</p>
+                      </div>
+                  </div>
+                  <hr>
+                  <h6>Details</h6>
+                  <p class="eventCard_details">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Ut, soluta obcaecati itaque totam dolores molestias quidem animi cum quisquam eos veritatis</p>
+          </div>
+      </div> 
+    </div>
   </div>
 </div>
 @endsection
