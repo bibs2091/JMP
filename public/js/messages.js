@@ -68,26 +68,25 @@ $(function () {
 
     //listen to messages 
     socket.on('newMessage', (data) => {
-        console.log(data.text)
-        var newMessage = '<li class="unread">'
-        newMessage += '<div class="col-one">'
-        newMessage += '<div class="checkbox-wrapper">'
-        newMessage += '<input type="checkbox" id="chk' + data.id + '">'
-        newMessage += '<label for="chk1" class="toggle"></label> '
-        newMessage += '</div>'
-        newMessage += '<img src=' + data.senderAvatar + ' alt="sender avatar">'
-        newMessage += '</div>'
-        newMessage += '<div class="col-two">'
-        newMessage += '<p class="reciever" style="display: none">You</p> '
-        newMessage += '<p class="message-date" style="display: none">' + data.date.toString() + '</p> '
-        newMessage += '<p class="sender">' + data.senderName + '</p>'
-        newMessage += '<p class="title"> ' + data.title + '</p>'
-        newMessage += '<p class="content">' + data.text + '</p> '
-        newMessage += ' </div>'
-        newMessage += '<div class="col-three"> '
-        newMessage += '<div class="date">' + data.date + '</div> '
-        newMessage += '</div>'
-        newMessage += '</li>'
+        var newMessage = `<li class={{item.isRead}} id="${data.id}">
+        <div class="col-one">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="ck${data.id}" >
+              <label for="ck${data.id}" class="form-check-label"></label>
+            </div>
+            <img src="${data.senderAvatar}" alt="sender avatar">
+        </div>
+        <div class="col-two">
+            <p class="reciever" style="display: none">You</p>        
+            <p class="message-date" style="display: none">${data.date.substring(11, 16)} ${data.date.substring(8, 10)}-${data.date.substring(5, 7)}-${data.date.substring(0, 4)}</p> 
+        <p class="sender">${data.senderName}</p>  
+        <p class="title" style="font-weight:600">${data.title}</p>
+        <p class="content">${data.text.replace("<p>", "").replace("</p>", "")}</p>
+        </div>
+        <div class="col-three">
+        <div class="date" style="font-weight:600;font-size:15px;color:rgb(33, 37, 41);">${data.date.substring(11, 16)} ${data.date.substring(8, 10)}-${data.date.substring(5, 7)}-${data.date.substring(0, 4)}</div>
+        </div>
+      </li>`;
 
         playNewMessageAudio()
         messages.prepend(newMessage)
