@@ -4139,7 +4139,7 @@ h2 {
 #user-intro p{
     font-weight: 300;
     font-size: 17px;
-    line-height: 15px;
+    line-height: 18px;
 }
 @media (max-width: 900px){
     #user-intro img{

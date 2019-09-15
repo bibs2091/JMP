@@ -1,5 +1,12 @@
 @layout('layouts.coach')
 
 @section('content')
-  <h1>coach home page</h1>
+<div id="user-intro">
+    <img src="/img/home_pages.png" alt="Welcome">
+    <div class="welcome-user">
+      <h3>Welcome {{currentUser.info.firstName}},</h3>
+      <p>It’s a good day to learn something new,<br>
+        Ready to get some work done</p>
+    </div>
+  </div>
 @endsection
