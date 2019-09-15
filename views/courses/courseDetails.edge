@@ -6,13 +6,16 @@
   #main-content {
   margin-left: -22px;
   }
-  @media (max-width: 672px){
-  #main-content {
-    margin-left: 0;
   }
   @media (max-width: 672px){
   #main-content {
     margin-left: 0;
+  }
+  }
+  @media (max-width: 672px){
+  #main-content {
+    margin-left: 0;
+  }
   }
   .container{
     margin: 0;
@@ -79,8 +82,6 @@
               </ul>
         </li> 
           @endeach
-          
-
       </ul>
       </div>
 
@@ -88,12 +89,16 @@
         <div id="courseCardInfo">
           <a href="/courses/classroom/{{course.id}}" id="goToCourse"><button  type="button" class="btn btn-primary" id="startCourse">Go to Course</button></a>
           <button  type="button" class="btn btn-outline-secondary" onclick="wishlist({{course.id}})" id="wishlistCourseDetails">
+            @if(wishlist == false)
             <div class="btn-noWishlist" style="transition: 1s;">
-            Add to wishlist<i class="far fa-heart"></i>
-            </div>
+              Add to wishlist<i class="far fa-heart"></i>
+              </div>
+            @else
             <div class="btn-Wishlist" style="transition: 1s;">
               <p style="font-weight: bold;">Added to wishlist</p><i class="fas fa-heart"></i>
             </div>
+            @endif
+
           </button>
           <ul>
             <li>This course includes</li>
@@ -119,7 +124,7 @@
                     </a> 
                     <!-- LinkedIn Share Button -->
                     <a class="fbtn share linkedin" target="_blank" 
-                      href="https://www.linkedin.com/shareArticle?mini=true&url={{url}}&title={{course.title}}&summary={{kdha_mena_menhik}}&source={{url}}">
+                      href="https://www.linkedin.com/shareArticle?mini=true&url={{url}}&title={{course.title}}&summary=kdha_mena_menhik&source={{url}}">
                       <i class="fab fa-linkedin-in"></i>
                     </a>
                  </a>
