@@ -1340,7 +1340,7 @@ input[name="lastName"] {
     border-radius: 3px;
 }
 
-.courseDescription h3 {
+.event_details h3 {
     font-family: Poppins;
     font-size: 22px;
     font-weight: 600;
@@ -2120,7 +2120,7 @@ input[name="lastName"] {
     height: 170px;
     background: #ffffff;
     border-radius: 8px;
-    padding: 26px 17px 0 0;
+    padding: 0 0 0 0;
 }
 
 
@@ -2438,20 +2438,33 @@ input[name="lastName"] {
     border: none;
     height: 45px;
     display: block;
-    margin-top: 20px;
 
 }
-#eventCardInfo .waves-input-wrapper.waves-effect.waves-light{
-    float: right;
+.event_details .waves-input-wrapper.waves-effect.waves-light{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
+@media (max-width: 677px) {
+    #register-boutton{
+        font-size: 10px;
+        height: 35px;
+        padding: 0 12px;
+    }
+    #eventCardInfo ul{
+        margin-left: 10px;
+    }
+}
+
 #eventCardInfo #map{
-    width: 105%;
+    width: 100%;
 }
 @media (min-width: 766px) {
     #eventCardInfo #map{
         height: 300px;
-        width: 110%;
+        width: 100%;
     }
+    
 }
 
 #detailstatle {
@@ -2459,12 +2472,21 @@ input[name="lastName"] {
     font-size: 22px;
     font-weight: 600;
 }
-
+.sponsor-div{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom: 40px;
+}
+.sponsor-div p{
+    font-weight: 600;
+    margin-left: -7px;
+}
 .sponsors-pic {
     width: 80px;
     height: 80px;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
     display: block;
     filter: grayscale(100%);
     transition: 0.3s;
@@ -2472,8 +2494,6 @@ input[name="lastName"] {
 
 .sponsors-pic:hover {
     filter: none;
-    width: 100px;
-    height: 100px;
 }
 
 /* Timeline */
@@ -2483,13 +2503,13 @@ input[name="lastName"] {
   }
 
 .timeline {
-  border-left: 4px solid #004ffc;
+  border-left: 4px solid #151515;
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
   background: rgba(255, 255, 255, 0.03);
   color: rgba(255, 255, 255, 0.8);
   font-family: 'Chivo', sans-serif;
-  margin: 50px auto;
+  margin: 25px 0 20px 15px;
   letter-spacing: 0.5px;
   position: relative;
   line-height: 1.4em;
@@ -2499,7 +2519,6 @@ input[name="lastName"] {
   list-style: none;
   text-align: left;
   font-weight: 100;
-  margin-left: 15px;
 }
 .timeline h1 {
   font-family: Poppins, sans-serif;
@@ -2512,6 +2531,7 @@ input[name="lastName"] {
   font-weight: 400;
   font-size: 15px;
   color: black;
+  padding: 0;
 }
 .timeline .event {
   border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
@@ -2541,7 +2561,7 @@ input[name="lastName"] {
   font-family: Poppins, sans-serif;
 }
 .timeline .event:after {
-    box-shadow: 0 0 0 4px #004ffc;
+    box-shadow: 0 0 0 4px #151515;
     left: -31.85px;
     background: #313534;
     border-radius: 50%;
@@ -2711,13 +2731,6 @@ input[name="lastName"] {
 #formGroupExampleInputMD {
     text-decoration-line: none;
 }
-
-.sponsors-pic:hover {
-    filter: none;
-    width: 100px;
-    height: 100px;
-}
-
 
 /* ------------ settings ------------*/
 

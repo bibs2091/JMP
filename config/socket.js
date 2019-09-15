@@ -36,17 +36,17 @@ const events = (io) => {
                         if (await isAdmin(message.from)) {
                             const msgSuccessfullySent = await sendToAll(message, io)
                             if (msgSuccessfullySent) {
-                                console.log('msg sent to all users')
-                                //TODO: emit success msg with socket
-                                // console.log("message has been sent with success")
-                            } else {
-                                console.log('failed to send msg')
-                                //TODO: emit error msg with socket
+                                socket.emit('status', { success: true })
 
-                                // console.log("Oops !! Something went wrong, Try again later")
+
+                            } else {
+
+                                socket.emit('status', { success: false })
+
                             }
                         } else {
-                            console.log('unauth .. not an admin')
+                            socket.emit('status', { success: true })
+
                         }
                         break;
                     }
@@ -54,12 +54,15 @@ const events = (io) => {
                         if (await isAdmin(message.from) || await isCoach(message.from)) {
                             const msgSuccessfullySent = await sendToStudents(message, io)
                             if (msgSuccessfullySent) {
-                                console.log("msg sent to all students")
+                                socket.emit('status', { success: true })
+
                             } else {
-                                console.log('failed to send msg')
+                                socket.emit('status', { success: false })
+
                             }
                         } else {
-                            console.log('unauth .. not an admin or coach')
+                            socket.emit('status', { success: false })
+
                         }
                         break
                     }
@@ -67,12 +70,14 @@ const events = (io) => {
                         if (await isAdmin(message.from) || await isCoach(message.from)) {
                             const msgSuccessfullySent = await sendToCoach(message, io)
                             if (msgSuccessfullySent) {
-                                console.log("msg sent to all coaches")
+                                socket.emit('status', { success: true })
                             } else {
-                                console.log('failed to send msg')
+                                socket.emit('status', { success: false })
+
                             }
                         } else {
-                            console.log('unauth .. not an admin or coach')
+                            socket.emit('status', { success: false })
+
                         }
                         break
                     }
@@ -89,9 +94,10 @@ const events = (io) => {
 
                                 //broadcast message
                                 io.to(socketId).emit('newMessage', msg);
-                                console.log('message has been sent with success')
+                                socket.emit('status', { success: true })
                             } else {
-                                console.log('user not found');
+                                socket.emit('status', { success: false })
+
                             }
                         });
                         break;
@@ -100,7 +106,6 @@ const events = (io) => {
             }
 
         })
-
 
         //disconnect 
         socket.on('disconnect', () => {
