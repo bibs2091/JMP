@@ -156,10 +156,11 @@ router.post('/read/:id', async (req, res) => {
 	try {
 		let msg = await Messages.update({ isRead: true }, { returning: true, where: { id } })
 		if (msg[1][0]) {
-			console.log(msg[1][0].dataValues)
 			res.send({ succuess: true })
+		} else {
+			res.status(400).send('Bad request')
+
 		}
-		res.status(400).send('Bad request')
 	} catch (error) {
 		console.log(error)
 		res.status(500)
