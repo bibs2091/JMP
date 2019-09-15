@@ -636,8 +636,7 @@
     width: 20px;
     background: rgba(0, 0, 0, 0.15);
     vertical-align: top;
-    margin-top: 12px;
-    margin: 12px 20px 0 15px;
+    margin: 7px 20px 0 15px;
     border: 0px solid rgba(0, 0, 0, 0.15);
     transition-duration: 0.3s;
   }
