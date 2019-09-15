@@ -63,9 +63,9 @@ router.get('/', async (req, res) => {
 		// coount unread messages in inbox
 		const unreadMsg = await Messages.findAndCountAll(
 			{
-				where: { isRead: false }
+				where: { isRead: false, [Op.and]: { delReciever: false } }
 			})
-		const count = unreadMsg.count
+		const count = unreadMsg.count.toString()
 
 		// console.log(inbox);
 		res.render('inbox', { inbox, count, currentUser })
@@ -157,7 +157,7 @@ router.post('/read/:id', async (req, res) => {
 		let msg = await Messages.update({ isRead: true }, { returning: true, where: { id } })
 		if (msg[1][0]) {
 			console.log(msg[1][0].dataValues)
-			res.send('msg ' + id + ' marked as read')
+			res.send({ succuess: true })
 		}
 		res.status(400).send('Bad request')
 	} catch (error) {
