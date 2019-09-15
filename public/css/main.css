@@ -4162,6 +4162,7 @@ h2 {
 .stat-card h6{
     font-size: 18px;
     font-weight: 600;
+    margin-bottom: 3px;
 }
 .stat-card p{
     font-weight: 600;
