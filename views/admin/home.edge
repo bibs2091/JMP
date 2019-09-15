@@ -1,5 +1,17 @@
 @layout('layouts.dashboard')
 
 @section('content')
-    <h1>admin home</h1>
+<style>
+    #main-content{
+        background: #FCFCFC;
+    }
+</style>
+<div id="user-intro">
+    <img src="/img/udrawPic.png" alt="Welcome">
+    <div class="welcome-user" style="background: #FFF9E6;">
+        <h3>Welcome {{currentUser.info.firstName}},</h3>
+        <p>Ready to get some work done ?</p>
+    </div>
+</div>
+<h2>Statistics</h2>
 @endsection

@@ -4118,7 +4118,7 @@ h2 {
 #user-intro img{
     height: 100%;
     position: absolute;
-    right: 20%;
+    right: 17%;
     z-index: 12;
 }
 #user-intro .welcome-user{
@@ -4145,4 +4145,8 @@ h2 {
     #user-intro img{
         display: none;
     }
+}
+/* fixing user dropdown position*/
+.header-right{
+    padding-right: 15px;
 }

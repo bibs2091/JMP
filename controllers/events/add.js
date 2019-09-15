@@ -2,6 +2,8 @@ const Event = require('../../models/Event');
 const Sponsor = require('../../models/Sponsors');
 module.exports = async (req, res) => {
 	try {
+		console.log(req.body);
+		return;
 		// the user infos
 		const user = req.user;
 		let validated = false;
@@ -31,7 +33,7 @@ module.exports = async (req, res) => {
 				sponsors.logo = req.files.logo;
 				// when there is only one sponsor the name and logo are not arrays 
 				// but they must be arrays 
-				if (!Array.isArray(sponsors.name)){
+				if (!Array.isArray(sponsors.name)) {
 					sponsors.name = [sponsors.name];
 					sponsors.logo = [sponsors.logo];
 				}
@@ -39,12 +41,12 @@ module.exports = async (req, res) => {
 			}
 		}
 
-		const { name, date, time, place, description, nbPlace, tags,location } = req.body;
+		const { name, date, time, place, description, nbPlace, tags, location } = req.body;
 		// getting the location longitude and latitude
 		const locationLat = location.split("||")[0];
-		const locationLng = location.split("||")[1]; 
+		const locationLng = location.split("||")[1];
 		// creating the event proposition
-		let newevent = await Event.create({ name, time, date,locationLat,locationLng, description, nbPlace, creatorId, validated, tags });
+		let newevent = await Event.create({ name, time, date, locationLat, locationLng, description, nbPlace, creatorId, validated, tags });
 		// store the images and there link 
 		if (cover) {
 
@@ -59,7 +61,7 @@ module.exports = async (req, res) => {
 			await cover.mv(__dirname + '/../../public/img/events/covers/' + newevent.id + ".jpg");
 		}
 		if (planning) {
-		
+
 			await Event.update(
 				{
 
@@ -73,27 +75,27 @@ module.exports = async (req, res) => {
 
 
 		//if there is sponsors ,store them 
-		if(sponsors.name){
+		if (sponsors.name) {
 			console.log(sponsors.name[1]);
-			let spon =0;
-			for(let i=0;i<sponsors.name.length;i++){
+			let spon = 0;
+			for (let i = 0; i < sponsors.name.length; i++) {
 				spon = await Sponsor.create({
-					eventId : newevent.id,
-					name :sponsors.name[i]
+					eventId: newevent.id,
+					name: sponsors.name[i]
 				});
 				await Sponsor.update(
 					{
-						logo : '/img/events/sponsors/'+ spon.id + ".jpg" 
+						logo: '/img/events/sponsors/' + spon.id + ".jpg"
 					},
-						{ where: { id: spon.id } }
-					)
-				await sponsors.logo[i].mv(__dirname + '/../../public/img/events/sponsors/'+ spon.id + ".jpg");
-				}
+					{ where: { id: spon.id } }
+				)
+				await sponsors.logo[i].mv(__dirname + '/../../public/img/events/sponsors/' + spon.id + ".jpg");
+			}
 		}
 		res.redirect('/events/' + newevent.id);
 
 	} catch (err) {
-		console.log("error ==> \n"+err);
+		console.log("error ==> \n" + err);
 		res.redirect('/errors');
 	}
 
