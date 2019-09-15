@@ -2008,8 +2008,9 @@ input[name="lastName"] {
 /* ------------------event card-------------- */
 
 .event_card {
-    margin: 50px;
-    width: 540px;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 500px;
     height: 220px;
     border: 1px solid #eaebed;
     display: table;
@@ -2034,11 +2035,16 @@ input[name="lastName"] {
     font-weight: 600;
 }
 
-.event_card img {
+.event_card .card_img {
     width: 183px;
     height: 100%;
-    display: inline;
-    display: table-cell;
+    background-position: center center;
+    background-repeat: no-repeat;    display: table-cell;
+    background-image: url(/img/cover-nodejs.jpg);
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+
+
 }
 
 .event_card div {
@@ -2114,15 +2120,17 @@ input[name="lastName"] {
     margin-right: 73px;
     margin-left: 84px;
 }
-
-#eventCardInfo {
-    width: 100%;
-    height: 170px;
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 0 0 0 0;
+@media (max-width: 650px) {
+    .event_card{
+        width: 300px;
+    }
+    .eventCard_place{
+        margin-top: 10px;
+    }
+    .user-home-title {
+        padding-left: 20px;
+    }
 }
-
 
 /* --------- add event ----------- */
 
@@ -3116,91 +3124,8 @@ input[name="lastName"] {
         text-align: center;
         margin-bottom: 7px;
     }
-    .event_card {
-        margin: 50px;
-        width: 540px;
-        height: 220px;
-        border: 1px solid #eaebed;
-        display: table;
-        background: #fff;
-        border-radius: 7px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    .event_card:hover {
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.17), 0 10px 10px rgba(0, 0, 0, 0.2);
-    }
-    .event_card img {
-        width: 183px;
-        height: 100%;
-        display: inline;
-        display: table-cell;
-    }
-    .event_card div {
-        display: table-cell;
-        vertical-align: top;
-    }
-    .event_card h3 {
-        font-family: Poppins;
-        font-weight: 600;
-        font-size: 20px;
-        padding-left: 13px;
-        padding-top: 17px;
-    }
-    .event_card time {
-        color: #ffd32a;
-        font-family: Poppins;
-        font-weight: 600;
-        font-size: 18px;
-        display: inline-block;
-        padding-left: 17px;
-    }
-    .event_card time span {
-        display: block;
-        color: black;
-        text-align: center;
-    }
-    .eventCard_place {
-        font-family: Poppins;
-        font-weight: 500;
-        font-size: 13px;
-        vertical-align: top;
-        color: #696969;
-        padding-left: 8px;
-    }
-    .eventCard_placesLeft {
-        font-family: Poppins;
-        font-weight: 500;
-        font-size: 13px;
-        vertical-align: baseline;
-        color: #696969;
-        padding-left: 8px;
-    }
-    .event_card hr {
-        width: 340px;
-    }
-    .event_card h6 {
-        padding-left: 17px;
-        font-family: Poppins;
-        font-weight: 600;
-        font-size: 13px;
-        color: #000000;
-    }
-    .eventCard_details {
-        padding-top: 7px;
-        padding-left: 18px;
-        padding-right: 18px;
-        font-family: Poppins;
-        font-size: 13px;
-        color: #696969;
-    }
 }
-
-
-/* for xl screens --------keep it in the bottom of the file-------- */
-
-
-/* for xl screens --------keep it in the bottom of the file-------- */
+/* for xl screens --------- */
 
 @media (max-width: 1140px) {
     #instructorsTitle {
