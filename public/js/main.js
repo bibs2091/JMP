@@ -793,3 +793,12 @@ function searchReport(val) {
         }
     }
 }
+//add tags to add event 
+function addTagsAddEvent() {
+    var tagsSpans = document.getElementsByClassName("tag");
+    var tags = [];
+    for (let i = 0; i < tagsSpans.length; i++) {
+        tags.push(tagsSpans[0].children[1].innerHTML);
+    }
+    $("#tags-input").val(JSON.stringify(tags));
+} 
