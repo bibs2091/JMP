@@ -4141,3 +4141,8 @@ h2 {
     font-size: 17px;
     line-height: 15px;
 }
+@media (max-width: 900px){
+    #user-intro img{
+        display: none;
+    }
+}
