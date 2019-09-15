@@ -775,3 +775,21 @@ function deleteMessages() {
         console.log("error")
     });
 }
+//search Reports center
+function searchReport(val) {
+    if (val == "") {
+        $(".report_center li").show();
+    } else {
+        var lis = $(".report_center li");
+
+        for (let i = 1; i < lis.length; i++) {
+            let name = lis[i].getElementsByTagName("p")[0].innerHTML;
+            console.log(name);
+            if (!name.includes(val)) {
+                $(lis[i]).hide();
+            } else {
+                $(lis[i]).show();
+            }
+        }
+    }
+}
