@@ -106,7 +106,7 @@ router.get('/sent', async (req, res) => {
 			sentMessages[sentMessages.indexOf(msg)].recieverAvatar = reciever.avatar;
 
 		}))
-		res.status(200).json(sentMessages)
+		res.render("sent", { sentMessages })
 	} catch (error) {
 		console.log(error);
 	}
