@@ -92,13 +92,13 @@
             </div>
             <div class="col-two">
                 <p class="reciever" style="display: none">You</p> 
-                <p class="message-date" style="display: none">{{item.date.toLocaleDateString()}}</p> 
+                <p class="message-date" style="display: none">{{item.date.getHours() + ":" + item.date.getMinutes() + " " +item.date.getDate()   + "-" + (item.date.getMonth() + 1) + "-" + item.date.getFullYear()}}</p> 
             <p class="sender">{{item.from}}</p>  
                 <p class="title">{{item.title}}</p>
             <p class="content">{{item.text}}</p>
             </div>
             <div class="col-three">
-            <div class="date">{{item.date}}</div>
+            <div class="date">{{item.date.getHours() + ":" + item.date.getMinutes() + " " +item.date.getDate()   + "-" + (item.date.getMonth() + 1) + "-" + item.date.getFullYear()}}</div>
             </div>
             
           </li>
