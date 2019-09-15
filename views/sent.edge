@@ -33,8 +33,8 @@
     <a class="compose-button" href="/messages/new_message">New Message</a>
     <menu class="menu-segment">
       <ul>
-        <li class="active"> <a href="#"><img src="/images/messaging/mail.png" alt=""> &nbsp; Inbox<span> ({{count}})</span></a></li>
-        <li><a href="/messages/sent"><img src="/images/messaging/sent.png" alt=""> &nbsp; Sent</a></li>
+        <li> <a href="#"><img src="/images/messaging/mail.png" alt=""> &nbsp; Inbox<span> ({{count}})</span></a></li>
+        <li class="active"><a href="/messages/sent"><img src="/images/messaging/sent.png" alt=""> &nbsp; Sent</a></li>
         <li><a href="#"><img src="/images/messaging/draft.png" alt=""> &nbsp; Drafts</a></li>
         <li><a href="#"><img src="/images/messaging/garbage.png" alt=""> &nbsp; Trash</a></li>
       </ul>
@@ -68,21 +68,21 @@
   <div id="main-nano-wrapper" class="nano">
     <div class="nano-content">
       <ul class="message-list">
-        @each(item in inbox)
-      <li class={{item.isRead}} id="{{item.id}}">
+        @each(item in sentMessages)
+      <li class="unread" id="{{item.id}}">
             <div class="col-one">
                 <div class="form-check">
                   <input type="checkbox" class="form-check-input" id={{"ck" + item.id}}  >
                   <label for={{"ck" + item.id}} class="form-check-label"></label>
                 </div>
-                <img src={{item.senderAvatar}} alt="sender avatar">
+                <img src={{item.recieverAvatar}} alt="sender avatar">
             </div>
             <div class="col-two">
-                <p class="reciever" style="display: none">You</p> 
-                <p class="message-date" style="display: none">{{item.date.getHours() + ":" + item.date.getMinutes() + " " +item.date.getDate()   + "-" + (item.date.getMonth() + 1) + "-" + item.date.getFullYear()}}</p> 
-            <p class="sender">{{item.from}}</p>  
+                <p class="reciever" style="display: none">{{item.to}}</p> 
+                <p class="message-date" style="display: none">{{item.date.getHours() + ":" + item.date.getMinutes() + " " +item.date.getDate()   + "-" + (item.date.getMonth() + 1) + "-" + item.date.getFullYear() }}</p> 
+                <p class="sender">{{item.to}}</p>  
                 <p class="title">{{item.title}}</p>
-            <p class="content">{{item.text}}</p>
+                <p class="content" style="display:none">{{item.text}}</p>
             </div>
             <div class="col-three">
             <div class="date">{{item.date.getHours() + ":" + item.date.getMinutes() + " " +item.date.getDate()   + "-" + (item.date.getMonth() + 1) + "-" + item.date.getFullYear()}}</div>
@@ -104,8 +104,8 @@
         <ul class="message-container">
           <li class="sent">
             <div class="details">
-              <div class="left"><div id="message-sender" style="display:inline"></div>
-                <div class="arrow"></div><div id="message-reciever" style="display:inline">You</div>
+              <div class="left"><div id="message-sender" style="display:inline">You</div>
+                <div class="arrow"></div><div id="message-reciever" style="display:inline"></div>
               </div>
               <div class="right" id="message-date"></div>
             </div>

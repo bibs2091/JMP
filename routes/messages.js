@@ -21,23 +21,23 @@ router.get('/', async (req, res) => {
 		delete currentUser.password;
 		currentUser.info = userInfo.dataValues;
 
-		//pagination
-		const paginate = ({ page, pageSize }) => {
-			const offset = (page - 1) * pageSize
-			const limit = pageSize
+		// //pagination
+		// const paginate = ({ page, pageSize }) => {
+		// 	const offset = (page - 1) * pageSize
+		// 	const limit = pageSize
 
-			return {
-				offset, // the records we jump
-				limit,  // how many we retrieve
-			}
-		}
+		// 	return {
+		// 		offset, // the records we jump
+		// 		limit,  // how many we retrieve
+		// 	}
+		// }
 
-		//TODO: replace later with query from req.body
+		// //TODO: replace later with query from req.body
 
-		let { page, pageSize } = { page: 1, pageSize: 5 };
+		// let { page, pageSize } = { page: 1, pageSize: 5 };
 
 		//request
-		let inbox = await Messages.findAll({ where: { to: req.user.id }, ...paginate({ page, pageSize }), order: [['createdAt', 'DESC']] });
+		let inbox = await Messages.findAll({ where: { to: req.user.id, [Op.and]: { delReciever: false } }, order: [['createdAt', 'DESC']] });
 		inbox = inbox.map(message => {
 			return {
 				id: message.dataValues.id,
@@ -63,9 +63,9 @@ router.get('/', async (req, res) => {
 		// coount unread messages in inbox
 		const unreadMsg = await Messages.findAndCountAll(
 			{
-				where: { isRead: false }
+				where: { isRead: false, [Op.and]: { delReciever: false } }
 			})
-		const count = unreadMsg.count
+		const count = unreadMsg.count.toString()
 
 		// console.log(inbox);
 		res.render('inbox', { inbox, count, currentUser })
@@ -83,15 +83,36 @@ router.get('/', async (req, res) => {
 
 router.get('/sent', async (req, res) => {
 	try {
-		let sentMessages = await Messages.findAll({ where: { from: req.user.id } });
+		let sentMessages = await Messages.findAll({
+			where: { from: req.user.id, [Op.and]: { delSender: false } }
+		});
 		sentMessages = sentMessages.map(message => {
 			return {
+				id: message.dataValues.id,
 				from: message.dataValues.from,
 				to: message.dataValues.to,
-				text: message.dataValues.text
+				title: message.dataValues.title,
+				text: message.dataValues.text,
+				date: message.dataValues.date,
 			}
+
 		})
-		res.status(200).json(sentMessages)
+		//get infos 
+		await Promise.all(sentMessages.map(async msg => {
+			//do stuff here 
+			let reciever = await Users.findByPk(msg.to);
+			reciever = reciever.dataValues;
+			sentMessages[sentMessages.indexOf(msg)].to = reciever.firstName + ' ' + reciever.lastName;
+			sentMessages[sentMessages.indexOf(msg)].recieverAvatar = reciever.avatar;
+
+		}))
+		// coount unread messages in inbox
+		const unreadMsg = await Messages.findAndCountAll(
+			{
+				where: { isRead: false, [Op.and]: { delReciever: false } }
+			})
+		const count = unreadMsg.count.toString()
+		res.render("sent", { count, sentMessages })
 	} catch (error) {
 		console.log(error);
 	}
@@ -143,28 +164,18 @@ router.get("/new_message", async (req, res) => {
 //methode 	POST
 //access	private
 //desc		delete a message
-router.post('/delete/:id', async (req, res) => {
-	const msgId = req.params;
-	try {
-		//TODO: complete the delete function
-		let message = await Messages.findByPk(msgId);
-		message = message.dataValues;
 
-	} catch (error) {
-		console.log(error)
-	}
-
-})
 
 router.post('/read/:id', async (req, res) => {
 	const id = req.params.id
 	try {
 		let msg = await Messages.update({ isRead: true }, { returning: true, where: { id } })
 		if (msg[1][0]) {
-			console.log(msg[1][0].dataValues)
-			res.send('msg ' + id + ' marked as read')
+			res.send({ succuess: true })
+		} else {
+			res.status(400).send('Bad request')
+
 		}
-		res.status(400).send('Bad request')
 	} catch (error) {
 		console.log(error)
 		res.status(500)
@@ -173,10 +184,53 @@ router.post('/read/:id', async (req, res) => {
 
 });
 
-router.delete("/delete", (req, res) => {
-	var ids = req.body.ids;
-	console.log(ids);
-	res.send({ succuess: true });
+router.delete("/delete", async (req, res) => {
+	let ids = JSON.parse(req.body.ids);
+
+
+	if (ids.length > 0) {
+		try {
+			let admin = req.user.id
+
+			let msgToDelete = await Messages.findByPk(ids[0])
+			msgToDelete = msgToDelete.dataValues
+
+			if (admin === msgToDelete.to) {
+				//delete for reciever
+				ids.forEach(async msgId => {
+					let message = await Messages.update(
+						{ delReciever: true },
+						{ returning: true, where: { id: msgId } }
+					)
+					if (!message[1][0]) {
+						throw new Error("Error, wrong data")
+					}
+				})
+
+			} else {
+				// sender deleting sent messages 
+				ids.forEach(async msgId => {
+					let message = await Messages.update(
+						{ delSender: true },
+						{ returning: true, where: { id: msgId } }
+					)
+					if (!message[1][0]) {
+						throw new Error("Error")
+					}
+
+				})
+
+			}
+			res.send({ succuess: true });
+
+		} catch (error) {
+			console.log(error)
+			res.send({ succuess: false })
+		}
+	} else {
+		return res.send({ succuess: false })
+	}
+
 })
 
 module.exports = router;

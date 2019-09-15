@@ -23,6 +23,14 @@ const Message = db.define("Message", {
 	},
 	date: {
 		type: Sequelize.DATE,
+	},
+	delSender: {
+		type: Sequelize.BOOLEAN,
+		defaultValue: false
+	},
+	delReciever: {
+		type: Sequelize.BOOLEAN,
+		defaultValue: false
 	}
 });
 
