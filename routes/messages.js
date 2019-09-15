@@ -21,23 +21,23 @@ router.get('/', async (req, res) => {
 		delete currentUser.password;
 		currentUser.info = userInfo.dataValues;
 
-		//pagination
-		const paginate = ({ page, pageSize }) => {
-			const offset = (page - 1) * pageSize
-			const limit = pageSize
+		// //pagination
+		// const paginate = ({ page, pageSize }) => {
+		// 	const offset = (page - 1) * pageSize
+		// 	const limit = pageSize
 
-			return {
-				offset, // the records we jump
-				limit,  // how many we retrieve
-			}
-		}
+		// 	return {
+		// 		offset, // the records we jump
+		// 		limit,  // how many we retrieve
+		// 	}
+		// }
 
-		//TODO: replace later with query from req.body
+		// //TODO: replace later with query from req.body
 
-		let { page, pageSize } = { page: 1, pageSize: 5 };
+		// let { page, pageSize } = { page: 1, pageSize: 5 };
 
 		//request
-		let inbox = await Messages.findAll({ where: { to: req.user.id, [Op.and]: { delReciever: false } }, ...paginate({ page, pageSize }), order: [['createdAt', 'DESC']] });
+		let inbox = await Messages.findAll({ where: { to: req.user.id, [Op.and]: { delReciever: false } }, order: [['createdAt', 'DESC']] });
 		inbox = inbox.map(message => {
 			return {
 				id: message.dataValues.id,
@@ -97,6 +97,15 @@ router.get('/sent', async (req, res) => {
 			}
 
 		})
+		//get infos 
+		await Promise.all(sentMessages.map(async msg => {
+			//do stuff here 
+			let reciever = await Users.findByPk(msg.to);
+			sender = sender.dataValues;
+			inbox[inbox.indexOf(msg)].from = sender.firstName + ' ' + sender.lastName;
+			inbox[inbox.indexOf(msg)].senderAvatar = sender.avatar;
+
+		}))
 		res.status(200).json(sentMessages)
 	} catch (error) {
 		console.log(error);
