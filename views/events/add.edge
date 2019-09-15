@@ -33,14 +33,14 @@ body{
     <input type="file" name="cover" accept="image/*" id="course-cover-input" 
     style="display:none" onchange="loadImage(event,'upload-event-cover')" required>
     <div class="md-form form-md">
-      <input type="text" placeholder="event title" id="Event-title" class="form-control form-control-lg">
+      <input type="text" name="name" placeholder="event title" id="Event-title" class="form-control form-control-lg">
       <label for="Event-title">Event title</label>
     </div>
     <div class="md-form">
-      <textarea id="Event-decription"  placeholder="In your Event description, we recommend providing information abou the content of the course and how students will benefit from that content." class="form-control md-textarea" length="120" rows="3"></textarea>
+      <textarea id="Event-decription"  placeholder="In your Event description, we recommend providing information abou the content of the course and how students will benefit from that content." class="form-control md-textarea" length="120" rows="3" name="description"></textarea>
       <label for="Event-decription">Event decription</label>
     </div>
-    <button class="btn btn-rounded-important  event-btn" onclick="nextStep('BasicInformation-addEvent', 1, 'timingLocation', 2)">Next</button>
+    <button type="button" class="btn btn-rounded-important  event-btn" onclick="nextStep('BasicInformation-addEvent', 1, 'timingLocation', 2)">Next</button>
   </div>
 
 
@@ -51,31 +51,39 @@ body{
     <div class="row">
       <div class="col-6">
         <div class="md-form">
-          <input type="text" placeholder="pick a date" id="EventStartingdate" class="form-control datepicker">
+          <input type="text" name="start_d" placeholder="pick a date" id="EventStartingdate" class="form-control datepicker">
           <label for="EventStartingdate">Event Starting Date</label>
         </div>
         <div class="md-form">
-            <input type="text"  placeholder="pick a date" id="EventEndingdate" class="form-control datepicker">
+            <input type="text" name="end_d" placeholder="pick a date" id="EventEndingdate" class="form-control datepicker">
             <label for="EventEndingdate">Event Ending Date</label>
           </div>
       </div>
       <div class="col-6">
           <div class="md-form">
-              <input type="text" placeholder="pick a time" id="EventStartingTime" class="form-control timepicker">
+              <input type="text" name="start_t" placeholder="pick a time" id="EventStartingTime" class="form-control timepicker">
               <label for="EventStartingTime">Event Starting Time</label>
             </div>
         <div class="md-form">
-          <input type="text" placeholder="pick a time"id="EventEndingTime" class="form-control timepicker">
+          <input type="text" name="end_t" placeholder="pick a time"id="EventEndingTime" class="form-control timepicker">
           <label for="EventEndingTime">Event Ending Time</label>
         </div>
       </div>
     </div>
     <!-- the map -->
+    <div  style="display: none;"class="form-group">
+            <label for="location" class="customized-label"></label>
+            <input type="text" class="form-control" name="location" id="location"required>
+        </div>
     <div id="mapDiv"> 
         <label>Event Location</label>
+        <div class="md-form form-md">
+          <input type="text" name="loc" id="Event-location" class="form-control form-control-lg">
+          <label for="Event-location">Write the location</label>
+        </div>
         <div id="map"></div>
     </div>
-    <button class="btn btn-rounded-important  event-btn" onclick="nextStep('timingLocation', 2, 'PlaningAndSponsors', 3)">Next</button>
+    <button type="button" class="btn btn-rounded-important  event-btn" onclick="nextStep('timingLocation', 2, 'PlaningAndSponsors', 3)">Next</button>
 
   </div>
   <div id="PlaningAndSponsors">
@@ -103,17 +111,17 @@ body{
       </style>
       <div class="form-group" style="margin-top: 30px">
         <label for="add-schedule">Schedule</label>
-        <button id="add-schedule" class="btn-add btn-rounded-important saved_animation"  data-toggle="modal" data-target="#add-schedule-modal">
+        <button type="button" id="add-schedule" class="btn-add btn-rounded-important saved_animation"  data-toggle="modal" data-target="#add-schedule-modal">
           <i class="fa fa-plus"></i> Add Schedule
         </button>
       </div>
       <div class="form-group" style="margin-top: 30px">
         <label for="add-sponsor">Sponsors</label>
-        <button id="add-sponsor" class="btn-add btn-rounded-important saved_animation" data-toggle="modal" data-target="#add-sponsor-modal">
+        <button type="button" id="add-sponsor" class="btn-add btn-rounded-important saved_animation" data-toggle="modal" data-target="#add-sponsor-modal">
           <i class="fa fa-plus"></i> Add Sponsor
         </button>
       </div>
-      <button class="btn btn-rounded-important  event-btn" style="color:#FFF;background: #1DBF70;" 
+      <button type="button" class="btn btn-rounded-important  event-btn" style="color:#FFF;background: #1DBF70;" 
       onclick="this.parentNode.parentNode.parentNode.submit()">Save</button>
     </div>
   </div> 
@@ -218,8 +226,8 @@ body{
                           </filter>
                           </defs>
                           </svg>
-                          
-                        <input type="file" accept="image/*" name="sponsorImage">
+                          <input type="file" name="sponsorImage" accept="image/*" id="course-cover-input"  required>
+                       <!-- <input type="file" accept="image/*" name="sponsorImage" > -->
                       </a>
                       <div class="file-path-wrapper">
                         <input class="file-path validate" onchange="saveInputState(this)" type="text" placeholder="Upload the photo of the sponsor" disabled>

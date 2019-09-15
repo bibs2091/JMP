@@ -2,6 +2,7 @@ const Event = require('../../models/Event');
 const EventInscriptions = require('../../models/EventInscriptions');
 const Sponsor = require('../../models/Sponsors');
 const UsersInfo = require('../../models/UsersInfo');
+const Schedule = require('../../models/Schedule');
 
 
 module.exports = async (req, res) => {
@@ -13,6 +14,7 @@ module.exports = async (req, res) => {
 		currentUser.info = userInfo.dataValues;
 
 		console.log(req.body);
+
 		const eventInscriptions = await EventInscriptions.findAll(
 			{
 				where:
@@ -31,19 +33,30 @@ module.exports = async (req, res) => {
 				{
 					eventId: req.params.id
 				}
+			});
+		var schedules = await Schedule.findAll(
+			{
+				where:
+				{
+					eventId: req.params.id
+				}
 			})
 		const event = await Event.findByPk(req.params.id);
 		if (!event) {
 			return res.render("404");
 		}
-		event.dataValues.date.getFullYear() + '-' + ('0' + (event.dataValues.date.getMonth() + 1)).slice(-2) + '-' + ('0' + event.dataValues.date.getDate()).slice(-2);
+		for(let i=0;i<schedules.length;i++){
+			schedules[i].start_d = schedules[i].start_d.substring(0,schedules[i].start_d.length-6);
+		}
+
 		res.render('events.event', {
 			pageTitle: event.name,
 			event,
 			sponsors,
+			schedules,
 			registred,
 			currentUser,
-			pageName: "Event",
+			pageName: "event page",
 		});
 	} catch (err) {
 		console.log("errors :\n" + err);

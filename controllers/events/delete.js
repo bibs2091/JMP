@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Sponsor = require('../../models/Sponsors');
+const Schedule = require('../../models/Schedule');
 const Event = require('../../models/Event');
 module.exports = async(req, res) => {
 	try{
@@ -9,16 +10,28 @@ module.exports = async(req, res) => {
 			{where :
 				{
 					eventId : req.params.id
+				}});
+		const schedules = await Schedule.findAll(
+			{where :
+				{
+					eventId : req.params.id
 				}})
 		for (let i =0;i<sponsors.length;i++){
-			await fs.unlink(__dirname + '/../../public/img/events/sponsors/'+sponsors[i].id+".jpg",()=>{});
+			if (sponsors[i].log)
+				await fs.unlink(__dirname + '/../../public/img/events/sponsors/'+sponsors[i].id+".jpg",()=>{});
 			await Sponsor.destroy({
 				where :  {
 					id:sponsors[i].id
 				}
 			});
 		}
-		await fs.unlink(__dirname + '/../../public/img/events/plannings/'+req.params.id+".jpg",()=>{});
+		for (let i =0;i<schedules.length;i++){
+			await Schedule.destroy({
+				where :  {
+					id:schedules[i].id
+				}
+			});
+		}
 		await fs.unlink(__dirname + '/../../public/img/events/covers/'+req.params.id+".jpg",()=>{});
 		await Event.destroy({
 	        where : {

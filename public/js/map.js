@@ -17,8 +17,10 @@ function initMap() {
     //document.getElementById("location").value = marker.getPosition().lat() + "||" + marker.getPosition().lng();
   }
   else {
+    
     var lat = parseFloat(document.getElementById("location").attributes.lat.nodeValue);
     var lng = parseFloat(document.getElementById("location").attributes.lng.nodeValue);
+
     // map options
     var options = {
       zoom: 15,

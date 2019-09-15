@@ -24,47 +24,51 @@
   }
 </style>
 <div class="event_details">
-  <div id="coverImage" style="background: url(/img/cover-nodejs.jpg) no-repeat;  background-size: 100% 100%;">
-    <h1>{{event.title}}</h1>
+  <div id="coverImage" style="background: url(/img/events/covers/{{event.id}}.jpg) no-repeat;  background-size: 100% 100%;">
+    <h1>{{event.name}}</h1>
     <div id="imgTags">
       @each(tag in event.tags)
         <span>{{tag}}</span>
       @endeach
     </div>
     @if(registred)
+    <form method="POST" action="/events/delete/{{event.id}}">
+        <input type="submit" value="Delete" class="btn btn-danger" id="delete_button">
+      </form>
       <p>You are registred</p>
     @else
+    <div>
+    <form method="POST" action="/events/delete/{{event.id}}">
+        <input type="submit" value="Delete" class="btn btn-danger" id="delete_button">
+      </form>
       <form method="POST" action="/events/register/{{event.id}}">
         <input type="submit" value="Register Now" class="btn btn-primary" id="register-boutton">
       </form>
+    </div>
     @endif
   </div> 
   <div class="container">
     <div class="row">
       <div class="col-md-7 courseDescription">
         <h3>Description</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quam ducimus in voluptatibus, sed minus iure nostrum tempora est.</p>
+        <p>{{event.description}}</p>
         <h3 style="margin-top:52px;">Schedule</h3>
         <ul class="timeline">
+          @each(schedule in schedules)
           <li class="event">
-            <p>"We can be all things to all people!" 📣</p>    
+            <p>{{schedule.start_t}}&nbsp;&nbsp;{{schedule.start_d}}</p>    
+            <p>{{schedule.name}}</p>
           </li>
-          <li class="event">
-           <p>"We can be all things to Squarespace users!" 📣</p>    
-          </li>
-          <li class="event">
-           <p>"We can be all things to Squarespace users!" 📣</p>    
-          </li>
-
+          @endeach
         </ul>
       </div>
       <div class="col-md-5">
           <div id="eventCardInfo">
             <h3 style="margin-bottom:15px;">Details</h3>
             <ul>
-              <li> <i class="far fa-calendar-alt"></i> &nbsp; {{event.date.toJSON().slice(0,10).replace(/-/g,'/');}}</li>
+              <li> <i class="far fa-calendar-alt"></i> &nbsp; {{event.start_d}} - {{event.end_d}}</li>
               <br>
-              <li><i class="fas fa-clock"></i> &nbsp; {{event.time}} </li>
+              <li><i class="fas fa-clock"></i> &nbsp; {{event.start_t}} - {{event.end_t}} </li>
               <br>
               <li><i id = "location" class="fas fa-map-marker-alt"
                 lat={{event.locationLat}} lng={{event.locationLng}}>  
@@ -86,9 +90,9 @@
   <h3 style="margin-bottom:40px;">Sponsors</h3>
 
   <div class="row">
-    <div class="col-md col-sm sponsor-div"><div><img src="/img/courses/1.jpg" class="sponsors-pic"><p>Sponsors-pic</p></div></div>
-    <div class="col-md col-sm sponsor-div"><div><img src="/img/courses/1.jpg" class="sponsors-pic"><p>Sponsors-pic</p></div></div>
-    <div class="col-md col-sm sponsor-div"><div><img src="/img/courses/1.jpg" class="sponsors-pic"><p>Sponsors-pic</p></div></div>
+    @each(sponsor in sponsors)
+    <div class="col-md col-sm sponsor-div"><div><img src="/img/events/covers/{{sponsor.logo}}.jpg" class="sponsors-pic"><p>{{sponsor.name}}</p></div></div>
+    @endeach
   </div>
   </div>  
 @endsection
