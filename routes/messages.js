@@ -106,7 +106,13 @@ router.get('/sent', async (req, res) => {
 			sentMessages[sentMessages.indexOf(msg)].recieverAvatar = reciever.avatar;
 
 		}))
-		res.render("sent", { sentMessages })
+		// coount unread messages in inbox
+		const unreadMsg = await Messages.findAndCountAll(
+			{
+				where: { isRead: false, [Op.and]: { delReciever: false } }
+			})
+		const count = unreadMsg.count.toString()
+		res.render("sent", { count, sentMessages })
 	} catch (error) {
 		console.log(error);
 	}
