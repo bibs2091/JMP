@@ -6,6 +6,8 @@ const homeController = require("../controllers/home");
 const userProfileController = require("../controllers/userProfile");
 const getCurrentUser = require("../controllers/getCurrentUser");
 const techReportController = require("../controllers/techReport");
+const donateController = require("../controllers/donate");
+
 
 //handling requests
 router.get("/", homeController);
@@ -18,6 +20,7 @@ router.get("/profile/:id", userProfileController);
 
 router.get("/getuser", getCurrentUser);
 router.post("/report/tech", techReportController);
+router.post("/donate", donateController);
 
 router.get("/404", (req, res) => {
 	res.render("404");
