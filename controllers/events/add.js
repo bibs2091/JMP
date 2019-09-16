@@ -96,10 +96,9 @@ module.exports = async (req, res) => {
 
 		}
 		res.redirect('/events/' + newevent.id);
-	}
 	} catch (err) {
-	console.log("error ==> \n" + err);
-	res.redirect('/errors');
-}
+		console.log("error ==> \n" + err);
+		res.redirect('/errors');
+	}
 
 }
