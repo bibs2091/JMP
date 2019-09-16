@@ -20,6 +20,7 @@ html,body {
     position: absolute;
     top: 0;
     right: 0;
+    height: 100vh;
 }
 #nav-home{
     padding-top: 25px;
@@ -75,38 +76,50 @@ html,body {
     padding: 10px 20px;
     background:  #FFD32A;
 }
-#about_us{
+#be-able{
     position: relative;
-    overflow: hidden;
+    height: 100vh;
 }
 #bg2_home{
     position: absolute;
     top: 0;
     right: 0;
 }
-#about_us > p{
+#about_us{
+    background-image: url(/img/background2-total.svg);
+    background-repeat-y: no-repeat;
+    height: 2770px;
+}
+
+#be-able > p{
     text-align: center; 
     position: relative;
     margin-top: 100px;
     font-weight:600;
 }
-#about_us .card{
+#be-able .card{
     border: none;
     margin-top:50px;
     margin-bottom: 50px;
 }
-#about_us .card a{
+#be-able .card:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.17), 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+#be-able .card .card-img-top{
+    height: 230px;
+}
+#be-able .card a{
     margin-top: 7px;
     display: block;
     color: #FFD32A;
     font-weight: 600;
 }
-#about_us .card .card-title{
+#be-able .card .card-title{
     font-size: 33px;
 }
 #with-jmp{
     position: relative;
-    overflow: hidden;
+    padding-top: 0;
 }
 #bg3_home{
     position: absolute;
@@ -121,6 +134,9 @@ html,body {
 }
 #online-tutorials{
     height: 550px;
+}
+#online-tutorials img{
+    margin-left: 20px;
 }
 
 #online-tutorials #online-tutorials-details{
@@ -145,25 +161,27 @@ html,body {
 #quality-teacher{
     position: relative;
     overflow: hidden;
-    display: table;
-    width: 550px;
-    margin-left: 40px;
+    margin-top:150px;
+    height: 100vh;
 }
-#quality-teacher img{
-    display: table-cell;
+#quality-teacher div:first-of-type img{
+    width: 110px;
+    margin-top: 40px;
+    margin-left: auto;
+    display: block;
 }
+
 #quality-teacher div{
-    display: table-cell;
     vertical-align: top;
     padding-top: 15px;
 }
 #quality-teacher h2{
     font-size: 40px;
+    margin-top: 60px;
+    margin-bottom: 10px;
 }
-#quality-teacher2{
-    position: relative;
-    margin-left: auto;
-    display: block;
+#quality-teacher2 img{
+    width: 95%;
 }
 #events-workshops #events-workshops-details{
     width: 400px;
@@ -175,6 +193,9 @@ html,body {
 #events-workshops p{
     font-size: 16px;
     margin-top: 20px;
+}
+#events-workshops{
+    margin-left: 25px;
 }
 footer{
     padding-top: 33px;
