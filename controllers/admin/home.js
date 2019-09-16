@@ -13,11 +13,11 @@ module.exports = async (req, res) => {
         var usersNumber = await Users.findAll();
         usersNumber = usersNumber.length;
         var coursesNumber = await Courses.findAll();
-        coursesNumber = usersNumber.length;
+        coursesNumber = coursesNumber.length;
         var coachsNumber = await Users.findAll({
             where: { groupId: 1 }
         });
-        coachsNumber = usersNumber.length;
+        coachsNumber = coachsNumber.length;
         res.render("admin.home", {
             pageTitle: "Dashboard- Home",
             pageName: "Dashboard",
