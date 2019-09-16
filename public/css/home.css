@@ -176,3 +176,32 @@ html,body {
     font-size: 16px;
     margin-top: 20px;
 }
+footer{
+    padding-top: 33px;
+    overflow: hidden;
+    margin-bottom: 33px;
+}
+footer h3{
+    font-weight: 600;
+    font-size: 19px;
+}
+footer p{
+    margin-top: 7px;
+    font-size: 16px;
+}
+footer h6{
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+footer li{
+    font-size: 15px;
+    padding: 5px 0;
+}
+footer li a{
+    text-decoration: none;
+    color: #030403;
+}
+footer li a:hover{
+    text-decoration: none;
+}
