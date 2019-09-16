@@ -12,14 +12,28 @@ module.exports = async (req, res) => {
             groupId: 3
         }
     });
-
+    var students = await Users.findAll({
+        where: {
+            groupId: 2
+        }
+    });
+    var coaches = await Users.findAll({
+        where: {
+            groupId: 1
+        }
+    });
+    var admins = await Users.findAll({
+        where: {
+            groupId: 0
+        }
+    });
     res.render("admin.users", {
         pageName: "Managing Users",
         pageTitle: "Dashboard - Users",
         currentUser,
         unapproved: unapproved.length,
-        students,
-        coaches,
-        admins
+        students: students.length,
+        coaches: coaches.length,
+        admins: admins.length
     });
 }
