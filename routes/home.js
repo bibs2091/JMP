@@ -8,6 +8,8 @@ const getCurrentUser = require("../controllers/getCurrentUser");
 const techReportController = require("../controllers/techReport");
 const donateController = require("../controllers/donate");
 
+//require middleware
+const homeRedirect = require("../middleware/homeRedirect");
 
 //handling requests
 router.get("/", homeController);
