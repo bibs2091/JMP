@@ -102,6 +102,7 @@ html,body {
     border: none;
     margin-top:50px;
     margin-bottom: 50px;
+    box-shadow: 4px 4px 20px rgba(255, 211, 42, 0.21);
 }
 #be-able .card:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.17), 0 10px 10px rgba(0, 0, 0, 0.2);
