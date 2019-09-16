@@ -1,12 +1,17 @@
-//intiliaze users table 
-var unapprovedUsers;
-var allUsers;
+//intiliaze users tables
+var unapprovedUsers, allStudents, allCoaches, allAdmins;
 $(document).ready(function () {
     unapprovedUsers = $('#unapproved-users').DataTable({
         "ajax": "/api/users/unapproved"
     });
-    allUsers = $('#all-users').DataTable({
-        "ajax": "/api/users/all"
+    allStudents = $('#all-users').DataTable({
+        "ajax": "/api/users/students"
+    });
+    allCoaches = $('#all-coaches').DataTable({
+        "ajax": "/api/users/coaches"
+    });
+    allAdmins = $('#all-admins').DataTable({
+        "ajax": "/api/users/coaches"
     });
 });
 //delete a user by id
@@ -17,7 +22,7 @@ function deleteUser(id) {
         contentType: 'application/json',
         success: function (result) {
             unapprovedUsers.ajax.reload();
-            allUsers.ajax.reload();
+            allStudents.ajax.reload();
         }
     });
 }
@@ -28,7 +33,7 @@ function approveUser(id) {
         method: 'PUT',
         contentType: 'application/json',
         success: function (result) {
-            allUsers.ajax.reload();
+            allStudents.ajax.reload();
             unapprovedUsers.ajax.reload();
         }
     });
@@ -41,7 +46,7 @@ function makeCoach(id) {
         contentType: 'application/json',
         success: function (result) {
             unapprovedUsers.ajax.reload();
-            allUsers.ajax.reload();
+            allStudents.ajax.reload();
         }
     });
 }
