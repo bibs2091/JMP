@@ -1,10 +1,14 @@
 {
   "short_name": "jmp",
   "name": "Junior makers program",
+  "description": "Network of scientific clubs specialized in the field of Electronics, Robotics, Programming and Computer Science dedicated to the next generation",
   "icons": [{
     "src": "favicon.png",
     "type": "image/png",
     "sizes": "192x192"
   }],
-  "start_url": "/"
+  "start_url": "/",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "display": "standalone"
 }
