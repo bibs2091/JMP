@@ -503,6 +503,10 @@ function addChapQuiz(obj) {
 function saveInputState(obj) {
     $(obj).attr("value", $(obj).val());
 }
+var files = [];
+function saveImageState(obj) {
+    files.push($(obj).prop("files"));
+}
 //the radio inputs
 function saveRadioState(obj) {
     $(obj).attr("checked", true);
@@ -627,7 +631,7 @@ var saveAnimation = function (buttonID) {
     button.innerHTML = 'Saving <span class="spinner"></span>';
     // Simulate successful AJAX call
     setTimeout(function () {
-        button.innerHTML = 'Change Schedule';
+        button.innerHTML = 'Change items';
         button.classList.add('done');
     }, 1000);
     button.classList.remove("done");
@@ -637,6 +641,9 @@ var saveAnimation = function (buttonID) {
 function addSponsorCard() {
     var number = document.getElementsByClassName("sponsor-card").length + 1;
     document.getElementById("sponsor-cards").innerHTML += sponsorCardHTML(number);
+    for (var i = files.length - 1; i >= 0; i--) {
+    $(document.getElementsByName("sponsorImage"+(i+1))[0]).prop("files",files[i]);
+    }
 }
 //reset sponsor numbers
 function resetSponsorNumbers() {
@@ -677,7 +684,7 @@ function sponsorCardHTML(number) {
             </defs>
             </svg>
             
-          <input type="file" accept="image/*" name="sponsorImage">
+          <input type="file" accept="image/*" onchange="saveImageState(this)" name="sponsorImage${number}">
         </a>
         <div class="file-path-wrapper">
           <input class="file-path validate"  onchange="saveInputState(this)" type="text" placeholder="Upload the photo of the sponsor" disabled>
@@ -798,7 +805,7 @@ function addTagsAddEvent() {
     var tagsSpans = document.getElementsByClassName("tag");
     var tags = [];
     for (let i = 0; i < tagsSpans.length; i++) {
-        tags.push(tagsSpans[0].children[1].innerHTML);
+        tags.push(tagsSpans[i].children[1].innerHTML);
     }
     $("#tags-input").val(JSON.stringify(tags));
 } 

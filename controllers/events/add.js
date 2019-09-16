@@ -6,8 +6,9 @@ module.exports = async (req, res) => {
 		// the user infos
 		const user = req.user;
 		let validated = false;
-		console.log(req);
-		return;
+		var cover =null;
+
+
 		// if the user == admin the event will be directly validated 
 		if (user.groupId === 0) {
 			validated = true;
@@ -31,19 +32,24 @@ module.exports = async (req, res) => {
 			}
 			
 			//getting the sponsors logos
-			if (req.files.sponsorImage) {
-				logo = req.files.sponsorImage;
+			if (req.files.sponsorImage1) {
+				logo = req.files;
 				}
 
 			}
 
 
-		const { name, start_t,end_t,start_d,end_d, time, description, tags,loc ,location} = req.body;
+		const { name, start_t,end_t,start_d,end_d, time, description, tagsJSON,loc ,location} = req.body;
 		// getting the location longitude and latitude
 
 		const locationLat = location.split("||")[0] || 35.20822045997799;
 		const locationLng = location.split("||")[1] || -0.6333231925964355; 
-		
+		var tags ="";
+		const tagsJS = JSON.parse(tagsJSON);
+		for (let i=0;i<tagsJS.length;i++){
+			tags += "||"+tagsJS[i];
+		}
+		tags = tags.substring(2,tags.length);
 		// creating the event proposition
 		let newevent = await Event.create({ name, start_t,end_t,start_d,end_d,locationLat,locationLng, location : loc,description, creatorId, validated, tags });
 		// store the images and there link 
@@ -83,14 +89,17 @@ module.exports = async (req, res) => {
 						name :sponsors[i]
 
 					});
-					if(req.files.sponsorImage){
-						await Sponsor.update(
-							{
-								logo : '/img/events/sponsors/'+ spon.id + ".jpg" 
-							},
-								{ where: { id: spon.id } }
-							)
-						await logo[i].mv(__dirname + '/../../public/img/events/sponsors/'+ spon.id + ".jpg");
+					if(req.files.sponsorImage1){
+						if(Object.keys(req.files).length-1>i){
+
+							await Sponsor.update(
+								{
+									logo : '/img/events/sponsors/'+ spon.id + ".jpg" 
+								},
+									{ where: { id: spon.id } }
+								)
+							await logo[Object.keys(req.files)[i+1]].mv(__dirname + '/../../public/img/events/sponsors/'+ spon.id + ".jpg");
+						}
 				}
 
 					}

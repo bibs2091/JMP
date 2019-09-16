@@ -2,6 +2,7 @@ const fs = require('fs');
 const Sponsor = require('../../models/Sponsors');
 const Schedule = require('../../models/Schedule');
 const Event = require('../../models/Event');
+const EventInscriptions = require('../../models/EventInscriptions');
 module.exports = async(req, res) => {
 	try{
 
@@ -15,7 +16,13 @@ module.exports = async(req, res) => {
 			{where :
 				{
 					eventId : req.params.id
-				}})
+				}
+			});
+		const eventInscriptions = await EventInscriptions.findAll({where :
+			{
+				eventId : req.params.id
+			}
+			});
 		for (let i =0;i<sponsors.length;i++){
 			if (sponsors[i].log)
 				await fs.unlink(__dirname + '/../../public/img/events/sponsors/'+sponsors[i].id+".jpg",()=>{});
@@ -29,6 +36,13 @@ module.exports = async(req, res) => {
 			await Schedule.destroy({
 				where :  {
 					id:schedules[i].id
+				}
+			});
+		}
+		for (let i =0;i<eventInscriptions.length;i++){
+			await EventInscriptions.destroy({
+				where :  {
+					id:eventInscriptions[i].id
 				}
 			});
 		}

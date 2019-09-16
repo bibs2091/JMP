@@ -41,14 +41,15 @@ module.exports = async (req, res) => {
 					eventId: req.params.id
 				}
 			})
-		const event = await Event.findByPk(req.params.id);
+		var event = await Event.findByPk(req.params.id);
 		if (!event) {
 			return res.render("404");
 		}
 		for(let i=0;i<schedules.length;i++){
 			schedules[i].start_d = schedules[i].start_d.substring(0,schedules[i].start_d.length-6);
 		}
-
+		event.tags = event.tags.split("||");
+		console.log(event.tags);
 		res.render('events.event', {
 			pageTitle: event.name,
 			event,

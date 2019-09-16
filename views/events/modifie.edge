@@ -143,8 +143,8 @@ body{
       </div>
       <div class="modal-body">
         <div class="info">
-          @each(schedule in schedules)
           <div id="schedule-cards">
+          @each(schedule in schedules)
             
               <div class="schedule-card" style="position:relative">
                   <span class="close-category-modal" onclick="deleteSchedule(this)">&times;</span>
@@ -172,8 +172,8 @@ body{
                     </div>
                   </div>
               </div>
-          </div>
           @endeach
+          </div>
           <div id="add-question" class="btn" onclick="addScheduleCard()">
               Add an Item
           </div>

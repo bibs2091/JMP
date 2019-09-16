@@ -49,6 +49,7 @@ $(document).ready(function () {
         $(this).val("");
       }
     }
+    addTagsAddEvent();
   });
 
   $("#tags").on("click", ".close", function () {
