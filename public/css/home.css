@@ -69,7 +69,7 @@ html,body {
     font-size: 17px;
 }
 #main-section button{
-    margin-top: 20px;
+    margin-top: 30px;
     margin-left:-5px;
     color: black;
     font-weight: 600;
@@ -94,8 +94,9 @@ html,body {
 #be-able > p{
     text-align: center; 
     position: relative;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     font-weight:600;
+    font-size: 20px;
 }
 #be-able .card{
     border: none;
@@ -131,9 +132,11 @@ html,body {
     position: relative;
     margin-top: 100px;
     font-weight:600;
+    font-size: 20px;
 }
 #online-tutorials{
     height: 550px;
+    padding-left: 40px;
 }
 #online-tutorials img{
     margin-left: 20px;
@@ -161,13 +164,14 @@ html,body {
 #quality-teacher{
     position: relative;
     overflow: hidden;
-    margin-top:150px;
+    margin-top: 128px;
     height: 100vh;
+    padding: 0 45px;
 }
 #quality-teacher div:first-of-type img{
     width: 95%;
     display: block;
-    margin-top: -50px;
+    margin-top: -65px;
 }
 
 #quality-teacher div{
@@ -176,8 +180,8 @@ html,body {
 }
 #quality-teacher h2{
     font-size: 40px;
-    margin-top: 60px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 #quality-teacher p{
     max-width: 350px;
@@ -306,12 +310,12 @@ footer li a:hover{
         text-align: center;
     }
     #about_us {
-        height: fit-content;
+        height: auto;
         background-image: url(/img/background2-total-md.svg);
     }
 
     #be-able{
-        height:1110px; 
+        height:1250px; 
     }
     #be-able p{
         font-size: 19px;
