@@ -1,8 +1,8 @@
 <html>
     <head>
             <meta charset="utf-8">
-            <title>Home</title>
-            <meta name="description" content="Junior makers program website">
+            <title>Junior Makers Programe</title>
+            <meta name="description" content="Network of scientific clubs specialized in the field of Electronics, Robotics, Programming and Computer Science dedicated to the next generation">
             <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
         
             <link rel="manifest" href="/manifest.webmanifest">
@@ -20,7 +20,10 @@
             <link rel="stylesheet" href="/css/home.css">
     </head>
     <body>
-        <img id="bg_home"src="/img/background.png">
+        <picture>
+                    <source media="(max-width: 768px)" srcset="/img/background-md.svg">
+                    <img id="bg_home"src="/img/background.png" alt="background">
+                </picture>
         <nav class="navbar navbar-expand-md navbar-light" id="nav-home">
             <div class="container">
                 <a class="navbar-brand" href="/"><h1>Junior Makers</h1></a>
@@ -61,12 +64,11 @@
         </section>
         <section id="about_us">
             <section id="be-able">
-                {{--  <img id="bg2_home"src="/img/background2.svg">  --}}
                 <p>You will be able to learn all about </p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card" style="width: 20rem; margin-left:auto;margin-right: 3vw">
-                            <img src="/img/robotics.png" class="card-img-top" alt="Robotics">
+                        <div class="card" style="width: 21rem; margin-left:auto;margin-right: 3vw;padding:12px;">
+                            <img src="/img/robotics.png" class="card-img-top" loading="lazy" alt="Robotics">
                             <div class="card-body">
                                 <h5 class="card-title">Robotics</h5>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
@@ -77,7 +79,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="card" style="width: 20rem; margin-right:auto;margin-left:3vw;">
-                            <img src="/img/programming.png" class="card-img-top" alt="Programming">
+                            <img src="/img/programming.png" class="card-img-top" loading="lazy" alt="Programming">
                             <div class="card-body">
                                 <h5 class="card-title">Programming</h5>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
@@ -93,7 +95,7 @@
                 <p>With JMP, You’ll get access to </p>
                 <div class="row" id="online-tutorials">
                     <div class="col-lg-6">
-                        <img src="/img/computer_home.png">
+                        <img src="/img/computer_home.png" loading="lazy" alt="watching course">
                     </div>
                     <div class="col-lg-6">
                         <div id="online-tutorials-details">
@@ -106,12 +108,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" id="quality-teacher">
-                    <div class="col-2">
+                <div class="row" id="quality-teacher">                  
+                    <div class="col-md-5 order-md-last" id="quality-teacher2">
+                        <img src="/img/quality-teacher2.png" loading="lazy" alt="oval">
+                    </div>
+
+                    <div class="col-md-2 order-md-first" loading="lazy" alt="teacher">
                         <img  src="/img/quality-teacher1.png">
                     </div>
                     
-                    <div class="col-6">
+                    <div class="col-md-5">
                         <h2>Quality teachers</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
@@ -119,13 +125,10 @@
                                 <button class="btn btn-rounded-important">Get started</button>
                         </a>
                     </div>
-                    <div class="col-4" id="quality-teacher2">
-                        <img src="/img/quality-teacher2.png" >
-                    </div>
                 </div>
                 <div class="row" id="events-workshops">
                     <div class="col-lg-6">
-                        <img src="/img/events_workshops.png">
+                        <img src="/img/events_workshops.png" loading="lazy" alt="workshop">
                     </div>
                     <div class="col-lg-6">
                         <div id="events-workshops-details">
@@ -142,6 +145,7 @@
         </section>
 
         <footer>
+            <hr>
             <div class="container">
                 <div class="row">
                     <div class="col-md-5">
