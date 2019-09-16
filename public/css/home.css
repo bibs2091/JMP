@@ -9,6 +9,8 @@ body {
 
 html,body {
     max-width: 100%;
+    overflow-x: hidden;
+
 }
 .btn-rounded-important {
     -webkit-border-radius: 10em!important;
@@ -42,7 +44,7 @@ html,body {
     background: black;
     border-radius: 30px;
     width: 100px;
-    height: 30px;
+    height: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,6 +69,7 @@ html,body {
 }
 #main-section button{
     margin-top: 20px;
+    margin-left:-5px;
     color: black;
     font-weight: 600;
     padding: 10px 20px;
@@ -74,6 +77,7 @@ html,body {
 }
 #about_us{
     position: relative;
+    overflow: hidden;
 }
 #bg2_home{
     position: absolute;
@@ -85,4 +89,90 @@ html,body {
     position: relative;
     margin-top: 100px;
     font-weight:600;
+}
+#about_us .card{
+    border: none;
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+#about_us .card a{
+    margin-top: 7px;
+    display: block;
+    color: #FFD32A;
+    font-weight: 600;
+}
+#about_us .card .card-title{
+    font-size: 33px;
+}
+#with-jmp{
+    position: relative;
+    overflow: hidden;
+}
+#bg3_home{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#with-jmp > p:first-of-type{
+    text-align: center; 
+    position: relative;
+    margin-top: 100px;
+    font-weight:600;
+}
+#online-tutorials{
+    height: 550px;
+}
+
+#online-tutorials #online-tutorials-details{
+    width: 400px;
+    margin-top: 120px;
+}
+#online-tutorials h2{
+    font-size: 40px;
+}
+#online-tutorials p{
+    font-size: 16px;
+    margin-top: 20px;
+}
+#with-jmp button {
+    margin-top: 20px;
+    margin-left:-5px;
+    color: #000;
+    font-weight: 600;
+    padding: 10px 20px;
+    background: #FFD32A;
+}
+#quality-teacher{
+    position: relative;
+    overflow: hidden;
+    display: table;
+    width: 550px;
+    margin-left: 40px;
+}
+#quality-teacher img{
+    display: table-cell;
+}
+#quality-teacher div{
+    display: table-cell;
+    vertical-align: top;
+    padding-top: 15px;
+}
+#quality-teacher h2{
+    font-size: 40px;
+}
+#quality-teacher2{
+    position: relative;
+    margin-left: auto;
+    display: block;
+}
+#events-workshops #events-workshops-details{
+    width: 400px;
+    margin-top: 120px;
+}
+#events-workshops h2{
+    font-size: 40px;
+}
+#events-workshops p{
+    font-size: 16px;
+    margin-top: 20px;
 }
