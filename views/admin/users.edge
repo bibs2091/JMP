@@ -2,8 +2,16 @@
 
 @section('content')
 <style scoped>
+    h2{
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 25px;
+        margin: 25px 0;
+    }
     h1{
-        font-size: 23px;
+        font-size: 20px;
         font-weight: bold;
     }
     i{
@@ -21,7 +29,34 @@
         display: inline-block !important;
     }
 </style>
-
+<h2>Users statistics</h2>
+<div class="row">
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Unapproved</h6>
+            <p class="jmp-counter" data-count="{{unapproved}}">0</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Students</h6>
+            <p class="jmp-counter" data-count="4">0</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Coaches</h6>
+            <p class="jmp-counter" data-count="{{coursesNumber}}">0</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Admins</h6>
+            <p class="jmp-counter" data-count="{{coachsNumber}}">0</p>
+        </div>
+    </div>
+</div>
+<br> 
 <h1>Unapproved users</h1><br><br>
 <table class="display" id="unapproved-users">
     <thead>
