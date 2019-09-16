@@ -4169,3 +4169,32 @@ h2 {
     font-weight: 600;
     font-size: 34px;
 }
+.control-card{
+    width: 250px;
+    height: 290px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+}
+.control-card img{
+    height: 120px;
+}
+.control-card h6{
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 25px;
+    width: 100%;
+    text-align: left;
+    margin-top: 20px;
+}
+.control-card p{
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 19px;
+    color: #828282;
+    width: 100%;
+    text-align: left;
+    margin-top: 8px;
+}
