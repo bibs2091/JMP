@@ -128,7 +128,66 @@ action="/events/add" enctype="multipart/form-data">
   </div> 
   <input type="hidden" name="scheduleJSON" id="scheduleJSON-input">
   <input type="hidden" name="sponsorsJSON" id="sponsorsJSON-input">
-  <input type="hidden"  name="tagsJSON" id="tags-input">
+  <input type="hidden" name="tagsJSON" id="tags-input">
+
+</form>
+<!-- schedule-modal -->
+<div class="modal fade add-category-modal add-event-modal" id="add-schedule-modal" tabindex="-1" role="dialog" aria-labelledby="add-schedule-modal"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header header">
+        <h5 class="modal-title">Schedule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="info">
+          <div id="schedule-cards">
+              <div class="schedule-card" style="position:relative">
+                  <span class="close-category-modal" onclick="deleteSchedule(this)">&times;</span>
+                  Item <span class="schedule-number">1</span> 
+                  <br><br>
+                  <div class="md-form form-md">
+                    <input type="text" placeholder="Describe this item in the Schedule" 
+                    onkeyup="saveInputState(this)" class="form-control form-control-lg">
+                    <label>Item name</label>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form">
+                          <input type="text" placeholder="Select a date" 
+                          onchange="saveInputState(this)" id="hh" class="form-control form-control-lg datepicker">
+                          <label>Start day</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form form-md">
+                          <input type="text" placeholder="Select a date" 
+                          onchange="saveInputState(this)" class="form-control form-control-lg timepicker">
+                          <label>Start time</label>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div id="add-question" class="btn" onclick="addScheduleCard()">
+              Add an Item
+          </div>
+      </div>      </div>
+      <div class="modal-footer">
+        <div class="done-btn-container">
+          <div class="btn btn-rounded-important  btn-success" onclick="saveSchedule();saveAnimation('add-schedule');" data-dismiss="modal" aria-label="Close" >
+              Done
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- sponsor-modal -->
+
 <div class="modal fade add-category-modal add-event-modal" id="add-sponsor-modal" tabindex="-1" role="dialog" aria-labelledby="add-sponsor-modal"
   aria-hidden="true">
   <div class="modal-dialog" role="document">

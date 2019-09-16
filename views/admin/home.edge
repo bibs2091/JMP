@@ -1,5 +1,123 @@
 @layout('layouts.dashboard')
 
 @section('content')
-    <h1>admin home</h1>
+<style>
+    #main-content{
+        background: #FCFCFC;
+        padding-left: 40px;
+        font-family: Poppins;
+    }
+    h2{
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 17px;
+        line-height: 25px;
+        margin: 25px 0;
+    }
+</style>
+<div id="user-intro">
+    <img src="/img/udrawPic.png" alt="Welcome">
+    <div class="welcome-user" style="background: #FFF9E6;">
+        <h3>Welcome {{currentUser.info.firstName}},</h3>
+        <p>Ready to get some work done ?</p>
+    </div>
+</div>
+<h2>Statistics</h2>
+<div class="row">
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Users</h6>
+            <p class="jmp-counter" data-count="{{usersNumber}}">0</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Online Users</h6>
+            <p class="jmp-counter" data-count="4">0</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Courses</h6>
+            <p class="jmp-counter" data-count="{{coursesNumber}}">0</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Coaches</h6>
+            <p class="jmp-counter" data-count="{{coachsNumber}}">0</p>
+        </div>
+    </div>
+</div>
+<h2>Control panel</h2>
+<div class="row">
+    <div class="col-md-4 col-sm-2">
+        <center>
+        <div class="control-card card" onclick="location.replace('/admin/settings')">
+            <center>
+                <img src="/img/site_info.png" alt="">
+            </center>
+            <h6>Website setttings</h6>
+            <p>Edit general website information, like logo, website's description...</p>
+        </div>
+        </center>
+    </div>
+    <div class="col-md-4 col-sm-2">
+        <center>
+        <div class="control-card card" onclick="location.replace('/admin/settings')">
+            <center>
+                <img src="/img/undraw_hire_te5y-1.jpg" alt="">
+            </center>
+            <h6>Manage registrations</h6>
+            <p>Accept pending users, open or close registrations for the website</p>
+        </div>
+        </center>
+    </div>
+    <div class="col-md-4 col-sm-2">
+        <center>
+        <div class="control-card card" onclick="location.replace('/admin/users')">
+            <center>
+                <img src="/img/manage_accounts.png" alt="">
+            </center>
+            <h6>Manage accounts</h6>
+            <p>Manage users accounts, approve new users or change users privileges.</p>
+        </div>
+        </center>
+    </div>
+    <div class="col-md-4 col-sm-2">
+        <center>
+        <div class="control-card card" onclick="location.replace('/admin/courses')">
+            <center>
+                <img src="/img/manage_courses.png" alt="">
+            </center>
+            <h6>Manage courses</h6>
+            <p>Check courses, verify their content with the ability to delete the course.</p>
+        </div>
+        </center>
+    </div>
+    <div class="col-md-4 col-sm-2">
+        <center>
+        <div class="control-card card" onclick="location.replace('/admin/events')">
+            <center>
+                <img src="/img/undraw_schedule_pnbk.jpg" alt="">
+            </center>
+            <h6>Manage events</h6>
+            <p>Manage events, check suggested events and validate them.</p>
+        </div>
+        </center>
+    </div>
+    <div class="col-md-4 col-sm-2">
+        <center>
+        <div class="control-card card" onclick="location.replace('/admin/reportcenter')">
+            <center>
+                <img src="/img/undraw_warning_cyit.jpg" alt="">
+            </center>
+            <h6>Report center</h6>
+            <p>Check reported users, courses and technical problems.</p>
+        </div>
+        </center>
+    </div>
+
+</div>
 @endsection

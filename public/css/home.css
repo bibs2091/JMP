@@ -1,0 +1,228 @@
+html,body {
+    max-width: 100%;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    background-color: #fff;
+}
+
+html,body {
+    max-width: 100%;
+    overflow-x: hidden;
+
+}
+.btn-rounded-important {
+    -webkit-border-radius: 10em!important;
+    border-radius: 10em!important;
+}
+#bg_home{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+}
+#nav-home{
+    padding-top: 25px;
+}
+#nav-home .navbar-brand{
+    font-weight: 600;
+}
+#nav-home .navbar-nav{
+    margin-left: auto;
+}
+#nav-home .navbar-nav li{
+    font-size:17px;
+}
+#nav-home .nav-item{
+    margin-right: 17px; 
+}
+#nav-home .nav-link{
+    color: #030403;
+}
+#nav-home .signup{
+    margin-left: 10px;
+    background: black;
+    border-radius: 30px;
+    width: 100px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#nav-home .signup a{
+    font-size:15px;
+    color: #fff;
+}
+#main-section{
+    position: relative;
+    height: 500px;
+}
+#main-section h2{
+    width: 600px;
+    font-size: 60px;
+    margin-top: 100px;
+}
+#main-section p{
+    margin-top: 20px;
+    width: 500px;
+    font-size: 17px;
+}
+#main-section button{
+    margin-top: 20px;
+    margin-left:-5px;
+    color: black;
+    font-weight: 600;
+    padding: 10px 20px;
+    background:  #FFD32A;
+}
+#be-able{
+    position: relative;
+    height: 100vh;
+}
+#bg2_home{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#about_us{
+    background-image: url(/img/background2-total.svg);
+    background-repeat-y: no-repeat;
+    height: 2770px;
+}
+
+#be-able > p{
+    text-align: center; 
+    position: relative;
+    margin-top: 100px;
+    font-weight:600;
+}
+#be-able .card{
+    border: none;
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+#be-able .card:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.17), 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+#be-able .card .card-img-top{
+    height: 230px;
+}
+#be-able .card a{
+    margin-top: 7px;
+    display: block;
+    color: #FFD32A;
+    font-weight: 600;
+}
+#be-able .card .card-title{
+    font-size: 33px;
+}
+#with-jmp{
+    position: relative;
+    padding-top: 0;
+}
+#bg3_home{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#with-jmp > p:first-of-type{
+    text-align: center; 
+    position: relative;
+    margin-top: 100px;
+    font-weight:600;
+}
+#online-tutorials{
+    height: 550px;
+}
+#online-tutorials img{
+    margin-left: 20px;
+}
+
+#online-tutorials #online-tutorials-details{
+    width: 400px;
+    margin-top: 120px;
+}
+#online-tutorials h2{
+    font-size: 40px;
+}
+#online-tutorials p{
+    font-size: 16px;
+    margin-top: 20px;
+}
+#with-jmp button {
+    margin-top: 20px;
+    margin-left:-5px;
+    color: #000;
+    font-weight: 600;
+    padding: 10px 20px;
+    background: #FFD32A;
+}
+#quality-teacher{
+    position: relative;
+    overflow: hidden;
+    margin-top:150px;
+    height: 100vh;
+}
+#quality-teacher div:first-of-type img{
+    width: 110px;
+    margin-top: 40px;
+    margin-left: auto;
+    display: block;
+}
+
+#quality-teacher div{
+    vertical-align: top;
+    padding-top: 15px;
+}
+#quality-teacher h2{
+    font-size: 40px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+#quality-teacher2 img{
+    width: 95%;
+}
+#events-workshops #events-workshops-details{
+    width: 400px;
+    margin-top: 120px;
+}
+#events-workshops h2{
+    font-size: 40px;
+}
+#events-workshops p{
+    font-size: 16px;
+    margin-top: 20px;
+}
+#events-workshops{
+    margin-left: 25px;
+}
+footer{
+    padding-top: 33px;
+    overflow: hidden;
+    margin-bottom: 33px;
+}
+footer h3{
+    font-weight: 600;
+    font-size: 19px;
+}
+footer p{
+    margin-top: 7px;
+    font-size: 16px;
+}
+footer h6{
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+footer li{
+    font-size: 15px;
+    padding: 5px 0;
+}
+footer li a{
+    text-decoration: none;
+    color: #030403;
+}
+footer li a:hover{
+    text-decoration: none;
+}
