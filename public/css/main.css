@@ -4199,3 +4199,152 @@ h2 {
     text-align: left;
     margin-top: 8px;
 }
+/* search page */
+.search-card{
+    background: #FCFCFC;
+    width: 70%;
+    padding: 20px 30px 60px ;
+}
+.search-card h6{
+    width: 100%;
+    text-align: left;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+.result-card{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+    width: 100%;
+    padding: 0;
+}
+.user-result{
+    width: 100%;
+    padding: 7px 20px;
+    height: 90px;
+    display: table;
+    vertical-align: middle
+}
+.result-card .devider{
+    width: 100%;
+    border: 1px solid #BDBDBD;
+}
+.user-result > *{
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.user-result img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.user-result .user-info h6{
+    font-weight: 500;
+    margin: 0;
+    font-size: 17px;
+}
+.user-result .user-info span{
+    color: #828282;
+    font-weight: 500;
+    font-size: 14px;
+}
+.user-result .user-info p{
+    color: #BDBDBD;
+    font-weight: 500;
+    font-size: 14px;
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+.event-result{
+    padding: 10px 25px;
+    cursor: pointer;
+}
+.event-result h6{
+    font-size: 15px;
+    display: inline;
+    width: auto;
+}
+.event-result > div > span {
+    color: #EB5757;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+}
+.event-result .event-date{
+    display: table-cell;
+    vertical-align: middle;
+}
+.event-result .event-date > *{
+    width: 27px;
+    text-align: center;
+}
+.event-result .event-date p:first-child{
+    color: #FFD32A;
+    font-weight: 500;
+    font-size: 14px;
+}
+.event-result .event-date p:last-child{
+    font-weight: 500;
+    font-size: 14px;
+}
+.event-result .event-description{
+    height: 45px;
+    line-height: 19px;
+    display: -webkit-box;
+    color: #696969;
+    padding: 5px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;    
+    overflow: hidden;
+}
+/* courses result */
+.course-result{
+    height: 100px;
+    position: relative;
+}
+.course-result > *{
+    position: absolute;
+}
+.course-result img{
+    top: 0;
+    left: 0;
+    margin: 0;
+    border-radius: 8px 0px 0px 8px;
+    width: 90px;
+    height: 100px;
+}
+.course-result .course-content{
+    top: 0;
+    left: 90px;
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+}
+.course-result .course-content h6{
+    vertical-align: left;
+    width: 100%;
+    font-size: 14px;
+}
+.course-result .course-content p{
+    display: block;
+    position: absolute;
+    top: 35px;
+    right: 95px;
+    text-align: left;
+    width: calc(100% - 100px);
+    height: 45px;
+    line-height: 19px;
+    color: #696969;
+    padding: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
