@@ -11,7 +11,7 @@ $(document).ready(function () {
         "ajax": "/api/users/coaches"
     });
     allAdmins = $('#all-admins').DataTable({
-        "ajax": "/api/users/coaches"
+        "ajax": "/api/users/admins"
     });
 });
 //delete a user by id
@@ -45,8 +45,20 @@ function makeCoach(id) {
         method: 'PUT',
         contentType: 'application/json',
         success: function (result) {
-            unapprovedUsers.ajax.reload();
+            allCoaches.ajax.reload();
             allStudents.ajax.reload();
+        }
+    });
+}
+//make a user coach
+function makeAdmin(id) {
+    $.ajax({
+        url: '/admin/users/makeadmin/' + id,
+        method: 'PUT',
+        contentType: 'application/json',
+        success: function (result) {
+            allAdmins.ajax.reload();
+            allCoaches.ajax.reload();
         }
     });
 }

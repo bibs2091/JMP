@@ -15,7 +15,6 @@ module.exports = async (req, res) => {
         users[i] = users[i].dataValues;
         info = info.dataValues;
         let tools = `<i class='fa fa-times' onclick='deleteUser(${users[i].id})'></i>
-        <i class='fa fa-check' onclick='makeCoach(${users[i].id})'></i>
         `;
         let avatar = `<center><img src='${info.avatar}' class='user-avatar'></center>`;
         let currentUser = [avatar, users[i].email, info.firstName, info.lastName, info.username, info.phone, info.score, tools];
