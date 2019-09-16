@@ -1,5 +1,6 @@
 const Event = require('../../models/Event');
 const Sponsor = require('../../models/Sponsors');
+const Schedules = require('../../models/Schedule');
 module.exports = async (req, res) => {
 	try {
 		console.log(req.body);
@@ -7,16 +8,22 @@ module.exports = async (req, res) => {
 		// the user infos
 		const user = req.user;
 		let validated = false;
+		var cover =null;
+
+
 		// if the user == admin the event will be directly validated 
 		if (user.groupId === 0) {
 			validated = true;
 		}
-		let { cover, planning } = [0, 0];
-		// getting the sponsors names
-		let sponsors = [];
-		sponsors.name = req.body.sponsorsName;
-
-
+		var schedules = [];
+		var sponsors = [];
+		
+		if(req.body.sponsorsJSON){
+			 sponsors = JSON.parse(req.body.sponsorsJSON);
+		}
+		if (req.body.scheduleJSON){
+			schedules = JSON.parse(req.body.scheduleJSON);
+		}
 		// getting event infos
 		// the creator id 	
 		const creatorId = user.id;
@@ -25,10 +32,9 @@ module.exports = async (req, res) => {
 			if (req.files.cover) {
 				cover = req.files.cover;
 			}
-			if (req.files.planning) {
-				planning = req.files.planning;
-			}
+			
 			//getting the sponsors logos
+
 			if (sponsors.name) {
 				sponsors.logo = req.files.logo;
 				// when there is only one sponsor the name and logo are not arrays 
@@ -36,10 +42,11 @@ module.exports = async (req, res) => {
 				if (!Array.isArray(sponsors.name)) {
 					sponsors.name = [sponsors.name];
 					sponsors.logo = [sponsors.logo];
+
 				}
 
 			}
-		}
+
 
 		const { name, date, time, place, description, nbPlace, tags, location } = req.body;
 		// getting the location longitude and latitude
@@ -47,6 +54,7 @@ module.exports = async (req, res) => {
 		const locationLng = location.split("||")[1];
 		// creating the event proposition
 		let newevent = await Event.create({ name, time, date, locationLat, locationLng, description, nbPlace, creatorId, validated, tags });
+
 		// store the images and there link 
 		if (cover) {
 
@@ -60,6 +68,7 @@ module.exports = async (req, res) => {
 			)
 			await cover.mv(__dirname + '/../../public/img/events/covers/' + newevent.id + ".jpg");
 		}
+
 		if (planning) {
 
 			await Event.update(
@@ -71,10 +80,12 @@ module.exports = async (req, res) => {
 				{ where: { id: newevent.id } }
 			)
 			await planning.mv(__dirname + '/../../public/img/events/plannings/' + newevent.id + ".jpg");
+
 		}
 
 
 		//if there is sponsors ,store them 
+
 		if (sponsors.name) {
 			console.log(sponsors.name[1]);
 			let spon = 0;
@@ -91,6 +102,7 @@ module.exports = async (req, res) => {
 				)
 				await sponsors.logo[i].mv(__dirname + '/../../public/img/events/sponsors/' + spon.id + ".jpg");
 			}
+
 		}
 		res.redirect('/events/' + newevent.id);
 

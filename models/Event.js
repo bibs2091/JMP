@@ -5,14 +5,27 @@ const Event = db.define("Event", {
     name: {
         type: Sequelize.STRING
     },
-    date: {
-        type: Sequelize.DATE
+    start_d: {
+        type: Sequelize.STRING
+    },
+    end_d: {
+        type: Sequelize.STRING
+    },
+    start_t: {
+        type: Sequelize.STRING
+    },
+    end_t: {
+        type: Sequelize.STRING
     },
     locationLng: {
         type: Sequelize.STRING
 
     },
     locationLat: {
+        type: Sequelize.STRING
+
+    },
+    location: {
         type: Sequelize.STRING
 
     },

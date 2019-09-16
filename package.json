@@ -30,7 +30,7 @@
 		"pstree.remy": "^1.1.7",
 		"raccoon": "^0.2.8",
 		"redis": "^2.8.0",
-		"sequelize": "^5.15.2",
+		"sequelize": "^5.18.4",
 		"socket.io": "^2.2.0",
 		"stripe": "^7.9.0",
 		"timed-out": "^4.0.1",
