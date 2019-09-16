@@ -7,13 +7,15 @@ const userProfileController = require("../controllers/userProfile");
 const getCurrentUser = require("../controllers/getCurrentUser");
 const techReportController = require("../controllers/techReport");
 const donateController = require("../controllers/donate");
+const searchController = require("../controllers/search");
+
 
 //require middleware
 const homeRedirect = require("../middleware/homeRedirect");
 
 //handling requests
 router.get("/", homeController);
-
+router.get("/search", searchController);
 router.get("/home", (req, res) => {
 	res.redirect("/");
 });
