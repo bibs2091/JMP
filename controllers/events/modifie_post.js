@@ -3,19 +3,31 @@ const Sponsor = require('../../models/Sponsors');
 const Schedule = require('../../models/Schedule');
 module.exports = async(req, res) => {
 	try{
-		console.log(req.body);
-		console.log(req.files);
 		var schedules = [];
 		var sponsors = [];
 		var cover = null;
-		
-		// getting event infos
+
+		var max = "00";
+		var logo =null;
+		if (req.files != null){
+			logo = req.files;
+			max = Object.keys(req.files)[0];
+		}
 		if(req.body.sponsorsJSON){
 			 sponsors = JSON.parse(req.body.sponsorsJSON);
 		}
 		if (req.body.scheduleJSON){
 			schedules = JSON.parse(req.body.scheduleJSON);
 		}
+		max = parseInt(max.substring(max.length-1,max.length));
+		if (max == 0){
+
+			max = sponsors.length+1	;
+		}
+
+		console.log(max);
+
+		// getting event infos
 		// if the images are submmited
 		if (req.files) {
 			if (req.files.cover) {
@@ -30,10 +42,20 @@ module.exports = async(req, res) => {
 			}
 		
 		const id = req.params.id 
-		const { name, start_t,end_t,start_d,end_d, time, description, tags,loc ,location} = req.body;
+		const { name, start_t,end_t,start_d,end_d, time, description, tagsJSON,loc ,location} = req.body;
 		// getting the location longitude and latitude
 		const locationLat = location.split("||")[0] || 35.20822045997799;
 		const locationLng = location.split("||")[1] || -0.6333231925964355; 
+		var tags ="";
+		var tagsJS="";
+		if (tagsJSON.length)
+			tagsJS = JSON.parse(tagsJSON);
+		else
+			tagsJS = [];
+		for (let i=0;i<tagsJS.length;i++){
+			tags += "||"+tagsJS[i];
+		}
+		tags = tags.substring(2,tags.length);
 		let newevent = await Event.update(
 	        {
 	        	name,
@@ -47,6 +69,38 @@ module.exports = async(req, res) => {
 	        },
 	        {where : {id}}
 	        );
+
+		var oldSponsors = [];
+		for (let i=0;i<max-1;i++){
+
+			let sponsor = await Sponsor.findOne(
+				{where : {
+					name:sponsors[i],
+					eventId : id
+				}
+			});
+			console.log(sponsor);
+			oldSponsors.push(sponsor);
+		}
+
+		//for (var i = oldSponsors.length - 1; i >= 0; i--) {
+		//}	
+
+		await Sponsor.destroy({
+			where :{
+				eventId:id
+			}
+		});
+		for(let i=0;i<oldSponsors.length;i++){
+			await Sponsor.create({
+				id : oldSponsors[i].id,
+				name : oldSponsors[i].name,
+				eventId : id,
+				logo : oldSponsors[i].logo
+
+			})
+
+		}
 		if (cover != null){
 
 		    	newevent = await Event.update(
@@ -76,34 +130,31 @@ module.exports = async(req, res) => {
 						}
 					)
 			}
-		    if (sponsors.length){
-		    	await Sponsor.destroy({
-					where :  {
-						eventId:id
-					}
-				});
-		    	let spon =0;
-				for(let i=0;i<sponsors.length;i++){
-					if (sponsors[i] != ""){
-						spon = await Sponsor.create({
-							eventId : id,
-							name :sponsors[i]
+		    if(sponsors.length){
+			let spon =0;
+			for(let i=max-1;i<sponsors.length;i++){
+				if (sponsors[i] != ""){
+					spon = await Sponsor.create({
+						eventId : id,
+						name :sponsors[i]
 
-						});
-						if(req.files)
-							if(req.files.sponsorImage){
+					});
+					if(req.files){
+
+
 							await Sponsor.update(
 								{
 									logo : '/img/events/sponsors/'+ spon.id + ".jpg" 
 								},
 									{ where: { id: spon.id } }
 								)
-							await logo[i].mv(__dirname + '/../../public/img/events/sponsors/'+ spon.id + ".jpg");
-						}
+							await logo[Object.keys(req.files)[i-max+1]].mv(__dirname + '/../../public/img/events/sponsors/'+ spon.id + ".jpg");
+
+				}
 
 					}
 				}
-		    }
+		}
 		    res.redirect('/events/'+id);
 	} catch(err) {
 		console.log(err);

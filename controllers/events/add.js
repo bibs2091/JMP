@@ -7,7 +7,8 @@ module.exports = async (req, res) => {
 		const user = req.user;
 		let validated = false;
 		var cover =null;
-
+		console.log(req.body);
+		console.log(req.files);
 
 		// if the user == admin the event will be directly validated 
 		if (user.groupId === 0) {
@@ -45,7 +46,11 @@ module.exports = async (req, res) => {
 		const locationLat = location.split("||")[0] || 35.20822045997799;
 		const locationLng = location.split("||")[1] || -0.6333231925964355; 
 		var tags ="";
-		const tagsJS = JSON.parse(tagsJSON);
+		var tagsJS="";
+		if (tagsJSON.length)
+			tagsJS = JSON.parse(tagsJSON);
+		else
+			tagsJS = [];
 		for (let i=0;i<tagsJS.length;i++){
 			tags += "||"+tagsJS[i];
 		}
