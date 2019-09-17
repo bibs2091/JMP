@@ -8,7 +8,6 @@ const Notification = db.define("Notification", {
     },
     text: {
         type: Sequelize.STRING,
-        allowNull: false,
     },
     generated: {
         type: Sequelize.DATE,
