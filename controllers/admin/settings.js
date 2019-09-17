@@ -1,10 +1,8 @@
 const UsersInfo = require("../../models/UsersInfo");
 const InfoSite = require("../../models/InfoSite");
 
-
 module.exports = async (req, res) => {
     try {
-
         var currentUser = req.user;
         var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
         delete currentUser.password;
@@ -23,7 +21,6 @@ module.exports = async (req, res) => {
             });
             info = await InfoSite.findAll();
         };
-        console.log(info);
         res.render("admin.settings", {
             pageName: "Settings",
             pageTitle: "Settings - Dashboard",
