@@ -3,6 +3,7 @@ const Messages = require('../models/Message')
 const RawUsers = require('../models/Users')
 
 const { sendNotification } = require('../controllers/notificationSys')
+const { triggerPush } = require('../controllers/triggerPush')
 
 const Op = require('sequelize').Op
 
@@ -100,12 +101,15 @@ const events = (io) => {
 
                                 // FIXME: notification
                                 let notification = await sendNotification(message.to, msg.text)
+                                //push notification
+                                let push = await triggerPush(message.to, msg.text)
+                                // console.log(push)
+
                                 if (notification) {
                                     delete msg.id
                                     delete msg.to
                                     delete msg.from
                                     msg.notificationId = notification.id
-                                    console.log(msg)
                                     io.to(socketId).emit('msgNotification', msg);
                                 }
 
@@ -198,7 +202,6 @@ const formatMessage = async (msg) => {
     msg.senderName = sender.firstName + ' ' + sender.lastName;
     msg.senderUsername = sender.username;
     msg.senderAvatar = sender.avatar;
-    console.log('message has been formatted');
     return msg;
 
 }
@@ -236,7 +239,6 @@ const sendToAll = async (message, io) => {
                         delete msgFormated.from
                         msg.notificationId = notification.id
 
-                        console.log(msgFormated)
                         io.to(socketId).emit('msgNotification', msgFormated);
                     }
 
@@ -284,7 +286,6 @@ const sendToStudents = async (message, io) => {
                     delete msgFormated.from
                     msg.notificationId = notification.id
 
-                    console.log(msgFormated)
                     io.to(socketId).emit('msgNotification', msgFormated);
                 }
 
@@ -333,7 +334,6 @@ const sendToCoach = async (message, io) => {
                         delete msgFormated.from
                         msg.notificationId = notification.id
 
-                        console.log(msgFormated)
                         io.to(socketId).emit('msgNotification', msgFormated);
                     }
 
@@ -364,3 +364,5 @@ const isCoach = async (id) => {
     let user = await RawUsers.findByPk(id)
     return user.dataValues.groupId === 1
 }
+
+
