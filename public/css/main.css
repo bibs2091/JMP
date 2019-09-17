@@ -1939,7 +1939,7 @@ input[name="lastName"] {
 }
 
 #tags input[type=text]:focus:not([readonly]) {
-    box-shadow: none;
+    box-shadow: none!important;
 }
 
 #tag-typer {
