@@ -5,10 +5,12 @@ const router = express.Router();
 const homeController = require("../controllers/coach/home");
 const editProfileController = require("../controllers/coach/profile");
 const myCoursesController = require("../controllers/coach/mycourses");
+const myEventsController = require("../controllers/coach/myevents");
 
 //handling requests 
 router.get("/home", homeController);
 router.get("/editprofile", editProfileController);
 router.get("/mycourses", myCoursesController);
+router.get("/myevents", myEventsController);
 
 module.exports = router;

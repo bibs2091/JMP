@@ -1231,9 +1231,9 @@ input[name="lastName"] {
     width: 100%;
     background: #1dbf70;
     height: 100%;
-    font-weight: 700;
-    font-size: 19px;
-    color: lemonchiffon;
+    font-weight: 600;
+    font-size: 13px;
+    color: white;
     margin: 19px 0px 0px 0px;
     border-radius: 4px;
 }
@@ -1242,7 +1242,7 @@ input[name="lastName"] {
 
 .delete-button {
     font-weight: 500;
-    font-size: 19px;
+    font-size: 13px;
     margin-right: 4%;
 }
 
@@ -1270,6 +1270,10 @@ input[name="lastName"] {
 #category-image {
     cursor: pointer;
     margin-top: 30px;
+    max-width: 100%;
+    height: 20vh;
+    margin: 0 auto;
+    display: block;
 }
 
 @media (max-width: 669px) {
@@ -1296,7 +1300,6 @@ input[name="lastName"] {
         margin-bottom: 35px;
     }
     .category-container:hover {
-        z-index: 9999;
         width: 225px;
         height: 135px;
     }
@@ -1306,15 +1309,14 @@ input[name="lastName"] {
 /* --------------- course details ------------------ */
 
 #coverImage {
-    width: 100%;
+    width: 99%;
     height: 19vw;
     background: url("/img/cover-nodejs.jpg") no-repeat;
     background-size: 100% 100%;
     display: block;
     position: relative;
     overflow: hidden;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin: 20px 0 40px 0;
 }
 
 #coverImage h1 {
@@ -1325,12 +1327,13 @@ input[name="lastName"] {
     font-weight: 500;
     color: white;
     width: 600px;
+    font-weight: 600;
 }
 
 #coverImage #imgTags {
     position: absolute;
-    bottom: 10px;
-    margin-left: 20px;
+    bottom: 15px;
+    margin-left: 50px;
 }
 
 #coverImage #imgTags span {
@@ -1377,6 +1380,7 @@ input[name="lastName"] {
     font-size: 18px;
     margin-bottom: 15px;
     font-weight: 600;
+    text-align: center;
 }
 
 #instructorsHR {
@@ -1753,18 +1757,23 @@ input[name="lastName"] {
     #courseLessons_details {
         margin: 15px 0;
     }
+    #coverImage #imgTags{
+        margin-left: 20px;
+    }
 }
 
 
 /* add course page */
 
 #upload-course-cover {
-    height: 30vh;
+    max-width: 100%;
+    height: 28vh;
     margin: 25px auto;
     display: block;
     border-radius: 7px;
     cursor: pointer;
 }
+
 
 .add-course-container {
     padding: 20px;
@@ -2360,6 +2369,7 @@ input[name="lastName"] {
 }
 
 #upload-event-cover {
+    max-width: 100%;
     height: 18vw;
     cursor: pointer;
     margin: 25px auto;
