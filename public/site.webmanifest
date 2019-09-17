@@ -3,7 +3,7 @@
   "name": "Junior makers program",
   "description": "Network of scientific clubs specialized in the field of Electronics, Robotics, Programming and Computer Science dedicated to the next generation",
   "icons": [{
-    "src": "public/favicon.png",
+    "src": "/favicon.png",
     "type": "image/png",
     "sizes": "192x192"
   }],
