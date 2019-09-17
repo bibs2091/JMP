@@ -156,7 +156,19 @@ router.get("/new_message", async (req, res) => {
 	var userInfo = await Users.findOne({ where: { userId: req.user.id } });
 	delete currentUser.password;
 	currentUser.info = userInfo.dataValues;
-	res.render('messages', { currentUser });
+
+	var newUserMessage;
+	if (req.query.user) {
+		newUserMessage = await Users.findOne({
+			where: { userId: parseInt(req.query.user) }
+		});
+	}
+	res.render('messages', {
+		currentUser,
+		pageName: "Send a new message",
+		pageTitle: "Send a new message",
+		newUserMessage
+	});
 });
 
 

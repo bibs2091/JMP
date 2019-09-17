@@ -14,7 +14,7 @@ const searchController = require("../controllers/search");
 const homeRedirect = require("../middleware/homeRedirect");
 
 //handling requests
-router.get("/", homeController);
+router.get("/", homeRedirect, homeController);
 router.get("/search", searchController);
 router.get("/home", (req, res) => {
 	res.redirect("/");

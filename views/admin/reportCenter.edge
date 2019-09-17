@@ -33,7 +33,11 @@
       @each(report in reports)
       <li>
           <div onclick="getDetails({{report.id}})" style="margin-left:24px;">
-            <p class="report_title">{{report.indictedType}} {{report.indicted}} has been reported for {{report.type}}</p>
+            @if(report.indictedType == "Quiz" )
+            <p class="report_title">A {{report.indictedType}} in course {{report.courseName}} has been reported for {{report.type}}</p>
+            @else
+            <p class="report_title">{{report.indictedType}}  {{report.indicted}} has been reported for {{report.type}}</p>
+            @endif
             <p class="report_detailB">{{report.reportDetails}}</p>
           </div>
           <p class="report_timing">{{report.date}}</p>
