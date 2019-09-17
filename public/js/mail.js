@@ -1138,6 +1138,7 @@ $(function () {
 
     },
     onAdd: function (item) {
+      console.log("here")
       sync(this.tokenInput("get"));
     },
     onDelete: function (item) {
