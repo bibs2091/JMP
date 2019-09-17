@@ -95,4 +95,9 @@
       @endif
     </div>
   </center>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const param = urlParams.get('q');
+    document.getElementById("main-search").value = param;
+  </script>
 @endsection

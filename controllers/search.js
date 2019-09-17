@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
 
         //getting the search query
         var query = req.query.q;
-        if (query || query.length > 1) {
+        if (query && query.length > 1) {
             //gettings for users
             var users = await UsersInfo.findAll({
                 where: {
