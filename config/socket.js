@@ -96,10 +96,14 @@ const events = (io) => {
 
                                 //broadcast message
                                 io.to(socketId).emit('newMessage', msg);
-                                console.log(message.to)
+                                console.log(message)
                                 // FIXME: notification
                                 let notification = await sendNotification(message.to, msg.text, io)
                                 if (notification) {
+                                    delete msg.id
+                                    delete msg.to
+                                    delete msg.from
+                                    console.log(msg)
                                     io.to(socketId).emit('msgNotification', msg);
 
                                 }
