@@ -9,6 +9,9 @@ module.exports = async (req, res) => {
 	try {
 		//getting the current user
 		var currentUser = req.user;
+		var isAdmin = false;
+		var isOwner = false;
+
 		var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
 		delete currentUser.password;
 		currentUser.info = userInfo.dataValues;
@@ -42,6 +45,16 @@ module.exports = async (req, res) => {
 				}
 			})
 		var event = await Event.findByPk(req.params.id);
+		const notvalidated = !event.validated; 
+		if (currentUser.groupId == 0){
+			isAdmin = true;
+			isOwner = true;
+		}else if (currentUser.groupId == 1){
+
+    		if (currentUser.id == event.creatorId){
+    			isOwner =true;
+    		}
+		}
 		if (!event) {
 			return res.render("404");
 		}
@@ -49,7 +62,7 @@ module.exports = async (req, res) => {
 			schedules[i].start_d = schedules[i].start_d.substring(0,schedules[i].start_d.length-6);
 		}
 		event.tags = event.tags.split("||");
-		console.log(event.tags);
+
 		res.render('events.event', {
 			pageTitle: event.name,
 			event,
@@ -57,6 +70,9 @@ module.exports = async (req, res) => {
 			schedules,
 			registred,
 			currentUser,
+			isAdmin,
+			isOwner,
+			notvalidated,
 			pageName: "event page",
 		});
 	} catch (err) {

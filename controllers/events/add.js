@@ -6,7 +6,8 @@ module.exports = async (req, res) => {
 		// the user infos
 		const user = req.user;
 		let validated = false;
-		var cover = null;
+
+		var cover =null;
 
 
 		// if the user == admin the event will be directly validated 
@@ -39,10 +40,20 @@ module.exports = async (req, res) => {
 		}
 
 
-		const { name, date, time, place, description, nbPlace, tags, location } = req.body;
-		// getting the location longitude and latitude
-		const locationLat = location.split("||")[0];
-		const locationLng = location.split("||")[1];
+
+		const locationLat = location.split("||")[0] || 35.20822045997799;
+		const locationLng = location.split("||")[1] || -0.6333231925964355; 
+		var tags ="";
+		var tagsJS="";
+		if (tagsJSON.length)
+			tagsJS = JSON.parse(tagsJSON);
+		else
+			tagsJS = [];
+		for (let i=0;i<tagsJS.length;i++){
+			tags += "||"+tagsJS[i];
+		}
+		tags = tags.substring(2,tags.length);
+
 		// creating the event proposition
 		let newevent = await Event.create({ name, time, date, locationLat, locationLng, description, nbPlace, creatorId, validated, tags });
 

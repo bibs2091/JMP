@@ -1,5 +1,102 @@
 @layout('layouts.main')
 
-@section('main')
-  <h1>search page</h1>
+@section('content')
+<style scoped>
+  #main-content{
+    background: #FCFCFC;
+    padding-top: 40px;
+  }
+</style>
+    @if(users.length == 0 && events.length == 0 && courses.length == 0)
+    <center>
+      <div id="no-result">
+        <img src="/img/no_result.png" alt="no result found">
+        <h2>No result found</h2>
+      </div>
+    </center>
+    @else
+  <center>
+    <div class="search-card">
+      @if(users.length > 0)
+      <h6>Users</h6>
+      <div class="card result-card">
+        @each(user in users)
+          <div class="user-result redirect" url="/profile/{{user.id}}">
+            <div style="width:75px">
+              <img src="{{user.avatar}}" alt="user picture">
+            </div>
+            <div class="user-info">
+              <h6>{{user.lastName}} {{user.firstName}}</h6>
+              <span>{{user.username}}</span>
+              <p>{{user.bio}}</p>
+            </div>
+          </div>
+          @if(!$loop.last)
+            <div class="devider"></div>
+          @endif
+        @endeach
+      </div>
+      @endif
+      @if(events.length > 0)
+      <h6 style="margin-top:15px;">Events</h6>
+      <div class="card result-card">
+      @each(event in events)
+        <div class="event-result redirect" url="/events/{{event.id}}">
+          <div style="width: 100%;text-align:left;">
+            <h6>{{event.name}}</h6>
+            @if(event.upcoming == true)
+              <span>Upcoming event</span>
+            @endif
+          </div>
+          <div style="display:table;width:100%">
+            <div class="event-date">
+              <p>{{event.month}}</p>
+              <p>{{event.start_d.substring(8,10)}}</p>
+            </div>
+            <p class="event-description">{{event.description}}</p>
+          </div>
+        </div>
+        @if(!$loop.last)
+          <div class="devider"></div>
+        @endif
+      @endeach
+      </div>
+      @endif
+      @if(courses.length > 0)
+      <h6 style="margin-top:15px;">Courses</h6>
+      <div class="card result-card">
+        @each(course in courses)          
+        <div class="course-result redirect" url="/courses/{{course.id}}">
+          <img src="{{course.cover}}"style="border-radius: 
+          @if($loop.first)
+          8px
+          @else
+          0px 
+          @endif
+          0px 0px 
+          @if($loop.last)
+          8px         
+          @else
+          0px
+          @endif
+          ;">
+          <div class="course-content">
+            <h6>{{course.title}} &nbsp;&nbsp;&nbsp;<i class="icon-{{course.level}}" style="font-size: 20px;"></i></h6>
+            <p>{{course.description}}</p>
+          </div>
+        </div>
+        @if(!$loop.last)
+        <div class="devider"></div>
+        @endif
+      @endeach
+      </div>
+      @endif
+      @endif
+    </div>
+  </center>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const param = urlParams.get('q');
+    document.getElementById("main-search").value = param;
+  </script>
 @endsection

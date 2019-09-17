@@ -16,7 +16,7 @@ module.exports = async(req, res) => {
 					eventId : id
 				}})
 		const event = await Event.findOne({where :  {id}});
-		console.log(sponsors);
+		event.tags = event.tags.split("||");
 
 		// format the date value
 		//event.dataValues.date = event.dataValues.date.getFullYear()  + '-' + ('0'+(event.dataValues.date.getMonth()+1)).slice(-2) + '-' + ('0'+event.dataValues.date.getUTCDate()).slice(-2);
@@ -28,6 +28,6 @@ module.exports = async(req, res) => {
 		})
 	} catch(err ) {
 		console.log(err);
-		res.redirect('/errors');
+		res.redirect('/error');
 	}
 }

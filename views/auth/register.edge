@@ -16,8 +16,6 @@
             <link href="https://fonts.googleapis.com/css?family=Montserrat|Poppins|Ubuntu" rel="stylesheet">
             <!-- main CSS style sheet -->
             <link rel="stylesheet" href="/css/main.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div id="contain">
@@ -69,7 +67,7 @@
                     </div>
                 <div class="form-group">
                     <label for="phoneNumber">Phone Number:</label>
-                    <input type="text" class="form-control" name="phoneNumber" minlength="10" maxlength="10">
+                    <input type="tel" pattern="0[5-7][0-9]{8}" class="form-control" name="phoneNumber" minlength="10" maxlength="10">
                    
                </div>
                         <div class="form-group">
@@ -94,4 +92,6 @@
             </div>
         </div>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </html>
