@@ -102,7 +102,11 @@ const events = (io) => {
                                 // FIXME: notification
                                 let notification = await sendNotification(message.to, msg.text)
                                 //push notification
-                                let push = await triggerPush(message.to, msg.text)
+                                let payload = {
+                                    data: `${msg.senderName} has sent you a message.`,
+
+                                }
+                                let push = await triggerPush(message.to, payload)
                                 // console.log(push)
 
                                 if (notification) {

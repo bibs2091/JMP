@@ -74,8 +74,8 @@ router.post('/triggerPush/:id', async (req, res) => {
     console.log(req.body)
     const payload = JSON.stringify({
         // TODO: format the data later
-        title: 'JMP has a notification ',
-        body: req.body.payload
+        title: 'Junior Makers Program',
+        body: req.body.payload.data
     })
 
     try {
