@@ -610,7 +610,7 @@ input[type="search"]:focus {
     margin-bottom: 50px;
     padding-bottom: 20px;
 }
-.fillingInfosBox .md-form textarea.md-textarea:focus:not([readonly])+label, input[type="date"]:focus:not([readonly]), input[type="datetime-local"]:focus:not([readonly]), input[type="email"]:focus:not([readonly]), input[type="number"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), input[type="search-md"]:focus:not([readonly]), input[type="search"]:focus:not([readonly]), input[type="tel"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="time"]:focus:not([readonly]), input[type="url"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]), .md-form textarea.md-textarea:focus:not([readonly]){
+.fillingInfosBox .md-form textarea.md-textarea:focus:not([readonly])+label, .fillingInfosBox input[type="date"]:focus:not([readonly]), .fillingInfosBox input[type="datetime-local"]:focus:not([readonly]), input[type="email"]:focus:not([readonly]), input[type="number"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), input[type="search-md"]:focus:not([readonly]), input[type="search"]:focus:not([readonly]), input[type="tel"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="time"]:focus:not([readonly]), input[type="url"]:focus:not([readonly]),.fillingInfosBox  textarea.md-textarea:focus:not([readonly]), .fillingInfosBox .md-form textarea.md-textarea:focus:not([readonly]){
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25)!important;
     border-bottom: 1px solid #ced4da!important;
 }
@@ -1759,8 +1759,10 @@ input[name="lastName"] {
 /* add course page */
 
 #upload-course-cover {
-    width: 100%;
     height: 30vh;
+    margin: 25px auto;
+    display: block;
+    border-radius: 7px;
     cursor: pointer;
 }
 
@@ -2317,8 +2319,7 @@ input[name="lastName"] {
 
 @media (max-width: 765px) {
     #upload-event-cover {
-        height: 31vw;
-        margin-bottom: 22px;
+        height: 31vw!important;
     }
 }
 
@@ -2359,10 +2360,10 @@ input[name="lastName"] {
 }
 
 #upload-event-cover {
-    width: 100%;
     height: 18vw;
     cursor: pointer;
-    margin: 17px auto;
+    margin: 25px auto;
+    display: block;
     border-radius: 7px;
 }
 
@@ -3345,7 +3346,7 @@ textarea.md-textarea:focus:not([readonly]),
     box-shadow: 0 1px 0 0 #FFD32A;
 }
 
-.md-form textarea.md-textarea:focus:not([readonly])+label,
+.md-form textarea.md-textarea:focus:not([readonly]),
 input[type="date"]:focus:not([readonly]),
 input[type="datetime-local"]:focus:not([readonly]),
 input[type="email"]:focus:not([readonly]),
@@ -4105,7 +4106,7 @@ h2 {
 /* radio buttons */
 
 .question-card [type="radio"]:checked,
-[type="radio"]:not(:checked) {
+.question-card  [type="radio"]:not(:checked) {
     position: static;
     opacity: 1;
     pointer-events: auto;
