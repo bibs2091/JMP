@@ -13,7 +13,9 @@ module.exports = async (req, res) => {
 		delete currentUser.password;
 		currentUser.info = userinfo.dataValues;
 
-		const { id } = req.params
+		const { id } = req.params;
+		if (id == "worker.js")
+			return;
 		let profile = await userInfo.findOne({ where: { userId: id } });
 		if (profile) {
 			profile = profile.dataValues
@@ -88,12 +90,14 @@ const getStudentCourses = async (id) => {
 		})
 		courses = courses.map(course => {
 			return course.dataValues.courseId
-		})
-		let mycourses = await Courses.findAll({
-			where: {
-				id: { [Op.or]: courses }
-			}
-		})
+		});
+		let mycourses = [];
+		if (courses.length > 0)
+			mycourses = await Courses.findAll({
+				where: {
+					id: { [Op.or]: courses }
+				}
+			})
 		mycourses = mycourses.map(async course => {
 			let author = await userInfo.findByPk(course.author)
 			course.dataValues.author = `${author.dataValues.firstName} ${author.dataValues.lastName}`
