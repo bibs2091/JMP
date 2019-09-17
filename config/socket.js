@@ -104,6 +104,7 @@ const events = (io) => {
                                     delete msg.id
                                     delete msg.to
                                     delete msg.from
+                                    msg.notificationId = notification.id
                                     console.log(msg)
                                     io.to(socketId).emit('msgNotification', msg);
                                 }
@@ -233,6 +234,8 @@ const sendToAll = async (message, io) => {
                         delete msgFormated.id
                         delete msgFormated.to
                         delete msgFormated.from
+                        msg.notificationId = notification.id
+
                         console.log(msgFormated)
                         io.to(socketId).emit('msgNotification', msgFormated);
                     }
@@ -279,6 +282,8 @@ const sendToStudents = async (message, io) => {
                     delete msgFormated.id
                     delete msgFormated.to
                     delete msgFormated.from
+                    msg.notificationId = notification.id
+
                     console.log(msgFormated)
                     io.to(socketId).emit('msgNotification', msgFormated);
                 }
@@ -326,6 +331,8 @@ const sendToCoach = async (message, io) => {
                         delete msgFormated.id
                         delete msgFormated.to
                         delete msgFormated.from
+                        msg.notificationId = notification.id
+
                         console.log(msgFormated)
                         io.to(socketId).emit('msgNotification', msgFormated);
                     }
