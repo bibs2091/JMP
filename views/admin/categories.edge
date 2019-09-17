@@ -46,7 +46,7 @@
               </div>
               <div class="modal-body">
                   <img src="/img/upload-course-cover.svg" alt="upload a cover" 
-                  for="image" id="category-image" style="  width: 100%;"
+                  for="image" id="category-image"
                   onclick="triggerInput('category-image-input')">
                   <input type="file" accept="image/*" style="display:none" 
                   name="image" id="category-image-input" onchange="loadImage(event,'category-image')" required>
@@ -80,7 +80,7 @@
       <form class="info-container" method="POST" action="/admin/category/update" enctype="multipart/form-data">
       <div class="modal-body">
             <img src="/img/upload-course-cover.svg" alt="upload a cover" 
-                for="image" id="update-category-image" height="150" style="margin: 0 auto;display: block;"
+                for="image" id="update-category-image" style="margin: 0 auto;display: block; max-width:100%;"
                 onclick="triggerInput('update-category-image-input')">
             <input type="file" accept="image/*" style="display:none" 
                 name="image" id="update-category-image-input" onchange="loadImage(event,'update-category-image')">
