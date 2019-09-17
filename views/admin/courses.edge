@@ -1,5 +1,45 @@
 @layout('layouts.dashboard')
 
 @section('content')
-  <h1>courses page</h1>
+<header class="header">
+    <div class="search-box">
+      <input placeholder="Search..." onkeyup="searchReport(this.value)"><span class="icon glyphicon glyphicon-search"></span>
+    </div>
+</header>
+    <div class="container">
+      <div class="row" style="margin-top: 60px">
+          @each(course in courses)      
+          <div class="col-lg-4 col-md-6">
+              <div class="course-card card redirect" style="height: 270px" url="/courses/update/{{course.id}}">
+                <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
+                <h5 style="position:relative;">{{course.title}}</h5>
+                <table class="course-card-content">
+                  <tr>
+                    <td><img src="/img/ouss.jpg" class="course-author-pic"></td>
+                    <td class="td-space"></td>
+                    <td class="course-author">
+                      <h6>{{course.author}}</h6>
+                    </td>
+                    <td class="td-devider"></td>
+                    <td class="time-and-diff">
+                      <p>{{course.duration}}&nbsp;&nbsp;<i class="icon-time"></i></p><br>
+                      <p>{{course.level}}&nbsp;&nbsp;
+                        @if(course.level == "beginner")
+                        <i class="icon-beginner"></i>
+                        @elseif(course.level == "intermediat")
+                        <i class="icon-intermediat"></i>
+                        @else
+                        <i class="icon-advanced"></i>
+                        @endif
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+          </div>  
+        @endeach 
+      </div>
+    </div>
+
+</header>
 @endsection
