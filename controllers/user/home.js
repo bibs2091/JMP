@@ -72,14 +72,14 @@ module.exports = async (req, res) => {
         //getting the events
         var events = await Events.findAll({
             where: {
-                date: { [Op.gt]: new Date() }
+                start_d: { [Op.gt]: new Date() }
             },
             limit: 2
         });
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         for (let i = 0; i < events.length; i++) {
             events[i] = events[i].dataValues;
-            events[i].month = months[events[i].date.getMonth()];
+            events[i].month = months[events[i].start_d.substring(5, 7)];
         }
         var categories = await Categories.findAll({ limit: 3 });
         console.log(courses);
