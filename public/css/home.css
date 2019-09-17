@@ -69,7 +69,7 @@ html,body {
     font-size: 17px;
 }
 #main-section button{
-    margin-top: 20px;
+    margin-top: 30px;
     margin-left:-5px;
     color: black;
     font-weight: 600;
@@ -94,13 +94,15 @@ html,body {
 #be-able > p{
     text-align: center; 
     position: relative;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     font-weight:600;
+    font-size: 20px;
 }
 #be-able .card{
     border: none;
     margin-top:50px;
     margin-bottom: 50px;
+    box-shadow: 4px 4px 20px rgba(255, 211, 42, 0.21);
 }
 #be-able .card:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.17), 0 10px 10px rgba(0, 0, 0, 0.2);
@@ -131,9 +133,11 @@ html,body {
     position: relative;
     margin-top: 100px;
     font-weight:600;
+    font-size: 20px;
 }
 #online-tutorials{
     height: 550px;
+    padding-left: 40px;
 }
 #online-tutorials img{
     margin-left: 20px;
@@ -161,14 +165,14 @@ html,body {
 #quality-teacher{
     position: relative;
     overflow: hidden;
-    margin-top:150px;
+    margin-top: 128px;
     height: 100vh;
+    padding: 0 45px;
 }
 #quality-teacher div:first-of-type img{
-    width: 110px;
-    margin-top: 40px;
-    margin-left: auto;
+    width: 95%;
     display: block;
+    margin-top: -65px;
 }
 
 #quality-teacher div{
@@ -177,15 +181,22 @@ html,body {
 }
 #quality-teacher h2{
     font-size: 40px;
-    margin-top: 60px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+#quality-teacher p{
+    max-width: 350px;
 }
 #quality-teacher2 img{
     width: 95%;
 }
 #events-workshops #events-workshops-details{
     width: 400px;
-    margin-top: 120px;
+    margin-top: 100px;
+    margin-left: 50px;
+}
+#events-workshops img{
+    margin-left: 110px;
 }
 #events-workshops h2{
     font-size: 40px;
@@ -196,6 +207,9 @@ html,body {
 }
 #events-workshops{
     margin-left: 25px;
+}
+hr{
+    display: none;
 }
 footer{
     padding-top: 33px;
@@ -225,4 +239,113 @@ footer li a{
 }
 footer li a:hover{
     text-decoration: none;
+}
+
+@media (max-width:992px){
+    #online-tutorials img{
+        display: block;
+        margin:0 auto;
+        max-width: 100vw;
+    }
+    #online-tutorials #online-tutorials-details{
+        display: block;
+        margin:0 auto;
+        margin-top: 20px!important;
+    }
+    #online-tutorials #online-tutorials-details p,#online-tutorials h2,#online-tutorials a{
+        text-align: center;
+        display: block;
+        padding: 0 5px;
+    }    
+    #quality-teacher h2 {
+        margin-top: 20px;
+    }
+    #events-workshops{
+        margin-left: 0;
+    }
+    #events-workshops img{
+        width: 80%;
+        padding: 0 12vw;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-top: 100px;
+
+    }
+    #events-workshops #events-workshops-details{
+        margin-left: 0;
+        margin: 20px auto;
+        width: auto;
+    }
+    #events-workshops p{
+        margin: 0 auto;
+    }
+    #events-workshops h2,#events-workshops p,#events-workshops a{
+        text-align: center;
+        display:block;
+    }
+    hr{
+        display: block;
+        color: black;
+    }
+
+}
+
+@media (max-width:768px){
+    #main-section {
+        height: 500px;
+    }
+    #main-section h2{
+        font-weight: 600;
+        font-size: 8vw;
+        width: auto;
+        text-align: center;
+        margin-top: 220px;
+    }
+    #main-section p{
+        width: auto;
+        text-align: center;
+    }
+    #main-section a{
+        display: block;
+        text-align: center;
+    }
+    #about_us {
+        height: auto;
+        background-image: url(/img/background2-total-md.svg);
+    }
+
+    #be-able{
+        height:1250px; 
+    }
+    #be-able p{
+        font-size: 19px;
+    }
+    #be-able .card{
+        margin-left: auto!important;
+        margin-right: auto!important;
+    }
+    #quality-teacher {
+        height: 550px;
+        overflow: hidden;
+    }
+    #quality-teacher div:first-of-type img{
+        width: 95%;
+        padding: 0 12vw;
+    }
+    #quality-teacher div{
+        margin: 0 auto;
+        height: fit-content;
+    }
+    #quality-teacher .order-md-first{
+        display: none;
+    }
+    #quality-teacher p{
+        margin: 0 auto;
+    }
+    #quality-teacher h2,#quality-teacher p,#quality-teacher a{
+        text-align: center;
+        display:block;
+    }  
+    
 }

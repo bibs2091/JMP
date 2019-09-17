@@ -2,8 +2,16 @@
 
 @section('content')
 <style scoped>
+    h2{
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 25px;
+        margin: 25px 0;
+    }
     h1{
-        font-size: 23px;
+        font-size: 20px;
         font-weight: bold;
     }
     i{
@@ -17,36 +25,100 @@
     body{
         overflow-x: hidden;
     }
+    select{
+        display: inline-block !important;
+    }
 </style>
-
-<h1>unapproved users</h1><br><br>
+<h2>Users statistics</h2>
+<div class="row">
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Unapproved</h6>
+            <p class="jmp-counter" data-count="{{unapproved}}">0</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Students</h6>
+            <p class="jmp-counter" data-count="{{students}}">0</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Coaches</h6>
+            <p class="jmp-counter" data-count="{{coaches}}">0</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stat-card">
+            <h6>Admins</h6>
+            <p class="jmp-counter" data-count="{{admins}}">0</p>
+        </div>
+    </div>
+</div>
+<br> 
+<h1>Unapproved users</h1><br><br>
 <table class="display" id="unapproved-users">
     <thead>
         <tr>
-            <th>email</th>
-            <th>first name</th>
-            <th>last name</th>
-            <th>username</th>
-            <th>phone</th>
-            <th>score</th>
-            <th>tools</th>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Username</th>
+            <th>Phone</th>
+            <th>Score</th>
+            <th>Tools</th>
         </tr>
     </thead>
 </table>
 <br><br><br><br>
-<h1>All users</h1><br><br>
+<h1>Students</h1><br><br>
 
 <table class="display" id="all-users">
     <thead>
         <tr>
-            <th>avatar</th>
-            <th>email</th>
-            <th>first name</th>
-            <th>last name</th>
-            <th>username</th>
-            <th>phone</th>
-            <th>score</th>
-            <th>tools</th>
+            <th>Avatar</th>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Username</th>
+            <th>Phone</th>
+            <th>Score</th>
+            <th>Tools</th>
+        </tr>
+    </thead>
+</table>
+<br><br><br><br>
+<h1>Coaches</h1><br><br>
+
+<table class="display" id="all-coaches">
+    <thead>
+        <tr>
+            <th>Avatar</th>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Username</th>
+            <th>Phone</th>
+            <th>Score</th>
+            <th>Tools</th>
+        </tr>
+    </thead>
+</table>
+<br><br><br><br>
+<h1>Admins</h1><br><br>
+
+<table class="display" id="all-admins">
+    <thead>
+        <tr>
+            <th>Avatar</th>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Username</th>
+            <th>Phone</th>
+            <th>Score</th>
+            <th>Tools</th>
         </tr>
     </thead>
 </table>

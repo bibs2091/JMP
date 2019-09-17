@@ -38,6 +38,10 @@ router.put("/users/makecoach/:id", (req, res) => {
     Users.update({ groupId: 1 }, { where: { id: req.params.id } });
     res.send({ success: true });
 });
+router.put("/users/makeadmin/:id", (req, res) => {
+    Users.update({ groupId: 0 }, { where: { id: req.params.id } });
+    res.send({ success: true });
+});
 router.get("/settings", settingsController);
 router.get("/reportcenter", reportCenterController);
 
