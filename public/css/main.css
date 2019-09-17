@@ -4310,6 +4310,7 @@ h2 {
 .course-result{
     height: 100px;
     position: relative;
+    cursor: pointer;
 }
 .course-result > *{
     position: absolute;

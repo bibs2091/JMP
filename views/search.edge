@@ -9,6 +9,10 @@
 </style>
   <center>
     <div class="search-card">
+      @if(users.length == 0 && events.length == 0 && courses.length == 0)
+      no result
+      @else
+      @if(users.length > 0)
       <h6>Users</h6>
       <div class="card result-card">
         <div class="user-result">
@@ -33,6 +37,8 @@
           </div>
         </div>
       </div>
+      @endif
+      @if(events.length > 0)
       <h6 style="margin-top:15px;">Events</h6>
       <div class="card result-card">
         <div class="event-result">
@@ -63,6 +69,8 @@
           </div>
         </div>
       </div>
+      @endif
+      @if(courses.length > 0)
       <h6 style="margin-top:15px;">Courses</h6>
       <div class="card result-card">
         <div class="course-result">
@@ -74,6 +82,8 @@
         </div>
         <div class="devider"></div>
       </div>
+      @endif
+      @endif
     </div>
   </center>
 @endsection
