@@ -228,6 +228,8 @@ function deleteCourse(id) {
 }
 //Delete Course by id in report actions
 function deleteCourse2(id) {
+    mscConfirm("Dangerous Operation!", "Are you sure you want to do this action?", function () {
+
     $.ajax({
         url: '/courses/delete/' + id,
         method: 'DELETE',
@@ -236,9 +238,13 @@ function deleteCourse2(id) {
             location.replace("/admin/reportCenter");
         }
     });
+    });
 }
 //Delete Report by id
 function deleteReport(id) {
+
+    mscConfirm("Dangerous Operation!", "Are you sure you want to do this action?", function () {
+
     $.ajax({
         url: '/report/delete/' + id,
         method: 'DELETE',
@@ -246,6 +252,7 @@ function deleteReport(id) {
         success: function (result) {
             location.replace("/admin/reportCenter");
         }
+    });
     });
 }
 function getDetails(id) {

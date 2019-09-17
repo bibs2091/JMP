@@ -12,18 +12,21 @@ module.exports = async (req, res) => {
 	let username = temp.dataValues.username;
 	let indictedType = req.params.type
 	let type = req.body.type;
-	let reportDetails = req.body.reportDetails
+	let reportDetails = req.body.reportDetails;
+	var indictedId = null;
 	if (indictedType==="User" ){
 	let user = await UsersInfo.findOne({where : {userId : req.params.id}});
 	var indicted = user.dataValues.username;
+	indictedId = user.dataValues.id;
 	}
 	else if(indictedType==="Course"){
 	let course = await Courses.findOne({where : {id : req.params.id}});
 	var indicted = course.dataValues.title;
+	indictedId = course.dataValues.id;
 	}else if(indictedType==="Quiz"){
 	quiz = await Quizs.findOne({where : {chapterId : req.params.id}});
 	var indicted = quiz.dataValues.title;
-	console.log("id = "+quiz.id);
+	indictedId = quiz.dataValues.id;
 	}
 	else {
 		return res.redirect('404');
@@ -48,12 +51,9 @@ module.exports = async (req, res) => {
 			return res.redirect(req.headers.referer.slice(21));
 		}
 	// adding the report
-	if (indictedType == "Quiz"){
 
-		await Report.create({username,type,indictedType,indictedId : quiz.id,indicted,reportDetails});
-	}else {
-		await Report.create({username,type,indictedType,indicted,reportDetails});
-	}
+		await Report.create({username,type,indictedType,indictedId,indicted,reportDetails});
+	
 
 	req.flash("reportAdded","your report had been sent to the admins");	
 	res.redirect(req.headers.referer.slice(21));
