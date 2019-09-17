@@ -5,6 +5,7 @@ const sendNotification = async (userId, text) => {
         let not = await Notification.create({ userId: userId, text: text })
         if (not) {
             not = not.dataValues
+
             return not
         }
     } catch (error) {
