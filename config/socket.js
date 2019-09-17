@@ -72,6 +72,7 @@ const events = (io) => {
                         if (await isAdmin(message.from) || await isCoach(message.from)) {
                             const msgSuccessfullySent = await sendToCoach(message, io)
                             if (msgSuccessfullySent) {
+
                                 socket.emit('status', { success: true })
                             } else {
                                 socket.emit('status', { success: false })
@@ -96,16 +97,15 @@ const events = (io) => {
 
                                 //broadcast message
                                 io.to(socketId).emit('newMessage', msg);
-                                console.log(message)
+
                                 // FIXME: notification
-                                let notification = await sendNotification(message.to, msg.text, io)
+                                let notification = await sendNotification(message.to, msg.text)
                                 if (notification) {
                                     delete msg.id
                                     delete msg.to
                                     delete msg.from
                                     console.log(msg)
                                     io.to(socketId).emit('msgNotification', msg);
-
                                 }
 
                                 console.log('notification has been')
@@ -227,6 +227,16 @@ const sendToAll = async (message, io) => {
                     //broadcast message
                     io.to(socketId).emit('newMessage', msgFormated);
 
+                    //notification
+                    let notification = await sendNotification(message.to, msgFormated)
+                    if (notification) {
+                        delete msgFormated.id
+                        delete msgFormated.to
+                        delete msgFormated.from
+                        console.log(msgFormated)
+                        io.to(socketId).emit('msgNotification', msgFormated);
+                    }
+
                 } catch (err) {
                     console.log(err);
                 }
@@ -262,6 +272,16 @@ const sendToStudents = async (message, io) => {
 
                 //broadcast message
                 io.to(socketId).emit('newMessage', msgFormated);
+
+                //notification
+                let notification = await sendNotification(message.to, msgFormated)
+                if (notification) {
+                    delete msgFormated.id
+                    delete msgFormated.to
+                    delete msgFormated.from
+                    console.log(msgFormated)
+                    io.to(socketId).emit('msgNotification', msgFormated);
+                }
 
             } catch (error) {
                 console.log(error)
@@ -300,6 +320,15 @@ const sendToCoach = async (message, io) => {
 
                     //broadcast message
                     io.to(socketId).emit('newMessage', msgFormated);
+                    //notification
+                    let notification = await sendNotification(message.to, msgFormated)
+                    if (notification) {
+                        delete msgFormated.id
+                        delete msgFormated.to
+                        delete msgFormated.from
+                        console.log(msgFormated)
+                        io.to(socketId).emit('msgNotification', msgFormated);
+                    }
 
                 } catch (error) {
                     console.log(error)
