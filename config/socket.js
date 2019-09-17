@@ -101,13 +101,13 @@ const events = (io) => {
 
                                 // FIXME: notification
                                 let notification = await sendNotification(message.to, msg.text)
+
                                 //push notification
                                 let payload = {
                                     data: `${msg.senderName} has sent you a message.`,
 
                                 }
                                 let push = await triggerPush(message.to, payload)
-                                // console.log(push)
 
                                 if (notification) {
                                     delete msg.id
@@ -237,6 +237,13 @@ const sendToAll = async (message, io) => {
 
                     //notification
                     let notification = await sendNotification(message.to, msgFormated)
+                    //push notification
+                    let payload = {
+                        data: `${msgFormated.senderName} has sent you a message.`,
+
+                    }
+                    let push = await triggerPush(message.to, payload)
+
                     if (notification) {
                         delete msgFormated.id
                         delete msgFormated.to
@@ -284,6 +291,13 @@ const sendToStudents = async (message, io) => {
 
                 //notification
                 let notification = await sendNotification(message.to, msgFormated)
+
+                //push notification
+                let payload = {
+                    data: `${msgFormated.senderName} has sent you a message.`,
+
+                }
+                let push = await triggerPush(message.to, payload)
                 if (notification) {
                     delete msgFormated.id
                     delete msgFormated.to
@@ -332,6 +346,13 @@ const sendToCoach = async (message, io) => {
                     io.to(socketId).emit('newMessage', msgFormated);
                     //notification
                     let notification = await sendNotification(message.to, msgFormated)
+
+                    //push notification
+                    let payload = {
+                        data: `${msgFormated.senderName} has sent you a message.`,
+
+                    }
+                    let push = await triggerPush(message.to, payload)
                     if (notification) {
                         delete msgFormated.id
                         delete msgFormated.to
