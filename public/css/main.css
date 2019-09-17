@@ -4348,3 +4348,12 @@ h2 {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+#no-result{
+    margin-top: 10px;
+}
+#no-result h2{
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 54px;
+    margin-top: 20px;
+}
