@@ -99,7 +99,10 @@ const events = (io) => {
                                 console.log(message.to)
                                 // FIXME: notification
                                 let notification = await sendNotification(message.to, msg.text, io)
-                                io.to(socketId).emit('notification', msg);
+                                if (notification) {
+                                    io.to(socketId).emit('notification', msg);
+
+                                }
 
                                 console.log('notification has been')
                                 socket.emit('status', { success: true })
