@@ -12,4 +12,15 @@ const sendNotification = async (userId, text) => {
     }
 }
 
-module.exports = { sendNotification }
+const markAsRead = async (id) => {
+    try {
+        let notif = await Notification.update(
+            { isRead: true },
+            { where: { id } }
+        )
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = { sendNotification, markAsRead }
