@@ -272,6 +272,16 @@ footer li a{
 footer li a:hover{
     text-decoration: none;
 }
+footer .donate{
+    display: block;
+    background: linear-gradient(270.42deg, rgba(255, 189, 61, 0.9) 0%, rgba(255, 211, 42, 0.9) 99.62%);
+    font-weight: bold;
+    width: 150px;
+    font-family: Poppins, sans-serif;
+}
+footer .donate:first-child{
+    display: none;
+}
 
 @media (max-width:992px){
     #c2{
@@ -333,6 +343,7 @@ footer li a:hover{
     }
     #events-workshops{
         padding: 0;
+        height: auto;
     }
     #events-workshops .row{
         width: 100%;
@@ -401,6 +412,13 @@ footer li a:hover{
     }  
     #c1,#c2,#c3,#c4,#c5,#c6{
         display: none;
+    }
+    footer .donate{
+        display: none;
+    } 
+    footer .donate:first-child{
+        display: block;
+        margin: 0 auto;
     }
     
 }
