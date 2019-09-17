@@ -55,6 +55,7 @@ $(document).ready(function () {
   $("#tags").on("click", ".close", function () {
     $(this).parent("span").fadeOut(100);
     $(this).parent("span").remove();
+    addTagsAddEvent();
   });
 
   $(".colors li").click(function () {

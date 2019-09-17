@@ -7,7 +7,7 @@
             <meta property="og:description" content="Network of scientific clubs specialized in the field of Electronics, Robotics, Programming and Computer Science dedicated to the next generation" />
             <meta name="twitter:description" content="Network of scientific clubs specialized in the field of Electronics, Robotics, Programming and Computer Science dedicated to the next generation" />
 
-            <link rel="manifest" href="/manifest.webmanifest">
+            <link rel="manifest" href="/site.webmanifest">
             <link rel="icon" href="/favicon.png">
         
            <!-- importing needed libraries -->
@@ -25,7 +25,7 @@
         <picture>
                     <source media="(max-width: 768px)" srcset="/img/background-md.svg">
                     <img id="bg_home"src="/img/background.png" alt="background">
-                </picture>
+        </picture>
         <nav class="navbar navbar-expand-md navbar-light" id="nav-home">
             <div class="container">
                 <a class="navbar-brand" href="/"><h1>Junior Makers</h1></a>
@@ -66,6 +66,9 @@
         </section>
         <section id="about_us">
             <section id="be-able">
+                <img src="/img/landing_page/c1.svg" id="c1" alt="component">
+                <img src="/img/landing_page/c2.svg" id="c2" alt="component">
+                <img src="/img/landing_page/c3.svg" id="c3" alt="component">
                 <p>You will be able to learn all about </p>
                 <div class="row">
                     <div class="col-md-6">
@@ -96,6 +99,7 @@
                 {{--  <img id="bg3_home"src="/img/background3.png">  --}}
                 <p>With JMP, You’ll get access to </p>
                 <div class="row" id="online-tutorials">
+                    <img src="/img/landing_page/c4.svg" id="c4" alt="component">
                     <div class="col-lg-6">
                         <img src="/img/computer_home.png" loading="lazy" alt="watching course">
                     </div>
@@ -110,36 +114,43 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" id="quality-teacher">                  
+                <div class="row" id="quality-teacher">  
+                    <img src="/img/landing_page/c6.svg" id="c6">
                     <div class="col-md-5 order-md-last" id="quality-teacher2">
-                        <img src="/img/quality-teacher2.png" loading="lazy" alt="oval">
+                        <img src="/img/quality-teacher2.png" loading="lazy" alt="teacher">
                     </div>
 
-                    <div class="col-md-2 order-md-first" loading="lazy" alt="teacher">
-                        <img  src="/img/quality-teacher1.png">
+                    <div class="col-md-7 order-md-first">
+                        <div class="row">
+                            <div class="col-md-4"><img  src="/img/quality-teacher1.png"  loading="lazy" alt="oval" id="oval_pic"></div>
+                            <div class="col-md-8">
+                                <h2>Quality teachers</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+                                <a href="#">
+                                        <button class="btn btn-rounded-important">Get started</button>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        
                     </div>
                     
-                    <div class="col-md-5">
-                        <h2>Quality teachers</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
-                        <a href="#">
-                                <button class="btn btn-rounded-important">Get started</button>
-                        </a>
-                    </div>
                 </div>
-                <div class="row" id="events-workshops">
-                    <div class="col-lg-6">
-                        <img src="/img/events_workshops.png" loading="lazy" alt="workshop">
-                    </div>
-                    <div class="col-lg-6">
-                        <div id="events-workshops-details">
-                            <h2>Online tutorials</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                            ut labore et dolore magna aliqua. Ut enim ad minim </p>
-                            <a href="#">
-                                    <button class="btn btn-rounded-important">Get started</button>
-                            </a>
+                <div  id="events-workshops">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <img src="/img/events_workshops.png" loading="lazy" alt="workshop">
+                        </div>
+                        <div class="col-lg-6">
+                            <div id="events-workshops-details">
+                                <h2>Online tutorials</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                                ut labore et dolore magna aliqua. Ut enim ad minim </p>
+                                <a href="#">
+                                        <button class="btn btn-rounded-important">Get started</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

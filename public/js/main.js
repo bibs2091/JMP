@@ -504,6 +504,18 @@ function saveInputState(obj) {
     $(obj).attr("value", $(obj).val());
 }
 var files = [];
+function initSponsors(){
+    let length = document.getElementsByClassName("sponsor-card").length;
+    if (document.getElementsByName("sponsorImage"+(1))[0]!=undefined){
+        for(let i=0;i<length;i++){
+            files.push([111]);    
+            //$(document.getElementsByName("sponsorImage"+(i+1))[0]).prop("files",files[i]);
+            console.log(i);
+        }
+
+    }
+}
+
 function saveImageState(obj) {
     files.push($(obj).prop("files"));
 }
@@ -641,7 +653,9 @@ var saveAnimation = function (buttonID) {
 function addSponsorCard() {
     var number = document.getElementsByClassName("sponsor-card").length + 1;
     document.getElementById("sponsor-cards").innerHTML += sponsorCardHTML(number);
-    for (var i = files.length - 1; i >= 0; i--) {
+    let j = 0;
+    for (var i = 0; i < files.length; i++) {
+    if (!Array.isArray(files[i]))   
     $(document.getElementsByName("sponsorImage"+(i+1))[0]).prop("files",files[i]);
     }
 }
@@ -650,6 +664,16 @@ function resetSponsorNumbers() {
     var cards = document.getElementsByClassName("sponsor-card");
     for (let i = 0; i < cards.length; i++) {
         cards[i].getElementsByClassName("sponsor-number")[0].innerHTML = i + 1;
+    }
+}
+//reset sponsor logo names
+function resetSponsorNames(obj) {
+    let number =  obj.parentNode.getElementsByClassName("sponsor-number")[0].innerHTML;
+    console.log(number);
+    files.splice(number-1,1);
+    var cards = document.getElementsByClassName("sponsor-card");
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].childNodes[10].childNodes[1].childNodes[1].childNodes[3].name = "sponsorImage"+(i+1);
     }
 }
 //generating sponsor card html
@@ -699,6 +723,7 @@ function deleteSponsor(obj) {
     if (document.getElementsByClassName("sponsor-card").length > 1) {
         obj.parentNode.remove();
         resetSponsorNumbers();
+        resetSponsorNames(obj);
     }
 }
 //saving sponsors names as json
@@ -804,11 +829,14 @@ function searchReport(val) {
 function addTagsAddEvent() {
     var tagsSpans = document.getElementsByClassName("tag");
     var tags = [];
+    console.log("here");
     for (let i = 0; i < tagsSpans.length; i++) {
         tags.push(tagsSpans[i].children[1].innerHTML);
     }
+    console.log(tags);
     $("#tags-input").val(JSON.stringify(tags));
 }
+//$("#close-tag").on("click", addTagsAddEvent());
 //making numbers count-up
 $('.jmp-counter').each(function () {
     var $this = $(this),
