@@ -11,4 +11,4 @@ Disallow: /errors/*
 Disallow: /404
 Disallow: /report/*
 Allow: /$
-Allow: /auth/
+Allow: /auth/*
