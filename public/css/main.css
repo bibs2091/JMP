@@ -4104,7 +4104,7 @@ h2 {
 
 /* radio buttons */
 
-[type="radio"]:checked,
+.question-card [type="radio"]:checked,
 [type="radio"]:not(:checked) {
     position: static;
     opacity: 1;
