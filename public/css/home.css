@@ -56,7 +56,7 @@ html,body {
 }
 #main-section{
     position: relative;
-    height: 500px;
+    height: 80vh;
 }
 #main-section h2{
     width: 600px;
@@ -79,6 +79,7 @@ html,body {
 #be-able{
     position: relative;
     height: 100vh;
+    overflow: visible;
 }
 #bg2_home{
     position: absolute;
@@ -86,9 +87,7 @@ html,body {
     right: 0;
 }
 #about_us{
-    /* background-image: url(/img/background2-total.svg); */
-    background-repeat-y: no-repeat;
-    height: 2770px;
+    height: auto;
     margin-top: 100px;
 }
 #c1,#c2,#c3,#c4,#c5,#c6{
@@ -152,6 +151,7 @@ html,body {
 #online-tutorials{
     height: 550px;
     padding-left: 40px;
+    overflow: visible;
 }
 #c4{
     top: 0;
@@ -218,7 +218,7 @@ html,body {
     position: relative;
     overflow: hidden;
     height: 100vh;
-    padding-top: 70px;
+    margin-top: -2vh;
 }
 
 #events-workshops #events-workshops-details{
