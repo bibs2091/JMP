@@ -1,5 +1,207 @@
 @layout('layouts.dashboard')
 
 @section('content')
-<h1> settings page </h1>
+<style>
+    #main-section{
+        background: #FCFCFC;
+    }
+    .card{
+        padding: 30px 40px;
+        margin-bottom:35px;
+    }
+    .logo{
+        background: white;
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin-bottom: 55px;
+    }
+    .logo img{
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
+    .logo .edit{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        color: white;
+        background: #FF5E57;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        text-align: center;
+        display: table;
+    }
+    .logo .edit:hover{
+        /*opacity: 0.7;*/
+        cursor: pointer;
+    }
+    .logo .edit > *{
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .card h6{
+        color: #828282;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+    .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: #FFD32A;;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+    textarea{
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+        color: #3E3E3E;
+    }
+    #save-settings-button{
+        background: #3AE374;
+        border-radius: 7px;
+        color: white;
+        width: 130px;
+        height: 45px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 24px;
+        border: 0;
+        /* identical to box height */
+        text-align: center;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+    }
+</style>
+
+<div class="container" style="padding: 40px 50px;">
+    <form action="/admin/settings/update" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="card" style="height: 270px;">
+                    <center>
+                        <div class="logo">
+                            <input type="file" style="display: none">
+                            <img src="/img/ouss.jpg" alt="">
+                            <div class="edit"><i class="fa fa-pen"></i></div>
+                        </div>
+                        <div class="md-form">
+                            <input value="JMP" type="text" name="nom" class="form-control">
+                            <label for="inputPlaceholderEx" class="active">Website name</label>
+                        </div>
+                    </center>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div class="card" style="height: 270px;width:100%">
+                    <div class="md-form">
+                        <input value="Email@email.com" type="text" name="email" class="form-control">
+                        <label class="active">Website Email</label>
+                    </div>
+                    <div class="md-form">
+                        <input value="JMP" type="text" name="adresse" class="form-control">
+                        <label class="active">Address</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <h6 style="margin-bottom: 10px;">Registration</h6>
+                    <label class="switch">
+                        <input type="checkbox" name="reistration" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="md-form">
+                        <textarea name="registration_message" class="md-textarea" style="width: 100%;" rows="4">Hello we are sorry to inform you that the registerations are closed for the mement. thank you for your understanding. for more information please contact us at bibs2091@fatima-merzoug.dz</textarea>
+                        <label class="active">Registerations closed message</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="md-form">
+                        <textarea name="description" class="md-textarea" style="width: 100%;" rows="4">description</textarea>
+                        <label class="active">Description du site</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card"  style="padding-bottom: 80px">
+                    <div class="md-form">
+                        <input value="JMP" type="text" name="lien_fcb" class="form-control">
+                        <label class="active">Facebook page link</label>
+                    </div>
+                    <div class="md-form">
+                        <input value="JMP" type="text" name="lien_twitter" class="form-control">
+                        <label class="active">Twitter profile link</label>
+                    </div>
+                    <div class="md-form">
+                        <input value="JMP" type="text" name="lien_insta" class="form-control">
+                        <label class="active">Instagram profile link</label>
+                    </div>
+                    <input type="submit" id="save-settings-button" value="Save All">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 @endsection
