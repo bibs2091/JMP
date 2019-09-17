@@ -3,45 +3,39 @@ const db = require("../config/database");
 
 const InfoSite = db.define("InfoSite", {
 	nom: {
-		type: Sequelize.STRING,
-		allowNull: false,
+		type: Sequelize.STRING
 	},
 	description: {
-		type: Sequelize.STRING,
-		allowNull: false,
+		type: Sequelize.STRING
 	},
 	logo: {
-		type: Sequelize.STRING,
-		allowNull: false,
+		type: Sequelize.STRING
 	},
 	email: {
 		type: Sequelize.STRING,
-		allowNull: false,
-		isEmail: true,
+		isEmail: true
 	},
 	adresse: {
-		type: Sequelize.STRING,
-		allowNull: false,
+		type: Sequelize.STRING
 	},
 	inscription: {
-		type: Sequelize.BOOLEAN,
-		allowNull: false,
+		type: Sequelize.BOOLEAN
+	},
+	registration_message: {
+		type: Sequelize.STRING,
+		allowNull: true
 	},
 	terms: {
-		type: Sequelize.STRING,
-		allowNull: false,
+		type: Sequelize.STRING
 	},
 	lien_fcb: {
-		type: Sequelize.STRING,
-		allowNull: false,
+		type: Sequelize.STRING
 	},
 	lien_insta: {
-		type: Sequelize.STRING,
-		allowNull: false,
+		type: Sequelize.STRING
 	},
 	lien_twitter: {
-		type: Sequelize.STRING,
-		allowNull: false,
+		type: Sequelize.STRING
 	},
 });
 
