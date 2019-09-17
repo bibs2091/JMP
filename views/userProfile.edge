@@ -68,7 +68,7 @@
         <div class="dropdown">
             <a class="ellipsis" id="more_profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
             <div class="dropdown-menu dropdown-primary">
-              <a class="dropdown-item" href="/messages/new_message?user={{userId}}">Message</a>
+              <a class="dropdown-item" href="#">Message</a>
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal">Report</a>
             </div>
         </div>
@@ -239,11 +239,11 @@
       
       <div class="modal-body">
         
-  <form action="/report/add/{{userId}}/User" method="POST" id="report_form"> 
+  <form action="/report/add/{{id}}/User" method="POST" id="report_form"> 
   <h1> What is the reason of the report  </h1>  
   <div id="radio_bottom">
       <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="Option1" name="type" value="Fake account">
+          <input type="radio" class="custom-control-input" id="Option1" name="type" value="Fake account" required>
           <label class="custom-control-label" for="Option1">Fake account</label>
         </div>
         
@@ -258,11 +258,11 @@
   </div>
 <h1 style="margin-top: 26px;"> Can you provide us with some details </h1>
 <div class="md-form">
-  <textarea id="txtarea" class="md-textarea form-control report_details" rows="2" name = "reportDetails"></textarea>
+  <textarea id="txtarea" class="md-textarea form-control report_details" rows="2" name = "reportDetails" required></textarea>
   <label for="txtarea">State the timing and the exact reason...</label>
 </div>
 <div style="padding-right: 26px; margin-bottom:20px;" >
-        <button type="submit" class="btn btn-success saveboutton pull-right" style="margin-left: 10px;">Send</button>
+        <button type="submit" class="btn btn-success saveboutton pull-right" style="margin-left: 10px; margin-bottom:10px;">Send</button>
         <button type="button" class="btn btn-outline-success waves-effect resetboutton pull-right" data-dismiss="modal">cancel</button>
       </div>
 </form>

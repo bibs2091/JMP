@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /user/*
+Disallow: /coach/*
+Disallow: /admin/*
+Disallow: /search*
+Disallow: /courses/*
+Disallow: /events/*
+Disallow: /messages
+Disallow: /messages/*
+Disallow: /errors/*
+Disallow: /404
+Disallow: /report/*
+Allow: /$
+Allow: /auth/*

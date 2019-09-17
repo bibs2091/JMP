@@ -65,6 +65,7 @@ module.exports = async (req, res) => {
 			res.render("userProfile", {
 				messages,
 				userId,
+				id,
 				pageName: profile.username,
 				pageTitle: profile.firstName + " " + profile.lastName,
 				profile,

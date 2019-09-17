@@ -14,6 +14,9 @@ const Report = db.define("Report", {
         type: Sequelize.STRING,
         allowNull: false
     },
+    indictedId: {
+        type: Sequelize.INTEGER
+    },
     indicted: {
         type: Sequelize.STRING,
         allowNull: false

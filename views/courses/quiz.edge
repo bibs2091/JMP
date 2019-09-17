@@ -7,7 +7,6 @@
     <meta name="description" content="Junior makers program website">
     <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" href="/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
@@ -215,40 +214,81 @@
                 
                 <div class="modal-body">
                   
-            <form  id="report_form">  
+            <form  method="POST" action="/report/add/{{quizId}}/Quiz" id="report_form">  
             <h1> What is the reason of the report  </h1>  
             <div id="radio_bottom">   
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="Option2" name="materialExampleRadios">
+                        <input type="radio" class="custom-control-input" id="Option2" name="type" value="Wrong Answers" required>
                         <label class="custom-control-label" for="Option2">Wrong Answers</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="Option3" name="materialExampleRadios">
+                        <input type="radio" class="custom-control-input" id="Option3" name="type" value="Irrelvent Question">
                         <label class="custom-control-label" for="Option3">Irrelvent Question</label>
                     </div>
                     <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="Option4" name="materialExampleRadios">
+                            <input type="radio" class="custom-control-input" id="Option4" name="type" value="Others">
+
                             <label class="custom-control-label" for="Option4">Others</label>
                     </div>
                 </div>
           <h1 style="margin-top: 26px;"> Can you provide us with some details </h1>
           <div class="md-form">
-            <textarea id="txtarea" class="md-textarea form-control" rows="2"></textarea>
+            <textarea id="txtarea" class="md-textarea form-control" rows="2" name="reportDetails" required></textarea>
+
             <label for="txtarea">State the question/answer and the exact reason...</label>
-          </div>
+            </div>
+                <div style="padding-right: 26px; margin-bottom:20px;" >
+                  <button type="submit" class="btn btn-success saveboutton pull-right" style="margin-left: 10px; margin-bottom:10px;">Send</button>
+                  <button type="button" class="btn btn-outline-success waves-effect resetboutton pull-right"  data-dismiss="modal">cancel</button>
+                </div>
           </form>
           
                 </div>
                 
-                <div style="padding-right: 26px; margin-bottom:20px;" >
-                  <button type="button" class="btn btn-success saveboutton pull-right" style="margin-left: 10px;">Send</button>
-                  <button type="button" class="btn btn-outline-success waves-effect resetboutton pull-right"  data-dismiss="modal">cancel</button>
-                </div>
               </div>
               
               
             </div>
         </div>
+        @if(messages.reportAdded)
+                {{--  <div class="alert alert-success">{{messages.reportAdded[0]}}</div>  --}}
+                <div class="modal fade show confirm-popup" tabindex="-1" role="dialog" aria-labelledby="confirm-popup" aria-hidden="true" style="display: block;">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="text-align:right;margin-right: 20px;margin-top: 10px;">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                          <div class="modal-body">
+                              <center>
+                                  <h2>Done</h2>
+                                  <p>{{messages.reportAdded[0]}}</p>
+                                  <br>
+                                  <br>
+                              </center>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+      @elseif(messages.reportNotAdded)
+                {{--  <div class="alert alert-warning">{{messages.reportNotAdded[0]}}</div>  --}}
+                <div class="modal fade show confirm-popup" tabindex="-1" role="dialog" aria-labelledby="confirm-popup" aria-hidden="true" style="display: block;">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="text-align:right;margin-right: 20px;margin-top: 10px;">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                          <div class="modal-body">
+                              <center>
+                                  <h2 style="color:#fa8072;">Error</h2>
+                                  <p>{{messages.reportNotAdded[0]}}</p>
+                                  <br>
+                                  <br>
+                              </center>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+      @endif
     <!-- needed scripts -->
     <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
