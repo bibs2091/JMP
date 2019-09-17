@@ -119,6 +119,7 @@ const events = (io) => {
             //console.log(connectedUsers)
         })
 
+        //TODO: notifications
 
     })
 

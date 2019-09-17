@@ -19,3 +19,7 @@ const Notification = db.define("Notification", {
 db.sync({ forced: true });
 
 module.exports = Notification;
+
+const notifyUser = async () => {
+
+}
