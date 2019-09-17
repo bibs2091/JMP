@@ -504,11 +504,11 @@ function saveInputState(obj) {
     $(obj).attr("value", $(obj).val());
 }
 var files = [];
-function initSponsors(){
+function initSponsors() {
     let length = document.getElementsByClassName("sponsor-card").length;
-    if (document.getElementsByName("sponsorImage"+(1))[0]!=undefined){
-        for(let i=0;i<length;i++){
-            files.push([111]);    
+    if (document.getElementsByName("sponsorImage" + (1))[0] != undefined) {
+        for (let i = 0; i < length; i++) {
+            files.push([111]);
             //$(document.getElementsByName("sponsorImage"+(i+1))[0]).prop("files",files[i]);
             console.log(i);
         }
@@ -655,8 +655,8 @@ function addSponsorCard() {
     document.getElementById("sponsor-cards").innerHTML += sponsorCardHTML(number);
     let j = 0;
     for (var i = 0; i < files.length; i++) {
-    if (!Array.isArray(files[i]))   
-    $(document.getElementsByName("sponsorImage"+(i+1))[0]).prop("files",files[i]);
+        if (!Array.isArray(files[i]))
+            $(document.getElementsByName("sponsorImage" + (i + 1))[0]).prop("files", files[i]);
     }
 }
 //reset sponsor numbers
@@ -668,12 +668,12 @@ function resetSponsorNumbers() {
 }
 //reset sponsor logo names
 function resetSponsorNames(obj) {
-    let number =  obj.parentNode.getElementsByClassName("sponsor-number")[0].innerHTML;
+    let number = obj.parentNode.getElementsByClassName("sponsor-number")[0].innerHTML;
     console.log(number);
-    files.splice(number-1,1);
+    files.splice(number - 1, 1);
     var cards = document.getElementsByClassName("sponsor-card");
     for (let i = 0; i < cards.length; i++) {
-        cards[i].childNodes[10].childNodes[1].childNodes[1].childNodes[3].name = "sponsorImage"+(i+1);
+        cards[i].childNodes[10].childNodes[1].childNodes[1].childNodes[3].name = "sponsorImage" + (i + 1);
     }
 }
 //generating sponsor card html
@@ -855,3 +855,10 @@ $('.jmp-counter').each(function () {
             }
         });
 });
+//go to search page
+$("#main-search").keypress(function (ev) {
+    var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+    if (keycode == '13' && $(this).val() != "") {
+        location.replace("/search?q=" + $(this).val());
+    }
+})
