@@ -2,6 +2,9 @@ const Users = require('../models/UsersInfo')
 const Messages = require('../models/Message')
 const RawUsers = require('../models/Users')
 
+const { sendNotification } = require('../controllers/notificationSys')
+const { triggerPush } = require('../controllers/triggerPush')
+
 const Op = require('sequelize').Op
 
 
@@ -70,6 +73,7 @@ const events = (io) => {
                         if (await isAdmin(message.from) || await isCoach(message.from)) {
                             const msgSuccessfullySent = await sendToCoach(message, io)
                             if (msgSuccessfullySent) {
+
                                 socket.emit('status', { success: true })
                             } else {
                                 socket.emit('status', { success: false })
@@ -94,6 +98,26 @@ const events = (io) => {
 
                                 //broadcast message
                                 io.to(socketId).emit('newMessage', msg);
+
+                                // FIXME: notification
+                                let notification = await sendNotification(message.to, msg.text)
+
+                                //push notification
+                                let payload = {
+                                    data: `${msg.senderName} has sent you a message.`,
+
+                                }
+                                let push = await triggerPush(message.to, payload)
+
+                                if (notification) {
+                                    delete msg.id
+                                    delete msg.to
+                                    delete msg.from
+                                    msg.notificationId = notification.id
+                                    io.to(socketId).emit('msgNotification', msg);
+                                }
+
+                                console.log('notification has been')
                                 socket.emit('status', { success: true })
                             } else {
                                 socket.emit('status', { success: false })
@@ -119,6 +143,7 @@ const events = (io) => {
             //console.log(connectedUsers)
         })
 
+        //TODO: notifications
 
     })
 
@@ -181,7 +206,6 @@ const formatMessage = async (msg) => {
     msg.senderName = sender.firstName + ' ' + sender.lastName;
     msg.senderUsername = sender.username;
     msg.senderAvatar = sender.avatar;
-    console.log('message has been formatted');
     return msg;
 
 }
@@ -210,6 +234,24 @@ const sendToAll = async (message, io) => {
 
                     //broadcast message
                     io.to(socketId).emit('newMessage', msgFormated);
+
+                    //notification
+                    let notification = await sendNotification(message.to, msgFormated)
+                    //push notification
+                    let payload = {
+                        data: `${msgFormated.senderName} has sent you a message.`,
+
+                    }
+                    let push = await triggerPush(message.to, payload)
+
+                    if (notification) {
+                        delete msgFormated.id
+                        delete msgFormated.to
+                        delete msgFormated.from
+                        msg.notificationId = notification.id
+
+                        io.to(socketId).emit('msgNotification', msgFormated);
+                    }
 
                 } catch (err) {
                     console.log(err);
@@ -246,6 +288,24 @@ const sendToStudents = async (message, io) => {
 
                 //broadcast message
                 io.to(socketId).emit('newMessage', msgFormated);
+
+                //notification
+                let notification = await sendNotification(message.to, msgFormated)
+
+                //push notification
+                let payload = {
+                    data: `${msgFormated.senderName} has sent you a message.`,
+
+                }
+                let push = await triggerPush(message.to, payload)
+                if (notification) {
+                    delete msgFormated.id
+                    delete msgFormated.to
+                    delete msgFormated.from
+                    msg.notificationId = notification.id
+
+                    io.to(socketId).emit('msgNotification', msgFormated);
+                }
 
             } catch (error) {
                 console.log(error)
@@ -284,6 +344,23 @@ const sendToCoach = async (message, io) => {
 
                     //broadcast message
                     io.to(socketId).emit('newMessage', msgFormated);
+                    //notification
+                    let notification = await sendNotification(message.to, msgFormated)
+
+                    //push notification
+                    let payload = {
+                        data: `${msgFormated.senderName} has sent you a message.`,
+
+                    }
+                    let push = await triggerPush(message.to, payload)
+                    if (notification) {
+                        delete msgFormated.id
+                        delete msgFormated.to
+                        delete msgFormated.from
+                        msg.notificationId = notification.id
+
+                        io.to(socketId).emit('msgNotification', msgFormated);
+                    }
 
                 } catch (error) {
                     console.log(error)
@@ -312,3 +389,5 @@ const isCoach = async (id) => {
     let user = await RawUsers.findByPk(id)
     return user.dataValues.groupId === 1
 }
+
+

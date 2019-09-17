@@ -71,10 +71,11 @@ router.post('/triggerPush', async (req, res) => {
 //send a push notification for a specific user 
 router.post('/triggerPush/:id', async (req, res) => {
     const userId = req.params.id
+    console.log(req.body)
     const payload = JSON.stringify({
         // TODO: format the data later
-        title: 'JMP has a notification ',
-        body: req.body.data
+        title: 'Junior Makers Program',
+        body: req.body.payload.data
     })
 
     try {
@@ -144,3 +145,4 @@ const sendError = (message, res) => {
         }
     }));
 }
+
