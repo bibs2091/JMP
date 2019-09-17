@@ -7,80 +7,88 @@
     padding-top: 40px;
   }
 </style>
+    @if(users.length == 0 && events.length == 0 && courses.length == 0)
+    <center>
+      <div id="no-result">
+        <img src="" alt="">
+      </div>
+    </center>
+    @else
   <center>
     <div class="search-card">
-      @if(users.length == 0 && events.length == 0 && courses.length == 0)
-      no result
-      @else
       @if(users.length > 0)
       <h6>Users</h6>
       <div class="card result-card">
-        <div class="user-result">
-          <div style="width:75px">
-            <img src="/img/ouss.jpg" alt="user picture">
+        @each(user in users)
+          <div class="user-result">
+            <div style="width:75px">
+              <img src="{{user.avatar}}" alt="user picture">
+            </div>
+            <div class="user-info">
+              <h6>{{user.lastName}} {{user.firstName}}</h6>
+              <span>{{user.username}}</span>
+              <p>{{user.bio}}</p>
+            </div>
           </div>
-          <div class="user-info">
-            <h6>Tas aberrahim</h6>
-            <span>Student</span>
-            <p>Computer science student at ESI SBA</p>
-          </div>
-        </div>
-        <div class="devider"></div>
-        <div class="user-result">
-          <div style="width:75px">
-            <img src="/img/ouss.jpg" alt="user picture">
-          </div>
-          <div class="user-info">
-            <h6>Tas aberrahim</h6>
-            <span>Student</span>
-            <p>Computer science student at ESI SBA kgkjgk kg jkg</p>
-          </div>
-        </div>
+          @if(!$loop.last)
+            <div class="devider"></div>
+          @endif
+        @endeach
       </div>
       @endif
       @if(events.length > 0)
       <h6 style="margin-top:15px;">Events</h6>
       <div class="card result-card">
+      @each(event in events)
         <div class="event-result">
           <div style="width: 100%;text-align:left;">
-            <h6>Web Developemnt initialisation </h6>
-            <span>Upcoming event</span>
+            <h6>{{event.name}}</h6>
+            @if(event.upcoming == true)
+              <span>Upcoming event</span>
+            @endif
           </div>
-          <div style="display:table">
+          <div style="display:table;width:100%">
             <div class="event-date">
-              <p>apr</p>
-              <p>14</p>
+              <p>{{event.month}}</p>
+              <p>{{event.start_d.substring(8,10)}}</p>
             </div>
-            <p class="event-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quae, culpa ipsa labore eos unde minima illum quod odio commodi perferendis similique, nesciunt asperiores repellat dolorem cupiditate reiciendis nulla velit.</p>
+            <p class="event-description">{{event.description}}</p>
           </div>
         </div>
-        <div class="devider"></div>
-        <div class="event-result">
-          <div style="width: 100%;text-align:left;">
-            <h6>Web Developemnt initialisation </h6>
-            <span>Upcoming event</span>
-          </div>
-          <div style="display:table">
-            <div class="event-date">
-              <p>apr</p>
-              <p>14</p>
-            </div>
-            <p class="event-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quae, culpa ipsa labore eos unde minima illum quod odio commodi perferendis similique, nesciunt asperiores repellat dolorem cupiditate reiciendis nulla velit.</p>
-          </div>
-        </div>
+        @if(!$loop.last)
+          <div class="devider"></div>
+        @endif
+      @endeach
       </div>
       @endif
       @if(courses.length > 0)
       <h6 style="margin-top:15px;">Courses</h6>
       <div class="card result-card">
+        @each(course in courses)          
         <div class="course-result">
-          <img src="/img/ouss.jpg">
+          <img src="{{course.cover}}"style="border-radius: 
+          @if($loop.first)
+          8px
+          @else
+          0px 
+          @endif
+          0px 0px 
+          @if($loop.last)
+          8px         
+          @else
+          0px
+          @endif
+          ;">
           <div class="course-content">
-            <h6>Web-Scrapping crash course &nbsp;&nbsp;&nbsp;<i class="icon-beginner" style="font-size: 20px;"></i></h6>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint impedit earum eum voluptas eaque pariatur facilis laudantium facere fugiat voluptatibus. Neque fugit molestias ipsam iure aliquam dolor natus, nemo provident.sdfsdfsd</p>
+            <h6>{{course.title}} &nbsp;&nbsp;&nbsp;<i class="icon-{{course.level}}" style="font-size: 20px;"></i></h6>
+            <p>{{course.description}}</p>
           </div>
         </div>
+        @if(!$loop.last)
         <div class="devider"></div>
+        @endif
+      @endeach
+
       </div>
       @endif
       @endif

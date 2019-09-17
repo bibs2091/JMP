@@ -33,6 +33,13 @@ module.exports = async (req, res) => {
                 ]
             }
         });
+        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        for (let i = 0; i < events.length; i++) {
+            events[i].month = months[events[i].start_d.substring(5, 7) - 1];
+            let today = new Date();
+            let eveDate = new Date(events[i].start_d.substring(0, 10));
+            events[i].upcoming = eveDate > today;
+        }
         //getting courses
         var courses = await Courses.findAll({
             where: {
