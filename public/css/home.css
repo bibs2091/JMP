@@ -413,6 +413,10 @@ footer .donate:first-child{
     #c1,#c2,#c3,#c4,#c5,#c6{
         display: none;
     }
+    footer h3,footer h6,footer p,footer a,footer li{
+        text-align: center;
+        display: block
+    }
     footer .donate{
         display: none;
     } 
