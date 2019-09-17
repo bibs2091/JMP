@@ -862,3 +862,7 @@ $("#main-search").keypress(function (ev) {
         location.replace("/search?q=" + $(this).val());
     }
 })
+//making elements with class redirect links
+$(".redirect").click(function () {
+    location.replace($(this).attr("url"));
+})

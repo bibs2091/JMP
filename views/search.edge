@@ -21,7 +21,7 @@
       <h6>Users</h6>
       <div class="card result-card">
         @each(user in users)
-          <div class="user-result">
+          <div class="user-result redirect" url="/profile/{{user.id}}">
             <div style="width:75px">
               <img src="{{user.avatar}}" alt="user picture">
             </div>
@@ -41,7 +41,7 @@
       <h6 style="margin-top:15px;">Events</h6>
       <div class="card result-card">
       @each(event in events)
-        <div class="event-result">
+        <div class="event-result redirect" url="/events/{{event.id}}">
           <div style="width: 100%;text-align:left;">
             <h6>{{event.name}}</h6>
             @if(event.upcoming == true)
@@ -66,7 +66,7 @@
       <h6 style="margin-top:15px;">Courses</h6>
       <div class="card result-card">
         @each(course in courses)          
-        <div class="course-result">
+        <div class="course-result redirect" url="/courses/{{course.id}}">
           <img src="{{course.cover}}"style="border-radius: 
           @if($loop.first)
           8px
