@@ -77,7 +77,12 @@ module.exports = async (req, res) => {
                 }
             });
         }
+        let messages = req.flash();
+            if (Object.keys(messages).length === 0) {
+                messages = undefined;
+            }
         res.render("courses.course", {
+            messages,
             pageTitle: content.title,
             chaptersList,
             content,

@@ -73,7 +73,12 @@ module.exports = async (req, res) => {
     } else {
         nextLink = "/courses/classroom/" + courseId + "/" + next;
     }
+    let messages = req.flash();
+            if (Object.keys(messages).length === 0) {
+                messages = undefined;
+            }
     res.render("courses.quiz", {
+        messages,
         chaptersList,
         lastLecture,
         newProgress,
