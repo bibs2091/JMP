@@ -610,7 +610,7 @@ input[type="search"]:focus {
     margin-bottom: 50px;
     padding-bottom: 20px;
 }
-.fillingInfosBox .md-form textarea.md-textarea:focus:not([readonly])+label, input[type="date"]:focus:not([readonly]), input[type="datetime-local"]:focus:not([readonly]), input[type="email"]:focus:not([readonly]), input[type="number"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), input[type="search-md"]:focus:not([readonly]), input[type="search"]:focus:not([readonly]), input[type="tel"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="time"]:focus:not([readonly]), input[type="url"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]), .md-form textarea.md-textarea:focus:not([readonly]){
+.fillingInfosBox .md-form textarea.md-textarea:focus:not([readonly])+label, .fillingInfosBox input[type="date"]:focus:not([readonly]), .fillingInfosBox input[type="datetime-local"]:focus:not([readonly]), input[type="email"]:focus:not([readonly]), input[type="number"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), input[type="search-md"]:focus:not([readonly]), input[type="search"]:focus:not([readonly]), input[type="tel"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="time"]:focus:not([readonly]), input[type="url"]:focus:not([readonly]),.fillingInfosBox  textarea.md-textarea:focus:not([readonly]), .fillingInfosBox .md-form textarea.md-textarea:focus:not([readonly]){
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25)!important;
     border-bottom: 1px solid #ced4da!important;
 }
@@ -4105,7 +4105,7 @@ h2 {
 /* radio buttons */
 
 .question-card [type="radio"]:checked,
-[type="radio"]:not(:checked) {
+.question-card  [type="radio"]:not(:checked) {
     position: static;
     opacity: 1;
     pointer-events: auto;
