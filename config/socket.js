@@ -2,6 +2,8 @@ const Users = require('../models/UsersInfo')
 const Messages = require('../models/Message')
 const RawUsers = require('../models/Users')
 
+const { sendNotification } = require('../controllers/notificationSys')
+
 const Op = require('sequelize').Op
 
 
@@ -94,6 +96,12 @@ const events = (io) => {
 
                                 //broadcast message
                                 io.to(socketId).emit('newMessage', msg);
+                                console.log(message.to)
+                                // FIXME: notification
+                                let notification = await sendNotification(message.to, msg.text, io)
+                                io.to(socketId).emit('notification', { data: 'test' });
+
+                                console.log('notification has been')
                                 socket.emit('status', { success: true })
                             } else {
                                 socket.emit('status', { success: false })
