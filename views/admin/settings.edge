@@ -140,8 +140,9 @@
                 <div class="card" style="height: 270px;">
                     <center>
                         <div class="logo">
-                            <input type="file" name="logo" style="display: none" accept="image/*" id="logo-input">
-                            <img src="{{info.logo}}" alt="logo">
+                            <input type="file" name="logo" onchange="loadImage(event,'logo-image')"
+                            style="display: none" accept="image/*" id="logo-input">
+                            <img src="{{info.logo}}" alt="logo" id="logo-image">
                             <div class="edit" onclick="triggerInput('logo-input')"><i class="fa fa-pen"></i></div>
                         </div>
                         <div class="md-form">
