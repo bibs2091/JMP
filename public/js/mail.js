@@ -90,30 +90,6 @@ jQuery(document).ready(function ($) {
       }
     }
   });
-
-
-  // This will prevent click from triggering twice when clicking checkbox/label
-
-  $('input[type=checkbox]:not(#ck-all)').on('click', function (e) {
-    e.stopImmediatePropagation();
-  });
-
-  var checkBoxes = $('input[type=checkbox]');
-
-  $("#ck-all").click(function () {
-    var clicks = $(this).data('clicks');
-    if (clicks) {
-      checkBoxes.prop('checked', false);
-      $(".message-list li").removeClass("selected");
-    } else {
-      checkBoxes.prop('checked', true);
-      $(".message-list li").addClass("selected");
-    }
-    $(this).data('clicks', !clicks); // you have to set it
-
-  });
-
-
   // When you click the overlay, close everything
 
   $('#main > .overlay').on('click', function () {

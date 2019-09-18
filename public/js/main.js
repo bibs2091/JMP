@@ -626,6 +626,7 @@ function resetScheduleNumbers() {
         cards[i].getElementsByClassName("schedule-number")[0].innerHTML = i + 1;
     }
 }
+
 //saving schedule as json
 function saveSchedule() {
     var cards = document.getElementsByClassName("schedule-card");
@@ -891,3 +892,22 @@ $("#main-search").keypress(function (ev) {
 $(".redirect").click(function () {
     location.replace($(this).attr("url"));
 })
+// "all" check-box checks all check boxes 
+  $('input[type=checkbox]:not(#ck-all)').on('click', function (e) {
+    e.stopImmediatePropagation();
+  });
+
+  var checkBoxes = $('input[type=checkbox]');
+
+  $("#ck-all").click(function () {
+    var clicks = $(this).data('clicks');
+    if (clicks) {
+      checkBoxes.prop('checked', false);
+      $(".message-list li").removeClass("selected");
+    } else {
+      checkBoxes.prop('checked', true);
+      $(".message-list li").addClass("selected");
+    }
+    $(this).data('clicks', !clicks);
+
+  });
