@@ -108,43 +108,9 @@
                 </div>
             </section>
             @if(messages.reportAdded)
-                {{--  <div class="alert alert-success">{{messages.reportAdded[0]}}</div>  --}}
-                <div class="modal fade show confirm-popup" tabindex="-1" role="dialog" aria-labelledby="confirm-popup" aria-hidden="true" style="display: block;">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="text-align:right;margin-right: 20px;margin-top: 10px;">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                          <div class="modal-body">
-                              <center>
-                                  <h2>Done</h2>
-                                  <p>{{messages.reportAdded[0]}}</p>
-                                  <br>
-                                  <br>
-                              </center>
-                          </div>
-                      </div>
-                  </div>
-                </div>
+                <div class="alert alert-success">{{messages.reportAdded[0]}}</div>
       @elseif(messages.reportNotAdded)
-                {{--  <div class="alert alert-warning">{{messages.reportNotAdded[0]}}</div>  --}}
-                <div class="modal fade show confirm-popup" tabindex="-1" role="dialog" aria-labelledby="confirm-popup" aria-hidden="true" style="display: block;">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="text-align:right;margin-right: 20px;margin-top: 10px;">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                          <div class="modal-body">
-                              <center>
-                                  <h2 style="color:#fa8072;">Error</h2>
-                                  <p>{{messages.reportNotAdded[0]}}</p>
-                                  <br>
-                                  <br>
-                              </center>
-                          </div>
-                      </div>
-                  </div>
-                </div>
+                <div class="alert alert-warning">{{messages.reportNotAdded[0]}}</div>
       @endif
         </main>
     </div>
