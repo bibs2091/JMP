@@ -365,6 +365,7 @@ a:hover {
 
 #main .action-bar li:nth-child(4) {
     margin-left: 20px;
+    margin-top: 10px;
 }
 
 #main .action-bar li:nth-child(5) {
@@ -408,17 +409,7 @@ a:hover {
     }
 }
 
-#delete_msg {
-    height: 15px;
-    width: 15px;
-    cursor: pointer;
-}
 
-#delete_msg:hover {
-    height: 16px;
-    width: 16px;
-    margin-right: 2px;
-}
 
 #main .action-bar li>label {
     color: #818181;
