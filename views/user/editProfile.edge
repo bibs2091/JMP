@@ -4,7 +4,7 @@
 <div style="margin:20px auto;">
  <div class="container settingsCard " >
           <div class="GeneralInformation"> 
-              <form>
+              <form style="position: relative;">
                 <h1>Profile</h1>
                 <img src="{{userInfo.avatar}}" alt="Avatar" class=" pic ">
                 <div class="row">
@@ -23,7 +23,7 @@
                     <input type="number" value="0658147015" class="form-control" id="p_n" >
                 </div>
                 <div class="md-form" style="margin-top:15px;">
-                    <textarea id="bio" class="md-textarea form-control" placeholder="Tell us something about you" rows="3"></textarea>
+                    <textarea id="bio" class="md-textarea form-control" placeholder="Tell us something about you" rows="2"></textarea>
                     <label for="bio">Bio</label>
                 </div>
                 <label class="customized-label">Skils</label>
@@ -34,11 +34,12 @@
                               </div>
                       </label>
                   </div>
+                  <input type="submit" class="btn-rounded-important save-settings" value="Save">
             </form> 
           </div>
           
           <div class="GeneralInformation"> 
-            <form>
+            <form style="position: relative;">
                 <h1>Profile</h1>
                 <div class="row">
                       <div class="col-md-6 md-form input-group">
@@ -70,11 +71,13 @@
                             placeholder="Enter your Github link">
                       </div>
                   
-                </div>                
+                </div>   
+                <input type="submit" class="btn-rounded-important save-settings" value="Save">
+
             </form> 
           </div>
           <div class="GeneralInformation"> 
-              <form>
+              <form style="position: relative;">
                 <h1>Account</h1>
                 <p>Please proceed with caution</p>
                 <div class="md-form form-group ">
@@ -93,7 +96,10 @@
                     <label for="co_pass">Confirm password</label>
                     <input type="password" value="" placeholder="Enter your new password confirmation" class="form-control" id="co_pass" >
                 </div>
+              <input type="submit" class="btn-rounded-important save-settings" value="Save">
+
               </form>
+
           </div>
           
       </div>
