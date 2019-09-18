@@ -230,14 +230,14 @@ function deleteCourse(id) {
 function deleteCourse2(id) {
     mscConfirm("Dangerous Operation!", "Are you sure you want to do this action?", function () {
 
-    $.ajax({
-        url: '/courses/delete/' + id,
-        method: 'DELETE',
-        contentType: 'application/json',
-        success: function (result) {
-            location.replace("/admin/reportCenter");
-        }
-    });
+        $.ajax({
+            url: '/courses/delete/' + id,
+            method: 'DELETE',
+            contentType: 'application/json',
+            success: function (result) {
+                location.replace("/admin/reportCenter");
+            }
+        });
     });
 }
 //Delete Report by id
@@ -245,14 +245,14 @@ function deleteReport(id) {
 
     mscConfirm("Dangerous Operation!", "Are you sure you want to do this action?", function () {
 
-    $.ajax({
-        url: '/report/delete/' + id,
-        method: 'DELETE',
-        contentType: 'application/json',
-        success: function (result) {
-            location.replace("/admin/reportCenter");
-        }
-    });
+        $.ajax({
+            url: '/report/delete/' + id,
+            method: 'DELETE',
+            contentType: 'application/json',
+            success: function (result) {
+                location.replace("/admin/reportCenter");
+            }
+        });
     });
 }
 function getDetails(id) {
@@ -813,6 +813,24 @@ function deleteMessages() {
     }).catch(function () {
         console.log("error")
     });
+}
+//real time search courses
+function searchCourses(val) {
+    if (val == "") {
+        $(".col-lg-4 .course-card").parent().show();
+    } else {
+        var cards = $(".col-lg-4 .course-card").parent();
+
+        for (let i = 0; i < cards.length; i++) {
+            let name = cards[i].getElementsByTagName("h5")[0].innerHTML;
+            console.log(name);
+            if (!name.includes(val)) {
+                $(cards[i]).hide();
+            } else {
+                $(cards[i]).show();
+            }
+        }
+    }
 }
 //search Reports center
 function searchReport(val) {
