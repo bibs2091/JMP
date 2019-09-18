@@ -21,6 +21,7 @@ const reportCenterController = require("../controllers/admin/reportCenter");
 const updateSettingsController = require("../controllers/admin/updateSettings");
 const exportDBController = require("../controllers/admin/exportDB");
 const importDBController = require("../controllers/admin/importDB");
+const approveUserController = require("../controllers/admin/approveUser");
 
 //handling requests 
 router.get("/", (req, res) => {
@@ -35,10 +36,7 @@ router.delete("/category/delete/:id", deleteCategoryController);
 router.post("/category/update/:id", updateCategoryController);
 router.get("/users", usersController);
 router.delete("/users/delete/:id", deleteUserController);
-router.put("/users/approve/:id", (req, res) => {
-    Users.update({ groupId: 2 }, { where: { id: req.params.id } });
-    res.send({ success: true });
-});
+router.put("/users/approve/:id", approveUserController);
 router.put("/users/makecoach/:id", (req, res) => {
     Users.update({ groupId: 1 }, { where: { id: req.params.id } });
     res.send({ success: true });
