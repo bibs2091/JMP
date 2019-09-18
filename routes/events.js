@@ -10,6 +10,7 @@ const modifiePostController = require("../controllers/events/modifie_post");
 const modifieGetController = require("../controllers/events/modifie_get");
 const eventController = require("../controllers/events/eventPage");
 const eventPostRegisterController = require("../controllers/events/postRegister");
+const getAllEvents = require('../controllers/events/getAllEvents')
 // require middlewares
 const isAuthenticated = require("../middleware/isAuthenticated");
 const isCoach = require("../middleware/isCoach");
@@ -36,4 +37,5 @@ router.get("/add", isAuthenticated, async (req, res) => {
 });
 router.get("/:id", isAuthenticated, eventController);
 router.post("/register/:id", isAuthenticated, eventPostRegisterController);
+router.get('/', getAllEvents)
 module.exports = router;
