@@ -64,12 +64,17 @@
         <p>{{event.description}}</p>
         <h3 style="margin-top:52px;">Schedule</h3>
         <ul class="timeline">
-          @each(schedule in schedules)
-          <li class="event">
-            <p>{{schedule.start_t}}&nbsp;&nbsp;{{schedule.start_d}}</p>    
-            <p>{{schedule.name}}</p>
-          </li>
-          @endeach
+          @if(schedules.length>0)
+            @each(schedule in schedules)
+            <li class="event">
+              <p>{{schedule.start_t}}&nbsp;&nbsp;{{schedule.start_d}}</p>    
+              <p>{{schedule.name}}</p>
+            </li>
+            @endeach
+          @else
+            <p>No schedule available</p>
+          @endif
+          
         </ul>
       </div>
       <div class="col-md-5">
