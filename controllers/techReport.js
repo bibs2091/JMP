@@ -2,7 +2,8 @@ const Report = require("../models/Report");
 const UsersInfo = require("../models/UsersInfo");
 
 module.exports = async (req, res) => {
-	let temp = await UsersInfo.findOne({where : {userId : req.user.id}});
+	try {
+    let temp = await UsersInfo.findOne({where : {userId : req.user.id}});
 	let username = temp.dataValues.username;
     await Report.create({
     	username,
@@ -13,5 +14,8 @@ module.exports = async (req, res) => {
     	reportDetails : req.body.description
 
     } );
+    }catch(err){
+    console.log(err);    
     res.redirect("/");
+    }
 }
