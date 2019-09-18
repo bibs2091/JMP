@@ -89,7 +89,7 @@ app.use(sessionMiddleware);
 
 //
 // io server 
-const ioServer = require('./config/socket')(app, sessionMiddleware);
+const ioServer = require('./config/socket').init(app, sessionMiddleware);
 
 
 //flash

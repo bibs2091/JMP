@@ -167,7 +167,7 @@ const init = (app, session) => {
     return server
 }
 
-module.exports = init;
+module.exports = { init, connectedUsers };
 
 
 //******************** helper functions : 

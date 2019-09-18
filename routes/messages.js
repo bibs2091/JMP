@@ -165,8 +165,8 @@ router.get("/new_message", async (req, res) => {
 	}
 	res.render('messages', {
 		currentUser,
-		pageName: "Send a new message",
-		pageTitle: "Send a new message",
+		pageName: "Compose message",
+		pageTitle: "Compose message",
 		newUserMessage
 	});
 });

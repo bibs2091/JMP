@@ -2,6 +2,7 @@ const Users = require("../../models/Users");
 const UsersInfo = require("../../models/UsersInfo");
 const Courses = require("../../models/Courses");
 
+const { connectedUsers } = require('../../config/socket')
 
 module.exports = async (req, res) => {
     try {
@@ -18,13 +19,17 @@ module.exports = async (req, res) => {
             where: { groupId: 1 }
         });
         coachsNumber = coachsNumber.length;
+
+        let countConnectedUsers = connectedUsers.size
+
         res.render("admin.home", {
             pageTitle: "Dashboard- Home",
             pageName: "Dashboard",
             currentUser,
             usersNumber,
             coursesNumber,
-            coachsNumber
+            coachsNumber,
+            countConnectedUsers
         });
     }
     catch (e) {
