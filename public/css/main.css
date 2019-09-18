@@ -612,7 +612,7 @@ input[type="search"]:focus {
     margin-bottom: 50px;
     padding-bottom: 20px;
 }
-.fillingInfosBox .md-form textarea.md-textarea:focus:not([readonly])+label, .fillingInfosBox input[type="date"]:focus:not([readonly]), .fillingInfosBox input[type="datetime-local"]:focus:not([readonly]), input[type="email"]:focus:not([readonly]), input[type="number"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), input[type="search-md"]:focus:not([readonly]), input[type="search"]:focus:not([readonly]), input[type="tel"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="time"]:focus:not([readonly]), input[type="url"]:focus:not([readonly]),.fillingInfosBox  textarea.md-textarea:focus:not([readonly]), .fillingInfosBox .md-form textarea.md-textarea:focus:not([readonly]){
+.fillingInfosBox .md-form textarea.md-textarea:focus:not([readonly])+label, .fillingInfosBox input[type="date"]:focus:not([readonly]), .fillingInfosBox input[type="datetime-local"]:focus:not([readonly]),.fillingInfosBox input[type="email"]:focus:not([readonly]), .fillingInfosBox input[type="number"]:focus:not([readonly]),.fillingInfosBox input[type="password"]:focus:not([readonly]), .fillingInfosBox input[type="search-md"]:focus:not([readonly]),.fillingInfosBox input[type="search"]:focus:not([readonly]),.fillingInfosBox input[type="tel"]:focus:not([readonly]),.fillingInfosBox input[type="text"]:focus:not([readonly]),.fillingInfosBox input[type="time"]:focus:not([readonly]),.fillingInfosBox input[type="url"]:focus:not([readonly]),.fillingInfosBox  textarea.md-textarea:focus:not([readonly]), .fillingInfosBox .md-form textarea.md-textarea:focus:not([readonly]){
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25)!important;
     border-bottom: 1px solid #ced4da!important;
 }
@@ -2692,7 +2692,18 @@ input[name="lastName"] {
     border-radius: 7px;
     color: #828282;
     margin-right: 26px;
-    padding: 23px 34px 10px 34px;
+    padding: 23px 34px 23px 34px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.GeneralInformation h1{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.GeneralInformation p{
+    color:#EB5757;
+    margin-bottom: 15px;
 }
 
 
@@ -2716,18 +2727,6 @@ input[name="lastName"] {
     width: 350px;
 }
 
-.profilepic .overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #323b43;
-    overflow: hidden;
-    height: 0;
-    opacity: 1;
-    border-radius: 0px 0px 80px 80px;
-    cursor: pointer;
-}
 
 .saveboutton {
     border-radius: 3px;
@@ -3065,27 +3064,13 @@ input[name="lastName"] {
 }
 
 .profilepic {
-    position: relative;
-    width: 60%;
-    border-radius: 80px !important;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .pic {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    max-width: 150px;
     height: auto;
     border-radius: 55%;
 }
-
-.profilepic:hover .overlay {
-    height: 50%;
-    border-radius: 0px 0px 80px 80px;
-}
-
 .edit-pic {
     font-size: 20px;
     position: absolute;
@@ -3131,9 +3116,6 @@ input[name="lastName"] {
 
 .settingsCard {
     padding: 10px, 10px, 10px, 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #formGroupExampleInputMD {
@@ -4406,4 +4388,27 @@ h2 {
     font-size: 34px;
     line-height: 54px;
     margin-top: 20px;
+}
+.save-settings{
+    background: #3AE374;
+    border-radius: 7px;
+    color: white;
+    width: 130px;
+    height: 45px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    position: absolute;
+    border:0;
+    right: 0px;
+    top: 0px;
+}
+@media (max-width:764px){
+    .save-settings{
+        position: relative;
+        margin: 0 auto;
+        display: block;
+    }
 }

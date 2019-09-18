@@ -31,22 +31,27 @@
           <input type="checkbox"  onclick="checkReport(this)" class="form-check-input" id="{{report.id}}">
           <label for="{{report.id}}" class="form-check-label"></label>
         </div>
-            @if(report.indictedType == "Quiz" )
-            @if(report.courseName == "[Deleted]")
+            @if(report.indictedType == "tech")
             <div>
-            <p class="report_title">A {{report.indictedType}} in  a {{report.courseName}} course has been reported for {{report.type}}</p>
+            <p class="report_title"><strong>{{report.type}}</strong>-{{report.username}} had reported A technical problem  &nbsp;<span class="fa fa-circle" style="color: #ffd32a"></span></p>
             @else
-            <div onclick="getDetails({{report.id}})">
-            <p class="report_title">A {{report.indictedType}} in course {{report.courseName}} has been reported for {{report.type}}</p>
-            @endif
-            @endif
-            @if(report.indicted == "Quiz")
+              @if(report.indictedType == "Quiz" )
+                @if(report.courseName == "[Deleted]")
             <div>
-            <p class="report_title">{{report.indictedType}} {{report.indicted}} has been reported for {{report.type}}</p>
-            @endif
-            @if(report.indictedType != "Quiz" && report.indicted != "Quiz")
+            <p class="report_title">{{report.username}} had reported A {{report.indictedType}} in  a {{report.courseName}} course  for {{report.type}}</p>
+                @else
             <div onclick="getDetails({{report.id}})">
-            <p class="report_title">{{report.indictedType}}  {{report.indicted}} has been reported for {{report.type}}</p>
+            <p class="report_title">{{report.username}} had reported A {{report.indictedType}} in course {{report.courseName}}  for {{report.type}}</p>
+                @endif
+              @endif
+              @if(report.indicted == "Quiz")
+            <div>
+            <p class="report_title">{{report.username}} had reported {{report.indictedType}} {{report.indicted}}  for {{report.type}}</p>
+              @endif
+              @if(report.indictedType != "Quiz" && report.indicted != "Quiz" )
+            <div onclick="getDetails({{report.id}})">
+            <p class="report_title">{{report.username}} had reported {{report.indictedType}}  {{report.indicted}}  for {{report.type}}</p>
+              @endif
             @endif
             <p class="report_detailB">{{report.reportDetails}}</p>
           </div>
