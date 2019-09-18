@@ -165,7 +165,13 @@
                             Doloribus tempore obcaecati ab                                
                         </p>
                         <br>
-                        <button type="button" class="btn btn-warning btn-rounded-important donate" data-price="34" onclick="donate(this.getAttribute('data-price'))">DONATE</button>
+                        <div class="input-group mb-3 donate_input">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control"  placeholder="Enter how much you want to donate"  aria-label="Amount (to the nearest dollar)">
+                        </div>
+                        <button type="button" class="btn btn-warning btn-rounded-important donate"  id ="donate1" data-price="0">DONATE</button>
                     </div>
                     <div class="col-md-2">
                         <h6>Content</h6>
@@ -189,8 +195,15 @@
                         <ul>
                                 <li>Some place in an other place 245 next to a place</li>
                                 <li>jmprogram@gmail.com</li>
-                                <li>+213 485 65 66</li>                      
-                                <li><button type="button" class="btn btn-warning btn-rounded-important donate" data-price="34" onclick="donate(this.getAttribute('data-price'))">DONATE</button></li>
+                                <li>+213 485 65 66</li>   
+                                <div class="input-group mb-3 donate_input" style="margin-top: 25px;">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">$</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Enter how much you want to donate" aria-label="Amount (to the nearest dollar)">
+                                </div>  
+                                <button type="button" class="btn btn-warning btn-rounded-important donate" id="donate2" data-price="0">DONATE</button>                 
+                                <li></li>
                         </ul>
                     </div>
                 </div>
@@ -205,5 +218,20 @@
     <script src="https://checkout.stripe.com/checkout.js"></script>
     <script src="/js/epayement.js"></script>
     <script>
+       $(document).ready(function(){
+           clicks=0;
+        $("button.donate").click(function(){
+            clicks += 1;
+            prevInput=$(this).prev();
+            console.log(prevInput)
+            console.log(clicks)
+                if ( clicks == 1 ){
+                    prevInput.removeClass("donate_input");
+                }
+                else if(prevInput.find("input").val()){
+                    donate(prevInput.find("input").val()); 
+                }
+            });
+        }); 
     </script>
 </html>
