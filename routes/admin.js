@@ -3,6 +3,8 @@ const router = express.Router();
 
 //require models
 const Users = require("../models/Users");
+const UsersInfo = require("../models/UsersInfo");
+
 
 //require controllers
 const homeController = require("../controllers/admin/home");
@@ -17,6 +19,7 @@ const deleteUserController = require("../controllers/admin/deleteUser");
 const settingsController = require("../controllers/admin/settings");
 const reportCenterController = require("../controllers/admin/reportCenter");
 const updateSettingsController = require("../controllers/admin/updateSettings");
+
 //handling requests 
 router.get("/", (req, res) => {
     res.redirect("/admin/home");
@@ -44,7 +47,17 @@ router.put("/users/makeadmin/:id", (req, res) => {
 });
 router.get("/settings", settingsController);
 router.post("/settings/update", updateSettingsController);
-
+router.get("/database", async (req, res) => {
+    var currentUser = req.user;
+    var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
+    delete currentUser.password;
+    currentUser.info = userInfo.dataValues;
+    res.render("admin.database", {
+        pageName: "Import/Export Database",
+        pageTitle: "Database settings",
+        currentUser
+    });
+});
 router.get("/reportcenter", reportCenterController);
 
 module.exports = router;
