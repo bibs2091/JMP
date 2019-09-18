@@ -2040,13 +2040,13 @@ input[name="lastName"] {
     font-weight: 600;
 }
 #delete_button{
-    background: #C05749;
+    background: #EB5757;
 }
 #update-boutton{
-    background: #FFEFCA;
+    background: #FFD32A;
 }
 #validating-boutton{
-    background: #36AD6D;
+    background: #1DBF70;
 }
 #register-boutton{
 
