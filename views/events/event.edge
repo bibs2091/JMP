@@ -35,9 +35,8 @@
     </div>
     <div id="event_actions">
       @if(isOwner || isAdmin)
-      <form method="POST" action="/events/delete/{{event.id}}">
-          <input type="submit" value="Delete Event" class="btn btn-rounded-important" id="delete_button">
-        </form>
+          <input type="button" onclick="deleteEvent({{event.id}})" value="Delete Event" class="btn btn-rounded-important" id="delete_button">
+
         <form method="GET" action="/events/modifie/{{event.id}}">
           <input type="submit" value="Update Event" class="btn btn-rounded-important" id="update-boutton">
         </form>

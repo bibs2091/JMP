@@ -240,6 +240,19 @@ function deleteCourse2(id) {
         });
     });
 }
+function deleteEvent(id) {
+    console.log("aaaa");
+    mscConfirm("Dangerous Operation!", "Are you sure you want to do this action?", function () {
+        $.ajax({
+            url: '/events/delete/' + id,
+            method: 'POST',
+            contentType: 'application/json',
+            success: function (result) {
+                location.replace("/");
+            }
+        });
+    });
+}
 //Delete Report by id
 function deleteReport(id) {
 
