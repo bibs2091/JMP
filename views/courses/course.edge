@@ -79,7 +79,11 @@
 
 
 
-
+            @if(messages.reportAdded)
+                <div class="alert alert-warning" style="margin-bottom:0;">{{messages.reportAdded[0]}}</div>
+            @elseif(messages.reportNotAdded)
+                <div class="alert alert-danger" style="margin-bottom:0;">{{messages.reportNotAdded[0]}}</div>
+            @endif
             <section id="main-content">
                 
                 @if(content.type == "video")
@@ -107,11 +111,6 @@
                     <p>{{content.description}}</p>
                 </div>
             </section>
-            @if(messages.reportAdded)
-                <div class="alert alert-success">{{messages.reportAdded[0]}}</div>
-      @elseif(messages.reportNotAdded)
-                <div class="alert alert-warning">{{messages.reportNotAdded[0]}}</div>
-      @endif
         </main>
     </div>
     <div class="modal fade" id="myModal" role="dialog">

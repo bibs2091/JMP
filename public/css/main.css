@@ -3511,6 +3511,14 @@ textarea.md-textarea:focus:not([readonly]),
     align-items: center;
     font-family: Rubik, sans-serif;
 }
+.report_center>li.read{ 
+    background-color: #1515150d;
+}
+.report_center>li.selected{ 
+    background-color: #15151524;
+
+}
+
 
 .report_center>li:last-child {
     border-bottom: none;
