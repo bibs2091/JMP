@@ -52,15 +52,15 @@
                   name="image" id="category-image-input" onchange="loadImage(event,'category-image')" required>
                   <div class="md-form">
                       <label for="title" class="add-category-label">Category's title</label>
-                      <input type="text" id="title" class="form-control" name="title"  required >
+                      <input type="text" id="title" class="form-control" name="title"  placeholder="Enter category's name" required >
                   </div>
                   <div class="md-form mb-4 pink-textarea active-pink-textarea">
-                      <textarea  name="description" id="description" class="md-textarea form-control" rows="3"></textarea>
+                      <textarea  name="description" id="description" placeholder="Enter category's description" class="md-textarea form-control" rows="3"></textarea>
                       <label for="title" >Category's description</label>
                   </div>
               </div>
               <div class="modal-footer">
-                  <input type="submit" class="btn submit-form">
+                  <input type="submit" class="btn submit-form btn-rounded-important">
               </div>
             </form>
           </div>
@@ -95,8 +95,8 @@
             </div>
       </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger delete-button" onclick="deleteCategory(this.id)" id="">Delete</button>
-            <input type="submit" class="btn submit-form" style="margin-top: 0;"value="update">
+            <button type="button" class="btn btn-danger btn-rounded-important delete-button" onclick="deleteCategory(this.id)" id="">Delete</button>
+            <input type="submit" class="btn submit-form btn-rounded-important" style="margin-top: 0;"value="update">
         </div>
     </form>
 

@@ -43,11 +43,11 @@ router.get("/logout", isAuthenticated, (req, res, next) => {
 	}
 });
 
-router.get("/register", notAuthenticated,  (req, res) => {
+router.get("/register", notAuthenticated, inscription, (req, res) => {
 	res.render("auth.register");
 });
 
-router.post("/register", notAuthenticated,  registerController);
+router.post("/register", notAuthenticated, registerController);
 // for development :
 router.get("/postregister", (req, res) => {
 	res.render("auth.after_register")

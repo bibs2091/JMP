@@ -16,7 +16,7 @@ const usersController = require("../controllers/admin/users");
 const deleteUserController = require("../controllers/admin/deleteUser");
 const settingsController = require("../controllers/admin/settings");
 const reportCenterController = require("../controllers/admin/reportCenter");
-
+const updateSettingsController = require("../controllers/admin/updateSettings");
 //handling requests 
 router.get("/", (req, res) => {
     res.redirect("/admin/home");
@@ -43,6 +43,8 @@ router.put("/users/makeadmin/:id", (req, res) => {
     res.send({ success: true });
 });
 router.get("/settings", settingsController);
+router.post("/settings/update", updateSettingsController);
+
 router.get("/reportcenter", reportCenterController);
 
 module.exports = router;

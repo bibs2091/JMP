@@ -140,25 +140,26 @@
                 <div class="card" style="height: 270px;">
                     <center>
                         <div class="logo">
-                            <input type="file" style="display: none">
-                            <img src="/img/ouss.jpg" alt="">
-                            <div class="edit"><i class="fa fa-pen"></i></div>
+                            <input type="file" name="logo" onchange="loadImage(event,'logo-image')"
+                            style="display: none" accept="image/*" id="logo-input">
+                            <img src="{{info.logo}}" alt="logo" id="logo-image">
+                            <div class="edit" onclick="triggerInput('logo-input')"><i class="fa fa-pen"></i></div>
                         </div>
                         <div class="md-form">
-                            <input value="JMP" type="text" name="nom" class="form-control">
+                            <input value="{{info.nom}}" type="text" name="nom" class="form-control">
                             <label for="inputPlaceholderEx" class="active">Website name</label>
                         </div>
                     </center>
                 </div>
             </div>
             <div class="col-md-8 col-sm-12">
-                <div class="card" style="height: 270px;width:100%">
+                <div class="card" style="height: 270px;width:100%; padding-top: 50px">
                     <div class="md-form">
-                        <input value="Email@email.com" type="text" name="email" class="form-control">
+                        <input value="{{info.email}}" type="text" name="email" class="form-control">
                         <label class="active">Website Email</label>
                     </div>
                     <div class="md-form">
-                        <input value="JMP" type="text" name="adresse" class="form-control">
+                        <input value="{{info.adresse}}" type="text" name="adresse" class="form-control">
                         <label class="active">Address</label>
                     </div>
                 </div>
@@ -167,11 +168,15 @@
                 <div class="card">
                     <h6 style="margin-bottom: 10px;">Registration</h6>
                     <label class="switch">
-                        <input type="checkbox" name="reistration" checked>
+                        <input type="checkbox" name="registration" 
+                        @if(info.inscription == true)
+                        checked
+                        @endif
+                        >
                         <span class="slider round"></span>
                     </label>
                     <div class="md-form">
-                        <textarea name="registration_message" class="md-textarea" style="width: 100%;" rows="4">Hello we are sorry to inform you that the registerations are closed for the mement. thank you for your understanding. for more information please contact us at bibs2091@fatima-merzoug.dz</textarea>
+                        <textarea name="registration_message" class="md-textarea" style="width: 100%;" rows="4">{{info.registration_message}}</textarea>
                         <label class="active">Registerations closed message</label>
                     </div>
                 </div>
@@ -179,7 +184,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="md-form">
-                        <textarea name="description" class="md-textarea" style="width: 100%;" rows="4">description</textarea>
+                        <textarea name="description" class="md-textarea" style="width: 100%;" rows="4">{{info.description}}</textarea>
                         <label class="active">Description du site</label>
                     </div>
                 </div>
@@ -187,15 +192,15 @@
             <div class="col-md-12">
                 <div class="card"  style="padding-bottom: 80px">
                     <div class="md-form">
-                        <input value="JMP" type="text" name="lien_fcb" class="form-control">
+                        <input value="{{info.lien_fcb}}" type="text" name="lien_fcb" class="form-control">
                         <label class="active">Facebook page link</label>
                     </div>
                     <div class="md-form">
-                        <input value="JMP" type="text" name="lien_twitter" class="form-control">
+                        <input value="{{info.lien_twitter}}" type="text" name="lien_twitter" class="form-control">
                         <label class="active">Twitter profile link</label>
                     </div>
                     <div class="md-form">
-                        <input value="JMP" type="text" name="lien_insta" class="form-control">
+                        <input value="{{info.lien_insta}}" type="text" name="lien_insta" class="form-control">
                         <label class="active">Instagram profile link</label>
                     </div>
                     <input type="submit" id="save-settings-button" value="Save All">
