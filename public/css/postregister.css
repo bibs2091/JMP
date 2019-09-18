@@ -78,11 +78,11 @@ body {
   transform: translate(-50%, -50%);
 }
 .screen #chek {
-  margin-left: -33px;
-  width: 72px;
-  height: 135px;
+  font-size: 80px;
+  margin-left: -23px;
   position: absolute;
-  margin-top: 9px;
+  margin-top: 36px;
+  color: #FFF;
 }
 .screen .border-top {
   display: none;

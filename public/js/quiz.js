@@ -31,6 +31,8 @@ function showQuizResult() {
     $("#quiz-result").addClass("animated jackInTheBox").show();
     $("#question-number").parent().html("Result");
 }
+
+console.log("imported")
 //generating emojis HTML
 function emojiHTML(name) {
     var html;
