@@ -26,4 +26,35 @@
     @endeach
   </div>
 </div>
+<hr>
+<h2 class="user-home-title">All events:</h2>
+<hr>
+<div class="container">
+  <div class="row">
+    @if()
+      
+    @else
+      
+    @endif
+    @each(event in allEvents)
+      <div class="col-xl-6">
+          <div class="event_card" onclick="window.open('/events/{{event.id}}')">
+              <div class="card_img" style="background-image: url({{event.cover}});"></div>
+              <div>
+                      <h3>{{event.name}}</h3>
+                      <div style="display: table;    margin-top: 9px;">
+                          <time>{{event.month}}<span>{{event.day}}</span></time>
+                          <div style="display: table-cell;">
+                              <p class="eventCard_place">{{event.location}}</p>
+                          </div>
+                      </div>
+                      <hr>
+                      <h6>Details</h6>
+                      <p class="eventCard_details">{{event.description}}</p>
+              </div>
+          </div> 
+      </div>
+    @endeach
+  </div>
+</div>
 @endsection
