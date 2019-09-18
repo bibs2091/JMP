@@ -33,10 +33,16 @@ module.exports = async (req, res) => {
     var { jsonFile } = req.files;
     var DB = jsonFile.data.toString("utf8");
     var DB = JSON.parse(DB);
-    console.log(DB);
     for (let table in DB) {
-        console.log(table);
-
+        let model = DBtables[table];
+        let DBtable = DB[table];
+        if (DBtable.length > 0)
+            for (let i = 0; i < DBtable.length; i++) {
+                delete DBtable[i].id;
+                delete DBtable[i].createdAt;
+                delete DBtable[i].updatedAt;
+                await model.create(DBtable[i]);
+            }
     }
     res.redirect("/admin/settings");
 }
