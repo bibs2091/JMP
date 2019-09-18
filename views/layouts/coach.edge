@@ -73,11 +73,27 @@
                                 <i class="fas fa-search"></i>
                         </div>
                         <i class="fas fa-search" id="search_responsive"></i>
-                        <span class="icon-Message_notification" data-toggle="tooltip" title="Your messages"></span>
+                        <span class="icon-Message_notification dropdowns" data-toggle="tooltip" title="Your messages" data-id="dropdownMessageWrapper" style="cursor:pointer;"></span>
+                            <div class='dropdown-wrapper message-dropdown' id='dropdownMessageWrapper' style='width: 270px'>
+                                <h3>Messages</h3>
+                                <div class="message-card container-fluid">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img class='avatar-photo' alt='Profile Photo' src='{{currentUser.info.avatar}}'>
+                                        </div>
+                                        <div class="message-card-info col-9">
+                                            <h5>Naas Mohamed</h5>
+                                            <h6>A question about a quiz</h6>
+                                            <p>Hello i hope you recongnize mHello i hope you recongnize m...Hello i hope you recongnize m...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#"> View all </a>
+                            </div>
                         <span class="icon-bell" data-toggle="tooltip" title="Your Notifications"></span>
 
                         <div class='header-right'>
-                            <div class='avatar-wrapper' id='avatarWrapper'>
+                            <div class='avatar-wrapper dropdowns' id='avatarWrapper' data-id="dropdownWrapper">
                             <img alt='Profile Photo' class='avatar-photo' src='{{currentUser.info.avatar}}'
                             data-toggle="tooltip" data-placement="left" title="Profile and Settings">
                             <svg class='avatar-dropdown-arrow' height='24' id='dropdownWrapperArrow' viewbox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'>
