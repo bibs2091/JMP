@@ -206,12 +206,16 @@
                     <input type="submit" id="save-settings-button" value="Save All">
                 </div>
             </div>
+    </form>
              <div class="col-md-12">
                 <div class="card"  style="padding-bottom: 80px">
                     <div class="btn btn-success redirect" url="/admin/exportDB">export Database</div>
+                    <form action="/admin/importDB" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="jsonFile">
+                        <input type="submit" value="importDB" class="btn btn danger">
+                    </form>
                 </div>
             </div>
         </div>
-    </form>
 </div>
 @endsection

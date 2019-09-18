@@ -20,6 +20,7 @@ const settingsController = require("../controllers/admin/settings");
 const reportCenterController = require("../controllers/admin/reportCenter");
 const updateSettingsController = require("../controllers/admin/updateSettings");
 const exportDBController = require("../controllers/admin/exportDB");
+const importDBController = require("../controllers/admin/importDB");
 
 //handling requests 
 router.get("/", (req, res) => {
@@ -48,6 +49,7 @@ router.put("/users/makeadmin/:id", (req, res) => {
 });
 router.get("/settings", settingsController);
 router.get("/exportDB", exportDBController);
+router.post("/importDB", importDBController);
 router.post("/settings/update", updateSettingsController);
 router.get("/database", async (req, res) => {
     var currentUser = req.user;
