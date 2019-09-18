@@ -339,6 +339,69 @@ input[type="search"]:focus {
     opacity: 0;
     visibility: hidden;
 }
+.message-dropdown{
+    right: 40px;
+    padding-left: 0;
+    padding-right: 0;
+    background: #F5F5F5;
+    padding-bottom: 15px;
+}
+.message-dropdown h3{
+    margin-left: 11px;
+    font-family: Ubuntu,sans-serif;
+    color: #333333;
+    font-weight: 600; 
+    margin-bottom: 15px;
+}
+.message-dropdown > a{
+    text-align: center;
+    color: #828282;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.message-card{
+    height: 70px;
+    width: 250px;
+    background: #fff;
+    box-shadow: 0px 4px 7px rgba(211, 206, 206, 0.25);
+    border-radius: 7px;
+    padding: 0;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.message-card .row{
+    height: 100%;
+}
+.message-card div:first-of-type{
+    margin: auto;
+    padding-right: 0;
+}
+.message-card-info{
+    margin-top: 15px;
+    padding: 0;
+}
+.message-card-info h5,.message-card-info h6,.message-card-info p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Poppins, sans-serif;
+    padding: 0 5px;
+}
+.message-card-info h5{
+    font-size:12px;
+    color:#333333;
+}
+.message-card-info h6{
+    font-size:14px;
+    color:#333333;
+}
+.message-card-info p{
+    font-size:11px;
+    color:#333333;
+
+}
+
 
 .dropdown-wrapper.active {
     top: 100%;
@@ -4190,6 +4253,7 @@ h2 {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.18);
     border-radius: 8px;
     padding: 15px 19px;
+    margin: 0 auto;
     margin-bottom: 20px;
 }
 .stat-card h6{
