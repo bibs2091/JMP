@@ -35,7 +35,7 @@ function initMap() {
     });
   }
   // Listen for click on map
-  if (document.title != "event page") {
+  if (document.title == "update event" || document.title == "add event") {
 
     google.maps.event.addListener(map, 'click', function (event) {
       // move marker
