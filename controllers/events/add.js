@@ -1,4 +1,4 @@
-const Event = require('../../models/Event');
+	const Event = require('../../models/Event');
 const Sponsor = require('../../models/Sponsors');
 const Schedules = require('../../models/Schedule');
 module.exports = async (req, res) => {
@@ -9,7 +9,6 @@ module.exports = async (req, res) => {
 		var cover =null;
 		console.log(req.body);
 		console.log(req.files);
-
 		// if the user == admin the event will be directly validated 
 		if (user.groupId === 0) {
 			validated = true;
@@ -94,8 +93,7 @@ module.exports = async (req, res) => {
 						name :sponsors[i]
 
 					});
-					if(req.files.sponsorImage1){
-						if(Object.keys(req.files).length-1>i){
+					if(logo["sponsorImage"+(i+1)]){
 
 							await Sponsor.update(
 								{
@@ -103,8 +101,7 @@ module.exports = async (req, res) => {
 								},
 									{ where: { id: spon.id } }
 								)
-							await logo[Object.keys(req.files)[i+1]].mv(__dirname + '/../../public/img/events/sponsors/'+ spon.id + ".jpg");
-						}
+							await logo["sponsorImage"+(i+1)].mv(__dirname + '/../../public/img/events/sponsors/'+ spon.id + ".jpg");
 				}
 
 					}

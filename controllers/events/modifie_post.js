@@ -1,3 +1,4 @@
+const fs = require('fs');
 const Event = require('../../models/Event');
 const Sponsor = require('../../models/Sponsors');
 const Schedule = require('../../models/Schedule');
@@ -21,11 +22,15 @@ module.exports = async(req, res) => {
 		}
 		max = parseInt(max.substring(max.length-1,max.length));
 		if (max == 0){
+			if (sponsors[0] != "")
+				max = sponsors.length+1	;
+			else{
 
-			max = sponsors.length+1	;
+				max = 1;
+			}
+				
 		}
 
-		console.log(max);
 
 		// getting event infos
 		// if the images are submmited
@@ -71,6 +76,7 @@ module.exports = async(req, res) => {
 	        );
 
 		var oldSponsors = [];
+		var oldSponsorsIds= [];
 		for (let i=0;i<max-1;i++){
 
 			let sponsor = await Sponsor.findOne(
@@ -79,13 +85,18 @@ module.exports = async(req, res) => {
 					eventId : id
 				}
 			});
-			console.log(sponsor);
 			oldSponsors.push(sponsor);
+			oldSponsorsIds.push(sponsor.id);
 		}
 
 		//for (var i = oldSponsors.length - 1; i >= 0; i--) {
 		//}	
-
+		const sponsorsToDelete = await Sponsor.findAll({where :{eventId:id}});
+		for (let i=0;i<sponsorsToDelete.length;i++){
+			if (!oldSponsorsIds.includes(sponsorsToDelete[i].id)){
+				await fs.unlink(__dirname + '/../../public/img/events/sponsors/'+sponsorsToDelete[i].id+".jpg",()=>{});
+			}
+		}
 		await Sponsor.destroy({
 			where :{
 				eventId:id
