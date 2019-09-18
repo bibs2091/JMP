@@ -8,13 +8,13 @@
     height: auto;
   }
 </style>
-    <ul class="report_center">
+    <ul class=" report_center">
       <li id="action_bar">
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="ck-all">
           <label class="form-check-label" for="ck-all">All &nbsp; </label>
         </div>
-        <img src="/images/messaging/garbage.png" alt="delete" id="delete_msg">
+        <img src="/images/messaging/garbage.png" onclick="deleteReports()" alt="delete" id="delete_msg">
         <header class="header">
             <div class="search-box">
               <input placeholder="Search..." onkeyup="searchReport(this.value)"><span class="icon glyphicon glyphicon-search"></span>
@@ -22,10 +22,14 @@
         </header>
       </li>
       @each(report in reports)
-      <li class="read">
+      @if(report.read)
+      <li class="reports read">
+      @else
+      <li class="reports">
+      @endif
         <div class="form-check" style="padding-right: 0;">
-          <input type="checkbox" class="form-check-input" id="id1">
-          <label for="id1" class="form-check-label"></label>
+          <input type="checkbox"  onclick="checkReport(this)" class="form-check-input" id="{{report.id}}">
+          <label for="{{report.id}}" class="form-check-label"></label>
         </div>
             @if(report.indictedType == "Quiz" )
             @if(report.courseName == "[Deleted]")

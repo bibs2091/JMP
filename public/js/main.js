@@ -897,6 +897,7 @@ $(".redirect").click(function () {
     e.stopImmediatePropagation();
   });
 
+
   var checkBoxes = $('input[type=checkbox]');
 
   $("#ck-all").click(function () {
@@ -904,10 +905,28 @@ $(".redirect").click(function () {
     if (clicks) {
       checkBoxes.prop('checked', false);
       $(".message-list li").removeClass("selected");
+      $(".reports").removeClass("selected");
+
     } else {
       checkBoxes.prop('checked', true);
       $(".message-list li").addClass("selected");
+      $(".reports").addClass("selected");
     }
     $(this).data('clicks', !clicks);
 
   });
+  function checkReport(obj){
+    if($(obj).prop("checked")){
+        $(obj.parentNode.parentNode).addClass("selected");
+    }else{
+        $(obj.parentNode.parentNode).removeClass("selected");
+    }
+  }
+
+  function deleteReports(){
+    var checks = $('input[type=checkbox]');
+    for (var i = checks.length - 1; i >= 0; i--) {
+        if (checks[i].parentNode.parentNode.className.split(" ").includes("selected"))
+            deleteReport(checks[i].id);
+    }
+  }
