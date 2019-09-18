@@ -1,149 +1,102 @@
 @layout('layouts.main')
 
 @section('content')
-
- <div id="setting_navbar" >
-  <ul > 
-   <li><a href="#">Account</a> </li>
-   <li><a href="#">General</a></li>
-   <li><a href="#">Security</a></li>
-   <li><a href="#">Website</a></li>
-   <li id="setting_others"><a href="#">Others</a></li>
-  </ul> 
- </div>
-<div style="margin-left:auto;margin-right:auto;">
+<div style="margin:20px auto;">
  <div class="container settingsCard " >
-    <div class="row ">     
-          <div class="col-md-4 GeneralInformation "> 
-              <div class="profilepic">
-                  <img src="{{userInfo.avatar}}" alt="Avatar" class=" pic ">
-                  <div class="overlay" onclick="triggerInput('userAvatar')">
-                    <div class="edit-pic"><i class="fas fa-camera"></i></div>
-                    <input type="file" accept="images/*" hidden id="userAvatar">
+          <div class="GeneralInformation"> 
+              <form>
+                <h1>Profile</h1>
+                <img src="{{userInfo.avatar}}" alt="Avatar" class=" pic ">
+                <div class="row">
+                    <div class=" col-md-6 md-form form-group  mt-5 ">
+                        <label for="f_n" style="left:auto;">First Name </label>
+                        <input type="text" value="{{userInfo.firstName}}" class="form-control" id="f_n" >
+                    </div>
+                      
+                      <div class=" col-md-6 md-form form-group mt-5">
+                        <label for="l_n" style="left:auto;">Last Name </label>
+                        <input type="text" value="{{userInfo.lastName}}" class="form-control" id="l_n" >
+                      </div>
+                </div>
+                <div class="md-form form-group">
+                    <label for="p_n">Phone number</label>
+                    <input type="number" value="0658147015" class="form-control" id="p_n" >
+                </div>
+                <div class="md-form" style="margin-top:15px;">
+                    <textarea id="bio" class="md-textarea form-control" placeholder="Tell us something about you" rows="3"></textarea>
+                    <label for="bio">Bio</label>
+                </div>
+                <label class="customized-label">Skils</label>
+                  <div class="form-group">
+                      <label style="width:100%" for="tag-typer">
+                              <div id="tags">
+                                  <input id="tag-typer" type="text" name="Skills" placeholder="Add a skill..."/>
+                              </div>
+                      </label>
                   </div>
-              </div>
-            <form>
-              <div class="md-form form-group  mt-5 ">
-                <label for="formGroupExampleInputMD">First Name </label>
-                <input type="text" value="{{userInfo.firstName}}" class="form-control" id="formGroupExampleInputMD" >
-                
-              </div>
-              
-              <div class="md-form form-group mt-5">
-                <label for="formGroupExampleInputtMD">Last Name </label>
-                <input type="text"  value="{{userInfo.lastName}}" class="form-control" id="formGroupExampleInput2tMD" >
-              </div>
-              
-            </form>
+            </form> 
           </div>
           
-          <div class="col-md-7 GeneralInformation ">   
+          <div class="GeneralInformation"> 
             <form>
-              <div class="row" id="Note">
-                  <i class="fas fa-exclamation-triangle col-1 "></i>
-                  <p class="col-10">This information are only for security and statistical perpuses and it will not be showen in your profile </p>
-              </div>
-            </br>
-            </br>
-              <div class="form-row">
-                <div class="form-group  md-form col-md-6 ">
-                  <label for="inputPhoneNumber">Phone Number </label>
-                  <input type="text" value="{{userInfo.phone}}" class="form-control" id="inputPhoneNumber" >
+                <h1>Profile</h1>
+                <div class="row">
+                      <div class="col-md-6 md-form input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text md-addon"><i class="fab fa-facebook"></i></span>
+                          </div>
+                          <input type="text" class="form-control pl-0 rounded-0"
+                            placeholder="Enter your facebook link">
+                      </div>
+                      <div class="col-md-6 md-form input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text md-addon"><i class="fab fa-twitter"></i></span>
+                          </div>
+                          <input type="text" class="form-control pl-0 rounded-0"
+                            placeholder="Enter your Twitter link">
+                      </div>
+                      <div class="col-md-6 md-form input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text md-addon"><i class="fab fa-linkedin"></i></span>
+                          </div>
+                          <input type="text" class="form-control pl-0 rounded-0"
+                            placeholder="Enter your LinkedIn link">
+                      </div>
+                      <div class="col-md-6 md-form input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text md-addon"><i class="fab fa-github"></i></span>
+                          </div>
+                          <input type="text" class="form-control pl-0 rounded-0"
+                            placeholder="Enter your Github link">
+                      </div>
+                  
+                </div>                
+            </form> 
+          </div>
+          <div class="GeneralInformation"> 
+              <form>
+                <h1>Account</h1>
+                <p>Please proceed with caution</p>
+                <div class="md-form form-group ">
+                    <label for="email">Email</label>
+                    <input type="email" value="{{userInfo.email}}" class="form-control" id="email" >
                 </div>
-                <div class="form-group md-form col-md-6">
-                  <label for="inputUsername">Username</label>
-                  <input type="text" value="{{userInfo.username}}" class="form-control" id="inputUsername" >
-                </div>  
-              </div>
-              <div class="form-row">
-                    <div class="select col-md-6">
-                      {{--  wilayas  --}}
-                      <select class="select-text" required>
-                        <option value="" disabled selected></option><option selected>Choose...</option><option value="adrar">Adrar</option>
-                        <option value="chlef">Chlef</option>
-                        <option value="laghouat	">Laghouat	</option>
-                        <option value="oum El Bouaghi">Oum El Bouaghi</option>
-                        <option value="batna">Batna</option>
-                        <option value="béjaïa">Béjaïa</option>
-                        <option value="biskra">Biskra</option>
-                        <option value="béchar">Béchar</option>
-                        <option value="blida">Blida</option>
-                        <option value="bouira">Bouira</option>
-                        <option value="tamanrasset">Tamanrasset</option>
-                        <option value="tébessa">Tébessa</option>
-                        <option value="tlemcen">Tlemcen</option>
-                        <option value="tiaret">Tiaret</option>                      
-                        <option value="tizi Ouzou">Tizi Ouzou</option>
-                        <option value="alger">Alger</option>
-                        <option value="djelfa">Djelfa</option>
-                        <option value="jijel">Jijel</option>
-                        <option value="sétif">Sétif</option>
-                        <option value="saïda">Saïda</option>
-                        <option value="skikda">Skikda</option>                     
-                        <option value="sidi Bel Abbès">Sidi Bel Abbès</option>
-                        <option value="annaba">Annaba</option>
-                        <option value="guelma">Guelma</option>
-                        <option value="constantine">Constantine</option>
-                        <option value="médéa">Médéa</option>
-                        <option value="mostaganem">Mostaganem</option>
-                        <option value="m'Sila">M'Sila</option>
-                        <option value="mascara">Mascara</option>
-                        <option value="ouargla">Ouargla</option>
-                        <option value="oran">Oran</option>
-                        <option value="el Bayadh">El Bayadh</option>
-                        <option value="illizi">Illizi</option>
-                        <option value="bordj Bou Arreridj">Bordj Bou Arreridj</option>
-                        <option value="boumerdès">Boumerdès</option>
-                        <option value="el Tarf">El Tarf</option>
-                        <option value="tindouf">Tindouf</option>
-                        <option value="tissemsilt">Tissemsilt</option>
-                        <option value="el Oued">El Oued</option>
-                        <option value="khenchela">Khenchela</option>
-                        <option value="souk Ahras">Souk Ahras</option>
-                        <option value="tipaza">Tipaza</option>
-                        <option value="mila"> Mila</option>
-                        <option value="ain Defla">Aïn Defla</option>
-                        <option value="naâma">Naâma</option>
-                        <option value="aïn Témouchent">Aïn Témouchent</option>
-                        <option value="ghardaïa">Ghardaïa</option>
-                        <option value="relizane">Relizane</option>
-                      </select>
-
-                      <span class="select-highlight"></span>
-                      <span class="select-bar"></span>
-                      <label class="select-label">State</label>
-                    </div>
-                    <div class="select col-md-6">
-                      <select class="select-text" required>
-                        <option value="" disabled selected></option>
-                        <option>Male</option>
-                        <option>Female</option>
-                      </select>
-                      <span class="select-highlight"></span>
-                      <span class="select-bar"></span>
-                      <label class="select-label">Sex</label>
-                    </div>
-                  </div>
-                </br>
-                <div class="md-form">
-                  @if(userInfo.bio == null)
-                    <textarea id="form7" class="md-textarea form-control" rows="3" placeholder="Write something about you"></textarea>                    
-                  @else
-                  <textarea id="form7" class="md-textarea form-control" rows="3" >
-                     {{userInfo.bio}}
-                  </textarea>  
-                  @endif
-                  <label for="form7">Bio</label>
+                <div class="md-form form-group ">
+                    <label for="c_pass">Current password</label>
+                    <input type="password" placeholder="Enter your current password" value="" class="form-control" id="c_pass" >
                 </div>
-                <div class="pull-right">
-                <button type="button" class="btn btn-outline-success waves-effect resetboutton">Reset</button>
-                <button type="button" class="btn btn-success saveboutton">Save</button>
+                <div class="md-form form-group ">
+                    <label for="n_pass">New password</label>
+                    <input type="password" value=""  placeholder="Enter your new password"class="form-control" id="n_pass" >
                 </div>
-            </form>
-            
-          </div>  
-        </div>
-
+                <div class="md-form form-group ">
+                    <label for="co_pass">Confirm password</label>
+                    <input type="password" value="" placeholder="Enter your new password confirmation" class="form-control" id="co_pass" >
+                </div>
+              </form>
+          </div>
+          
+      </div>
     </div>
   </div>
 </div>
