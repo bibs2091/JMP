@@ -10,45 +10,38 @@
 </style>
     <ul class="report_center">
       <li id="action_bar">
-        
-        <div class="pagination2">
-            <a href="" id="prevPage">
-              <i class="fas fa-chevron-left"></i>
-            </a>&nbsp;
-            <span class="current-page">1</span>
-            -
-            <span class="last-page">25</span>
-            Pages
-            &nbsp;
-            <a href="" id="nextPage">
-              <i class="fas fa-chevron-right"></i>
-            </a>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="ck-all">
+          <label class="form-check-label" for="ck-all">All &nbsp; </label>
         </div>
+        <img src="/images/messaging/garbage.png" alt="delete" id="delete_msg">
         <header class="header">
-
             <div class="search-box">
               <input placeholder="Search..." onkeyup="searchReport(this.value)"><span class="icon glyphicon glyphicon-search"></span>
             </div>
         </header>
       </li>
       @each(report in reports)
-      <li>
-          
+      <li class="read">
+        <div class="form-check" style="padding-right: 0;">
+          <input type="checkbox" class="form-check-input" id="id1">
+          <label for="id1" class="form-check-label"></label>
+        </div>
             @if(report.indictedType == "Quiz" )
             @if(report.courseName == "[Deleted]")
-            <div style="margin-left:24px;">
+            <div>
             <p class="report_title">A {{report.indictedType}} in  a {{report.courseName}} course has been reported for {{report.type}}</p>
             @else
-            <div onclick="getDetails({{report.id}})" style="margin-left:24px;">
+            <div onclick="getDetails({{report.id}})">
             <p class="report_title">A {{report.indictedType}} in course {{report.courseName}} has been reported for {{report.type}}</p>
             @endif
             @endif
             @if(report.indicted == "Quiz")
-            <div style="margin-left:24px;">
+            <div>
             <p class="report_title">{{report.indictedType}} {{report.indicted}} has been reported for {{report.type}}</p>
             @endif
             @if(report.indictedType != "Quiz" && report.indicted != "Quiz")
-            <div onclick="getDetails({{report.id}})" style="margin-left:24px;">
+            <div onclick="getDetails({{report.id}})">
             <p class="report_title">{{report.indictedType}}  {{report.indicted}} has been reported for {{report.type}}</p>
             @endif
             <p class="report_detailB">{{report.reportDetails}}</p>

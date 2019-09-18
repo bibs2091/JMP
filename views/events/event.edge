@@ -33,28 +33,30 @@
                 @endif
                 @endeach
     </div>
-    @if(isOwner || isAdmin)
-    <form method="POST" action="/events/delete/{{event.id}}">
-        <input type="submit" value="Delete Event" class="btn btn-danger" id="delete_button">
-      </form>
-      <form method="GET" action="/events/modifie/{{event.id}}">
-        <input type="submit" value="Update Event" class="btn btn-primary" id="update-boutton">
-      </form>
-      @if(isAdmin && notvalidated)
-      <form method="POST" action="/events/validating/{{event.id}}">
-        <input type="submit" value="Validate Event" class="btn btn-success" id="validating-boutton">
-      </form>
-      @endif
-    @else
-      @if(registred)
-      <p>You are registred</p>
+    <div id="event_actions">
+      @if(isOwner || isAdmin)
+      <form method="POST" action="/events/delete/{{event.id}}">
+          <input type="submit" value="Delete Event" class="btn btn-rounded-important" id="delete_button">
+        </form>
+        <form method="GET" action="/events/modifie/{{event.id}}">
+          <input type="submit" value="Update Event" class="btn btn-rounded-important" id="update-boutton">
+        </form>
+        @if(isAdmin && notvalidated)
+        <form method="POST" action="/events/validating/{{event.id}}">
+          <input type="submit" value="Validate Event"class="btn btn-rounded-important"  id="validating-boutton">
+        </form>
+        @endif
       @else
-      <form method="POST" action="/events/register/{{event.id}}">
-        <input type="submit" value="Register Now" class="btn btn-primary" id="register-boutton">
-      </form>
+        @if(registred)
+        <p>You are registred</p>
+        @else
+        <form method="POST" action="/events/register/{{event.id}}">
+          <input type="submit" value="Register Now" class="btn btn-rounded-important" id="register-boutton">
+        </form>
+        @endif
       @endif
-    @endif
   </div> 
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-md-7 courseDescription">

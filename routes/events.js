@@ -19,7 +19,7 @@ const isAdminOrCoach = require("../middleware/isAdminOrCoach");
 
 
 //handling requests 
-router.get("/validating/:id", isAuthenticated, isAdmin, validatingController);
+router.post("/validating/:id", isAuthenticated, isAdmin, validatingController);
 router.post("/delete/:id", isAuthenticated, isEventOwner, deleteController);
 router.post("/add", isAuthenticated, addController);
 router.post("/modifie/:id", isAuthenticated, isEventOwner, modifiePostController);

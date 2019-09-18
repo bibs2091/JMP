@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
             }
         });
         wishlist = wishlist ? true : false;
-        console.log(wishlist);
+        console.log(chaptersList);
         course.tags = JSON.parse(course.tags)
         res.render("courses.courseDetails", {
             pageName: "Course Details",

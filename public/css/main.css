@@ -139,6 +139,8 @@ a:hover {
 
 .s-sidebar-logo {
     margin-top: 10px;
+    max-width: 3.5em;
+    max-height: 6em;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -2021,7 +2023,34 @@ input[name="lastName"] {
 
 
 /* ------------------event card-------------- */
+#event_actions{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+#event_actions form{
+    display: inline;
+    margin: 0 7px;
+}
+#event_actions input{
+    height: 38px;
+    font-size: 15px;
+    padding: 5px 15px;
+    border: none;
+    font-weight: 600;
+}
+#delete_button{
+    background: #C05749;
+}
+#update-boutton{
+    background: #FFEFCA;
+}
+#validating-boutton{
+    background: #36AD6D;
+}
+#register-boutton{
 
+}
 .event_card {
     margin: 0 auto;
     margin-top: 50px;
@@ -2462,11 +2491,6 @@ input[name="lastName"] {
     height: 45px;
     display: block;
 
-}
-.event_details .waves-input-wrapper.waves-effect.waves-light{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
 }
 @media (max-width: 677px) {
     #register-boutton{
@@ -3380,10 +3404,12 @@ textarea.md-textarea:focus:not([readonly]),
 
 
 /* ----------------- report center ----------------- */
-
+.report_center .header{
+    margin-left: auto;
+}
 .header .search-box {
-    float: right;
     width: 150px;
+    float: right;
     height: 40px;
     position: relative;
 }
@@ -3444,16 +3470,6 @@ textarea.md-textarea:focus:not([readonly]),
     opacity: 0.5;
 }
 
-.pagination2 {
-    color: #828282;
-    font-weight: bold;
-}
-
-div.pagination2 {
-    display: block;
-    margin: 0 auto;
-}
-
 .report_center {
     width: 80%;
     display: block;
@@ -3461,6 +3477,17 @@ div.pagination2 {
     background-color: #fff;
     border-radius: 3px;
     border: 1px solid #828282;
+}
+#delete_msg {
+    height: 17px;
+    width: 17px;
+    cursor: pointer;
+}
+
+#delete_msg:hover {
+    height: 19px;
+    width: 19px;
+    margin-right: 2px;
 }
 
 .report_center #action_bar {
@@ -3470,7 +3497,7 @@ div.pagination2 {
 }
 
 .report_center #action_bar .form-check {
-    padding-left: 31px;
+    padding-left: 10px;
     color: #828282;
 }
 
@@ -3484,6 +3511,14 @@ div.pagination2 {
     align-items: center;
     font-family: Rubik, sans-serif;
 }
+.report_center>li.read{ 
+    background-color: #1515150d;
+}
+.report_center>li.selected{ 
+    background-color: #15151524;
+
+}
+
 
 .report_center>li:last-child {
     border-bottom: none;

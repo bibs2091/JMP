@@ -5,6 +5,7 @@
   #main-content{
     background: #FCFCFC;
     padding-top: 40px;
+    min-height: 100vh;
   }
 </style>
     @if(users.length == 0 && events.length == 0 && courses.length == 0)
@@ -27,7 +28,7 @@
             </div>
             <div class="user-info">
               <h6>{{user.lastName}} {{user.firstName}}</h6>
-              <span>{{user.username}}</span>
+              <span>{{"@" + user.username}}</span>
               <p>{{user.bio}}</p>
             </div>
           </div>
