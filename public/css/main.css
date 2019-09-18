@@ -4405,3 +4405,10 @@ h2 {
     right: 0px;
     top: 0px;
 }
+@media (max-width:764px){
+    .save-settings{
+        position: relative;
+        margin: 0 auto;
+        display: block;
+    }
+}
