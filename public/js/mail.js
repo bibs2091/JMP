@@ -1090,7 +1090,7 @@ CKEDITOR.replace('text');
 // bootstrap tokenfield
 
 $(function () {
-  $('#name').tokenInput("http://localhost:3000/api/users/search", {
+  $('#name').tokenInput("http://5cc87506.ngrok.io/api/users/search", {
     theme: "users",
     hintText: "Write the username",
     noResultsText: "Nothing found.",
