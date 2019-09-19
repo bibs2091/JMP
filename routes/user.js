@@ -8,6 +8,7 @@ const myCoursesController = require("../controllers/user/mycourses");
 const catalogController = require("../controllers/user/catalog");
 const userSettingsController = require("../controllers/user/settings");
 const eventsController = require("../controllers/user/events");
+const updateController = require("../controllers/user/update");
 
 
 //load userInfo model
@@ -35,6 +36,7 @@ router.get("/settings", isAuthenticated, userSettingsController);
 router.get("/wishlist", isAuthenticated, showWishlistController);
 router.get("/catalog", isAuthenticated, catalogController);
 router.get("/events", isAuthenticated, eventsController);
+router.post("/updateSetting/:id",isAuthenticated,updateController);
 
 router.post("/settings", isAuthenticated, (req, res) => {
 	console.log(req.body);

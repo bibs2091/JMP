@@ -8,13 +8,13 @@
     height: auto;
   }
 </style>
-    <ul class="report_center">
+    <ul class=" report_center">
       <li id="action_bar">
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="ck-all">
           <label class="form-check-label" for="ck-all">All &nbsp; </label>
         </div>
-        <img src="/images/messaging/garbage.png" alt="delete" id="delete_msg">
+        <img src="/images/messaging/garbage.png" onclick="deleteReports()" alt="delete" id="delete_msg">
         <header class="header">
             <div class="search-box">
               <input placeholder="Search..." onkeyup="searchReport(this.value)"><span class="icon glyphicon glyphicon-search"></span>
@@ -22,27 +22,36 @@
         </header>
       </li>
       @each(report in reports)
-      <li class="read">
+      @if(report.read)
+      <li class="reports read">
+      @else
+      <li class="reports">
+      @endif
         <div class="form-check" style="padding-right: 0;">
-          <input type="checkbox" class="form-check-input" id="id1">
-          <label for="id1" class="form-check-label"></label>
+          <input type="checkbox"  onclick="checkReport(this)" class="form-check-input" id="{{report.id}}">
+          <label for="{{report.id}}" class="form-check-label"></label>
         </div>
-            @if(report.indictedType == "Quiz" )
-            @if(report.courseName == "[Deleted]")
+            @if(report.indictedType == "tech")
             <div>
-            <p class="report_title">A {{report.indictedType}} in  a {{report.courseName}} course has been reported for {{report.type}}</p>
+            <p class="report_title"><strong>{{report.type}}</strong>-{{report.username}} had reported A technical problem  &nbsp;<span class="fa fa-circle" style="color: #ffd32a"></span></p>
             @else
-            <div onclick="getDetails({{report.id}})">
-            <p class="report_title">A {{report.indictedType}} in course {{report.courseName}} has been reported for {{report.type}}</p>
-            @endif
-            @endif
-            @if(report.indicted == "Quiz")
+              @if(report.indictedType == "Quiz" )
+                @if(report.courseName == "[Deleted]")
             <div>
-            <p class="report_title">{{report.indictedType}} {{report.indicted}} has been reported for {{report.type}}</p>
-            @endif
-            @if(report.indictedType != "Quiz" && report.indicted != "Quiz")
+            <p class="report_title">{{report.username}} had reported A {{report.indictedType}} in  a {{report.courseName}} course  for {{report.type}}</p>
+                @else
             <div onclick="getDetails({{report.id}})">
-            <p class="report_title">{{report.indictedType}}  {{report.indicted}} has been reported for {{report.type}}</p>
+            <p class="report_title">{{report.username}} had reported A {{report.indictedType}} in course {{report.courseName}}  for {{report.type}}</p>
+                @endif
+              @endif
+              @if(report.indicted == "Quiz")
+            <div>
+            <p class="report_title">{{report.username}} had reported {{report.indictedType}} {{report.indicted}}  for {{report.type}}</p>
+              @endif
+              @if(report.indictedType != "Quiz" && report.indicted != "Quiz" )
+            <div onclick="getDetails({{report.id}})">
+            <p class="report_title">{{report.username}} had reported {{report.indictedType}}  {{report.indicted}}  for {{report.type}}</p>
+              @endif
             @endif
             <p class="report_detailB">{{report.reportDetails}}</p>
           </div>

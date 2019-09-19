@@ -11,14 +11,24 @@ document.addEventListener("click", function (event) {
       headerProfileDropdown.classList.remove("active");
       headerProfileDropdownArrow.classList.remove("active");
     }
+    //to hide the dropdown in case of click somewhere else
+    navbar=document.getElementById("navbar");
+    navbarDropActive=navbar.getElementsByClassName('active');
+    for (let i=0;i<navbarDropActive.length;i++){
+      navbarDropActive[i].classList.remove("active");
+    }
   }
 });
-
-headerProfileAvatar.addEventListener("click", function (event) {
-  headerProfileDropdown.classList.toggle("active");
-  headerProfileDropdownArrow.classList.toggle("active");
+$(".dropdowns").click(function(){
+  let dptarget = $(this).attr("data-id");
+  document.getElementById(dptarget).classList.toggle("active");
+  if(dptarget == "dropdownWrapper")
+    headerProfileDropdownArrow.classList.toggle("active");
   event.stopPropagation();
-});
+})
+// headerProfileAvatar.addEventListener("click", function (event) {
+  
+// });
 
 //------------- course details ----------
 $(".collapse-chapter").on("click", function () {

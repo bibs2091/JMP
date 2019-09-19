@@ -240,6 +240,19 @@ function deleteCourse2(id) {
         });
     });
 }
+function deleteEvent(id) {
+    console.log("aaaa");
+    mscConfirm("Dangerous Operation!", "Are you sure you want to do this action?", function () {
+        $.ajax({
+            url: '/events/delete/' + id,
+            method: 'POST',
+            contentType: 'application/json',
+            success: function (result) {
+                location.replace("/");
+            }
+        });
+    });
+}
 //Delete Report by id
 function deleteReport(id) {
 
@@ -855,11 +868,22 @@ function searchReport(val) {
 function addTagsAddEvent() {
     var tagsSpans = document.getElementsByClassName("tag");
     var tags = [];
-    console.log("here");
+    
     for (let i = 0; i < tagsSpans.length; i++) {
         tags.push(tagsSpans[i].children[1].innerHTML);
     }
-    console.log(tags);
+    
+    $("#tags-input").val(JSON.stringify(tags));
+}
+//add skills to update user Setting 
+function addSkillsUpdateSetting() {
+    var tagsSpans = document.getElementsByClassName("tag");
+    var tags = [];
+    
+    for (let i = 0; i < tagsSpans.length; i++) {
+        tags.push(tagsSpans[i].children[1].innerHTML);
+    }
+    
     $("#tags-input").val(JSON.stringify(tags));
 }
 //$("#close-tag").on("click", addTagsAddEvent());
@@ -897,6 +921,7 @@ $(".redirect").click(function () {
     e.stopImmediatePropagation();
   });
 
+
   var checkBoxes = $('input[type=checkbox]');
 
   $("#ck-all").click(function () {
@@ -904,10 +929,28 @@ $(".redirect").click(function () {
     if (clicks) {
       checkBoxes.prop('checked', false);
       $(".message-list li").removeClass("selected");
+      $(".reports").removeClass("selected");
+
     } else {
       checkBoxes.prop('checked', true);
       $(".message-list li").addClass("selected");
+      $(".reports").addClass("selected");
     }
     $(this).data('clicks', !clicks);
 
   });
+  function checkReport(obj){
+    if($(obj).prop("checked")){
+        $(obj.parentNode.parentNode).addClass("selected");
+    }else{
+        $(obj.parentNode.parentNode).removeClass("selected");
+    }
+  }
+
+  function deleteReports(){
+    var checks = $('input[type=checkbox]');
+    for (var i = checks.length - 1; i >= 0; i--) {
+        if (checks[i].parentNode.parentNode.className.split(" ").includes("selected"))
+            deleteReport(checks[i].id);
+    }
+  }

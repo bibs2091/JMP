@@ -113,7 +113,7 @@
         line-height: 18px;
         color: #3E3E3E;
     }
-    #save-settings-button{
+    .save-settings-button{
         background: #3AE374;
         border-radius: 7px;
         color: white;
@@ -203,10 +203,19 @@
                         <input value="{{info.lien_insta}}" type="text" name="lien_insta" class="form-control">
                         <label class="active">Instagram profile link</label>
                     </div>
-                    <input type="submit" id="save-settings-button" value="Save All">
+                    <input type="submit" class="btn-rounded-important save-settings-button" value="Save All">
+                </div>
+            </div>
+    </form>
+             <div class="col-md-12">
+                <div class="card"  style="padding-bottom: 80px">
+                    <div class="btn btn-success redirect" url="/admin/exportDB">export Database</div>
+                    <form action="/admin/importDB" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="jsonFile">
+                        <input type="submit" value="importDB" class="btn btn danger">
+                    </form>
                 </div>
             </div>
         </div>
-    </form>
 </div>
 @endsection
