@@ -23,6 +23,7 @@ module.exports = async (req, res) => {
         var author = await UsersInfo.findOne({ where: { userId: courses[i].author } });
         courses[i].author = author.firstName + " " + author.lastName;
         courses[i].duration = Math.floor(courses[i].duration / 60);
+        courses[i].authorImage = author.avatar;
         if (courses[i].duration > 60) {
             duration += Math.floor(courses[i].duration / 60) + " h ";
         }

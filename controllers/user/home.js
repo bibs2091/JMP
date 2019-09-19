@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
         currentUser.info = userInfo.dataValues;
         var { data } = await axios.get("http://localhost:3000/recSys/" + req.user.id);
         var coursesType = data.length > 0 ? "Recommended " : "Discover some ";
-        var courses;
+        var courses = [];
         if (data.length > 0) {
             for (let i = 0; i < 3; i++) {
                 let tCourse = await Courses.findByPk(data[i]);
@@ -39,6 +39,7 @@ module.exports = async (req, res) => {
             var duration = "";
             var author = await UsersInfo.findOne({ where: { userId: courses[i].author } });
             courses[i].author = author.firstName + " " + author.lastName;
+            courses[i].authorImage = author.avatar;
             courses[i].duration = Math.floor(courses[i].duration / 60);
             if (courses[i].duration > 60) {
                 duration += Math.floor(courses[i].duration / 60) + " h ";

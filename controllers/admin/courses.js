@@ -11,6 +11,7 @@ module.exports = async (req, res) => {
     for (let i = 0; i < courses.length; i++) {
         var author = await UsersInfo.findOne({ where: { userId: courses[i].author } });
         courses[i].author = author.firstName + " " + author.lastName;
+        courses[i].authorImage = author.avatar;
     }
     res.render("admin.courses", {
         pageName: "Courses",
