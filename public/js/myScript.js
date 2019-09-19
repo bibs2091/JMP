@@ -23,6 +23,7 @@ $(".dropdowns").click(function () {
   let dptarget = $(this).attr("data-id");
   document.getElementById(dptarget).classList.toggle("active");
   if (dptarget == 'dropdownMessageWrapper') {
+    $(this).removeClass("icon-Message_notification_new").addClass("icon-Message_notification");
     if (document.getElementById(dptarget).classList.contains('active')) {
       console.log('clicked on drop down')
       // let url = "http://localhost:3000/messages/"
