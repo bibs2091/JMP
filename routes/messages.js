@@ -68,7 +68,11 @@ router.get('/', async (req, res) => {
 		const count = unreadMsg.count.toString()
 
 		// console.log(inbox);
-		res.render('inbox', { inbox, count, currentUser })
+		res.render('inbox', {
+			inbox, count, currentUser,
+			pageName: "My messages",
+			pageTitle: "My messages | JMP"
+		})
 	} catch (error) {
 		console.log(error)
 	}
