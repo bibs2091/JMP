@@ -59,7 +59,7 @@ module.exports = async (req, res) => {
                 } else {
                     var videoID = currentLecture.link.split("v=")[1];
                     // var vidInfo = await videoInfo(videoID);
-                    // duration += vidInfo.duration;
+                    duration += 190;
                 }
                 currentLecture.chapter = chapterId;
                 let lecture = await Lectures.create(currentLecture);
