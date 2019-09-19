@@ -469,6 +469,24 @@ input[type="search"]:focus {
 .dropdown-links a:last-of-type {
     padding-bottom: 0;
 }
+nav .icon-Message_notification_new {
+    background-image: url(/images/messaging/new_message.png);
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background-size:100% 100%;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+nav .icon-Message_notification {
+    background-image: url(/images/messaging/no_message.png);
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background-size:100% 100%;
+    margin-right: 15px;
+    margin-top: 5px;
+}
 
 @media (max-width: 672px) {
     nav #profile-pic-nav {
@@ -514,11 +532,17 @@ input[type="search"]:focus {
     margin-right: 20px;
 }
 
-.icon-Message_notification:before {
-    content: "\e917";
+/* .icon-Message_notification:before {
+    content: "\e919";
     font-size: 27px;
     margin-right: 20px;
-}
+} */
+
+/* .icon-Message_notification_new:before {
+    content: "\e919";
+    font-size: 27px;
+    margin-right: 20px;
+} */
 
 .icon-advanced:before {
     content: "\e900";
