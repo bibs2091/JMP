@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
         currentUser.info = userInfo.dataValues;
         var { data } = await axios.get("http://localhost:3000/recSys/" + req.user.id);
         var coursesType = data.length > 0 ? "Recommended " : "Discover some ";
-        var courses;
+        var courses = [];
         if (data.length > 0) {
             for (let i = 0; i < 3; i++) {
                 let tCourse = await Courses.findByPk(data[i]);
