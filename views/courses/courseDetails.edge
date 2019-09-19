@@ -88,7 +88,8 @@
       <div class="col-md-5">
         <div id="courseCardInfo">
           <a href="/courses/classroom/{{course.id}}" id="goToCourse"><button  type="button" class="btn btn-primary" id="startCourse">Go to Course</button></a>
-          <button  type="button" class="btn btn-outline-secondary" onclick="wishlist({{course.id}})" id="wishlistCourseDetails">
+          @if(currentUser.groupId == 2)            
+          <button  type="button" class="btn btn-outline-secondary" onclick="addToWishlist({{course.id}},this)" id="wishlistCourseDetails">
             @if(wishlist == false)
             <div class="btn-noWishlist" style="transition: 1s;">
               Add to wishlist<i class="far fa-heart"></i>
@@ -98,7 +99,7 @@
               <p style="font-weight: bold;">Added to wishlist</p><i class="fas fa-heart"></i>
             </div>
             @endif
-
+            @endif
           </button>
           <ul>
             <li>This course includes</li>
