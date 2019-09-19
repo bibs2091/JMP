@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
         var course = await Courses.findByPk(pCourses[i].dataValues.courseId);
         courses.push(course);
     }
-
+    console.log(courses);
     //making courses ready for displaying
     for (let i = 0; i < courses.length; i++) {
         courses[i] = courses[i].dataValues;
