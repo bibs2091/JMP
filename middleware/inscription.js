@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
         if (info.inscription) {
             return next();
         }
-        return res.render("auth.registrationClosed");
+        return res.render("auth.registrationClosed", { message: info.registration_message });
     } catch{
         res.redirect("/error");
     }
