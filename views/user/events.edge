@@ -31,30 +31,30 @@
 <hr>
 <div class="container">
   <div class="row">
-    @if()
-      
-    @else
-      
-    @endif
-    @each(event in allEvents)
-      <div class="col-xl-6">
-          <div class="event_card" onclick="window.open('/events/{{event.id}}')">
-              <div class="card_img" style="background-image: url({{event.cover}});"></div>
-              <div>
-                      <h3>{{event.name}}</h3>
-                      <div style="display: table;    margin-top: 9px;">
-                          <time>{{event.month}}<span>{{event.day}}</span></time>
-                          <div style="display: table-cell;">
-                              <p class="eventCard_place">{{event.location}}</p>
-                          </div>
+    @if(allEvents.length>0)
+      @each(event in allEvents)
+        <div class="col-xl-6">
+            <div class="event_card" onclick="window.open('/events/{{event.id}}')">
+                <div class="card_img" style="background-image: url({{event.cover}});"></div>
+                <div>
+                  <h3>{{event.name}}</h3>
+                  <div style="display: table;    margin-top: 9px;">
+                      <time>{{event.month}}<span>{{event.day}}</span></time>
+                      <div style="display: table-cell;">
+                          <p class="eventCard_place">{{event.location}}</p>
                       </div>
-                      <hr>
-                      <h6>Details</h6>
-                      <p class="eventCard_details">{{event.description}}</p>
-              </div>
-          </div> 
-      </div>
-    @endeach
+                  </div>
+                  <hr>
+                  <h6>Details</h6>
+                  <p class="eventCard_details">{{event.description}}</p>
+                </div>
+            </div> 
+        </div>
+      @endeach
+    @else
+      <p>No Events available.</p>
+    @endif
+    
   </div>
 </div>
 @endsection
