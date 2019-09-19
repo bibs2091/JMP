@@ -11,7 +11,6 @@ module.exports = async (req, res) => {
 			var avatar = null;
 			if (req.files)
     			avatar = req.files.avatar;
-    		console.log(avatar);
     		const {firstName,lastName,number,bio} = req.body;
     		const skillsJSON = req.body.skillsJSON;
     		var skills ="";
@@ -47,7 +46,6 @@ module.exports = async (req, res) => {
 				}
 			});
 				await avatar.mv(__dirname + '/../../public/img/avatars/' + req.user.id + ".jpg");
-				console.log("here");
 			}
 			    return res.redirect("/user/settings");
 		}else if (req.params.id == 2){
