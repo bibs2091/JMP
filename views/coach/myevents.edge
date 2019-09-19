@@ -1,4 +1,65 @@
 @layout('layouts.coach')
 
 @section('content')
+<h2 class="user-home-title">Validated events:</h2>
+<hr>
+<div class="container">
+  <div class="row">
+    @if(validatedEvent.length>0)
+      @each(event in validatedEvent)
+        <div class="col-xl-6">
+            <div class="event_card" onclick="window.open('/events/{{event.id}}')">
+                <div class="card_img" style="background-image: url({{event.cover}});"></div>
+                <div>
+                  <h3>{{event.name}}</h3>
+                  <div style="display: table;    margin-top: 9px;">
+                      <time>{{event.month}}<span>{{event.day}}</span></time>
+                      <div style="display: table-cell;">
+                          <p class="eventCard_place">{{event.location}}</p>
+                      </div>
+                  </div>
+                  <hr>
+                  <h6>Details</h6>
+                  <p class="eventCard_details">{{event.description}}</p>
+                </div>
+            </div> 
+        </div>
+      @endeach
+    @else
+      You have no validated events.
+    @endif
+    
+  </div>
+</div>
+<hr>
+<h2 class="user-home-title">Proposed events:</h2>
+<hr>
+<div class="container">
+  <div class="row">
+    @if(notValidated.length>0)
+      @each(event in notValidated)
+        <div class="col-xl-6">
+            <div class="event_card" onclick="window.open('/events/{{event.id}}')">
+                <div class="card_img" style="background-image: url({{event.cover}});"></div>
+                <div>
+                  <h3>{{event.name}}</h3>
+                  <div style="display: table;    margin-top: 9px;">
+                      <time>{{event.month}}<span>{{event.day}}</span></time>
+                      <div style="display: table-cell;">
+                          <p class="eventCard_place">{{event.location}}</p>
+                      </div>
+                  </div>
+                  <hr>
+                  <h6>Details</h6>
+                  <p class="eventCard_details">{{event.description}}</p>
+                </div>
+            </div> 
+        </div>
+      @endeach
+    @else
+      <p>You don't have any proposed events</p>
+    @endif
+    
+  </div>
+</div>
 @endsection
