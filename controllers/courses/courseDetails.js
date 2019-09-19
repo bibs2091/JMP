@@ -22,12 +22,19 @@ module.exports = async (req, res) => {
         var author = await UsersInfo.findOne({ where: { userId: course.author } });
         var chaptersList = [];
         var chaps = await Chapters.findAll({ where: { formation: courseId } });
+        var vids = 0;
         for (let i = 0; i < chaps.length; i++) {
             var currentChap = {};
             currentChap.title = chaps[i].title;
             var lects = await Lectures.findAll({ where: { chapter: chaps[i].id } });
+            
             var currentLects = [];
             for (let j = 0; j < lects.length; j++) {
+                if (lects[j].dataValues.type == "video"){
+                    console.log(lects[j].dataValues.type);
+                    vids ++;
+
+                }
                 currentLects.push(lects[j].title);
             };
             currentChap.lectures = currentLects;
@@ -40,8 +47,10 @@ module.exports = async (req, res) => {
                 courseId: courseId
             }
         });
+        if (vids == 0){
+            vids = "0"
+        }
         wishlist = wishlist ? true : false;
-        console.log(chaptersList);
         course.tags = JSON.parse(course.tags)
         res.render("courses.courseDetails", {
             pageName: "Course Details",
@@ -51,7 +60,9 @@ module.exports = async (req, res) => {
             chaptersList,
             url,
             currentUser,
-            wishlist
+            wishlist,
+            PDFs : course.dataValues.pdfs,
+            vids
         });
     } catch (error) {
         console.log(error);

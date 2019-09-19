@@ -56,7 +56,7 @@ module.exports = async (req, res) => {
 		}else if(req.params.id == 3){
 			userInfo.skills = userInfo.skills.split('||');
 			const {oldpass,newpass,newpassconfirm} = req.body;
-			console.log()
+			
 			brcrypt
 							.compare(oldpass, user.password)
 							.then(isMatch => {

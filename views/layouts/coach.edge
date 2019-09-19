@@ -74,6 +74,11 @@
                             <i class="fa fa-exclamation-circle"></i><em>Reports</em>
                         </a>
                     </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/messages">
+                            <i class="icon-home"></i><em>Messenger</em>
+                        </a>
+                    </li>
                 </ul>
               </nav>
           @elseif(currentUser.groupId == 2)
@@ -107,7 +112,11 @@
                         <i class="fa fa-calendar"></i><em>Events</em>
                     </a>
                 </li>
-                
+                <li>
+                    <a class="s-sidebar__nav-link" href="/messages">
+                        <i class="icon-home"></i><em>Messenger</em>
+                    </a>
+                </li>
             </ul>
           </nav>
           @else
@@ -129,6 +138,11 @@
                     <li>
                         <a class="s-sidebar__nav-link" href="/coach/myevents">
                             <em>My Events</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/messages">
+                            <i class="icon-home"></i><em>Messenger</em>
                         </a>
                     </li>
                 </ul>
@@ -163,7 +177,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 <a href="/messages"> View all </a>
                             </div>
                         <span class="icon-bell" data-toggle="tooltip" title="Your Notifications"></span>
