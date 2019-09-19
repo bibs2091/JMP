@@ -21,20 +21,6 @@ router.get('/', async (req, res) => {
 		delete currentUser.password;
 		currentUser.info = userInfo.dataValues;
 
-		// //pagination
-		// const paginate = ({ page, pageSize }) => {
-		// 	const offset = (page - 1) * pageSize
-		// 	const limit = pageSize
-
-		// 	return {
-		// 		offset, // the records we jump
-		// 		limit,  // how many we retrieve
-		// 	}
-		// }
-
-		// //TODO: replace later with query from req.body
-
-		// let { page, pageSize } = { page: 1, pageSize: 5 };
 
 		//request
 		let inbox = await Messages.findAll({ where: { to: req.user.id, [Op.and]: { delReciever: false } }, order: [['createdAt', 'DESC']] });
@@ -66,9 +52,9 @@ router.get('/', async (req, res) => {
 				where: { isRead: false, [Op.and]: { delReciever: false } }
 			})
 		const count = unreadMsg.count.toString()
-
-		// console.log(inbox);
 		res.render('inbox', { inbox, count, currentUser })
+
+
 	} catch (error) {
 		console.log(error)
 	}
