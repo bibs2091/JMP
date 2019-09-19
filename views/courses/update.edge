@@ -9,49 +9,7 @@
                         id="upload-course-cover" onclick="triggerInput('course-cover-input')">
                     <input type="file" name="cover" accept="image/*" id="course-cover-input" 
                         style="display:none" onchange="loadImage(event,'upload-course-cover')">
-                    <ul id="chapters-list">
-                        @each(chapter in chaptersList)
-                        <li>
-                                <div class="chapter-title">
-                                    <h6>{{chapter.title}}</h6>
-                                    <div class="tools">
-                                        <i class="fa fa-times" onclick="deleteChapter(this)"></i>&nbsp;
-                                        <i class="fa fa-edit" onclick="showEditChapterModal(this)"></i>
-                                    </div>
-                                </div>
-                                <ul class="lectures">
-                                    @each(lecture in chapter.lectures)
-                                    <li class="lecture">
-                                            <h5>{{lecture.title}}</h5>
-                                            <span>{{lecture.type}}</span>
-                                            <p>{{lecture.description}}</p>
-                                            <h6>{{lecture.link}}</h6>
-                                            <div class="tools">
-                                                <i class="fa fa-times" onclick='deleteLecture(this)'></i>&nbsp;
-                                                <i class="fa fa-edit" onclick="showEditLectureModal(this)"></i>
-                                            </div>
-                                        </li>
-                                    @endeach
-                                </ul>
-                                <div class='add-lecture' onclick='showAddLectureModal(this)'>
-                                        <ul> <li class="lesson addLesson">
-                                            <p style="display:block; margin:0 auto; color:#868686;">
-                                                <i class="fas fa-plus"></i> &nbsp; 
-                                                Add a lesson
-                                            </p></li>
-                                        </ul>
-                                </div>
-                            </li>
-                        @endeach
-                    </ul>
-                    <div class="add-chapter" onclick="showModal('add-chapter-modal')">
-                        <ul> <li class="lesson addLesson">
-                            <p style="display:block; margin:0 auto; color:#868686;">
-                                <i class="fas fa-plus"></i> &nbsp; 
-                                Add a chapter
-                            </p></li>
-                        </ul>
-                    </div>
+
                 </div>
                 <div class="col-md-5">
                     <h2>Basic course information</h2>
@@ -68,13 +26,12 @@
                         </p>
                         <textarea name="description" id="course-description" rows="4" class="form-control" required>{{course.description}}</textarea>
                     </div>
-                    <div class="form-group">
-                        <label class="customized-label">Course's category</label>
-                        <select class="form-control" name="category" required>
-                            <option value=1>cateogy1</option>
-                            <option value=2>category2</option>
-                        </select> 
-                    </div>
+                    <div class="select-wrapper mdb-select md-form displayed"><span class="caret">▼</span><input type="text" class="select-dropdown" readonly="true" data-activates="select-options-7556e8e0-5774-475f-9b8a-0c9bee641bef" value=""><ul id="select-options-7556e8e0-5774-475f-9b8a-0c9bee641bef" class="dropdown-content select-dropdown w-100 "><li class="disabled active"><span class="filtrable"> Course's category   </span></li><li class="   "><span class="filtrable"> html   </span></li><li class="   "><span class="filtrable"> python   </span></li></ul><select class="mdb-select md-form displayed initialized" name="category" onchange="ACVS1()" required="" style="position: absolute; top: 1rem; left: 0px; height: 0px; width: 0px; opacity: 0; padding: 0px; pointer-events: none; display: inline!important;" tabindex="-1">
+                              <option value="" disabled="" selected="">Course's category</option>
+                              <option value="1">html</option>
+                            <option value="2">python</option>
+
+                          </select></div>
                     <div class="form-group">
                         <label class="customized-label">Course's level</label>
                         <select class="form-control" name="level" required>
