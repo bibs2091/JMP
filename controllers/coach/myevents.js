@@ -1,6 +1,5 @@
 const UsersInfo = require("../../models/UsersInfo");
 const Event = require('../../models/Event')
-const Op = require('sequelize').Op
 
 module.exports = async (req, res) => {
     try {//get current user info
@@ -10,9 +9,8 @@ module.exports = async (req, res) => {
         currentUser.info = userInfo.dataValues;
         // get my events
         let events = await Event.findAll({
-            where: { validated: true, [Op.and]: { creatorId: currentUser.id } }
+            where: { creatorId: currentUser.id }
         })
-        console.log(events)
         let validatedEvent = []
         let notValidated = []
         events.forEach(event => {
@@ -33,7 +31,6 @@ module.exports = async (req, res) => {
                 notValidated.push(currentEvent)
             }
         })
-        console.log(allEvent)
         return res.render("coach.myevents", {
             pageName: "My Events",
             pageTitle: currentUser.info.username + " - My Events",
