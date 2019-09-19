@@ -868,11 +868,22 @@ function searchReport(val) {
 function addTagsAddEvent() {
     var tagsSpans = document.getElementsByClassName("tag");
     var tags = [];
-    console.log("here");
+    
     for (let i = 0; i < tagsSpans.length; i++) {
         tags.push(tagsSpans[i].children[1].innerHTML);
     }
-    console.log(tags);
+    
+    $("#tags-input").val(JSON.stringify(tags));
+}
+//add skills to update user Setting 
+function addSkillsUpdateSetting() {
+    var tagsSpans = document.getElementsByClassName("tag");
+    var tags = [];
+    
+    for (let i = 0; i < tagsSpans.length; i++) {
+        tags.push(tagsSpans[i].children[1].innerHTML);
+    }
+    
     $("#tags-input").val(JSON.stringify(tags));
 }
 //$("#close-tag").on("click", addTagsAddEvent());

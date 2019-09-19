@@ -8,6 +8,7 @@ const myCoursesController = require("../controllers/user/mycourses");
 const catalogController = require("../controllers/user/catalog");
 const userSettingsController = require("../controllers/user/settings");
 const eventsController = require("../controllers/user/events");
+const updateController = require("../controllers/user/update");
 
 
 //load userInfo model

@@ -4,71 +4,104 @@
 <div style="margin:20px auto;">
  <div class="container settingsCard " >
           <div class="GeneralInformation"> 
-              <form style="position: relative;">
+              <form method="POST" action="/user/updateSetting/1" enctype="multipart/form-data" style="position: relative;">
                 <h1>Profile</h1>
-                <img src="{{userInfo.avatar}}" alt="Avatar" class=" pic ">
+                <img src="{{userInfo.avatar}}" class ="pic" alt="upload an avatar" 
+                          id="upload-avatar" onclick="triggerInput('user-avatar-input')">
+                <input type="file" name="avatar" accept="image/*" id="user-avatar-input" 
+                style="display:none" onchange="loadImage(event,'upload-avatar')" >
                 <div class="row">
                     <div class=" col-md-6 md-form form-group  mt-5 ">
                         <label for="f_n" style="left:auto;">First Name </label>
-                        <input type="text" value="{{userInfo.firstName}}" class="form-control" id="f_n" >
+                        <input type="text" name="firstName" value="{{userInfo.firstName}}" class="form-control" id="f_n" >
                     </div>
                       
                       <div class=" col-md-6 md-form form-group mt-5">
                         <label for="l_n" style="left:auto;">Last Name </label>
-                        <input type="text" value="{{userInfo.lastName}}" class="form-control" id="l_n" >
+                        <input type="text" name="lastName" value="{{userInfo.lastName}}" class="form-control" id="l_n" >
                       </div>
                 </div>
                 <div class="md-form form-group">
                     <label for="p_n">Phone number</label>
-                    <input type="number" value="0658147015" class="form-control" id="p_n" >
+                    <input type="number" value="{{userInfo.phone}}" name="number" class="form-control" id="p_n" >
                 </div>
+                @if(userInfo.bio != null)
                 <div class="md-form" style="margin-top:15px;">
-                    <textarea id="bio" class="md-textarea form-control" placeholder="Tell us something about you" rows="2"></textarea>
+                    <textarea  id="bio" class="md-textarea form-control" placeholder="Tell us something about you" name="bio" rows="2">{{userInfo.bio}}</textarea>
+                    @else 
+                    <div class="md-form" style="margin-top:15px;">
+                    <textarea name="bio" id="bio" class="md-textarea form-control" placeholder="Tell us something about you" rows="2"></textarea>
+                    @endif
                     <label for="bio">Bio</label>
                 </div>
-                <label class="customized-label">Skils</label>
+                <label class="customized-label">Skills</label>
+
                   <div class="form-group">
                       <label style="width:100%" for="tag-typer">
                               <div id="tags">
-                                  <input id="tag-typer" type="text" name="Skills" placeholder="Add a skill..."/>
+                                @each(skill in userInfo.skills)
+                                  <span class="tag" ><span class="close">×</span><p>{{skill}}</p></span>
+                                  @endeach
+                                  <input id="tag-typer" type="text"  placeholder="Add a skill..."/>
                               </div>
                       </label>
                   </div>
-                  <input type="submit" class="btn-rounded-important save-settings" value="Save">
+                  <input type="hidden" name="skillsJSON" id="tags-input">
+                  <input type="submit" onclick="addSkillsUpdateSetting()" class="btn-rounded-important save-settings" value="Save">
             </form> 
           </div>
           
           <div class="GeneralInformation"> 
-            <form style="position: relative;">
+            <form method="POST" action="/user/updateSetting/2" style="position: relative;">
                 <h1>Profile</h1>
                 <div class="row">
                       <div class="col-md-6 md-form input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text md-addon"><i class="fab fa-facebook"></i></span>
                           </div>
-                          <input type="text" class="form-control pl-0 rounded-0"
+                          @if(userInfo.facebook != null)
+                          <input type="text" name="facebook" value="{{userInfo.facebook}}" class="form-control pl-0 rounded-0"
                             placeholder="Enter your facebook link">
+                            @else
+                            <input type="text" name="facebook" class="form-control pl-0 rounded-0"
+                            placeholder="Enter your facebook link">
+                            @endif
                       </div>
                       <div class="col-md-6 md-form input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text md-addon"><i class="fab fa-twitter"></i></span>
                           </div>
-                          <input type="text" class="form-control pl-0 rounded-0"
+                          @if(userInfo.twitter != null)
+                          <input type="text" name="twitter" value="{{userInfo.twitter}}" class="form-control pl-0 rounded-0"
                             placeholder="Enter your Twitter link">
+                            @else
+                            <input type="text" name="twitter" class="form-control pl-0 rounded-0"
+                            placeholder="Enter your Twitter link">
+                            @endif
                       </div>
                       <div class="col-md-6 md-form input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text md-addon"><i class="fab fa-linkedin"></i></span>
                           </div>
-                          <input type="text" class="form-control pl-0 rounded-0"
+                          @if(userInfo.linkedin != null)
+                          <input type="text" name="linkedin" value="{{userInfo.linkedin}}" class="form-control pl-0 rounded-0"
                             placeholder="Enter your LinkedIn link">
+                            @else
+                            <input type="text" name="linkedin" class="form-control pl-0 rounded-0"
+                            placeholder="Enter your LinkedIn link">
+                            @endif
                       </div>
                       <div class="col-md-6 md-form input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text md-addon"><i class="fab fa-github"></i></span>
                           </div>
-                          <input type="text" class="form-control pl-0 rounded-0"
+                          @if(userInfo.linkedin != null)
+                          <input type="text" name="github" value="{{userInfo.github}}" class="form-control pl-0 rounded-0"
                             placeholder="Enter your Github link">
+                            @else
+                            <input type="text" name="github" class="form-control pl-0 rounded-0"
+                            placeholder="Enter your Github link">
+                            @endif
                       </div>
                   
                 </div>   
@@ -76,25 +109,32 @@
 
             </form> 
           </div>
+          @if(messages == "email and password had been changed")
+            <div class="alert alert-success">{{messages}}</div>
+          @endif
+          @if(messages != "A") 
+          <div class="alert alert-warning">{{messages}}</div> 
+          @endif        
+
           <div class="GeneralInformation"> 
-              <form style="position: relative;">
+              <form method="POST" action="/user/updateSetting/3" style="position: relative;">
                 <h1>Account</h1>
                 <p>Please proceed with caution</p>
                 <div class="md-form form-group ">
                     <label for="email">Email</label>
-                    <input type="email" value="{{userInfo.email}}" class="form-control" id="email" >
+                    <input type="email"  value="{{user.email}}" class="form-control" id="email" disabled>
                 </div>
                 <div class="md-form form-group ">
                     <label for="c_pass">Current password</label>
-                    <input type="password" placeholder="Enter your current password" value="" class="form-control" id="c_pass" >
+                    <input type="password" name="oldpass" placeholder="Enter your current password" value="" class="form-control" id="c_pass" >
                 </div>
                 <div class="md-form form-group ">
                     <label for="n_pass">New password</label>
-                    <input type="password" value=""  placeholder="Enter your new password"class="form-control" id="n_pass" >
+                    <input type="password" name="newpass" value=""  placeholder="Enter your new password"class="form-control" id="n_pass" >
                 </div>
                 <div class="md-form form-group ">
                     <label for="co_pass">Confirm password</label>
-                    <input type="password" value="" placeholder="Enter your new password confirmation" class="form-control" id="co_pass" >
+                    <input type="password" name="newpassconfirm" value="" placeholder="Enter your new password confirmation" class="form-control" id="co_pass" >
                 </div>
               <input type="submit" class="btn-rounded-important save-settings" value="Save">
 

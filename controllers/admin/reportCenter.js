@@ -79,7 +79,6 @@ module.exports = async (req, res) => {
 
 	}
 
-	//console.log(reports);
 	res.render("admin.reportCenter", {
 		reports,
 		currentUser,
