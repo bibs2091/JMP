@@ -28,6 +28,24 @@ $(".dropdowns").click(function () {
       // let url = "http://localhost:3000/messages/"
       $.get("/api/notification/msg", (data => {
         console.log(data)
+        if (data.count > 0) {
+          var msgCard = $('#dropdownMessageWrapper h3')
+          var output = ''
+          output += '<div class="message-card container-fluid">'
+          output += '<div class="row">'
+          output += '<div class="col-3">'
+          output += "<img class='avatar-photo' alt='Profile Photo' src=" + data.inbox[0].senderAvatar + ">"
+          output += "</div>"
+          output += '<div class="message-card-info col-9">'
+          output += '<h5>' + data.inbox[0].from + '</h5>'
+          output += '<h6>A question about a quiz</h6>'
+          output += '<p>Hello i hope .....</p>'
+          output += '</div>'
+          output += '</div>'
+          output += '</div>'
+
+          msgCard.insertAfter(output)
+        }
       }))
 
     }
