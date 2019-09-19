@@ -36,43 +36,102 @@
              <i class="fa fa-bars"></i>
           </a>
         
+          @if(currentUser.groupId == 0)
           <nav class="s-sidebar__nav">
-            <a href="/">
+                <a href="/">
+                    <img src="/favicon.png" class="s-sidebar-logo">
+                </a>
+                <ul>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/home">
+                            <i class="icon-home"></i><em>Home</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/settings">
+                            <i class="fas fa-cog"></i><em>Settings</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/users">
+                            <i class="fas fa-users"></i><em>Users</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/categories">
+                            <i class="fas fa-th-large"></i><em>Categories</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/courses">
+                            <i class="fa fa-graduation-cap"></i><em>Courses</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/reportcenter">
+                            <i class="fa fa-exclamation-circle"></i><em>Reports</em>
+                        </a>
+                    </li>
+                </ul>
+              </nav>
+          @elseif(currentUser.groupId == 2)
+          <nav class="s-sidebar__nav">
+            <a href="/" id="s-sidebar__nav-logo">
                 <img src="/favicon.png" class="s-sidebar-logo">
             </a>
             <ul>
                 <li>
-                    <a class="s-sidebar__nav-link" href="/admin/home">
+                    <a class="s-sidebar__nav-link" href="/user/home">
                         <i class="icon-home"></i><em>Home</em>
                     </a>
                 </li>
                 <li>
-                    <a class="s-sidebar__nav-link" href="/admin/settings">
-                        <i class="fas fa-cog"></i><em>Settings</em>
+                    <a class="s-sidebar__nav-link" href="/user/catalog">
+                        <i class="icon-catalog"></i><em>Library</em>
                     </a>
                 </li>
                 <li>
-                    <a class="s-sidebar__nav-link" href="/admin/users">
-                        <i class="fas fa-users"></i><em>Users</em>
+                    <a class="s-sidebar__nav-link" href="/user/mycourses">
+                        <i class="fa fa-graduation-cap"></i></i><em>My courses</em>
                     </a>
                 </li>
                 <li>
-                    <a class="s-sidebar__nav-link" href="/admin/categories">
-                        <i class="fas fa-th-large"></i><em>Categories</em>
+                    <a class="s-sidebar__nav-link" href="/user/wishlist">
+                        <i class="icon-heart" style="color:#fff;"></i><em>My wishlist</em>
                     </a>
                 </li>
                 <li>
-                    <a class="s-sidebar__nav-link" href="/admin/courses">
-                        <i class="fa fa-graduation-cap"></i><em>Courses</em>
+                    <a class="s-sidebar__nav-link" href="/user/events">
+                        <i class="fa fa-calendar"></i><em>Events</em>
                     </a>
                 </li>
-                <li>
-                    <a class="s-sidebar__nav-link" href="/admin/reportcenter">
-                        <i class="fa fa-exclamation-circle"></i><em>Reports</em>
-                    </a>
-                </li>
+                
             </ul>
           </nav>
+          @else
+          <nav class="s-sidebar__nav">
+                <a href="/" id="s-sidebar__nav-logo">
+                    <img src="/favicon.png" class="s-sidebar-logo">
+                </a>
+                <ul>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/coach/home">
+                            <i class="icon-home"></i><em>Home</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/coach/mycourses">
+                            <i class="fa fa-graduation-cap"></i><em>My courses</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/coach/myevents">
+                            <em>My Events</em>
+                        </a>
+                    </li>
+                </ul>
+              </nav>
+          @endif
         </div>
         
         <!-- Content -->

@@ -25,7 +25,7 @@ router.post("/delete/:id", isAuthenticated, isEventOwner, deleteController);
 router.post("/add", isAuthenticated, addController);
 router.post("/modifie/:id", isAuthenticated, isEventOwner, modifiePostController);
 router.get("/modifie/:id", isAuthenticated, isEventOwner, modifieGetController);
-router.get("/add", isAuthenticated, async (req, res) => {
+router.get("/add", isAuthenticated, isAdminOrCoach, async (req, res) => {
     var currentUser = req.user;
     var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
     delete currentUser.password;

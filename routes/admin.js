@@ -23,43 +23,36 @@ const exportDBController = require("../controllers/admin/exportDB");
 const importDBController = require("../controllers/admin/importDB");
 const approveUserController = require("../controllers/admin/approveUser");
 
+//require middleware
+const isAuth = require("../middleware/isAuthenticated");
+const isAdmin = require("../middleware/isAdmin");
+
 //handling requests 
 router.get("/", (req, res) => {
     res.redirect("/admin/home");
 });
-router.get("/home", homeController);
-router.get("/categories", categoriesController);
-router.post("/addcategory", addCategoryController);
-router.get("/courses", coursesController);
-router.get("/category/:id", getCategoryController);
-router.delete("/category/delete/:id", deleteCategoryController);
-router.post("/category/update/:id", updateCategoryController);
-router.get("/users", usersController);
-router.delete("/users/delete/:id", deleteUserController);
-router.put("/users/approve/:id", approveUserController);
-router.put("/users/makecoach/:id", (req, res) => {
+router.get("/home", isAuth, isAdmin, homeController);
+router.get("/categories", isAuth, isAdmin, categoriesController);
+router.post("/addcategory", isAuth, isAdmin, addCategoryController);
+router.get("/courses", isAuth, isAdmin, coursesController);
+router.get("/category/:id", isAuth, isAdmin, getCategoryController);
+router.delete("/category/delete/:id", isAuth, isAdmin, deleteCategoryController);
+router.post("/category/update/:id", isAuth, isAdmin, updateCategoryController);
+router.get("/users", isAuth, isAdmin, usersController);
+router.delete("/users/delete/:id", isAuth, isAdmin, deleteUserController);
+router.put("/users/approve/:id", isAuth, isAdmin, approveUserController);
+router.put("/users/makecoach/:id", isAuth, isAdmin, (req, res) => {
     Users.update({ groupId: 1 }, { where: { id: req.params.id } });
     res.send({ success: true });
 });
-router.put("/users/makeadmin/:id", (req, res) => {
+router.put("/users/makeadmin/:id", isAuth, isAdmin, (req, res) => {
     Users.update({ groupId: 0 }, { where: { id: req.params.id } });
     res.send({ success: true });
 });
-router.get("/settings", settingsController);
-router.get("/exportDB", exportDBController);
-router.post("/importDB", importDBController);
-router.post("/settings/update", updateSettingsController);
-router.get("/database", async (req, res) => {
-    var currentUser = req.user;
-    var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
-    delete currentUser.password;
-    currentUser.info = userInfo.dataValues;
-    res.render("admin.database", {
-        pageName: "Import/Export Database",
-        pageTitle: "Database settings",
-        currentUser
-    });
-});
-router.get("/reportcenter", reportCenterController);
+router.get("/settings", isAuth, isAdmin, settingsController);
+router.get("/exportDB", isAuth, isAdmin, exportDBController);
+router.post("/importDB", isAuth, isAdmin, importDBController);
+router.post("/settings/update", isAuth, isAdmin, updateSettingsController);
+router.get("/reportcenter", isAuth, isAdmin, reportCenterController);
 
 module.exports = router;

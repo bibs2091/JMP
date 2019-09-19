@@ -36,7 +36,45 @@
           <a class="s-sidebar__trigger" href="#">
              <i class="fa fa-bars"></i>
           </a>
-        
+          @if(currentUser.groupId == 0)
+          <nav class="s-sidebar__nav">
+                <a href="/">
+                    <img src="/favicon.png" class="s-sidebar-logo">
+                </a>
+                <ul>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/home">
+                            <i class="icon-home"></i><em>Home</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/settings">
+                            <i class="fas fa-cog"></i><em>Settings</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/users">
+                            <i class="fas fa-users"></i><em>Users</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/categories">
+                            <i class="fas fa-th-large"></i><em>Categories</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/courses">
+                            <i class="fa fa-graduation-cap"></i><em>Courses</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/admin/reportcenter">
+                            <i class="fa fa-exclamation-circle"></i><em>Reports</em>
+                        </a>
+                    </li>
+                </ul>
+              </nav>
+          @elseif(currentUser.groupId == 2)
           <nav class="s-sidebar__nav">
             <a href="/" id="s-sidebar__nav-logo">
                 <img src="/favicon.png" class="s-sidebar-logo">
@@ -70,6 +108,30 @@
                 
             </ul>
           </nav>
+          @else
+          <nav class="s-sidebar__nav">
+                <a href="/" id="s-sidebar__nav-logo">
+                    <img src="/favicon.png" class="s-sidebar-logo">
+                </a>
+                <ul>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/coach/home">
+                            <i class="icon-home"></i><em>Home</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/coach/mycourses">
+                            <i class="fa fa-graduation-cap"></i><em>My courses</em>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="s-sidebar__nav-link" href="/coach/myevents">
+                            <em>My Events</em>
+                        </a>
+                    </li>
+                </ul>
+              </nav>
+          @endif
         </div>
         
         <!-- Content -->
@@ -83,11 +145,28 @@
                                 <i class="fas fa-search"></i>
                         </div>
                         <i class="fas fa-search" id="search_responsive"></i>
-                        <span class="icon-Message_notification" data-toggle="tooltip" title="Your messages"></span>
+                        <span class="icon-Message_notification dropdowns" data-toggle="tooltip" title="Your messages" data-id="dropdownMessageWrapper" style="cursor:pointer;"></span>
+                            <div class='dropdown-wrapper message-dropdown' id='dropdownMessageWrapper' style='width: 270px'>
+                                <h3>Messages</h3>
+                                <div class="message-card container-fluid">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img class='avatar-photo' alt='Profile Photo' src='{{currentUser.info.avatar}}'>
+                                        </div>
+                                        <div class="message-card-info col-9">
+                                            <h5>Naas Mohamed</h5>
+                                            <h6>A question about a quiz</h6>
+                                            <p>Hello i hope you recongnize mHello i hope you recongnize m...Hello i hope you recongnize m...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#"> View all </a>
+         
+                            </div>
                         <span class="icon-bell" data-toggle="tooltip" title="Your Notifications"></span>
 
                         <div class='header-right'>
-                            <div class='avatar-wrapper' id='avatarWrapper'>
+                            <div class='avatar-wrapper dropdowns' id='avatarWrapper' data-id="dropdownWrapper">
                             <img alt='Profile Photo' class='avatar-photo' src='{{currentUser.info.avatar}}'
                             data-toggle="tooltip" data-placement="left" title="Profile and Settings">
                             <svg class='avatar-dropdown-arrow' height='24' id='dropdownWrapperArrow' viewbox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'>
