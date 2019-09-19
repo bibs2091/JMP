@@ -36,7 +36,7 @@ router.get("/settings", isAuthenticated, userSettingsController);
 router.get("/wishlist", isAuthenticated, isStudent, showWishlistController);
 router.get("/catalog", isAuthenticated, isStudent, catalogController);
 router.get("/events", isAuthenticated, isStudent, eventsController);
-
+router.post("/updateSetting/:id",isAuthenticated,updateController);
 router.post("/settings", isAuthenticated, isStudent, (req, res) => {
 	let {
 		firstName,

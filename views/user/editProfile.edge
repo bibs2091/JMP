@@ -39,9 +39,11 @@
                   <div class="form-group">
                       <label style="width:100%" for="tag-typer">
                               <div id="tags">
+                                @if(userInfo.skills != "")
                                 @each(skill in userInfo.skills)
                                   <span class="tag" ><span class="close">×</span><p>{{skill}}</p></span>
                                   @endeach
+                                  @endif
                                   <input id="tag-typer" type="text"  placeholder="Add a skill..."/>
                               </div>
                       </label>

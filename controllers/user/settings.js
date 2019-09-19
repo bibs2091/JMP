@@ -10,10 +10,11 @@ module.exports = async (req, res) => {
     var currentUser = req.user;
     delete currentUser.password;
     currentUser.info = userInfo;
+    userInfo.skills = "";  
     if(userInfo.skills != undefined)
         userInfo.skills = userInfo.skills.split('||');
     let messages = "A";
-    console.log(currentUser);
+
     res.render("user.editProfile", {
         pageTitle: "Profile settings",
         pageName: "Profile Settings",

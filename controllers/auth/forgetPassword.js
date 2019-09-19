@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
         from: 'jmpsitetest@gmail.com',
         to: email,
         subject: 'Changing forgotten password- JMP',
-        html: "<h1>Caution!</h1><p>Someone is trying to change your password, if its you your new pasword will be : "+generated+"  To confirm this action click here </p>http://localhost:3000/auth/generate/"+ user.id+"/"+ generated+"<h2>PS: for security improvement delete this email</h2>",
+        html: "<h1>Caution!</h1><p>Someone is trying to change your password, if its you your new pasword will be : "+generated+"  To confirm this action click here </p>http://192.168.43.28:3000/auth/generate/"+ user.id+"/"+ generated+"<h2>PS: for security improvement delete this email</h2>",
     };
     transport.sendMail(message, function (err, info) {
         if (err)
