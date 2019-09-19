@@ -1,6 +1,6 @@
 
 //connect client 
-var socket = io.connect('http://5cc87506.ngrok.io/');
+var socket = io();
 
 
 //button
