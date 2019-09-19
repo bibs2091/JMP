@@ -43,7 +43,7 @@
           @each(course in courses)      
             <div class="col-lg-4" style="margin-bottom: 30px;">
                 <div class="course-card card"  onclick="location.href = '/courses/{{course.id}}'">
-                  <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
+                  <img src="{{course.cover}}" class="course-img redirect" url="/courses/{{course.id}}" alt="{{course.title}}">
                   <h5 style="position:relative;">{{course.title}}&nbsp;
                     <div class="stage" onclick="wishlist({{course.id}});event.stopPropagation();"> 
                     @if(course.wishlist == false)

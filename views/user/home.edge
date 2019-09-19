@@ -15,8 +15,8 @@
     <div class="row">
       @each(course in courses)      
         <div class="col-lg-4 col-md-6">
-            <div class="course-card card">
-              <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
+            <div class="course-card card" >
+              <img src="{{course.cover}}" class="course-img redirect" url="/courses/{{course.id}}" alt="{{course.title}}">
               <h5 style="position:relative;">{{course.title}}&nbsp;
                 <div class="stage" onclick="wishlist({{course.id}})"> 
                 @if(course.wishlist == false)
@@ -74,8 +74,8 @@
     <div class="row">
       @each(course in pcourses)      
         <div class="col-lg-4 col-md-6">
-            <div class="course-card card">
-              <img src="{{course.cover}}" class="course-img" alt="{{course.title}}">
+            <div class="course-card card" >
+              <img src="{{course.cover}}" class="course-img redirect" alt="{{course.title}}" url="/courses/{{pcourse.id}}">
               <h5 style="position:relative;">{{course.title}}&nbsp;
                 <div class="stage" onclick="wishlist({{course.id}})"> 
                 @if(course.wishlist == false)
