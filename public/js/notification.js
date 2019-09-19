@@ -3,8 +3,5 @@
 var notifTest = $('#notifTest')
 console.log('loaded in coach')
 socket.on('msgNotification', (data) => {
-
-    console.log(data)
-    notifTest.append('<h1>' + data + '</h1>')
-
+    $(".icon-Message_notification").removeClass("icon-Message_notification").addClass("icon-Message_notification_new");
 })
