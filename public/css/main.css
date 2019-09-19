@@ -2115,6 +2115,7 @@ input[name="lastName"] {
     background: linear-gradient(270.73deg, rgba(255, 189, 61, 0.9) 0%, rgba(255, 211, 42, 0.9) 99.62%);
 }
 .event_card {
+    cursor: pointer;
     margin: 0 auto;
     margin-top: 50px;
     width: 500px;
@@ -2143,6 +2144,7 @@ input[name="lastName"] {
 }
 
 .event_card .card_img {
+    max-width: 183px;    
     width: 183px;
     height: 100%;
     background-position: center center;

@@ -868,22 +868,22 @@ function searchReport(val) {
 function addTagsAddEvent() {
     var tagsSpans = document.getElementsByClassName("tag");
     var tags = [];
-    
+
     for (let i = 0; i < tagsSpans.length; i++) {
         tags.push(tagsSpans[i].children[1].innerHTML);
     }
-    
+
     $("#tags-input").val(JSON.stringify(tags));
 }
 //add skills to update user Setting 
 function addSkillsUpdateSetting() {
     var tagsSpans = document.getElementsByClassName("tag");
     var tags = [];
-    
+
     for (let i = 0; i < tagsSpans.length; i++) {
         tags.push(tagsSpans[i].children[1].innerHTML);
     }
-    
+
     $("#tags-input").val(JSON.stringify(tags));
 }
 //$("#close-tag").on("click", addTagsAddEvent());
@@ -917,40 +917,52 @@ $(".redirect").click(function () {
     location.replace($(this).attr("url"));
 })
 // "all" check-box checks all check boxes 
-  $('input[type=checkbox]:not(#ck-all)').on('click', function (e) {
+$('input[type=checkbox]:not(#ck-all)').on('click', function (e) {
     e.stopImmediatePropagation();
-  });
+});
 
 
-  var checkBoxes = $('input[type=checkbox]');
+var checkBoxes = $('input[type=checkbox]');
 
-  $("#ck-all").click(function () {
+$("#ck-all").click(function () {
     var clicks = $(this).data('clicks');
     if (clicks) {
-      checkBoxes.prop('checked', false);
-      $(".message-list li").removeClass("selected");
-      $(".reports").removeClass("selected");
+        checkBoxes.prop('checked', false);
+        $(".message-list li").removeClass("selected");
+        $(".reports").removeClass("selected");
 
     } else {
-      checkBoxes.prop('checked', true);
-      $(".message-list li").addClass("selected");
-      $(".reports").addClass("selected");
+        checkBoxes.prop('checked', true);
+        $(".message-list li").addClass("selected");
+        $(".reports").addClass("selected");
     }
     $(this).data('clicks', !clicks);
 
-  });
-  function checkReport(obj){
-    if($(obj).prop("checked")){
+});
+function checkReport(obj) {
+    if ($(obj).prop("checked")) {
         $(obj.parentNode.parentNode).addClass("selected");
-    }else{
+    } else {
         $(obj.parentNode.parentNode).removeClass("selected");
     }
-  }
+}
 
-  function deleteReports(){
+function deleteReports() {
     var checks = $('input[type=checkbox]');
     for (var i = checks.length - 1; i >= 0; i--) {
         if (checks[i].parentNode.parentNode.className.split(" ").includes("selected"))
             deleteReport(checks[i].id);
     }
-  }
+}
+//toggle add to wishlist
+function addToWishlist(id, obj) {
+    var con = obj.children[0].classList.contains("btn-Wishlist");
+    var html1 = `<div class="btn-noWishlist" style="transition: 1s;">
+    Add to wishlist<i class="far fa-heart"></i>
+    </div>`;
+    var html2 = `<div class="btn-Wishlist" style="transition: 1s;">
+    <p style="font-weight: bold;">Added to wishlist</p><i class="fas fa-heart"></i>
+  </div>`;
+    obj.innerHTML = con ? html1 : html2;
+    wishlist(id);
+}

@@ -21,20 +21,6 @@ router.get('/', async (req, res) => {
 		delete currentUser.password;
 		currentUser.info = userInfo.dataValues;
 
-		// //pagination
-		// const paginate = ({ page, pageSize }) => {
-		// 	const offset = (page - 1) * pageSize
-		// 	const limit = pageSize
-
-		// 	return {
-		// 		offset, // the records we jump
-		// 		limit,  // how many we retrieve
-		// 	}
-		// }
-
-		// //TODO: replace later with query from req.body
-
-		// let { page, pageSize } = { page: 1, pageSize: 5 };
 
 		//request
 		let inbox = await Messages.findAll({ where: { to: req.user.id, [Op.and]: { delReciever: false } }, order: [['createdAt', 'DESC']] });
@@ -63,12 +49,16 @@ router.get('/', async (req, res) => {
 		// coount unread messages in inbox
 		const unreadMsg = await Messages.findAndCountAll(
 			{
-				where: { isRead: false, [Op.and]: { delReciever: false } }
+				where: { isRead: false, [Op.and]: { delReciever: false }, [Op.and]: { to: req.user.id } }
 			})
 		const count = unreadMsg.count.toString()
 
 		// console.log(inbox);
-		res.render('inbox', { inbox, count, currentUser })
+		res.render('inbox', {
+			inbox, count, currentUser,
+			pageName: "My messages",
+			pageTitle: "My messages | JMP"
+		})
 	} catch (error) {
 		console.log(error)
 	}
@@ -83,6 +73,11 @@ router.get('/', async (req, res) => {
 
 router.get('/sent', async (req, res) => {
 	try {
+		var currentUser = req.user;
+		var userInfo = await Users.findOne({ where: { userId: req.user.id } });
+		delete currentUser.password;
+		currentUser.info = userInfo.dataValues;
+
 		let sentMessages = await Messages.findAll({
 			where: { from: req.user.id, [Op.and]: { delSender: false } }
 		});
@@ -109,10 +104,14 @@ router.get('/sent', async (req, res) => {
 		// coount unread messages in inbox
 		const unreadMsg = await Messages.findAndCountAll(
 			{
-				where: { isRead: false, [Op.and]: { delReciever: false } }
+				where: { to: req.user.id, [Op.and]: { delReciever: false } }
 			})
 		const count = unreadMsg.count.toString()
-		res.render("sent", { count, sentMessages })
+		res.render("sent", {
+			count, sentMessages, currentUser,
+			pageName: "Sent messages",
+			pageTitle: "Sent messages | JMP"
+		})
 	} catch (error) {
 		console.log(error);
 	}

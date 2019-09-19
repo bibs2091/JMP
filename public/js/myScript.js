@@ -12,23 +12,50 @@ document.addEventListener("click", function (event) {
       headerProfileDropdownArrow.classList.remove("active");
     }
     //to hide the dropdown in case of click somewhere else
-    navbar=document.getElementById("navbar");
-    navbarDropActive=navbar.getElementsByClassName('active');
-    for (let i=0;i<navbarDropActive.length;i++){
+    navbar = document.getElementById("navbar");
+    navbarDropActive = navbar.getElementsByClassName('active');
+    for (let i = 0; i < navbarDropActive.length; i++) {
       navbarDropActive[i].classList.remove("active");
     }
   }
 });
-$(".dropdowns").click(function(){
+$(".dropdowns").click(function () {
   let dptarget = $(this).attr("data-id");
   document.getElementById(dptarget).classList.toggle("active");
-  if(dptarget == "dropdownWrapper")
+  if (dptarget == 'dropdownMessageWrapper') {
+    if (document.getElementById(dptarget).classList.contains('active')) {
+      console.log('clicked on drop down')
+      // let url = "http://localhost:3000/messages/"
+      $.get("/api/notification/msg", (data => {
+        var output = data.count > 0 ? "" : "<h4 style='width:100%;text-align:center;margin-bottom:20px;'>You have no new messages</h4>";
+        for (let i = 0; i < data.inbox.length; i++) {
+          output += '<div class="message-card container-fluid">';
+          output += '<div class="row">';
+          output += '<div class="col-3">';
+          output += "<img class='avatar-photo' alt='Profile Photo' src=" + data.inbox[i].senderAvatar + ">";
+          output += "</div>";
+          output += '<div class="message-card-info col-9">';
+          output += '<h5>' + data.inbox[i].from + '</h5>';
+          output += '<h6>' + data.inbox[i].title + '</h6>';
+          output += data.inbox[i].text;
+          output += '</div>';
+          output += '</div>';
+          output += '</div>';
+        }
+        console.log(output);
+        $(".message-card-info").parent().parent().remove();
+        $("#dropdownMessageWrapper h3").after(output);
+      }))
+
+    }
+  }
+  if (dptarget == "dropdownWrapper")
     headerProfileDropdownArrow.classList.toggle("active");
   event.stopPropagation();
 })
 // headerProfileAvatar.addEventListener("click", function (event) {
-  
-// });
+
+
 
 //------------- course details ----------
 $(".collapse-chapter").on("click", function () {
@@ -44,7 +71,7 @@ $(document).ready(function () {
     if (key == 13 || key == 44) {
       event.preventDefault();
       var tag = $(this).val();
-      if (tag.length > 0 && tag.replace(/\s/g, '').length>0) {
+      if (tag.length > 0 && tag.replace(/\s/g, '').length > 0) {
         $("<span class='tag' style='display:none'><span class='close'>&times;</span><p>" + tag + "</p></span>").insertBefore(this).fadeIn(100);
         $(this).val("");
       }

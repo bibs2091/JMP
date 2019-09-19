@@ -10,7 +10,7 @@ const coachesController = require("../controllers/api/coaches");
 const searchUsers = require('../controllers/api/searchUser')
 const quizResultController = require("../controllers/api/quizResult");
 const lastLectureController = require("../controllers/api/lastLecture");
-
+const notifApi = require('../controllers/api/notifApi')
 //require middleware
 const isAuthenticated = require("../middleware/isAuthenticated");
 
@@ -23,6 +23,6 @@ router.get("/users/admins", adminsController);
 router.post("/quiz/:id/result", quizResultController);
 router.get("/course/:id/lastLecture", lastLectureController);
 router.get('/users/search', searchUsers)
-
+router.get('/notification/msg', notifApi)
 
 module.exports = router;
