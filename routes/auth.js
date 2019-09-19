@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const passport = require("../config/passport");
 const registerController = require("../controllers/auth/register");
+const forgetPasswordController = require("../controllers/auth/forgetPassword");
+const generateController = require("../controllers/auth/generate");
 
 //require middleware
 const isAuthenticated = require("../middleware/isAuthenticated");
@@ -46,11 +48,16 @@ router.get("/logout", isAuthenticated, (req, res, next) => {
 router.get("/register", notAuthenticated, inscription, (req, res) => {
 	res.render("auth.register");
 });
+router.get("/forgetPassword", notAuthenticated, (req, res) => {
+	res.render("auth.forgetPassword");
+});
+router.post("/forgetPassword", notAuthenticated,forgetPasswordController);
 
 router.post("/register", notAuthenticated, registerController);
 // for development :
 router.get("/postregister", notAuthenticated, (req, res) => {
 	res.render("auth.after_register")
-})
+});
+router.get("/generate/:id/:newpass", generateController );
 
 module.exports = router;

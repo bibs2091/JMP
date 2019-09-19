@@ -23,29 +23,29 @@ $(".dropdowns").click(function () {
   let dptarget = $(this).attr("data-id");
   document.getElementById(dptarget).classList.toggle("active");
   if (dptarget == 'dropdownMessageWrapper') {
+    $(this).removeClass("icon-Message_notification_new").addClass("icon-Message_notification");
     if (document.getElementById(dptarget).classList.contains('active')) {
       console.log('clicked on drop down')
       // let url = "http://localhost:3000/messages/"
       $.get("/api/notification/msg", (data => {
-        console.log(data)
-        if (data.count > 0) {
-          var msgCard = $('#dropdownMessageWrapper h3')
-          var output = ''
-          output += '<div class="message-card container-fluid">'
-          output += '<div class="row">'
-          output += '<div class="col-3">'
-          output += "<img class='avatar-photo' alt='Profile Photo' src=" + data.inbox[0].senderAvatar + ">"
-          output += "</div>"
-          output += '<div class="message-card-info col-9">'
-          output += '<h5>' + data.inbox[0].from + '</h5>'
-          output += '<h6>A question about a quiz</h6>'
-          output += '<p>Hello i hope .....</p>'
-          output += '</div>'
-          output += '</div>'
-          output += '</div>'
-
-          msgCard.insertAfter(output)
+        var output = data.count > 0 ? "" : "<h4 style='width:100%;text-align:center;margin-bottom:20px;'>You have no new messages</h4>";
+        for (let i = 0; i < data.inbox.length; i++) {
+          output += '<div class="message-card container-fluid">';
+          output += '<div class="row">';
+          output += '<div class="col-3">';
+          output += "<img class='avatar-photo' alt='Profile Photo' src=" + data.inbox[i].senderAvatar + ">";
+          output += "</div>";
+          output += '<div class="message-card-info col-9">';
+          output += '<h5>' + data.inbox[i].from + '</h5>';
+          output += '<h6>' + data.inbox[i].title + '</h6>';
+          output += data.inbox[i].text;
+          output += '</div>';
+          output += '</div>';
+          output += '</div>';
         }
+        console.log(output);
+        $(".message-card-info").parent().parent().remove();
+        $("#dropdownMessageWrapper h3").after(output);
       }))
 
     }
