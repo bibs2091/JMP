@@ -42,7 +42,7 @@ router.get("/:id", isAuthenticated, courseDetailsController);
 router.get("/update/:id", isAuthenticated, isAdminOrCoach, updatePageController);
 router.post("/update/:id", isAuthenticated, isAdminOrCoach, updateController);
 router.delete("/delete/:id", isAuthenticated, isAdminOrCoach, deleteCourseController);
-router.post("/wishlist/:id", isAuthenticated, isStudent, wishlistController);
+router.post("/wishlist/:id", isAuthenticated, wishlistController);
 router.get("/classroom/:id", isAuthenticated, courseController);
 router.get("/classroom/:course/certificat", isAuthenticated, isStudent, certificatController);
 router.get("/classroom/:course/:lecture", isAuthenticated, courseContentController);

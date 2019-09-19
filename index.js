@@ -114,6 +114,13 @@ app.set("views", __dirname + "/views");
 app.use(passport.initialize());
 app.use(passport.session());
 
+// app.use(function (req, res, next) {
+// 	res.header('Access-Control-Allow-Origin', 'http://5cc87506.ngrok.io');
+// 	res.header('Access-Control-Allow-Credentials', true);
+// 	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+// 	next();
+// });
+
 //use routes
 app.use("/auth", auth);
 app.use("/coach", coach);
