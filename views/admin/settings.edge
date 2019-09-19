@@ -125,11 +125,43 @@
         font-size: 18px;
         line-height: 24px;
         border: 0;
-        /* identical to box height */
-        text-align: center;
         position: absolute;
         right: 20px;
         bottom: 20px;
+    }
+    .db-settings-button{
+        background: #FFD32A;
+        border-radius: 7px;
+        color: white;
+        width: 130px;
+        height: 45px;
+        font-family: Montserrat,sans-serif;
+        border: 0;
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 15px;
+        display: block;
+        cursor: pointer;
+    }
+    div.db-settings-button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    }
+    .db h3{
+        font-weight: 600;
+        color: #828282;
+    }
+    @media(max-width:766px){
+        .db-settings-button{
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .db h3{
+            text-align: center;
+        }
     }
 </style>
 
@@ -208,13 +240,31 @@
             </div>
     </form>
              <div class="col-md-12">
-                <div class="card"  style="padding-bottom: 80px">
-                    <div class="btn btn-success redirect" url="/admin/exportDB">export Database</div>
-                    <form action="/admin/importDB" method="POST" enctype="multipart/form-data">
-                        <input type="file" name="jsonFile">
-                        <input type="submit" value="importDB" class="btn btn danger">
-                    </form>
+                <div class="card container db" style="margin:0;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Import Database</h3>
+                            <form action="/admin/importDB" method="POST" enctype="multipart/form-data" style="margin-top:20px;">
+                                <div class="file-field">
+                                    <div class="btn btn-primary btn-sm float-left">
+                                        <span>Choose file</span>
+                                        <input type="file" name="jsonFile">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Upload your file">
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn-rounded-important db-settings-button" value="Import DB">
+                            </form>
+                            <h3 style="margin-top:30px;">Export Database</h3>                            
+                            <div class="btn-rounded-important db-settings-button redirect" url="/admin/exportDB">Export DB</div>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="/img/databaseIMG.png" style="width:100%" alt="Database">
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </div>
 </div>
