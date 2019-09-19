@@ -43,7 +43,7 @@ module.exports = async (req, res) => {
         }
     });
     //getting last lecture
-    var lastLect = await axios.get(`http://localhost:3000/api/course/${courseId}/lastLecture`);
+    var lastLect = await axios.get(`http://5cc87506.ngrok.io/api/course/${courseId}/lastLecture`);
     lastLect = lastLect.data.id;
     //updating the user progress
     let lect = await Lectures.findByPk(progress.lastLecture + 1);

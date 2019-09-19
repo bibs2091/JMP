@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
         var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
         delete currentUser.password;
         currentUser.info = userInfo.dataValues;
-        var { data } = await axios.get("http://localhost:3000/recSys/" + req.user.id);
+        var { data } = await axios.get("http://5cc87506.ngrok.io/recSys/" + req.user.id);
         var coursesType = data.length > 0 ? "Recommended " : "Discover some ";
         var courses = [];
         if (data.length > 0) {
@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
         } else {
             courses = await Courses.findAll({ limit: 3 });
         }
-        var { data } = await axios.get("http://localhost:3000/recSys/mostPopCourses");
+        var { data } = await axios.get("http://5cc87506.ngrok.io/recSys/mostPopCourses");
         if (data.length > 0) {
             for (let i = 0; i < 3; i++) {
                 let tCourse = await Courses.findByPk(data[i]);

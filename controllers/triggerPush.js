@@ -5,7 +5,7 @@ const triggerPush = async (id, payload) => {
     try {
         let req = await axios({
             method: "POST",
-            url: `http://localhost:3000/subscribe/triggerPush/${id}`,
+            url: `http://5cc87506.ngrok.io/subscribe/triggerPush/${id}`,
             data: {
                 payload
             }
@@ -21,7 +21,7 @@ const pushToAllSubsecribers = async (payload) => {
     try {
         let req = await axios({
             method: "POST",
-            url: `http://localhost:3000/subscribe/triggerPush`,
+            url: `http://5cc87506.ngrok.io/subscribe/triggerPush`,
             data: {
                 payload
             }
