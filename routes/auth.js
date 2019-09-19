@@ -49,7 +49,7 @@ router.get("/register", notAuthenticated, inscription, (req, res) => {
 
 router.post("/register", notAuthenticated, registerController);
 // for development :
-router.get("/postregister", (req, res) => {
+router.get("/postregister", notAuthenticated, (req, res) => {
 	res.render("auth.after_register")
 })
 

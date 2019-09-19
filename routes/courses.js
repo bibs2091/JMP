@@ -19,10 +19,12 @@ const quizPageController = require("../controllers/courses/quizPage");
 
 //require middelware
 const isAuthenticated = require("../middleware/isAuthenticated");
+const isStudent = require("../middleware/isStudent");
+const isAdminOrCoach = require("../middleware/isAdminOrCoach");
 
 //handling requests 
-router.post("/add", addController);
-router.get("/add", async (req, res) => {
+router.post("/add", isAuthenticated, isAdminOrCoach, addController);
+router.get("/add", isAuthenticated, isAdminOrCoach, async (req, res) => {
     var categories = await Categories.findAll();
     var currentUser = req.user;
     var userInfo = await UsersInfo.findOne({ where: { userId: req.user.id } });
@@ -36,14 +38,14 @@ router.get("/add", async (req, res) => {
     });
 })
 
-router.get("/:id", courseDetailsController);
-router.get("/update/:id", isAuthenticated, updatePageController);
-router.post("/update/:id", isAuthenticated, updateController);
-router.delete("/delete/:id", isAuthenticated, deleteCourseController);
-router.post("/wishlist/:id", isAuthenticated, wishlistController);
+router.get("/:id", isAuthenticated, courseDetailsController);
+router.get("/update/:id", isAuthenticated, isAdminOrCoach, updatePageController);
+router.post("/update/:id", isAuthenticated, isAdminOrCoach, updateController);
+router.delete("/delete/:id", isAuthenticated, isAdminOrCoach, deleteCourseController);
+router.post("/wishlist/:id", isAuthenticated, isStudent, wishlistController);
 router.get("/classroom/:id", isAuthenticated, courseController);
-router.get("/classroom/:course/certificat", isAuthenticated, certificatController);
+router.get("/classroom/:course/certificat", isAuthenticated, isStudent, certificatController);
 router.get("/classroom/:course/:lecture", isAuthenticated, courseContentController);
-router.get("/classroom/quiz/:courseId/:chapId", quizPageController);
+router.get("/classroom/quiz/:courseId/:chapId", isAuthenticated, quizPageController);
 
 module.exports = router;

@@ -7,10 +7,14 @@ const editProfileController = require("../controllers/coach/profile");
 const myCoursesController = require("../controllers/coach/mycourses");
 const myEventsController = require("../controllers/coach/myevents");
 
+//require middleware
+const isAuth = require("../middleware/isAuthenticated");
+const isCoach = require("../middleware/isCoach");
+
 //handling requests 
-router.get("/home", homeController);
-router.get("/editprofile", editProfileController);
-router.get("/mycourses", myCoursesController);
-router.get("/myevents", myEventsController);
+router.get("/home", isAuth, isCoach, homeController);
+router.get("/editprofile", isAuth, isCoach, editProfileController);
+router.get("/mycourses", isAuth, isCoach, myCoursesController);
+router.get("/myevents", isAuth, isCoach, myEventsController);
 
 module.exports = router;
