@@ -1,5 +1,6 @@
-var stripeSecretKey = "sk_test_BUMpiBazZ0J0XUVVEFdVHoHa00gDSNuRcr";
-var stripePublicKey = "pk_test_4RClktcKizMFLAUQU9CxAKsu00wslY37cj";
+const { stripeAPI } = require("../config/keys");
+
+var stripeSecretKey = stripeAPI.secret;
 
 const stripe = require("stripe")(stripeSecretKey);
 
