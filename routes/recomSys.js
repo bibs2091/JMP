@@ -16,7 +16,7 @@ router.get('/:id', (req, res) => {
 
 //if a user start a course 
 router.post('/likedCourse/:id', (req, res) => {
-
+    console.log(req.originalUrl)
     raccoon.liked(req.user.id, req.params.id).then(() => {
         console.log('user ' + req.user.id + ' liked course: ' + req.params.id)
         res.send('user ' + req.user.id + ' liked course: ' + req.params.id)
